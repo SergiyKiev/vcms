@@ -3,9 +3,6 @@ from selenium import webdriver
 from pages import *
 from testCases import test_cases
 from settings import Settings
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
 
 # I am using python unittest for asserting cases.
 # In this module, there should be test cases.
@@ -14,23 +11,23 @@ from selenium.webdriver.support import expected_conditions as EC
 class TestPages(unittest.TestCase):
 
     def setUp(self):
+        #self.driver = webdriver.Chrome('/Users/sol/selenium/chromedriver')
         self.driver = webdriver.Chrome()
         self.driver.maximize_window()
-        #self.driver = webdriver.Firefox()
         self.driver.get(Settings.baseUrl)
 
-    def test_page_load(self):
-        print "\n" + str(test_cases(0))
-        page = LoginPage(self.driver)
-        self.assertTrue(page.check_page_loaded())
+    # def test_page_load(self):
+    #     print "\n" + str(test_cases(0))
+    #     page = LoginPage(self.driver)
+    #     self.assertTrue(page.check_page_loaded())
 
     def test_login(self):
         print "\n" + str(test_cases(1))
         page = LoginPage(self.driver)
-        page.open(self.driver)
-        #result = page.login_with_valid_user("valid_user")
-        result = page.login_with_valid_user()
-        self.assertTrue(PageConstants.BUTTON_EXIT, result)
+        page.check_page_loaded()
+        page.enter_username()
+        page.enter_password()
+        page.click_sign_in_button()
 
     # def test_search_item(self):
         # print "\n" + str(test_cases(1))
@@ -62,11 +59,10 @@ class TestPages(unittest.TestCase):
         #result = page.login_with_in_valid_user("invalid_user")
         #self.assertIn("testteamdev", result.get_url())
 
-    # def tearDown(self):
-    #     self.driver.implicitly_wait(5)
-    #     self.driver.close()
+    def tearDown(self):
+        self.driver.implicitly_wait(5)
+        self.driver.close()
 
 if __name__ == "__main__":
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestPages)
-    unittest.TextTestRunner(verbosity=2).run(suite)
+    unittest.TextTestRunner(verbosity=2).run()
 
