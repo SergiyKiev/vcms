@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 
 # for maintainability we can seperate web objects by page name
 
-class PageConstants(object):
+class Locators(object):
 
   BUTTON_SIGN_IN                  = "//span[text()='Sign In']"
   FIELD_USERNAME                  = "//input[@type='text']"
@@ -25,7 +25,7 @@ class PageConstants(object):
   LABEL_SITE_NAME                 = "//span[text()='" + SITE_NAME + "']"
   LOADING_SCREE_INVISIBLE         = "//div[@id='VWG_LoadingAnimationBox'][contains(@style,'display: none']"
   LOADING_SCREE_VISIBLE           = "//div[@id='VWG_LoadingAnimationBox'][contains(@style,'display: block']"
-  LOADING_ANIMATION_BOX           = "VWG_LoadingAnimationBox"
+  LOADING_ANIMATION_BOX           = (By.ID, "VWG_LoadingAnimationBox")
   MENU_DEVICES                    = "//span[text()='Devices']/ancestor::div[contains(@id,'VWG_')]/*//div[contains(@style,'translate3d(0px, 0px, 0px)')]"
   POPUP_SUBSRIPTION_HAS_EXPIRED   = "//span[text()='Manage Subscriptions']/ancestor::div[contains(@id,'WRP')]"
   POPUP_TERMS_AND_CONDITIONS      = "//span[text()='Terms and Conditions']/ancestor::div[contains(@id,'WRP')]"
