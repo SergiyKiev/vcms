@@ -20,13 +20,16 @@ class Page(object):
     def open(self):
         self.driver.get(Settings.baseUrl)
 
-    def find_element(self, locator):
-        try:
-            elem = self.driver.find_element(By.XPATH, locator)
-            if elem != True:
-                self.wait.until(EC.presence_of_element_located(locator))
-        except NoSuchElementException:
-            return self.driver.find_element(locator)
+    def find(self, locator):
+
+        return self.wait.until(EC._find_element(By.XPATH, locator))
+
+        # try:
+        #     elem = self.driver.find_element(By.XPATH, locator)
+        #     if elem != True:
+        #         self.wait.until(EC.presence_of_element_located(locator))
+        # except NoSuchElementException:
+        #     return self.driver.find_element(locator)
 
     def click(self, locator, condition):
         try:
@@ -57,8 +60,9 @@ class Page(object):
         return self.driver.current_url
 
     def hover(self, *locator):
-        element = self.find_element(*locator)
+        element = self.find(*locator)
         hover = ActionChains(self.driver).move_to_element(element)
         hover.perform()
+
 
 
