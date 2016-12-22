@@ -42,7 +42,6 @@ class TestPages(unittest.TestCase):
         page = LoginPage(self.driver)
         home_page = page.login()
         devices_page = home_page.click_devices_menu_button()
-        devices_page.click_global_site_view_site()
         self.assertTrue(devices_page.click_global_site_view_site())
 
     def test_open_site_name_popup(self):
@@ -51,8 +50,7 @@ class TestPages(unittest.TestCase):
         home_page = login_page.login()
         devices_page = home_page.click_devices_menu_button()
         devices_page.click_global_site_view_site()
-        result = devices_page.click_new_site_button()
-        self.assertTrue(self.driver.find_element_by_xpath(Locators.POPUP_SITE_NAME), result)
+        self.assertTrue(devices_page.click_new_site_button())
 
     def test_create_new_site(self):
         print "\n" + str(test_cases(4))
@@ -100,4 +98,4 @@ class TestPages(unittest.TestCase):
         self.driver.quit()
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.TextTestRunner(verbosity=2).run()

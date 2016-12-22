@@ -21,8 +21,8 @@ class Page(object):
         self.driver.get(Settings.baseUrl)
 
     def find(self, locator):
-
-        return self.wait.until(EC._find_element(By.XPATH, locator))
+        return self.wait.until(EC.presence_of_element_located((By.XPATH, locator)))
+            # return self.wait.until(EC._find_element(By.XPATH, *locator))
 
         # try:
         #     elem = self.driver.find_element(By.XPATH, locator)
@@ -40,6 +40,7 @@ class Page(object):
                 self.wait.until(EC.invisibility_of_element_located((By.XPATH, Locators.LOADING_SCREE_INVISIBLE)))
                 self.wait.until(EC.presence_of_element_located((By.XPATH, condition)))
                 self.wait.until(EC.visibility_of_element_located((By.XPATH, condition)))
+            return self.driver.find_element_by_xpath(condition)
         except(NoSuchElementException):
             return False
 
