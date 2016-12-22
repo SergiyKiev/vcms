@@ -31,7 +31,9 @@ class TestPages(unittest.TestCase):
         print "\n" + str(test_cases(1))
         page = LoginPage(self.driver)
         time.sleep(15)
-        result = page.login()
+        page.enter_username()
+        page.enter_password()
+        result = page.click_sign_in_button()
         time.sleep(15)
         # result = page.click_sign_in_button()
         # page.open()
@@ -71,9 +73,8 @@ class TestPages(unittest.TestCase):
 
     def tearDown(self):
         self.driver.implicitly_wait(5)
-        self.driver.close()
+        self.driver.quit()
 
 if __name__ == "__main__":
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestPages)
-    unittest.TextTestRunner(verbosity=2).run(suite)
+    unittest.main()
 

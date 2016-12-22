@@ -12,11 +12,6 @@ class LoginPage(Page):
 
     def check_page_loaded(self):
         return True if self.driver.find_element_by_xpath(Locators.BUTTON_SIGN_IN) else False
-        # try:
-        #     WebDriverWait(self.driver, 60).until(EC.presence_of_element_located((By.XPATH, Locators.BUTTON_SIGN_IN)))
-        # except TimeoutException:
-        #     print "Page is not loaded"
-        # return True
 
     def enter_username(self, username = Settings.username):
         #self.driver.find_element(*Locators.FIELD_USERNAME).send_keys(Settings.username)
