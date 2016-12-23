@@ -5,6 +5,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 import time
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import TimeoutException
 from locators import Locators
 
 
@@ -20,7 +21,7 @@ class Page(object):
     def open(self):
         self.driver.get(Settings.baseUrl)
 
-    def find(self, locator):
+    def find_element(self, locator):
         return self.wait.until(EC.presence_of_element_located((By.XPATH, locator)))
             # return self.wait.until(EC._find_element(By.XPATH, *locator))
 
@@ -43,6 +44,16 @@ class Page(object):
             return self.driver.find_element_by_xpath(condition)
         except(NoSuchElementException):
             return False
+
+    def is_element_selected(self, locator):
+        try:
+            self.wait.until(EC.presence_of_element_located((By.XPATH, locator + Locators.SELECTED)))
+            return True
+        except TimeoutException:
+            return False
+
+    def is_element_present(self, locator):
+        return True if self.find_element(locator) else False
 
     # def type (self, locator, text):
     #     try:

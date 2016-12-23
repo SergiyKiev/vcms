@@ -15,7 +15,7 @@ class LoginPage(Page):
         return True if self.driver.find_element_by_xpath(Locators.BUTTON_SIGN_IN) else False
 
     def enter_username(self, username = Settings.username):
-        self.find(Locators.FIELD_USERNAME).send_keys(username)
+        self.find_element(Locators.FIELD_USERNAME).send_keys(username)
         return True
 
     def enter_password(self, password = Settings.password):
@@ -57,7 +57,7 @@ class HomePage(Page):
 class DevicesPage(Page):
 
     def check_devices_page_loaded(self):
-        return True if self.find(Locators.MENU_DEVICES) else False
+        return True if self.find_element(Locators.MENU_DEVICES) else False
 
     def click_global_site_view_site(self):
         self.click(Locators.SITE_GLOBAL_SITE_VIEW, Locators.LABEL_GLOBAL_SITE_VIEW + Locators.SELECTED)
