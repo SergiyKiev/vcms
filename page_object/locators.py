@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-
+from variables import Variables
 # for maintainability we can seperate web objects by page name
 
 class Locators:
@@ -13,6 +13,7 @@ class Locators:
                                                 "@style,'translate3d(0px, 0px, 0px)')]"
   #CONTAINERS
   CONTAINER_GLOBAL_SITE_VIEW      = "//span[text()='Global Site View']/ancestor::div[@class='TreeView-PaddingContainer']/div[1]"
+  CONTAINER_HEADER_DEVICES_VIEW   = "//span[text()='Devices']/ancestor::div[contains(@style,'85px')]"
   #LABELS
   LABEL_GLOBAL_SITE_VIEW          = CONTAINER_GLOBAL_SITE_VIEW + "/div[contains(@id,'VWGNODE')]"
   #TREES
@@ -20,10 +21,9 @@ class Locators:
   #TEXT
   TEXT_GLOBAL_SITE_VIEW           = "//span[contains(text(),'Global Site View')]"
   TEXT_ERROR                      = "//span[text()='Error']"
+  TEXT_SITE_NAME                  = "//span[text()='"+Variables.siteName+"']"
   #SITES
-  SITE_NAME                       = "Test IK0001"
   SITE_GLOBAL_SITE_VIEW           = "//span[text()='Global Site View']"
-  SITE_SITE_NAME                  = "//span[text()='" + SITE_NAME + "']"
   #FIELDS
   FIELD                           = "//input"
   FIELD_USERNAME                  = "//input[@type='text']"
