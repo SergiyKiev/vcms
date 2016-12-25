@@ -1,4 +1,4 @@
 class Settings(object):
-    baseUrl          = "https://testteamdev.cloudmanagementsuite.com/"
+    baseUrl          = "https://testteamtest.cloudmanagementsuite.com/"
     username         = "ikiprov@verismic.com"
     password         = "R2ffman"

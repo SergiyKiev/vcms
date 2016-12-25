@@ -15,45 +15,51 @@ class Page(object):
     def __init__(self, driver, base_url=Settings.baseUrl):
         self.base_url = base_url
         self.driver = driver
-        self.timeout = 60
+        self.timeout = 10
         self.wait = WebDriverWait(self.driver, self.timeout)
 
     def open(self):
         self.driver.get(Settings.baseUrl)
 
     def find_element(self, locator):
-        self.wait.until(EC.presence_of_element_located((By.XPATH, locator)))
+        try:
+            self.driver.implicitly_wait(10)
+            self.wait.until(EC.presence_of_element_located((By.XPATH, locator)))
+        except (NoSuchElementException , TimeoutException):
+            return None
         return self.driver.find_element_by_xpath(locator)
-        #self.wait.until(EC.presence_of_element_located((By.XPATH, locator)))
-        # return self.wait.until(EC._find_element(By.XPATH, *locator))
-
-        # try:
-        #     elem = self.driver.find_element(By.XPATH, locator)
-        #     if elem != True:
-        #         self.wait.until(EC.presence_of_element_located(locator))
-        # except NoSuchElementException:
-        #     return self.driver.find_element(locator)
 
     def click_element(self, locator):
         try:
-            elem = self.driver.find_element_by_xpath(locator)
+            elem = self.find_element(locator)
             if elem:
                 elem.click()
                 self.driver.implicitly_wait(1)
                 self.wait.until(EC.invisibility_of_element_located((By.XPATH, Locators.LOADING_SCREE_INVISIBLE)))
-            return True
-        except(NoSuchElementException):
+        except NoSuchElementException:
             return False
-
-    def is_element_selected(self, locator):
-        try:
-            self.wait.until(EC.presence_of_element_located((By.XPATH, locator + Locators.SELECTED)))
-            return True
-        except TimeoutException:
-            return False
+        return True
 
     def is_element_present(self, locator):
-        return True if self.driver.find_element_by_xpath(locator) else False
+        try:
+            # self.driver.implicitly_wait(1)
+            self.find_element(locator)
+        except NoSuchElementException:
+            return False
+        return True
+
+    def is_element_selected(self, locator):
+        # try:
+        #     self.wait.until(EC.presence_of_element_located((By.XPATH, locator + Locators.SELECTED)))
+        # except NoSuchElementException:
+        #     return False
+        # return True
+        try:
+            # self.driver.implicitly_wait(1)
+            self.find_element(locator + Locators.SELECTED)
+        except NoSuchElementException:
+            return False
+        return True
 
     def get_title(self):
         return self.driver.title
@@ -61,8 +67,8 @@ class Page(object):
     def get_url(self):
         return self.driver.current_url
 
-    def hover(self, *locator):
-        element = self.find_element(*locator)
+    def hover(self, locator):
+        element = self.find_element(locator)
         hover = ActionChains(self.driver).move_to_element(element)
         hover.perform()
 

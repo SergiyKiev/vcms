@@ -21,7 +21,7 @@ class Locators:
   #TEXT
   TEXT_GLOBAL_SITE_VIEW           = "//span[contains(text(),'Global Site View')]"
   TEXT_ERROR                      = "//span[text()='Error']"
-  TEXT_SITE_NAME                  = "//span[text()='"+Variables.siteName+"']"
+  TEXT_SITE_NAME                  = "//span[text()='" + Variables.siteName + "']"
   #SITES
   SITE_GLOBAL_SITE_VIEW           = "//span[text()='Global Site View']"
   #FIELDS
@@ -39,7 +39,7 @@ class Locators:
   BUTTON_I_AGREE                  = "//span[text()='I Agree']"
   #POPUPS
   POPUP                           = "//div[contains(@id,'WRP')]"
-  POPUP_SITE_NAME                 = "//span[text()='Site Name']/ancestor::div[contains(@id,'WRP')]"
+  POPUP_SITE_NAME                 = "//span[text()='SiteName']/ancestor::div[contains(@id,'WRP')]"
   POPUP_ARE_YOU_SURE              = "//span[text()='Are you sure?']/ancestor::div[contains(@id,'WRP')]"
   POPUP_SUBSRIPTION_HAS_EXPIRED   = "//span[text()='Manage Subscriptions']/ancestor::div[contains(@id,'WRP')]"
   POPUP_TERMS_AND_CONDITIONS      = "//span[text()='Terms and Conditions']/ancestor::div[contains(@id,'WRP')]"
