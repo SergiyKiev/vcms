@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 from variables import Variables
-# for maintainability we can seperate web objects by page name
+# for maintainability we can separate web objects by page name
 
 class Locators:
 
