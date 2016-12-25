@@ -13,17 +13,44 @@ from selenium.common.exceptions import NoSuchElementException
 
 class LoginPage(Page):
 
-    def setUp(self):
-        self.driver = webdriver.Chrome()
-        self.driver.maximize_window()
-        # self.driver = webdriver.Firefox()
-        self.driver.get(Settings.baseUrl)
+    def check_login_page_loaded(self):
+        return True if self.is_element_present(Locators.BUTTON_SIGN_IN)else False
+
+    def login(self):
+        self.check_login_page_loaded()
+        self.close_terms_and_conditions_popup()
         self.driver.implicitly_wait(5)
-        self.wait.until(EC.presence_of_element_located((By.XPATH, Locators.BUTTON_SIGN_IN)))
+        self.enter_username()
+        self.enter_password()
+        self.click_sign_in_button()
+        self.close_subscription_has_expired_popup()
+        return HomePage(self.driver)
+
+    def click_terms_and_conditions_popup_i_agree_button(self):
+        self.click_element(Locators.POPUP_TERMS_AND_CONDITIONS + "/*" + Locators.BUTTON_I_AGREE)
+        return True if self.find_element(Locators.POPUP_TERMS_AND_CONDITIONS) else False
+
+    def close_terms_and_conditions_popup(self):
+        cond = self.find_element(Locators.POPUP_TERMS_AND_CONDITIONS)
+        if cond:
+            self.click_terms_and_conditions_popup_i_agree_button()
+        else:
+            pass
+        return True
+
+    def close_subscription_has_expired_popup(self):
+        # self.click_element(Locators.POPUP_SUBSCRIPTION_HAS_EXPIRED + "/*" + Locators.BUTTON_SYSTEM_CLOSE)
+        # return True if self.find_element(Locators.POPUP_SUBSCRIPTION_HAS_EXPIRED) else False
+        cond = self.find_element(Locators.POPUP_SUBSCRIPTION_HAS_EXPIRED)
+        if cond:
+            self.close_subscription_has_expired_popup()
+        else:
+            pass
+        return True
+
 
     def check_login_page_loaded(self):
-        cond = self.driver.find_element(Locators.BUTTON_SIGN_IN)
-        return True if cond else False
+        return True if self.find_element(Locators.BUTTON_SIGN_IN) else False
 
     def enter_username(self, username = Settings.username):
         self.find_element(Locators.FIELD_USERNAME).send_keys(username)
@@ -37,25 +64,22 @@ class LoginPage(Page):
         self.click_element(Locators.BUTTON_SIGN_IN)
         return HomePage(self.driver)
 
-    def login(self):
-        self.enter_username()
-        self.enter_password()
-        self.click_sign_in_button()
-        return HomePage(self.driver)
-
+    def close_error_popup(self):
+        self.click_element(Locators.POPUP_ERROR + "/*" + Locators.BUTTON_SYSTEM_CLOSE)
+        return True if Locators.find_element(Locators.POPUP_ERROR) else False
 
 class HomePage(Page):
 
     def check_home_page_loaded(self):
-        cond = self.is_element_present(Locators.BUTTON_EXIT)
-        return True if cond else False
+        return True if self.is_element_present(Locators.BUTTON_EXIT)else False
 
     def click_devices_menu_button(self):
         self.click_element(Locators.BUTTON_DEVICES)
         return DevicesPage(self.driver)
 
     def open_devices_menu(self):
-        if self.is_element_present(Locators.MENU_DEVICES):
+        cond = self.is_element_present(Locators.MENU_DEVICES)
+        if cond:
             return DevicesPage(self.driver)
         else:
             self.click_devices_menu_button()

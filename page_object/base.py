@@ -23,7 +23,7 @@ class Page(object):
 
     def find_element(self, locator):
         try:
-            self.driver.implicitly_wait(10)
+            self.driver.implicitly_wait(2)
             self.wait.until(EC.presence_of_element_located((By.XPATH, locator)))
         except (NoSuchElementException , TimeoutException):
             return None
@@ -34,7 +34,7 @@ class Page(object):
             elem = self.find_element(locator)
             if elem:
                 elem.click()
-                self.driver.implicitly_wait(1)
+                time.sleep(1)
                 self.wait.until(EC.invisibility_of_element_located((By.XPATH, Locators.LOADING_SCREE_INVISIBLE)))
         except NoSuchElementException:
             return False
@@ -49,17 +49,24 @@ class Page(object):
         return True
 
     def is_element_selected(self, locator):
-        # try:
-        #     self.wait.until(EC.presence_of_element_located((By.XPATH, locator + Locators.SELECTED)))
-        # except NoSuchElementException:
-        #     return False
-        # return True
         try:
             # self.driver.implicitly_wait(1)
             self.find_element(locator + Locators.SELECTED)
         except NoSuchElementException:
             return False
         return True
+
+    def close_popups(self):
+        cond = self.find_element(Locators.POPUP + "[last()]/*" + Locators.BUTTON_SYSTEM_CLOSE)
+        i=0
+        while i <10:
+            i += 1
+            if cond:
+                self.click_element(Locators.POPUP + "[last()]/*" + Locators.BUTTON_SYSTEM_CLOSE)
+                return True
+            else: break
+        return True
+
 
     def get_title(self):
         return self.driver.title

@@ -41,7 +41,7 @@ class Locators:
   POPUP                           = "//div[contains(@id,'WRP')]"
   POPUP_SITE_NAME                 = "//span[text()='SiteName']/ancestor::div[contains(@id,'WRP')]"
   POPUP_ARE_YOU_SURE              = "//span[text()='Are you sure?']/ancestor::div[contains(@id,'WRP')]"
-  POPUP_SUBSRIPTION_HAS_EXPIRED   = "//span[text()='Manage Subscriptions']/ancestor::div[contains(@id,'WRP')]"
+  POPUP_SUBSCRIPTION_HAS_EXPIRED   = "//span[text()='Manage Subscriptions']/ancestor::div[contains(@id,'WRP')]"
   POPUP_TERMS_AND_CONDITIONS      = "//span[text()='Terms and Conditions']/ancestor::div[contains(@id,'WRP')]"
   POPUP_ERROR                     = POPUP + TEXT_ERROR
   #ELEMENT STATUS
