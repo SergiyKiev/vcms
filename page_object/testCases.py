@@ -59,13 +59,13 @@ class TestPages(unittest.TestCase):
         print ("\n" + str(test_titles(4)))
         login_page = LoginPage(self.driver)
         home_page = login_page.login()
-        home_page.close_popups()
         home_page.check_home_page_loaded()
+        home_page.close_popups()
         devices_page = home_page.click_devices_menu_button()
         devices_page.check_devices_page_loaded()
         devices_page.delete_site_if_exists()
         print (devices_page.check_site_is_in_gsv())
-        self.assertFalse(devices_page.check_site_is_in_gsv()) # Method returns True instead of False if site is not exist
+        self.assertTrue(devices_page.check_site_is_in_gsv()) # Method returns True instead of False if site is not exist
         devices_page.click_global_site_view_site()
         devices_page.click_new_site_button()
         devices_page.enter_site_name()
