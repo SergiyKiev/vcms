@@ -12,10 +12,13 @@ def test_titles(number):
 
 testTitles = [
     # [severity, description]
-    ['TC#0001', 'Open the instance'],
-    ['TC#0002', 'Login to the console'],
-    ['TC#0003', 'Open Global Site View'],
-    ['TC#0004', 'Open Site Name popup'],
-    ['TC#0005', 'Create New Site'],
-    ['Blocker', 'In Login Page, when user login with a in-valid user, he should see Error Message'],
+    ['Devices page', 'Open the instance'],
+    ['Devices page', 'Login to the console'],
+    ['Devices page', 'Open Global Site View'],
+    ['Devices page', 'Open Site Name popup'],
+    ['Devices page', 'Create New Site'],
+    ['Devices page', 'Cancel creating Site'],
+    ['Devices page', 'Create Site with duplicated name'],
+    ['Devices page', 'Cancel Site Creating'],
+    ['Devices page', 'Cancel Site Creating'],
 ]

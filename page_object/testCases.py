@@ -7,28 +7,23 @@ from settings import Settings
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 import time
-from selenium.common.exceptions import NoSuchElementException
-from base import Page
-
-# I am using python unittest for asserting cases.
-# In this module, there should be test cases.
-# If you want to run it, you should type: python <module-name.py>
-
 
 class TestPages(unittest.TestCase):
 
     def setUp(self):
+        pass
         self.driver = webdriver.Chrome()
-        self.driver.maximize_window()
         # self.driver = webdriver.Firefox()
+        self.driver.maximize_window()
         self.driver.get(Settings.baseUrl)
         WebDriverWait(self.driver, 120).until(EC.presence_of_element_located((By.XPATH, Locators.BUTTON_SIGN_IN)))
-        self.driver.implicitly_wait(5)
+        self.driver.implicitly_wait(3)
 
-    # def test_page_load(self):
-    #     print "\n" + str(test_titles(0))
-    #     page = LoginPage(self.driver)
-    #     self.assertTrue(page.check_login_page_loaded())
+    def test_page_load(self):
+        print ("\n" + str(test_titles(0)))
+        page = LoginPage(self.driver)
+        self.assertTrue(page.check_login_page_loaded())
+        print ("Test is passed")
 
     def test_login(self):
         print ("\n" + str(test_titles(1)))
@@ -37,6 +32,7 @@ class TestPages(unittest.TestCase):
         login_page.enter_password()
         home_page = login_page.click_sign_in_button()
         self.assertTrue(home_page.check_home_page_loaded())
+        print ("Test is passed")
 
     # def test_open_global_site_view(self):
     #     print "\n" + str(test_titles(2))
@@ -45,17 +41,20 @@ class TestPages(unittest.TestCase):
     #     devices_page = home_page.click_devices_menu_button()
     #     self.assertTrue(devices_page.click_global_site_view_site())
 
-    # def test_open_site_name_popup(self):
-    #     print ("\n" + str(test_titles(3)))
-    #     login_page = LoginPage(self.driver)
-    #     home_page = login_page.login()
-    #     self.assertTrue(home_page.check_home_page_loaded())
-    #     devices_page = home_page.click_devices_menu_button()
-    #     self.assertTrue(devices_page.check_devices_page_loaded())
-    #     devices_page.click_global_site_view_site()
-    #     self.assertTrue(devices_page.click_new_site_button())
+    def test_open_site_name_popup(self):
+        print ("\n" + str(test_titles(3)))
+        login_page = LoginPage(self.driver)
+        home_page = login_page.login()
+        home_page.check_home_page_loaded()
+        home_page.close_popups()
+        devices_page = home_page.click_devices_menu_button()
+        devices_page.check_devices_page_loaded()
+        devices_page.click_global_site_view_site()
+        devices_page.click_new_site_button()
+        self.assertTrue(devices_page.is_element_present(Locators.POPUP_SITE_NAME))
+        print ("Test is passed")
 
-    def test_create_and_delete_new_site(self):
+    def test_create_new_site(self):
         print ("\n" + str(test_titles(4)))
         login_page = LoginPage(self.driver)
         home_page = login_page.login()
@@ -64,24 +63,54 @@ class TestPages(unittest.TestCase):
         devices_page = home_page.click_devices_menu_button()
         devices_page.check_devices_page_loaded()
         devices_page.delete_site_if_exists()
-        print (devices_page.check_site_is_in_gsv())
-        self.assertTrue(devices_page.check_site_is_in_gsv()) # Method returns True instead of False if site is not exist
         devices_page.click_global_site_view_site()
         devices_page.click_new_site_button()
         devices_page.enter_site_name()
         devices_page.click_site_name_popup_OK_button()
-        print (devices_page.check_site_is_in_gsv())
-        self.assertTrue(devices_page.check_site_is_in_gsv())
+        self.assertTrue(devices_page.check_if_site_is_in_gsv())
+        '''post-conditions'''
+        devices_page.delete_site_from_gsv()
         print ("Test is passed")
-        devices_page.click_site_in_global_site_view()
-        devices_page.click_delete_button()
-        devices_page.click_are_you_sure_ok_button()
-        devices_page.check_site_is_in_gsv()
 
+    def test_cancel_creating_site(self):
+        print ("\n" + str(test_titles(5)))
+        login_page = LoginPage(self.driver)
+        home_page = login_page.login()
+        home_page.check_home_page_loaded()
+        home_page.close_popups()
+        devices_page = home_page.click_devices_menu_button()
+        devices_page.check_devices_page_loaded()
+        devices_page.click_global_site_view_site()
+        devices_page.click_new_site_button()
+        devices_page.click_site_name_popup_cancel_button()
+        self.assertTrue(devices_page.is_element_not_present(Locators.POPUP_SITE_NAME))
+        print ("Test is passed")
+
+    def test_create_site_with_duplicated_name(self):
+        print ("\n" + str(test_titles(6)))
+        site_name = "Default Site"
+        login_page = LoginPage(self.driver)
+        home_page = login_page.login()
+        home_page.check_home_page_loaded()
+        home_page.close_popups()
+        devices_page = home_page.click_devices_menu_button()
+        devices_page.check_devices_page_loaded()
+        devices_page.click_global_site_view_site()
+        devices_page.click_new_site_button()
+        devices_page.enter_site_name(site_name)
+        devices_page.click_site_name_popup_OK_button()
+        self.assertTrue(devices_page.is_element_present(Locators.POPUP_ERROR))
+        # self.assertIn(site_name, Locators.POPUP_ERROR + "/*//span[contains(text(),'already exists')]")
+        # self.assertTrue(devices_page.is_element_not_present(Locators.POPUP_SITE_NAME))
+        '''post-conditions'''
+        devices_page.click_error_popup_Ok_button()
+        devices_page.click_site_name_popup_system_button_close()
+        print ("Test is passed")
 
     def tearDown(self):
-        time.sleep(5)
+        time.sleep(1)
         self.driver.quit()
 
 if __name__ == "__main__":
-    unittest.main(verbosity=2)
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestPages)
+    unittest.TextTestRunner(verbosity=2).run(suite)
