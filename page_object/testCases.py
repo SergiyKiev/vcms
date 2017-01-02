@@ -2,7 +2,7 @@ import unittest
 from selenium import webdriver
 from pages import *
 from locators import Locators
-from testTitles import test_names
+from testTitles import test_title
 from settings import Settings
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
@@ -21,13 +21,13 @@ class TestCases(unittest.TestCase):
         self.driver.implicitly_wait(1)
 
     def test_page_load(self):
-        print ("\n" + str(test_names(0)))
+        print ("\n" + str(test_title(0)))
         page = LoginPage(self.driver)
         self.assertTrue(page.check_login_page_loaded())
         print ("Test is passed")
 
     def test_login(self):
-        print ("\n" + str(test_names(1)))
+        print ("\n" + str(test_title(1)))
         login_page = LoginPage(self.driver)
         login_page.enter_username()
         login_page.enter_password()
@@ -36,7 +36,7 @@ class TestCases(unittest.TestCase):
         print ("Test is passed")
 
     def test_open_site_name_popup(self):
-        print ("\n" + str(test_names(2)))
+        print ("\n" + str(test_title(2)))
         login_page = LoginPage(self.driver)
         home_page = login_page.login()
         home_page.check_home_page_loaded()
@@ -49,7 +49,7 @@ class TestCases(unittest.TestCase):
         print ("Test is passed")
 
     def test_create_new_site_with_acceptable_name(self):
-        print ("\n" + str(test_names(3)))
+        print ("\n" + str(test_title(3)))
         login_page = LoginPage(self.driver)
         home_page = login_page.login()
         home_page.check_home_page_loaded()
@@ -67,7 +67,7 @@ class TestCases(unittest.TestCase):
         print ("Test is passed")
 
     def test_cancel_creating_site(self):
-        print ("\n" + str(test_names(4)))
+        print ("\n" + str(test_title(4)))
         login_page = LoginPage(self.driver)
         home_page = login_page.login()
         home_page.check_home_page_loaded()
@@ -81,7 +81,7 @@ class TestCases(unittest.TestCase):
         print ("Test is passed")
 
     def test_create_site_with_duplicated_name(self):
-        print ("\n" + str(test_names(5)))
+        print ("\n" + str(test_title(5)))
         site_name = "Default Site"
         login_page = LoginPage(self.driver)
         home_page = login_page.login()
@@ -100,7 +100,7 @@ class TestCases(unittest.TestCase):
         print ("Test is passed")
 
     def test_create_site_with_fifty_one_symbol(self):
-        print ("\n" + str(test_names(6)))
+        print ("\n" + str(test_title(6)))
         site_name_max = "51symbols51symbols51symbols51symbols51symbols<o&k>"
         site_name_fifty_one_symbols = site_name_max + "1"
         login_page = LoginPage(self.driver)

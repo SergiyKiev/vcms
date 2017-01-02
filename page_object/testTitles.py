@@ -1,7 +1,7 @@
 # -*- coding: utf8 -*-
 
 
-def test_names(number):
+def test_title(number):
     return testTitles[number]
 
 
