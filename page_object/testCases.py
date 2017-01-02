@@ -2,7 +2,7 @@ import unittest
 from selenium import webdriver
 from pages import *
 from locators import Locators
-from testNames import test_names
+from testTitles import test_names
 from settings import Settings
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait

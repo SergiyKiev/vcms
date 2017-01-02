@@ -2,10 +2,10 @@
 
 
 def test_names(number):
-    return testNames[number]
+    return testTitles[number]
 
 
-testNames = [
+testTitles = [
     # [severity, description]
     ['Devices page', 'TC#0001. Open the instance'],
     ['Devices page', 'TC#9056. Login to the console'],
