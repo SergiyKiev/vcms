@@ -124,8 +124,8 @@ class DevicesPage(Page):
         cond2 = self.is_element_present(Locators.CONTAINER_HEADER_DEVICES_VIEW + "/*//span[contains(text(),'" + sitename + "'])")
         return True if (cond1 or cond2) else False
 
-    def check_if_site_is_in_gsv(self): # gsv - Global Site View
-        cond = self.is_element_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*" + Locators.TEXT_SITE_NAME)
+    def check_if_site_is_in_gsv(self, sitename = Variables.siteName): # gsv - Global Site View
+        cond = self.is_element_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
         return True if cond else False
 
     def click_delete_button(self):
@@ -138,11 +138,11 @@ class DevicesPage(Page):
         cond = self.is_element_not_present(Locators.POPUP_ARE_YOU_SURE)
         return True if cond else False
 
-    def delete_site_if_exists(self):
+    def delete_site_if_exists(self, sitename = Variables.siteName):
         try:
-            elem = self.driver.find_element_by_xpath(Locators.TREE_GLOBAL_SITE_VIEW + "/*" + Locators.TEXT_SITE_NAME)
+            elem = self.driver.find_element_by_xpath(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
             if elem:
-                self.click_site_in_global_site_view()
+                self.click_site_in_global_site_view(sitename)
                 self.click_delete_button()
                 self.click_are_you_sure_OK_button()
                 self.wait.until_not(EC.presence_of_element_located((By.XPATH, Locators.POPUP_ARE_YOU_SURE)))
@@ -151,12 +151,12 @@ class DevicesPage(Page):
             return True
         return True
 
-    def delete_site_from_gsv(self):
-        self.click_site_in_global_site_view()
+    def delete_site_from_gsv(self, sitename = Variables.siteName):
+        self.click_site_in_global_site_view(sitename)
         self.click_delete_button()
         self.click_are_you_sure_OK_button()
         self.wait.until_not(EC.presence_of_element_located((By.XPATH, Locators.POPUP_ARE_YOU_SURE)))
-        cond = self.find_element(Locators.TREE_GLOBAL_SITE_VIEW + "/*" + Locators.TEXT_SITE_NAME)
+        cond = self.find_element(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
         return True if cond else False
 
     def click_site_name_popup_cancel_button(self):

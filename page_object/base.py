@@ -56,7 +56,6 @@ class Page(object):
         else:
             return True
 
-
     def is_element_selected(self, locator):
         cond = self.find_element(locator + Locators.SELECTED)
         if cond:
@@ -74,7 +73,6 @@ class Page(object):
                 return True
             else: break
         return True
-
 
     def get_title(self):
         return self.driver.title

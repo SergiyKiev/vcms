@@ -2,31 +2,32 @@ import unittest
 from selenium import webdriver
 from pages import *
 from locators import Locators
-from testTitles import test_titles
+from testNames import test_names
 from settings import Settings
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 import time
 
-class TestPages(unittest.TestCase):
+
+class TestCases(unittest.TestCase):
 
     def setUp(self):
-        pass
+        # pass
         self.driver = webdriver.Chrome()
         # self.driver = webdriver.Firefox()
         self.driver.maximize_window()
         self.driver.get(Settings.baseUrl)
         WebDriverWait(self.driver, 120).until(EC.presence_of_element_located((By.XPATH, Locators.BUTTON_SIGN_IN)))
-        self.driver.implicitly_wait(3)
+        self.driver.implicitly_wait(1)
 
     def test_page_load(self):
-        print ("\n" + str(test_titles(0)))
+        print ("\n" + str(test_names(0)))
         page = LoginPage(self.driver)
         self.assertTrue(page.check_login_page_loaded())
         print ("Test is passed")
 
     def test_login(self):
-        print ("\n" + str(test_titles(1)))
+        print ("\n" + str(test_names(1)))
         login_page = LoginPage(self.driver)
         login_page.enter_username()
         login_page.enter_password()
@@ -34,15 +35,8 @@ class TestPages(unittest.TestCase):
         self.assertTrue(home_page.check_home_page_loaded())
         print ("Test is passed")
 
-    # def test_open_global_site_view(self):
-    #     print "\n" + str(test_titles(2))
-    #     page = LoginPage(self.driver)
-    #     home_page = page.login()
-    #     devices_page = home_page.click_devices_menu_button()
-    #     self.assertTrue(devices_page.click_global_site_view_site())
-
     def test_open_site_name_popup(self):
-        print ("\n" + str(test_titles(3)))
+        print ("\n" + str(test_names(2)))
         login_page = LoginPage(self.driver)
         home_page = login_page.login()
         home_page.check_home_page_loaded()
@@ -54,8 +48,8 @@ class TestPages(unittest.TestCase):
         self.assertTrue(devices_page.is_element_present(Locators.POPUP_SITE_NAME))
         print ("Test is passed")
 
-    def test_create_new_site(self):
-        print ("\n" + str(test_titles(4)))
+    def test_create_new_site_with_acceptable_name(self):
+        print ("\n" + str(test_names(3)))
         login_page = LoginPage(self.driver)
         home_page = login_page.login()
         home_page.check_home_page_loaded()
@@ -73,7 +67,7 @@ class TestPages(unittest.TestCase):
         print ("Test is passed")
 
     def test_cancel_creating_site(self):
-        print ("\n" + str(test_titles(5)))
+        print ("\n" + str(test_names(4)))
         login_page = LoginPage(self.driver)
         home_page = login_page.login()
         home_page.check_home_page_loaded()
@@ -87,7 +81,7 @@ class TestPages(unittest.TestCase):
         print ("Test is passed")
 
     def test_create_site_with_duplicated_name(self):
-        print ("\n" + str(test_titles(6)))
+        print ("\n" + str(test_names(5)))
         site_name = "Default Site"
         login_page = LoginPage(self.driver)
         home_page = login_page.login()
@@ -100,11 +94,30 @@ class TestPages(unittest.TestCase):
         devices_page.enter_site_name(site_name)
         devices_page.click_site_name_popup_OK_button()
         self.assertTrue(devices_page.is_element_present(Locators.POPUP_ERROR))
-        # self.assertIn(site_name, Locators.POPUP_ERROR + "/*//span[contains(text(),'already exists')]")
-        # self.assertTrue(devices_page.is_element_not_present(Locators.POPUP_SITE_NAME))
         '''post-conditions'''
         devices_page.click_error_popup_Ok_button()
         devices_page.click_site_name_popup_system_button_close()
+        print ("Test is passed")
+
+    def test_create_site_with_fifty_one_symbol(self):
+        print ("\n" + str(test_names(6)))
+        site_name_max = "51symbols51symbols51symbols51symbols51symbols<o&k>"
+        site_name_fifty_one_symbols = site_name_max + "1"
+        login_page = LoginPage(self.driver)
+        home_page = login_page.login()
+        home_page.check_home_page_loaded()
+        home_page.close_popups()
+        devices_page = home_page.click_devices_menu_button()
+        devices_page.check_devices_page_loaded()
+        devices_page.delete_site_if_exists(site_name_max)
+        devices_page.click_global_site_view_site()
+        devices_page.click_new_site_button()
+        devices_page.enter_site_name(site_name_fifty_one_symbols)
+        devices_page.click_site_name_popup_OK_button()
+        self.assertFalse(devices_page.check_if_site_is_in_gsv(site_name_fifty_one_symbols))
+        self.assertTrue(devices_page.check_if_site_is_in_gsv(site_name_max))
+        '''post-conditions'''
+        devices_page.delete_site_from_gsv(site_name_max)
         print ("Test is passed")
 
     def tearDown(self):
@@ -112,5 +125,6 @@ class TestPages(unittest.TestCase):
         self.driver.quit()
 
 if __name__ == "__main__":
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestPages)
-    unittest.TextTestRunner(verbosity=2).run(suite)
+    unittest.main(verbosity=2)
+    # suite = unittest.TestLoader().loadTestsFromTestCase(TestCases)
+    # unittest.TextTestRunner(verbosity=2).run(suite)
