@@ -128,6 +128,10 @@ class DevicesPage(Page):
         cond = self.is_element_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
         return True if cond else False
 
+    def check_if_subsite_is_in_parent_site(self, sitename, subsitename):
+        cond = self.is_element_present("//span[text()='" + sitename + "']/following::span[text()='" + subsitename + "']")
+        return True if cond else False
+
     def click_delete_button(self):
         self.click_element(Locators.BUTTON_DELETE)
         cond = self.find_element(Locators.POPUP_ARE_YOU_SURE)
@@ -168,6 +172,39 @@ class DevicesPage(Page):
         self.click_element(Locators.POPUP_ERROR + "/*" + Locators.BUTTON_Ok)
         cond = self.wait.until_not(EC.presence_of_element_located((By.XPATH, Locators.POPUP_ERROR)))
         return True if cond else False
+
+    def click_parent_site_expand_button(self, sitename = Variables.parent_site_name):
+        expand = "//span[text()='" + sitename + "']/ancestor::/div[contains(@id,'VWGNODE')]" + Locators.BUTTON_SYSTEM_EXPAND
+        self.click_element(expand)
+        cond = self.wait.until_not(EC.presence_of_element_located((By.XPATH, expand)))
+        return True if cond else False
+
+    def open_parent_site_tree(self, sitename = Variables.parent_site_name):
+        try:
+            expand = "//span[text()='" + sitename + "']/ancestor::div[contains(@id,'VWGNODE')]" + Locators.BUTTON_SYSTEM_EXPAND
+            elem = self.driver.find_element_by_xpath(expand)
+            if elem:
+                self.click_element(expand)
+                self.wait.until_not(EC.presence_of_element_located((By.XPATH, expand)))
+            else: pass
+        except(NoSuchElementException):
+            return True
+        return True
+
+    def create_parent_site(self, sitename = Variables.parent_site_name):
+        self.click_global_site_view_site()
+        self.click_new_site_button()
+        self.enter_site_name(sitename)
+        self.click_site_name_popup_OK_button()
+        self.check_if_site_is_in_gsv(sitename)
+
+    def create_subsite(self, sitename, subsitename):
+        self.click_site_in_global_site_view(sitename)
+        self.click_new_site_button()
+        self.enter_site_name(subsitename)
+        self.click_site_name_popup_OK_button()
+        self.open_parent_site_tree(sitename)
+        self.check_if_subsite_is_in_parent_site(sitename, subsitename)
 
 class AdministrationPage(Page):
     pass
