@@ -38,7 +38,7 @@ class Page(object):
         elem = self.find_element(locator)
         if elem:
             elem.click()
-            time.sleep(1)
+            self.driver.implicitly_wait(1)
             self.wait.until(EC.invisibility_of_element_located((By.XPATH, Locators.LOADING_SCREEN_INVISIBLE)))
             return True
         else:
