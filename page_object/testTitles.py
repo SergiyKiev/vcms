@@ -7,8 +7,8 @@ def test_title(number):
 
 testTitles = [
     # [severity, description]
-    ['Devices page', 'TC#0001. Open the instance'],
-    ['Devices page', 'TC#9056. Login to the console'],
+    ['Login page'  , 'TC#0001. Open the instance'],
+    ['Home page'   , 'TC#9056. Login to the console'],
     ['Devices page', 'TC#9057. Open Site Name popup'],
     ['Devices page', 'TC#9101. Create new site with acceptable name'],
     ['Devices page', 'TC#9058. Cancel creating new site with empty text field'],

@@ -57,14 +57,14 @@ class Page(object):
             return True
 
     def is_element_selected(self, locator):
-        cond = self.find_element(locator + Locators.SELECTED)
+        cond = self.find_element(locator + Locators.TEXT_SELECTED)
         if cond:
             return True
         else:
             return False
 
     def close_popups(self):
-        cond = self.find_element(Locators.POPUP + "[last()]/*" + Locators.BUTTON_SYSTEM_CLOSE)
+        cond = self.find_element(Locators.POPUP)
         i = 0
         while i < 10:
             i += 1

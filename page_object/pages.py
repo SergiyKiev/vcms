@@ -14,8 +14,10 @@ from selenium.common.exceptions import NoSuchElementException
 class LoginPage(Page):
 
     def check_login_page_loaded(self):
-        cond = self.is_element_present(Locators.BUTTON_SIGN_IN)
-        return True if cond else False
+        cond1 = self.is_element_present(Locators.BUTTON_SIGN_IN)
+        cond2 = self.is_element_present(Locators.FIELD_USERNAME)
+        cond3 = self.is_element_present(Locators.FIELD_PASSWORD)
+        return True if (cond1 or cond2 or cond3) else False
 
     def login(self):
         self.check_login_page_loaded()
@@ -40,8 +42,6 @@ class LoginPage(Page):
         return True
 
     def close_subscription_has_expired_popup(self):
-        # self.click_element(Locators.POPUP_SUBSCRIPTION_HAS_EXPIRED + "/*" + Locators.BUTTON_SYSTEM_CLOSE)
-        # return True if self.find_element(Locators.POPUP_SUBSCRIPTION_HAS_EXPIRED) else False
         cond = self.find_element(Locators.POPUP_SUBSCRIPTION_HAS_EXPIRED)
         if cond:
             self.close_subscription_has_expired_popup()
@@ -74,11 +74,11 @@ class HomePage(Page):
 
     def click_devices_menu_button(self):
         self.click_element(Locators.BUTTON_DEVICES)
-        self.wait.until(EC.presence_of_element_located((By.XPATH, Locators.MENU_DEVICES)))
+        self.wait.until(EC.presence_of_element_located((By.XPATH, Locators.CONTAINER_MENU_DEVICES)))
         return DevicesPage(self.driver)
 
     def open_devices_menu(self):
-        cond = self.is_element_present(Locators.MENU_DEVICES)
+        cond = self.is_element_present(Locators.CONTAINER_MENU_DEVICES)
         if cond:
             return DevicesPage(self.driver)
         else:
@@ -89,22 +89,22 @@ class HomePage(Page):
 class DevicesPage(Page):
 
     def check_devices_page_loaded(self):
-        cond = self.is_element_present(Locators.MENU_DEVICES)
+        cond = self.is_element_present(Locators.CONTAINER_MENU_DEVICES)
         return True if cond else False
 
     def click_global_site_view_site(self):
         self.click_element(Locators.SITE_GLOBAL_SITE_VIEW)
-        cond1 = self.is_element_present(Locators.BUTTON_NEW_SITE)
+        cond1 = self.is_element_present(Locators.BUTTON_NEW_SITE_1)
         cond2 = self.is_element_selected(Locators.LABEL_GLOBAL_SITE_VIEW)
         cond3 = self.is_element_present(Locators.CONTAINER_HEADER_DEVICES_VIEW + "/*" + Locators.TEXT_GLOBAL_SITE_VIEW)
         return True if (cond1 or cond2 or cond3) else False
 
     def click_new_site_button(self):
-        self.click_element(Locators.BUTTON_NEW_SITE)
+        self.click_element(Locators.BUTTON_NEW_SITE_1)
         cond = self.is_element_present(Locators.POPUP_SITE_NAME)
         return True if cond else False
 
-    def enter_site_name(self, sitename = Variables.siteName):
+    def enter_site_name(self, sitename = Variables.site_name):
         self.find_element(Locators.POPUP_SITE_NAME + "/*" + Locators.FIELD).send_keys(sitename)
         return True
 
@@ -118,13 +118,13 @@ class DevicesPage(Page):
         cond = self.wait.until_not(EC.presence_of_element_located((By.XPATH, Locators.POPUP_SITE_NAME)))
         return True if cond else False
 
-    def click_site_in_global_site_view(self, sitename = Variables.siteName):
+    def click_site_in_global_site_view(self, sitename = Variables.site_name):
         self.click_element(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
         cond1 = self.is_element_selected("//span[text()='" + sitename + "']" + "/ancestor::div")
         cond2 = self.is_element_present(Locators.CONTAINER_HEADER_DEVICES_VIEW + "/*//span[contains(text(),'" + sitename + "'])")
         return True if (cond1 or cond2) else False
 
-    def check_if_site_is_in_gsv(self, sitename = Variables.siteName): # gsv - Global Site View
+    def check_if_site_is_in_gsv(self, sitename = Variables.site_name): # gsv - Global Site View
         cond = self.is_element_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
         return True if cond else False
 
@@ -138,7 +138,7 @@ class DevicesPage(Page):
         cond = self.is_element_not_present(Locators.POPUP_ARE_YOU_SURE)
         return True if cond else False
 
-    def delete_site_if_exists(self, sitename = Variables.siteName):
+    def delete_site_if_exists(self, sitename = Variables.site_name):
         try:
             elem = self.driver.find_element_by_xpath(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
             if elem:
@@ -151,7 +151,7 @@ class DevicesPage(Page):
             return True
         return True
 
-    def delete_site_from_gsv(self, sitename = Variables.siteName):
+    def delete_site_from_gsv(self, sitename = Variables.site_name):
         self.click_site_in_global_site_view(sitename)
         self.click_delete_button()
         self.click_are_you_sure_OK_button()
