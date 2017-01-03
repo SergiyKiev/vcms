@@ -18,13 +18,13 @@ class TestCases(unittest.TestCase):
         WebDriverWait(self.driver, 120).until(EC.presence_of_element_located((By.XPATH, Locators.BUTTON_SIGN_IN)))
         # self.driver.implicitly_wait(1)
 
-    def test_01_instance_is_loaded(self):
+    def test_01_open_the_instance(self):
         print ("\n" + "TC#0001. Open the instance")
         login_page = LoginPage(self.driver)
         self.assertTrue(login_page.check_login_page_loaded())
         print ("Test is passed")
 
-    def test_02_login(self):
+    def test_02_login_to_the_console(self):
         print ("\n" + "TC#9056. Login to the console")
         login_page = LoginPage(self.driver)
         login_page.enter_username()

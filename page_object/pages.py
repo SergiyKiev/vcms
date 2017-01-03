@@ -1,14 +1,11 @@
 from base import Page
 from locators import *
 from settings import Settings
-import time
 from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
 from variables import Variables
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import NoSuchElementException
-# Page objects are written in this module.
-# Depends on the page functionality we can have more functions for new classes
 
 
 class LoginPage(Page):
@@ -22,11 +19,12 @@ class LoginPage(Page):
     def login(self):
         self.check_login_page_loaded()
         self.close_terms_and_conditions_popup()
-        self.driver.implicitly_wait(5)
+        # self.driver.implicitly_wait(2)
         self.enter_username()
         self.enter_password()
         self.click_sign_in_button()
         self.close_subscription_has_expired_popup()
+        # self.driver.implicitly_wait(2)
         return HomePage(self.driver)
 
     def click_terms_and_conditions_popup_i_agree_button(self):
@@ -83,6 +81,7 @@ class HomePage(Page):
             return DevicesPage(self.driver)
         else:
             self.click_devices_menu_button()
+            self.driver.implicitly_wait(2)
             return DevicesPage(self.driver)
 
 
