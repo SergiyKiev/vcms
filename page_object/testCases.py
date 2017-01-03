@@ -89,7 +89,7 @@ class TestCases(unittest.TestCase):
         devices_page.click_site_name_popup_system_button_close()
         print ("Test is passed")
 
-    def test_07_create_site_with_fifty_one_symbol(self):
+    def test_07_create_site_with_fifty_one_symbols(self):
         print ("\n" + "TC#9104. Create site with name more than 50 symbols")
         login_page = LoginPage(self.driver)
         home_page = login_page.login()

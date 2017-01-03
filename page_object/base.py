@@ -7,6 +7,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
 from settings import Settings
 from locators import Locators
+from selenium import webdriver
 
 # this Base class is serving basic attributes for every single page inherited from Page class
 
@@ -20,9 +21,10 @@ class Page(object):
         self.wait = WebDriverWait(self.driver, self.timeout)
 
     # def open(self):
+    #     self.driver = webdriver.Chrome()
+    #     self.driver.maximize_window()
     #     self.driver.get(Settings.baseUrl)
     #     WebDriverWait(self.driver, 120).until(EC.presence_of_element_located((By.XPATH, Locators.BUTTON_SIGN_IN)))
-    #     self.driver.implicitly_wait(5)
 
     def find_element(self, locator):
         try:
