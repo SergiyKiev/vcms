@@ -20,17 +20,17 @@ class LoginPage(Page):
     def login(self):
         self.check_login_page_loaded()
         self.close_terms_and_conditions_popup()
-        # self.driver.implicitly_wait(2)
         self.enter_username()
         self.enter_password()
         self.click_sign_in_button()
-        self.close_subscription_has_expired_popup()
-        # self.driver.implicitly_wait(2)
-        return HomePage(self.driver)
+        # self.close_subscription_has_expired_popup()
+        cond = self.is_element_present(Locators.BUTTON_EXIT)
+        return HomePage(self.driver) if cond else None
 
     def click_terms_and_conditions_popup_i_agree_button(self):
         self.click_element(Locators.POPUP_TERMS_AND_CONDITIONS + "/*" + Locators.BUTTON_I_AGREE)
-        return True if self.find_element(Locators.POPUP_TERMS_AND_CONDITIONS) else False
+        cond = self.is_element_not_present(Locators.POPUP_TERMS_AND_CONDITIONS)
+        return True if cond else False
 
     def close_terms_and_conditions_popup(self):
         cond = self.is_element_present(Locators.POPUP_TERMS_AND_CONDITIONS)
@@ -40,13 +40,18 @@ class LoginPage(Page):
             pass
         return True
 
+    def click_subscription_has_expired_popup_system_button_close(self):
+        self.click_element(Locators.POPUP_SUBSCRIPTION_HAS_EXPIRED + "/*" + Locators.BUTTON_SYSTEM_CLOSE)
+        cond = self.wait.until_not(EC.presence_of_element_located((By.XPATH, Locators.POPUP_SUBSCRIPTION_HAS_EXPIRED)))
+        return True if cond else False
+
     def close_subscription_has_expired_popup(self):
         cond = self.is_element_present(Locators.POPUP_SUBSCRIPTION_HAS_EXPIRED)
         if cond:
-            self.close_subscription_has_expired_popup()
+            self.click_subscription_has_expired_popup_system_button_close()
         else:
             pass
-        return True
+        return HomePage(self.driver)
 
     def enter_username(self, username = Settings.username):
         self.find_element(Locators.FIELD_USERNAME).send_keys(username)
@@ -58,12 +63,13 @@ class LoginPage(Page):
 
     def click_sign_in_button(self):
         self.click_element(Locators.BUTTON_SIGN_IN)
-        return HomePage(self.driver)
+        cond = self.is_element_present(Locators.BUTTON_EXIT)
+        return HomePage(self.driver) if cond else self.close_subscription_has_expired_popup()
 
     def close_error_popup(self):
         self.click_element(Locators.POPUP_ERROR + "/*" + Locators.BUTTON_SYSTEM_CLOSE)
-        return True if self.find_element(Locators.POPUP_ERROR) else False
-
+        cond = self.is_element_not_present(Locators.POPUP_ERROR)
+        return True if cond else False
 
 class HomePage(Page):
 
@@ -73,8 +79,8 @@ class HomePage(Page):
 
     def click_devices_menu_button(self):
         self.click_element(Locators.BUTTON_DEVICES)
-        self.wait.until(EC.presence_of_element_located((By.XPATH, Locators.CONTAINER_MENU_DEVICES)))
-        return DevicesPage(self.driver)
+        cond = self.is_element_present(Locators.CONTAINER_MENU_DEVICES)
+        return True if cond else None
 
     def open_devices_menu(self):
         cond = self.is_element_present(Locators.CONTAINER_MENU_DEVICES)
