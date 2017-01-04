@@ -19,6 +19,7 @@ class Page(object):
         self.driver = driver
         self.timeout = 60
         self.wait = WebDriverWait(self.driver, self.timeout)
+
     # def open(self):
     #     self.driver = webdriver.Chrome()
     #     self.driver.maximize_window()
@@ -26,9 +27,6 @@ class Page(object):
     #     WebDriverWait(self.driver, 120).until(EC.presence_of_element_located((By.XPATH, Locators.BUTTON_SIGN_IN)))
 
     def find_element(self, locator):
-        # # time.sleep(1)
-        # self.driver.implicitly_wait(1)
-        # self.wait.until(EC.invisibility_of_element_located((By.XPATH, Locators.LOADING_SCREEN_INVISIBLE)))
         try:
             self.wait.until(EC.presence_of_element_located((By.XPATH, locator)))
         except (NoSuchElementException, TimeoutException):
@@ -41,16 +39,16 @@ class Page(object):
             elem.click()
             time.sleep(1)
             self.driver.implicitly_wait(2)
-            self.wait.until(EC.invisibility_of_element_located((By.XPATH, Locators.LOADING_SCREEN_INVISIBLE)))
+            self.wait.until(EC.invisibility_of_element_located((By.XPATH, Locators.LOADING_SCREEN_VISIBLE)))
             return True
         else:
             return False
 
     def is_element_present(self, locator):
         try:
-            self.driver.implicitly_wait(2)
             time.sleep(1)
-            self.wait.until(EC.invisibility_of_element_located((By.XPATH, Locators.LOADING_SCREEN_INVISIBLE)))
+            self.driver.implicitly_wait(2)
+            self.wait.until(EC.invisibility_of_element_located((By.XPATH, Locators.LOADING_SCREEN_VISIBLE)))
             WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, locator)))
             return True
         except TimeoutException:
@@ -58,9 +56,9 @@ class Page(object):
 
     def is_element_not_present(self, locator):
         try:
-            self.driver.implicitly_wait(2)
             time.sleep(1)
-            self.wait.until(EC.invisibility_of_element_located((By.XPATH, Locators.LOADING_SCREEN_INVISIBLE)))
+            self.driver.implicitly_wait(2)
+            self.wait.until(EC.invisibility_of_element_located((By.XPATH, Locators.LOADING_SCREEN_VISIBLE)))
             WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, locator)))
             return False
         except TimeoutException:
@@ -69,7 +67,8 @@ class Page(object):
     def is_element_selected(self, locator):
         try:
             time.sleep(1)
-            self.wait.until(EC.invisibility_of_element_located((By.XPATH, Locators.LOADING_SCREEN_INVISIBLE)))
+            self.driver.implicitly_wait(2)
+            self.wait.until(EC.invisibility_of_element_located((By.XPATH, Locators.LOADING_SCREEN_VISIBLE)))
             WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, locator + Locators.TEXT_SELECTED)))
             return True
         except TimeoutException:
