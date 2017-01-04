@@ -6,9 +6,12 @@ from testTitles import test_title
 from settings import Settings
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+import logging
 
 
 class TestsSiteCreation(unittest.TestCase):
+
+    print ("\n" + "Test suite: Site creation (Suite ID: 9111)")
 
     @classmethod
     def setUpClass(cls):
@@ -98,9 +101,9 @@ class TestsSiteCreation(unittest.TestCase):
         devices_page.delete_site_from_gsv(Variables.parent_site_name)
         print ("Test is passed")
 
-    def tearDown(self):
-        page = HomePage(self.driver)
-        page.close_popups()
+    # def tearDown(self):
+    #     page = HomePage(self.driver)
+    #     page.close_popups()
 
     @classmethod
     def tearDownClass(cls):
