@@ -55,7 +55,7 @@ class TestCases(unittest.TestCase):
         devices_page.click_global_site_view_site()
         devices_page.click_new_site_button()
         devices_page.enter_site_name(Variables.site_name)
-        devices_page.click_site_name_popup_OK_button()
+        devices_page.click_site_name_popup_ok_button()
         self.assertTrue(devices_page.check_if_site_is_in_gsv(Variables.site_name))
         '''Post-conditions'''
         devices_page.delete_site_from_gsv(Variables.site_name)
@@ -82,10 +82,10 @@ class TestCases(unittest.TestCase):
         devices_page.click_global_site_view_site()
         devices_page.click_new_site_button()
         devices_page.enter_site_name(Variables.default_site_name)
-        devices_page.click_site_name_popup_OK_button()
+        devices_page.click_site_name_popup_ok_button()
         self.assertTrue(devices_page.is_element_present(Locators.POPUP_ERROR))
         '''Post-conditions'''
-        devices_page.click_error_popup_Ok_button()
+        devices_page.click_error_popup_ok_button()
         devices_page.click_site_name_popup_system_button_close()
         print ("Test is passed")
 
@@ -99,7 +99,7 @@ class TestCases(unittest.TestCase):
         devices_page.click_global_site_view_site()
         devices_page.click_new_site_button()
         devices_page.enter_site_name(Variables.fifty_one_symbols_name)
-        devices_page.click_site_name_popup_OK_button()
+        devices_page.click_site_name_popup_ok_button()
         self.assertFalse(devices_page.check_if_site_is_in_gsv(Variables.fifty_one_symbols_name))
         self.assertTrue(devices_page.check_if_site_is_in_gsv(Variables.fifty_symbols_name))
         '''Post-conditions'''
@@ -126,7 +126,7 @@ class TestCases(unittest.TestCase):
 
     def tearDown(self):
         # time.sleep(1)
-        self.driver.quit()
+       self.driver.quit()
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

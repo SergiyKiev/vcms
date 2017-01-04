@@ -1,11 +1,12 @@
 from base import Page
-from locators import *
+from locators import Locators
 from settings import Settings
 from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
 from variables import Variables
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.by import By
 
 
 class LoginPage(Page):
@@ -32,7 +33,7 @@ class LoginPage(Page):
         return True if self.find_element(Locators.POPUP_TERMS_AND_CONDITIONS) else False
 
     def close_terms_and_conditions_popup(self):
-        cond = self.find_element(Locators.POPUP_TERMS_AND_CONDITIONS)
+        cond = self.is_element_present(Locators.POPUP_TERMS_AND_CONDITIONS)
         if cond:
             self.click_terms_and_conditions_popup_i_agree_button()
         else:
@@ -40,7 +41,7 @@ class LoginPage(Page):
         return True
 
     def close_subscription_has_expired_popup(self):
-        cond = self.find_element(Locators.POPUP_SUBSCRIPTION_HAS_EXPIRED)
+        cond = self.is_element_present(Locators.POPUP_SUBSCRIPTION_HAS_EXPIRED)
         if cond:
             self.close_subscription_has_expired_popup()
         else:
@@ -107,8 +108,8 @@ class DevicesPage(Page):
         self.find_element(Locators.POPUP_SITE_NAME + "/*" + Locators.FIELD).send_keys(sitename)
         return True
 
-    def click_site_name_popup_OK_button(self):
-        self.click_element(Locators.POPUP_SITE_NAME + "/*" + Locators.BUTTON_OK)
+    def click_site_name_popup_ok_button(self):
+        self.click_element(Locators.POPUP_SITE_NAME + "/*" + Locators.BUTTON_OK_1)
         cond = self.wait.until_not(EC.presence_of_element_located((By.XPATH, Locators.POPUP_SITE_NAME)))
         return True if cond else False
 
@@ -133,21 +134,21 @@ class DevicesPage(Page):
 
     def click_delete_button(self):
         self.click_element(Locators.BUTTON_DELETE)
-        cond = self.find_element(Locators.POPUP_ARE_YOU_SURE)
+        cond = self.is_element_present(Locators.POPUP_ARE_YOU_SURE)
         return True if cond else False
 
-    def click_are_you_sure_OK_button(self):
-        self.click_element(Locators.POPUP_ARE_YOU_SURE + "/*" + Locators.BUTTON_OK)
+    def click_are_you_sure_ok_button(self):
+        self.click_element(Locators.POPUP_ARE_YOU_SURE + "/*" + Locators.BUTTON_OK_1)
         cond = self.is_element_not_present(Locators.POPUP_ARE_YOU_SURE)
         return True if cond else False
 
     def delete_site_if_exists(self, sitename = Variables.site_name):
         try:
-            elem = self.driver.find_element_by_xpath(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
+            elem = self.is_element_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
             if elem:
                 self.click_site_in_global_site_view(sitename)
                 self.click_delete_button()
-                self.click_are_you_sure_OK_button()
+                self.click_are_you_sure_ok_button()
                 self.wait.until_not(EC.presence_of_element_located((By.XPATH, Locators.POPUP_ARE_YOU_SURE)))
             else: pass
         except(NoSuchElementException):
@@ -157,9 +158,9 @@ class DevicesPage(Page):
     def delete_site_from_gsv(self, sitename = Variables.site_name):
         self.click_site_in_global_site_view(sitename)
         self.click_delete_button()
-        self.click_are_you_sure_OK_button()
+        self.click_are_you_sure_ok_button()
         self.wait.until_not(EC.presence_of_element_located((By.XPATH, Locators.POPUP_ARE_YOU_SURE)))
-        cond = self.find_element(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
+        cond = self.is_element_not_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
         return True if cond else False
 
     def click_site_name_popup_cancel_button(self):
@@ -167,9 +168,10 @@ class DevicesPage(Page):
         cond = self.is_element_not_present(Locators.POPUP_SITE_NAME)
         return True if cond else False
 
-    def click_error_popup_Ok_button(self):
-        self.click_element(Locators.POPUP_ERROR + "/*" + Locators.BUTTON_Ok)
-        cond = self.wait.until_not(EC.presence_of_element_located((By.XPATH, Locators.POPUP_ERROR)))
+    def click_error_popup_ok_button(self):
+        self.click_element(Locators.POPUP_ERROR + "/*" + Locators.BUTTON_OK_2)
+        # cond = self.wait.until_not(EC.presence_of_element_located((By.XPATH, Locators.POPUP_ERROR)))
+        cond = self.is_element_not_present(Locators.POPUP_ERROR)
         return True if cond else False
 
     def click_parent_site_expand_button(self, sitename = Variables.parent_site_name):
@@ -194,14 +196,14 @@ class DevicesPage(Page):
         self.click_global_site_view_site()
         self.click_new_site_button()
         self.enter_site_name(sitename)
-        self.click_site_name_popup_OK_button()
+        self.click_site_name_popup_ok_button()
         self.check_if_site_is_in_gsv(sitename)
 
     def create_subsite(self, sitename, subsitename):
         self.click_site_in_global_site_view(sitename)
         self.click_new_site_button()
         self.enter_site_name(subsitename)
-        self.click_site_name_popup_OK_button()
+        self.click_site_name_popup_ok_button()
         self.open_parent_site_tree(sitename)
         self.check_if_subsite_is_in_parent_site(sitename, subsitename)
 
