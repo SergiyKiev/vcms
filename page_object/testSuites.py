@@ -22,12 +22,16 @@ class TestsSiteCreation(unittest.TestCase):
         WebDriverWait(cls.driver, 120).until(EC.presence_of_element_located((By.XPATH, Locators.BUTTON_SIGN_IN)))
         login_page = LoginPage(cls.driver)
         login_page.login()
-
-    def setUp(self):
-        home_page = HomePage(self.driver)
+        home_page = HomePage(cls.driver)
         home_page.close_popups()
         devices_page = home_page.open_devices_menu()
         devices_page.check_devices_page_loaded()
+
+    # def setUp(self):
+    #     home_page = HomePage(self.driver)
+    #     home_page.close_popups()
+    #     devices_page = home_page.open_devices_menu()
+    #     devices_page.check_devices_page_loaded()
 
     def test_open_site_name_popup(self):
         print ("\n" + "TC#9057. Open Site Name popup")
@@ -90,7 +94,6 @@ class TestsSiteCreation(unittest.TestCase):
         print ("\n" + "TC#9118. Create subsites in the Global Site View tree")
         devices_page = DevicesPage(self.driver)
         devices_page.delete_site_if_exists(Variables.parent_site_name)
-        '''Test body'''
         devices_page.create_parent_site(Variables.parent_site_name)
         self.assertTrue(devices_page.check_if_site_is_in_gsv(Variables.parent_site_name))
         devices_page.create_subsite(Variables.parent_site_name, Variables.subsite_1_name)

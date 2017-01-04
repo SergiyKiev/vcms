@@ -1,7 +1,6 @@
-from base import Page
+from basePage import BasePage
 from locators import Locators
 from settings import Settings
-from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
 from variables import Variables
 from selenium.webdriver.support.ui import WebDriverWait
@@ -9,7 +8,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 
 
-class LoginPage(Page):
+class LoginPage(BasePage):
 
     def check_login_page_loaded(self):
         cond1 = self.is_element_present(Locators.BUTTON_SIGN_IN)
@@ -23,7 +22,6 @@ class LoginPage(Page):
         self.enter_username()
         self.enter_password()
         self.click_sign_in_button()
-        # self.close_subscription_has_expired_popup()
         cond = self.is_element_present(Locators.BUTTON_EXIT)
         return HomePage(self.driver) if cond else None
 
@@ -71,7 +69,8 @@ class LoginPage(Page):
         cond = self.is_element_not_present(Locators.POPUP_ERROR)
         return True if cond else False
 
-class HomePage(Page):
+
+class HomePage(BasePage):
 
     def check_home_page_loaded(self):
         cond = self.is_element_present(Locators.BUTTON_DEVICES)
@@ -92,7 +91,7 @@ class HomePage(Page):
             return DevicesPage(self.driver)
 
 
-class DevicesPage(Page):
+class DevicesPage(BasePage):
 
     def check_devices_page_loaded(self):
         cond = self.is_element_present(Locators.CONTAINER_MENU_DEVICES)
@@ -213,21 +212,21 @@ class DevicesPage(Page):
         self.open_parent_site_tree(sitename)
         self.check_if_subsite_is_in_parent_site(sitename, subsitename)
 
-class AdministrationPage(Page):
+class AdministrationPage(BasePage):
     pass
 
 
-class TasksPage(Page):
+class TasksPage(BasePage):
     pass
 
 
-class ReportingPage(Page):
+class ReportingPage(BasePage):
     pass
 
 
-class SoftwarePatchManagerPage(Page):
+class SoftwarePatchManagerPage(BasePage):
     pass
 
 
-class PasswordReset(Page):
+class PasswordReset(BasePage):
     pass

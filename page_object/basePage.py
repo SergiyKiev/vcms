@@ -10,7 +10,7 @@ from locators import Locators
 from selenium import webdriver
 
 
-class Page(object):
+class BasePage(object):
 
     def __init__(self, driver, base_url=Settings.baseUrl):
         self.base_url = base_url
@@ -54,8 +54,8 @@ class Page(object):
         try:
             # time.sleep(1)
             # self.wait.until(EC.invisibility_of_element_located((By.XPATH, Locators.LOADING_SCREEN_VISIBLE)))
-            WebDriverWait(self.driver, 1).until(EC.presence_of_element_located((By.XPATH, locator)))
-            return False
+            WebDriverWait(self.driver, 1).until_not(EC.presence_of_element_located((By.XPATH, locator)))
+            return True
         except TimeoutException:
             return True
 
