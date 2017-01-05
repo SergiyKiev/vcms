@@ -99,13 +99,13 @@ class DevicesPage(BasePage):
 
     def click_global_site_view_site(self):
         self.click_element(Locators.SITE_GLOBAL_SITE_VIEW)
-        cond1 = self.is_element_present(Locators.BUTTON_NEW_SITE_1)
+        cond1 = self.is_element_present(Locators.BUTTON_NEW_SITE)
         cond2 = self.is_element_selected(Locators.LABEL_GLOBAL_SITE_VIEW)
         cond3 = self.is_element_present(Locators.CONTAINER_HEADER_DEVICES_VIEW + "/*" + Locators.TEXT_GLOBAL_SITE_VIEW)
         return True if (cond1 or cond2 or cond3) else False
 
     def click_new_site_button(self):
-        self.click_element(Locators.BUTTON_NEW_SITE_1)
+        self.click_element(Locators.BUTTON_NEW_SITE)
         cond = self.is_element_present(Locators.POPUP_SITE_NAME)
         return True if cond else False
 
@@ -179,13 +179,13 @@ class DevicesPage(BasePage):
         cond = self.is_element_not_present(Locators.POPUP_ERROR)
         return True if cond else False
 
-    def click_parent_site_expand_button(self, sitename = Variables.parent_site_name):
+    def click_site_expand_button(self, sitename = Variables.parent_site_name):
         expand = "//span[text()='" + sitename + "']/ancestor::/div[contains(@id,'VWGNODE')]" + Locators.BUTTON_SYSTEM_EXPAND
         self.click_element(expand)
         cond = self.wait.until_not(EC.presence_of_element_located((By.XPATH, expand)))
         return True if cond else False
 
-    def open_parent_site_tree(self, sitename = Variables.parent_site_name):
+    def open_site_tree(self, sitename = Variables.parent_site_name):
         try:
             expand = "//span[text()='" + sitename + "']/ancestor::div[contains(@id,'VWGNODE')]" + Locators.BUTTON_SYSTEM_EXPAND
             elem = self.driver.find_element_by_xpath(expand)
@@ -197,7 +197,7 @@ class DevicesPage(BasePage):
             return True
         return True
 
-    def create_parent_site(self, sitename = Variables.parent_site_name):
+    def create_site(self, sitename = Variables.parent_site_name):
         self.click_global_site_view_site()
         self.click_new_site_button()
         self.enter_site_name(sitename)
@@ -209,8 +209,13 @@ class DevicesPage(BasePage):
         self.click_new_site_button()
         self.enter_site_name(subsitename)
         self.click_site_name_popup_ok_button()
-        self.open_parent_site_tree(sitename)
+        self.open_site_tree(sitename)
         self.check_if_subsite_is_in_parent_site(sitename, subsitename)
+
+    def click_config_button(self):
+        self.click_element(Locators.BUTTON_CONFIG)
+        cond = self.is_element_present(Locators.POPUP_CONFIGURATION)
+        return True if cond else False
 
 class AdministrationPage(BasePage):
     pass

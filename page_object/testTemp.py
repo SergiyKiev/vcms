@@ -114,7 +114,7 @@ class TestCases(unittest.TestCase):
         devices_page = home_page.open_devices_menu()
         devices_page.delete_site_if_exists(Variables.parent_site_name)
         '''Test body'''
-        devices_page.create_parent_site(Variables.parent_site_name)
+        devices_page.create_site(Variables.parent_site_name)
         self.assertTrue(devices_page.check_if_site_is_in_gsv(Variables.parent_site_name))
         devices_page.create_subsite(Variables.parent_site_name, Variables.subsite_1_name)
         self.assertTrue(devices_page.check_if_subsite_is_in_parent_site(Variables.parent_site_name, Variables.subsite_1_name))
