@@ -245,8 +245,10 @@ class SiteDeletion(unittest.TestCase):
     def test_delete_site_from_global_site_view(self):
         print ("\n" + "TC#9607. Delete created site from Global Site View tree")
         devices_page = DevicesPage(self.driver)
+        devices_page.delete_site_if_exists("Test#9607")
         devices_page.click_global_site_view_site()
         devices_page.create_site("Test#9607")
+        devices_page.click_site_in_global_site_view("Test#9607")
         devices_page.click_delete_button()
         devices_page.click_are_you_sure_ok_button()
         self.assertFalse(devices_page.check_if_site_is_in_gsv("Test#9607"))
