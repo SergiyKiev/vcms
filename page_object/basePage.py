@@ -15,7 +15,7 @@ class BasePage(object):
     def __init__(self, driver, base_url=Settings.baseUrl):
         self.base_url = base_url
         self.driver = driver
-        self.timeout = 60
+        self.timeout = 120
         self.wait = WebDriverWait(self.driver, self.timeout)
 
     # def open(self):
@@ -63,7 +63,17 @@ class BasePage(object):
         try:
             # time.sleep(1)
             # self.wait.until(EC.invisibility_of_element_located((By.XPATH, Locators.LOADING_SCREEN_VISIBLE)))
-            WebDriverWait(self.driver, 1).until(EC.presence_of_element_located((By.XPATH, locator + Locators.TEXT_SELECTED)))
+            WebDriverWait(self.driver, 1).until(EC.presence_of_element_located((By.XPATH, locator + Locators.SELECTED)))
+            return True
+        except TimeoutException:
+            return False
+
+    def is_element_disabled(self, locator):
+        try:
+            # time.sleep(1)
+            # self.wait.until(EC.invisibility_of_element_located((By.XPATH, Locators.LOADING_SCREEN_VISIBLE)))
+            WebDriverWait(self.driver, 1).until(
+                EC.presence_of_element_located((By.XPATH, locator + Locators.DISABLED)))
             return True
         except TimeoutException:
             return False

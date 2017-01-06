@@ -97,11 +97,11 @@ class DevicesPage(BasePage):
         cond = self.is_element_present(Locators.CONTAINER_MENU_DEVICES)
         return True if cond else False
 
-    def click_global_site_view_site(self):
-        self.click_element(Locators.SITE_GLOBAL_SITE_VIEW)
+    def click_global_site_view_main_label(self):
+        self.click_element(Locators.LABEL_GLOBAL_SITE_VIEW + "/*" + Locators.TEXT_GLOBAL_SITE_VIEW)
         cond1 = self.is_element_present(Locators.BUTTON_NEW_SITE)
         cond2 = self.is_element_selected(Locators.LABEL_GLOBAL_SITE_VIEW)
-        cond3 = self.is_element_present(Locators.CONTAINER_HEADER_DEVICES_VIEW + "/*" + Locators.TEXT_GLOBAL_SITE_VIEW)
+        cond3 = self.is_element_present(Locators.CONTAINER_HEADER_DEVICES_VIEW + "/*" + Locators.TEXT_CONTAINS_GLOBAL_SITE_VIEW)
         return True if (cond1 or cond2 or cond3) else False
 
     def click_new_site_button(self):
@@ -109,7 +109,7 @@ class DevicesPage(BasePage):
         cond = self.is_element_present(Locators.POPUP_SITE_NAME)
         return True if cond else False
 
-    def enter_site_name(self, sitename = Variables.site_name):
+    def enter_text_into_site_name_text_field(self, sitename = Variables.site_name):
         self.find_element(Locators.POPUP_SITE_NAME + "/*" + Locators.FIELD).send_keys(sitename)
         return True
 
@@ -123,19 +123,17 @@ class DevicesPage(BasePage):
         cond = self.wait.until_not(EC.presence_of_element_located((By.XPATH, Locators.POPUP_SITE_NAME)))
         return True if cond else False
 
-    def click_site_in_global_site_view(self, sitename = Variables.site_name):
+    def click_site_in_global_site_view_tree(self, sitename = Variables.site_name):
         self.click_element(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
         cond1 = self.is_element_selected("//span[text()='" + sitename + "']" + "/ancestor::div")
         cond2 = self.is_element_present(Locators.CONTAINER_HEADER_DEVICES_VIEW + "/*//span[contains(text(),'" + sitename + "'])")
         return True if (cond1 or cond2) else False
 
-    def check_if_site_is_in_gsv(self, sitename = Variables.site_name): # gsv - Global Site View
-        cond = self.is_element_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
-        return True if cond else False
-
-    def check_if_subsite_is_in_parent_site(self, sitename, subsitename):
-        cond = self.is_element_present("//span[text()='" + sitename + "']/following::span[text()='" + subsitename + "']")
-        return True if cond else False
+    def click_default_site_in_global_site_view_tree(self):
+        self.click_element(Locators.TREE_GLOBAL_SITE_VIEW + "/*" + Locators.TEXT_DEFAULT_SITE)
+        cond1 = self.is_element_selected(Locators.LABEL_DEFAULT_SITE)
+        cond2 = self.is_element_present(Locators.CONTAINER_HEADER_DEVICES_VIEW + "/*" + Locators.TEXT_CONTAINS_DEFAULT_SITE)
+        return True if (cond1 or cond2) else False
 
     def click_delete_button(self):
         self.click_element(Locators.BUTTON_DELETE)
@@ -151,17 +149,17 @@ class DevicesPage(BasePage):
         try:
             elem = self.is_element_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
             if elem:
-                self.click_site_in_global_site_view(sitename)
+                self.click_site_in_global_site_view_tree(sitename)
                 self.click_delete_button()
                 self.click_are_you_sure_ok_button()
                 self.wait.until_not(EC.presence_of_element_located((By.XPATH, Locators.POPUP_ARE_YOU_SURE)))
             else: pass
-        except(NoSuchElementException):
+        except NoSuchElementException:
             return True
         return True
 
-    def delete_site_from_gsv(self, sitename = Variables.site_name):
-        self.click_site_in_global_site_view(sitename)
+    def delete_site_from_global_site_view_tree(self, sitename = Variables.site_name):
+        self.click_site_in_global_site_view_tree(sitename)
         self.click_delete_button()
         self.click_are_you_sure_ok_button()
         self.wait.until_not(EC.presence_of_element_located((By.XPATH, Locators.POPUP_ARE_YOU_SURE)))
@@ -175,7 +173,6 @@ class DevicesPage(BasePage):
 
     def click_error_popup_ok_button(self):
         self.click_element(Locators.POPUP_ERROR + "/*" + Locators.BUTTON_OK_2)
-        # cond = self.wait.until_not(EC.presence_of_element_located((By.XPATH, Locators.POPUP_ERROR)))
         cond = self.is_element_not_present(Locators.POPUP_ERROR)
         return True if cond else False
 
@@ -198,24 +195,72 @@ class DevicesPage(BasePage):
         return True
 
     def create_site(self, sitename = Variables.parent_site_name):
-        self.click_global_site_view_site()
+        self.click_global_site_view_main_label()
         self.click_new_site_button()
-        self.enter_site_name(sitename)
+        self.enter_text_into_site_name_text_field(sitename)
         self.click_site_name_popup_ok_button()
-        self.check_if_site_is_in_gsv(sitename)
+        self.check_site_is_in_global_site_view_tree(sitename)
+
+    def create_site_if_not_exists(self, sitename):
+        try:
+            elem = self.is_element_not_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
+            if elem:
+                self.click_global_site_view_main_label()
+                self.click_new_site_button()
+                self.enter_text_into_site_name_text_field(sitename)
+                self.click_site_name_popup_ok_button()
+                self.check_site_is_in_global_site_view_tree(sitename)
+                return True
+            else: pass
+        except NoSuchElementException:
+            return True
+        return True
 
     def create_subsite(self, sitename, subsitename):
-        self.click_site_in_global_site_view(sitename)
+        self.click_site_in_global_site_view_tree(sitename)
         self.click_new_site_button()
-        self.enter_site_name(subsitename)
+        self.enter_text_into_site_name_text_field(subsitename)
         self.click_site_name_popup_ok_button()
         self.open_site_tree(sitename)
-        self.check_if_subsite_is_in_parent_site(sitename, subsitename)
+        self.check_subsite_is_in_parent_site(sitename, subsitename)
 
     def click_config_button(self):
         self.click_element(Locators.BUTTON_CONFIG)
         cond = self.is_element_present(Locators.POPUP_CONFIGURATION)
         return True if cond else False
+
+    def click_configuration_popup_close_button(self):
+        self.click_element(Locators.POPUP_CONFIGURATION + "/*" + Locators.BUTTON_CLOSE)
+        cond = self.is_element_not_present(Locators.POPUP_CONFIGURATION)
+        return True if cond else False
+
+    def enter_text_into_site_tab_name_text_field(self, sitename = None):
+        self.find_element(Locators.POPUP_CONFIGURATION + "/*" + Locators.FIELD).send_keys(sitename)
+        return True
+
+    def click_configuration_popup_site_tab(self):
+        self.click_element(Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_SITE)
+        cond = self.is_element_selected(Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_SITE)
+        return True if cond else False
+
+    def click_configuration_popup_ip_address_ranges_tab(self):
+        self.click_element(Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_IP_ADDRESS_RANGES)
+        cond = self.is_element_selected(Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_IP_ADDRESS_RANGES)
+        return True if cond else False
+
+    def click_configuration_popup_vreps_tab(self):
+        self.click_element(Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_VREPS)
+        cond = self.is_element_selected(Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_VREPS)
+        return True if cond else False
+
+    def check_site_is_in_global_site_view_tree(self, sitename = Variables.site_name):
+        cond = self.is_element_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
+        return True if cond else False
+
+    def check_subsite_is_in_parent_site(self, sitename, subsitename):
+        cond = self.is_element_present("//span[text()='" + sitename + "']/following::span[text()='" + subsitename + "']")
+        return True if cond else False
+
 
 class AdministrationPage(BasePage):
     pass

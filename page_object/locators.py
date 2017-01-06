@@ -12,12 +12,27 @@ class Locators:
   LOADING_SCREEN_VISIBLE           = "//div[@id='VWG_LoadingAnimationBox'][contains(@style,'display: block']"
   LOADING_ANIMATION_BOX            = "VWG_LoadingAnimationBox"
 
+  '''STATUS'''
+  SELECTED                   = "[contains(@class,'Selected')]"
+  DISABLED                   = "[contains(@class,'Disabled')]"
+  VISIBLE                    = "[@data-vwgvisible='1']"
+  INVISIBLE                  = "[@data-vwgvisible='0']"
+
+  '''ELEMENTS with the attribute data-vwgdocking : T - top, F - front, L - left, B - bottom, R - right'''
+  ELEMENT_TOP                = "div[@data-vwgdocking='T']"
+  ELEMENT_FRONT              = "div[@data-vwgdocking='F']"
+  ELEMENT_LEFT               = "div[@data-vwgdocking='L']"
+  ELEMENT_BOTTOM             = "div[@data-vwgdocking='B']"
+  ELEMENT_RIGHT              = "div[@data-vwgdocking='R']"
+  # DISABLED                   = "[@disabled]"
+  TabPage - Control_bj
+
   '''TEXT'''
-  TEXT_SELECTED                   = "[contains(@class,'Selected')]"
-  TEXT_DISABLED                   = "[contains(@class,'Disabled')]"
-  TEXT_GLOBAL_SITE_VIEW           = "//span[contains(text(),'Global Site View')]"
+  TEXT_GLOBAL_SITE_VIEW           = "//span[text()='Global Site View')]"
   TEXT_ERROR                      = "//span[text()='Error']"
   TEXT_DEFAULT_SITE               = "//span[text()='Default Site']"
+  TEXT_CONTAINS_DEFAULT_SITE      = "//span[contains(text(),'Default Site')]"
+  TEXT_CONTAINS_GLOBAL_SITE_VIEW  = "//span[contains(text(),'Global Site View')]"
   # TEXT_SITE_NAME                = "//span[text()='" + Variables.siteName + "']"
 
   '''CONTAINERS'''
@@ -43,7 +58,7 @@ class Locators:
 
   '''LABELS'''
   LABEL_GLOBAL_SITE_VIEW          = CONTAINER_GLOBAL_SITE_VIEW + "/div[contains(@id,'VWGNODE')]"
-  LABEL_ActiveDirectories         = CONTAINER_ACTIVE_DIRECTORIES + "/div[contains(@id,'VWGNODE')]"
+  LABEL_ACTIVE_DIRECTORIES        = CONTAINER_ACTIVE_DIRECTORIES + "/div[contains(@id,'VWGNODE')]"
   LABEL_QUERIES                   = CONTAINER_QUERIES + "/div[contains(@id,'VWGNODE')]"
   LABEL_GROUPS                    = CONTAINER_GROUPS + "/div[contains(@id,'VWGNODE')]"
   LABEL_DEFAULT_SITE              = TREE_GLOBAL_SITE_VIEW + "/div/div[contains(@id,'VWGNODE')]/*" \
@@ -56,6 +71,7 @@ class Locators:
   FIELD                           = "//input"
   FIELD_USERNAME                  = "//input[@type='text']"
   FIELD_PASSWORD                  = "//input[@type='password']"
+  FIELD_IP_ADDRESS_RANGES_TAB     = ""
 
   '''BUTTONS'''
   BUTTON_SIGN_IN                  = "//span[text()='Sign In']"
@@ -243,18 +259,22 @@ class Locators:
   CONTEXT_MENU                    = "//div[@class='Menu-PopupWindow']"
 
   '''TABS'''
-  TAB                             = "//span[contains(@class,'TabControl')]"
-  TAB_HOME                        = TAB + "[text()='Home']"
-  TAB_VIEW                        = TAB + "[text()='View']"
-  TAB_DEVICES                     = TAB + "[text()='Devices']"
-  TAB_TOOLS                       = TAB + "[text()='Tools']"
-  TAB_OPTIONS                     = TAB + "[text()='Options']"
-  TAB_LOG                         = TAB + "[text()='Log']"
-  TAB_SMTP                        = TAB + "[text()='SMTP']"
-  TAB_IMAP                        = TAB + "[text()='IMAP']"
-  TAB_Site                        = TAB + "[text()='Site']"
-  TAB_IP_ADDRESS_RANGES           = TAB + "[text()='IP Address Ranges']"
-  TAB_VREPS                       = TAB + "[text()='vReps']"
+  TAB                             = "//span[contains(@class='TabControl-PageHeaderText']"
+  TAB_PANEL                       = "//div[contains(@id,'VWGTCHD_')]"
+  TAB_LABEL                       = "/ancestor::div[contains(@id,'TAB')]"
+  TAB_HOME                        = TAB + "[text()='Home']" + TAB_LABEL
+  TAB_VIEW                        = TAB + "[text()='View']" + TAB_LABEL
+  TAB_DEVICES                     = TAB + "[text()='Devices']" + TAB_LABEL
+  TAB_TOOLS                       = TAB + "[text()='Tools']" + TAB_LABEL
+  TAB_OPTIONS                     = TAB + "[text()='Options']" + TAB_LABEL
+  TAB_LOG                         = TAB + "[text()='Log']" + TAB_LABEL
+  TAB_SMTP                        = TAB + "[text()='SMTP']" + TAB_LABEL
+  TAB_IMAP                        = TAB + "[text()='IMAP']" + TAB_LABEL
+  TAB_SITE                        = TAB + "[text()='Site']" + TAB_LABEL
+  TAB_IP_ADDRESS_RANGES           = TAB + "[text()='IP Address Ranges']" + TAB_LABEL
+  TAB_VREPS                       = TAB + "[text()='vReps']" + TAB_LABEL
+  TAB_PAGE_IP_ADDRESS_RANGES      = TAB_IP_ADDRESS_RANGES + "/following::div[contains(@id,'VWGTCTC')]/div[1]/*//div[1][contains(@id,'VWG')]"
+
 
   '''RADIO BUTTONS'''
   RB_CHECKED                      = "//td[contains(@style,'Radio1')]"
@@ -317,3 +337,4 @@ class Locators:
                                                         "ancestor::div[contains(@class,'CheckBox')]"
   CB_PROMT_REMOTE_USER_CONTROL      = "//span[text()='Prompt remote user to accept or deny control']/" \
                                                     "ancestor::div[contains(@class,'CheckBox')]"
+
