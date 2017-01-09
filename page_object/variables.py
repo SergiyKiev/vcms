@@ -1,5 +1,6 @@
 
 
+
 class Variables(object):
 
     site_name               = "New site #9101"

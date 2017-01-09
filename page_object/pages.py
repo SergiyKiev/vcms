@@ -6,6 +6,7 @@ from variables import Variables
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
+import time
 
 
 class LoginPage(BasePage):
@@ -98,7 +99,7 @@ class DevicesPage(BasePage):
         return True if cond else False
 
     def click_global_site_view_main_label(self):
-        self.click_element(Locators.LABEL_GLOBAL_SITE_VIEW + "/*" + Locators.TEXT_GLOBAL_SITE_VIEW)
+        self.click_element(Locators.LABEL_GLOBAL_SITE_VIEW)
         cond1 = self.is_element_present(Locators.BUTTON_NEW_SITE)
         cond2 = self.is_element_selected(Locators.LABEL_GLOBAL_SITE_VIEW)
         cond3 = self.is_element_present(Locators.CONTAINER_HEADER_DEVICES_VIEW + "/*" + Locators.TEXT_CONTAINS_GLOBAL_SITE_VIEW)
@@ -203,18 +204,19 @@ class DevicesPage(BasePage):
 
     def create_site_if_not_exists(self, sitename):
         try:
-            elem = self.is_element_not_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
-            if elem:
+            elem = self.is_element_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
+            if elem is False:
                 self.click_global_site_view_main_label()
                 self.click_new_site_button()
                 self.enter_text_into_site_name_text_field(sitename)
                 self.click_site_name_popup_ok_button()
                 self.check_site_is_in_global_site_view_tree(sitename)
                 return True
-            else: pass
+            else:
+                return True
+                pass
         except NoSuchElementException:
             return True
-        return True
 
     def create_subsite(self, sitename, subsitename):
         self.click_site_in_global_site_view_tree(sitename)
@@ -228,6 +230,8 @@ class DevicesPage(BasePage):
         self.click_element(Locators.BUTTON_CONFIG)
         cond = self.is_element_present(Locators.POPUP_CONFIGURATION)
         return True if cond else False
+        # cond = self.find_element(Locators.POPUP_CONFIGURATION)
+        # return cond if cond else None
 
     def click_configuration_popup_close_button(self):
         self.click_element(Locators.POPUP_CONFIGURATION + "/*" + Locators.BUTTON_CLOSE)
@@ -245,7 +249,7 @@ class DevicesPage(BasePage):
 
     def click_configuration_popup_ip_address_ranges_tab(self):
         self.click_element(Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_IP_ADDRESS_RANGES)
-        cond = self.is_element_selected(Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_IP_ADDRESS_RANGES)
+        cond = self.is_element_selected(Locators.TAB_IP_ADDRESS_RANGES)
         return True if cond else False
 
     def click_configuration_popup_vreps_tab(self):

@@ -25,7 +25,6 @@ class Locators:
   ELEMENT_BOTTOM             = "div[@data-vwgdocking='B']"
   ELEMENT_RIGHT              = "div[@data-vwgdocking='R']"
   # DISABLED                   = "[@disabled]"
-  TabPage - Control_bj
 
   '''TEXT'''
   TEXT_GLOBAL_SITE_VIEW           = "//span[text()='Global Site View')]"
@@ -273,8 +272,13 @@ class Locators:
   TAB_SITE                        = TAB + "[text()='Site']" + TAB_LABEL
   TAB_IP_ADDRESS_RANGES           = TAB + "[text()='IP Address Ranges']" + TAB_LABEL
   TAB_VREPS                       = TAB + "[text()='vReps']" + TAB_LABEL
-  TAB_PAGE_IP_ADDRESS_RANGES      = TAB_IP_ADDRESS_RANGES + "/following::div[contains(@id,'VWGTCTC')]/div[1]/*//div[1][contains(@id,'VWG')]"
-
+  TAB_FRONT                       = "//div[contains(@id,'VWGTCTC')][@class='TabControl-CenterFrame']/" \
+                                                    "div[1]/*//div[contains(@id,'VWG')][@data-vwgdocking='F']"
+  TAB_TOP                         = "//div[contains(@id,'VWGTCTC')][@class='TabControl-CenterFrame']/" \
+                                                    "div[1]/*//div[contains(@id,'VWG')][@data-vwgdocking='T']"
+  TAB_FRONT_IP_ADDRESS_RANGES     = TAB_IP_ADDRESS_RANGES + SELECTED + "following::"
+  "/following::div[contains(@id,'VWGTCTC')]" \
+  "[@class ='TabControl-CenterFrame']/div[1]/*//div[contains(@id,'VWG')][@data-vwgdocking='F'][@data-vwgvisible='1']"
 
   '''RADIO BUTTONS'''
   RB_CHECKED                      = "//td[contains(@style,'Radio1')]"

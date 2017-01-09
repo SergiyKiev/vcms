@@ -138,7 +138,7 @@ class SiteConfiguration(unittest.TestCase):
     #     devices_page = home_page.open_devices_menu()
     #     devices_page.check_devices_page_loaded()
 
-    def test_open_confiuration_popup(self):
+    def test_open_configuration_popup(self):
         print ("\n" + "TC#9601. Open 'Configuration' popup")
         devices_page = DevicesPage(self.driver)
         devices_page.click_global_site_view_main_label()
@@ -158,8 +158,9 @@ class SiteConfiguration(unittest.TestCase):
         devices_page.click_config_button()
         devices_page.enter_text_into_site_tab_name_text_field("_modifed")
         devices_page.click_configuration_popup_close_button()
-        self.assertTrue(devices_page.check_site_is_in_global_site_view_tree("Site#9237" + "_modifed"))
-        devices_page.delete_site_from_global_site_view_tree("Site#9237_modifed")
+        self.assertTrue(devices_page.check_site_is_in_global_site_view_tree(sitename_modifed))
+        devices_page.delete_site_from_global_site_view_tree(sitename_modifed)
+        devices_page.delete_site_if_exists(sitename)
         print ("Test is passed")
 
     def test_gui_configuration_popup_from_global_site_view_main_label(self): #gui - graf.user.int.
@@ -199,6 +200,7 @@ class SiteConfiguration(unittest.TestCase):
                                                         "/following::" + Locators.ELEMENT_FRONT + Locators.VISIBLE))
         self.assertTrue(devices_page.is_element_present(Locators.TAB_IP_ADDRESS_RANGES +
                                                         "/following::" + Locators.ELEMENT_TOP + Locators.VISIBLE))
+        devices_page.click_configuration_popup_close_button()
         devices_page.delete_site_from_global_site_view_tree(sitename)
         print ("Test is passed")
 
