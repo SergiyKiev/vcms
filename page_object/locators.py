@@ -18,13 +18,14 @@ class Locators:
   VISIBLE                    = "[@data-vwgvisible='1']"
   INVISIBLE                  = "[@data-vwgvisible='0']"
 
-  '''ELEMENTS with the attribute data-vwgdocking : T - top, F - front, L - left, B - bottom, R - right'''
-  ELEMENT_TOP                = "div[@data-vwgdocking='T']"
-  ELEMENT_FRONT              = "div[@data-vwgdocking='F']"
-  ELEMENT_LEFT               = "div[@data-vwgdocking='L']"
-  ELEMENT_BOTTOM             = "div[@data-vwgdocking='B']"
-  ELEMENT_RIGHT              = "div[@data-vwgdocking='R']"
-  # DISABLED                   = "[@disabled]"
+  '''ELEMENTS'''
+  # ELEMENT_TOP                = "div[@data-vwgdocking='T']"
+  # ELEMENT_FRONT              = "div[@data-vwgdocking='F']"
+  # ELEMENT_LEFT               = "div[@data-vwgdocking='L']"
+  # ELEMENT_BOTTOM             = "div[@data-vwgdocking='B']"
+  # ELEMENT_RIGHT              = "div[@data-vwgdocking='R']"
+  ELEMENT_LIST_VIEW_CONTROL  = "div[@class='Common-Unselectable ListView-Control']"
+  ELEMENT_TOOL_BAR           = "div[@class='FlatToolBar-Center Common-FrameCenter']"
 
   '''TEXT'''
   TEXT_GLOBAL_SITE_VIEW           = "//span[text()='Global Site View')]"
@@ -73,12 +74,12 @@ class Locators:
   FIELD_IP_ADDRESS_RANGES_TAB     = ""
 
   '''BUTTONS'''
+  BUTTONS                          = "//div[@alt]"
   BUTTON_SIGN_IN                  = "//span[text()='Sign In']"
   BUTTON_EXIT                     = "//img[@alt='Exit']"
   BUTTON_DEVICES                  = "//div[@title='Devices']"
   BUTTON_NEW_SITE                 = "//img[@alt='New Site']"
   # BUTTON_NEW_SITE_2             = "//span[text()='New Site']"
-  BUTTON_DELETE                   = "//img[@alt='Delete']"
   BUTTON_OK_1                     = "//span[text()='OK']"
   BUTTON_OK_2                     = "//span[text()='Ok']"
   BUTTON_CANCEL                   = "//span[text()='Cancel']"
@@ -86,8 +87,8 @@ class Locators:
   BUTTON_ICON_ADMIN_USER          = "//td[contains(@style,'icons-gray.111-user')]"
   BUTTON_LOG_OUT                  = "//span[text()='Log Out']"
   BUTTON_SETTINGS_UPPER_CORNER    = "//span[text()='Settings']"
-  BUTTON_CONFIG                   = "//img[@alt='Config']"
-  # BUTTON_CONFIG_2               = "//span[text()='Config']"
+  BUTTON_CONFIG_1                 = "//img[@alt='Config']"
+  BUTTON_CONFIG_2                 = "//span[text()='Config']"
   BUTTON_DELETE_1                 = "//img[@alt='Delete']"
   BUTTON_DELETE_2                 = "//span[text()='Delete']"
   BUTTON_DELETE_GROUP             = "//img[@alt='Delete Group']"
@@ -261,24 +262,21 @@ class Locators:
   TAB                             = "//span[contains(@class='TabControl-PageHeaderText']"
   TAB_PANEL                       = "//div[contains(@id,'VWGTCHD_')]"
   TAB_LABEL                       = "/ancestor::div[contains(@id,'TAB')]"
-  TAB_HOME                        = TAB + "[text()='Home']" + TAB_LABEL
-  TAB_VIEW                        = TAB + "[text()='View']" + TAB_LABEL
-  TAB_DEVICES                     = TAB + "[text()='Devices']" + TAB_LABEL
-  TAB_TOOLS                       = TAB + "[text()='Tools']" + TAB_LABEL
-  TAB_OPTIONS                     = TAB + "[text()='Options']" + TAB_LABEL
-  TAB_LOG                         = TAB + "[text()='Log']" + TAB_LABEL
-  TAB_SMTP                        = TAB + "[text()='SMTP']" + TAB_LABEL
-  TAB_IMAP                        = TAB + "[text()='IMAP']" + TAB_LABEL
-  TAB_SITE                        = TAB + "[text()='Site']" + TAB_LABEL
-  TAB_IP_ADDRESS_RANGES           = TAB + "[text()='IP Address Ranges']" + TAB_LABEL
-  TAB_VREPS                       = TAB + "[text()='vReps']" + TAB_LABEL
-  TAB_FRONT                       = "//div[contains(@id,'VWGTCTC')][@class='TabControl-CenterFrame']/" \
-                                                    "div[1]/*//div[contains(@id,'VWG')][@data-vwgdocking='F']"
-  TAB_TOP                         = "//div[contains(@id,'VWGTCTC')][@class='TabControl-CenterFrame']/" \
-                                                    "div[1]/*//div[contains(@id,'VWG')][@data-vwgdocking='T']"
-  TAB_FRONT_IP_ADDRESS_RANGES     = TAB_IP_ADDRESS_RANGES + SELECTED + "following::"
-  "/following::div[contains(@id,'VWGTCTC')]" \
-  "[@class ='TabControl-CenterFrame']/div[1]/*//div[contains(@id,'VWG')][@data-vwgdocking='F'][@data-vwgvisible='1']"
+  TAB_HOME                        = "//span[contains(@class,'TabControl')][text()='Home']" + TAB_LABEL
+  TAB_VIEW                        = "//span[contains(@class,'TabControl')][text()='View']" + TAB_LABEL
+  TAB_DEVICES                     = "//span[contains(@class,'TabControl')][text()='Devices']" + TAB_LABEL
+  TAB_TOOLS                       = "//span[contains(@class,'TabControl')][text()='Tools']" + TAB_LABEL
+  TAB_OPTIONS                     = "//span[contains(@class,'TabControl')][text()='Options']" + TAB_LABEL
+  TAB_LOG                         = "//span[contains(@class,'TabControl')][text()='Log']" + TAB_LABEL
+  TAB_SMTP                        = "//span[contains(@class,'TabControl')][text()='SMTP']" + TAB_LABEL
+  TAB_IMAP                        = "//span[contains(@class,'TabControl')][text()='IMAP']" + TAB_LABEL
+  TAB_SITE                        = "//span[contains(@class,'TabControl')][text()='Site']" + TAB_LABEL
+  TAB_IP_ADDRESS_RANGES           = "//span[contains(@class,'TabControl')][text()='IP Address Ranges']" + TAB_LABEL
+  TAB_VREPS                       = "//span[contains(@class,'TabControl')][text()='vReps']" + TAB_LABEL
+  TAB_IP_ADDRESS_RANGES_LIST_VIEW_CONTROL = TAB_IP_ADDRESS_RANGES + SELECTED + \
+                                            "/following::div[contains(@id,'VWGTCTC')]/div[1]/*//" + ELEMENT_LIST_VIEW_CONTROL
+  TAB_IP_ADDRESS_RANGES_TOOL_BAR = TAB_IP_ADDRESS_RANGES + SELECTED + \
+                                   "/following::div[contains(@id,'VWGTCTC')]/div[1]/*//" + ELEMENT_TOOL_BAR
 
   '''RADIO BUTTONS'''
   RB_CHECKED                      = "//td[contains(@style,'Radio1')]"

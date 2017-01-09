@@ -15,80 +15,188 @@ class BasePage(object):
     def __init__(self, driver, base_url=Settings.baseUrl):
         self.base_url = base_url
         self.driver = driver
-        self.timeout = 60
-        self.request_timeout = 2
+        self.timeout = 120
+        self.timeout_request = 2
         self.wait = WebDriverWait(self.driver, self.timeout)
+        self.wait_request = WebDriverWait(self.driver, self.timeout_request)
+        # self.loading_waiter = Locators.LOADING_SCREEN_VISIBLE
 
     # def open(self):
     #     self.driver.get(Settings.baseUrl)
     #     WebDriverWait(self.driver, 120).until(EC.presence_of_element_located((By.XPATH, Locators.BUTTON_SIGN_IN)))
 
-    # def find_elements(self, *locators):
-    #     a = []
-    #     a = self.driver.find_elements_by_xpath(*locators)
-    #     print a
-
-
-    def find_element(self, locator):
+    def find_element_self(self, locator):
         try:
             # time.sleep(1)
             self.wait.until(EC.invisibility_of_element_located((By.XPATH, Locators.LOADING_SCREEN_VISIBLE)))
             self.wait.until(EC.presence_of_element_located((By.XPATH, locator)))
-            return self.driver.find_element_by_xpath(locator)
+            return self.driver.find_element(By.XPATH, locator)
+        except (NoSuchElementException, TimeoutException):
+            print locator + " is not found"
+            return None
+
+    def find_elements_self(self, locator):
+        try:
+            # time.sleep(1)
+            self.wait.until(EC.invisibility_of_element_located((By.XPATH, Locators.LOADING_SCREEN_VISIBLE)))
+            self.wait.until(EC.presence_of_all_elements_located((By.XPATH, locator)))
+            return self.driver.find_elements(By.XPATH, locator)
         except (NoSuchElementException, TimeoutException):
             return None
 
     def click_element(self, locator):
-        elem = self.find_element(locator)
-        if elem:
-            elem.click()
-            time.sleep(1)
+        try:
+            elem = self.find_element_self(locator)
+            if elem:
+                elem.click()
+                time.sleep(2)
+                self.wait.until(EC.invisibility_of_element_located((By.XPATH, Locators.LOADING_SCREEN_VISIBLE)))
+                return True
+        except NoSuchElementException:
+            print locator + " is not clickable"
+            return False
+
+    def wait_for_element_present(self, locator):
+        try:
             self.wait.until(EC.invisibility_of_element_located((By.XPATH, Locators.LOADING_SCREEN_VISIBLE)))
+            self.wait.until(EC.presence_of_element_located((By.XPATH, locator)))
+            self.wait.until(EC.visibility_of_element_located((By.XPATH, locator)))
+            # print locator + " is presented"
             return True
-        else:
+        except TimeoutException:
+            print locator + " returns False"
+            return False
+
+    def wait_for_elements_present(self, locator):
+        try:
+            self.wait.until(EC.invisibility_of_element_located((By.XPATH, Locators.LOADING_SCREEN_VISIBLE)))
+            self.wait.until(EC.presence_of_all_elements_located((By.XPATH, locator)))
+            self.wait.until(EC.visibility_of_element_located((By.XPATH, locator)))
+            # print locator + " is presented"
+            return True
+        except TimeoutException:
+            print locator + " returns False"
+            return False
+
+    def wait_for_element_not_present(self, locator):
+        try:
+            self.wait.until(EC.invisibility_of_element_located((By.XPATH, Locators.LOADING_SCREEN_VISIBLE)))
+            self.wait.until_not(EC.presence_of_element_located((By.XPATH, locator)))
+            self.wait.until(EC.invisibility_of_element_located((By.XPATH, locator)))
+            # print locator + " is not presented"
+            return True
+        except NoSuchElementException:
+            # print locator + " is not presented"
+            return True
+        except TimeoutException:
+            print locator + " returns False"
+            return False
+
+    def wait_for_element_selected(self, locator):
+        try:
+            self.wait.until(EC.invisibility_of_element_located((By.XPATH, Locators.LOADING_SCREEN_VISIBLE)))
+            self.wait.until(EC.presence_of_element_located((By.XPATH, locator + Locators.SELECTED)))
+            self.wait.until(EC.visibility_of_element_located((By.XPATH, locator + Locators.SELECTED)))
+            # print locator + " is selected"
+            return True
+        except TimeoutException:
+            print locator + " returns False"
+            return False
+
+    def wait_for_element_disabled(self, locator):
+        try:
+            self.wait.until(EC.invisibility_of_element_located((By.XPATH, Locators.LOADING_SCREEN_VISIBLE)))
+            self.wait.until(EC.presence_of_element_located((By.XPATH, locator + Locators.DISABLED)))
+            self.wait.until(EC.visibility_of_element_located((By.XPATH, locator + Locators.DISABLED)))
+            # print locator + " is disabled"
+            return True
+        except TimeoutException:
+            print locator + " returns False"
+            return False
+
+    def wait_for_element_visible(self, locator):
+        try:
+            self.wait.until(EC.invisibility_of_element_located((By.XPATH, Locators.LOADING_SCREEN_VISIBLE)))
+            self.wait.until(EC.visibility_of_element_located((By.XPATH, locator)))
+            # print locator + " is visible"
+            return True
+        except TimeoutException:
+            print locator + " returns False"
             return False
 
     def is_element_present(self, locator):
         try:
-            WebDriverWait(self.driver, self.request_timeout).until(EC.presence_of_element_located((By.XPATH, locator)))
+            self.wait_request.until(EC.presence_of_element_located((By.XPATH, locator)))
+            self.wait_request.until(EC.visibility_of_element_located((By.XPATH, locator)))
+            print locator + " returns True"
             return True
         except TimeoutException:
+            # print locator + " returns False"
             return False
 
     def is_element_not_present(self, locator):
         try:
-            WebDriverWait(self.driver, self.request_timeout).until_not(EC.presence_of_element_located((By.XPATH, locator)))
+            self.wait_request.until_not(EC.presence_of_element_located((By.XPATH, locator)))
+            self.wait.until(EC.invisibility_of_element_located((By.XPATH, locator)))
+            print locator + " returns True"
             return True
-        except (TimeoutException, NoSuchElementException):
+        except NoSuchElementException:
+            print locator + " returns True"
             return True
+        except TimeoutException:
+            # print locator + " returns False"
+            return False
 
     def is_element_selected(self, locator):
         try:
-            WebDriverWait(self.driver, self.request_timeout).until(
-                EC.presence_of_element_located((By.XPATH, locator + Locators.SELECTED)))
+            self.wait_request.until(EC.presence_of_element_located((By.XPATH, locator + Locators.SELECTED)))
+            self.wait_request.until(EC.visibility_of_element_located((By.XPATH, locator + Locators.SELECTED)))
+            print locator + " returns True"
             return True
-        except (TimeoutException, NoSuchElementException):
+        except TimeoutException:
+            # print locator + " returns False"
             return False
 
     def is_element_disabled(self, locator):
         try:
-            WebDriverWait(self.driver, self.request_timeout).until(
-                EC.presence_of_element_located((By.XPATH, locator + Locators.DISABLED)))
+            self.wait_request.until(EC.presence_of_element_located((By.XPATH, locator + Locators.DISABLED)))
+            self.wait_request.until(EC.visibility_of_element_located((By.XPATH, locator + Locators.DISABLED)))
+            print locator + " returns True"
             return True
-        except (TimeoutException, NoSuchElementException):
+        except TimeoutException:
+            # print locator + " returns False"
+            return False
+
+    def is_element_visible(self, locator):
+        try:
+            self.wait_request.until(EC.visibility_of_element_located((By.XPATH, locator)))
+            print locator + " returns True"
+            return True
+        except TimeoutException:
+            # print locator + " returns False"
+            return False
+
+    def is_elements_visible(self, locator):
+        try:
+            self.wait_request.until(EC.visibility_of_any_elements_located((By.XPATH, locator)))
+            print locator + " returns True"
+            return True
+        except TimeoutException:
+            # print locator + " returns False"
             return False
 
     def close_popups(self):
+        self.wait.until(EC.invisibility_of_element_located((By.XPATH, Locators.LOADING_SCREEN_VISIBLE)))
         cond = self.is_element_present(Locators.POPUP)
         i = 0
         while i < 10:
             i += 1
             if cond:
                 self.click_element(Locators.POPUP + "[last()]/*" + Locators.BUTTON_SYSTEM_CLOSE)
+                print "All popups are closed"
                 return True
             else:
-                break
-        return True
+                pass
 
     def get_title(self):
         return self.driver.title
@@ -97,7 +205,7 @@ class BasePage(object):
         return self.driver.current_url
 
     def hover(self, locator):
-        element = self.find_element(locator)
+        element = self.find_element_self(locator)
         hover = ActionChains(self.driver).move_to_element(element)
         hover.perform()
 
