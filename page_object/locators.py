@@ -17,6 +17,12 @@ class Locators:
   DISABLED                   = "[contains(@class,'Disabled')]"
   VISIBLE                    = "[@data-vwgvisible='1']"
   INVISIBLE                  = "[@data-vwgvisible='0']"
+  COLLAPSE                   = "[contains(@style,'LTR0')]"
+  EXPAND                     = "[contains(@style,'LTR1')]"
+  EMPTY                      = "[contains(@style,'TreeViewEmpty')]"
+  PARENT_SITE                = "[contains(@style,'11LTR')]"
+  CHILD_SITE                 = "[contains(@style,'10LTR')]"
+
 
   '''ELEMENTS'''
   # ELEMENT_TOP                = "div[@data-vwgdocking='T']"
@@ -63,6 +69,8 @@ class Locators:
   LABEL_GROUPS                    = CONTAINER_GROUPS + "/div[contains(@id,'VWGNODE')]"
   LABEL_DEFAULT_SITE              = TREE_GLOBAL_SITE_VIEW + "/div/div[contains(@id,'VWGNODE')]/*" \
                                                           + TEXT_DEFAULT_SITE + "/ancestor::div[contains(@id,'VWGNODE')]"
+  # LABEL_DEFAULT_SITE              = TEXT_DEFAULT_SITE + "/ancestor::div[contains(@style,'11LTR']/div[contains(@id,'VWGNODE')]"
+
 
   '''SITES'''
   SITE_GLOBAL_SITE_VIEW           = "//span[text()='Global Site View']"
@@ -74,27 +82,27 @@ class Locators:
   FIELD_IP_ADDRESS_RANGES_TAB     = ""
 
   '''BUTTONS'''
-  BUTTONS                          = "//div[@alt]"
+  BUTTON                          = "//div[contains(@class,'Button')][contains(@id,'VWG_')]"
   BUTTON_SIGN_IN                  = "//span[text()='Sign In']"
   BUTTON_EXIT                     = "//img[@alt='Exit']"
   BUTTON_DEVICES                  = "//div[@title='Devices']"
   BUTTON_NEW_SITE                 = "//img[@alt='New Site']"
-  # BUTTON_NEW_SITE_2             = "//span[text()='New Site']"
-  BUTTON_OK_1                     = "//span[text()='OK']"
-  BUTTON_OK_2                     = "//span[text()='Ok']"
+  BUTTON_NEW_SITE_by_text       = "//span[text()='New Site']"
+  BUTTON_OK                       = "//span[text()='OK']"
+  BUTTON_Ok                       = "//span[text()='Ok']"
   BUTTON_CANCEL                   = "//span[text()='Cancel']"
   BUTTON_I_AGREE                  = "//span[text()='I Agree']"
   BUTTON_ICON_ADMIN_USER          = "//td[contains(@style,'icons-gray.111-user')]"
   BUTTON_LOG_OUT                  = "//span[text()='Log Out']"
   BUTTON_SETTINGS_UPPER_CORNER    = "//span[text()='Settings']"
-  BUTTON_CONFIG_1                 = "//img[@alt='Config']"
-  BUTTON_CONFIG_2                 = "//span[text()='Config']"
-  BUTTON_DELETE_1                 = "//img[@alt='Delete']"
-  BUTTON_DELETE_2                 = "//span[text()='Delete']"
+  BUTTON_CONFIG                   = "//img[@alt='Config']"
+  BUTTON_CONFIG_by_text              = "//span[text()='Config']"
+  BUTTON_DELETE                   = "//img[@alt='Delete']"
+  BUTTON_DELETE_by_text           = "//span[text()='Delete']"
   BUTTON_DELETE_GROUP             = "//img[@alt='Delete Group']"
   BUTTON_DELETE_FOLDER            = "//img[@alt='Delete Folder']"
-  BUTTON_MOVE_1                   = "//img[@alt='Move']"
-  BUTTON_MOVE_2                   = "//span[text()='Move']"
+  BUTTON_MOVE                     = "//img[@alt='Move']"
+  BUTTON_MOVE_by_text             = "//span[text()='Move']"
   BUTTON_MOVE_SITE                = "//span[text()='Move Site']"
   BUTTON_SETTINGS                 = "//img[@alt='Settings']"
   BUTTON_CLIENT                   = "//img[@alt='Client']"
@@ -198,18 +206,19 @@ class Locators:
   BUTTON_ICON_NEXT                = "//img[contains(@src,'right-double')]"
   BUTTON_ICON_PREVIOUS            = "//img[contains(@src,'left-double')]"
 
-  '''SYSTEM BUTTONS'''
-  BUTTON_SYSTEM_CLOSE             = "//div[@title='Close']"
-  BUTTON_SYSTEM_JOINT             = "//div[contains(@id,'JOINT')][contains(@style,'LTR')]"
-  BUTTON_SYSTEM_COLLAPSE          = "//div[contains(@id,'JOINT')][contains(@style,'LTR0')]"
-  BUTTON_SYSTEM_EXPAND            = "//div[contains(@id,'JOINT')][contains(@style,'LTR1')]"
-  BUTTON_SYSTEM_NEXT              = "//div[contains(@class,'NextButton')]"
-  BUTTON_SYSTEM_LAST              = "//div[contains(@class,'LastButton')]"
-  BUTTON_SYSTEM_PREVIOUS          = "//div[contains(@class,'PrevButton')]"
-  BUTTON_SYSTEM_FIRST             = "//div[contains(@class,'FirstButton')]"
-  BUTTON_SYSTEM_NUMERIC_UP        = "//div[@class=' NumericUpDown-UpCell']"
-  BUTTON_SYSTEM_NUMERIC_DOWN      = "//div[@class='NumericUpDown-DownCell']"
-  BUTTON_SYSTEM_DROP_DOWN         = "//div[contains(@class,'ButtonContainer')]"
+  '''SYSTEM ELEMENTS'''
+  SYSTEM_BUTTON                   = "//div[contains(@class,'Button')][contains(@id,'VWGE_')]"
+  SYSTEM_BUTTON_CLOSE             = "//div[@title='Close']"
+  SYSTEM_BUTTON_NEXT              = "//div[contains(@class,'NextButton')]"
+  SYSTEM_BUTTON_LAST              = "//div[contains(@class,'LastButton')]"
+  SYSTEM_BUTTON_PREVIOUS          = "//div[contains(@class,'PrevButton')]"
+  SYSTEM_BUTTON_FIRST             = "//div[contains(@class,'FirstButton')]"
+  SYSTEM_BUTTON_NUMERIC_UP        = "//div[@class=' NumericUpDown-UpCell']"
+  SYSTEM_BUTTON_NUMERIC_DOWN      = "//div[@class='NumericUpDown-DownCell']"
+  SYSTEM_BUTTON_DROP_DOWN         = "//div[contains(@class,'ButtonContainer')]"
+  SYSTEM_TREE_ARROW               = "//div[@data-vwgtype='joint']"
+  SYSTEM_TREE_ARROW_COLLAPSE      = "//div[@data-vwgtype='joint']" + COLLAPSE
+  SYSTEM_TREE_ARROW_EXPAND        = "//div[@data-vwgtype='joint']" + EXPAND
 
   '''POPUPS'''
   POPUP                           = "//div[contains(@id,'WRP')]"

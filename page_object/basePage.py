@@ -128,7 +128,7 @@ class BasePage(object):
         try:
             self.wait_request.until(EC.presence_of_element_located((By.XPATH, locator)))
             self.wait_request.until(EC.visibility_of_element_located((By.XPATH, locator)))
-            print locator + " returns True"
+            print locator + " element is present. True"
             return True
         except TimeoutException:
             # print locator + " returns False"
@@ -138,10 +138,10 @@ class BasePage(object):
         try:
             self.wait_request.until_not(EC.presence_of_element_located((By.XPATH, locator)))
             self.wait.until(EC.invisibility_of_element_located((By.XPATH, locator)))
-            print locator + " returns True"
+            print locator + " element is not present. True"
             return True
         except NoSuchElementException:
-            print locator + " returns True"
+            # print locator + " returns True"
             return True
         except TimeoutException:
             # print locator + " returns False"
@@ -151,7 +151,7 @@ class BasePage(object):
         try:
             self.wait_request.until(EC.presence_of_element_located((By.XPATH, locator + Locators.SELECTED)))
             self.wait_request.until(EC.visibility_of_element_located((By.XPATH, locator + Locators.SELECTED)))
-            print locator + " returns True"
+            print locator + " element is selected. True"
             return True
         except TimeoutException:
             # print locator + " returns False"
@@ -161,7 +161,7 @@ class BasePage(object):
         try:
             self.wait_request.until(EC.presence_of_element_located((By.XPATH, locator + Locators.DISABLED)))
             self.wait_request.until(EC.visibility_of_element_located((By.XPATH, locator + Locators.DISABLED)))
-            print locator + " returns True"
+            print locator + " element is disabled. True"
             return True
         except TimeoutException:
             # print locator + " returns False"
@@ -170,7 +170,7 @@ class BasePage(object):
     def is_element_visible(self, locator):
         try:
             self.wait_request.until(EC.visibility_of_element_located((By.XPATH, locator)))
-            print locator + " returns True"
+            print locator + " element is visible. True"
             return True
         except TimeoutException:
             # print locator + " returns False"
@@ -179,7 +179,7 @@ class BasePage(object):
     def is_elements_visible(self, locator):
         try:
             self.wait_request.until(EC.visibility_of_any_elements_located((By.XPATH, locator)))
-            print locator + " returns True"
+            print locator + " element is visible. True"
             return True
         except TimeoutException:
             # print locator + " returns False"
@@ -192,7 +192,7 @@ class BasePage(object):
         while i < 10:
             i += 1
             if cond:
-                self.click_element(Locators.POPUP + "[last()]/*" + Locators.BUTTON_SYSTEM_CLOSE)
+                self.click_element(Locators.POPUP + "[last()]/*" + Locators.SYSTEM_BUTTON_CLOSE)
                 print "All popups are closed"
                 return True
             else:
@@ -203,6 +203,25 @@ class BasePage(object):
 
     def get_url(self):
         return self.driver.current_url
+
+    # def get_attribute_value(self, locator, expected_attribute_value):
+    #     try:
+    #         region_item = self.find_element_self(locator)
+    #         acutual_attribute_value = region_item.get_attribute('value')
+    #         print acutual_attribute_value
+    #         return True if expected_attribute_value in acutual_attribute_value else False
+    #     except TimeoutException:
+    #         return False
+    #
+    def get_attribute_value(self, locator, attribute_type = "value"):
+        try:
+            attribute_value = self.find_element_self(locator).get_attribute(attribute_type)
+            # print locator + " has " + attribute_type
+            return attribute_value
+        except NoSuchElementException:
+            print locator + " has no " + attribute_type
+            return None
+
 
     def hover(self, locator):
         element = self.find_element_self(locator)
