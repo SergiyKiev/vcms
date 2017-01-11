@@ -350,6 +350,16 @@ class DevicesPage(BasePage):
         cond = self.wait_for_element_selected(Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_VREPS)
         return True if cond else False
 
+    def click_configuration_popup_site_tab_column_set_new_button(self):
+        self.click_element(Locators.POPUP_CONFIGURATION + "/*" + Locators.BUTTON_NEW_by_text)
+        cond = self.wait_for_element_present(Locators.POPUP_COLUMN_SET_DESIGNER)
+        return True if cond else False
+
+    def click_column_set_popup_system_button_close(self):
+        self.click_element(Locators.POPUP_COLUMN_SET_DESIGNER + "/*" + Locators.SYSTEM_BUTTON_CLOSE)
+        cond = self.wait_for_element_not_present(Locators.POPUP_COLUMN_SET_DESIGNER)
+        return True if cond else False
+
     def check_site_is_in_global_site_view_tree(self, sitename = Variables.site_name):
         cond = self.is_element_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
         return True if cond else False
