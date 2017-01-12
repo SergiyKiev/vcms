@@ -4,8 +4,8 @@ import os
 
 class Settings(object):
 
-    os.chdir('D:\\python\\vcms\\vcms') # KIPROV WORK
-    # os.chdir('E:\\python\\vcms\\vcms') # KIPROV HOME
+    # os.chdir('D:\\python\\vcms\\vcms') # KIPROV WORK
+    os.chdir('E:\\python\\vcms\\vcms') # KIPROV HOME
     settings = openpyxl.load_workbook('settings.xlsx')
     sheet = settings.get_sheet_by_name('Sheet1')
     baseUrl = str(sheet['B2'].value)

@@ -51,6 +51,7 @@ class BasePage(object):
                 elem.click()
                 time.sleep(2)
                 self.wait.until(EC.invisibility_of_element_located((By.XPATH, Locators.LOADING_SCREEN_VISIBLE)))
+                print "OK"
                 return True
         except NoSuchElementException:
             print locator + " is not clickable"

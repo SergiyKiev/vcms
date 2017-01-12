@@ -1,4 +1,5 @@
-from basePage import BasePage
+from popupColumSets import ColumnSetsPopup
+from popupColumSets import *
 from locators import Locators
 from settings import Settings
 from selenium.webdriver.support import expected_conditions as EC
@@ -37,7 +38,6 @@ class LoginPage(BasePage):
             return True
         else:
             pass
-
 
     def click_subscription_has_expired_popup_system_button_close(self):
         self.click_element(Locators.POPUP_SUBSCRIPTION_HAS_EXPIRED + "/*" + Locators.SYS_BTN_CLOSE)
@@ -106,6 +106,7 @@ class HomePage(BasePage):
 
 
 class DevicesPage(BasePage):
+
 
     def check_devices_page_loaded(self):
         cond = self.wait_for_element_present(Locators.CONTAINER_MENU_DEVICES)
