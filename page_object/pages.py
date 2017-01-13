@@ -112,11 +112,11 @@ class DevicesPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, 
         self.click_element(Locators.POPUP_SITE_NAME + "/*" + Locators.SYS_BTN_CLOSE)
         self.wait_for_element_not_present(Locators.POPUP_SITE_NAME)
 
-    def click_site_in_global_site_view_tree(self, sitename = Variables.site_name):
+    def click_site_in_global_site_view_tree(self, sitename):
         site_name = "//span[text()='" + sitename + "']"
         contains_site_name = "//span[contains(text(),'" + sitename + "')]"
         self.click_element(Locators.TREE_GLOBAL_SITE_VIEW + "/*" + site_name)
-        self.wait_for_element_selected(site_name + Locators.anc + Locators.EL_TREE_NODE)
+        self.wait_for_element_selected(site_name + Locators.anc + Locators.EL_NODE_CONTAINER)
         self.wait_for_element_present(Locators.BTN_CONFIG)
         self.wait_for_element_present(Locators.BTN_NEW_SITE)
         self.wait_for_element_present(Locators.CONTAINER_PANEL_TITLE_DEVICES + "/*" + contains_site_name)
@@ -140,6 +140,10 @@ class DevicesPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, 
 
     def click_are_you_sure_popup_system_button_close(self):
         self.click_element(Locators.POPUP_ARE_YOU_SURE + "/*" + Locators.SYS_BTN_CLOSE)
+        self.wait_for_element_not_present(Locators.POPUP_ARE_YOU_SURE)
+
+    def click_are_you_sure_popup_cancel_button(self):
+        self.click_element(Locators.POPUP_ARE_YOU_SURE + "/*" + Locators.BTN_CANCEL)
         self.wait_for_element_not_present(Locators.POPUP_ARE_YOU_SURE)
 
     def click_unable_to_remove_popup_ok_button(self):
@@ -172,45 +176,20 @@ class DevicesPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, 
         self.click_element(Locators.POPUP_ERROR + "/*" + Locators.BTN_Ok)
         self.wait_for_element_not_present(Locators.POPUP_ERROR)
 
-    def click_site_expand_button(self, sitename):
-        expand = "//span[text()='" + sitename + "']/ancestor::div[contains(@id,'VWGNODE')]/" + Locators.SYS_TREE_ARROW_EXPAND
-        # site_name = "//span[text()='" + sitename + "']"
-        # expand = site_name + Locators.fol + "div" + Locators.ARROW_EXPAND
-        self.click_element(expand)
-        self.wait_for_element_not_present(EC.presence_of_element_located((By.XPATH, expand)))
-
-    def expand_site_tree(self, sitename):
-        elem = "//span[text()='" + sitename + "']/ancestor::" + Locators.EL_TREE_ARROW
-        cond1 = self.is_element_present(elem + Locators.ARROW_EMPTY)
-        cond2 = self.is_element_present(elem + Locators.ARROW_EXPAND)
-        if cond1:
-            pass
-        elif cond2:
-            self.click_site_expand_button(elem)
-        else:
-            pass
-
-    def expand_default_site_tree(self):
-        elem = Locators.LABEL_DEFAULT_SITE + Locators.SYS_TREE_ARROW
-        cond1 = self.is_element_present(elem + Locators.ARROW_EMPTY)
-        cond2 = self.is_element_present(elem + Locators.ARROW_EXPAND)
-        if cond1:
-            pass
-        elif cond2:
-            self.click_site_expand_button(elem)
-        else:
-            pass
-
+    # def click_site_expand_button(self, sitename):
+    #     expand = "//span[text()='" + sitename + "']/ancestor::" + Locators.EL_EXPAND_ARROW
+    #     self.click_element(expand)
+    #     self.wait_for_element_not_present(expand)
+    #
+    # def expand_site_tree(self, sitename):
+    #     elem = "//span[text()='" + sitename + "']/ancestor::"
+    #     self.expand_tree(elem)
+    #
+    # def expand_default_site_tree(self):
+    #     self.expand_tree(Locators.LABEL_DEFAULT_SITE + "/")
+    #
     def expand_global_site_view_tree(self):
-        elem = Locators.LABEL_GLOBAL_SITE_VIEW + Locators.SYS_TREE_ARROW
-        cond1 = self.is_element_present(elem + Locators.ARROW_EMPTY)
-        cond2 = self.is_element_present(elem + Locators.ARROW_EXPAND)
-        if cond1:
-            pass
-        elif cond2:
-            self.click_site_expand_button(elem)
-        else:
-            pass
+        self.expand_tree(Locators.LABEL_GLOBAL_SITE_VIEW + "/")
 
     def create_new_site(self, sitename):
         self.click_global_site_view_label()
@@ -241,7 +220,7 @@ class DevicesPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, 
     def create_subsite_if_not_exists(self, sitename, subsitename):
         elem = "//span[text()='" + sitename + "']/following::span[text() = '" + subsitename + "']"
         self.click_site_in_global_site_view_tree(sitename)
-        self.expand_site_tree(sitename)
+        # self.expand_site_tree(sitename)
         cond = self.is_element_not_present(elem)
         if cond:
             self.create_new_subsite(sitename, subsitename)
@@ -255,7 +234,7 @@ class DevicesPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, 
         contains_subsite_name = "//span[contains(text(),'" + subsitename + "')]"
         elem = site_name + Locators.fol + Locators.EL_CHILD_SITE + "/*" + subsite_name
         self.click_element(elem)
-        self.wait_for_element_selected(elem + Locators.anc + Locators.EL_TREE_NODE)
+        self.wait_for_element_selected(elem + Locators.anc + Locators.EL_NODE_CONTAINER)
         self.wait_for_element_present(Locators.BTN_CONFIG)
         self.wait_for_element_present(Locators.BTN_NEW_SITE)
         self.wait_for_element_present(Locators.CONTAINER_PANEL_TITLE_DEVICES + "/*" + contains_subsite_name)
@@ -263,10 +242,6 @@ class DevicesPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, 
     def click_config_button(self):
         self.click_element(Locators.BTN_CONFIG)
         self.wait_for_element_present(Locators.POPUP_CONFIGURATION)
-
-    def click_configuration_popup_close_button(self):
-        self.click_element(Locators.POPUP_CONFIGURATION + "/*" + Locators.BTN_CLOSE)
-        self.wait_for_element_not_present(Locators.POPUP_CONFIGURATION)
 
     def click_configuration_popup_system_button_close(self):
         self.click_element(Locators.POPUP_CONFIGURATION + "/*" + Locators.SYS_BTN_CLOSE)
@@ -339,7 +314,7 @@ class DevicesPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, 
     def click_columnset_in_column_sets_popup_table_list(self, columsetname):
         columnset_name = "//span[text()='" + columsetname + "']"
         self.click_element(Locators.TREE_GLOBAL_SITE_VIEW + "/*" + columnset_name)
-        self.wait_for_element_selected(columnset_name + Locators.anc + Locators.EL_TABLE_ROW)
+        self.wait_for_element_selected(columnset_name + Locators.anc + Locators.EL_LIST_ROW)
 
     def create_columnset_in_column_sets_popup(self, columnsetname, *param):
         self.click_column_sets_popup_new_button()

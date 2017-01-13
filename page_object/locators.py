@@ -51,19 +51,23 @@ class Locators:
   EL_TAB_BTN                        = "div[contains(@id,'TAB')]"
   EL_CHECKBOX                       = "div[contains(@class,'CheckBox')]"
   EL_TREE_ARROW                     = "div[@data-vwgtype='joint']"
-  EL_TREE_CONTAINER                 = "div[@class='TreeView-Container']"
-  EL_TREE_PADDING                   = "div[@class='TreeView-PaddingContainer']"
-  EL_TREE_NODE                      = "div[contains(@class,'TreeView-RowContainer')]"
-  EL_TREE_SUBNODE                   = "div[@class='TreeView-SubNodesContainer']"
+  # EL_TREE_CONTAINER                 = "div[@class='TreeView-Container']"
+  EL_PADDING_CONTAINER              = "div[contains(@class,'PaddingContainer')]"
+  EL_NODE_CONTAINER                 = "div[@class='TreeView-RowContainer']"
+  EL_SUBNODE_CONTAINER              = "div[@class='TreeView-SubNodesContainer']"
   EL_PAGE_HEADER_PANEL              = "div[@class='Panel-Control'][contains(@style,'85px')]"
-  EL_LEFT_MENU_CONTAINER            = "div[contains(@id,'VWG_')][contains(@style,'translate3d')]"
+  EL_LEFT_MENU_CONTAINER            = "div[contains(@style,'transform')]"
   EL_BUTTONS_BOX                    = "div[contains(@class,'GroupBox-Control')]"
-  EL_TABLE_ROW                      = "tr[contains(@class,'ListView-DataFullRow')]"
+  EL_LIST_ROW                      = "tr[contains(@class,'ListView-DataFullRow')]"
   EL_DROP_DOWN_ARROW                = "img[contains(@src,'DropDown')]"
+  EL_COLLAPSE_ARROW                 = "div[contains(@id,'VWGJOINT')][contains(@style,'LTR0.gif')]"
+  EL_EXPAND_ARROW                   = "div[contains(@id,'VWGJOINT')][contains(@style,'LTR1.gif')]"
+  EL_EMPTY_ARROW                    = "div[contains(@id,'VWGJOINT')][contains(@style,'TreeViewEmpty')]"
 
   '''LOADING ANIMATION XPATH'''
   LOADING_SCREEN_INVISIBLE           = "//div[@id='VWG_LoadingAnimationBox'][contains(@style,'display: none']"
   LOADING_SCREEN_VISIBLE             = "//div[@id='VWG_LoadingAnimationBox'][contains(@style,'display: block']"
+
 
   '''TEXT(TXT) XPATH'''
   TEXT_GLOBAL_SITE_VIEW                    = "//span[text()='Global Site View']"
@@ -222,6 +226,8 @@ class Locators:
   TEXT_IP_ADDRESS_RANGES                   = "//span[text()='IP Address Ranges']"
   TEXT_VREPS                               = "//span[text()='vReps']"
   TEXT_WELCOME_TO_CLOUD_MANAGEMENT_SUITE   = "//span[text()='Welcome To Cloud Management Suite']"
+  TEXT_ADD_right                           = "//span[text()='Add >>']"
+  TEXT_REMOVE_left                         = "//span[text()='<< Remove']"
 
   '''TEXT CONTAINS XPATH'''
   TEXT_CONTAINS_DEFAULT_SITE            = "//span[contains(text(),'Default Site')]"
@@ -233,16 +239,6 @@ class Locators:
   TEXT_CONTAINS_DESCRIPTION             = "//span[contains(text(),'Description:')]"
   TEXT_CONTAINS_COLUMNS                 = "//span[contains(text(),'Columns')]"
 
-  '''CONTAINERS XPATH'''
-  CONTAINER_GLOBAL_SITE_VIEW       = TEXT_GLOBAL_SITE_VIEW + anc + EL_TREE_PADDING + "/div[1]"
-  CONTAINER_ACTIVE_DIRECTORIES     = TEXT_ACTIVE_DIRECTORIES + anc + EL_TREE_PADDING + "/div[2]"
-  CONTAINER_QUERIES                = TEXT_QUERIES + anc + EL_TREE_PADDING + "/div[3]"
-  CONTAINER_GROUPS                 = TEXT_GROUPS + anc + EL_TREE_PADDING + "/div[4]"
-  CONTAINER_PANEL_TITLE_DEVICES    = TEXT_DEVICES + anc + EL_PAGE_HEADER_PANEL
-  CONTAINER_HEADER_DEVICES_LIST    = CONTAINER_PANEL_TITLE_DEVICES + fol + EL_TABEL_HEADER
-  CONTAINER_BODY_DEVICES_LIST      = CONTAINER_PANEL_TITLE_DEVICES + fol + EL_TABLE_BODY
-  # CONTAINER_PATCHES_LIST_VIEW    = "//div[contains(@id,'VWG')][contains(@class,'ListView')]"
-
   '''LEFT MENU LIST'''
   MENU_DEVICES                      = TEXT_DEVICES + anc + EL_LEFT_MENU_CONTAINER + LEFT_MENU_VISIBLE
   MENU_ADMINISTRATION               = TEXT_ADMINISTRATION + anc + EL_LEFT_MENU_CONTAINER + LEFT_MENU_VISIBLE
@@ -251,6 +247,18 @@ class Locators:
   MENU_SOFT_AND_PATCH_MANAGER       = TEXT_SOFTWARE_AND_PATCH_MANAGER + anc + EL_LEFT_MENU_CONTAINER + LEFT_MENU_VISIBLE
   MENU_PASSWORD_RESET               = TEXT_PASSWORD_RESET + anc + EL_LEFT_MENU_CONTAINER + LEFT_MENU_VISIBLE
 
+  '''CONTAINERS XPATH'''
+  CONTAINER_GLOBAL_SITE_VIEW       = MENU_DEVICES + dec + EL_PADDING_CONTAINER + "/div[1]"
+  print CONTAINER_GLOBAL_SITE_VIEW
+  CONTAINER_ACTIVE_DIRECTORIES     = MENU_DEVICES + dec + EL_PADDING_CONTAINER + "/div[2]"
+  print CONTAINER_ACTIVE_DIRECTORIES
+  CONTAINER_QUERIES                = MENU_DEVICES + dec + EL_PADDING_CONTAINER + "/div[3]"
+  CONTAINER_GROUPS                 = MENU_DEVICES + dec + EL_PADDING_CONTAINER + "/div[4]"
+  CONTAINER_PANEL_TITLE_DEVICES    = TEXT_DEVICES + anc + EL_PAGE_HEADER_PANEL
+  CONTAINER_HEADER_DEVICES_LIST    = CONTAINER_PANEL_TITLE_DEVICES + fol + EL_TABEL_HEADER
+  CONTAINER_BODY_DEVICES_LIST      = CONTAINER_PANEL_TITLE_DEVICES + fol + EL_TABLE_BODY
+  # CONTAINER_PATCHES_LIST_VIEW    = "//div[contains(@id,'VWG')][contains(@class,'ListView')]"
+
   '''GROUP BOX XPATH'''
   BUTTONS_BOX_DISPLAY               = TEXT_BUTTONS_BOX_DISPLAY + anc + EL_BUTTONS_BOX
   BUTTONS_BOX_ALIASES               = TEXT_BUTTONS_BOX_ALIASES + anc + EL_BUTTONS_BOX
@@ -258,16 +266,16 @@ class Locators:
 
   '''TREES XPATH'''
   TREE_GLOBAL_SITE_VIEW        = CONTAINER_GLOBAL_SITE_VIEW + "/div[@class='TreeView-SubNodesContainer']"
-  TREE_ACTIVE_DERICTORIES      = CONTAINER_ACTIVE_DIRECTORIES + ch + EL_TREE_SUBNODE
-  TREE_QUERIES                 = CONTAINER_QUERIES + ch + EL_TREE_SUBNODE
-  TREE_GROUPS                  = CONTAINER_GROUPS + ch + EL_TREE_SUBNODE
+  TREE_ACTIVE_DERICTORIES      = CONTAINER_ACTIVE_DIRECTORIES + ch + EL_SUBNODE_CONTAINER
+  TREE_QUERIES                 = CONTAINER_QUERIES + ch + EL_SUBNODE_CONTAINER
+  TREE_GROUPS                  = CONTAINER_GROUPS + ch + EL_SUBNODE_CONTAINER
 
   '''LABELS XPATH'''
-  LABEL_GLOBAL_SITE_VIEW       = CONTAINER_GLOBAL_SITE_VIEW + ch + EL_TREE_NODE
-  LABEL_ACTIVE_DIRECTORIES     = CONTAINER_ACTIVE_DIRECTORIES + ch + EL_TREE_NODE
-  LABEL_QUERIES                = CONTAINER_QUERIES + ch + EL_TREE_NODE
-  LABEL_GROUPS                 = CONTAINER_GROUPS + ch + EL_TREE_NODE
-  LABEL_DEFAULT_SITE           = TREE_GLOBAL_SITE_VIEW + "/div/div/*" + TEXT_DEFAULT_SITE + anc + EL_TREE_NODE
+  LABEL_GLOBAL_SITE_VIEW       = CONTAINER_GLOBAL_SITE_VIEW + "/" + EL_NODE_CONTAINER
+  LABEL_ACTIVE_DIRECTORIES     = CONTAINER_ACTIVE_DIRECTORIES + ch + EL_NODE_CONTAINER
+  LABEL_QUERIES                = CONTAINER_QUERIES + ch + EL_NODE_CONTAINER
+  LABEL_GROUPS                 = CONTAINER_GROUPS + ch + EL_NODE_CONTAINER
+  LABEL_DEFAULT_SITE           = TREE_GLOBAL_SITE_VIEW + "/div/div/*" + TEXT_DEFAULT_SITE + anc + EL_NODE_CONTAINER
 
   '''SITES XPATH'''
   SITE_GLOBAL_SITE_VIEW           = "//span[text()='Global Site View']"
@@ -318,8 +326,11 @@ class Locators:
   BTN_EDIT_GROUP               = "//img[@alt='Edit Group']"
   BTN_EDIT_FOLDER              = "//img[@alt='Edit Folder']"
   BTN_ADD_MEMBERS              = "//span[text()='Add Members']"
+  BTN_ADD_right                   = TEXT_ADD_right + anc + EL_BUTTON
   BTN_DELETE_MEMBERS           = TEXT_DELETE_MEMBERS + anc + EL_BUTTON
   BTN_HOME                     = "//img[@alt='Home']"
+  BTN_ARROW_UP                 = "//td[contains(@style,'arrow_up')]" + anc + EL_BUTTON
+  BTN_ARROW_DOWN               = "//td[contains(@style,'arrow_down')]" + anc + EL_BUTTON
   BTN_HOME_DROP_DOWN_ARROW     = BTN_HOME + fol + EL_DROP_DOWN_ARROW
   BTN_INVENTORY                = "//img[@alt='Inventory']"
   BTN_INVENTORY_DROP_DOWN      = BTN_INVENTORY + fol + EL_DROP_DOWN_ARROW
@@ -376,10 +387,10 @@ class Locators:
   BTN_WMI_EXPLORER_2           = "//span[text()='WMI Explorer']"
   BTN_REGISTRY_VIEWER_1        = "//img[@alt='Registry Viewer']"
   BTN_REGISTRY_VIEWER_2        = "//span[text()='Registry Viewer']"
-  BTN_EVENT_VEIWER_1           = "//img[@alt='Event Viewer']"
-  BTN_EVENT_VEIWER_2           = "//span[text()='Event Viewer']"
-  BTN_REMOTE_CONTROL_1         = "//img[@alt='Remote Control']"
-  BTN_REMOTE_CONTROL_2         = "//span[text()='Remote Control']"
+  BTN_EVENT_VEIWER             = "//img[@alt='Event Viewer']"
+  BTN_EVENT_VEIWER_by_text     = "//span[text()='Event Viewer']"
+  BTN_REMOTE_CONTROL           = "//img[@alt='Remote Control']"
+  BTN_REMOTE_CONTROL_by_text   = "//span[text()='Remote Control']"
   BTN_PATCH_MANAGER_1          = "//img[@alt='Patch Manager']"
   BTN_PATCH_MANAGER_2          = "//span[text()='Patch Manager']"
   BTN_MOVE_DEVICE_1            = "//img[@alt='Move Device']"
@@ -406,6 +417,7 @@ class Locators:
   BTN_PURGE_OLDER_ENTRIES_NOW  = "//span[text()='Purge older entries now']"
   BTN_DELETE_ALL_AUDIT_LOGS    = "//span[text()='Delete all audit logs']"
   BTN_REMOVE                   = "//span[text()='Remove']"
+  BTN_REMOVE_left              = TEXT_REMOVE_left + anc + EL_BUTTON
   BTN_ICON_NEXT                = "//img[contains(@src,'right-double')]"
   BTN_ICON_PREVIOUS            = "//img[contains(@src,'left-double')]"
   BTN_EDIT_OR_CREATE           = "//img[@alt='Edit/ Create']"
@@ -421,8 +433,6 @@ class Locators:
   SYS_BTN_NUMERIC_UP           = "//div[@class=' NumericUpDown-UpCell']"
   SYS_BTN_NUMERIC_DOWN         = "//div[@class='NumericUpDown-DownCell']"
   SYS_BTN_DROP_DOWN            = "//div[contains(@class,'ButtonContainer')]"
-  SYS_TREE_ARROW_COLLAPSE      = SYS_TREE_ARROW + ARROW_COLLAPSE
-  SYS_TREE_ARROW_EXPAND        = SYS_TREE_ARROW + ARROW_EXPAND
 
   '''POPUP XPATH'''
   POPUP                          = "//div[contains(@id,'WRP')][last()]"
@@ -546,18 +556,7 @@ class Locators:
   CB_ENFORCE_TWO_FACTOR_FOR_ALL_USERS = "//span[text()='Enforce two factor authentication for ALL users']" + anc + EL_CHECKBOX
   CB_ALLOW_STORE_TWO_FACTOR_IN_COOKIE = "//span[text()='Allow users to store their two-factor login in a cookie']" + anc + EL_CHECKBOX
   CB_PROMT_REMOTE_USER_CONTROL      = "//span[text()='Prompt remote user to accept or deny control']" + anc + EL_CHECKBOX
-  #
+
   # sitename = "TC#____"
   # subsitename = "TC#____-01"
-  # site_name = "//span[text()='" + sitename + "']"
-  # subsite_name = "//span[text() = '" + subsitename + "']"
-  # elem = site_name + fol + EL_CHILD_SITE + "/*" + subsite_name
-  # print elem
-  # new = TREE_GLOBAL_SITE_VIEW + "/*" + site_name
-  # print new
-  #
-  # expand = "//span[text()='" + sitename + "']/following::div" + ARROW_EXPAND
-  # print expand
-  #
-  # n = site_name + fol + subsite_name
-  # print n
+

@@ -1,6 +1,7 @@
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium import webdriver
 import time
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
@@ -11,6 +12,19 @@ from locators import Locators
 
 class Base(object):
 
+    #CONSTANTS
+    FIELD_USERNAME = Locators.FIELD_USERNAME
+    FIELD_PASSWORD = Locators.FIELD_PASSWORD
+    LOADING_SCREEN_VISIBLE = Locators.LOADING_SCREEN_VISIBLE
+    POPUP_CONFIGURATION = Locators.POPUP
+    POPUP_SYSTEM_BUTTON_CLOSE = Locators.POPUP + "/*" + Locators.SYS_BTN_CLOSE
+    DISABLED = Locators.DISABLED
+    SELECTED = Locators.SELECTED
+    BUTTON_SIGN_IN = Locators.BTN_SIGN_IN
+    EL_EXPAND_ARROW = Locators.EL_EXPAND_ARROW
+    EL_COLLAPSE_ARROW = Locators.EL_COLLAPSE_ARROW
+    EL_EMPTY_ARROW = Locators.EL_EMPTY_ARROW
+
     def __init__(self, driver, base_url=Settings.baseUrl):
         self.base_url = base_url
         self.driver = driver
@@ -18,20 +32,21 @@ class Base(object):
         self.timeout_request = 2
         self.wait = WebDriverWait(self.driver, self.timeout)
         self.wait_request = WebDriverWait(self.driver, self.timeout_request)
-        #CONSTANTS
-        self.LOADING_SCREEN_VISIBLE = Locators.LOADING_SCREEN_VISIBLE
-        self.POPUP = Locators.POPUP
-        self.POPUP_SYSTEM_BUTTON_CLOSE = Locators.POPUP + "/*" + Locators.SYS_BTN_CLOSE
-        self.DISABLED = Locators.DISABLED
-        self.SELECTED = Locators.SELECTED
-    # def open(self):
-    #     self.driver.get(Settings.baseUrl)
-    #     WebDriverWait(self.driver, 120).until(EC.presence_of_element_located((By.XPATH, Locators.BTN_SIGN_IN)))
+
+    def _init_browser(self):
+        pass
+        # self.driver = webdriver.Chrome()
+
+    def open_page(self):
+        self.driver.maximize_window()
+        self.driver.get(Settings.baseUrl)
+        self.wait.until(EC.presence_of_element_located((By.XPATH, self.FIELD_USERNAME)))
+        self.wait.until(EC.presence_of_element_located((By.XPATH, self.FIELD_PASSWORD)))
+        self.wait.until(EC.presence_of_element_located((By.XPATH, self.BUTTON_SIGN_IN)))
 
     def find_element_self(self, locator):
         try:
-            # time.sleep(1)
-            self.wait.until(EC.invisibility_of_element_located((By.XPATH, self.LOADING_SCREEN_VISIBLE)))
+            self.wait.until_not(EC.visibility_of_element_located((By.XPATH, self.LOADING_SCREEN_VISIBLE)))
             self.wait.until(EC.presence_of_element_located((By.XPATH, locator)))
             return self.driver.find_element(By.XPATH, locator)
         except (NoSuchElementException, TimeoutException):
@@ -49,10 +64,11 @@ class Base(object):
 
     def click_element(self, locator):
         try:
+            time.sleep(2)
             elem = self.find_element_self(locator)
-            if elem:
+            if elem is not None:
                 elem.click()
-                time.sleep(3)
+                time.sleep(1)
                 self.wait.until(EC.invisibility_of_element_located((By.XPATH, self.LOADING_SCREEN_VISIBLE)))
                 # print "CLICK " + locator
                 return True
@@ -86,7 +102,7 @@ class Base(object):
         try:
             self.wait.until(EC.invisibility_of_element_located((By.XPATH, self.LOADING_SCREEN_VISIBLE)))
             self.wait.until_not(EC.presence_of_element_located((By.XPATH, locator)))
-            self.wait.until(EC.invisibility_of_element_located((By.XPATH, locator)))
+            self.wait.until_not(EC.visibility_of_element_located((By.XPATH, locator)))
             # print locator + " is not presented"
             return True
         except NoSuchElementException:
@@ -141,7 +157,7 @@ class Base(object):
     def is_element_not_present(self, locator):
         try:
             self.wait_request.until_not(EC.presence_of_element_located((By.XPATH, locator)))
-            self.wait.until(EC.invisibility_of_element_located((By.XPATH, locator)))
+            self.wait.until_not(EC.visibility_of_element_located((By.XPATH, locator)))
             # print locator + " element is not present. True"
             return True
         except NoSuchElementException:
@@ -191,7 +207,7 @@ class Base(object):
 
     def close_popups(self):
         self.wait.until(EC.invisibility_of_element_located((By.XPATH, self.LOADING_SCREEN_VISIBLE)))
-        cond = self.is_element_present(self.POPUP)
+        cond = self.is_element_present(self.POPUP_CONFIGURATION)
         i = 0
         while i < 10:
             i += 1
@@ -208,15 +224,6 @@ class Base(object):
     def get_url(self):
         return self.driver.current_url
 
-    # def get_attribute_value(self, locator, expected_attribute_value):
-    #     try:
-    #         region_item = self.find_element_self(locator)
-    #         acutual_attribute_value = region_item.get_attribute('value')
-    #         print acutual_attribute_value
-    #         return True if expected_attribute_value in acutual_attribute_value else False
-    #     except TimeoutException:
-    #         return False
-
     def get_attribute_value(self, locator, attribute_type = "value"):
         try:
             attribute_value = self.find_element_self(locator).get_attribute(attribute_type)
@@ -231,5 +238,26 @@ class Base(object):
         hover = ActionChains(self.driver).move_to_element(element)
         hover.perform()
 
-
+    # def expand_tree(self, locator):
+    #     try:
+    #         cond = self.is_element_present(locator + self.EL_EXPAND_ARROW)
+    #         if cond:
+    #             self.click_element(locator + self.EL_EXPAND_ARROW)
+    #             self.wait_for_element_present(locator + self.EL_COLLAPSE_ARROW)
+    #         else:
+    #             pass
+    #     except (NoSuchElementException, TimeoutException):
+    #         print "Element not found"
+    #
+    # def collapse_tree(self, locator):
+    #     try:
+    #         cond = self.find_element_self(locator + self.EL_COLLAPSE_ARROW)
+    #         if cond:
+    #             self.click_element(locator + self.EL_COLLAPSE_ARROW)
+    #             self.wait_for_element_present(locator + self.EL_EXPAND_ARROW)
+    #         else:
+    #             pass
+    #     except (NoSuchElementException, TimeoutException):
+    #         print "Element not found"
+    #         # print locator + " is not found"
 
