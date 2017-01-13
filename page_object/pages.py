@@ -33,7 +33,6 @@ class LoginPage(Base):
         cond = self.is_element_present(Locators.POPUP_TERMS_AND_CONDITIONS)
         if cond:
             self.click_terms_and_conditions_popup_i_agree_button()
-            return True
         else:
             pass
 
@@ -63,14 +62,11 @@ class LoginPage(Base):
         cond2 = self.is_element_present(Locators.POPUP_SUBSCRIPTION_HAS_EXPIRED)
         if cond1:
             print Settings.username + " or " +  Settings.password + " are incorrect"
-            return False
         elif cond2:
             self.close_subscription_has_expired_popup()
             self.wait_for_element_present(Locators.BTN_EXIT)
-            return True
         else:
             self.wait_for_element_present(Locators.BTN_EXIT)
-            return True
 
     def close_error_popup(self):
         self.click_element(Locators.POPUP_ERROR + "/*" + Locators.SYS_BTN_CLOSE)
@@ -87,10 +83,11 @@ class HomePage(LeftSideMenu, RibbonBar):
         self.click_element(Locators.BTN_ICON_DEVICES)
         self.wait_for_element_present(Locators.MENU_DEVICES)
 
-class DevicesPage(LeftSideMenu, ColumnSetsPopup, RibbonBar):
+
+class DevicesPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, ColumnSetDesignerPopup):
 
     def check_devices_page_loaded(self):
-        cond = self.wait_for_element_present(Locators.MENU_DEVICES)
+        cond = self.is_element_present(Locators.MENU_DEVICES)
         return True if cond else False
 
     def click_global_site_view_label(self):
@@ -126,31 +123,28 @@ class DevicesPage(LeftSideMenu, ColumnSetsPopup, RibbonBar):
 
     def click_default_site_in_global_site_view_tree(self):
         self.click_element(Locators.LABEL_DEFAULT_SITE)
-        cond1 = self.wait_for_element_selected(Locators.LABEL_DEFAULT_SITE)
-        cond2 = self.wait_for_element_present(Locators.CONTAINER_PANEL_TITLE_DEVICES + "/*" + Locators.TEXT_CONTAINS_DEFAULT_SITE)
-        return True if (cond1 and cond2) else False
+        self.wait_for_element_selected(Locators.LABEL_DEFAULT_SITE)
+        self.wait_for_element_present(Locators.CONTAINER_PANEL_TITLE_DEVICES + "/*" + Locators.TEXT_CONTAINS_DEFAULT_SITE)
 
     def click_ribbon_bar_delete_button(self):
         self.click_element(Locators.BTN_DELETE)
         cond = self.wait_for_element_present(Locators.POPUP)
-        cond1 = self.is_element_present(Locators.POPUP_ARE_YOU_SURE)
-        cond2 = self.is_element_present(Locators.POPUP_UNABLE_TO_REMOVE)
-        return True if cond and (cond1 or cond2) else False
+        if cond:
+            self.is_element_present(Locators.POPUP_ARE_YOU_SURE)
+        else:
+            self.is_element_present(Locators.POPUP_UNABLE_TO_REMOVE)
 
     def click_are_you_sure_popup_ok_button(self):
         self.click_element(Locators.POPUP_ARE_YOU_SURE + "/*" + Locators.BTN_OK)
-        cond = self.wait_for_element_not_present(Locators.POPUP_ARE_YOU_SURE)
-        return True if cond else False
+        self.wait_for_element_not_present(Locators.POPUP_ARE_YOU_SURE)
 
     def click_are_you_sure_popup_system_button_close(self):
         self.click_element(Locators.POPUP_ARE_YOU_SURE + "/*" + Locators.SYS_BTN_CLOSE)
-        cond = self.wait_for_element_not_present(Locators.POPUP_ARE_YOU_SURE)
-        return True if cond else False
+        self.wait_for_element_not_present(Locators.POPUP_ARE_YOU_SURE)
 
     def click_unable_to_remove_popup_ok_button(self):
         self.click_element(Locators.POPUP_UNABLE_TO_REMOVE + "/*" + Locators.BTN_Ok)
-        cond = self.wait_for_element_not_present(Locators.POPUP_UNABLE_TO_REMOVE)
-        return True if cond else False
+        self.wait_for_element_not_present(Locators.POPUP_UNABLE_TO_REMOVE)
 
     def delete_site_if_exists(self, sitename):
         cond = self.is_element_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
@@ -159,7 +153,6 @@ class DevicesPage(LeftSideMenu, ColumnSetsPopup, RibbonBar):
             self.click_ribbon_bar_delete_button()
             self.click_are_you_sure_popup_ok_button()
             self.wait_for_element_not_present(Locators.POPUP_ARE_YOU_SURE)
-            return True
         else:
             pass
 
@@ -167,8 +160,8 @@ class DevicesPage(LeftSideMenu, ColumnSetsPopup, RibbonBar):
         self.click_site_in_global_site_view_tree(sitename)
         self.click_ribbon_bar_delete_button()
         self.click_are_you_sure_popup_ok_button()
-        cond = self.wait_for_element_not_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
-        return True if cond else False
+        self.wait_for_element_not_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
+        # return True if cond else False
 
     def click_site_name_popup_cancel_button(self):
         self.click_element(Locators.POPUP_SITE_NAME + "/*" + Locators.BTN_CANCEL)
@@ -177,41 +170,47 @@ class DevicesPage(LeftSideMenu, ColumnSetsPopup, RibbonBar):
 
     def click_error_popup_ok_button(self):
         self.click_element(Locators.POPUP_ERROR + "/*" + Locators.BTN_Ok)
-        cond = self.wait_for_element_not_present(Locators.POPUP_ERROR)
-        return True if cond else False
+        self.wait_for_element_not_present(Locators.POPUP_ERROR)
 
     def click_site_expand_button(self, sitename):
-        # expand = "//span[text()='" + sitename + "']/ancestor::div[contains(@id,'VWGNODE')]/" + Locators.SYS_TREE_ARROW_EXPAND
-        site_name = "//span[text()='" + sitename + "']"
-        expand = site_name + Locators.fol + "div" + Locators.EXPAND
+        expand = "//span[text()='" + sitename + "']/ancestor::div[contains(@id,'VWGNODE')]/" + Locators.SYS_TREE_ARROW_EXPAND
+        # site_name = "//span[text()='" + sitename + "']"
+        # expand = site_name + Locators.fol + "div" + Locators.ARROW_EXPAND
         self.click_element(expand)
         self.wait_for_element_not_present(EC.presence_of_element_located((By.XPATH, expand)))
 
     def expand_site_tree(self, sitename):
-        site_name = "//span[text()='" + sitename + "']"
-        expand = site_name + Locators.fol + "div" + Locators.EXPAND
-        cond = self.is_element_present(expand)
-        if cond:
-            self.click_site_expand_button(expand)
+        elem = "//span[text()='" + sitename + "']/ancestor::" + Locators.EL_TREE_ARROW
+        cond1 = self.is_element_present(elem + Locators.ARROW_EMPTY)
+        cond2 = self.is_element_present(elem + Locators.ARROW_EXPAND)
+        if cond1:
+            pass
+        elif cond2:
+            self.click_site_expand_button(elem)
         else:
             pass
 
     def expand_default_site_tree(self):
-        expand = Locators.LABEL_DEFAULT_SITE + Locators.SYS_TREE_ARROW_EXPAND
-        cond = self.is_element_present(expand)
-        if cond:
-            self.click_site_expand_button(expand)
+        elem = Locators.LABEL_DEFAULT_SITE + Locators.SYS_TREE_ARROW
+        cond1 = self.is_element_present(elem + Locators.ARROW_EMPTY)
+        cond2 = self.is_element_present(elem + Locators.ARROW_EXPAND)
+        if cond1:
+            pass
+        elif cond2:
+            self.click_site_expand_button(elem)
         else:
             pass
 
     def expand_global_site_view_tree(self):
-        expand = Locators.LABEL_GLOBAL_SITE_VIEW + Locators.SYS_TREE_ARROW_EXPAND
-        cond = self.is_element_present(expand)
-        if cond:
-            self.click_site_expand_button(expand)
+        elem = Locators.LABEL_GLOBAL_SITE_VIEW + Locators.SYS_TREE_ARROW
+        cond1 = self.is_element_present(elem + Locators.ARROW_EMPTY)
+        cond2 = self.is_element_present(elem + Locators.ARROW_EXPAND)
+        if cond1:
+            pass
+        elif cond2:
+            self.click_site_expand_button(elem)
         else:
             pass
-
 
     def create_new_site(self, sitename):
         self.click_global_site_view_label()
@@ -221,30 +220,15 @@ class DevicesPage(LeftSideMenu, ColumnSetsPopup, RibbonBar):
         self.check_site_is_in_global_site_view_tree(sitename)
 
     def create_site_if_not_exists(self, sitename):
-        site_name = "//span[text()='" + sitename + "']"
-        cond = self.is_element_not_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*" + site_name)
+        cond = self.is_element_not_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
         if cond:
             self.click_global_site_view_label()
             self.click_new_site_button()
             self.enter_text_into_site_name_text_field(sitename)
             self.click_site_name_popup_ok_button()
-            cond1 = self.check_site_is_in_global_site_view_tree(sitename)
-            return True if cond1 else False
+            self.check_site_is_in_global_site_view_tree(sitename)
         else:
             pass
-        # try:
-        #     cond=self.is_element_not_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
-        #     if cond:
-        #         self.click_global_site_view_label()
-        #         self.click_new_site_button()
-        #         self.enter_text_into_site_name_text_field(sitename)
-        #         self.click_site_name_popup_ok_button()
-        #         cond1 = self.check_site_is_in_global_site_view_tree(sitename)
-        #         return True if cond1 else False
-        #     else:
-        #         pass
-        # except NoSuchElementException:
-        #     return False
 
     def create_new_subsite(self, sitename, subsitename):
         self.click_site_in_global_site_view_tree(sitename)
@@ -255,9 +239,7 @@ class DevicesPage(LeftSideMenu, ColumnSetsPopup, RibbonBar):
         self.check_subsite_is_in_parent_site(sitename, subsitename)
 
     def create_subsite_if_not_exists(self, sitename, subsitename):
-        site_name = "//span[text()='" + sitename + "']"
-        subsite_name = "span[text() = '" + subsitename + "']"
-        elem = site_name + Locators.fol + subsite_name
+        elem = "//span[text()='" + sitename + "']/following::span[text() = '" + subsitename + "']"
         self.click_site_in_global_site_view_tree(sitename)
         self.expand_site_tree(sitename)
         cond = self.is_element_not_present(elem)
@@ -266,19 +248,6 @@ class DevicesPage(LeftSideMenu, ColumnSetsPopup, RibbonBar):
             self.check_subsite_is_in_parent_site(sitename, subsitename)
         else:
             pass
-        # try:
-        #     self.click_site_in_global_site_view_tree(sitename)
-        #     self.expand_site_tree(sitename)
-        #     cond = self.is_element_not_present(
-        #         "//span[text()='" + sitename + "']/following::span[text()='" + subsitename + "']")
-        #     if cond:
-        #         self.create_new_site(subsitename)
-        #         cond1 = self.check_subsite_is_in_parent_site(sitename, subsitename)
-        #         return True if cond1 else False
-        #     else:
-        #         pass
-        # except NoSuchElementException:
-        #     return False
 
     def click_subsite_in_site_tree(self, sitename, subsitename):
         site_name = "//span[text()='" + sitename + "']"
@@ -294,7 +263,6 @@ class DevicesPage(LeftSideMenu, ColumnSetsPopup, RibbonBar):
     def click_config_button(self):
         self.click_element(Locators.BTN_CONFIG)
         self.wait_for_element_present(Locators.POPUP_CONFIGURATION)
-
 
     def click_configuration_popup_close_button(self):
         self.click_element(Locators.POPUP_CONFIGURATION + "/*" + Locators.BTN_CLOSE)
@@ -319,10 +287,6 @@ class DevicesPage(LeftSideMenu, ColumnSetsPopup, RibbonBar):
         self.click_element(Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_VREPS)
         self.wait_for_element_selected(Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_VREPS)
 
-    def click_configuration_popup_site_tab_column_set_new_button(self):
-        self.click_element(Locators.POPUP_CONFIGURATION + "/*" + Locators.BTN_NEW_by_text)
-        self.wait_for_element_present(Locators.POPUP_COLUMN_SET_DESIGNER)
-
     def click_column_set_popup_system_button_close(self):
         self.click_element(Locators.POPUP_COLUMN_SET_DESIGNER + "/*" + Locators.SYS_BTN_CLOSE)
         self.wait_for_element_not_present(Locators.POPUP_COLUMN_SET_DESIGNER)
@@ -338,25 +302,10 @@ class DevicesPage(LeftSideMenu, ColumnSetsPopup, RibbonBar):
         cond = self.is_element_present(site_name + Locators.fol + subsite_name)
         return True if cond else False
 
-    def check_name_text_field_input_value(self):
-        elem = Locators.POPUP_CONFIGURATION + "/*" + Locators.FIELD_
-        actual_attribute_value = self.get_attribute_value(elem, "value")
-        print ("\n" + "The actual Name text field value of the attribute 'value' is: " + actual_attribute_value + "\n")
-        return actual_attribute_value
-        # try:
-        #     a = self.find_element_self(Locators.POPUP_CONFIGURATION + "/*" + Locators.FIELD).get_attribute(value)
-        #     print "The actual Name text field value of the attribute 'value' is " + a
-        #     return a
-        # except NoSuchElementException:
-        #     return None
-        # elem = self.find_element_self(Locators.POPUP_CONFIGURATION + Locators.FIELD)
-        # cond = self.get_attribute_value(elem, "value")
-        # return True if expected_attribue_value == cond else False
-
     # def create_column_sets_from_ribbon_bar(self, columnsetname):
     #     self.click_global_site_view_label()
     #     self.click_ribbon_bar_view_tab()
-    #     self.click_ribbon_bar_view_tab_edit_or_create_button()
+    #     self.click_button_edit_or_create()
     #     self.delete_columnset_in_column_sets_popup_if_exist(columnsetname)
     #     self.create_columnset_in_column_sets_popup(columnsetname)
     #     self.click_column_sets_popup_ok_button()
@@ -366,7 +315,7 @@ class DevicesPage(LeftSideMenu, ColumnSetsPopup, RibbonBar):
         self.is_element_selected(Locators.TAB_VIEW)
         self.is_element_present(Locators.BUTTONS_BOX_DISPLAY)
 
-    def click_ribbon_bar_view_tab_edit_or_create_button(self):
+    def click_button_edit_or_create(self):
         self.click_element(Locators.BTN_EDIT_OR_CREATE)
         self.is_element_present(Locators.POPUP_COLUMN_SETS)
 

@@ -14,7 +14,7 @@ class Base(object):
     def __init__(self, driver, base_url=Settings.baseUrl):
         self.base_url = base_url
         self.driver = driver
-        self.timeout = 120
+        self.timeout = 30
         self.timeout_request = 2
         self.wait = WebDriverWait(self.driver, self.timeout)
         self.wait_request = WebDriverWait(self.driver, self.timeout_request)
@@ -51,9 +51,8 @@ class Base(object):
         try:
             elem = self.find_element_self(locator)
             if elem:
-                time.sleep(1)
                 elem.click()
-                time.sleep(2)
+                time.sleep(3)
                 self.wait.until(EC.invisibility_of_element_located((By.XPATH, self.LOADING_SCREEN_VISIBLE)))
                 # print "CLICK " + locator
                 return True

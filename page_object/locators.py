@@ -23,9 +23,9 @@ class Locators:
   DISABLED                   = "[contains(@class,'Disabled')]"
   VISIBLE                    = "[@data-vwgvisible='1']"
   INVISIBLE                  = "[@data-vwgvisible='0']"
-  COLLAPSE                   = "[contains(@style,'LTR0')]"
-  EXPAND                     = "[contains(@style,'LTR1')]"
-  EMPTY                      = "[contains(@style,'TreeViewEmpty')]"
+  ARROW_COLLAPSE             = "[contains(@style,'LTR0')]"
+  ARROW_EXPAND               = "[contains(@style,'LTR1')]"
+  ARROW_EMPTY                = "[contains(@style,'TreeViewEmpty')]"
   PARENT_SITE                = "[contains(@style,'11LTR')]"
   CHILD_SITE                 = "[contains(@style,'10LTR')]"
   COLOR_WHITE                = "[contains(@style,'color:White')]"
@@ -50,6 +50,7 @@ class Locators:
   EL_TABLE_BODY                     = "div[contains(@id,'VWGLVBODY')]"
   EL_TAB_BTN                        = "div[contains(@id,'TAB')]"
   EL_CHECKBOX                       = "div[contains(@class,'CheckBox')]"
+  EL_TREE_ARROW                     = "div[@data-vwgtype='joint']"
   EL_TREE_CONTAINER                 = "div[@class='TreeView-Container']"
   EL_TREE_PADDING                   = "div[@class='TreeView-PaddingContainer']"
   EL_TREE_NODE                      = "div[contains(@class,'TreeView-RowContainer')]"
@@ -233,10 +234,10 @@ class Locators:
   TEXT_CONTAINS_COLUMNS                 = "//span[contains(text(),'Columns')]"
 
   '''CONTAINERS XPATH'''
-  CONTAINER_GLOBAL_SITE_VIEW       = TEXT_GLOBAL_SITE_VIEW + anc + EL_TREE_PADDING + ch + "div[1]"
-  CONTAINER_ACTIVE_DIRECTORIES     = TEXT_ACTIVE_DIRECTORIES + anc + EL_TREE_PADDING + ch + "div[2]"
-  CONTAINER_QUERIES                = TEXT_QUERIES + anc + EL_TREE_PADDING + ch + "div[3]"
-  CONTAINER_GROUPS                 = TEXT_GROUPS + anc + EL_TREE_PADDING + ch + "div[4]"
+  CONTAINER_GLOBAL_SITE_VIEW       = TEXT_GLOBAL_SITE_VIEW + anc + EL_TREE_PADDING + "/div[1]"
+  CONTAINER_ACTIVE_DIRECTORIES     = TEXT_ACTIVE_DIRECTORIES + anc + EL_TREE_PADDING + "/div[2]"
+  CONTAINER_QUERIES                = TEXT_QUERIES + anc + EL_TREE_PADDING + "/div[3]"
+  CONTAINER_GROUPS                 = TEXT_GROUPS + anc + EL_TREE_PADDING + "/div[4]"
   CONTAINER_PANEL_TITLE_DEVICES    = TEXT_DEVICES + anc + EL_PAGE_HEADER_PANEL
   CONTAINER_HEADER_DEVICES_LIST    = CONTAINER_PANEL_TITLE_DEVICES + fol + EL_TABEL_HEADER
   CONTAINER_BODY_DEVICES_LIST      = CONTAINER_PANEL_TITLE_DEVICES + fol + EL_TABLE_BODY
@@ -256,7 +257,7 @@ class Locators:
   BUTTONS_BOX_COLUMN_SETS           = TEXT_BUTTONS_BOX_COLUMN_SETS + anc + EL_BUTTONS_BOX
 
   '''TREES XPATH'''
-  TREE_GLOBAL_SITE_VIEW        = CONTAINER_GLOBAL_SITE_VIEW + ch + EL_TREE_SUBNODE
+  TREE_GLOBAL_SITE_VIEW        = CONTAINER_GLOBAL_SITE_VIEW + "/div[@class='TreeView-SubNodesContainer']"
   TREE_ACTIVE_DERICTORIES      = CONTAINER_ACTIVE_DIRECTORIES + ch + EL_TREE_SUBNODE
   TREE_QUERIES                 = CONTAINER_QUERIES + ch + EL_TREE_SUBNODE
   TREE_GROUPS                  = CONTAINER_GROUPS + ch + EL_TREE_SUBNODE
@@ -420,8 +421,8 @@ class Locators:
   SYS_BTN_NUMERIC_UP           = "//div[@class=' NumericUpDown-UpCell']"
   SYS_BTN_NUMERIC_DOWN         = "//div[@class='NumericUpDown-DownCell']"
   SYS_BTN_DROP_DOWN            = "//div[contains(@class,'ButtonContainer')]"
-  SYS_TREE_ARROW_COLLAPSE      = SYS_TREE_ARROW + COLLAPSE
-  SYS_TREE_ARROW_EXPAND        = SYS_TREE_ARROW + EXPAND
+  SYS_TREE_ARROW_COLLAPSE      = SYS_TREE_ARROW + ARROW_COLLAPSE
+  SYS_TREE_ARROW_EXPAND        = SYS_TREE_ARROW + ARROW_EXPAND
 
   '''POPUP XPATH'''
   POPUP                          = "//div[contains(@id,'WRP')][last()]"
@@ -545,18 +546,18 @@ class Locators:
   CB_ENFORCE_TWO_FACTOR_FOR_ALL_USERS = "//span[text()='Enforce two factor authentication for ALL users']" + anc + EL_CHECKBOX
   CB_ALLOW_STORE_TWO_FACTOR_IN_COOKIE = "//span[text()='Allow users to store their two-factor login in a cookie']" + anc + EL_CHECKBOX
   CB_PROMT_REMOTE_USER_CONTROL      = "//span[text()='Prompt remote user to accept or deny control']" + anc + EL_CHECKBOX
-
-  sitename = "TC#____"
-  subsitename = "TC#____-01"
-  site_name = "//span[text()='" + sitename + "']"
-  subsite_name = "//span[text() = '" + subsitename + "']"
-  elem = site_name + fol + EL_CHILD_SITE + "/*" + subsite_name
-  print elem
-  new = TREE_GLOBAL_SITE_VIEW + "/*" + site_name
-  print new
-
-  expand = "//span[text()='" + sitename + "']/following::div" + EXPAND
-  print expand
-
-  n = site_name + fol + subsite_name
-  print n
+  #
+  # sitename = "TC#____"
+  # subsitename = "TC#____-01"
+  # site_name = "//span[text()='" + sitename + "']"
+  # subsite_name = "//span[text() = '" + subsitename + "']"
+  # elem = site_name + fol + EL_CHILD_SITE + "/*" + subsite_name
+  # print elem
+  # new = TREE_GLOBAL_SITE_VIEW + "/*" + site_name
+  # print new
+  #
+  # expand = "//span[text()='" + sitename + "']/following::div" + ARROW_EXPAND
+  # print expand
+  #
+  # n = site_name + fol + subsite_name
+  # print n
