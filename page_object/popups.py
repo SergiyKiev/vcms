@@ -36,7 +36,7 @@ class ColumnSetsPopup(Base):
         return True if cond else False
 
     def click_help_icon(self):
-        self.click_element(Locators.POPUP_COLUMN_SETS + "/*" + Locators.BTN_ICON_HELP)
+        self.click_element(Locators.POPUP_COLUMN_SETS + "/*" + Locators.ICON_HELP)
 
     def click_is_default_table_header(self):
         self.click_element(Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_TABEL_HEADER + "/*" + Locators.TEXT_CONTAINS_COLUMN_SETS)
@@ -57,14 +57,14 @@ class ConfigurationPopup(Base):
     TAB_PANEL = Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_PANEL
     TEXT_FIELD_NAME = Locators.POPUP_CONFIGURATION + "/*" + Locators.FIELD_
     BUTTON_CLOSE = Locators.POPUP_CONFIGURATION + "/*" + Locators.BTN_CLOSE
-    BUTTON_ICON_HELP = Locators.POPUP_CONFIGURATION + "/*" + Locators.BTN_ICON_HELP
+    ICON_HELP = Locators.POPUP_CONFIGURATION + "/*" + Locators.ICON_HELP
     BUTTON_NEW = Locators.POPUP_CONFIGURATION + "/*" + Locators.BTN_NEW_by_text
     POPUP_CONFIGURATION = Locators.POPUP_CONFIGURATION
     POPUP_COLUMN_SET_DESIGNER = Locators.POPUP_COLUMN_SET_DESIGNER
     SYSTEM_BUTTON_CLOSE = Locators.POPUP_CONFIGURATION + "/*" + Locators.SYS_BTN_CLOSE
 
     def check_configuration_popup_loaded(self):
-        cond = self.is_element_present(self.TAB_PANEL)
+        cond = self.is_element_present(self.POPUP_CONFIGURATION)
         return True if cond else False
 
     def check_name_text_feild_disabled(self):
@@ -80,7 +80,7 @@ class ConfigurationPopup(Base):
         self.is_element_present(self.POPUP_COLUMN_SET_DESIGNER)
 
     def click_icon_help(self):
-        self.click_element(self.BUTTON_ICON_HELP)
+        self.click_element(self.ICON_HELP)
 
     def click_system_button_close(self):
         self.click_element(self.SYSTEM_BUTTON_CLOSE)
@@ -91,6 +91,10 @@ class ConfigurationPopup(Base):
         actual_attribute_value = self.get_attribute_value(elem, "value")
         print ("The actual Name text field value of the attribute 'value' is: " + actual_attribute_value)
         return actual_attribute_value
+
+    def enter_text_into_name_text_field(self, sitename):
+        self.find_element_self(self.TEXT_FIELD_NAME).send_keys(sitename)
+        self.click_element(self.TEXT_FIELD_NAME)
 
 
 class NewSitePopup(Base):

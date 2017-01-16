@@ -4,7 +4,7 @@ import wgetter
 
 # This method works only if PyCharm is running with the admin cridentials (run PyCharm as administrator)
 
-file_name = wgetter.download('https://testteamdev.cloudmanagementsuite.com/WebService/api/v1/Downloads/vRepSetup.msi',
+file_name = wgetter.download('https://testteamtest.cloudmanagementsuite.com/WebService/api/v1/Downloads/vRepSetup.msi',
                              outdir='C:\\')
 # os.system('msiexec /i %s /qn' % 'D:\\vRepSetup-testteamdev.msi')
 p = subprocess.call('msiexec /i %s /qn' % ('C:\\vRepSetup-testteamdev.msi'), shell=True)

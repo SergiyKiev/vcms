@@ -29,7 +29,7 @@ class Locators:
   PARENT_SITE                = "[contains(@style,'11LTR')]"
   CHILD_SITE                 = "[contains(@style,'10LTR')]"
   COLOR_WHITE                = "[contains(@style,'color:White')]"
-  LEFT_MENU_VISIBLE          = "[contains(@style,'translate3d(0px, 0px, 0px)')]"
+  LEFT_SIDE_MENU_VISIBLE     = "[contains(@style,'translate3d(0px, 0px, 0px)')]"
   LABEL                      = "[contains(@class,'Label')]"
   TAB                        = "[contains(@class,'Tab')]"
   PAGE_HEADER_TEXT           = "[contains(@class,'PageHeaderText')]"
@@ -53,16 +53,16 @@ class Locators:
   EL_TREE_ARROW                     = "div[@data-vwgtype='joint']"
   # EL_TREE_CONTAINER                 = "div[@class='TreeView-Container']"
   EL_PADDING_CONTAINER              = "div[contains(@class,'PaddingContainer')]"
-  EL_NODE_CONTAINER                 = "div[@class='TreeView-RowContainer']"
-  EL_SUBNODE_CONTAINER              = "div[@class='TreeView-SubNodesContainer']"
+  EL_NODE_CONTAINER                 = "div[contains(@class,'RowContainer')]"
+  EL_SUBNODE_CONTAINER              = "div[contains(@class,'SubNodesContainer')]"
   EL_PAGE_HEADER_PANEL              = "div[@class='Panel-Control'][contains(@style,'85px')]"
   EL_LEFT_MENU_CONTAINER            = "div[contains(@style,'transform')]"
   EL_BUTTONS_BOX                    = "div[contains(@class,'GroupBox-Control')]"
-  EL_LIST_ROW                      = "tr[contains(@class,'ListView-DataFullRow')]"
+  EL_LIST_ROW                       = "tr[contains(@class,'ListView-DataFullRow')]"
   EL_DROP_DOWN_ARROW                = "img[contains(@src,'DropDown')]"
-  EL_COLLAPSE_ARROW                 = "div[contains(@id,'VWGJOINT')][contains(@style,'LTR0.gif')]"
-  EL_EXPAND_ARROW                   = "div[contains(@id,'VWGJOINT')][contains(@style,'LTR1.gif')]"
-  EL_EMPTY_ARROW                    = "div[contains(@id,'VWGJOINT')][contains(@style,'TreeViewEmpty')]"
+  EL_COLLAPSE_ARROW                 = "div[contains(@style,'LTR0.gif')]"
+  EL_EXPAND_ARROW                   = "div[contains(@style,'LTR1.gif')]"
+  EL_EMPTY_ARROW                    = "div[contains(@style,'TreeViewEmpty')]"
 
   '''LOADING ANIMATION XPATH'''
   LOADING_SCREEN_INVISIBLE           = "//div[@id='VWG_LoadingAnimationBox'][contains(@style,'display: none']"
@@ -240,20 +240,22 @@ class Locators:
   TEXT_CONTAINS_COLUMNS                 = "//span[contains(text(),'Columns')]"
 
   '''LEFT MENU LIST'''
-  MENU_DEVICES                      = TEXT_DEVICES + anc + EL_LEFT_MENU_CONTAINER + LEFT_MENU_VISIBLE
-  MENU_ADMINISTRATION               = TEXT_ADMINISTRATION + anc + EL_LEFT_MENU_CONTAINER + LEFT_MENU_VISIBLE
-  MENU_TASKS                        = TEXT_TASKS + anc + EL_LEFT_MENU_CONTAINER + LEFT_MENU_VISIBLE
-  MENU_REPORTING                    = TEXT_REPORTING + anc + EL_LEFT_MENU_CONTAINER + LEFT_MENU_VISIBLE
-  MENU_SOFT_AND_PATCH_MANAGER       = TEXT_SOFTWARE_AND_PATCH_MANAGER + anc + EL_LEFT_MENU_CONTAINER + LEFT_MENU_VISIBLE
-  MENU_PASSWORD_RESET               = TEXT_PASSWORD_RESET + anc + EL_LEFT_MENU_CONTAINER + LEFT_MENU_VISIBLE
+  # LEFT_SIDE_MENU_DEVICES                      = TEXT_DEVICES + anc + EL_LEFT_MENU_CONTAINER + MENU_IS_VISIBLE
+  # LEFT_SIDE_MENU_DEVICES                      = TEXT_DEVICES + anc + EL_LEFT_MENU_CONTAINER
+  LEFT_SIDE_MENU_DEVICES                   = "//span[text()='Devices']/ancestor::div[contains(@style,'transform')]"
+  # LEFT_SIDE_MENU_ADMINISTRATION            = TEXT_ADMINISTRATION + anc + EL_LEFT_MENU_CONTAINER
+  LEFT_SIDE_MENU_ADMINISTRATION            = "//span[text()='Administration']/ancestor::div[contains(@style,'transform')]"
+  LEFT_SIDE_MENU_TASKS                     = TEXT_TASKS + anc + EL_LEFT_MENU_CONTAINER
+  LEFT_SIDE_MENU_REPORTING                 = TEXT_REPORTING + anc + EL_LEFT_MENU_CONTAINER
+  LEFT_SIDE_MENU_SOFT_AND_PATCH_MANAGER    = TEXT_SOFTWARE_AND_PATCH_MANAGER + anc + EL_LEFT_MENU_CONTAINER
+  LEFT_SIDE_MENU_PASSWORD_RESET            = TEXT_PASSWORD_RESET + anc + EL_LEFT_MENU_CONTAINER
 
   '''CONTAINERS XPATH'''
-  CONTAINER_GLOBAL_SITE_VIEW       = MENU_DEVICES + dec + EL_PADDING_CONTAINER + "/div[1]"
-  print CONTAINER_GLOBAL_SITE_VIEW
-  CONTAINER_ACTIVE_DIRECTORIES     = MENU_DEVICES + dec + EL_PADDING_CONTAINER + "/div[2]"
-  print CONTAINER_ACTIVE_DIRECTORIES
-  CONTAINER_QUERIES                = MENU_DEVICES + dec + EL_PADDING_CONTAINER + "/div[3]"
-  CONTAINER_GROUPS                 = MENU_DEVICES + dec + EL_PADDING_CONTAINER + "/div[4]"
+  # CONTAINER_GLOBAL_SITE_VIEW      = TEXT_GLOBAL_SITE_VIEW + anc + EL_PADDING_CONTAINER + "/div[1]"
+  CONTAINER_GLOBAL_SITE_VIEW        = LEFT_SIDE_MENU_DEVICES + dec + EL_PADDING_CONTAINER + "/div[1]"
+  CONTAINER_ACTIVE_DIRECTORIES     = LEFT_SIDE_MENU_DEVICES + dec + EL_PADDING_CONTAINER + "/div[2]"
+  CONTAINER_QUERIES                = LEFT_SIDE_MENU_DEVICES + dec + EL_PADDING_CONTAINER + "/div[3]"
+  CONTAINER_GROUPS                 = LEFT_SIDE_MENU_DEVICES + dec + EL_PADDING_CONTAINER + "/div[4]"
   CONTAINER_PANEL_TITLE_DEVICES    = TEXT_DEVICES + anc + EL_PAGE_HEADER_PANEL
   CONTAINER_HEADER_DEVICES_LIST    = CONTAINER_PANEL_TITLE_DEVICES + fol + EL_TABEL_HEADER
   CONTAINER_BODY_DEVICES_LIST      = CONTAINER_PANEL_TITLE_DEVICES + fol + EL_TABLE_BODY
@@ -265,7 +267,7 @@ class Locators:
   BUTTONS_BOX_COLUMN_SETS           = TEXT_BUTTONS_BOX_COLUMN_SETS + anc + EL_BUTTONS_BOX
 
   '''TREES XPATH'''
-  TREE_GLOBAL_SITE_VIEW        = CONTAINER_GLOBAL_SITE_VIEW + "/div[@class='TreeView-SubNodesContainer']"
+  TREE_GLOBAL_SITE_VIEW        = CONTAINER_GLOBAL_SITE_VIEW + "/" + EL_SUBNODE_CONTAINER
   TREE_ACTIVE_DERICTORIES      = CONTAINER_ACTIVE_DIRECTORIES + ch + EL_SUBNODE_CONTAINER
   TREE_QUERIES                 = CONTAINER_QUERIES + ch + EL_SUBNODE_CONTAINER
   TREE_GROUPS                  = CONTAINER_GROUPS + ch + EL_SUBNODE_CONTAINER
@@ -346,7 +348,7 @@ class Locators:
   BTN_SCAN_SELECTED            = "//span[text()='Scan Selected']"
   BTN_INSTALL_SELECTED         = "//span[text()='Install Selected']"
   BTN_ICON_SEARCH              = "//img[contains(@src,'06-magnify.2xw')]"
-  BTN_ICON_HELP                = "//img[contains(@src,'About')]"
+  ICON_HELP                = "//img[contains(@src,'About')]"
   BTN_ICON_EXPORT              = "//img[contains(@src,'212-action2')]"
   BTN_ICON_REFRESH             = "//img[contains(@src,'02-redo.2x')]"
   BTN_RESET_TO_DEFAULT         = "//span[text()='Reset to default']"
@@ -559,4 +561,5 @@ class Locators:
 
   # sitename = "TC#____"
   # subsitename = "TC#____-01"
-
+  # s = "//" + EL_PAGE_HEADER_PANEL + CONTAINER_PANEL_TITLE_DEVICES + "/*" + TEXT_DEVICES
+  # print s
