@@ -9,6 +9,7 @@ class Variables(object):
     parent_site_name        = "Site #9118"
     subsite_1_name          = parent_site_name + "-01"
     subsite_2_name          = parent_site_name + "-02"
-
+    columns_list1           = ["Device Name", "OS Name", "Version", "IP Address"]
+    columns_list2           = ["Device Name", "Device ID", "Domain", "Site", "User Name"]
 
 

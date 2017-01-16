@@ -63,6 +63,11 @@ class Locators:
   EL_COLLAPSE_ARROW                 = "div[contains(@style,'LTR0.gif')]"
   EL_EXPAND_ARROW                   = "div[contains(@style,'LTR1.gif')]"
   EL_EMPTY_ARROW                    = "div[contains(@style,'TreeViewEmpty')]"
+  EL_DROP_DOWN_BUTTON               = "div[@class='ComboBox-Button']"
+  EL_DROP_DOWN_LIST                 = "div[@class='ComboBox-PopupWindow']"
+  EL_DROP_DOWN_TABLE                = "div[contains(@class,'ComboBox-ItemTable')]"
+  EL_DROP_DOWN_ITEM                 = "tr[contains(@class,'ComboBox-Item')]"
+  EL_DROP_DOWN_CONTAINER            = "div[contains(@class,'ComboBox-Container')]"
 
   '''LOADING ANIMATION XPATH'''
   LOADING_SCREEN_INVISIBLE           = "//div[@id='VWG_LoadingAnimationBox'][contains(@style,'display: none']"
@@ -231,6 +236,8 @@ class Locators:
 
   '''TEXT CONTAINS XPATH'''
   TEXT_CONTAINS_DEFAULT_SITE            = "//span[contains(text(),'Default Site')]"
+  TEXT_CONTAINS_DEFAULT_WIDTH           = "//span[contains(text(),'Default Width')]"
+  TEXT_CONTAINS_AGGREGATE               = "//span[contains(text(),'Aggregate')]"
   TEXT_CONTAINS_GLOBAL_SITE_VIEW        = "//span[contains(text(),'Global Site View')]"
   TEXT_CONTAINS_COLUMN_SETS             = "//span[contains(text(),'Column Sets')]"
   TEXT_CONTAINS_SITE_NAME               = "//span[contains(text(),'Site') and contains(text(),'Name')]"
@@ -251,14 +258,14 @@ class Locators:
   LEFT_SIDE_MENU_PASSWORD_RESET            = TEXT_PASSWORD_RESET + anc + EL_LEFT_MENU_CONTAINER
 
   '''CONTAINERS XPATH'''
-  # CONTAINER_GLOBAL_SITE_VIEW      = TEXT_GLOBAL_SITE_VIEW + anc + EL_PADDING_CONTAINER + "/div[1]"
-  CONTAINER_GLOBAL_SITE_VIEW        = LEFT_SIDE_MENU_DEVICES + dec + EL_PADDING_CONTAINER + "/div[1]"
+  # CONTAINER_GLOBAL_SITE_VIEW     = TEXT_GLOBAL_SITE_VIEW + anc + EL_PADDING_CONTAINER + "/div[1]"
+  CONTAINER_GLOBAL_SITE_VIEW       = LEFT_SIDE_MENU_DEVICES + dec + EL_PADDING_CONTAINER + "/div[1]"
   CONTAINER_ACTIVE_DIRECTORIES     = LEFT_SIDE_MENU_DEVICES + dec + EL_PADDING_CONTAINER + "/div[2]"
   CONTAINER_QUERIES                = LEFT_SIDE_MENU_DEVICES + dec + EL_PADDING_CONTAINER + "/div[3]"
   CONTAINER_GROUPS                 = LEFT_SIDE_MENU_DEVICES + dec + EL_PADDING_CONTAINER + "/div[4]"
   CONTAINER_PANEL_TITLE_DEVICES    = TEXT_DEVICES + anc + EL_PAGE_HEADER_PANEL
-  CONTAINER_HEADER_DEVICES_LIST    = CONTAINER_PANEL_TITLE_DEVICES + fol + EL_TABEL_HEADER
-  CONTAINER_BODY_DEVICES_LIST      = CONTAINER_PANEL_TITLE_DEVICES + fol + EL_TABLE_BODY
+  DEVICES_LIST_HEADER              = CONTAINER_PANEL_TITLE_DEVICES + fol + EL_TABEL_HEADER
+  DEVICES_LIST_BODY                = CONTAINER_PANEL_TITLE_DEVICES + fol + EL_TABLE_BODY
   # CONTAINER_PATCHES_LIST_VIEW    = "//div[contains(@id,'VWG')][contains(@class,'ListView')]"
 
   '''GROUP BOX XPATH'''
@@ -300,7 +307,8 @@ class Locators:
   BTN_ICON_PASSWORD_RESET      = "//div[@title='Password Reset']"
   BTN_NEW_SITE                 = "//img[@alt='New Site']"
   BTN_NEW_SITE_by_text         = TEXT_NEW_SITE + anc + EL_BUTTON
-  BTN_OK                       = TEXT_OK + anc + EL_BUTTON
+  # BTN_OK                       = TEXT_OK + anc + EL_BUTTON
+  BTN_OK                       = TEXT_OK
   BTN_Ok                       = TEXT_Ok + anc + EL_BUTTON
   BTN_CANCEL                   = "//span[text()='Cancel']"
   BTN_I_AGREE                  = "//span[text()='I Agree']"
@@ -323,12 +331,12 @@ class Locators:
   BTN_NEW                      = "//img[@alt='New']"
   BTN_NEW_by_text              = "//span[text()='New']"
   BTN_NEW_DROP_DOWN            = BTN_NEW + fol + EL_DROP_DOWN_ARROW
-  BTN_EDIT_1                   = "//img[@alt='Edit']"
-  BTN_EDIT_2                   = "//span[text()='Edit']"
+  BTN_EDIT                     = "//img[@alt='Edit']"
+  BTN_EDIT_by_text             = "//span[text()='Edit']"
   BTN_EDIT_GROUP               = "//img[@alt='Edit Group']"
   BTN_EDIT_FOLDER              = "//img[@alt='Edit Folder']"
   BTN_ADD_MEMBERS              = "//span[text()='Add Members']"
-  BTN_ADD_right                   = TEXT_ADD_right + anc + EL_BUTTON
+  BTN_ADD_right                = TEXT_ADD_right + anc + EL_BUTTON
   BTN_DELETE_MEMBERS           = TEXT_DELETE_MEMBERS + anc + EL_BUTTON
   BTN_HOME                     = "//img[@alt='Home']"
   BTN_ARROW_UP                 = "//td[contains(@style,'arrow_up')]" + anc + EL_BUTTON
@@ -353,7 +361,6 @@ class Locators:
   BTN_ICON_REFRESH             = "//img[contains(@src,'02-redo.2x')]"
   BTN_RESET_TO_DEFAULT         = "//span[text()='Reset to default']"
   BTN_CONFIRM                  = "//span[text()='Confirm']"
-  BTN_EDIT                     = "//img[@alt='Edit']"
   BTN_TOP                      = "//span[text()='Top']"
   BTN_UP                       = "//span[text()='Up']"
   BTN_DOWN                     = "//span[text()='Down']"
@@ -434,7 +441,7 @@ class Locators:
   SYS_BTN_FIRST                = "//div[contains(@class,'FirstButton')]"
   SYS_BTN_NUMERIC_UP           = "//div[@class=' NumericUpDown-UpCell']"
   SYS_BTN_NUMERIC_DOWN         = "//div[@class='NumericUpDown-DownCell']"
-  SYS_BTN_DROP_DOWN            = "//div[contains(@class,'ButtonContainer')]"
+  SYS_BTN_DROP_DOWN            = "//div[@class='ComboBox-Button']"
 
   '''POPUP XPATH'''
   POPUP                          = "//div[contains(@id,'WRP')][last()]"
@@ -559,7 +566,16 @@ class Locators:
   CB_ALLOW_STORE_TWO_FACTOR_IN_COOKIE = "//span[text()='Allow users to store their two-factor login in a cookie']" + anc + EL_CHECKBOX
   CB_PROMT_REMOTE_USER_CONTROL      = "//span[text()='Prompt remote user to accept or deny control']" + anc + EL_CHECKBOX
 
-  # sitename = "TC#____"
-  # subsitename = "TC#____-01"
-  # s = "//" + EL_PAGE_HEADER_PANEL + CONTAINER_PANEL_TITLE_DEVICES + "/*" + TEXT_DEVICES
-  # print s
+
+
+  if __name__ == '__main__':
+    sitename = "TC#____"
+    subsitename = "TC#____-01"
+    s = POPUP_CONFIGURATION + "/following::" + EL_DROP_DOWN_ITEM
+    print s
+    x = POPUP_CONFIGURATION + fol + EL_DROP_DOWN_LIST + "/*//span[text()='Test IK']"
+    print x
+    y = POPUP_CONFIGURATION + dec + EL_DROP_DOWN_CONTAINER + "/*//span[text()='Test IK']"
+    print y
+    l = CONTAINER_PANEL_TITLE_DEVICES + fol + EL_TABLE_BODY
+    print l

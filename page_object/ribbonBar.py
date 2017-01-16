@@ -2,6 +2,7 @@ from base import Base
 from locators import Locators
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
+from popups import *
 
 class RibbonBar(Base):
 
@@ -10,10 +11,15 @@ class RibbonBar(Base):
     TAB_VIEW = Locators.TAB_VIEW
     BUTTON_EDIT_OR_CREATE = Locators.BTN_EDIT_OR_CREATE
 
-    def click_tab_view(self):
+    # def click_tab_view(self):
+    #     self.click_element(self.TAB_VIEW)
+    #     self.wait_for_element_selected(self.TAB_VIEW)
+    #     self.wait_for_element_present(self.BUTTONS_BOX_DISPLAY)
+
+    def click_ribbon_bar_tab_view(self):
         self.click_element(self.TAB_VIEW)
-        self.wait_for_element_selected(self.TAB_VIEW)
-        self.wait_for_element_present(self.BUTTONS_BOX_DISPLAY)
+        self.is_element_selected(self.TAB_VIEW)
+        self.is_element_present(self.BUTTONS_BOX_DISPLAY)
 
     def click_button_edit_or_create(self):
         self.click_element(self.BUTTON_EDIT_OR_CREATE)
@@ -27,6 +33,6 @@ class RibbonBar(Base):
         self.click_element(Locators.BTN_DELETE)
         cond = self.wait_for_element_present(Locators.POPUP)
         if cond:
-            self.is_element_present(Locators.POPUP_ARE_YOU_SURE)
+            self.is_element_present(AreYouSurePopup.POPUP_ARE_YOU_SURE)
         else:
-            self.is_element_present(Locators.POPUP_UNABLE_TO_REMOVE)
+            self.is_element_present(UnableToRemovePopup.POPUP_UNABLE_TO_REMOVE)

@@ -84,7 +84,7 @@ class HomePage(LeftSideMenu, RibbonBar):
     #     self.wait_for_element_present(Locators.LEFT_SIDE_MENU_DEVICES)
 
 
-class DevicesPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, ColumnSetDesignerPopup):
+class DevicesPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, ColumnSetDesignerPopup, AreYouSurePopup):
 
     def check_devices_page_loaded(self):
         cond = self.is_element_present(self.TITLE_DEVICES)
@@ -109,49 +109,42 @@ class DevicesPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, 
         self.wait_for_element_not_present(Locators.POPUP_SITE_NAME)
 
     def click_site_in_global_site_view_tree(self, sitename):
-        site_name = "//span[text()='" + sitename + "']"
-        contains_site_name = "//span[contains(text(),'" + sitename + "')]"
-        self.click_element(Locators.TREE_GLOBAL_SITE_VIEW + "/*" + site_name)
-        self.wait_for_element_selected(site_name + Locators.anc + Locators.EL_NODE_CONTAINER)
+        elem1 = "//span[text()='" + sitename + "']"
+        elem2 = "//span[contains(text(),'" + sitename + "')]"
+        self.click_element(Locators.TREE_GLOBAL_SITE_VIEW + "/*" + elem1)
+        self.wait_for_element_selected(elem1 + Locators.anc + Locators.EL_NODE_CONTAINER)
         self.wait_for_element_present(Locators.BTN_CONFIG)
         self.wait_for_element_present(Locators.BTN_NEW_SITE)
-        self.wait_for_element_present(Locators.CONTAINER_PANEL_TITLE_DEVICES + "/*" + contains_site_name)
+        self.wait_for_element_present(Locators.CONTAINER_PANEL_TITLE_DEVICES + "/*" + elem2)
 
     def click_default_site_in_global_site_view_tree(self):
         self.click_element(Locators.LABEL_DEFAULT_SITE)
         self.wait_for_element_selected(Locators.LABEL_DEFAULT_SITE)
         self.wait_for_element_present(Locators.CONTAINER_PANEL_TITLE_DEVICES + "/*" + Locators.TEXT_CONTAINS_DEFAULT_SITE)
 
-    def click_are_you_sure_popup_ok_button(self):
-        self.click_element(Locators.POPUP_ARE_YOU_SURE + "/*" + Locators.BTN_OK)
-        self.wait_for_element_not_present(Locators.POPUP_ARE_YOU_SURE)
-
-    def click_are_you_sure_popup_system_button_close(self):
-        self.click_element(Locators.POPUP_ARE_YOU_SURE + "/*" + Locators.SYS_BTN_CLOSE)
-        self.wait_for_element_not_present(Locators.POPUP_ARE_YOU_SURE)
-
-    def click_are_you_sure_popup_cancel_button(self):
-        self.click_element(Locators.POPUP_ARE_YOU_SURE + "/*" + Locators.BTN_CANCEL)
-        self.wait_for_element_not_present(Locators.POPUP_ARE_YOU_SURE)
+    # def click_are_you_sure_popup_button_ok(self):
+    #     self.click_element(Locators.POPUP_ARE_YOU_SURE + "/*" + Locators.BTN_OK)
+    #     self.wait_for_element_not_present(Locators.POPUP_ARE_YOU_SURE)
 
     def click_unable_to_remove_popup_ok_button(self):
         self.click_element(Locators.POPUP_UNABLE_TO_REMOVE + "/*" + Locators.BTN_Ok)
         self.wait_for_element_not_present(Locators.POPUP_UNABLE_TO_REMOVE)
 
     def delete_site_if_exists(self, sitename):
-        cond = self.is_element_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
+        elem = Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']"
+        cond = self.is_element_present(elem)
         if cond:
             self.click_site_in_global_site_view_tree(sitename)
             self.click_delete_button()
-            self.click_are_you_sure_popup_ok_button()
-            self.wait_for_element_not_present(Locators.POPUP_ARE_YOU_SURE)
+            self.click_are_you_sure_popup_button_ok()
+            self.wait_for_element_not_present(elem)
         else:
             pass
 
     def delete_site_from_global_site_view_tree(self, sitename):
         self.click_site_in_global_site_view_tree(sitename)
         self.click_delete_button()
-        self.click_are_you_sure_popup_ok_button()
+        self.click_are_you_sure_popup_button_ok()
         self.wait_for_element_not_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
         # return True if cond else False
 
@@ -176,8 +169,8 @@ class DevicesPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, 
     # def expand_default_site_tree(self):
     #     self.expand_tree(Locators.LABEL_DEFAULT_SITE + "/")
     #
-    def expand_global_site_view_tree(self):
-        self.expand_tree(Locators.LABEL_GLOBAL_SITE_VIEW + "/")
+    # def expand_global_site_view_tree(self):
+    #     self.expand_tree(Locators.LABEL_GLOBAL_SITE_VIEW + "/")
 
     def create_new_site(self, sitename):
         self.click_global_site_view_label()
@@ -258,51 +251,34 @@ class DevicesPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, 
     def check_subsite_is_in_parent_site(self, sitename, subsitename):
         site_name = "//span[text()='" + sitename + "']"
         subsite_name = "span[text() = '" + subsitename + "']"
-        cond = self.is_element_present(site_name + Locators.fol + subsite_name)
+        cond = self.is_element_present(site_name + "/following::" + subsite_name)
         return True if cond else False
 
-    # def create_column_sets_from_ribbon_bar(self, columnsetname):
-    #     self.click_global_site_view_label()
-    #     self.click_ribbon_bar_view_tab()
-    #     self.click_button_edit_or_create()
-    #     self.delete_columnset_in_column_sets_popup_if_exist(columnsetname)
-    #     self.create_columnset_in_column_sets_popup(columnsetname)
-    #     self.click_column_sets_popup_ok_button()
+    def open_column_sets_popup_from_ribbon_bar(self, *columnsetname):
+        self.click_global_site_view_label()
+        self.click_ribbon_bar_tab_view()
+        self.click_button_edit_or_create()
 
-    def click_ribbon_bar_view_tab(self):
-        self.click_element(Locators.TAB_VIEW)
-        self.is_element_selected(Locators.TAB_VIEW)
-        self.is_element_present(Locators.BUTTONS_BOX_DISPLAY)
+    def create_columnset_in_column_sets_popup(self, columnsetname, columns_list):
+        self.click_column_sets_popup_button_new()
+        self.enter_text_into_column_set_designer_popup_text_field_name(columnsetname)
+        self.add_columns_to_column_set_designer_list_view(columns_list)
+        self.click_column_set_designer_popup_button_add(columns_list)
 
-    def click_button_edit_or_create(self):
-        self.click_element(Locators.BTN_EDIT_OR_CREATE)
-        self.is_element_present(Locators.POPUP_COLUMN_SETS)
+    def select_columnset_from_configuration_popup_column_set_dropdown_list(self, columnsetname):
+        self.click_columnset_in_configuration_popup_drop_down_list(columnsetname)
 
-    def click_column_sets_popup_new_button(self):
-        self.click_element(Locators.POPUP_COLUMN_SETS + "/*" + Locators.BTN_NEW)
-        self.is_element_present(Locators.POPUP_COLUMN_SET_DESIGNER)
-
-    def delete_columnset_in_column_sets_popup_if_exist(self, columnsetname):
-        columnset_name = "//span[text()='" + columnsetname + "']"
-        elem = Locators.POPUP_COLUMN_SETS + "/*" + Locators.EL_TABLE_BODY + "/*" + columnset_name
-        cond = self.is_element_present(elem)
-        if cond:
-            self.click_columnset_in_column_sets_popup_table_list(columnsetname)
-            self.click_delete_button()
-            self.click_are_you_sure_popup_ok_button()
-            self.wait_for_element_not_present(Locators.POPUP_ARE_YOU_SURE)
-            return True
-        else:
-            pass
-
-    def click_columnset_in_column_sets_popup_table_list(self, columsetname):
-        columnset_name = "//span[text()='" + columsetname + "']"
-        self.click_element(Locators.TREE_GLOBAL_SITE_VIEW + "/*" + columnset_name)
-        self.wait_for_element_selected(columnset_name + Locators.anc + Locators.EL_LIST_ROW)
-
-    def create_columnset_in_column_sets_popup(self, columnsetname, *param):
-        self.click_column_sets_popup_new_button()
-
+    def check_columns_are_presented_in_devices_list_header(self, columns_list):
+        names = []
+        for columnname in list(columns_list):
+            elem = Locators.DEVICES_LIST_HEADER + "/*//span[text()='" + columnname + "']"
+            cond = self.is_element_present(elem)
+            if cond:
+                names.append(columnname)
+                print names
+            else:
+                pass
+        return True if names == columns_list else False
 
 class AdministrationPage(Base):
     pass

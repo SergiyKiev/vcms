@@ -2,7 +2,6 @@ import unittest
 from selenium import webdriver
 from pages import *
 from locators import Locators
-from settings import Settings
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 import logging
@@ -153,7 +152,7 @@ class SiteConfiguration(unittest.TestCase):
         devices_page.click_config_button()
         self.assertFalse(devices_page.check_configuration_popup_loaded())
         self.assertTrue(devices_page.check_name_text_feild_disabled())
-        self.assertEqual("Global Site View", devices_page.get_name_text_field_value())
+        self.assertEqual("Global Site View", devices_page.get_configuration_popup_name_text_field_value())
         devices_page.click_configuration_popup_system_button_close()
         print ("Test is passed" + "\n")
 
@@ -164,7 +163,7 @@ class SiteConfiguration(unittest.TestCase):
         devices_page.click_config_button()
         self.assertTrue(devices_page.check_configuration_popup_loaded())
         self.assertTrue(devices_page.is_element_disabled(Locators.POPUP_CONFIGURATION + "/*" + Locators.FIELD_))
-        self.assertEqual("Default Site", devices_page.get_name_text_field_value())
+        self.assertEqual("Default Site", devices_page.get_configuration_popup_name_text_field_value())
         devices_page.click_configuration_popup_system_button_close()
         print ("Test is passed" + "\n")
 
@@ -177,7 +176,7 @@ class SiteConfiguration(unittest.TestCase):
         devices_page.click_config_button()
         self.assertTrue(devices_page.is_element_present(Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_PANEL))
         self.assertFalse(devices_page.is_element_disabled(Locators.POPUP_CONFIGURATION + "/*" + Locators.FIELD_))
-        self.assertEqual(sitename, devices_page.get_name_text_field_value())
+        self.assertEqual(sitename, devices_page.get_configuration_popup_name_text_field_value())
         devices_page.click_configuration_popup_system_button_close()
         devices_page.delete_site_from_global_site_view_tree(sitename)
         print ("Test is passed" + "\n")
@@ -236,13 +235,13 @@ class SiteConfiguration_SiteTab(unittest.TestCase):
         devices_page.click_site_in_global_site_view_tree(sitename)
         devices_page.click_config_button()
         self.assertFalse(devices_page.is_element_disabled(Locators.POPUP_CONFIGURATION + "/*" + Locators.FIELD_))
-        self.assertEqual(sitename, devices_page.get_name_text_field_value())
-        devices_page.enter_text_into_name_text_field(modifed)
+        self.assertEqual(sitename, devices_page.get_configuration_popup_name_text_field_value())
+        devices_page.enter_text_into_configuration_popup_name_text_field(modifed)
         devices_page.click_system_button_close()
         self.assertTrue(devices_page.check_site_is_in_global_site_view_tree(sitename + modifed))
         devices_page.click_site_in_global_site_view_tree(sitename + modifed)
         devices_page.click_config_button()
-        self.assertEqual(sitename + modifed, devices_page.get_name_text_field_value())
+        self.assertEqual(sitename + modifed, devices_page.get_configuration_popup_name_text_field_value())
         devices_page.click_system_button_close()
         devices_page.delete_site_from_global_site_view_tree(sitename + modifed)
         devices_page.delete_site_if_exists(sitename)
@@ -253,23 +252,38 @@ class SiteConfiguration_SiteTab(unittest.TestCase):
         devices_page = DevicesPage(self.driver)
         devices_page.click_default_site_in_global_site_view_tree()
         devices_page.click_config_button()
-        devices_page.click_button_new()
-        self.assertTrue(devices_page.is_element_present(Locators.POPUP_COLUMN_SET_DESIGNER))
+        devices_page.click_configuration_popup_button_new()
+        self.assertTrue(devices_page.check_column_set_designer_popup_is_present())
         devices_page.click_column_set_popup_system_button_close()
         devices_page.click_configuration_popup_system_button_close()
         print ("Test is passed" + "\n")
 
-    # def test_configuration_popup_apply_column_set(self):
-    #     print ("\n" + "TC#9239. Devices page. Configuration popup. Apply Column set to the site" + "\n")
-    #     sitename = "Site#9239"
-    #     columnset1 = "ColumnSet#9239-01"
-    #     columnset2 = "ColumnSet#9239-02"
-    #     devices_page = DevicesPage(self.driver)
-    #     devices_page.create_column_sets_from_ribbon_bar(columnset1)
-    #     devices_page.create_column_sets_from_ribbon_bar(columnset2)
-    #     devices_page.create_site_if_not_exists(sitename)
-    #     devices_page.click_site_in_global_site_view_tree(sitename)
-    #     devices_page.click_config_button()
+    def test_configuration_popup_apply_column_set(self):
+        print ("\n" + "TC#9239. Devices page. Configuration popup. Apply Column set to the site" + "\n")
+        sitename = "Site#9239"
+        columnset1 = "ColumnSet#9239-01"
+        columnset2 = "ColumnSet#9239-02"
+        devices_page = DevicesPage(self.driver)
+        devices_page.open_column_sets_popup_from_ribbon_bar()
+        devices_page.delete_columnset_in_column_sets_popup_if_exist(columnset1)
+        devices_page.delete_columnset_in_column_sets_popup_if_exist(columnset2)
+        devices_page.create_columnset_in_column_sets_popup(columnset1, Variables.columns_list1)
+        devices_page.create_columnset_in_column_sets_popup(columnset2, Variables.columns_list2)
+        devices_page.click_column_sets_popup_button_ok()
+        devices_page.create_site_if_not_exists(sitename)
+        devices_page.click_site_in_global_site_view_tree(sitename)
+        devices_page.click_config_button()
+        devices_page.select_columnset_from_configuration_popup_column_set_dropdown_list(columnset1)
+        devices_page.click_configuration_popup_system_button_close()
+        self.assertTrue(devices_page.check_columns_are_presented_in_devices_list_header(Variables.columns_list1))
+        devices_page.click_config_button()
+        devices_page.select_columnset_from_configuration_popup_column_set_dropdown_list(columnset1)
+        devices_page.click_configuration_popup_system_button_close()
+        self.assertTrue(devices_page.check_columns_are_presented_in_devices_list_header(Variables.columns_list1))
+        devices_page.delete_site_from_global_site_view_tree(sitename)
+        print ("Test is passed" + "\n")
+
+
 
     # def tearDown(self):
     #     page = HomePage(self.driver)
@@ -347,7 +361,7 @@ class SiteDeletion(unittest.TestCase):
         devices_page.create_new_site(sitename)
         devices_page.click_site_in_global_site_view_tree(sitename)
         devices_page.click_delete_button()
-        devices_page.click_are_you_sure_popup_ok_button()
+        devices_page.click_are_you_sure_popup_button_ok()
         self.assertFalse(devices_page.check_site_is_in_global_site_view_tree(sitename))
         print ("Test is passed" + "\n")
 
@@ -371,7 +385,7 @@ class SiteDeletion(unittest.TestCase):
         devices_page.create_new_subsite(sitename, subsitename)
         devices_page.click_subsite_in_site_tree(sitename, subsitename)
         devices_page.click_delete_button()
-        devices_page.click_are_you_sure_popup_ok_button()
+        devices_page.click_are_you_sure_popup_button_ok()
         self.assertFalse(devices_page.check_subsite_is_in_parent_site(sitename, subsitename))
         devices_page.delete_site_from_global_site_view_tree(sitename)
         print ("Test is passed" + "\n")
@@ -395,7 +409,7 @@ class SiteDeletion(unittest.TestCase):
         devices_page.create_site_if_not_exists(sitename)
         devices_page.click_site_in_global_site_view_tree(sitename)
         devices_page.click_delete_button()
-        devices_page.click_are_you_sure_popup_cancel_button()
+        devices_page.click_are_you_sure_popup_button_cancel()
         self.assertTrue(devices_page.check_site_is_in_global_site_view_tree(sitename))
         devices_page.delete_site_from_global_site_view_tree(sitename)
         print ("Test is passed" + "\n")
@@ -407,7 +421,7 @@ class SiteDeletion(unittest.TestCase):
         devices_page.create_site_if_not_exists(sitename)
         devices_page.click_site_in_global_site_view_tree(sitename)
         devices_page.click_delete_button()
-        self.assertTrue(devices_page.is_element_present(Locators.POPUP_ARE_YOU_SURE))
+        self.assertTrue(devices_page.check_are_you_sure_popup_is_present())
         devices_page.click_are_you_sure_popup_system_button_close()
         devices_page.delete_site_from_global_site_view_tree(sitename)
         print ("Test is passed" + "\n")
@@ -456,7 +470,7 @@ class SiteDeletion(unittest.TestCase):
     #     devices_page.create_new_site(sitename)
     #     devices_page.click_site_in_global_site_view_tree(sitename)
     #     devices_page.click_delete_button()
-    #     devices_page.click_are_you_sure_popup_ok_button()
+    #     devices_page.click_are_you_sure_popup_button_ok()
     #     self.assertFalse(devices_page.check_site_is_in_global_site_view_tree(sitename))
     #     print ("Test is passed" + "\n")
     #
@@ -479,7 +493,7 @@ class SiteDeletion(unittest.TestCase):
     #     devices_page.create_subsite_if_not_exists(sitename, subsitename)
     #     devices_page.click_subsite_in_site_tree(sitename, subsitename)
     #     devices_page.click_delete_button()
-    #     devices_page.click_are_you_sure_popup_ok_button()
+    #     devices_page.click_are_you_sure_popup_button_ok()
     #     self.assertFalse(devices_page.check_subsite_is_in_parent_site(sitename, subsitename))
     #     devices_page.delete_site_from_global_site_view_tree(sitename)
     #     print ("Test is passed" + "\n")
@@ -515,7 +529,7 @@ class SiteDeletion(unittest.TestCase):
     #     devices_page.click_site_in_global_site_view_tree(sitename)
     #     devices_page.click_delete_button()
     #     self.assertTrue(devices_page.is_element_present(Locators.POPUP_ARE_YOU_SURE))
-    #     devices_page.click_are_you_sure_popup_ok_button()
+    #     devices_page.click_are_you_sure_popup_button_ok()
     #     print ("Test is passed" + "\n")
     #
     # # def tearDown(self):
