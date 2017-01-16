@@ -28,7 +28,7 @@ class Base(object):
     def __init__(self, driver, base_url=Settings.baseUrl):
         self.base_url = base_url
         self.driver = driver
-        self.timeout = 30
+        self.timeout = 120
         self.timeout_request = 2
         self.wait = WebDriverWait(self.driver, self.timeout)
         self.wait_request = WebDriverWait(self.driver, self.timeout_request)
@@ -38,11 +38,14 @@ class Base(object):
         # self.driver = webdriver.Chrome()
 
     def open_page(self):
-        self.driver.maximize_window()
-        self.driver.get(Settings.baseUrl)
-        self.wait.until(EC.presence_of_element_located((By.XPATH, self.FIELD_USERNAME)))
-        self.wait.until(EC.presence_of_element_located((By.XPATH, self.FIELD_PASSWORD)))
-        self.wait.until(EC.presence_of_element_located((By.XPATH, self.BUTTON_SIGN_IN)))
+        try:
+            self.driver.maximize_window()
+            self.driver.get(Settings.baseUrl)
+            self.wait.until(EC.presence_of_element_located((By.XPATH, self.FIELD_USERNAME)))
+            self.wait.until(EC.presence_of_element_located((By.XPATH, self.FIELD_PASSWORD)))
+            self.wait.until(EC.presence_of_element_located((By.XPATH, self.BUTTON_SIGN_IN)))
+        except TimeoutException:
+            print "Page is not loaded"
 
     def find_element_self(self, locator):
         try:
@@ -274,7 +277,7 @@ class Base(object):
         except NoSuchElementException:
                 print "Button Edit for " + locator +  " is not found"
 
-    def click_button_ok(self, locator):
+    def click_ok(self, locator):
         try:
             cond1 = self.is_element_present(locator + "/*" + Locators.BTN_OK)
             cond2 = self.is_element_present(locator + "/*" + Locators.BTN_Ok)

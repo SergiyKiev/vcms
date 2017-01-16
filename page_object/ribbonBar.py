@@ -25,7 +25,7 @@ class RibbonBar(Base):
         self.click_element(self.BUTTON_EDIT_OR_CREATE)
         self.wait_for_element_present(Locators.POPUP_COLUMN_SETS)
 
-    def click_new_site_button(self):
+    def click_button_new_site(self):
         self.click_element(Locators.BTN_NEW_SITE)
         self.wait_for_element_present(Locators.POPUP_SITE_NAME)
 
@@ -36,3 +36,8 @@ class RibbonBar(Base):
             self.is_element_present(AreYouSurePopup.POPUP_ARE_YOU_SURE)
         else:
             self.is_element_present(UnableToRemovePopup.POPUP_UNABLE_TO_REMOVE)
+
+    def click_button_config(self):
+        self.click_element(Locators.BTN_CONFIG)
+        self.wait_for_element_present(Locators.POPUP_CONFIGURATION)
+
