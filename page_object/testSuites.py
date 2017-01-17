@@ -21,13 +21,13 @@ class SiteCreation(unittest.TestCase):
         login_page.open_page()
         login_page.login()
         home_page.close_popups()
-        home_page.open_left_side_menu_devices()
+        home_page.open_menu_devices()
         devices_page.click_global_site_view_label()
 
     def setUp(self):
         home_page = HomePage(self.driver)
         home_page.close_popups()
-        # devices_page = home_page.open_left_side_menu_devices()
+        # devices_page = home_page.open_menu_devices()
         # devices_page.check_devices_page_loaded()
 
     def test_open_site_name_popup(self):
@@ -136,14 +136,14 @@ class SiteConfiguration(unittest.TestCase):
         login_page.open_page()
         login_page.login()
         home_page.close_popups()
-        home_page.open_left_side_menu_devices()
+        home_page.open_menu_devices()
         devices_page.click_global_site_view_label()
 
 
     def setUp(self):
         home_page = HomePage(self.driver)
         home_page.close_popups()
-        # devices_page = home_page.open_left_side_menu_devices()
+        # devices_page = home_page.open_menu_devices()
         # devices_page.check_devices_page_loaded()
 
     def test_open_configuration_popup(self):
@@ -208,28 +208,28 @@ class SiteConfiguration_SiteTab(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         print ("\n" + "Test suite: Site configuration - Site tab (Suite ID: 9234)")
-        print ("\n" + "Login to console. Go to the start point" + "\n")
+        print ("\n" + "Login to console. Go to the start point")
         cls.driver = webdriver.Chrome()
         login_page = LoginPage(cls.driver)
         home_page = HomePage(cls.driver)
         devices_page = DevicesPage(cls.driver)
+        left_side_menu = LeftSideMenu(cls.driver)
         login_page.open_page()
         login_page.login()
         home_page.close_popups()
-        home_page.open_left_side_menu_devices()
+        left_side_menu.open_menu_devices()
         devices_page.click_global_site_view_label()
-
 
     def setUp(self):
         home_page = HomePage(self.driver)
         home_page.close_popups()
-        # devices_page = home_page.open_left_side_menu_devices()
+        # devices_page = home_page.open_menu_devices()
         # devices_page.check_devices_page_loaded()
 
     def test_open_left_side_menus(self):
         left_side_menu = LeftSideMenu(self.driver)
         left_side_menu.open_left_side_menu_home()
-        left_side_menu.open_left_side_menu_devices()
+        left_side_menu.open_menu_devices()
         left_side_menu.open_left_side_menu_administration()
         left_side_menu.open_left_side_menu_tasks()
         left_side_menu.open_left_side_menu_reporting()
@@ -263,8 +263,8 @@ class SiteConfiguration_SiteTab(unittest.TestCase):
         devices_page = DevicesPage(self.driver)
         devices_page.click_default_site_in_global_site_view_tree()
         devices_page.click_button_config()
-        devices_page.click_configuration_popup_button_new()
-        self.assertTrue(devices_page.check_column_set_designer_popup_is_present())
+        devices_page.click_button_new()
+        self.assertTrue(devices_page.check_is_popup_present())
         devices_page.click_column_set_popup_system_button_close()
         devices_page.click_configuration_popup_system_button_close()
         print ("Test is passed" + "\n")
@@ -275,23 +275,28 @@ class SiteConfiguration_SiteTab(unittest.TestCase):
         columnset1 = "ColumnSet#9239-01"
         columnset2 = "ColumnSet#9239-02"
         devices_page = DevicesPage(self.driver)
-        devices_page.open_column_sets_popup_from_ribbon_bar()
-        devices_page.delete_columnset_in_column_sets_popup_if_exist(columnset1)
-        devices_page.delete_columnset_in_column_sets_popup_if_exist(columnset2)
-        devices_page.create_columnset_in_column_sets_popup(columnset1, Variables.columns_list1)
-        devices_page.create_columnset_in_column_sets_popup(columnset2, Variables.columns_list2)
-        devices_page.click_column_sets_popup_button_ok()
-        devices_page.create_site_if_not_exists(sitename)
+        column_sets_popup = ColumnSetsPopup(self.driver)
+        configuration_popup = ConfigurationPopup(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        #Test
+        # devices_page.open_column_sets_popup_from_ribbon_bar()
+        # column_sets_popup.delete_columnset_if_exist(columnset1)
+        # column_sets_popup.delete_columnset_if_exist(columnset2)
+        # column_sets_popup.create_columnset(columnset1, Variables.columns_list1)
+        # column_sets_popup.create_columnset(columnset2, Variables.columns_list2)
+        # column_sets_popup.click_button_ok()
+        # ribbon_bar.click_tab_home()
+        # devices_page.create_site_if_not_exists(sitename)
         devices_page.click_site_in_global_site_view_tree(sitename)
-        devices_page.click_button_config()
+        ribbon_bar.click_button_config()
         devices_page.select_columnset_from_configuration_popup_column_set_dropdown_list(columnset1)
-        devices_page.click_configuration_popup_system_button_close()
+        configuration_popup.click_button_close()
         self.assertTrue(devices_page.check_columns_are_presented_in_devices_list_header(Variables.columns_list1))
-        devices_page.click_button_config()
-        devices_page.select_columnset_from_configuration_popup_column_set_dropdown_list(columnset1)
-        devices_page.click_configuration_popup_system_button_close()
-        self.assertTrue(devices_page.check_columns_are_presented_in_devices_list_header(Variables.columns_list1))
-        devices_page.delete_site_from_global_site_view_tree(sitename)
+        ribbon_bar.click_button_config()
+        devices_page.select_columnset_from_configuration_popup_column_set_dropdown_list(columnset2)
+        configuration_popup.click_button_close()
+        self.assertTrue(devices_page.check_columns_are_presented_in_devices_list_header(Variables.columns_list2))
+        # devices_page.delete_site_from_global_site_view_tree(sitename)
         print ("Test is passed" + "\n")
 
 
@@ -321,14 +326,14 @@ class SiteConfiguration_IpAddressRangesTab(unittest.TestCase):
         login_page.open_page()
         login_page.login()
         home_page.close_popups()
-        home_page.open_left_side_menu_devices()
+        home_page.open_menu_devices()
         devices_page.click_global_site_view_label()
 
 
     def setUp(self):
         home_page = HomePage(self.driver)
         home_page.close_popups()
-        # devices_page = home_page.open_left_side_menu_devices()
+        # devices_page = home_page.open_menu_devices()
         # devices_page.check_devices_page_loaded()
 
     # def tearDown(self):
@@ -354,13 +359,13 @@ class SiteDeletion(unittest.TestCase):
         login_page.open_page()
         login_page.login()
         home_page.close_popups()
-        home_page.open_left_side_menu_devices()
+        home_page.open_menu_devices()
         devices_page.click_global_site_view_label()
 
     def setUp(self):
         home_page = HomePage(self.driver)
         home_page.close_popups()
-        # devices_page = home_page.open_left_side_menu_devices()
+        # devices_page = home_page.open_menu_devices()
         # devices_page.check_devices_page_loaded()
 
     def test_delete_created_site_from_global_site_view_tree(self):
@@ -465,14 +470,14 @@ class SiteDeletion(unittest.TestCase):
     #     login_page.login()
     #     home_page = HomePage(cls.driver)
     #     home_page.close_popups()
-    #     devices_page = home_page.open_left_side_menu_devices()
+    #     devices_page = home_page.open_menu_devices()
     #     devices_page.check_devices_page_loaded()
     #     devices_page.click_global_site_view_label()
     #
     # def setUp(self):
     #     home_page = HomePage(self.driver)
     #     home_page.close_popups()
-    #     # devices_page = home_page.open_left_side_menu_devices()
+    #     # devices_page = home_page.open_menu_devices()
     #     # devices_page.check_devices_page_loaded()
     #
     # def test_delete_created_site_from_global_site_view_tree(self):

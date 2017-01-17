@@ -218,6 +218,7 @@ class Locators:
   TEXT_PASSWORD_RESET                      = "//span[text()='Password Reset']"
   TEXT_QUERY_DESIGNER                      = "//span[text()='Query Designer']"
   TEXT_BUTTONS_BOX_DISPLAY                 = "//div[text()='Display']"
+  TEXT_BUTTONS_BOX_ACTIONS                 = "//div[text()='Actions']"
   TEXT_BUTTONS_BOX_ALIASES                 = "//div[text()='Aliases']"
   TEXT_BUTTONS_BOX_COLUMN_SETS             = "//div[contains(text(),'Column Sets')]"
   TEXT_HOME                                = "//span[text()='Home']"
@@ -246,6 +247,10 @@ class Locators:
   TEXT_CONTAINS_DESCRIPTION             = "//span[contains(text(),'Description:')]"
   TEXT_CONTAINS_COLUMNS                 = "//span[contains(text(),'Columns')]"
 
+
+  '''RIBBON BAR'''
+  RIBBON_BAR_TAB                        = "//div[@class='RibbonBarTabControl-Control']"
+
   '''LEFT MENU LIST'''
   # LEFT_SIDE_MENU_DEVICES                      = TEXT_DEVICES + anc + EL_LEFT_MENU_CONTAINER + MENU_IS_VISIBLE
   # LEFT_SIDE_MENU_DEVICES                      = TEXT_DEVICES + anc + EL_LEFT_MENU_CONTAINER
@@ -269,6 +274,7 @@ class Locators:
   # CONTAINER_PATCHES_LIST_VIEW    = "//div[contains(@id,'VWG')][contains(@class,'ListView')]"
 
   '''GROUP BOX XPATH'''
+  BUTTONS_BOX_ACTIONS              =  TEXT_BUTTONS_BOX_ACTIONS + anc + EL_BUTTONS_BOX
   BUTTONS_BOX_DISPLAY               = TEXT_BUTTONS_BOX_DISPLAY + anc + EL_BUTTONS_BOX
   BUTTONS_BOX_ALIASES               = TEXT_BUTTONS_BOX_ALIASES + anc + EL_BUTTONS_BOX
   BUTTONS_BOX_COLUMN_SETS           = TEXT_BUTTONS_BOX_COLUMN_SETS + anc + EL_BUTTONS_BOX
@@ -442,6 +448,10 @@ class Locators:
   SYS_BTN_NUMERIC_UP           = "//div[@class=' NumericUpDown-UpCell']"
   SYS_BTN_NUMERIC_DOWN         = "//div[@class='NumericUpDown-DownCell']"
   SYS_BTN_DROP_DOWN            = "//div[@class='ComboBox-Button']"
+  SYS_BTN_MAXIMIZE             = "//div[@title='Maximize']"
+  SYS_BTN_MINIMIZE             = "//div[@title='Minimize']"
+  SYS_BTN_RESTORE_DOWN         = "//div[@title='Restore Down']"
+
 
   '''POPUP XPATH'''
   POPUP                          = "//div[contains(@id,'WRP')][last()]"
@@ -579,3 +589,12 @@ class Locators:
     print y
     l = CONTAINER_PANEL_TITLE_DEVICES + fol + EL_TABLE_BODY
     print l
+    h = []
+    for i in Variables.columns_list1:
+      m = DEVICES_LIST_HEADER + "/*//span[text()='" + str(i) + "']"
+      h.append(i)
+      print m
+    print h
+    if h == Variables.columns_list1:
+      print "GOOD"
+    else: print "NOT GOOD"

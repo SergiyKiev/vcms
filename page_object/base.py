@@ -21,15 +21,15 @@ class Base(object):
     DISABLED = Locators.DISABLED
     SELECTED = Locators.SELECTED
     BUTTON_SIGN_IN = Locators.BTN_SIGN_IN
-    # EL_EXPAND_ARROW = Locators.EL_EXPAND_ARROW
-    # EL_COLLAPSE_ARROW = Locators.EL_COLLAPSE_ARROW
-    # EL_EMPTY_ARROW = Locators.EL_EMPTY_ARROW
+    EL_EXPAND_ARROW = Locators.EL_EXPAND_ARROW
+    EL_COLLAPSE_ARROW = Locators.EL_COLLAPSE_ARROW
+    EL_EMPTY_ARROW = Locators.EL_EMPTY_ARROW
 
     def __init__(self, driver, base_url=Settings.baseUrl):
         self.base_url = base_url
         self.driver = driver
         self.timeout = 120
-        self.timeout_request = 2
+        self.timeout_request = 3
         self.wait = WebDriverWait(self.driver, self.timeout)
         self.wait_request = WebDriverWait(self.driver, self.timeout_request)
 
@@ -67,7 +67,7 @@ class Base(object):
 
     def click_element(self, locator):
         try:
-            time.sleep(2)
+            time.sleep(1)
             elem = self.find_element_self(locator)
             if elem is not None:
                 elem.click()
@@ -78,6 +78,22 @@ class Base(object):
         except NoSuchElementException:
             print locator + " is not clickable"
             return False
+
+    # def hover_and_click_element(self, locator):
+    #     try:
+    #         time.sleep(2)
+    #         elem = self.find_element_self(locator)
+    #         if elem is not None:
+    #             actionChains = ActionChains(self.driver)
+    #             actionChains.move_to_element(elem).perform()
+    #             time.sleep(1)
+    #             actionChains.click(elem).perform()
+    #             time.sleep(1)
+    #             self.wait.until(EC.invisibility_of_element_located((By.XPATH, self.LOADING_SCREEN_VISIBLE)))
+    #             return True
+    #     except NoSuchElementException:
+    #         print locator + " is not clickable"
+    #         return False
 
     def wait_for_element_present(self, locator):
         try:
@@ -238,20 +254,22 @@ class Base(object):
 
     def hover(self, locator):
         element = self.find_element_self(locator)
+        self.wait.until(EC.presence_of_element_located((By.XPATH, locator)))
         hover = ActionChains(self.driver).move_to_element(element)
         hover.perform()
 
-    # def expand_tree(self, locator):
-    #     try:
-    #         cond = self.is_element_present(locator + self.EL_EXPAND_ARROW)
-    #         if cond:
-    #             self.click_element(locator + self.EL_EXPAND_ARROW)
-    #             self.wait_for_element_present(locator + self.EL_COLLAPSE_ARROW)
-    #         else:
-    #             pass
-    #     except (NoSuchElementException, TimeoutException):
-    #         print "Element not found"
-    #
+    def expand_tree(self, locator):
+        try:
+            #     cond = self.is_element_present(locator + self.EL_EXPAND_ARROW)
+            element = self.find_element_self(locator)
+            if element is not None:
+                self.driver.execute_script("arguments[0].click();", element)
+                # self.wait_for_element_not_present(locator)
+            else:
+                pass
+        except (NoSuchElementException, TimeoutException):
+            print "Element not found"
+
     # def collapse_tree(self, locator):
     #     try:
     #         cond = self.find_element_self(locator + self.EL_COLLAPSE_ARROW)
@@ -264,34 +282,34 @@ class Base(object):
     #         print "Element not found"
     #         # print locator + " is not found"
 
-    def click_button_edit(self, locator):
-        try:
-            cond1 = self.is_element_present(locator + "/*" + Locators.BTN_EDIT)
-            cond2 = self.is_element_present(locator + "/*" + Locators.BTN_EDIT_by_text)
-            if cond1:
-                self.click_element(locator + "/*" + Locators.BTN_EDIT)
-                self.wait_for_element_not_present(locator)
-            elif cond2:
-                self.click_element(locator + "/*" + Locators.BTN_EDIT_by_text)
-                self.wait_for_element_not_present(locator)
-        except NoSuchElementException:
-                print "Button Edit for " + locator +  " is not found"
+    # def click_button_edit(self, locator):
+    #     try:
+    #         cond1 = self.is_element_present(locator + "/*" + Locators.BTN_EDIT)
+    #         cond2 = self.is_element_present(locator + "/*" + Locators.BTN_EDIT_by_text)
+    #         if cond1:
+    #             self.click_element(locator + "/*" + Locators.BTN_EDIT)
+    #             self.wait_for_element_not_present(locator)
+    #         elif cond2:
+    #             self.click_element(locator + "/*" + Locators.BTN_EDIT_by_text)
+    #             self.wait_for_element_not_present(locator)
+    #     except NoSuchElementException:
+    #             print "Button Edit for " + locator +  " is not found"
 
-    def click_ok(self, locator):
-        try:
-            cond1 = self.is_element_present(locator + "/*" + Locators.BTN_OK)
-            cond2 = self.is_element_present(locator + "/*" + Locators.BTN_Ok)
-            if cond1:
-                self.click_element(locator + "/*" + Locators.BTN_OK)
-                self.wait_for_element_not_present(locator)
-            elif cond2:
-                self.click_element(locator + "/*" + Locators.BTN_Ok)
-                self.wait_for_element_not_present(locator)
-        except NoSuchElementException:
-            print "Button " + locator + "/*" + Locators.BTN_OK + " is not found"
-            print "Button " + locator + "/*" + Locators.BTN_Ok + " is not found"
-
-    def click_sytem_button_close(self, locator):
-        self.click_element(locator + "/*" + Locators.SYS_BTN_CLOSE)
-        self.wait_for_element_not_present(locator)
+    # def click_ok(self, locator):
+    #     try:
+    #         cond1 = self.is_element_present(locator + "/*" + Locators.BTN_OK)
+    #         cond2 = self.is_element_present(locator + "/*" + Locators.BTN_Ok)
+    #         if cond1:
+    #             self.click_element(locator + "/*" + Locators.BTN_OK)
+    #             self.wait_for_element_not_present(locator)
+    #         elif cond2:
+    #             self.click_element(locator + "/*" + Locators.BTN_Ok)
+    #             self.wait_for_element_not_present(locator)
+    #     except NoSuchElementException:
+    #         print "Button " + locator + "/*" + Locators.BTN_OK + " is not found"
+    #         print "Button " + locator + "/*" + Locators.BTN_Ok + " is not found"
+    #
+    # def click_sytem_button_close(self, locator):
+    #     self.click_element(locator + "/*" + Locators.SYS_BTN_CLOSE)
+    #     self.wait_for_element_not_present(locator)
 

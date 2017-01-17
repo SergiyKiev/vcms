@@ -2,6 +2,7 @@ from base import Base
 from locators import Locators
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
+import time
 
 
 class LeftSideMenu(Base):
@@ -75,9 +76,10 @@ class LeftSideMenu(Base):
         except (NoSuchElementException, TimeoutException):
             print "Object not found"
 
-    def open_left_side_menu_devices(self):
+    def open_menu_devices(self):
         try:
-            cond = self.is_element_not_present(self.LEFT_SIDE_MENU_DEVICES + self.MENU_IS_VISIBLE)
+            self.wait_for_element_not_present(Locators.LEFT_SIDE_MENU_DEVICES)
+            cond = self.is_element_not_present(Locators.LEFT_SIDE_MENU_DEVICES + Locators.LEFT_SIDE_MENU_VISIBLE)
             if cond:
                 self.click_icon_devices()
             else:

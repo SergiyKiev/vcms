@@ -13,3 +13,26 @@ class Variables(object):
     columns_list2           = ["Device Name", "Device ID", "Domain", "Site", "User Name"]
 
 
+    if __name__ == '__main__':
+
+        elem = columns_list1
+        e = []
+        for x in elem:
+            e.append(x)
+        print e
+
+        a = columns_list2
+        set = []
+        for y in a:
+            set.append(y)
+        print set
+
+        if e == set:
+            print "NOT GOOD"
+        else:
+            print "GOOD"
+
+
+
+
+

@@ -1,5 +1,6 @@
 from base import Base
 from locators import Locators
+import time
 
 
 class SubscriptionHasExpitredPopup(Base):
@@ -22,7 +23,7 @@ class TermsAndConditionsPopup(Base):
         self.click_element(Locators.POPUP_TERMS_AND_CONDITIONS + "/*" + Locators.BTN_I_AGREE)
         self.wait_for_element_not_present(Locators.POPUP_TERMS_AND_CONDITIONS)
 
-    def close_popup(self):
+    def close_popup_if_exists(self):
         cond = self.is_element_present(Locators.POPUP_TERMS_AND_CONDITIONS)
         if cond:
             self.click_i_agree_button()
@@ -48,21 +49,21 @@ class ColumnSetsPopup(Base):
     TABLE_HEADER_COLUMNS = Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_TABEL_HEADER + "/*" + Locators.TEXT_CONTAINS_COLUMNS
     TABLE_BODY = Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_TABLE_BODY
 
-    def click_column_sets_popup_button_ok(self):
-        self.click_ok(self.POPUP_COLUMN_SETS)
+    def click_button_ok(self):
+        self.click_element(self.POPUP_COLUMN_SETS + "/*" + Locators.BTN_OK)
         # self.wait_for_element_not_present(self.POPUP_COLUMN_SETS)
 
     def click_column_sets_popup_button_cancel(self):
         self.click_element(self.BUTTON_CANCEL)
         self.wait_for_element_not_present(self.POPUP_COLUMN_SETS)
 
-    def click_column_sets_popup_button_new(self):
+    def click_button_new(self):
         self.click_element(Locators.POPUP_COLUMN_SETS + "/*" + Locators.BTN_NEW)
         self.wait_for_element_present(Locators.POPUP_COLUMN_SET_DESIGNER)
 
     def click_column_sets_popup_button_edit(self):
-        self.click_button_edit(self.POPUP_COLUMN_SETS)
-        # self.click_element(Locators.POPUP_COLUMN_SETS + "/*" + Locators.BTN_EDIT)
+        # self.click_button_edit(self.POPUP_COLUMN_SETS)
+        self.click_element(Locators.POPUP_COLUMN_SETS + "/*" + Locators.BTN_EDIT)
         self.wait_for_element_present(Locators.POPUP_COLUMN_SET_DESIGNER)
 
     def click_column_sets_popup_button_copy(self, columnsetname):
@@ -77,8 +78,9 @@ class ColumnSetsPopup(Base):
     def click_column_sets_popup_button_set_as_default(self):
         self.click_element(self.BUTTON_SET_AS_DEFAULT)
 
-    def click_column_sets_popup_system_button_close(self):
-        self.click_sytem_button_close(self.POPUP_COLUMN_SETS)
+    def click_system_button_close(self):
+        self.click_element(self.POPUP_COLUMN_SETS + "/*" + Locators.SYS_BTN_CLOSE)
+        self.wait_for_element_not_present(self.POPUP_COLUMN_SETS)
 
     def click_column_sets_popup_help_icon(self):
         self.click_element(self.ICON_HELP)
@@ -95,22 +97,31 @@ class ColumnSetsPopup(Base):
     def click_column_sets_popup_table_header_columns(self):
         self.click_element(self.TABLE_HEADER_COLUMNS)
 
-    def click_columnset_in_column_sets_popup_table_list(self, columnsetname):
+    def click_columnset_in_table_list(self, columnsetname):
         elem = self.TABLE_BODY + "/*//span[text()='" + columnsetname + "']"
         self.click_element(elem)
         self.wait_for_element_selected(elem + "/ancestor::" + Locators.EL_LIST_ROW)
 
-    def delete_columnset_in_column_sets_popup_if_exist(self, columnsetname):
+    def delete_columnset_if_exist(self, columnsetname):
         elem = self.TABLE_BODY + "/*//span[text()='" + columnsetname + "']"
         cond = self.is_element_present(elem)
         if cond:
-            self.click_columnset_in_column_sets_popup_table_list(elem)
+            self.click_columnset_in_table_list(columnsetname)
             self.click_column_sets_popup_button_delete(columnsetname)
-            AreYouSurePopup.click_ok(AreYouSurePopup.POPUP_ARE_YOU_SURE)
+            are_you_sure_popup = AreYouSurePopup(self.driver)
+            are_you_sure_popup.click_button_yes()
             self.wait_for_element_not_present(elem)
             return True
         else:
             pass
+
+    def create_columnset(self, columnsetname, columns_list):
+        self.click_button_new()
+        column_set_designer = ColumnSetDesignerPopup(self.driver)
+        column_set_designer.click_system_button_maximize()
+        column_set_designer.enter_text_into_text_field_name(columnsetname)
+        column_set_designer.add_columns_to_list_view(columns_list)
+        column_set_designer.click_button_ok()
 
 
 class ConfigurationPopup(Base):
@@ -121,7 +132,7 @@ class ConfigurationPopup(Base):
     BUTTON_CLOSE = Locators.POPUP_CONFIGURATION + "/*" + Locators.BTN_CLOSE
     BUTTON_NEW = Locators.POPUP_CONFIGURATION + "/*" + Locators.BTN_NEW_by_text
     SYSTEM_BUTTON_CLOSE = Locators.POPUP_CONFIGURATION + "/*" + Locators.SYS_BTN_CLOSE
-    SYSTEM_BUTTON_DROP_DOWN = Locators.SYS_BTN_DROP_DOWN
+    SYSTEM_BUTTON_DROP_DOWN = Locators.POPUP_CONFIGURATION + "/*" + Locators.SYS_BTN_DROP_DOWN
     ICON_HELP = Locators.POPUP_CONFIGURATION + "/*" + Locators.ICON_HELP
     DROP_DOWN_LIST = Locators.POPUP_CONFIGURATION + "/following::" + Locators.EL_DROP_DOWN_LIST
     DROP_DOWN_CONTAINER = Locators.POPUP_CONFIGURATION + "/*//" + Locators.EL_DROP_DOWN_CONTAINER
@@ -134,15 +145,15 @@ class ConfigurationPopup(Base):
         cond = self.is_element_disabled(self.TEXT_FIELD_NAME)
         return True if cond else False
 
-    def click_configuration_popup_button_close(self):
+    def click_button_close(self):
         self.click_element(self.BUTTON_CLOSE)
         self.is_element_not_present(self.POPUP_CONFIGURATION)
 
-    def click_configuration_popup_button_new(self):
+    def click_button_new(self):
         self.click_element(self.BUTTON_NEW)
         self.is_element_present(ColumnSetDesignerPopup.POPUP_COLUMN_SET_DESIGNER)
 
-    def click_configuration_popup_icon_help(self):
+    def click_icon_help(self):
         self.click_element(self.ICON_HELP)
 
     def click_system_button_close(self):
@@ -154,8 +165,9 @@ class ConfigurationPopup(Base):
         self.wait_for_element_present(self.DROP_DOWN_LIST)
 
     def click_columnset_in_configuration_popup_drop_down_list(self, columnsetname):
+        self.click_column_set_dropdown_button()
         self.click_element(self.DROP_DOWN_LIST + "/*//span[text()='" + columnsetname + "']")
-        self.wait_for_element_not_present(self.DROP_DOWN_LIST)
+        # self.wait_for_element_not_present(self.DROP_DOWN_LIST)
         self.wait_for_element_present(self.DROP_DOWN_CONTAINER + "/*//span[text()='" + columnsetname + "']")
 
     def get_configuration_popup_name_text_field_value(self):
@@ -207,9 +219,9 @@ class ColumnSetDesignerPopup(Base):
     BUTTON_ARROW_DOWN = POPUP_COLUMN_SET_DESIGNER + "/*" + Locators.BTN_ARROW_DOWN
     # TEXT_FIELD_NAME = Locators.POPUP_COLUMN_SET_DESIGNER + "/*//div[2]/input"
     # TEXT_FIELD_DESCRIPTION = Locators.POPUP_COLUMN_SET_DESIGNER + "/*//div[1]/input"
-    COLUMN_SET_DESIGNER_LEFT_SIDE_TREE = POPUP_COLUMN_SET_DESIGNER + "/*//" + Locators.EL_PADDING_CONTAINER
-    COLUMN_SET_DESIGNER_LEFT_SIDE_SUBNODE = COLUMN_SET_DESIGNER_LEFT_SIDE_TREE + "/*//" + Locators.EL_SUBNODE_CONTAINER
-    COLUMN_SET_DESIGNER_LEFT_SIDE_NODE = COLUMN_SET_DESIGNER_LEFT_SIDE_TREE + "/*//" + Locators.EL_NODE_CONTAINER
+    LEFT_SIDE_TREE = POPUP_COLUMN_SET_DESIGNER + "/*//" + Locators.EL_PADDING_CONTAINER
+    LEFT_SIDE_SUBNODE = LEFT_SIDE_TREE + "/*//" + Locators.EL_SUBNODE_CONTAINER
+    LEFT_SIDE_NODE = LEFT_SIDE_TREE + "/*//" + Locators.EL_NODE_CONTAINER
     ICON_HELP = POPUP_COLUMN_SET_DESIGNER + "/*" + Locators.ICON_HELP
     TABLE_HEADER_COLUMNS = POPUP_COLUMN_SET_DESIGNER + "/*//" + Locators.EL_TABEL_HEADER + "/*" + Locators.TEXT_CONTAINS_COLUMNS
     TABLE_HEADER_DEFAULT_WIDTH = POPUP_COLUMN_SET_DESIGNER + "/*//" + Locators.EL_TABEL_HEADER + "/*" + Locators.TEXT_CONTAINS_DEFAULT_WIDTH
@@ -217,52 +229,80 @@ class ColumnSetDesignerPopup(Base):
     TABLE_BODY = Locators.POPUP_COLUMN_SET_DESIGNER + "/*//" + Locators.EL_TABLE_BODY
     ELEMENT_NODE_CONTAINER = Locators.EL_NODE_CONTAINER
 
-    def check_column_set_designer_popup_is_present(self):
+    def check_is_popup_present(self):
         cond = self.is_element_present(self.POPUP_COLUMN_SET_DESIGNER)
         return True if cond else False
 
-    def click_column_set_designer_popup_button_ok(self):
-        self.click_ok(self.POPUP_COLUMN_SET_DESIGNER)
+    def click_button_ok(self):
+        self.click_element(self.POPUP_COLUMN_SET_DESIGNER + "/*" + Locators.BTN_OK)
+        self.wait_for_element_not_present(self.POPUP_COLUMN_SET_DESIGNER)
 
-    def click_column_set_designer_popup_button_cancel(self):
+    def click_button_cancel(self):
         self.click_element(self.BUTTON_CANCEL)
         self.wait_for_element_not_present(self.POPUP_COLUMN_SET_DESIGNER)
 
-    def click_column_set_designer_popup_button_add(self, columnname):
+    def click_button_add(self, columnname):
         self.click_element(self.BUTTON_ADD)
-        self.wait_for_element_present(self.TABLE_BODY + "/*//span[text()='" + columnname + "']")
+        self.wait_for_element_present(self.TABLE_BODY + "/*//span[contains(text(),'" + columnname + "')]")
 
-    def enter_text_into_column_set_designer_popup_text_field_name(self, columnsetname):
+    def click_system_button_maximize(self):
+        self.click_element(self.POPUP_COLUMN_SET_DESIGNER + "/*" + Locators.SYS_BTN_MAXIMIZE)
+        time.sleep(2)
+        self.wait_for_element_present(Locators.SYS_BTN_RESTORE_DOWN)
+
+
+    def enter_text_into_text_field_name(self, columnsetname):
         self.find_element_self(Locators.POPUP_COLUMN_SET_DESIGNER + "/*//div[2]/input").send_keys(columnsetname)
 
-    def enter_text_into_column_set_designer_popup_text_field_description(self, text):
+    def enter_text_into_text_field_description(self, text):
         self.find_element_self(Locators.POPUP_COLUMN_SET_DESIGNER + "/*//div[1]/input").send_keys(text)
 
-    def click_column_in_column_set_designer_left_side_tree(self, columnname):
-        elem = self.COLUMN_SET_DESIGNER_LEFT_SIDE_SUBNODE + "/*//span[text()='" + columnname + "']"
+    def click_column_in_left_side_tree(self, columnname):
+        elem = self.LEFT_SIDE_SUBNODE + "/*//span[text()='" + columnname + "']"
         self.click_element(elem)
         self.wait_for_element_selected(elem + "/ancestor::" + self.ELEMENT_NODE_CONTAINER)
 
-    def expand_all_column_set_designer_left_side_trees(self):
-        elements = self.find_elements_self(self.COLUMN_SET_DESIGNER_LEFT_SIDE_TREE + "/div")
-        x = []
-        for element in elements:
-            self.find_element_self(self.COLUMN_SET_DESIGNER_LEFT_SIDE_NODE)
-            self.click_element(element)
-            x.append(element)
-            print x
+    def expand_all_left_side_lists(self):
+        elements = self.find_elements_self(self.LEFT_SIDE_TREE + "/div/div/div[contains(@id,'VWGJOINT')]")
+        # print len(elements)
+        # y = []
+        for x in range(0, len(elements)):
+            elem = self.LEFT_SIDE_TREE + "/div[" + str(x + 1) + "]/div/div[contains(@id,'VWGJOINT')]"
+            self.expand_tree(elem)
+            # y.append(x)
+        # print y
+        # # elements = self.find_elements_self(self.COLUMN_SET_DESIGNER_LEFT_SIDE_TREE + "/div/div/div[contains(@id,'VWGJOINT')]/*//span")
+        # # # text = self.find_elements_self(self.COLUMN_SET_DESIGNER_LEFT_SIDE_TREE + "/div/div[contains(@id,'SUBS')]/*//span")
+        # # s = []
+        # # for a in range(1, len(elements)):
+        # #     e = self.COLUMN_SET_DESIGNER_LEFT_SIDE_TREE + "/div[" + str(a) + "]/div/div[contains(@id,'VWGJOINT')]/*//span"
+        # #     h = self.find_element_self(e).text
+        # #     s.append(h)
+        # # print s
+        #     # for b in range(1, len(text)):
+        #     #     j = self.COLUMN_SET_DESIGNER_LEFT_SIDE_TREE + "/div[" + str(b) + "]/div[contains(@id,'SUBS')]/*//span"
+        #     #     l = self.find_element_self(j).text
+        #     #     print l
+        #     #     s.append(b)
+        #     #     print s
+        # # e = self.find_element_self(elem)
+        # # location = e.location
+        # # size = e.size
+        # # print location
+        # # print size
+        # # elem = self.COLUMN_SET_DESIGNER_LEFT_SIDE_TREE + "/div[2]/div/div[contains(@id,'JOINT')]"
+        # # cond = self.wait_for_element_present(elem + "/following::div[contains(@id,'SUBS')][contains(@style,'display: block')]")
+        # # print cond
 
-
-    def add_columns_to_column_set_designer_list_view(self, columns_list = None):
-        self.expand_all_column_set_designer_left_side_trees()
+    def add_columns_to_list_view(self, columns_list):
+        self.expand_all_left_side_lists()
         for columnname in list(columns_list):
-            self.click_column_in_column_set_designer_left_side_tree(columnname)
-            self.expand_all_column_set_designer_left_side_trees()
-            self.click_column_set_designer_popup_button_add(columnname)
-            self.check_columnname_is_in_column_set_designer_list_view(columnname)
+            self.click_column_in_left_side_tree(columnname)
+            self.click_button_add(columnname)
+            # self.check_is_columnname_in_list_view(columnname)
 
-    def check_columnname_is_in_column_set_designer_list_view(self, columnname):
-        cond = self.is_element_present(self.COLUMN_SET_DESIGNER_LEFT_SIDE_TREE + "/*//span[text()='" + columnname + "']")
+    def check_is_columnname_in_list_view(self, columnname):
+        cond = self.is_element_present(self.TABLE_BODY + "/*//span[contains(text(),'" + columnname + "')]")
         return True if cond else False
 
 
@@ -271,7 +311,8 @@ class AreYouSurePopup(Base):
     POPUP_ARE_YOU_SURE = Locators.POPUP_ARE_YOU_SURE
     BUTTON_CANCEL = Locators.POPUP_ARE_YOU_SURE + "/*" + Locators.BTN_CANCEL
     BUTTON_NO = Locators.POPUP_ARE_YOU_SURE + "/*" + Locators.BTN_NO
-    # BUTTON_OK = Locators.POPUP_ARE_YOU_SURE + "/*" + Locators.BTN_OK
+    BUTTON_YES = Locators.POPUP_ARE_YOU_SURE + "/*" + Locators.BTN_YES
+    BUTTON_OK = Locators.POPUP_ARE_YOU_SURE + "/*" + Locators.BTN_OK
     # SYSTEM_BUTTON_CLOSE = Locators.POPUP_ARE_YOU_SURE + "/*" + Locators.SYS_BTN_CLOSE
 
     def check_is_popup_present(self):
@@ -279,13 +320,13 @@ class AreYouSurePopup(Base):
         return True if cond else False
 
     def click_button_ok(self):
-        self.click_ok(self.POPUP_ARE_YOU_SURE)
+        self.click_element(self.BUTTON_OK)
         # self.click_element(Locators.POPUP_ARE_YOU_SURE + "/*" + Locators.BTN_OK)
-        # self.wait_for_element_not_present(self.POPUP_ARE_YOU_SURE)
+        self.wait_for_element_not_present(self.POPUP_ARE_YOU_SURE)
 
     def click_system_button_close(self):
-        self.click_sytem_button_close(self.POPUP_ARE_YOU_SURE)
-        # self.wait_for_element_not_present(self.POPUP_ARE_YOU_SURE)
+        self.click_element(self.POPUP_ARE_YOU_SURE + "/*" + Locators.SYS_BTN_CLOSE)
+        self.wait_for_element_not_present(self.POPUP_ARE_YOU_SURE)
 
     def click_button_cancel(self):
         self.click_element(self.BUTTON_CANCEL)
@@ -293,6 +334,10 @@ class AreYouSurePopup(Base):
 
     def click_button_no(self):
         self.click_element(self.BUTTON_NO)
+        self.wait_for_element_not_present(Locators.POPUP_ARE_YOU_SURE)
+
+    def click_button_yes(self):
+        self.click_element(self.BUTTON_YES)
         self.wait_for_element_not_present(Locators.POPUP_ARE_YOU_SURE)
 
 
@@ -307,7 +352,7 @@ class UnableToRemovePopup(Base):
         return True if cond else False
 
     def click_unable_to_remove_popup_button_ok(self):
-        self.click_ok(self.POPUP_UNABLE_TO_REMOVE)
+        self.click_element(self.POPUP_UNABLE_TO_REMOVE + "/*" + Locators.BTN_OK)
         self.wait_for_element_not_present(self.POPUP_UNABLE_TO_REMOVE)
 
     def click_unable_to_remove_popup_system_button_close(self):

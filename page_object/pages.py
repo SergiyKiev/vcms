@@ -20,7 +20,7 @@ class LoginPage(TermsAndConditionsPopup, SubscriptionHasExpitredPopup):
 
     def login(self):
         self.check_login_page_loaded()
-        TermsAndConditionsPopup.close_popup(self)
+        TermsAndConditionsPopup.close_popup_if_exists(self)
         self.enter_username()
         self.enter_password()
         self.do_login()
@@ -175,10 +175,6 @@ class DevicesPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, 
         RibbonBar.wait_for_element_present(self, Locators.BTN_NEW_SITE)
         self.wait_for_element_present(Locators.CONTAINER_PANEL_TITLE_DEVICES + "/*" + contains_subsite_name)
 
-    def click_configuration_popup_system_button_close(self):
-        self.click_element(Locators.POPUP_CONFIGURATION + "/*" + Locators.SYS_BTN_CLOSE)
-        self.wait_for_element_not_present(Locators.POPUP_CONFIGURATION)
-
     def click_configuration_popup_site_tab(self):
         self.click_element(Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_SITE)
         self.wait_for_element_selected(Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_SITE)
@@ -205,29 +201,29 @@ class DevicesPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, 
 
     def open_column_sets_popup_from_ribbon_bar(self, *columnsetname):
         self.click_global_site_view_label()
-        self.click_ribbon_bar_tab_view()
-        self.click_button_edit_or_create()
+        RibbonBar.click_tab_view(self)
+        RibbonBar.click_button_edit_or_create(self)
 
-    def create_columnset_in_column_sets_popup(self, columnsetname, columns_list):
-        self.click_column_sets_popup_button_new()
-        self.enter_text_into_column_set_designer_popup_text_field_name(columnsetname)
-        self.add_columns_to_column_set_designer_list_view(columns_list)
-        self.click_column_set_designer_popup_button_add(columns_list)
+    # def create_columnset(self, columnsetname, columns_list):
+    #     self.click_button_new()
+    #     self.enter_text_into_text_field_name(columnsetname)
+    #     self.add_columns_to_list_view(columns_list)
+    #     ColumnSetDesignerPopup.click_button_add(self, columns_list)
 
     def select_columnset_from_configuration_popup_column_set_dropdown_list(self, columnsetname):
         self.click_columnset_in_configuration_popup_drop_down_list(columnsetname)
 
     def check_columns_are_presented_in_devices_list_header(self, columns_list):
-        names = []
-        for columnname in list(columns_list):
-            elem = Locators.DEVICES_LIST_HEADER + "/*//span[text()='" + columnname + "']"
+        columnset = []
+        for i in columns_list:
+            elem = Locators.DEVICES_LIST_HEADER + "/*//span[contains(text(),'" + str(i) + "')]"
             cond = self.is_element_present(elem)
             if cond:
-                names.append(columnname)
-                print names
+                columnset.append(i)
             else:
                 pass
-        return True if names == columns_list else False
+        print columnset
+        return True if columnset == columns_list else False
 
 class AdministrationPage(Base):
     pass
