@@ -251,6 +251,7 @@ class Locators:
   RIBBON_BAR_TAB                        = "//div[@class='RibbonBarTabControl-Control']"
 
   '''LEFT MENU LIST'''
+  LEFT_MENU_CONTAINER                      = "//div[contains(@style,'transform')]"
   # LEFT_SIDE_MENU_DEVICES                      = TEXT_DEVICES + anc + EL_LEFT_MENU_CONTAINER + MENU_IS_VISIBLE
   # LEFT_SIDE_MENU_DEVICES                      = TEXT_DEVICES + anc + EL_LEFT_MENU_CONTAINER
   LEFT_SIDE_MENU_DEVICES                   = "//span[text()='Devices']/ancestor::div[contains(@style,'transform')]"
@@ -303,9 +304,9 @@ class Locators:
   BTN_                         = "//div[contains(@class,'Button')][contains(@id,'VWG_')]"
   BTN_SIGN_IN                  = TEXT_SIGN_IN + anc + EL_BUTTON
   BTN_EXIT                     = "//img[@alt='Exit']"
-  BTN_ICON_HOME                = "//td[contains(@style,'Home')]"
-  BTN_ICON_DEVICES             = "//div[@title='Devices']"
-  BTN_ICON_ADMINISTRATION      = "//div[@title='Administration']"
+  ICON_HOME                    = "//td[contains(@style,'Home')]"
+  ICON_DEVICES                 = "//div[@title='Devices']"
+  ICON_ADMINISTRATION          = "//div[@title='Administration']"
   BTN_ICON_TASKS               = "//div[@title='Tasks']"
   BTN_ICON_REPORTING           = "//div[@title='Reporting']"
   BTN_ICON_SFT_AND_PTH_MANAGER = "//div[@title='Software / Patch Manager']"
@@ -362,7 +363,7 @@ class Locators:
   BTN_SCAN_SELECTED            = "//span[text()='Scan Selected']"
   BTN_INSTALL_SELECTED         = "//span[text()='Install Selected']"
   BTN_ICON_SEARCH              = "//img[contains(@src,'06-magnify.2xw')]"
-  ICON_HELP                = "//img[contains(@src,'About')]"
+  ICON_HELP                    = "//img[contains(@src,'About')]"
   BTN_ICON_EXPORT              = "//img[contains(@src,'212-action2')]"
   BTN_ICON_REFRESH             = "//img[contains(@src,'02-redo.2x')]"
   BTN_RESET_TO_DEFAULT         = "//span[text()='Reset to default']"

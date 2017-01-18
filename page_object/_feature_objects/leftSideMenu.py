@@ -7,9 +7,9 @@ from selenium.common.exceptions import TimeoutException
 class LeftSideMenu(Base):
 
     # BTN - BUTTON. TITLE - main title on the page
-    ICON_HOME = Locators.BTN_ICON_HOME
-    ICON_DEVICES = Locators.BTN_ICON_DEVICES
-    ICON_ADMINISTRATION = Locators.BTN_ICON_ADMINISTRATION
+    ICON_HOME = Locators.ICON_HOME
+    ICON_DEVICES = Locators.ICON_DEVICES
+    ICON_ADMINISTRATION = Locators.ICON_ADMINISTRATION
     ICON_TASKS = Locators.BTN_ICON_TASKS
     ICON_REPORTING = Locators.BTN_ICON_REPORTING
     ICON_SOFT_AND_PATCH_MANAGER = Locators.BTN_ICON_SFT_AND_PTH_MANAGER
@@ -65,7 +65,7 @@ class LeftSideMenu(Base):
         self.wait_for_element_present(self.LEFT_SIDE_MENU_PASSWORD_RESET)
         self.wait_for_element_present(self.TITLE_PASSWORD_RESET)
 
-    def open_left_side_menu_home(self):
+    def open_menu_home(self):
         try:
             cond = self.is_element_not_present(self.TITLE_WELCOME_TO_CLOUD_MANAGEMENT_SUITE)
             if cond:
@@ -77,7 +77,7 @@ class LeftSideMenu(Base):
 
     def open_menu_devices(self):
         try:
-            self.wait_for_element_not_present(Locators.LEFT_SIDE_MENU_DEVICES)
+            self.wait_for_element_present(self.ICON_DEVICES)
             cond = self.is_element_not_present(Locators.LEFT_SIDE_MENU_DEVICES + Locators.LEFT_SIDE_MENU_VISIBLE)
             if cond:
                 self.click_icon_devices()
@@ -86,8 +86,9 @@ class LeftSideMenu(Base):
         except (NoSuchElementException, TimeoutException):
             print "Object not found"
 
-    def open_left_side_menu_administration(self):
+    def open_menu_administration(self):
         try:
+            self.wait_for_element_present(self.ICON_ADMINISTRATION)
             cond = self.is_element_not_present(self.LEFT_SIDE_MENU_ADMINISTRATION + self.MENU_IS_VISIBLE)
             if cond:
                 self.click_icon_administration()
@@ -96,7 +97,8 @@ class LeftSideMenu(Base):
         except (NoSuchElementException, TimeoutException):
             print "Object not found"
 
-    def open_left_side_menu_tasks(self):
+    def open_menu_tasks(self):
+        self.wait_for_element_present(self.ICON_TASKS)
         try:
             cond = self.is_element_not_present(self.LEFT_SIDE_MENU_TASKS + self.MENU_IS_VISIBLE)
             if cond:
@@ -106,7 +108,7 @@ class LeftSideMenu(Base):
         except (NoSuchElementException, TimeoutException):
             print "Object not found"
 
-    def open_left_side_menu_reporting(self):
+    def open_menu_reporting(self):
         try:
             cond = self.is_element_not_present(self.LEFT_SIDE_MENU_REPORTING + self.MENU_IS_VISIBLE)
             if cond:
@@ -116,7 +118,7 @@ class LeftSideMenu(Base):
         except (NoSuchElementException, TimeoutException):
             print "Object not found"
 
-    def open_left_side_menu_software_and_patch_manager(self):
+    def open_menu_software_and_patch_manager(self):
         try:
             cond = self.is_element_not_present(self.LEFT_SIDE_MENU_SOFTWARE_AND_PATCH_MANAGER + self.MENU_IS_VISIBLE)
             if cond:
@@ -126,7 +128,7 @@ class LeftSideMenu(Base):
         except (NoSuchElementException, TimeoutException):
             print "Object not found"
 
-    def open_left_side_menu_password_reset(self):
+    def open_menu_password_reset(self):
         try:
             cond = self.is_element_not_present(self.LEFT_SIDE_MENU_PASSWORD_RESET + self.MENU_IS_VISIBLE)
             if cond:

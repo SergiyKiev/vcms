@@ -7,21 +7,29 @@ from pageMain import MainPage
 class LoginPage(TermsAndConditionsPopup, SubscriptionHasExpitredPopup):
 
     def login(self):
-        self.check_login_page_loaded()
-        TermsAndConditionsPopup.close_popup_if_exists(self)
-        self.enter_username(Settings.username)
-        self.enter_password(Settings.password)
-        self.click_sign_in_button()
-        cond1 = self.is_element_present(Locators.POPUP_ERROR)
-        cond2 = self.is_element_present(Locators.POPUP_SUBSCRIPTION_HAS_EXPIRED)
-        if cond1:
-            print Settings.username + " or " +  Settings.password + " are incorrect"
-        elif cond2:
-            SubscriptionHasExpitredPopup.close_popup(self)
-            self.wait_for_element_present(Locators.BTN_EXIT)
-        else:
-            self.wait_for_element_present(Locators.BTN_EXIT)
-        return MainPage(self.driver)
+        try:
+            self.check_login_page_loaded()
+            TermsAndConditionsPopup.close_popup_if_exists(self)
+            self.enter_username(Settings.username)
+            self.enter_password(Settings.password)
+            self.click_sign_in_button()
+            cond1 = self.is_element_present(Locators.POPUP_ERROR)
+            cond2 = self.is_element_present(Locators.POPUP_SUBSCRIPTION_HAS_EXPIRED)
+            if cond1:
+                print Settings.username + " or " +  Settings.password + " are incorrect"
+            elif cond2:
+                SubscriptionHasExpitredPopup.close_popup(self)
+                # self.wait_for_element_present(Locators.BTN_EXIT)
+                # self.wait_for_element_present(Locators.TEXT_WELCOME_TO_CLOUD_MANAGEMENT_SUITE)
+                # self.wait_for_element_present(Locators.LEFT_MENU_CONTAINER)
+            else:
+                pass
+                # self.wait_for_element_present(Locators.BTN_EXIT)
+                # self.wait_for_element_present(Locators.TEXT_WELCOME_TO_CLOUD_MANAGEMENT_SUITE)
+                # self.wait_for_element_present(Locators.LEFT_MENU_CONTAINER)
+            return MainPage(self.driver)
+        except:
+            print "Login is not successful"
 
     def enter_username(self, username = Settings.username):
         self.find_element_self(Locators.FIELD_USERNAME).send_keys(username)

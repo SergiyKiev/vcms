@@ -8,8 +8,11 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
                NewSitePopup, ErrorPopup):
 
     def check_main_page_loaded(self):
-        cond = self.wait_for_element_present(Locators.TEXT_WELCOME_TO_CLOUD_MANAGEMENT_SUITE)
-        return True if cond else False
+        time.sleep(5)
+        cond1 = self.wait_for_element_present(Locators.TEXT_WELCOME_TO_CLOUD_MANAGEMENT_SUITE)
+        cond2 = self.wait_for_element_present(Locators.BTN_EXIT)
+        cond3 = self.wait_for_element_present(Locators.ICON_HOME)
+        return True if (cond1 and cond2 and cond3) else False
 
     def click_global_site_view_label(self):
         self.click_element(Locators.LABEL_GLOBAL_SITE_VIEW)
@@ -169,15 +172,14 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
             else:
                 pass
         if columnset == columns_list:
-            print "\n" + "Expected columns set is"
+            pass
+        else:
+            print "\n" + "Expected columns for columnset is"
             print columns_list
-            print "Actual columns set is "
+            print "Actual columns for columnset is"
             print columnset
             print "The result is "
             print columns_list == columnset
-            print "\n"
-        else:
-            print "Test is failed"
         return True if columnset == columns_list else False
 
     def create_columnset(self, columnsetname, columns_list):

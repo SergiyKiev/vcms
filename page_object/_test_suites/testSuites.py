@@ -17,9 +17,9 @@ class SiteCreation(unittest.TestCase):
         print ("\n" + "Test suite: Site creation (Suite ID: 9111)")
         cls.driver = webdriver.Chrome()
         login_page = LoginPage(cls.driver)
-        # main_page = MainPage(cls.driver)
         login_page.open_page()
         main_page = login_page.login()
+        main_page.check_main_page_loaded()
         main_page.close_popups()
         main_page.open_menu_devices()
         main_page.click_global_site_view_label()
@@ -131,10 +131,9 @@ class SiteConfiguration(unittest.TestCase):
         print ("\n" + "Test suite: Site configuration (Suite ID: 9112)")
         cls.driver = webdriver.Chrome()
         login_page = LoginPage(cls.driver)
-        main_page = MainPage(cls.driver)
-        main_page = MainPage(cls.driver)
         login_page.open_page()
-        login_page.login()
+        main_page = login_page.login()
+        main_page.check_main_page_loaded()
         main_page.close_popups()
         main_page.open_menu_devices()
         main_page.click_global_site_view_label()
@@ -216,13 +215,12 @@ class SiteConfiguration_SiteTab(unittest.TestCase):
         print ("\n" + "Login to console. Go to the start point")
         cls.driver = webdriver.Chrome()
         login_page = LoginPage(cls.driver)
-        main_page = MainPage(cls.driver)
-        main_page = MainPage(cls.driver)
-        left_side_menu = LeftSideMenu(cls.driver)
+        # left_side_menu = LeftSideMenu(cls.driver)
         login_page.open_page()
-        login_page.login()
+        main_page = login_page.login()
+        main_page.check_main_page_loaded()
         main_page.close_popups()
-        left_side_menu.open_menu_devices()
+        main_page.open_menu_devices()
         main_page.click_global_site_view_label()
 
     def setUp(self):
@@ -231,15 +229,15 @@ class SiteConfiguration_SiteTab(unittest.TestCase):
         # main_page = main_page.open_menu_devices()
         # main_page.check_main_page_loaded()
 
-    def test_open_left_side_menus(self):
-        left_side_menu = LeftSideMenu(self.driver)
-        left_side_menu.open_left_side_menu_home()
-        left_side_menu.open_menu_devices()
-        left_side_menu.open_left_side_menu_administration()
-        left_side_menu.open_left_side_menu_tasks()
-        left_side_menu.open_left_side_menu_reporting()
-        left_side_menu.open_left_side_menu_software_and_patch_manager()
-        # left_side_menu.open_left_side_menu_password_reset()
+    # def test_open_left_side_menus(self):
+    #     left_side_menu = LeftSideMenu(self.driver)
+    #     left_side_menu.open_menu_home()
+    #     left_side_menu.open_menu_devices()
+    #     left_side_menu.open_menu_administration()
+    #     left_side_menu.open_menu_tasks()
+    #     left_side_menu.open_menu_reporting()
+    #     left_side_menu.open_menu_software_and_patch_manager()
+    #     # left_side_menu.open_menu_password_reset()
 
     def test_configuration_popup_change_site_name(self):
         print ("\n" + "TC#9237. Devices page. Configuration popup. Change site name")
@@ -326,10 +324,9 @@ class SiteConfiguration_IpAddressRangesTab(unittest.TestCase):
         print ("\n" + "Test suite: Site configuration - IP Address Ranges tab (Suite ID: 9234)")
         cls.driver = webdriver.Chrome()
         login_page = LoginPage(cls.driver)
-        main_page = MainPage(cls.driver)
-        main_page = MainPage(cls.driver)
         login_page.open_page()
-        login_page.login()
+        main_page = login_page.login()
+        main_page.check_main_page_loaded()
         main_page.close_popups()
         main_page.open_menu_devices()
         main_page.click_global_site_view_label()
@@ -359,10 +356,9 @@ class SiteDeletion(unittest.TestCase):
         print ("\n" + "Test suite: Site deletion (Suite ID: 9114)" + "\n")
         cls.driver = webdriver.Chrome()
         login_page = LoginPage(cls.driver)
-        main_page = MainPage(cls.driver)
-        main_page = MainPage(cls.driver)
         login_page.open_page()
-        login_page.login()
+        main_page = login_page.login()
+        main_page.check_main_page_loaded()
         main_page.close_popups()
         main_page.open_menu_devices()
         main_page.click_global_site_view_label()
@@ -492,76 +488,6 @@ class SiteDeletion(unittest.TestCase):
     #     # main_page = main_page.open_menu_devices()
     #     # main_page.check_main_page_loaded()
     #
-    # def test_delete_created_site_from_global_site_view_tree(self):
-    #     print ("\n" + "TC#9607. Devices page. Delete created site from Global Site View tree" + "\n")
-    #     sitename = "Test#9607"
-    #     main_page = MainPage(self.driver)
-    #     main_page.delete_site_if_exists(sitename)
-    #     main_page.click_global_site_view_label()
-    #     main_page.create_new_site(sitename)
-    #     main_page.click_site_in_global_site_view_tree(sitename)
-    #     main_page.click_delete_button()
-    #     main_page.click_ok()
-    #     self.assertFalse(main_page.check_site_is_in_global_site_view_tree(sitename))
-    #     print ("Test is passed" + "\n")
-    #
-    # def test_delete_default_site_from_global_site_view_tree(self):
-    #     print ("\n" + "TC#----. Devices page. Delete Default site from Global Site View tree" + "\n")
-    #     main_page = MainPage(self.driver)
-    #     main_page.click_default_site_in_global_site_view_tree()
-    #     main_page.click_delete_button()
-    #     self.assertTrue(main_page.is_element_present(Locators.POPUP_UNABLE_TO_REMOVE))
-    #     main_page.click_unable_to_remove_popup_ok_button()
-    #     self.assertTrue(main_page.is_element_present(Locators.LABEL_DEFAULT_SITE))
-    #     print ("Test is passed" + "\n")
-    #
-    # def test_delete_subsite_from_site_tree(self):
-    #     print ("\n" + "TC#----. Devices page. Delete subsite from Global Site View tree" + "\n")
-    #     sitename = "TC#____"
-    #     subsitename = "TC#____-01"
-    #     main_page = MainPage(self.driver)
-    #     main_page.create_site_if_not_exists(sitename)
-    #     main_page.create_subsite_if_not_exists(sitename, subsitename)
-    #     main_page.click_subsite_in_site_tree(sitename, subsitename)
-    #     main_page.click_delete_button()
-    #     main_page.click_ok()
-    #     self.assertFalse(main_page.check_subsite_is_in_parent_site(sitename, subsitename))
-    #     main_page.delete_site_from_global_site_view_tree(sitename)
-    #     print ("Test is passed" + "\n")
-    #
-    # def test_delete_site_with_subsite(self):
-    #     print ("\n" + "TC#----. Devices page. Delete site with subsite from Global Site View tree" + "\n")
-    #     sitename = "TC#____"
-    #     subsitename = "TC#____-01"
-    #     main_page = MainPage(self.driver)
-    #     main_page.create_site_if_not_exists(sitename)
-    #     main_page.create_subsite_if_not_exists(sitename, subsitename)
-    #     main_page.delete_site_from_global_site_view_tree(sitename)
-    #     self.assertFalse(main_page.check_subsite_is_in_parent_site(sitename, subsitename))
-    #     self.assertFalse(main_page.check_site_is_in_global_site_view_tree(sitename))
-    #
-    # def test_cancel_site_deletion_from_global_site_view(self):
-    #     print ("\n" + "TC#1111. Devices page. Cancel site deletion" + "\n")
-    #     sitename = "TC#1111"
-    #     main_page = MainPage(self.driver)
-    #     main_page.create_site_if_not_exists(sitename)
-    #     main_page.click_site_in_global_site_view_tree(sitename)
-    #     main_page.click_delete_button()
-    #     main_page.click_system_button_close()
-    #     self.assertTrue(main_page.check_site_is_in_global_site_view_tree(sitename))
-    #     main_page.delete_site_from_global_site_view_tree(sitename)
-    #     print ("Test is passed" + "\n")
-    #
-    # def test_open_are_you_sure_popup(self):
-    #     print ("\n" + "TC#2222. Devices page. Open Are you sure popup" + "\n")
-    #     sitename = "TC#2222"
-    #     main_page = MainPage(self.driver)
-    #     main_page.create_site_if_not_exists(sitename)
-    #     main_page.click_site_in_global_site_view_tree(sitename)
-    #     main_page.click_delete_button()
-    #     self.assertTrue(main_page.is_element_present(Locators.POPUP_ARE_YOU_SURE))
-    #     main_page.click_ok()
-    #     print ("Test is passed" + "\n")
     #
     # # def tearDown(self):
     # #     page = MainPage(self.driver)
