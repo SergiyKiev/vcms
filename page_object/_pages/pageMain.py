@@ -169,9 +169,15 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
             else:
                 pass
         if columnset == columns_list:
-            print columnset +  " = "  + columns_list
+            print "\n" + "Expected columns set is"
+            print columns_list
+            print "Actual columns set is "
+            print columnset
+            print "The result is "
+            print columns_list == columnset
+            print "\n"
         else:
-            pass
+            print "Test is failed"
         return True if columnset == columns_list else False
 
     def create_columnset(self, columnsetname, columns_list):
@@ -184,7 +190,7 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
 
 
     def delete_columnset_if_exist(self, columnsetname):
-        elem = self.TABLE_BODY + "/*//span[text()='" + columnsetname + "']"
+        elem = self.CS_TABLE_BODY + "/*//span[text()='" + columnsetname + "']"
         cond = self.is_element_present(elem)
         if cond:
             ColumnSetsPopup.click_columnset_in_table_list(self, columnsetname)

@@ -40,27 +40,27 @@ class TermsAndConditionsPopup(Base):
 class ColumnSetsPopup(Base):
     # CONSTANTS
     POPUP_COLUMN_SETS = Locators.POPUP_COLUMN_SETS
-    BUTTON_OK = Locators.POPUP_COLUMN_SETS + "/*" + Locators.BTN_OK
-    BUTTON_CANCEL = Locators.POPUP_COLUMN_SETS + "/*" + Locators.BTN_CANCEL
-    BUTTON_NEW = Locators.POPUP_COLUMN_SETS + "/*" + Locators.BTN_NEW
-    BUTTON_EDIT = Locators.POPUP_COLUMN_SETS + "/*" + Locators.BTN_EDIT
-    BUTTON_COPY = Locators.POPUP_COLUMN_SETS + "/*" + Locators.BTN_COPY
-    BUTTON_DELETE = Locators.POPUP_COLUMN_SETS + "/*" + Locators.BTN_DELETE
-    BUTTON_SET_AS_DEFAULT = Locators.POPUP_COLUMN_SETS + "/*" + Locators.BTN_SET_AS_DEFAULT
-    SYSTEM_BUTTON_CLOSE = Locators.POPUP_COLUMN_SETS + "/*" + Locators.SYS_BTN_CLOSE
-    ICON_HELP = Locators.POPUP_COLUMN_SETS + "/*" + Locators.ICON_HELP
-    TABLE_HEADER_IS_DEFAULT = Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_TABEL_HEADER + "/*" + Locators.TEXT_CONTAINS_IS_DEFAULT
-    TABLE_HEADER_NAME = Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_TABEL_HEADER + "/*" + Locators.TEXT_CONTAINS_NAME
-    TABLE_HEADER_DESCRIPTION = Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_TABEL_HEADER + "/*" + Locators.TEXT_CONTAINS_DESCRIPTION
-    TABLE_HEADER_COLUMNS = Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_TABEL_HEADER + "/*" + Locators.TEXT_CONTAINS_COLUMNS
-    TABLE_BODY = Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_TABLE_BODY
+    CS_BUTTON_OK = Locators.POPUP_COLUMN_SETS + "/*" + Locators.BTN_OK
+    CS_BUTTON_CANCEL = Locators.POPUP_COLUMN_SETS + "/*" + Locators.BTN_CANCEL
+    CS_BUTTON_NEW = Locators.POPUP_COLUMN_SETS + "/*" + Locators.BTN_NEW
+    CS_BUTTON_EDIT = Locators.POPUP_COLUMN_SETS + "/*" + Locators.BTN_EDIT
+    CS_BUTTON_COPY = Locators.POPUP_COLUMN_SETS + "/*" + Locators.BTN_COPY
+    CS_BUTTON_DELETE = Locators.POPUP_COLUMN_SETS + "/*" + Locators.BTN_DELETE
+    CS_BUTTON_SET_AS_DEFAULT = Locators.POPUP_COLUMN_SETS + "/*" + Locators.BTN_SET_AS_DEFAULT
+    CS_SYSTEM_BUTTON_CLOSE = Locators.POPUP_COLUMN_SETS + "/*" + Locators.SYS_BTN_CLOSE
+    CS_ICON_HELP = Locators.POPUP_COLUMN_SETS + "/*" + Locators.ICON_HELP
+    CS_TABLE_HEADER_IS_DEFAULT = Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_TABEL_HEADER + "/*" + Locators.TEXT_CONTAINS_IS_DEFAULT
+    CS_TABLE_HEADER_NAME = Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_TABEL_HEADER + "/*" + Locators.TEXT_CONTAINS_NAME
+    CS_TABLE_HEADER_DESCRIPTION = Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_TABEL_HEADER + "/*" + Locators.TEXT_CONTAINS_DESCRIPTION
+    CS_TABLE_HEADER_COLUMNS = Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_TABEL_HEADER + "/*" + Locators.TEXT_CONTAINS_COLUMNS
+    CS_TABLE_BODY = Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_TABLE_BODY
 
     def click_button_ok(self):
         self.click_element(self.POPUP_COLUMN_SETS + "/*" + Locators.BTN_OK)
         # self.wait_for_element_not_present(self.POPUP_COLUMN_SETS)
 
     def click_column_sets_popup_button_cancel(self):
-        self.click_element(self.BUTTON_CANCEL)
+        self.click_element(self.CS_BUTTON_CANCEL)
         self.wait_for_element_not_present(self.POPUP_COLUMN_SETS)
 
     def click_button_new(self):
@@ -74,38 +74,38 @@ class ColumnSetsPopup(Base):
 
     def click_column_sets_popup_button_copy(self, columnsetname):
         elem = self.POPUP_COLUMN_SETS + "/*//span[text()='Copy of " + columnsetname + "']"
-        self.click_element(self.BUTTON_COPY)
+        self.click_element(self.CS_BUTTON_COPY)
         self.wait_for_element_present(elem)
 
     def click_button_delete(self, columnsetname):
-        self.click_element(self.BUTTON_DELETE)
+        self.click_element(self.CS_BUTTON_DELETE)
         are_you_sure_popup = AreYouSurePopup(self.driver)
         self.wait_for_element_present(are_you_sure_popup.POPUP_ARE_YOU_SURE)
 
     def click_column_sets_popup_button_set_as_default(self):
-        self.click_element(self.BUTTON_SET_AS_DEFAULT)
+        self.click_element(self.CS_BUTTON_SET_AS_DEFAULT)
 
     def click_system_button_close(self):
         self.click_element(self.POPUP_COLUMN_SETS + "/*" + Locators.SYS_BTN_CLOSE)
         self.wait_for_element_not_present(self.POPUP_COLUMN_SETS)
 
     def click_column_sets_popup_help_icon(self):
-        self.click_element(self.ICON_HELP)
+        self.click_element(self.CS_ICON_HELP)
 
     def click_column_sets_popup_table_header_is_default(self):
-        self.click_element(self.TABLE_HEADER_IS_DEFAULT)
+        self.click_element(self.CS_TABLE_HEADER_IS_DEFAULT)
 
     def click_column_sets_popup_table_header_name(self):
-        self.click_element(self.TABLE_HEADER_NAME)
+        self.click_element(self.CS_TABLE_HEADER_NAME)
 
     def click_column_sets_popup_table_header_description(self):
-        self.click_element(self.TABLE_HEADER_DESCRIPTION)
+        self.click_element(self.CS_TABLE_HEADER_DESCRIPTION)
 
     def click_column_sets_popup_table_header_columns(self):
-        self.click_element(self.TABLE_HEADER_COLUMNS)
+        self.click_element(self.CS_TABLE_HEADER_COLUMNS)
 
     def click_columnset_in_table_list(self, columnsetname):
-        elem = self.TABLE_BODY + "/*//span[text()='" + columnsetname + "']"
+        elem = self.CS_TABLE_BODY + "/*//span[text()='" + columnsetname + "']"
         self.click_element(elem)
         self.wait_for_element_selected(elem + "/ancestor::" + Locators.EL_LIST_ROW)
 
@@ -201,23 +201,24 @@ class NewSitePopup(Base):
 class ColumnSetDesignerPopup(Base):
     #CONSTANTS
     POPUP_COLUMN_SET_DESIGNER = Locators.POPUP_COLUMN_SET_DESIGNER
-    BUTTON_OK = POPUP_COLUMN_SET_DESIGNER + "/*" + Locators.BTN_OK
-    BUTTON_CANCEL = POPUP_COLUMN_SET_DESIGNER + "/*" + Locators.BTN_CANCEL
-    BUTTON_ADD = POPUP_COLUMN_SET_DESIGNER + "/*" + Locators.BTN_ADD_right
-    BUTTON_REMOVE = POPUP_COLUMN_SET_DESIGNER + "/*" + Locators.BTN_REMOVE_left
-    BUTTON_ARROW_UP = POPUP_COLUMN_SET_DESIGNER + "/*" + Locators.BTN_ARROW_UP
-    BUTTON_ARROW_DOWN = POPUP_COLUMN_SET_DESIGNER + "/*" + Locators.BTN_ARROW_DOWN
+    CSD_BUTTON_OK = POPUP_COLUMN_SET_DESIGNER + "/*" + Locators.BTN_OK
+    CSD_BUTTON_CANCEL = POPUP_COLUMN_SET_DESIGNER + "/*" + Locators.BTN_CANCEL
+    CSD_BUTTON_ADD = POPUP_COLUMN_SET_DESIGNER + "/*" + Locators.BTN_ADD_right
+    CSD_BUTTON_REMOVE = POPUP_COLUMN_SET_DESIGNER + "/*" + Locators.BTN_REMOVE_left
+    CSD_BUTTON_ARROW_UP = POPUP_COLUMN_SET_DESIGNER + "/*" + Locators.BTN_ARROW_UP
+    CSD_BUTTON_ARROW_DOWN = POPUP_COLUMN_SET_DESIGNER + "/*" + Locators.BTN_ARROW_DOWN
     # TEXT_FIELD_NAME = Locators.POPUP_COLUMN_SET_DESIGNER + "/*//div[2]/input"
     # TEXT_FIELD_DESCRIPTION = Locators.POPUP_COLUMN_SET_DESIGNER + "/*//div[1]/input"
-    LEFT_SIDE_TREE = POPUP_COLUMN_SET_DESIGNER + "/*//" + Locators.EL_PADDING_CONTAINER
-    LEFT_SIDE_SUBNODE = LEFT_SIDE_TREE + "/*//" + Locators.EL_SUBNODE_CONTAINER
-    LEFT_SIDE_NODE = LEFT_SIDE_TREE + "/*//" + Locators.EL_NODE_CONTAINER
-    ICON_HELP = POPUP_COLUMN_SET_DESIGNER + "/*" + Locators.ICON_HELP
-    TABLE_HEADER_COLUMNS = POPUP_COLUMN_SET_DESIGNER + "/*//" + Locators.EL_TABEL_HEADER + "/*" + Locators.TEXT_CONTAINS_COLUMNS
-    TABLE_HEADER_DEFAULT_WIDTH = POPUP_COLUMN_SET_DESIGNER + "/*//" + Locators.EL_TABEL_HEADER + "/*" + Locators.TEXT_CONTAINS_DEFAULT_WIDTH
-    TABLE_HEADER_AGGREGATE = POPUP_COLUMN_SET_DESIGNER + "/*//" + Locators.EL_TABEL_HEADER + "/*" + Locators.TEXT_CONTAINS_AGGREGATE
-    TABLE_BODY = Locators.POPUP_COLUMN_SET_DESIGNER + "/*//" + Locators.EL_TABLE_BODY
-    ELEMENT_NODE_CONTAINER = Locators.EL_NODE_CONTAINER
+    CSD_LEFT_SIDE_TREE = POPUP_COLUMN_SET_DESIGNER + "/*//" + Locators.EL_PADDING_CONTAINER
+    CSD_LEFT_SIDE_SUBNODE = CSD_LEFT_SIDE_TREE + "/*//" + Locators.EL_SUBNODE_CONTAINER
+    CSD_LEFT_SIDE_NODE = CSD_LEFT_SIDE_TREE + "/*//" + Locators.EL_NODE_CONTAINER
+    CSD_ICON_HELP = POPUP_COLUMN_SET_DESIGNER + "/*" + Locators.ICON_HELP
+    CSD_TABLE_HEADER_COLUMNS = POPUP_COLUMN_SET_DESIGNER + "/*//" + Locators.EL_TABEL_HEADER + "/*" + Locators.TEXT_CONTAINS_COLUMNS
+    CSD_TABLE_HEADER_DEFAULT_WIDTH = POPUP_COLUMN_SET_DESIGNER + "/*//" + Locators.EL_TABEL_HEADER + "/*" + Locators.TEXT_CONTAINS_DEFAULT_WIDTH
+    CSD_TABLE_HEADER_AGGREGATE = POPUP_COLUMN_SET_DESIGNER + "/*//" + Locators.EL_TABEL_HEADER + "/*" + Locators.TEXT_CONTAINS_AGGREGATE
+    CSD_TABLE_BODY = Locators.POPUP_COLUMN_SET_DESIGNER + "/*//" + Locators.EL_TABLE_BODY
+    CSD_ELEMENT_NODE_CONTAINER = Locators.EL_NODE_CONTAINER
+    CSD_ARROW_EXPAND = Locators.ARROW_EXPAND
 
     def check_is_popup_present(self):
         cond = self.is_element_present(self.POPUP_COLUMN_SET_DESIGNER)
@@ -228,13 +229,12 @@ class ColumnSetDesignerPopup(Base):
         self.wait_for_element_not_present(self.POPUP_COLUMN_SET_DESIGNER)
 
     def click_button_cancel(self):
-        self.click_element(self.BUTTON_CANCEL)
+        self.click_element(self.CSD_BUTTON_CANCEL)
         self.wait_for_element_not_present(self.POPUP_COLUMN_SET_DESIGNER)
 
     def click_button_add(self, columnname):
-        time.sleep(1)
-        self.click_element(self.BUTTON_ADD)
-        self.wait_for_element_present(self.TABLE_BODY + "/*//span[contains(text(),'" + columnname + "')]")
+        self.click_element(self.CSD_BUTTON_ADD)
+        self.wait_for_element_present(self.CSD_TABLE_BODY + "/*//span[contains(text(),'" + columnname + "')]")
 
     def click_system_button_maximize(self):
         self.click_element(self.POPUP_COLUMN_SET_DESIGNER + "/*" + Locators.SYS_BTN_MAXIMIZE)
@@ -248,16 +248,16 @@ class ColumnSetDesignerPopup(Base):
         self.find_element_self(Locators.POPUP_COLUMN_SET_DESIGNER + "/*//div[1]/input").send_keys(text)
 
     def click_column_in_left_side_tree(self, columnname):
-        elem = self.LEFT_SIDE_SUBNODE + "/*//span[text()='" + columnname + "']"
+        elem = self.CSD_LEFT_SIDE_SUBNODE + "/*//span[text()='" + columnname + "']"
         self.click_element(elem)
-        self.wait_for_element_selected(elem + "/ancestor::" + self.ELEMENT_NODE_CONTAINER)
+        self.wait_for_element_selected(elem + "/ancestor::" + self.CSD_ELEMENT_NODE_CONTAINER)
 
     def expand_all_left_side_lists(self):
-        elements = self.find_elements_self(self.LEFT_SIDE_TREE + "/div/div/div[contains(@id,'VWGJOINT')]" + Locators.ARROW_EXPAND)
+        elements = self.find_elements_self(self.CSD_LEFT_SIDE_TREE + "/div/div/div[contains(@id,'VWGJOINT')]" + self.CSD_ARROW_EXPAND)
         # print len(elements)
         # y = []
         for x in range(0, len(elements)):
-            elem = self.LEFT_SIDE_TREE + "/div[" + str(x + 1) + "]/div/div[contains(@id,'VWGJOINT')]" + Locators.ARROW_EXPAND
+            elem = self.CSD_LEFT_SIDE_TREE + "/div[" + str(x + 1) + "]/div/div[contains(@id,'VWGJOINT')]" + self.CSD_ARROW_EXPAND
             self.expand_tree(elem)
         #     y.append(x)
         # print y
@@ -292,7 +292,7 @@ class ColumnSetDesignerPopup(Base):
             # self.check_is_columnname_in_list_view(columnname)
 
     def check_is_columnname_in_list_view(self, columnname):
-        cond = self.is_element_present(self.TABLE_BODY + "/*//span[contains(text(),'" + columnname + "')]")
+        cond = self.is_element_present(self.CSD_TABLE_BODY + "/*//span[contains(text(),'" + columnname + "')]")
         return True if cond else False
 
 
