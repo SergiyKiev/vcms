@@ -1,7 +1,10 @@
 import unittest
-from page_object._locators.locators import Locators
+from page_object._variables.variables import *
 from page_object._pages.pageLogin import LoginPage
 from page_object._pages.pageMain import MainPage
+from page_object._feature_objects.popups import *
+from page_object._feature_objects.ribbonBar import *
+from page_object._feature_objects.leftSideMenu import *
 from selenium import webdriver
 
 
@@ -386,7 +389,7 @@ class SiteDeletion(unittest.TestCase):
         print ("Test is passed" + "\n")
 
     def test_delete_default_site_from_global_site_view_tree(self):
-        print ("\n" + "TC#----. Devices page. Delete Default site from Global Site View tree")
+        print ("\n" + "TC#8888. Devices page. Delete Default site from Global Site View tree")
         main_page = MainPage(self.driver)
         ribbon_bar = RibbonBar(self.driver)
         unable_to_remove_popup = UnableToRemovePopup(self.driver)
@@ -398,9 +401,9 @@ class SiteDeletion(unittest.TestCase):
         print ("Test is passed" + "\n")
 
     def test_delete_subsite_from_site_tree(self):
-        print ("\n" + "TC#----. Devices page. Delete subsite from Global Site View tree")
-        sitename = "TC#____"
-        subsitename = "TC#____-01"
+        print ("\n" + "TC#3333. Devices page. Delete subsite from Global Site View tree")
+        sitename = "TC#3333"
+        subsitename = "TC#3333-01"
         main_page = MainPage(self.driver)
         ribbon_bar = RibbonBar(self.driver)
         are_you_sure_popup = AreYouSurePopup(self.driver)

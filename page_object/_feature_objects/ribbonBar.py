@@ -1,5 +1,6 @@
 from page_object._base_page.base import Base
 from page_object._locators.locators import Locators
+from page_object._feature_objects.popups import *
 
 class RibbonBar(Base):
 
@@ -38,11 +39,11 @@ class RibbonBar(Base):
         self.click_element(Locators.BTN_DELETE)
         cond = self.wait_for_element_present(Locators.POPUP)
         if cond:
-            self.is_element_present(AreYouSurePopup.POPUP_ARE_YOU_SURE)
+            return AreYouSurePopup(self.driver)
         else:
-            self.is_element_present(UnableToRemovePopup.POPUP_UNABLE_TO_REMOVE)
+            return UnableToRemovePopup(self.driver)
 
     def click_button_config(self):
         self.click_element(Locators.BTN_CONFIG)
-        self.wait_for_element_present(Locators.POPUP_CONFIGURATION)
+        self.wait_for_element_present(ConfigurationPopup.POPUP_CONFIGURATION)
 

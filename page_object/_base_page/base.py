@@ -1,13 +1,13 @@
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium import webdriver
 import time
-from selenium.webdriver.common.by import By
+
+from page_object._locators.locators import Locators
+from page_object._settings.settings import *
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
-from page_object.settings import *
-from page_object.locators import Locators
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class Base(object):
@@ -26,8 +26,8 @@ class Base(object):
     EL_EMPTY_ARROW = Locators.EL_EMPTY_ARROW
 
     def __init__(self, driver, base_url=Settings.baseUrl):
-        self.base_url = base_url
         self.driver = driver
+        self.base_url = base_url
         self.timeout = 120
         self.timeout_request = 3
         self.wait = WebDriverWait(self.driver, self.timeout)
@@ -265,7 +265,7 @@ class Base(object):
             element = self.find_element_self(locator)
             if element is not None:
                 self.driver.execute_script("arguments[0].click();", element)
-                # self.wait_for_element_not_present(locator)
+                self.wait.until_not(EC.presence_of_element_located((By.XPATH, locator)))
             else:
                 pass
         except (NoSuchElementException, TimeoutException):

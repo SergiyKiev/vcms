@@ -136,6 +136,6 @@ class LeftSideMenu(Base):
         except (NoSuchElementException, TimeoutException):
             print "Object not found"
 
-    # def check_devices_page_loaded(self):
+    # def check_main_page_loaded(self):
     #     cond = self.is_element_present(self.LEFT_SIDE_MENU_DEVICES + self.MENU_IS_VISIBLE)
     #     return True if cond else False

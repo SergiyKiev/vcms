@@ -7,7 +7,7 @@ class Locators:
     pass
 
 
-  '''HTML SEARCH PATH'''
+  '''HTML CONNECTORS'''
   anc                     = "/ancestor::"
   dec                     = "/descendant::"
   fol                     = "/following::"
@@ -317,6 +317,7 @@ class Locators:
   BTN_Ok                       = TEXT_Ok + anc + EL_BUTTON
   BTN_CANCEL                   = "//span[text()='Cancel']"
   BTN_I_AGREE                  = "//span[text()='I Agree']"
+  BTN_I_DO_NOT_AGREE           = "//span[text()='I Do Not Agree']"
   BTN_ICON_ADMIN_USER          = "//td[contains(@style,'icons-gray.111-user')]"
   BTN_LOG_OUT                  = "//span[text()='Log Out']"
   BTN_SETTINGS_UPPER_CORNER    = "//span[text()='Settings']"

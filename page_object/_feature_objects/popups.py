@@ -19,14 +19,20 @@ class SubscriptionHasExpitredPopup(Base):
 
 class TermsAndConditionsPopup(Base):
 
-    def click_i_agree_button(self):
+    def click_button_i_agree(self):
         self.click_element(Locators.POPUP_TERMS_AND_CONDITIONS + "/*" + Locators.BTN_I_AGREE)
         self.wait_for_element_not_present(Locators.POPUP_TERMS_AND_CONDITIONS)
+
+    def click_button_i_do_not_agree(self):
+        self.click_element(Locators.POPUP_TERMS_AND_CONDITIONS + "/*" + Locators.BTN_I_DO_NOT_AGREE)
+
+    def click_system_button_close(self):
+        self.click_element(Locators.POPUP_TERMS_AND_CONDITIONS + "/*" + Locators.SYS_BTN_CLOSE)
 
     def close_popup_if_exists(self):
         cond = self.is_element_present(Locators.POPUP_TERMS_AND_CONDITIONS)
         if cond:
-            self.click_i_agree_button()
+            self.click_button_i_agree()
         else:
             pass
 
@@ -226,6 +232,7 @@ class ColumnSetDesignerPopup(Base):
         self.wait_for_element_not_present(self.POPUP_COLUMN_SET_DESIGNER)
 
     def click_button_add(self, columnname):
+        time.sleep(1)
         self.click_element(self.BUTTON_ADD)
         self.wait_for_element_present(self.TABLE_BODY + "/*//span[contains(text(),'" + columnname + "')]")
 
@@ -246,13 +253,13 @@ class ColumnSetDesignerPopup(Base):
         self.wait_for_element_selected(elem + "/ancestor::" + self.ELEMENT_NODE_CONTAINER)
 
     def expand_all_left_side_lists(self):
-        elements = self.find_elements_self(self.LEFT_SIDE_TREE + "/div/div/div[contains(@id,'VWGJOINT')]")
+        elements = self.find_elements_self(self.LEFT_SIDE_TREE + "/div/div/div[contains(@id,'VWGJOINT')]" + Locators.ARROW_EXPAND)
         # print len(elements)
         # y = []
         for x in range(0, len(elements)):
-            elem = self.LEFT_SIDE_TREE + "/div[" + str(x + 1) + "]/div/div[contains(@id,'VWGJOINT')]"
+            elem = self.LEFT_SIDE_TREE + "/div[" + str(x + 1) + "]/div/div[contains(@id,'VWGJOINT')]" + Locators.ARROW_EXPAND
             self.expand_tree(elem)
-            # y.append(x)
+        #     y.append(x)
         # print y
         # # elements = self.find_elements_self(self.COLUMN_SET_DESIGNER_LEFT_SIDE_TREE + "/div/div/div[contains(@id,'VWGJOINT')]/*//span")
         # # # text = self.find_elements_self(self.COLUMN_SET_DESIGNER_LEFT_SIDE_TREE + "/div/div[contains(@id,'SUBS')]/*//span")
