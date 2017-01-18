@@ -153,7 +153,7 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
         RibbonBar.click_tab_view(self)
         RibbonBar.click_button_edit_or_create(self)
 
-    # def create_columnset(self, columnsetname, columns_list):
+    # def create_columnset_from_column_sets_popup(self, columnsetname, columns_list):
     #     self.click_button_new()
     #     self.enter_text_into_text_field_name(columnsetname)
     #     self.add_columns_to_list_view(columns_list)
@@ -182,14 +182,19 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
             print columns_list == columnset
         return True if columnset == columns_list else False
 
-    def create_columnset(self, columnsetname, columns_list):
+    def create_columnset_from_column_sets_popup(self, columnsetname, columns_list):
         ColumnSetsPopup.click_button_new(self)
         ColumnSetDesignerPopup.click_system_button_maximize(self)
         ColumnSetDesignerPopup.enter_text_into_text_field_name(self,columnsetname)
         ColumnSetDesignerPopup.add_columns_to_list_view(self, columns_list)
         ColumnSetDesignerPopup.click_button_ok(self)
-        ColumnSetsPopup.check_is_columnset_present(self, columnsetname)
 
+    def create_columnset_from_configuration_popup(self, columnsetname, columns_list):
+        ConfigurationPopup.click_button_new(self)
+        ColumnSetDesignerPopup.click_system_button_maximize(self)
+        ColumnSetDesignerPopup.enter_text_into_text_field_name(self,columnsetname)
+        ColumnSetDesignerPopup.add_columns_to_list_view(self, columns_list)
+        ColumnSetDesignerPopup.click_button_ok(self)
 
     def delete_columnset_if_exist(self, columnsetname):
         elem = self.CS_TABLE_BODY + "/*//span[text()='" + columnsetname + "']"

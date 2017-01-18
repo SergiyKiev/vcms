@@ -588,6 +588,8 @@ class Locators:
     print x
     y = POPUP_CONFIGURATION + dec + EL_DROP_DOWN_CONTAINER + "/*//span[text()='Test IK']"
     print y
+    o = POPUP_CONFIGURATION + "/following::" + EL_DROP_DOWN_LIST
+    print o
     l = CONTAINER_PANEL_TITLE_DEVICES + fol + EL_TABLE_BODY
     print l
     h = []

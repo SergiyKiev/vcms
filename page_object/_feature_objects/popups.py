@@ -57,7 +57,7 @@ class ColumnSetsPopup(Base):
 
     def click_button_ok(self):
         self.click_element(self.POPUP_COLUMN_SETS + "/*" + Locators.BTN_OK)
-        # self.wait_for_element_not_present(self.POPUP_COLUMN_SETS)
+        self.wait_for_element_not_present(self.POPUP_COLUMN_SETS)
 
     def click_column_sets_popup_button_cancel(self):
         self.click_element(self.CS_BUTTON_CANCEL)
@@ -125,7 +125,7 @@ class ConfigurationPopup(Base):
     SYSTEM_BUTTON_CLOSE = Locators.POPUP_CONFIGURATION + "/*" + Locators.SYS_BTN_CLOSE
     SYSTEM_BUTTON_DROP_DOWN = Locators.POPUP_CONFIGURATION + "/*" + Locators.SYS_BTN_DROP_DOWN
     ICON_HELP = Locators.POPUP_CONFIGURATION + "/*" + Locators.ICON_HELP
-    DROP_DOWN_LIST = Locators.POPUP_CONFIGURATION + "/following::" + Locators.EL_DROP_DOWN_LIST
+    DROP_DOWN_LIST = "//" + Locators.EL_DROP_DOWN_LIST
     DROP_DOWN_CONTAINER = Locators.POPUP_CONFIGURATION + "/*//" + Locators.EL_DROP_DOWN_CONTAINER
 
     def check_is_popup_present(self):
@@ -158,7 +158,7 @@ class ConfigurationPopup(Base):
     def click_columnset_in_configuration_popup_drop_down_list(self, columnsetname):
         self.click_column_set_dropdown_button()
         self.click_element(self.DROP_DOWN_LIST + "/*//span[text()='" + columnsetname + "']")
-        # self.wait_for_element_not_present(self.DROP_DOWN_LIST)
+        self.wait_for_element_not_present(self.DROP_DOWN_LIST)
         self.wait_for_element_present(self.DROP_DOWN_CONTAINER + "/*//span[text()='" + columnsetname + "']")
 
     def enter_text_into_configuration_popup_name_text_field(self, sitename):
@@ -166,13 +166,15 @@ class ConfigurationPopup(Base):
         self.click_element(self.TEXT_FIELD_NAME)
 
     def check_columnset_is_selected_from_drop_down_list(self, columnsetname):
-        self.wait_for_element_present(self.DROP_DOWN_CONTAINER + "/*//span[text()='" + columnsetname + "']")
+        cond = self.wait_for_element_present(self.DROP_DOWN_CONTAINER + "/*//span[text()='" + columnsetname + "']")
+        return True if cond else False
 
     def get_name_text_field_value(self):
         elem = self.TEXT_FIELD_NAME
         actual_attribute_value = self.get_attribute_value(elem, "value")
         print ("The actual Name text field value of the attribute 'value' is: " + actual_attribute_value)
         return actual_attribute_value
+
 
 class NewSitePopup(Base):
 

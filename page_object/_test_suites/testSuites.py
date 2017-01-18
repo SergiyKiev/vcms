@@ -285,8 +285,8 @@ class SiteConfiguration_SiteTab(unittest.TestCase):
         main_page.open_column_sets_popup_from_ribbon_bar()
         main_page.delete_columnset_if_exist(columnset1)
         main_page.delete_columnset_if_exist(columnset2)
-        main_page.create_columnset(columnset1, Variables.columns_list1)
-        main_page.create_columnset(columnset2, Variables.columns_list2)
+        main_page.create_columnset_from_column_sets_popup(columnset1, Variables.columns_list1)
+        main_page.create_columnset_from_column_sets_popup(columnset2, Variables.columns_list2)
         column_sets_popup.click_button_ok()
         ribbon_bar.click_tab_home()
         main_page.create_site_if_not_exists(sitename)
@@ -300,6 +300,30 @@ class SiteConfiguration_SiteTab(unittest.TestCase):
         configuration_popup.click_button_close()
         self.assertTrue(main_page.check_columns_are_presented_in_devices_list_header(Variables.columns_list2))
         # main_page.delete_site_from_global_site_view_tree(sitename)
+        print ("Test is passed" + "\n")
+
+    def test_configuration_popup_create_column_set(self):
+        print ("\n" + "TC#9999. Devices page. Configuration popup. Create column set")
+        sitename = "Site#9999"
+        columnsetname = "ColumnSet#9999-01"
+        columns_list = ["Device Name", "Device ID", "Domain", "Site"]
+        main_page = MainPage(self.driver)
+        column_sets_popup = ColumnSetsPopup(self.driver)
+        configuration_popup = ConfigurationPopup(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        main_page.open_column_sets_popup_from_ribbon_bar()
+        main_page.delete_columnset_if_exist(columnsetname)
+        column_sets_popup.click_button_ok()
+        ribbon_bar.click_tab_home()
+        main_page.create_site_if_not_exists(sitename)
+        main_page.click_site_in_global_site_view_tree(sitename)
+        ribbon_bar.click_button_config()
+        main_page.create_columnset_from_configuration_popup(columnsetname, columns_list)
+        main_page.select_columnset_from_configuration_popup_column_set_dropdown_list(columnsetname)
+        self.assertTrue(main_page.check_columnset_is_selected_from_drop_down_list(columnsetname))
+        configuration_popup.click_button_close()
+        self.assertTrue(main_page.check_columns_are_presented_in_devices_list_header(columns_list))
+        main_page.delete_site_from_global_site_view_tree(sitename)
         print ("Test is passed" + "\n")
 
 
