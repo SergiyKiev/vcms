@@ -1,4 +1,5 @@
-from popups import *
+from page_object._base_page.base import Base
+from page_object._locators.locators import Locators
 
 class RibbonBar(Base):
 

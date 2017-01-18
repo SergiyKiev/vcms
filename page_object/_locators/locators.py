@@ -1,5 +1,4 @@
-from selenium.webdriver.common.by import By
-from variables import Variables
+from page_object._variables.variables import Variables
 
 
 class Locators:

@@ -1,7 +1,6 @@
 import time
-
 from page_object._base_page.base import Base
-from page_object.locators import Locators
+from page_object._locators.locators import Locators
 
 
 class SubscriptionHasExpitredPopup(Base):
