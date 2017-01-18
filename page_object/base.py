@@ -67,7 +67,7 @@ class Base(object):
 
     def click_element(self, locator):
         try:
-            time.sleep(1)
+            self.wait.until(EC.presence_of_element_located((By.XPATH, locator)))
             elem = self.find_element_self(locator)
             if elem is not None:
                 elem.click()
@@ -261,10 +261,25 @@ class Base(object):
     def expand_tree(self, locator):
         try:
             #     cond = self.is_element_present(locator + self.EL_EXPAND_ARROW)
+            self.wait.until(EC.presence_of_element_located((By.XPATH, locator)))
             element = self.find_element_self(locator)
             if element is not None:
                 self.driver.execute_script("arguments[0].click();", element)
                 # self.wait_for_element_not_present(locator)
+            else:
+                pass
+        except (NoSuchElementException, TimeoutException):
+            print "Element not found"
+
+
+    def scroll_drop_down_list(self, locator):
+        try:
+            self.wait.until(EC.presence_of_element_located((By.XPATH, "//div[contains(@id,'VWGVLSC_')]")))
+            self.is_element_present(locator + "/*//div[contains(@id,'VWGL_')]/*//span")
+            element = self.find_element_self(locator + "/*//div[contains(@id,'VWGL_')]/*//span").text
+            print element
+            if element is not None:
+                self.driver.execute_script("return arguments[0].scrollIntoView()", element)
             else:
                 pass
         except (NoSuchElementException, TimeoutException):

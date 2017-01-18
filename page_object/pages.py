@@ -211,7 +211,7 @@ class DevicesPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, 
     #     ColumnSetDesignerPopup.click_button_add(self, columns_list)
 
     def select_columnset_from_configuration_popup_column_set_dropdown_list(self, columnsetname):
-        self.click_columnset_in_configuration_popup_drop_down_list(columnsetname)
+        ConfigurationPopup.click_columnset_in_configuration_popup_drop_down_list(self, columnsetname)
 
     def check_columns_are_presented_in_devices_list_header(self, columns_list):
         columnset = []
@@ -224,6 +224,26 @@ class DevicesPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, 
                 pass
         print columnset
         return True if columnset == columns_list else False
+
+    def create_columnset(self, columnsetname, columns_list):
+        ColumnSetsPopup.click_button_new(self)
+        ColumnSetDesignerPopup.click_system_button_maximize(self)
+        ColumnSetDesignerPopup.enter_text_into_text_field_name(self,columnsetname)
+        ColumnSetDesignerPopup.add_columns_to_list_view(self, columns_list)
+        ColumnSetDesignerPopup.click_button_ok(self)
+
+    def delete_columnset_if_exist(self, columnsetname):
+        elem = self.TABLE_BODY + "/*//span[text()='" + columnsetname + "']"
+        cond = self.is_element_present(elem)
+        if cond:
+            ColumnSetsPopup.click_columnset_in_table_list(self, columnsetname)
+            ColumnSetsPopup.click_button_delete(self, columnsetname)
+            AreYouSurePopup.click_button_yes(self)
+            self.wait_for_element_not_present(elem)
+            return True
+        else:
+            pass
+
 
 class AdministrationPage(Base):
     pass

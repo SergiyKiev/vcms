@@ -71,9 +71,10 @@ class ColumnSetsPopup(Base):
         self.click_element(self.BUTTON_COPY)
         self.wait_for_element_present(elem)
 
-    def click_column_sets_popup_button_delete(self, columnsetname):
+    def click_button_delete(self, columnsetname):
         self.click_element(self.BUTTON_DELETE)
-        self.wait_for_element_present(AreYouSurePopup.POPUP_ARE_YOU_SURE)
+        are_you_sure_popup = AreYouSurePopup(self.driver)
+        self.wait_for_element_present(are_you_sure_popup.POPUP_ARE_YOU_SURE)
 
     def click_column_sets_popup_button_set_as_default(self):
         self.click_element(self.BUTTON_SET_AS_DEFAULT)
@@ -102,26 +103,10 @@ class ColumnSetsPopup(Base):
         self.click_element(elem)
         self.wait_for_element_selected(elem + "/ancestor::" + Locators.EL_LIST_ROW)
 
-    def delete_columnset_if_exist(self, columnsetname):
-        elem = self.TABLE_BODY + "/*//span[text()='" + columnsetname + "']"
+    def check_is_columnset_present(self, columsetname):
+        elem = Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_TABLE_BODY + "/*//span[text()='" + columsetname  + "']"
         cond = self.is_element_present(elem)
-        if cond:
-            self.click_columnset_in_table_list(columnsetname)
-            self.click_column_sets_popup_button_delete(columnsetname)
-            are_you_sure_popup = AreYouSurePopup(self.driver)
-            are_you_sure_popup.click_button_yes()
-            self.wait_for_element_not_present(elem)
-            return True
-        else:
-            pass
-
-    def create_columnset(self, columnsetname, columns_list):
-        self.click_button_new()
-        column_set_designer = ColumnSetDesignerPopup(self.driver)
-        column_set_designer.click_system_button_maximize()
-        column_set_designer.enter_text_into_text_field_name(columnsetname)
-        column_set_designer.add_columns_to_list_view(columns_list)
-        column_set_designer.click_button_ok()
+        return True if cond else False
 
 
 class ConfigurationPopup(Base):
@@ -137,7 +122,7 @@ class ConfigurationPopup(Base):
     DROP_DOWN_LIST = Locators.POPUP_CONFIGURATION + "/following::" + Locators.EL_DROP_DOWN_LIST
     DROP_DOWN_CONTAINER = Locators.POPUP_CONFIGURATION + "/*//" + Locators.EL_DROP_DOWN_CONTAINER
 
-    def check_configuration_popup_loaded(self):
+    def check_is_popup_present(self):
         cond = self.is_element_present(self.POPUP_CONFIGURATION)
         return True if cond else False
 
@@ -170,19 +155,18 @@ class ConfigurationPopup(Base):
         # self.wait_for_element_not_present(self.DROP_DOWN_LIST)
         self.wait_for_element_present(self.DROP_DOWN_CONTAINER + "/*//span[text()='" + columnsetname + "']")
 
-    def get_configuration_popup_name_text_field_value(self):
-        elem = self.TEXT_FIELD_NAME
-        actual_attribute_value = self.get_attribute_value(elem, "value")
-        print ("The actual Name text field value of the attribute 'value' is: " + actual_attribute_value)
-        return actual_attribute_value
-
     def enter_text_into_configuration_popup_name_text_field(self, sitename):
         self.find_element_self(self.TEXT_FIELD_NAME).send_keys(sitename)
         self.click_element(self.TEXT_FIELD_NAME)
 
-    def check_configuration_popup_columnset_is_selected_from_drop_down_list(self, columnsetname):
+    def check_columnset_is_selected_from_drop_down_list(self, columnsetname):
         self.wait_for_element_present(self.DROP_DOWN_CONTAINER + "/*//span[text()='" + columnsetname + "']")
 
+    def get_name_text_field_value(self):
+        elem = self.TEXT_FIELD_NAME
+        actual_attribute_value = self.get_attribute_value(elem, "value")
+        print ("The actual Name text field value of the attribute 'value' is: " + actual_attribute_value)
+        return actual_attribute_value
 
 class NewSitePopup(Base):
 
@@ -250,7 +234,6 @@ class ColumnSetDesignerPopup(Base):
         time.sleep(2)
         self.wait_for_element_present(Locators.SYS_BTN_RESTORE_DOWN)
 
-
     def enter_text_into_text_field_name(self, columnsetname):
         self.find_element_self(Locators.POPUP_COLUMN_SET_DESIGNER + "/*//div[2]/input").send_keys(columnsetname)
 
@@ -316,17 +299,17 @@ class AreYouSurePopup(Base):
     # SYSTEM_BUTTON_CLOSE = Locators.POPUP_ARE_YOU_SURE + "/*" + Locators.SYS_BTN_CLOSE
 
     def check_is_popup_present(self):
-        cond = self.is_element_present(self.POPUP_ARE_YOU_SURE)
+        cond = self.is_element_present(Locators.POPUP_ARE_YOU_SURE)
         return True if cond else False
 
     def click_button_ok(self):
-        self.click_element(self.BUTTON_OK)
+        self.click_element(Locators.POPUP_ARE_YOU_SURE + "/*" + Locators.BTN_OK)
         # self.click_element(Locators.POPUP_ARE_YOU_SURE + "/*" + Locators.BTN_OK)
-        self.wait_for_element_not_present(self.POPUP_ARE_YOU_SURE)
+        self.wait_for_element_not_present(Locators.POPUP_ARE_YOU_SURE)
 
     def click_system_button_close(self):
-        self.click_element(self.POPUP_ARE_YOU_SURE + "/*" + Locators.SYS_BTN_CLOSE)
-        self.wait_for_element_not_present(self.POPUP_ARE_YOU_SURE)
+        self.click_element(Locators.POPUP_ARE_YOU_SURE + "/*" + Locators.SYS_BTN_CLOSE)
+        self.wait_for_element_not_present(Locators.POPUP_ARE_YOU_SURE)
 
     def click_button_cancel(self):
         self.click_element(self.BUTTON_CANCEL)
@@ -344,18 +327,18 @@ class AreYouSurePopup(Base):
 class UnableToRemovePopup(Base):
     # CONSTANTS
     POPUP_UNABLE_TO_REMOVE = Locators.POPUP_UNABLE_TO_REMOVE
-    # BUTTON_OK = Locators.POPUP_UNABLE_TO_REMOVE + "/*" + Locators.BTN_Ok
+    BUTTON_OK = Locators.POPUP_UNABLE_TO_REMOVE + "/*" + Locators.BTN_Ok
     SYSTEM_BUTTON_CLOSE = Locators.POPUP_UNABLE_TO_REMOVE + "/*" + Locators.SYS_BTN_CLOSE
 
-    def check_unable_to_remove_popup_is_present(self):
+    def check_is_popup_present(self):
         cond = self.is_element_present(self.POPUP_UNABLE_TO_REMOVE)
         return True if cond else False
 
-    def click_unable_to_remove_popup_button_ok(self):
-        self.click_element(self.POPUP_UNABLE_TO_REMOVE + "/*" + Locators.BTN_OK)
+    def click_button_ok(self):
+        self.click_element(self.BUTTON_OK)
         self.wait_for_element_not_present(self.POPUP_UNABLE_TO_REMOVE)
 
-    def click_unable_to_remove_popup_system_button_close(self):
+    def click_system_button_close(self):
         self.click_element(self.SYSTEM_BUTTON_CLOSE)
         self.wait_for_element_not_present(Locators.POPUP_ARE_YOU_SURE)
 

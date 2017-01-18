@@ -128,7 +128,7 @@ class SiteConfiguration(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        print ("\n" + "Test suite: Site configuration (Suite ID: 9112)" + "\n")
+        print ("\n" + "Test suite: Site configuration (Suite ID: 9112)")
         cls.driver = webdriver.Chrome()
         login_page = LoginPage(cls.driver)
         home_page = HomePage(cls.driver)
@@ -147,48 +147,53 @@ class SiteConfiguration(unittest.TestCase):
         # devices_page.check_devices_page_loaded()
 
     def test_open_configuration_popup(self):
-        print ("\n" + "TC#9601. Devices page. Open 'Configuration' popup" + "\n")
+        print ("\n" + "TC#9601. Devices page. Open 'Configuration' popup")
         devices_page = DevicesPage(self.driver)
+        configuration_popup = ConfigurationPopup(self.driver)
         devices_page.click_global_site_view_label()
         devices_page.click_button_config()
         self.assertTrue(devices_page.is_element_present(Locators.POPUP_CONFIGURATION))
-        devices_page.click_configuration_popup_system_button_close()
+        configuration_popup.click_system_button_close()
         print ("Test is passed" + "\n")
 
     def test_open_configuration_popup_from_global_site_view(self):
-        print ("\n" + "TC#9228. Devices page. Open Configuration popup from the Global Site View" + "\n")
-        print ("\n" + "Login to console. Go to the start point" + "\n")
+        print ("\n" + "TC#9228. Devices page. Open Configuration popup from the Global Site View")
+        print ("Login to console. Go to the start point")
         devices_page = DevicesPage(self.driver)
+        configuration_popup = ConfigurationPopup(self.driver)
         devices_page.click_global_site_view_label()
         devices_page.click_button_config()
-        self.assertFalse(devices_page.check_configuration_popup_loaded())
-        self.assertTrue(devices_page.check_name_text_feild_disabled())
-        self.assertEqual("Global Site View", devices_page.get_configuration_popup_name_text_field_value())
-        devices_page.click_configuration_popup_system_button_close()
+        self.assertTrue(configuration_popup.check_is_popup_present())
+        self.assertTrue(configuration_popup.check_name_text_feild_disabled())
+        self.assertEqual("Global Site View", configuration_popup.get_name_text_field_value())
+        configuration_popup.click_system_button_close()
         print ("Test is passed" + "\n")
 
     def test_open_configuration_popup_from_default_site(self):
-        print ("\n" + "TC#9230. Devices page. Open Configuration popup from the Default Site main label" + "\n")
+        print ("\n" + "TC#9230. Devices page. Open Configuration popup from the Default Site main label")
         devices_page = DevicesPage(self.driver)
+        configuration_popup = ConfigurationPopup(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
         devices_page.click_default_site_in_global_site_view_tree()
-        devices_page.click_button_config()
-        self.assertTrue(devices_page.check_configuration_popup_loaded())
-        self.assertTrue(devices_page.is_element_disabled(Locators.POPUP_CONFIGURATION + "/*" + Locators.FIELD_))
-        self.assertEqual("Default Site", devices_page.get_configuration_popup_name_text_field_value())
-        devices_page.click_configuration_popup_system_button_close()
+        ribbon_bar.click_button_config()
+        self.assertTrue(configuration_popup.check_is_popup_present())
+        self.assertTrue(configuration_popup.check_name_text_feild_disabled())
+        self.assertEqual("Default Site", configuration_popup.get_name_text_field_value())
+        configuration_popup.click_system_button_close()
         print ("Test is passed" + "\n")
 
     def test_open_configuration_popup_from_created_site(self):
-        print ("\n" + "TC#9236. Devices page. Open Configuration popup from the created site" + "\n")
+        print ("\n" + "TC#9236. Devices page. Open Configuration popup from the created site")
         sitename = "Site#9236"
         devices_page = DevicesPage(self.driver)
+        configuration_popup = ConfigurationPopup(self.driver)
         devices_page.create_site_if_not_exists(sitename)
         devices_page.click_site_in_global_site_view_tree(sitename)
         devices_page.click_button_config()
         self.assertTrue(devices_page.is_element_present(Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_PANEL))
         self.assertFalse(devices_page.is_element_disabled(Locators.POPUP_CONFIGURATION + "/*" + Locators.FIELD_))
-        self.assertEqual(sitename, devices_page.get_configuration_popup_name_text_field_value())
-        devices_page.click_configuration_popup_system_button_close()
+        self.assertEqual(sitename, devices_page.get_name_text_field_value())
+        configuration_popup.click_system_button_close()
         devices_page.delete_site_from_global_site_view_tree(sitename)
         print ("Test is passed" + "\n")
 
@@ -234,10 +239,10 @@ class SiteConfiguration_SiteTab(unittest.TestCase):
         left_side_menu.open_left_side_menu_tasks()
         left_side_menu.open_left_side_menu_reporting()
         left_side_menu.open_left_side_menu_software_and_patch_manager()
-        left_side_menu.open_left_side_menu_password_reset()
+        # left_side_menu.open_left_side_menu_password_reset()
 
     def test_configuration_popup_change_site_name(self):
-        print ("\n" + "TC#9237. Devices page. Configuration popup. Change site name" + "\n")
+        print ("\n" + "TC#9237. Devices page. Configuration popup. Change site name")
         sitename = "Site#9237"
         modifed = "_modifed"
         devices_page = DevicesPage(self.driver)
@@ -246,31 +251,32 @@ class SiteConfiguration_SiteTab(unittest.TestCase):
         devices_page.click_site_in_global_site_view_tree(sitename)
         devices_page.click_button_config()
         self.assertFalse(devices_page.is_element_disabled(Locators.POPUP_CONFIGURATION + "/*" + Locators.FIELD_))
-        self.assertEqual(sitename, devices_page.get_configuration_popup_name_text_field_value())
+        self.assertEqual(sitename, devices_page.get_name_text_field_value())
         devices_page.enter_text_into_configuration_popup_name_text_field(modifed)
         devices_page.click_system_button_close()
         self.assertTrue(devices_page.check_site_is_in_global_site_view_tree(sitename + modifed))
         devices_page.click_site_in_global_site_view_tree(sitename + modifed)
         devices_page.click_button_config()
-        self.assertEqual(sitename + modifed, devices_page.get_configuration_popup_name_text_field_value())
+        self.assertEqual(sitename + modifed, devices_page.get_name_text_field_value())
         devices_page.click_system_button_close()
         devices_page.delete_site_from_global_site_view_tree(sitename + modifed)
         devices_page.delete_site_if_exists(sitename)
         print ("Test is passed" + "\n")
 
     def test_configuration_popup_open_column_set_designer_popup(self):
-        print ("\n" + "TC#9238. Devices page. Configuration popup. Open Column Set Designer popup" + "\n")
+        print ("\n" + "TC#9238. Devices page. Configuration popup. Open Column Set Designer popup")
         devices_page = DevicesPage(self.driver)
+        configuration_popup = ConfigurationPopup(self.driver)
         devices_page.click_default_site_in_global_site_view_tree()
         devices_page.click_button_config()
         devices_page.click_button_new()
         self.assertTrue(devices_page.check_is_popup_present())
         devices_page.click_column_set_popup_system_button_close()
-        devices_page.click_configuration_popup_system_button_close()
+        configuration_popup.click_system_button_close()
         print ("Test is passed" + "\n")
 
     def test_configuration_popup_apply_column_set(self):
-        print ("\n" + "TC#9239. Devices page. Configuration popup. Apply Column set to the site" + "\n")
+        print ("\n" + "TC#9239. Devices page. Configuration popup. Apply Column set to the site")
         sitename = "Site#9239"
         columnset1 = "ColumnSet#9239-01"
         columnset2 = "ColumnSet#9239-02"
@@ -278,15 +284,14 @@ class SiteConfiguration_SiteTab(unittest.TestCase):
         column_sets_popup = ColumnSetsPopup(self.driver)
         configuration_popup = ConfigurationPopup(self.driver)
         ribbon_bar = RibbonBar(self.driver)
-        #Test
-        # devices_page.open_column_sets_popup_from_ribbon_bar()
-        # column_sets_popup.delete_columnset_if_exist(columnset1)
-        # column_sets_popup.delete_columnset_if_exist(columnset2)
-        # column_sets_popup.create_columnset(columnset1, Variables.columns_list1)
-        # column_sets_popup.create_columnset(columnset2, Variables.columns_list2)
-        # column_sets_popup.click_button_ok()
-        # ribbon_bar.click_tab_home()
-        # devices_page.create_site_if_not_exists(sitename)
+        devices_page.open_column_sets_popup_from_ribbon_bar()
+        devices_page.delete_columnset_if_exist(columnset1)
+        devices_page.delete_columnset_if_exist(columnset2)
+        devices_page.create_columnset(columnset1, Variables.columns_list1)
+        devices_page.create_columnset(columnset2, Variables.columns_list2)
+        column_sets_popup.click_button_ok()
+        ribbon_bar.click_tab_home()
+        devices_page.create_site_if_not_exists(sitename)
         devices_page.click_site_in_global_site_view_tree(sitename)
         ribbon_bar.click_button_config()
         devices_page.select_columnset_from_configuration_popup_column_set_dropdown_list(columnset1)
@@ -318,7 +323,7 @@ class SiteConfiguration_IpAddressRangesTab(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        print ("\n" + "Test suite: Site configuration - IP Address Ranges tab (Suite ID: 9234)" + "\n")
+        print ("\n" + "Test suite: Site configuration - IP Address Ranges tab (Suite ID: 9234)")
         cls.driver = webdriver.Chrome()
         login_page = LoginPage(cls.driver)
         home_page = HomePage(cls.driver)
@@ -369,48 +374,53 @@ class SiteDeletion(unittest.TestCase):
         # devices_page.check_devices_page_loaded()
 
     def test_delete_created_site_from_global_site_view_tree(self):
-        print ("\n" + "TC#9607. Devices page. Delete created site from Global Site View tree" + "\n")
+        print ("\n" + "TC#9607. Devices page. Delete created site from Global Site View tree")
         sitename = "Test#9607"
         devices_page = DevicesPage(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        are_you_sure_popup = AreYouSurePopup(self.driver)
         devices_page.delete_site_if_exists(sitename)
         devices_page.click_global_site_view_label()
         devices_page.create_new_site(sitename)
         devices_page.click_site_in_global_site_view_tree(sitename)
-        devices_page.click_delete_button()
-        devices_page.click_button_ok()
+        ribbon_bar.click_delete_button()
+        are_you_sure_popup.click_button_ok()
         self.assertFalse(devices_page.check_site_is_in_global_site_view_tree(sitename))
         print ("Test is passed" + "\n")
 
     def test_delete_default_site_from_global_site_view_tree(self):
-        print ("\n" + "TC#----. Devices page. Delete Default site from Global Site View tree" + "\n")
+        print ("\n" + "TC#----. Devices page. Delete Default site from Global Site View tree")
         devices_page = DevicesPage(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        unable_to_remove_popup = UnableToRemovePopup(self.driver)
         devices_page.click_default_site_in_global_site_view_tree()
-        devices_page.click_delete_button()
-        self.assertTrue(devices_page.is_element_present(Locators.POPUP_UNABLE_TO_REMOVE))
-        devices_page.click_unable_to_remove_popup_ok_button()
+        ribbon_bar.click_delete_button()
+        self.assertTrue(unable_to_remove_popup.check_is_popup_present())
+        unable_to_remove_popup.click_button_ok()
         self.assertTrue(devices_page.is_element_present(Locators.LABEL_DEFAULT_SITE))
         print ("Test is passed" + "\n")
 
     def test_delete_subsite_from_site_tree(self):
-        print ("\n" + "TC#----. Devices page. Delete subsite from Global Site View tree" + "\n")
+        print ("\n" + "TC#----. Devices page. Delete subsite from Global Site View tree")
         sitename = "TC#____"
         subsitename = "TC#____-01"
         devices_page = DevicesPage(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
         are_you_sure_popup = AreYouSurePopup(self.driver)
         devices_page.delete_site_if_exists(sitename)
         devices_page.create_new_site(sitename)
         devices_page.create_new_subsite(sitename, subsitename)
         devices_page.click_subsite_in_site_tree(sitename, subsitename)
-        devices_page.click_delete_button()
+        ribbon_bar.click_delete_button()
         are_you_sure_popup.click_button_ok()
         self.assertFalse(devices_page.check_subsite_is_in_parent_site(sitename, subsitename))
         devices_page.delete_site_from_global_site_view_tree(sitename)
         print ("Test is passed" + "\n")
 
     def test_delete_site_with_subsite(self):
-        print ("\n" + "TC#----. Devices page. Delete site with subsite from Global Site View tree" + "\n")
-        sitename = "TC#____"
-        subsitename = "TC#____-01"
+        print ("\n" + "TC#0000. Devices page. Delete site with subsite from Global Site View tree")
+        sitename = "TC#0000"
+        subsitename = "TC#0000-01"
         devices_page = DevicesPage(self.driver)
         devices_page.delete_site_if_exists(sitename)
         devices_page.create_new_site(sitename)
@@ -420,19 +430,21 @@ class SiteDeletion(unittest.TestCase):
         self.assertFalse(devices_page.check_site_is_in_global_site_view_tree(sitename))
 
     def test_cancel_site_deletion_from_global_site_view(self):
-        print ("\n" + "TC#1111. Devices page. Cancel site deletion" + "\n")
+        print ("\n" + "TC#1111. Devices page. Cancel site deletion")
         sitename = "TC#1111"
         devices_page = DevicesPage(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        are_you_sure_popup = AreYouSurePopup(self.driver)
         devices_page.create_site_if_not_exists(sitename)
         devices_page.click_site_in_global_site_view_tree(sitename)
-        devices_page.click_delete_button()
-        devices_page.click_button_cancel()
+        ribbon_bar.click_delete_button()
+        are_you_sure_popup.click_button_cancel()
         self.assertTrue(devices_page.check_site_is_in_global_site_view_tree(sitename))
         devices_page.delete_site_from_global_site_view_tree(sitename)
         print ("Test is passed" + "\n")
 
     def test_open_are_you_sure_popup(self):
-        print ("\n" + "TC#2222. Devices page. Open Are you sure popup" + "\n")
+        print ("\n" + "TC#2222. Devices page. Open Are you sure popup")
         sitename = "TC#2222"
         devices_page = DevicesPage(self.driver)
         are_you_sure_popup = AreYouSurePopup(self.driver)
