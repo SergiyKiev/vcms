@@ -1,8 +1,7 @@
-from base import Base
-from locators import Locators
+from page_object._base_page.base import Base
+from page_object.locators import Locators
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
-import time
 
 
 class LeftSideMenu(Base):

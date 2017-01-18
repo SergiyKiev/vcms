@@ -1,13 +1,7 @@
-from base import Base
-from leftSideMenu import LeftSideMenu
-from ribbonBar import RibbonBar
-from popups import *
-from locators import Locators
+from page_object._feature_objects.leftSideMenu import LeftSideMenu
+from page_object._feature_objects.popups import *
+from page_object._feature_objects.ribbonBar import RibbonBar
 from settings import Settings
-from selenium.webdriver.support import expected_conditions as EC
-from variables import Variables
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.common.by import By
 
 
 class LoginPage(TermsAndConditionsPopup, SubscriptionHasExpitredPopup):

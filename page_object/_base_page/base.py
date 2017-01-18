@@ -6,8 +6,8 @@ import time
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
-from settings import *
-from locators import Locators
+from page_object.settings import *
+from page_object.locators import Locators
 
 
 class Base(object):

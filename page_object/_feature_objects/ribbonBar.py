@@ -1,7 +1,3 @@
-from base import Base
-from locators import Locators
-from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import TimeoutException
 from popups import *
 
 class RibbonBar(Base):
