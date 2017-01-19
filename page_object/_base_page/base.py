@@ -285,13 +285,13 @@ class Base(object):
         except (NoSuchElementException, TimeoutException):
             print "Element not found"
 
-    def scroll_down_drop_down_list(self):
+    def scroll_down_drop_down_list(self, step):
         try:
             self.wait_for_element_present("//div[contains(@id,'VWGVLSC_')]")
             element1 = self.find_element_self("//table[contains(@id,'VWGVL_')]/*//tr")
             element = self.find_element_self("//div[contains(@id,'VWGVLSC_')]")
             self.hover("//table[contains(@id,'VWGVL_')]/*//tr")
-            self.driver.execute_script("arguments[0].scrollTop = arguments[1].scrollHeight", element, element1)
+            self.driver.execute_script("arguments[0].scrollTop = step", element, step)
         except Exception as e:
             print "error scrolling down web element", e
 

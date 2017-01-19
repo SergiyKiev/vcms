@@ -171,6 +171,7 @@ class ConfigurationPopup(Base):
         all_rows_size = self.find_element_self(scroll).size
         row_size = self.find_element_self(last_row).size
         row_height = row_size['height']
+        step = row_height
         all_rows_height = all_rows_size['height']
         row_numbers = all_rows_height / row_height
         print all_rows_size, row_size, row_numbers
@@ -182,8 +183,10 @@ class ConfigurationPopup(Base):
             if cond:
                 break
             else:
-                self.scroll_down_drop_down_list()
+                self.scroll_down_drop_down_list(step)
+                step += row_height
                 i += 1
+
         else:
             pass
         print "Exit"
