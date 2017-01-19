@@ -1,10 +1,10 @@
 import unittest
-from page_object._variables.variables import *
-from page_object._pages.pageLogin import LoginPage
-from page_object._pages.pageMain import MainPage
-from page_object._feature_objects.popups import *
-from page_object._feature_objects.ribbonBar import *
-from page_object._feature_objects.leftSideMenu import *
+from _variables.variables import *
+from _pages.pageLogin import LoginPage
+from _pages.pageMain import MainPage
+from _feature_objects.popups import *
+from _feature_objects.ribbonBar import *
+from _feature_objects.leftSideMenu import *
 from selenium import webdriver
 
 

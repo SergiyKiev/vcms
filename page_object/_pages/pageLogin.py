@@ -1,6 +1,6 @@
-from page_object._settings.settings import Settings
-from page_object._locators.locators import Locators
-from page_object._feature_objects.popups import TermsAndConditionsPopup, SubscriptionHasExpitredPopup
+from _settings.settings import Settings
+from _locators.locators import Locators
+from _feature_objects.popups import TermsAndConditionsPopup, SubscriptionHasExpitredPopup
 from pageMain import MainPage
 
 

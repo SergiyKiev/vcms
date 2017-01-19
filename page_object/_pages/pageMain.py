@@ -1,7 +1,7 @@
-from page_object._feature_objects.leftSideMenu import LeftSideMenu
-from page_object._feature_objects.ribbonBar import RibbonBar
-from page_object._feature_objects.popups import *
-from page_object._settings.settings import Settings
+from _feature_objects.leftSideMenu import LeftSideMenu
+from _feature_objects.ribbonBar import RibbonBar
+from _feature_objects.popups import *
+from _settings.settings import Settings
 
 
 class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, ColumnSetDesignerPopup, AreYouSurePopup,

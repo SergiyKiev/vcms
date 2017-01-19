@@ -1,4 +1,5 @@
-from page_object._variables.variables import Variables
+
+from _variables.variables import Variables
 
 
 class Locators:

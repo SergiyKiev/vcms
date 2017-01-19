@@ -1,6 +1,7 @@
+
 import time
-from page_object._base_page.base import Base
-from page_object._locators.locators import Locators
+from _base_page.base import Base
+from _locators.locators import Locators
 
 
 class SubscriptionHasExpitredPopup(Base):
@@ -157,6 +158,12 @@ class ConfigurationPopup(Base):
 
     def click_columnset_in_configuration_popup_drop_down_list(self, columnsetname):
         self.click_column_set_dropdown_button()
+        element = self.DROP_DOWN_LIST + "/*//span[text()='" + columnsetname + "']"
+        cond = self.is_element_not_present(element)
+        if cond:
+            self.scroll_drop_down_list()
+        else:
+            pass
         self.click_element(self.DROP_DOWN_LIST + "/*//span[text()='" + columnsetname + "']")
         self.wait_for_element_not_present(self.DROP_DOWN_LIST)
         self.wait_for_element_present(self.DROP_DOWN_CONTAINER + "/*//span[text()='" + columnsetname + "']")
@@ -255,36 +262,13 @@ class ColumnSetDesignerPopup(Base):
         self.wait_for_element_selected(elem + "/ancestor::" + self.CSD_ELEMENT_NODE_CONTAINER)
 
     def expand_all_left_side_lists(self):
-        elements = self.find_elements_self(self.CSD_LEFT_SIDE_TREE + "/div/div/div[contains(@id,'VWGJOINT')]" + self.CSD_ARROW_EXPAND)
-        # print len(elements)
+        elements = self.find_elements_self(self.CSD_LEFT_SIDE_TREE + "/div/div/div[contains(@id,'VWGJOINT')]")
         # y = []
         for x in range(0, len(elements)):
-            elem = self.CSD_LEFT_SIDE_TREE + "/div[" + str(x + 1) + "]/div/div[contains(@id,'VWGJOINT')]" + self.CSD_ARROW_EXPAND
+            elem = self.CSD_LEFT_SIDE_TREE + "/div[" + str(x + 1) + "]/div/div[contains(@id,'VWGJOINT')]"
             self.expand_tree(elem)
         #     y.append(x)
         # print y
-        # # elements = self.find_elements_self(self.COLUMN_SET_DESIGNER_LEFT_SIDE_TREE + "/div/div/div[contains(@id,'VWGJOINT')]/*//span")
-        # # # text = self.find_elements_self(self.COLUMN_SET_DESIGNER_LEFT_SIDE_TREE + "/div/div[contains(@id,'SUBS')]/*//span")
-        # # s = []
-        # # for a in range(1, len(elements)):
-        # #     e = self.COLUMN_SET_DESIGNER_LEFT_SIDE_TREE + "/div[" + str(a) + "]/div/div[contains(@id,'VWGJOINT')]/*//span"
-        # #     h = self.find_element_self(e).text
-        # #     s.append(h)
-        # # print s
-        #     # for b in range(1, len(text)):
-        #     #     j = self.COLUMN_SET_DESIGNER_LEFT_SIDE_TREE + "/div[" + str(b) + "]/div[contains(@id,'SUBS')]/*//span"
-        #     #     l = self.find_element_self(j).text
-        #     #     print l
-        #     #     s.append(b)
-        #     #     print s
-        # # e = self.find_element_self(elem)
-        # # location = e.location
-        # # size = e.size
-        # # print location
-        # # print size
-        # # elem = self.COLUMN_SET_DESIGNER_LEFT_SIDE_TREE + "/div[2]/div/div[contains(@id,'JOINT')]"
-        # # cond = self.wait_for_element_present(elem + "/following::div[contains(@id,'SUBS')][contains(@style,'display: block')]")
-        # # print cond
 
     def add_columns_to_list_view(self, columns_list):
         self.expand_all_left_side_lists()

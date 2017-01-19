@@ -1,5 +1,5 @@
-from page_object._base_page.base import Base
-from page_object._locators.locators import Locators
+from _base_page.base import Base
+from _locators.locators import Locators
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
 

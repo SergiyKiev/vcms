@@ -1,7 +1,7 @@
-import time
 
-from page_object._locators.locators import Locators
-from page_object._settings.settings import *
+import time
+from _locators.locators import Locators
+from _settings.settings import *
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.action_chains import ActionChains
@@ -16,6 +16,7 @@ class Base(object):
     FIELD_USERNAME = Locators.FIELD_USERNAME
     FIELD_PASSWORD = Locators.FIELD_PASSWORD
     LOADING_SCREEN_VISIBLE = Locators.LOADING_SCREEN_VISIBLE
+    LOADING_SCREEN_VISIBLE_NEW = (By.XPATH, "//div[@id='VWG_LoadingAnimationBox'][contains(@style,'display: block']")
     POPUP_CONFIGURATION = Locators.POPUP
     POPUP_SYSTEM_BUTTON_CLOSE = Locators.POPUP + "/*" + Locators.SYS_BTN_CLOSE
     DISABLED = Locators.DISABLED
@@ -49,7 +50,8 @@ class Base(object):
 
     def find_element_self(self, locator):
         try:
-            self.wait.until_not(EC.visibility_of_element_located((By.XPATH, self.LOADING_SCREEN_VISIBLE)))
+            time.sleep(1)
+            self.wait.until_not(EC.visibility_of_element_located(self.LOADING_SCREEN_VISIBLE_NEW))
             self.wait.until(EC.presence_of_element_located((By.XPATH, locator)))
             return self.driver.find_element(By.XPATH, locator)
         except (NoSuchElementException, TimeoutException):
@@ -58,8 +60,8 @@ class Base(object):
 
     def find_elements_self(self, locator):
         try:
-            # time.sleep(1)
-            self.wait.until(EC.invisibility_of_element_located((By.XPATH, self.LOADING_SCREEN_VISIBLE)))
+            time.sleep(1)
+            self.wait.until(EC.invisibility_of_element_located(self.LOADING_SCREEN_VISIBLE_NEW))
             self.wait.until(EC.presence_of_all_elements_located((By.XPATH, locator)))
             return self.driver.find_elements(By.XPATH, locator)
         except (NoSuchElementException, TimeoutException):
@@ -72,32 +74,32 @@ class Base(object):
             if elem is not None:
                 elem.click()
                 time.sleep(1)
-                self.wait.until(EC.invisibility_of_element_located((By.XPATH, self.LOADING_SCREEN_VISIBLE)))
+                self.wait.until(EC.invisibility_of_element_located(self.LOADING_SCREEN_VISIBLE_NEW))
                 # print "CLICK " + locator
                 return True
         except NoSuchElementException:
             print locator + " is not clickable"
             return False
 
-    # def hover_and_click_element(self, locator):
-    #     try:
-    #         time.sleep(2)
-    #         elem = self.find_element_self(locator)
-    #         if elem is not None:
-    #             actionChains = ActionChains(self.driver)
-    #             actionChains.move_to_element(elem).perform()
-    #             time.sleep(1)
-    #             actionChains.click(elem).perform()
-    #             time.sleep(1)
-    #             self.wait.until(EC.invisibility_of_element_located((By.XPATH, self.LOADING_SCREEN_VISIBLE)))
-    #             return True
-    #     except NoSuchElementException:
-    #         print locator + " is not clickable"
-    #         return False
+    def hover_and_click_element(self, locator):
+        try:
+            self.wait.until(EC.presence_of_element_located((By.XPATH, locator)))
+            elem = self.find_element_self(locator)
+            if elem is not None:
+                actionChains = ActionChains(self.driver)
+                actionChains.move_to_element(elem).perform()
+                time.sleep(1)
+                actionChains.click(elem).perform()
+                time.sleep(1)
+                self.wait.until(EC.invisibility_of_element_located(self.LOADING_SCREEN_VISIBLE_NEW))
+                return True
+        except NoSuchElementException:
+            print locator + " is not clickable"
+            return False
 
     def wait_for_element_present(self, locator):
         try:
-            self.wait.until(EC.invisibility_of_element_located((By.XPATH, self.LOADING_SCREEN_VISIBLE)))
+            self.wait.until(EC.invisibility_of_element_located(self.LOADING_SCREEN_VISIBLE_NEW))
             self.wait.until(EC.presence_of_element_located((By.XPATH, locator)))
             self.wait.until(EC.visibility_of_element_located((By.XPATH, locator)))
             # print locator + " is presented"
@@ -119,7 +121,7 @@ class Base(object):
 
     def wait_for_element_not_present(self, locator):
         try:
-            self.wait.until(EC.invisibility_of_element_located((By.XPATH, self.LOADING_SCREEN_VISIBLE)))
+            self.wait.until(EC.invisibility_of_element_located(self.LOADING_SCREEN_VISIBLE_NEW))
             self.wait.until_not(EC.presence_of_element_located((By.XPATH, locator)))
             self.wait.until_not(EC.visibility_of_element_located((By.XPATH, locator)))
             # print locator + " is not presented"
@@ -133,7 +135,7 @@ class Base(object):
 
     def wait_for_element_selected(self, locator):
         try:
-            self.wait.until(EC.invisibility_of_element_located((By.XPATH, self.LOADING_SCREEN_VISIBLE)))
+            self.wait.until(EC.invisibility_of_element_located(self.LOADING_SCREEN_VISIBLE_NEW))
             self.wait.until(EC.presence_of_element_located((By.XPATH, locator + self.SELECTED)))
             self.wait.until(EC.visibility_of_element_located((By.XPATH, locator + self.SELECTED)))
             # print locator + " is selected"
@@ -144,7 +146,7 @@ class Base(object):
 
     def wait_for_element_disabled(self, locator):
         try:
-            self.wait.until(EC.invisibility_of_element_located((By.XPATH, self.LOADING_SCREEN_VISIBLE)))
+            self.wait.until(EC.invisibility_of_element_located(self.LOADING_SCREEN_VISIBLE_NEW))
             self.wait.until(EC.presence_of_element_located((By.XPATH, locator + self.DISABLED)))
             self.wait.until(EC.visibility_of_element_located((By.XPATH, locator + self.DISABLED)))
             # print locator + " is disabled"
@@ -155,7 +157,7 @@ class Base(object):
 
     def wait_for_element_visible(self, locator):
         try:
-            self.wait.until(EC.invisibility_of_element_located((By.XPATH, self.LOADING_SCREEN_VISIBLE)))
+            self.wait.until(EC.invisibility_of_element_located(self.LOADING_SCREEN_VISIBLE_NEW))
             self.wait.until(EC.visibility_of_element_located((By.XPATH, locator)))
             # print locator + " is visible"
             return True
@@ -225,7 +227,7 @@ class Base(object):
             return False
 
     def close_popups(self):
-        self.wait.until(EC.invisibility_of_element_located((By.XPATH, self.LOADING_SCREEN_VISIBLE)))
+        self.wait.until(EC.invisibility_of_element_located(self.LOADING_SCREEN_VISIBLE_NEW))
         cond = self.is_element_present(self.POPUP_CONFIGURATION)
         i = 0
         while i < 10:
@@ -261,25 +263,25 @@ class Base(object):
     def expand_tree(self, locator):
         try:
             #     cond = self.is_element_present(locator + self.EL_EXPAND_ARROW)
-            self.wait.until(EC.presence_of_element_located((By.XPATH, locator)))
+            self.wait.until(EC.presence_of_element_located((By.XPATH, locator + Locators.ARROW_EXPAND )))
             element = self.find_element_self(locator)
             if element is not None:
                 self.driver.execute_script("arguments[0].click();", element)
-                self.wait.until_not(EC.presence_of_element_located((By.XPATH, locator)))
+                self.wait.until_not(EC.presence_of_element_located((By.XPATH, locator + Locators.ARROW_EXPAND)))
             else:
                 pass
         except (NoSuchElementException, TimeoutException):
             print "Element not found"
 
-
-    def scroll_drop_down_list(self, locator):
+    def scroll_drop_down_list(self):
         try:
             self.wait.until(EC.presence_of_element_located((By.XPATH, "//div[contains(@id,'VWGVLSC_')]")))
-            self.is_element_present(locator + "/*//div[contains(@id,'VWGL_')]/*//span")
-            element = self.find_element_self(locator + "/*//div[contains(@id,'VWGL_')]/*//span").text
+            # self.is_element_present(locator + "/*//div[contains(@id,'VWGL_')]/*//tr[8]/*//span")
+            element = self.find_element_self("//table[contains(@id,'VWGVL_')]/*//tr[@data-vwgindex='']")
             print element
             if element is not None:
                 self.driver.execute_script("return arguments[0].scrollIntoView()", element)
+                # self.driver.execute_script("window.scrollBy(0, -150);")
             else:
                 pass
         except (NoSuchElementException, TimeoutException):

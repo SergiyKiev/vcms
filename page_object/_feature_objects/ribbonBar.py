@@ -1,6 +1,6 @@
-from page_object._base_page.base import Base
-from page_object._locators.locators import Locators
-from page_object._feature_objects.popups import *
+from _base_page.base import Base
+from _locators.locators import Locators
+from _feature_objects.popups import *
 
 class RibbonBar(Base):
 
