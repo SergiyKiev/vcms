@@ -276,19 +276,20 @@ class SiteConfiguration_SiteTab(unittest.TestCase):
     def test_configuration_popup_apply_column_set(self):
         print ("\n" + "TC#9239. Devices page. Configuration popup. Apply Column set to the site")
         sitename = "Site#9239"
-        columnset1 = "ColumnSet#9239-01"
+        columnset1 = "test1"
+        # columnset1 = "ColumnSet#9239-01"
         columnset2 = "ColumnSet#9239-02"
         main_page = MainPage(self.driver)
         column_sets_popup = ColumnSetsPopup(self.driver)
         configuration_popup = ConfigurationPopup(self.driver)
         ribbon_bar = RibbonBar(self.driver)
-        main_page.open_column_sets_popup_from_ribbon_bar()
-        main_page.delete_columnset_if_exist(columnset1)
-        main_page.delete_columnset_if_exist(columnset2)
-        main_page.create_columnset_from_column_sets_popup(columnset1, Variables.columns_list1)
-        main_page.create_columnset_from_column_sets_popup(columnset2, Variables.columns_list2)
-        column_sets_popup.click_button_ok()
-        ribbon_bar.click_tab_home()
+        # main_page.open_column_sets_popup_from_ribbon_bar()
+        # main_page.delete_columnset_if_exist(columnset1)
+        # main_page.delete_columnset_if_exist(columnset2)
+        # main_page.create_columnset_from_column_sets_popup(columnset1, Variables.columns_list1)
+        # main_page.create_columnset_from_column_sets_popup(columnset2, Variables.columns_list2)
+        # column_sets_popup.click_button_ok()
+        # ribbon_bar.click_tab_home()
         main_page.create_site_if_not_exists(sitename)
         main_page.click_site_in_global_site_view_tree(sitename)
         ribbon_bar.click_button_config()

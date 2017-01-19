@@ -2,6 +2,7 @@
 import time
 from _base_page.base import Base
 from _locators.locators import Locators
+from selenium.webdriver.common.keys import Keys
 
 
 class SubscriptionHasExpitredPopup(Base):
@@ -128,6 +129,7 @@ class ConfigurationPopup(Base):
     ICON_HELP = Locators.POPUP_CONFIGURATION + "/*" + Locators.ICON_HELP
     DROP_DOWN_LIST = "//" + Locators.EL_DROP_DOWN_LIST
     DROP_DOWN_CONTAINER = Locators.POPUP_CONFIGURATION + "/*//" + Locators.EL_DROP_DOWN_CONTAINER
+    ICON_RESTORE = Locators.POPUP_CONFIGURATION + "/*" + Locators.ICON_RESTORE
 
     def check_is_popup_present(self):
         cond = self.is_element_present(self.POPUP_CONFIGURATION)
@@ -148,6 +150,10 @@ class ConfigurationPopup(Base):
     def click_icon_help(self):
         self.click_element(self.ICON_HELP)
 
+    def click_icon_restore(self):
+        self.click_element(self.ICON_RESTORE)
+        self.wait_for_element_not_present(self.ICON_RESTORE + "/following::span[@data-vwg_appliedvalue]")
+
     def click_system_button_close(self):
         self.click_element(self.SYSTEM_BUTTON_CLOSE)
         self.wait_for_element_not_present(self.POPUP_CONFIGURATION)
@@ -157,13 +163,30 @@ class ConfigurationPopup(Base):
         self.wait_for_element_present(self.DROP_DOWN_LIST)
 
     def click_columnset_in_configuration_popup_drop_down_list(self, columnsetname):
+        # self.click_icon_restore()
         self.click_column_set_dropdown_button()
+        # self.scroll_up_drop_down_list()
+        last_row = "//table[contains(@id,'VWGVL_')]/*//tr[8]"
+        scroll = "//div[contains(@id,'VWGVLSC_')]/div"
+        all_rows_size = self.find_element_self(scroll).size
+        row_size = self.find_element_self(last_row).size
+        row_height = row_size['height']
+        all_rows_height = all_rows_size['height']
+        row_numbers = all_rows_height / row_height
+        print all_rows_size, row_size, row_numbers
         element = self.DROP_DOWN_LIST + "/*//span[text()='" + columnsetname + "']"
-        cond = self.is_element_not_present(element)
-        if cond:
-            self.scroll_drop_down_list()
+        i = 7
+        while i <= row_numbers:
+            cond = self.is_element_present(element)
+            print cond
+            if cond:
+                break
+            else:
+                self.scroll_down_drop_down_list()
+                i += 1
         else:
             pass
+        print "Exit"
         self.click_element(self.DROP_DOWN_LIST + "/*//span[text()='" + columnsetname + "']")
         self.wait_for_element_not_present(self.DROP_DOWN_LIST)
         self.wait_for_element_present(self.DROP_DOWN_CONTAINER + "/*//span[text()='" + columnsetname + "']")
@@ -263,12 +286,9 @@ class ColumnSetDesignerPopup(Base):
 
     def expand_all_left_side_lists(self):
         elements = self.find_elements_self(self.CSD_LEFT_SIDE_TREE + "/div/div/div[contains(@id,'VWGJOINT')]")
-        # y = []
         for x in range(0, len(elements)):
             elem = self.CSD_LEFT_SIDE_TREE + "/div[" + str(x + 1) + "]/div/div[contains(@id,'VWGJOINT')]"
             self.expand_tree(elem)
-        #     y.append(x)
-        # print y
 
     def add_columns_to_list_view(self, columns_list):
         self.expand_all_left_side_lists()

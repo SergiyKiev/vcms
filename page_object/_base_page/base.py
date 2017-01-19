@@ -262,30 +262,39 @@ class Base(object):
 
     def expand_tree(self, locator):
         try:
-            #     cond = self.is_element_present(locator + self.EL_EXPAND_ARROW)
             self.wait.until(EC.presence_of_element_located((By.XPATH, locator + Locators.ARROW_EXPAND )))
             element = self.find_element_self(locator)
             if element is not None:
                 self.driver.execute_script("arguments[0].click();", element)
-                self.wait.until_not(EC.presence_of_element_located((By.XPATH, locator + Locators.ARROW_EXPAND)))
+                # self.wait.until_not(EC.presence_of_element_located((By.XPATH, locator + Locators.ARROW_EXPAND)))
             else:
                 pass
         except (NoSuchElementException, TimeoutException):
             print "Element not found"
 
-    def scroll_drop_down_list(self):
+    def scroll_up_drop_down_list(self):
         try:
-            self.wait.until(EC.presence_of_element_located((By.XPATH, "//div[contains(@id,'VWGVLSC_')]")))
-            # self.is_element_present(locator + "/*//div[contains(@id,'VWGL_')]/*//tr[8]/*//span")
-            element = self.find_element_self("//table[contains(@id,'VWGVL_')]/*//tr[@data-vwgindex='']")
-            print element
-            if element is not None:
-                self.driver.execute_script("return arguments[0].scrollIntoView()", element)
-                # self.driver.execute_script("window.scrollBy(0, -150);")
-            else:
-                pass
+            self.wait_for_element_present("//div[contains(@id,'VWGVLSC_')]")
+            element = self.find_element_self("//div[contains(@id,'VWGVLSC_')]")
+            self.hover("//table[contains(@id,'VWGVL_')]/*//tr")
+            self.driver.execute_script("arguments[0].scrollTop = 0", element)
+            self.wait_for_element_present("//table[contains(@id,'VWGVL_')]/*//tr[1][@data-vwgindex='0']")
+            # self.find_element_self("//table[contains(@id,'VWGVL_')]/*//tr")
+            # self.hover("//table[contains(@id,'VWGVL_')]/*//tr")
+            # self.driver.execute_script("arguments[0].scrollTop = argument[1];", element, 150)
         except (NoSuchElementException, TimeoutException):
             print "Element not found"
+
+    def scroll_down_drop_down_list(self):
+        try:
+            self.wait_for_element_present("//div[contains(@id,'VWGVLSC_')]")
+            element1 = self.find_element_self("//table[contains(@id,'VWGVL_')]/*//tr")
+            element = self.find_element_self("//div[contains(@id,'VWGVLSC_')]")
+            self.hover("//table[contains(@id,'VWGVL_')]/*//tr")
+            self.driver.execute_script("arguments[0].scrollTop = arguments[1].scrollHeight", element, element1)
+        except Exception as e:
+            print "error scrolling down web element", e
+
 
     # def collapse_tree(self, locator):
     #     try:
