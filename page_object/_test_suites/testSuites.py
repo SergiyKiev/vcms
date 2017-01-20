@@ -14,15 +14,16 @@ class SiteCreation(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        print ("\n" + "Test suite: Site creation (Suite ID: 9111)")
+        print ("\n" + "TEST SUITE: Site creation (Suite ID: 9111)")
         cls.driver = webdriver.Chrome()
         login_page = LoginPage(cls.driver)
+        left_side_menu = LeftSideMenu(cls.driver)
         login_page.open_page()
         main_page = login_page.login()
         main_page.check_main_page_loaded()
         main_page.close_popups()
-        main_page.open_menu_devices()
-        main_page.click_global_site_view_label()
+        left_side_menu.open_menu_devices()
+        left_side_menu.click_global_site_view_label()
 
     def setUp(self):
         main_page = MainPage(self.driver)
@@ -32,10 +33,10 @@ class SiteCreation(unittest.TestCase):
 
     def test_open_site_name_popup(self):
         print ("\n" + "TC#9057. Open Site Name popup")
-        main_page = MainPage(self.driver)
         new_site_popup = NewSitePopup(self.driver)
         ribbon_bar = RibbonBar(self.driver)
-        main_page.click_global_site_view_label()
+        left_side_menu = LeftSideMenu(self.driver)
+        left_side_menu.click_global_site_view_label()
         ribbon_bar.click_button_new_site()
         self.assertTrue(new_site_popup.check_is_popup_present())
         print ("Test is passed" + "\n")
@@ -128,7 +129,7 @@ class SiteConfiguration(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        print ("\n" + "Test suite: Site configuration (Suite ID: 9112)")
+        print ("\n" + "TEST SUITE: Site configuration (Suite ID: 9112)")
         cls.driver = webdriver.Chrome()
         login_page = LoginPage(cls.driver)
         login_page.open_page()
@@ -137,7 +138,6 @@ class SiteConfiguration(unittest.TestCase):
         main_page.close_popups()
         main_page.open_menu_devices()
         main_page.click_global_site_view_label()
-
 
     def setUp(self):
         main_page = MainPage(self.driver)
@@ -173,7 +173,7 @@ class SiteConfiguration(unittest.TestCase):
         main_page = MainPage(self.driver)
         configuration_popup = ConfigurationPopup(self.driver)
         ribbon_bar = RibbonBar(self.driver)
-        main_page.click_default_site_in_global_site_view_tree()
+        main_page.click_default_site_in_global_site_view()
         ribbon_bar.click_button_config()
         self.assertTrue(configuration_popup.check_is_popup_present())
         self.assertTrue(configuration_popup.check_name_text_feild_disabled())
@@ -211,8 +211,7 @@ class SiteConfiguration_SiteTab(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        print ("\n" + "Test suite: Site configuration - Site tab (Suite ID: 9234)")
-        print ("\n" + "Login to console. Go to the start point")
+        print ("\n" + "TEST SUITE: Site configuration - Site tab (Suite ID: 9234)")
         cls.driver = webdriver.Chrome()
         login_page = LoginPage(cls.driver)
         # left_side_menu = LeftSideMenu(cls.driver)
@@ -263,16 +262,38 @@ class SiteConfiguration_SiteTab(unittest.TestCase):
 
     def test_configuration_popup_open_column_set_designer_popup(self):
         print ("\n" + "TC#9238. Devices page. Configuration popup. Open Column Set Designer popup")
-        main_page = MainPage(self.driver)
+        # main_page = MainPage(self.driver)
         configuration_popup = ConfigurationPopup(self.driver)
-        main_page.click_default_site_in_global_site_view_tree()
-        main_page.click_button_config()
-        main_page.click_button_new()
-        self.assertTrue(main_page.check_is_popup_present())
-        main_page.click_column_set_popup_system_button_close()
+        column_set_designer = ColumnSetDesignerPopup(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        left_side_menu = LeftSideMenu(self.driver)
+        left_side_menu.click_default_site_in_global_site_view()
+        ribbon_bar.click_button_config()
+        configuration_popup.click_button_new()
+        self.assertTrue(configuration_popup.check_is_popup_present())
+        column_set_designer.click_system_button_close()
         configuration_popup.click_system_button_close()
         print ("Test is passed" + "\n")
 
+    def test_configuration_popup_apply_column_set(self):
+        print ("\n" + "TC#9239. Devices page. Configuration popup. Apply column set to the site")
+        sitename = "Site#9239"
+        columnset = "01_ColumnSet#9239-01"
+        main_page = MainPage(self.driver)
+        configuration_popup = ConfigurationPopup(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        left_side_menu = LeftSideMenu(self.driver)
+        main_page.create_columnset_from_ribbon_bar(columnset, Variables.columns_list1)
+        main_page.create_site_if_not_exists(sitename)
+        left_side_menu.click_site_in_global_site_view_tree(sitename)
+        ribbon_bar.click_button_config()
+        configuration_popup.select_columnset_in_configuration_popup_drop_down_list(columnset)
+        configuration_popup.click_button_close()
+        self.assertTrue(main_page.check_columns_are_presented_in_devices_list_header(Variables.columns_list1))
+        # main_page.delete_site_from_global_site_view_tree(sitename)
+        print ("Test is passed" + "\n")
+
+    @unittest.skip
     def test_configuration_popup_apply_column_set(self):
         print ("\n" + "TC#9239. Devices page. Configuration popup. Apply Column set to the site")
         sitename = "Site#9239"
@@ -283,13 +304,13 @@ class SiteConfiguration_SiteTab(unittest.TestCase):
         column_sets_popup = ColumnSetsPopup(self.driver)
         configuration_popup = ConfigurationPopup(self.driver)
         ribbon_bar = RibbonBar(self.driver)
-        # main_page.open_column_sets_popup_from_ribbon_bar()
-        # main_page.delete_columnset_if_exist(columnset1)
-        # main_page.delete_columnset_if_exist(columnset2)
-        # main_page.create_columnset_from_column_sets_popup(columnset1, Variables.columns_list1)
-        # main_page.create_columnset_from_column_sets_popup(columnset2, Variables.columns_list2)
-        # column_sets_popup.click_button_ok()
-        # ribbon_bar.click_tab_home()
+        main_page.open_column_sets_popup_from_ribbon_bar()
+        main_page.delete_columnset_if_exist(columnset1)
+        main_page.delete_columnset_if_exist(columnset2)
+        main_page.create_columnset_from_column_sets_popup(columnset1, Variables.columns_list1)
+        main_page.create_columnset_from_column_sets_popup(columnset2, Variables.columns_list2)
+        column_sets_popup.click_button_ok()
+        ribbon_bar.click_tab_home()
         main_page.create_site_if_not_exists(sitename)
         main_page.click_site_in_global_site_view_tree(sitename)
         ribbon_bar.click_button_config()
@@ -327,8 +348,6 @@ class SiteConfiguration_SiteTab(unittest.TestCase):
         main_page.delete_site_from_global_site_view_tree(sitename)
         print ("Test is passed" + "\n")
 
-
-
     # def tearDown(self):
     #     page = MainPage(self.driver)
     #     page.close_popups()
@@ -337,10 +356,8 @@ class SiteConfiguration_SiteTab(unittest.TestCase):
     def tearDownClass(cls):
         cls.driver.quit()
 
-
+@unittest.skip
 class SiteConfiguration_IpAddressRangesTab(unittest.TestCase):
-
-    pass
 
     driver = None
 
@@ -378,15 +395,16 @@ class SiteDeletion(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        print ("\n" + "Test suite: Site deletion (Suite ID: 9114)" + "\n")
+        print ("\n" + "TEST SUITE: Site creation (Suite ID: 9111)")
         cls.driver = webdriver.Chrome()
         login_page = LoginPage(cls.driver)
+        left_side_menu = LeftSideMenu(cls.driver)
         login_page.open_page()
         main_page = login_page.login()
         main_page.check_main_page_loaded()
         main_page.close_popups()
-        main_page.open_menu_devices()
-        main_page.click_global_site_view_label()
+        left_side_menu.open_menu_devices()
+        left_side_menu.click_global_site_view_label()
 
     def setUp(self):
         main_page = MainPage(self.driver)
@@ -414,7 +432,7 @@ class SiteDeletion(unittest.TestCase):
         main_page = MainPage(self.driver)
         ribbon_bar = RibbonBar(self.driver)
         unable_to_remove_popup = UnableToRemovePopup(self.driver)
-        main_page.click_default_site_in_global_site_view_tree()
+        main_page.click_default_site_in_global_site_view()
         ribbon_bar.click_delete_button()
         self.assertTrue(unable_to_remove_popup.check_is_popup_present())
         unable_to_remove_popup.click_button_ok()
@@ -486,42 +504,37 @@ class SiteDeletion(unittest.TestCase):
     def tearDownClass(cls):
         cls.driver.quit()
 
+@unittest.skip
+class SiteRelocation(unittest.TestCase):
 
-# class SiteRelocation(unittest.TestCase):
-#
-    # driver = None
-    #
-    # @classmethod
-    # def setUpClass(cls):
-    #     print ("\n" + "Test suite: Site deletion (Suite ID: 9114)" + "\n")
-    #     cls.driver = webdriver.Chrome()
-    #     # cls.driver = webdriver.Firefox()
-    #     cls.driver.maximize_window()
-    #     cls.driver.get(Settings.baseUrl)
-    #     WebDriverWait(cls.driver, 120).until(EC.presence_of_element_located((By.XPATH, Locators.BTN_SIGN_IN)))
-    #     login_page = LoginPage(cls.driver)
-    #     login_page.login()
-    #     main_page = MainPage(cls.driver)
-    #     main_page.close_popups()
-    #     main_page = main_page.open_menu_devices()
-    #     main_page.check_main_page_loaded()
-    #     main_page.click_global_site_view_label()
-    #
-    # def setUp(self):
-    #     main_page = MainPage(self.driver)
-    #     main_page.close_popups()
-    #     # main_page = main_page.open_menu_devices()
-    #     # main_page.check_main_page_loaded()
-    #
-    #
-    # # def tearDown(self):
-    # #     page = MainPage(self.driver)
-    # #     page.close_popups()
-    #
-    # @classmethod
-    # def tearDownClass(cls):
-    #     cls.driver.quit()
-    #
+    driver = None
+
+    @classmethod
+    def setUpClass(cls):
+        print ("\n" + "TEST SUITE: Site creation (Suite ID: 9111)")
+        cls.driver = webdriver.Chrome()
+        login_page = LoginPage(cls.driver)
+        left_side_menu = LeftSideMenu(cls.driver)
+        login_page.open_page()
+        main_page = login_page.login()
+        main_page.check_main_page_loaded()
+        main_page.close_popups()
+        left_side_menu.open_menu_devices()
+        left_side_menu.click_global_site_view_label()
+
+    def setUp(self):
+        main_page = MainPage(self.driver)
+        main_page.close_popups()
+        # main_page = main_page.open_menu_devices()
+        # main_page.check_main_page_loaded()
+
+    # def tearDown(self):
+    #     page = MainPage(self.driver)
+    #     page.close_popups()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.driver.quit()
 
 
 if __name__ == "__main__":

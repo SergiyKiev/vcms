@@ -79,7 +79,7 @@ class ColumnSetsPopup(Base):
         self.click_element(self.CS_BUTTON_COPY)
         self.wait_for_element_present(elem)
 
-    def click_button_delete(self, columnsetname):
+    def click_button_delete(self):
         self.click_element(self.CS_BUTTON_DELETE)
         are_you_sure_popup = AreYouSurePopup(self.driver)
         self.wait_for_element_present(are_you_sure_popup.POPUP_ARE_YOU_SURE)
@@ -140,8 +140,8 @@ class ConfigurationPopup(Base):
         return True if cond else False
 
     def click_button_close(self):
-        self.click_element(self.BUTTON_CLOSE)
-        self.is_element_not_present(self.POPUP_CONFIGURATION)
+        self.click_element(Locators.POPUP_CONFIGURATION + "/*" + Locators.BTN_CLOSE)
+        self.is_element_not_present(Locators.POPUP_CONFIGURATION)
 
     def click_button_new(self):
         self.click_element(self.BUTTON_NEW)
@@ -159,15 +159,13 @@ class ConfigurationPopup(Base):
         self.wait_for_element_not_present(self.POPUP_CONFIGURATION)
 
     def click_column_set_dropdown_button(self):
+        self.hover(self.SYSTEM_BUTTON_DROP_DOWN)
         self.click_element(self.SYSTEM_BUTTON_DROP_DOWN)
         self.wait_for_element_present(self.DROP_DOWN_LIST)
 
-    def click_columnset_in_configuration_popup_drop_down_list(self, columnsetname):
+    def select_columnset_in_configuration_popup_drop_down_list(self, columnsetname):
         # self.click_icon_restore()
         self.click_column_set_dropdown_button()
-        self.scroll_down_drop_down_list("22")
-        self.click_column_set_dropdown_button()
-        self.scroll_down_drop_down_list("22")
         # self.scroll_up_drop_down_list()
         last_row = "//table[contains(@id,'VWGVL_')]/*//tr[8]"
         scroll = "//div[contains(@id,'VWGVLSC_')]/div"
@@ -182,7 +180,6 @@ class ConfigurationPopup(Base):
         i = 7
         while i <= row_numbers:
             cond = self.is_element_present(element)
-            print cond
             if cond:
                 break
             else:
@@ -191,7 +188,7 @@ class ConfigurationPopup(Base):
                 i += 1
         else:
             pass
-        print "Exit"
+        print "List is successfully scrolled. Exit cycle"
         self.click_element(self.DROP_DOWN_LIST + "/*//span[text()='" + columnsetname + "']")
         self.wait_for_element_not_present(self.DROP_DOWN_LIST)
         self.wait_for_element_present(self.DROP_DOWN_CONTAINER + "/*//span[text()='" + columnsetname + "']")
@@ -272,6 +269,10 @@ class ColumnSetDesignerPopup(Base):
     def click_button_add(self, columnname):
         self.click_element(self.CSD_BUTTON_ADD)
         self.wait_for_element_present(self.CSD_TABLE_BODY + "/*//span[contains(text(),'" + columnname + "')]")
+
+    def click_system_button_close(self):
+        self.click_element(Locators.POPUP_COLUMN_SET_DESIGNER + "/*" + Locators.SYS_BTN_CLOSE)
+        self.wait_for_element_not_present(Locators.POPUP_COLUMN_SET_DESIGNER)
 
     def click_system_button_maximize(self):
         self.click_element(self.POPUP_COLUMN_SET_DESIGNER + "/*" + Locators.SYS_BTN_MAXIMIZE)

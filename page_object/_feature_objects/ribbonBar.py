@@ -12,15 +12,10 @@ class RibbonBar(Base):
     TAB_HOME = Locators.RIBBON_BAR_TAB + "/*" + Locators.TAB_HOME
     BUTTON_EDIT_OR_CREATE = Locators.BTN_EDIT_OR_CREATE
 
-    # def click_tab_view(self):
-    #     self.click_element(self.TAB_VIEW)
-    #     self.wait_for_element_selected(self.TAB_VIEW)
-    #     self.wait_for_element_present(self.BUTTONS_BOX_DISPLAY)
-
     def click_tab_view(self):
         self.click_element(self.TAB_VIEW)
-        self.is_element_selected(self.TAB_VIEW)
-        self.is_element_present(self.BUTTONS_BOX_DISPLAY)
+        self.wait_for_element_selected(self.TAB_VIEW)
+        self.wait_for_element_present(self.BUTTONS_BOX_DISPLAY)
 
     def click_tab_home(self):
         self.click_element(self.TAB_HOME)

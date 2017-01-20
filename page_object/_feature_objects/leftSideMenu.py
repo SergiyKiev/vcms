@@ -36,9 +36,9 @@ class LeftSideMenu(Base):
         return True if cond else False
 
     def click_icon_devices(self):
-        self.click_element(self.ICON_DEVICES)
-        self.wait_for_element_present(self.LEFT_SIDE_MENU_DEVICES)
-        self.wait_for_element_present(self.TITLE_DEVICES)
+        self.click_element(Locators.ICON_DEVICES)
+        self.wait_for_element_present(Locators.LEFT_SIDE_MENU_DEVICES)
+        self.wait_for_element_present("//" + Locators.EL_PAGE_HEADER_PANEL + Locators.CONTAINER_PANEL_TITLE_DEVICES + "/*" + Locators.TEXT_DEVICES)
 
     def click_icon_administration(self):
         self.click_element(self.ICON_ADMINISTRATION)
@@ -141,3 +141,25 @@ class LeftSideMenu(Base):
     # def check_main_page_loaded(self):
     #     cond = self.is_element_present(self.LEFT_SIDE_MENU_DEVICES + self.MENU_IS_VISIBLE)
     #     return True if cond else False
+
+    def click_global_site_view_label(self):
+        self.click_element(Locators.LABEL_GLOBAL_SITE_VIEW)
+        self.wait_for_element_present(Locators.BTN_NEW_SITE)
+        self.wait_for_element_selected(Locators.LABEL_GLOBAL_SITE_VIEW)
+        # self.wait_for_element_present(Locators.CONTAINER_PANEL_TITLE_DEVICES + "/*" + Locators.TEXT_CONTAINS_GLOBAL_SITE_VIEW)
+        self.wait_for_element_not_present(Locators.BTN_DELETE)
+
+    def click_default_site_in_global_site_view(self):
+        self.click_element(Locators.LABEL_DEFAULT_SITE)
+        self.wait_for_element_selected(Locators.LABEL_DEFAULT_SITE)
+        self.wait_for_element_present(Locators.CONTAINER_PANEL_TITLE_DEVICES + "/*" + Locators.TEXT_CONTAINS_DEFAULT_SITE)
+
+    def click_site_in_global_site_view_tree(self, sitename):
+        elem1 = "//span[text()='" + sitename + "']"
+        elem2 = "//span[contains(text(),'" + sitename + "')]"
+        self.click_element(Locators.TREE_GLOBAL_SITE_VIEW + "/*" + elem1)
+        self.wait_for_element_selected(elem1 + Locators.anc + Locators.EL_NODE_CONTAINER)
+        self.wait_for_element_present(Locators.BTN_CONFIG)
+        self.wait_for_element_present(Locators.BTN_NEW_SITE)
+        # self.wait_for_element_present(Locators.CONTAINER_PANEL_TITLE_DEVICES + "/*" + elem2)
+

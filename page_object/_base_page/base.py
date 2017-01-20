@@ -47,6 +47,8 @@ class Base(object):
             self.wait.until(EC.presence_of_element_located((By.XPATH, self.BUTTON_SIGN_IN)))
         except TimeoutException:
             print "Page is not loaded"
+        except Exception as e:
+            print "Any reasons ", e
 
     def find_element_self(self, locator):
         try:
@@ -57,6 +59,8 @@ class Base(object):
         except (NoSuchElementException, TimeoutException):
             print locator + " is not found"
             return None
+        except Exception as e:
+            print "The element is not found in the reason of ", e
 
     def find_elements_self(self, locator):
         try:
@@ -80,6 +84,8 @@ class Base(object):
         except NoSuchElementException:
             print locator + " is not clickable"
             return False
+        except Exception as e:
+            print "The element is not clickable in the reason of ", e
 
     def hover_and_click_element(self, locator):
         try:
@@ -107,6 +113,8 @@ class Base(object):
         except TimeoutException:
             print locator + " returns False"
             return False
+        except Exception as e:
+            print "After wait fol element present, programm recieved massage ", e
 
     def wait_for_elements_present(self, locator):
         try:
@@ -266,7 +274,7 @@ class Base(object):
             element = self.find_element_self(locator)
             if element is not None:
                 self.driver.execute_script("arguments[0].click();", element)
-                # self.wait.until_not(EC.presence_of_element_located((By.XPATH, locator + Locators.ARROW_EXPAND)))
+                self.wait.until_not(EC.presence_of_element_located((By.XPATH, locator + Locators.ARROW_EXPAND)))
             else:
                 pass
         except (NoSuchElementException, TimeoutException):

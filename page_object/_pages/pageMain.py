@@ -9,31 +9,18 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
 
     def check_main_page_loaded(self):
         time.sleep(5)
-        cond1 = self.wait_for_element_present(Locators.TEXT_WELCOME_TO_CLOUD_MANAGEMENT_SUITE)
+        # cond1 = self.wait_for_element_present(Locators.TEXT_WELCOME_TO_CLOUD_MANAGEMENT_SUITE)
         cond2 = self.wait_for_element_present(Locators.BTN_EXIT)
         cond3 = self.wait_for_element_present(Locators.ICON_HOME)
-        return True if (cond1 and cond2 and cond3) else False
+        cond4 = self.wait_for_element_present(Locators.ICON_DEVICES)
+        return True if (cond2 and cond3 and cond4) else False
 
-    def click_global_site_view_label(self):
-        self.click_element(Locators.LABEL_GLOBAL_SITE_VIEW)
-        self.wait_for_element_present(Locators.BTN_NEW_SITE)
-        self.wait_for_element_selected(Locators.LABEL_GLOBAL_SITE_VIEW)
-        self.wait_for_element_present(Locators.CONTAINER_PANEL_TITLE_DEVICES + "/*" + Locators.TEXT_CONTAINS_GLOBAL_SITE_VIEW)
-        self.wait_for_element_not_present(Locators.BTN_DELETE)
-
-    def click_site_in_global_site_view_tree(self, sitename):
-        elem1 = "//span[text()='" + sitename + "']"
-        elem2 = "//span[contains(text(),'" + sitename + "')]"
-        self.click_element(Locators.TREE_GLOBAL_SITE_VIEW + "/*" + elem1)
-        self.wait_for_element_selected(elem1 + Locators.anc + Locators.EL_NODE_CONTAINER)
-        self.wait_for_element_present(Locators.BTN_CONFIG)
-        self.wait_for_element_present(Locators.BTN_NEW_SITE)
-        self.wait_for_element_present(Locators.CONTAINER_PANEL_TITLE_DEVICES + "/*" + elem2)
-
-    def click_default_site_in_global_site_view_tree(self):
-        self.click_element(Locators.LABEL_DEFAULT_SITE)
-        self.wait_for_element_selected(Locators.LABEL_DEFAULT_SITE)
-        self.wait_for_element_present(Locators.CONTAINER_PANEL_TITLE_DEVICES + "/*" + Locators.TEXT_CONTAINS_DEFAULT_SITE)
+    # def click_global_site_view_label(self):
+    #     self.click_element(Locators.LABEL_GLOBAL_SITE_VIEW)
+    #     self.wait_for_element_present(Locators.BTN_NEW_SITE)
+    #     self.wait_for_element_selected(Locators.LABEL_GLOBAL_SITE_VIEW)
+    #     self.wait_for_element_present(Locators.CONTAINER_PANEL_TITLE_DEVICES + "/*" + Locators.TEXT_CONTAINS_GLOBAL_SITE_VIEW)
+    #     self.wait_for_element_not_present(Locators.BTN_DELETE)
 
     # def click_ok(self):
     #     self.click_element(Locators.POPUP_ARE_YOU_SURE + "/*" + Locators.BTN_OK)
@@ -136,10 +123,6 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
         self.click_element(Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_VREPS)
         self.wait_for_element_selected(Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_VREPS)
 
-    def click_column_set_popup_system_button_close(self):
-        self.click_element(Locators.POPUP_COLUMN_SET_DESIGNER + "/*" + Locators.SYS_BTN_CLOSE)
-        self.wait_for_element_not_present(Locators.POPUP_COLUMN_SET_DESIGNER)
-
     def check_site_is_in_global_site_view_tree(self, sitename):
         cond = self.is_element_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
         return True if cond else False
@@ -148,10 +131,37 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
         cond = self.is_element_present("//span[text()='" + sitename + "']/following::span[text() = '" + subsitename + "']")
         return True if cond else False
 
-    def open_column_sets_popup_from_ribbon_bar(self, *columnsetname):
+    def open_column_sets_popup_from_ribbon_bar(self):
         self.click_global_site_view_label()
         RibbonBar.click_tab_view(self)
         RibbonBar.click_button_edit_or_create(self)
+
+    def create_columnset_from_ribbon_bar(self, columnsetname, column_list):
+        LeftSideMenu.click_global_site_view_label(self)
+        RibbonBar.click_tab_view(self)
+        RibbonBar.click_button_edit_or_create(self)
+        cond = ColumnSetsPopup.check_is_columnset_present(self, columnsetname)
+        print cond
+        while cond:
+            ColumnSetsPopup.click_columnset_in_table_list(self, columnsetname)
+            ColumnSetsPopup.click_button_delete(self)
+            AreYouSurePopup.click_button_ok(self)
+        else:
+            pass
+        ColumnSetsPopup.click_button_new(self)
+        ColumnSetDesignerPopup.click_system_button_maximize(self)
+        ColumnSetDesignerPopup.enter_text_into_text_field_name(self, columnsetname)
+        ColumnSetDesignerPopup.expand_all_left_side_lists(self)
+        for columnname in list(column_list):
+            ColumnSetDesignerPopup.click_column_in_left_side_tree(self, columnname)
+            ColumnSetDesignerPopup.click_button_add(self, columnname)
+        # ColumnSetDesignerPopup.add_columns_to_list_view(self, column_list)
+        ColumnSetDesignerPopup.click_button_ok(self)
+        result = ColumnSetsPopup.check_is_columnset_present(self,columnsetname)
+        ColumnSetsPopup.click_button_ok(self)
+        RibbonBar.click_tab_home(self)
+        LeftSideMenu.click_global_site_view_label(self)
+        return result
 
     # def create_columnset_from_column_sets_popup(self, columnsetname, columns_list):
     #     self.click_button_new()
@@ -160,7 +170,7 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
     #     ColumnSetDesignerPopup.click_button_add(self, columns_list)
 
     def select_columnset_from_configuration_popup_column_set_dropdown_list(self, columnsetname):
-        ConfigurationPopup.click_columnset_in_configuration_popup_drop_down_list(self, columnsetname)
+        ConfigurationPopup.select_columnset_in_configuration_popup_drop_down_list(self, columnsetname)
 
     def check_columns_are_presented_in_devices_list_header(self, columns_list):
         columnset = []
@@ -201,7 +211,7 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
         cond = self.is_element_present(elem)
         if cond:
             ColumnSetsPopup.click_columnset_in_table_list(self, columnsetname)
-            ColumnSetsPopup.click_button_delete(self, columnsetname)
+            ColumnSetsPopup.click_button_delete(self)
             AreYouSurePopup.click_button_yes(self)
             self.wait_for_element_not_present(elem)
             return True
