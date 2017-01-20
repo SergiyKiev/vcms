@@ -276,8 +276,8 @@ class SiteConfiguration_SiteTab(unittest.TestCase):
     def test_configuration_popup_apply_column_set(self):
         print ("\n" + "TC#9239. Devices page. Configuration popup. Apply Column set to the site")
         sitename = "Site#9239"
-        columnset1 = "test1"
-        # columnset1 = "ColumnSet#9239-01"
+        # columnset1 = "test1"
+        columnset1 = "ColumnSet#9239-01"
         columnset2 = "ColumnSet#9239-02"
         main_page = MainPage(self.driver)
         column_sets_popup = ColumnSetsPopup(self.driver)

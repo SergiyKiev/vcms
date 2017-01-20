@@ -291,7 +291,7 @@ class Base(object):
             element1 = self.find_element_self("//table[contains(@id,'VWGVL_')]/*//tr")
             element = self.find_element_self("//div[contains(@id,'VWGVLSC_')]")
             self.hover("//table[contains(@id,'VWGVL_')]/*//tr")
-            self.driver.execute_script("arguments[0].scrollTop = step", element, step)
+            self.driver.execute_script("arguments[0].scrollTop = arguments[1]", element, step)
         except Exception as e:
             print "error scrolling down web element", e
 

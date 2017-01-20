@@ -165,6 +165,9 @@ class ConfigurationPopup(Base):
     def click_columnset_in_configuration_popup_drop_down_list(self, columnsetname):
         # self.click_icon_restore()
         self.click_column_set_dropdown_button()
+        self.scroll_down_drop_down_list("22")
+        self.click_column_set_dropdown_button()
+        self.scroll_down_drop_down_list("22")
         # self.scroll_up_drop_down_list()
         last_row = "//table[contains(@id,'VWGVL_')]/*//tr[8]"
         scroll = "//div[contains(@id,'VWGVLSC_')]/div"
@@ -186,7 +189,6 @@ class ConfigurationPopup(Base):
                 self.scroll_down_drop_down_list(step)
                 step += row_height
                 i += 1
-
         else:
             pass
         print "Exit"
