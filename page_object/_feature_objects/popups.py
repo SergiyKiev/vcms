@@ -117,121 +117,6 @@ class ColumnSetsPopup(Base):
         return True if cond else False
 
 
-class ConfigurationPopup(Base):
-    #CONSTANTS
-    POPUP_CONFIGURATION = Locators.POPUP_CONFIGURATION
-    TAB_PANEL = Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_PANEL
-    TEXT_FIELD_NAME = Locators.POPUP_CONFIGURATION + "/*" + Locators.FIELD_
-    BUTTON_CLOSE = Locators.POPUP_CONFIGURATION + "/*" + Locators.BTN_CLOSE
-    BUTTON_NEW = Locators.POPUP_CONFIGURATION + "/*" + Locators.BTN_NEW_by_text
-    SYSTEM_BUTTON_CLOSE = Locators.POPUP_CONFIGURATION + "/*" + Locators.SYS_BTN_CLOSE
-    SYSTEM_BUTTON_DROP_DOWN = Locators.POPUP_CONFIGURATION + "/*" + Locators.SYS_BTN_DROP_DOWN
-    ICON_HELP = Locators.POPUP_CONFIGURATION + "/*" + Locators.ICON_HELP
-    DROP_DOWN_LIST = "//" + Locators.EL_DROP_DOWN_LIST
-    DROP_DOWN_CONTAINER = Locators.POPUP_CONFIGURATION + "/*//" + Locators.EL_DROP_DOWN_CONTAINER
-    ICON_RESTORE = Locators.POPUP_CONFIGURATION + "/*" + Locators.ICON_RESTORE
-
-    def check_is_popup_present(self):
-        cond = self.is_element_present(self.POPUP_CONFIGURATION)
-        return True if cond else False
-
-    def check_name_text_feild_disabled(self):
-        cond = self.is_element_disabled(self.TEXT_FIELD_NAME)
-        return True if cond else False
-
-    def click_button_close(self):
-        self.click_element(Locators.POPUP_CONFIGURATION + "/*" + Locators.BTN_CLOSE)
-        self.is_element_not_present(Locators.POPUP_CONFIGURATION)
-
-    def click_button_new(self):
-        self.click_element(self.BUTTON_NEW)
-        self.is_element_present(ColumnSetDesignerPopup.POPUP_COLUMN_SET_DESIGNER)
-
-    def click_icon_help(self):
-        self.click_element(self.ICON_HELP)
-
-    def click_icon_restore(self):
-        self.click_element(self.ICON_RESTORE)
-        self.wait_for_element_not_present(self.ICON_RESTORE + "/following::span[@data-vwg_appliedvalue]")
-
-    def click_system_button_close(self):
-        self.click_element(self.SYSTEM_BUTTON_CLOSE)
-        self.wait_for_element_not_present(self.POPUP_CONFIGURATION)
-
-    def click_column_set_dropdown_button(self):
-        self.hover(self.SYSTEM_BUTTON_DROP_DOWN)
-        self.click_element(self.SYSTEM_BUTTON_DROP_DOWN)
-        self.wait_for_element_present(self.DROP_DOWN_LIST)
-
-    def select_columnset_in_configuration_popup_drop_down_list(self, columnsetname):
-        # self.click_icon_restore()
-        self.click_column_set_dropdown_button()
-        # self.scroll_up_drop_down_list()
-        last_row = "//table[contains(@id,'VWGVL_')]/*//tr[8]"
-        scroll = "//div[contains(@id,'VWGVLSC_')]/div"
-        all_rows_size = self.find_element_self(scroll).size
-        row_size = self.find_element_self(last_row).size
-        row_height = row_size['height']
-        step = row_height
-        all_rows_height = all_rows_size['height']
-        row_numbers = all_rows_height / row_height
-        print all_rows_size, row_size, row_numbers
-        element = self.DROP_DOWN_LIST + "/*//span[text()='" + columnsetname + "']"
-        i = 7
-        while i <= row_numbers:
-            cond = self.is_element_present(element)
-            if cond:
-                break
-            else:
-                self.scroll_down_drop_down_list(step)
-                step += row_height
-                i += 1
-        else:
-            pass
-        print "List is successfully scrolled. Exit cycle"
-        self.click_element(self.DROP_DOWN_LIST + "/*//span[text()='" + columnsetname + "']")
-        self.wait_for_element_not_present(self.DROP_DOWN_LIST)
-        self.wait_for_element_present(self.DROP_DOWN_CONTAINER + "/*//span[text()='" + columnsetname + "']")
-
-    def enter_text_into_configuration_popup_name_text_field(self, sitename):
-        self.find_element_self(self.TEXT_FIELD_NAME).send_keys(sitename)
-        self.click_element(self.TEXT_FIELD_NAME)
-
-    def check_columnset_is_selected_from_drop_down_list(self, columnsetname):
-        cond = self.wait_for_element_present(self.DROP_DOWN_CONTAINER + "/*//span[text()='" + columnsetname + "']")
-        return True if cond else False
-
-    def get_name_text_field_value(self):
-        elem = self.TEXT_FIELD_NAME
-        actual_attribute_value = self.get_attribute_value(elem, "value")
-        print ("The actual Name text field value of the attribute 'value' is: " + actual_attribute_value)
-        return actual_attribute_value
-
-
-class NewSitePopup(Base):
-
-    POPUP_SITE_NAME = Locators.POPUP_SITE_NAME
-
-    def enter_text_into_name_text_field(self, sitename):
-        self.find_element_self(self.POPUP_SITE_NAME + "/*" + Locators.FIELD_).send_keys(sitename)
-
-    def click_button_ok(self):
-        self.click_element(self.POPUP_SITE_NAME + "/*" + Locators.BTN_OK)
-        self.wait_for_element_not_present(Locators.POPUP_SITE_NAME)
-
-    def click_system_button_close(self):
-        self.click_element(self.POPUP_SITE_NAME + "/*" + Locators.SYS_BTN_CLOSE)
-        self.wait_for_element_not_present(Locators.POPUP_SITE_NAME)
-
-    def click_button_cancel(self):
-        self.click_element(self.POPUP_SITE_NAME + "/*" + Locators.BTN_CANCEL)
-        self.wait_for_element_not_present(self.POPUP_SITE_NAME)
-
-    def check_is_popup_present(self):
-        cond = self.is_element_present(self.POPUP_SITE_NAME)
-        return True if cond else False
-
-
 class ColumnSetDesignerPopup(Base):
     #CONSTANTS
     POPUP_COLUMN_SET_DESIGNER = Locators.POPUP_COLUMN_SET_DESIGNER
@@ -305,6 +190,116 @@ class ColumnSetDesignerPopup(Base):
 
     def check_is_columnname_in_list_view(self, columnname):
         cond = self.is_element_present(self.CSD_TABLE_BODY + "/*//span[contains(text(),'" + columnname + "')]")
+        return True if cond else False
+
+
+class ConfigurationPopup(Base):
+    #CONSTANTS
+    POPUP_CONFIGURATION = Locators.POPUP_CONFIGURATION
+    TAB_PANEL = Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_PANEL
+    TEXT_FIELD_NAME = Locators.POPUP_CONFIGURATION + "/*" + Locators.FIELD_
+    BUTTON_CLOSE = Locators.POPUP_CONFIGURATION + "/*" + Locators.BTN_CLOSE
+    BUTTON_NEW = Locators.POPUP_CONFIGURATION + "/*" + Locators.BTN_NEW_by_text
+    SYSTEM_BUTTON_CLOSE = Locators.POPUP_CONFIGURATION + "/*" + Locators.SYS_BTN_CLOSE
+    SYSTEM_BUTTON_DROP_DOWN = Locators.POPUP_CONFIGURATION + "/*" + Locators.SYS_BTN_DROP_DOWN
+    ICON_HELP = Locators.POPUP_CONFIGURATION + "/*" + Locators.ICON_HELP
+    DROP_DOWN_LIST = "//" + Locators.EL_DROP_DOWN_LIST
+    DROP_DOWN_CONTAINER = Locators.POPUP_CONFIGURATION + "/*//" + Locators.EL_DROP_DOWN_CONTAINER
+    ICON_RESTORE = Locators.POPUP_CONFIGURATION + "/*" + Locators.ICON_RESTORE
+
+    def check_is_popup_present(self):
+        cond = self.is_element_present(self.POPUP_CONFIGURATION)
+        return True if cond else False
+
+    def check_name_text_feild_disabled(self):
+        cond = self.is_element_disabled(self.TEXT_FIELD_NAME)
+        return True if cond else False
+
+    def click_button_close(self):
+        self.click_element(Locators.POPUP_CONFIGURATION + "/*" + Locators.BTN_CLOSE)
+        self.is_element_not_present(Locators.POPUP_CONFIGURATION)
+
+    def click_button_new(self):
+        self.click_element(self.BUTTON_NEW)
+        self.is_element_present(ColumnSetDesignerPopup.POPUP_COLUMN_SET_DESIGNER)
+
+    def click_icon_help(self):
+        self.click_element(self.ICON_HELP)
+
+    def click_icon_restore(self):
+        self.click_element(self.ICON_RESTORE)
+        self.wait_for_element_not_present(self.ICON_RESTORE + "/following::span[@data-vwg_appliedvalue]")
+
+    def click_system_button_close(self):
+        self.click_element(self.SYSTEM_BUTTON_CLOSE)
+        self.wait_for_element_not_present(self.POPUP_CONFIGURATION)
+
+    def click_column_set_dropdown_button(self):
+        self.hover(self.SYSTEM_BUTTON_DROP_DOWN)
+        self.click_element(self.SYSTEM_BUTTON_DROP_DOWN)
+        self.wait_for_element_present(self.DROP_DOWN_LIST)
+
+    def select_columnset_in_configuration_popup_drop_down_list(self, columnsetname):
+        self.click_column_set_dropdown_button()
+        self.scroll_list_to_top()
+        row = "//table[contains(@id,'VWGVL_')]/*//tr"
+        scroll = "//div[contains(@id,'VWGVLSC_')]/div"
+        scroll_height = self.find_element_self(scroll).size['height']
+        row_height = self.find_element_self(row).size['height']
+        rows_number = scroll_height / row_height
+        print scroll_height, row_height, rows_number
+        element = self.DROP_DOWN_LIST + "/*//span[text()='" + columnsetname + "']"
+        i = 0
+        visible_rows = 8
+        one_scroll = row_height * visible_rows
+        step = one_scroll
+        while i <= rows_number:
+            cond = self.is_element_not_present(element)
+            if cond:
+                self.scroll_list_down(step)
+                step += one_scroll
+                i += visible_rows
+            else:
+                break
+        self.click_element(self.DROP_DOWN_LIST + "/*//span[text()='" + columnsetname + "']")
+        self.wait_for_element_not_present(self.DROP_DOWN_LIST)
+
+    def enter_text_into_name_text_field(self, sitename):
+        self.find_element_self(self.TEXT_FIELD_NAME).send_keys(sitename)
+        self.click_element(self.TEXT_FIELD_NAME)
+
+    def check_columnset_is_selected_from_drop_down_list(self, columnsetname):
+        cond = self.wait_for_element_present(self.DROP_DOWN_CONTAINER + "/*//span[text()='" + columnsetname + "']")
+        return True if cond else False
+
+    def get_name_text_field_value(self):
+        elem = self.TEXT_FIELD_NAME
+        actual_attribute_value = self.get_attribute_value(elem, "value")
+        print ("The actual Name text field value of the attribute 'value' is: " + actual_attribute_value)
+        return actual_attribute_value
+
+
+class NewSitePopup(Base):
+
+    POPUP_SITE_NAME = Locators.POPUP_SITE_NAME
+
+    def enter_text_into_name_text_field(self, sitename):
+        self.find_element_self(self.POPUP_SITE_NAME + "/*" + Locators.FIELD_).send_keys(sitename)
+
+    def click_button_ok(self):
+        self.click_element(self.POPUP_SITE_NAME + "/*" + Locators.BTN_OK)
+        self.wait_for_element_not_present(Locators.POPUP_SITE_NAME)
+
+    def click_system_button_close(self):
+        self.click_element(self.POPUP_SITE_NAME + "/*" + Locators.SYS_BTN_CLOSE)
+        self.wait_for_element_not_present(Locators.POPUP_SITE_NAME)
+
+    def click_button_cancel(self):
+        self.click_element(self.POPUP_SITE_NAME + "/*" + Locators.BTN_CANCEL)
+        self.wait_for_element_not_present(self.POPUP_SITE_NAME)
+
+    def check_is_popup_present(self):
+        cond = self.is_element_present(self.POPUP_SITE_NAME)
         return True if cond else False
 
 

@@ -141,7 +141,15 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
         RibbonBar.click_tab_view(self)
         RibbonBar.click_button_edit_or_create(self)
         cond = ColumnSetsPopup.check_is_columnset_present(self, columnsetname)
-        print cond
+        pages = self.is_element_present(Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_PAGES_PANEL)
+        # if pages:
+        #     pages_number = self.find_element_self(Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_LIST_PAGES_NUMBER).text()
+        #     # number = pages_number.text()
+        #     print pages_number
+        #     while pages_number >= 1:
+        #         self.send_keys_and_enter(Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_FIELD_GO_TO, pages_number)
+        # else:
+        #     pass
         while cond:
             ColumnSetsPopup.click_columnset_in_table_list(self, columnsetname)
             ColumnSetsPopup.click_button_delete(self)
@@ -181,6 +189,7 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
                 columnset.append(i)
             else:
                 pass
+        print columnset
         if columnset == columns_list:
             pass
         else:
@@ -217,3 +226,18 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
             return True
         else:
             pass
+
+    # def delete_columnset_if_exist(self, columnsetname):
+    #     elem = self.CS_TABLE_BODY + "/*//span[text()='" + columnsetname + "']"
+    #     cond = self.is_element_present(elem)
+    #     cond_pages = self.is_element_present(Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_PAGES_PANEL)
+    #     pages_number = self.get_attribute_value(Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_PAGES_NUMBER)
+    #
+    #     if cond:
+    #         ColumnSetsPopup.click_columnset_in_table_list(self, columnsetname)
+    #         ColumnSetsPopup.click_button_delete(self)
+    #         AreYouSurePopup.click_button_yes(self)
+    #         self.wait_for_element_not_present(elem)
+    #         return True
+    #     else:
+    #         pass

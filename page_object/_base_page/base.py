@@ -8,11 +8,12 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.keys import Keys
 
 
 class Base(object):
 
-    #CONSTANTS
+    # CONSTANTS
     FIELD_USERNAME = Locators.FIELD_USERNAME
     FIELD_PASSWORD = Locators.FIELD_PASSWORD
     LOADING_SCREEN_VISIBLE = Locators.LOADING_SCREEN_VISIBLE
@@ -247,6 +248,22 @@ class Base(object):
             else:
                 pass
 
+    def get_text(self, locator):
+        try:
+            get = self.find_element_self(locator)
+            return get.text()
+        except Exception as e:
+            print "Error finding the text of the element " , e
+
+    def send_keys_and_enter(self, locator, value):
+        try:
+            field = self.find_element_self(locator)
+            field.self.send_keys(value)
+            time.sleep(1)
+            field.self.send_keys(Keys.ENTER)
+        except Exception as e:
+            print "Error ", e
+
     def get_title(self):
         return self.driver.title
 
@@ -256,6 +273,7 @@ class Base(object):
     def get_attribute_value(self, locator, attribute_type = "value"):
         try:
             attribute_value = self.find_element_self(locator).get_attribute(attribute_type)
+            # attribute_value = self.find_element_self(locator).self.get_attribute(attribute_type)
             # print locator + " has " + attribute_type
             return attribute_value
         except NoSuchElementException:
@@ -274,17 +292,17 @@ class Base(object):
             element = self.find_element_self(locator)
             if element is not None:
                 self.driver.execute_script("arguments[0].click();", element)
-                self.wait.until_not(EC.presence_of_element_located((By.XPATH, locator + Locators.ARROW_EXPAND)))
+                # self.wait.until_not(EC.presence_of_element_located((By.XPATH, locator + Locators.ARROW_EXPAND)))
             else:
                 pass
         except (NoSuchElementException, TimeoutException):
             print "Element not found"
 
-    def scroll_up_drop_down_list(self):
+    def scroll_list_to_top(self):
         try:
             self.wait_for_element_present("//div[contains(@id,'VWGVLSC_')]")
             element = self.find_element_self("//div[contains(@id,'VWGVLSC_')]")
-            self.hover("//table[contains(@id,'VWGVL_')]/*//tr")
+            # self.hover("//table[contains(@id,'VWGVL_')]/*//tr")
             self.driver.execute_script("arguments[0].scrollTop = 0", element)
             self.wait_for_element_present("//table[contains(@id,'VWGVL_')]/*//tr[1][@data-vwgindex='0']")
             # self.find_element_self("//table[contains(@id,'VWGVL_')]/*//tr")
@@ -293,15 +311,23 @@ class Base(object):
         except (NoSuchElementException, TimeoutException):
             print "Element not found"
 
-    def scroll_down_drop_down_list(self, step):
+    def scroll_list_down(self, step):
         try:
             self.wait_for_element_present("//div[contains(@id,'VWGVLSC_')]")
             element1 = self.find_element_self("//table[contains(@id,'VWGVL_')]/*//tr")
             element = self.find_element_self("//div[contains(@id,'VWGVLSC_')]")
-            self.hover("//table[contains(@id,'VWGVL_')]/*//tr")
+            # self.hover("//table[contains(@id,'VWGVL_')]/*//tr")
             self.driver.execute_script("arguments[0].scrollTop = arguments[1]", element, step)
         except Exception as e:
             print "error scrolling down web element", e
+
+    def scroll_to_element(self, locator):
+        try:
+            self.wait_for_element_present(locator)
+            element = self.find_element_self(locator)
+            self.driver.execute_script("return arguments[0].scrollIntoView();", element)
+        except Exception as e:
+            print "error scrolling into view ", e
 
 
     # def collapse_tree(self, locator):

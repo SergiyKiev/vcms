@@ -68,6 +68,9 @@ class Locators:
   EL_DROP_DOWN_TABLE                = "div[contains(@class,'ComboBox-ItemTable')]"
   EL_DROP_DOWN_ITEM                 = "tr[contains(@class,'ComboBox-Item')]"
   EL_DROP_DOWN_CONTAINER            = "div[contains(@class,'ComboBox-Container')]"
+  EL_PAGES_PANEL               = "div[contains(@class,'ListView-PagingPanel')]"
+  EL_FIELD_GO_TO                    = "input[contains(@class,'PagingGotoBox')]"
+  EL_PAGES_NUMBER              = "input[contains(@class,'PagingGotoBox')]/../parent::tr/td[3]"
 
   '''LOADING ANIMATION XPATH'''
   LOADING_SCREEN_INVISIBLE           = "//div[@id='VWG_LoadingAnimationBox'][contains(@style,'display: none']"
