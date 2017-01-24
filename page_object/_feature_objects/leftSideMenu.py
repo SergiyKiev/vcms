@@ -16,7 +16,7 @@ class LeftSideMenu(Base):
     ICON_TASKS = "//div[@title='Tasks']"
     ICON_TASKS_GREY = ICON_TASKS + GREY_COLOR
     ICON_REPORTING = "//div[@title='Reporting']"
-    ICON_REPORTING_GREY = ICON_TASKS + GREY_COLOR
+    ICON_REPORTING_GREY = ICON_REPORTING + GREY_COLOR
     ICON_SOFT_AND_PATCH_MANAGER = "//div[@title='Software / Patch Manager']"
     ICON_SOFT_AND_PATCH_MANAGER_GREY = ICON_SOFT_AND_PATCH_MANAGER + GREY_COLOR
     ICON_PASSWORD_RESET = "//div[@title='Password Reset']"
@@ -30,13 +30,13 @@ class LeftSideMenu(Base):
     # TITLE_SOFTWARE_AND_PATCH_MANAGER = "//" + Locators.EL_PAGE_HEADER_PANEL + "/*" + Locators.TEXT_SOFTWARE_AND_PATCH_MANAGER
     # TITLE_PASSWORD_RESET = "//" + Locators.EL_PAGE_HEADER_PANEL + "/*" + Locators.TEXT_PASSWORD_RESET
     CONTAINER = "/ancestor::div[contains(@style,'transform')]"
+    VISIBLE = "[contains(@style,'translate3d(0px, 0px, 0px)')]"
     MENU_DEVICES = "//span[text()='Devices']" + CONTAINER
     MENU_ADMINISTRATION = "//span[text()='Administration']" + CONTAINER
     MENU_TASKS = "//span[text()='Tasks']" + CONTAINER
     MENU_REPORTING = "//span[text()='Reporting']" + CONTAINER
     MENU_SOFTWARE_AND_PATCH_MANAGER = "//span[text()='Software / Patch Manager']" + CONTAINER
     MENU_PASSWORD_RESET = "//span[text()='Password Reset']" + CONTAINER
-    VISIBLE = "[contains(@style,'translate3d(0px, 0px, 0px)')]"
 
     def click_icon_home(self):
         self.click_element(LeftSideMenu.ICON_HOME)
@@ -142,6 +142,18 @@ class LeftSideMenu(Base):
                 pass
         except (NoSuchElementException, TimeoutException):
             print "Object not found"
+
+    def check_is_menu_devices_is_visible(self):
+        cond = self.is_element_present(LeftSideMenu.MENU_DEVICES + LeftSideMenu.VISIBLE)
+        return True if cond else False
+
+    def check_is_menu_tasks_is_visible(self):
+        cond = self.is_element_present(LeftSideMenu.MENU_TASKS + LeftSideMenu.VISIBLE)
+        return True if cond else False
+
+    def check_is_menu_reporting_is_visible(self):
+        cond = self.is_element_present(LeftSideMenu.MENU_REPORTING + LeftSideMenu.VISIBLE)
+        return True if cond else False
 
     # def check_main_page_loaded(self):
     #     cond = self.is_element_present(self.LEFT_SIDE_MENU_DEVICES + self.MENU_IS_VISIBLE)
