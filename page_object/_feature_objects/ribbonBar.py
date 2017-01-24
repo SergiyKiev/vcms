@@ -6,6 +6,7 @@ class RibbonBar(Base):
 
     #CONSTANTS
     RIBBON_BAR = Locators.RIBBON_BAR_TAB
+    BUTTON_EXIT = "//img[@alt='Exit']"
     BUTTONS_BOX_DISPLAY = Locators.BUTTONS_BOX_DISPLAY
     BUTTONS_BOX_ACTIONS = Locators.BUTTONS_BOX_ACTIONS
     TAB_VIEW = Locators.RIBBON_BAR_TAB + "/*" + Locators.TAB_VIEW

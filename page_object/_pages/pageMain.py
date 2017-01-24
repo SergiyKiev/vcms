@@ -10,10 +10,10 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
     def check_main_page_loaded(self):
         time.sleep(5)
         # cond1 = self.wait_for_element_present(Locators.TEXT_WELCOME_TO_CLOUD_MANAGEMENT_SUITE)
-        cond2 = self.wait_for_element_present(Locators.BTN_EXIT)
-        cond3 = self.wait_for_element_present(Locators.ICON_HOME)
-        cond4 = self.wait_for_element_present(Locators.ICON_DEVICES)
-        return True if (cond2 and cond3 and cond4) else False
+        cond1 = self.is_element_present(RibbonBar.BUTTON_EXIT)
+        cond2 = self.is_element_present(LeftSideMenu.ICON_HOME)
+        cond3 = self.is_element_present(LeftSideMenu.ICON_DEVICES)
+        return True if (cond1 and cond2 and cond3) else False
 
     # def click_global_site_view_label(self):
     #     self.click_element(Locators.LABEL_GLOBAL_SITE_VIEW)
@@ -143,7 +143,7 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
         cond = ColumnSetsPopup.check_is_columnset_present(self, columnsetname)
         pages = self.is_element_present(Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_PAGES_PANEL)
         # if pages:
-        #     pages_number = self.find_element_self(Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_LIST_PAGES_NUMBER).text()
+        #     pages_number = self._find_element(Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_LIST_PAGES_NUMBER).text()
         #     # number = pages_number.text()
         #     print pages_number
         #     while pages_number >= 1:

@@ -19,23 +19,18 @@ class LoginPage(TermsAndConditionsPopup, SubscriptionHasExpitredPopup):
                 print Settings.username + " or " +  Settings.password + " are incorrect"
             elif cond2:
                 SubscriptionHasExpitredPopup.close_popup(self)
-                # self.wait_for_element_present(Locators.BTN_EXIT)
-                # self.wait_for_element_present(Locators.TEXT_WELCOME_TO_CLOUD_MANAGEMENT_SUITE)
-                # self.wait_for_element_present(Locators.LEFT_MENU_CONTAINER)
             else:
                 pass
-                # self.wait_for_element_present(Locators.BTN_EXIT)
-                # self.wait_for_element_present(Locators.TEXT_WELCOME_TO_CLOUD_MANAGEMENT_SUITE)
-                # self.wait_for_element_present(Locators.LEFT_MENU_CONTAINER)
+            self.wait_for_element_present(Locators.BTN_EXIT)
             return MainPage(self.driver)
         except:
             print "Login is not successful"
 
     def enter_username(self, username = Settings.username):
-        self.find_element_self(Locators.FIELD_USERNAME).send_keys(username)
+        self._find_element(Locators.FIELD_USERNAME).send_keys(username)
 
     def enter_password(self, password = Settings.password):
-        self.find_element_self(Locators.FIELD_PASSWORD).send_keys(password)
+        self._find_element(Locators.FIELD_PASSWORD).send_keys(password)
 
     def click_sign_in_button(self):
         self.click_element(Locators.BTN_SIGN_IN)

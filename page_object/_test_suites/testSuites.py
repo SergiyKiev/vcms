@@ -6,6 +6,7 @@ from _feature_objects.popups import *
 from _feature_objects.ribbonBar import *
 from _feature_objects.leftSideMenu import *
 from selenium import webdriver
+from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 
 
 class SiteCreation(unittest.TestCase):
@@ -30,6 +31,16 @@ class SiteCreation(unittest.TestCase):
         main_page.close_popups()
         # main_page = main_page.open_menu_devices()
         # main_page.check_main_page_loaded()
+
+    def test_open_left_side_menus(self):
+        left_side_menu = LeftSideMenu(self.driver)
+        left_side_menu.open_menu_home()
+        left_side_menu.open_menu_devices()
+        left_side_menu.open_menu_administration()
+        left_side_menu.open_menu_tasks()
+        left_side_menu.open_menu_reporting()
+        left_side_menu.open_menu_software_and_patch_manager()
+        # left_side_menu.open_menu_password_reset()
 
     def test_open_site_name_popup(self):
         print ("\n" + "TC#9057. Open Site Name popup")
@@ -227,16 +238,6 @@ class SiteConfiguration_SiteTab(unittest.TestCase):
         main_page.close_popups()
         # main_page = main_page.open_menu_devices()
         # main_page.check_main_page_loaded()
-
-    # def test_open_left_side_menus(self):
-    #     left_side_menu = LeftSideMenu(self.driver)
-    #     left_side_menu.open_menu_home()
-    #     left_side_menu.open_menu_devices()
-    #     left_side_menu.open_menu_administration()
-    #     left_side_menu.open_menu_tasks()
-    #     left_side_menu.open_menu_reporting()
-    #     left_side_menu.open_menu_software_and_patch_manager()
-    #     # left_side_menu.open_menu_password_reset()
 
     def test_configuration_popup_change_site_name(self):
         print ("\n" + "TC#9237. Devices page. Configuration popup. Change site name")

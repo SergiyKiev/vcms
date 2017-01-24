@@ -6,68 +6,70 @@ from selenium.common.exceptions import TimeoutException
 
 class LeftSideMenu(Base):
 
-    # BTN - BUTTON. TITLE - main title on the page
-    ICON_HOME = Locators.ICON_HOME
-    ICON_DEVICES = Locators.ICON_DEVICES
-    ICON_ADMINISTRATION = Locators.ICON_ADMINISTRATION
-    ICON_TASKS = Locators.BTN_ICON_TASKS
-    ICON_REPORTING = Locators.BTN_ICON_REPORTING
-    ICON_SOFT_AND_PATCH_MANAGER = Locators.BTN_ICON_SFT_AND_PTH_MANAGER
-    ICON_PASSWORD_RESET = Locators.BTN_ICON_PASSWORD_RESET
-    TITLE_WELCOME_TO_CLOUD_MANAGEMENT_SUITE = "//" + Locators.EL_PAGE_HEADER_PANEL + "/*" + Locators.TEXT_WELCOME_TO_CLOUD_MANAGEMENT_SUITE
-    # TITLE_DEVICES = Locators.CONTAINER_PANEL_TITLE_DEVICES + "/*" + Locators.TEXT_DEVICES
-    TITLE_DEVICES = "//" + Locators.EL_PAGE_HEADER_PANEL + Locators.CONTAINER_PANEL_TITLE_DEVICES + "/*" + Locators.TEXT_DEVICES
-    TITLE_ADMINISTRATION = "//" + Locators.EL_PAGE_HEADER_PANEL + "/*" + Locators.TEXT_ADMINISTRATION
-    TITLE_TASKS = "//" + Locators.EL_PAGE_HEADER_PANEL + "/*" + Locators.TEXT_TASKS
-    TITLE_REPORTING = "//" + Locators.EL_PAGE_HEADER_PANEL + "/*" + Locators.TEXT_REPORTING
-    TITLE_SOFTWARE_AND_PATCH_MANAGER = "//" + Locators.EL_PAGE_HEADER_PANEL + "/*" + Locators.TEXT_SOFTWARE_AND_PATCH_MANAGER
-    TITLE_PASSWORD_RESET = "//" + Locators.EL_PAGE_HEADER_PANEL + "/*" + Locators.TEXT_PASSWORD_RESET
-    LEFT_SIDE_MENU_DEVICES = Locators.LEFT_SIDE_MENU_DEVICES
-    LEFT_SIDE_MENU_ADMINISTRATION = Locators.LEFT_SIDE_MENU_ADMINISTRATION
-    LEFT_SIDE_MENU_TASKS = Locators.LEFT_SIDE_MENU_TASKS
-    LEFT_SIDE_MENU_REPORTING = Locators.LEFT_SIDE_MENU_REPORTING
-    LEFT_SIDE_MENU_SOFTWARE_AND_PATCH_MANAGER = Locators.LEFT_SIDE_MENU_SOFT_AND_PATCH_MANAGER
-    LEFT_SIDE_MENU_PASSWORD_RESET = Locators.LEFT_SIDE_MENU_PASSWORD_RESET
-    MENU_IS_VISIBLE = Locators.LEFT_SIDE_MENU_VISIBLE
+    GREY_COLOR = "[contains(@style,'#E8E8E8')]"
+    ICON_HOME = "//td[contains(@style,'Home')]"
+    ICON_HOME_GREY = ICON_HOME + "/ancestor::div[@class='PictureBox-Control'][contains(@style,'#E8E8E8')]" + GREY_COLOR
+    ICON_DEVICES = "//div[@title='Devices']"
+    ICON_DEVICES_GREY = ICON_DEVICES + GREY_COLOR
+    ICON_ADMINISTRATION = "//div[@title='Administration']"
+    ICON_ADMINISTRATION_GREY = ICON_ADMINISTRATION + GREY_COLOR
+    ICON_TASKS = "//div[@title='Tasks']"
+    ICON_TASKS_GREY = ICON_TASKS + GREY_COLOR
+    ICON_REPORTING = "//div[@title='Reporting']"
+    ICON_REPORTING_GREY = ICON_TASKS + GREY_COLOR
+    ICON_SOFT_AND_PATCH_MANAGER = "//div[@title='Software / Patch Manager']"
+    ICON_SOFT_AND_PATCH_MANAGER_GREY = ICON_SOFT_AND_PATCH_MANAGER + GREY_COLOR
+    ICON_PASSWORD_RESET = "//div[@title='Password Reset']"
+    ICON_PASSWORD_RESET_GREY = ICON_PASSWORD_RESET + GREY_COLOR
+    # TITLE_WELCOME_TO_CLOUD_MANAGEMENT_SUITE = "//" + Locators.EL_PAGE_HEADER_PANEL + "/*" + Locators.TEXT_WELCOME_TO_CLOUD_MANAGEMENT_SUITE
+    # # TITLE_DEVICES = Locators.CONTAINER_PANEL_TITLE_DEVICES + "/*" + Locators.TEXT_DEVICES
+    # TITLE_DEVICES = "//" + Locators.EL_PAGE_HEADER_PANEL + Locators.CONTAINER_PANEL_TITLE_DEVICES + "/*" + Locators.TEXT_DEVICES
+    # TITLE_ADMINISTRATION = "//" + Locators.EL_PAGE_HEADER_PANEL + "/*" + Locators.TEXT_ADMINISTRATION
+    # TITLE_TASKS = "//" + Locators.EL_PAGE_HEADER_PANEL + "/*" + Locators.TEXT_TASKS
+    # TITLE_REPORTING = "//" + Locators.EL_PAGE_HEADER_PANEL + "/*" + Locators.TEXT_REPORTING
+    # TITLE_SOFTWARE_AND_PATCH_MANAGER = "//" + Locators.EL_PAGE_HEADER_PANEL + "/*" + Locators.TEXT_SOFTWARE_AND_PATCH_MANAGER
+    # TITLE_PASSWORD_RESET = "//" + Locators.EL_PAGE_HEADER_PANEL + "/*" + Locators.TEXT_PASSWORD_RESET
+    CONTAINER = "/ancestor::div[contains(@style,'transform')]"
+    MENU_DEVICES = "//span[text()='Devices']" + CONTAINER
+    MENU_ADMINISTRATION = "//span[text()='Administration']" + CONTAINER
+    MENU_TASKS = "//span[text()='Tasks']" + CONTAINER
+    MENU_REPORTING = "//span[text()='Reporting']" + CONTAINER
+    MENU_SOFTWARE_AND_PATCH_MANAGER = "//span[text()='Software / Patch Manager']" + CONTAINER
+    MENU_PASSWORD_RESET = "//span[text()='Password Reset']" + CONTAINER
+    VISIBLE = "[contains(@style,'translate3d(0px, 0px, 0px)')]"
 
     def click_icon_home(self):
-        self.click_element(self.ICON_HOME)
-        cond = self.wait_for_element_present(self.TITLE_WELCOME_TO_CLOUD_MANAGEMENT_SUITE)
-        return True if cond else False
+        self.click_element(LeftSideMenu.ICON_HOME)
+        self.wait_for_element_not_present(LeftSideMenu.ICON_HOME_GREY)
 
     def click_icon_devices(self):
-        self.click_element(Locators.ICON_DEVICES)
-        self.wait_for_element_present(Locators.LEFT_SIDE_MENU_DEVICES)
-        self.wait_for_element_present("//" + Locators.EL_PAGE_HEADER_PANEL + Locators.CONTAINER_PANEL_TITLE_DEVICES + "/*" + Locators.TEXT_DEVICES)
+        self.click_element(LeftSideMenu.ICON_DEVICES)
+        self.wait_for_element_not_present(LeftSideMenu.ICON_DEVICES_GREY)
 
     def click_icon_administration(self):
-        self.click_element(self.ICON_ADMINISTRATION)
-        self.wait_for_element_present(self.LEFT_SIDE_MENU_ADMINISTRATION)
-        self.wait_for_element_present(self.TITLE_ADMINISTRATION)
+        self.click_element(LeftSideMenu.ICON_ADMINISTRATION)
+        self.wait_for_element_not_present(LeftSideMenu.ICON_ADMINISTRATION_GREY)
 
     def click_icon_tasks(self):
-        self.click_element(self.ICON_TASKS)
-        self.wait_for_element_present(self.LEFT_SIDE_MENU_TASKS)
-        self.wait_for_element_present(self.TITLE_TASKS)
+        self.click_element(LeftSideMenu.ICON_TASKS)
+        self.wait_for_element_not_present(LeftSideMenu.ICON_TASKS_GREY)
 
     def click_icon_reporting(self):
-        self.click_element(self.ICON_REPORTING)
-        self.wait_for_element_present(self.LEFT_SIDE_MENU_REPORTING)
-        self.wait_for_element_present(self.TITLE_REPORTING)
+        self.click_element(LeftSideMenu.ICON_REPORTING)
+        self.wait_for_element_not_present(LeftSideMenu.ICON_REPORTING_GREY)
 
     def click_icon_software_and_patch_manager(self):
-        self.click_element(self.ICON_SOFT_AND_PATCH_MANAGER)
-        self.wait_for_element_present(self.LEFT_SIDE_MENU_SOFTWARE_AND_PATCH_MANAGER)
-        self.wait_for_element_present(self.TITLE_SOFTWARE_AND_PATCH_MANAGER)
+        self.click_element(LeftSideMenu.ICON_SOFT_AND_PATCH_MANAGER)
+        self.wait_for_element_not_present(LeftSideMenu.ICON_SOFT_AND_PATCH_MANAGER_GREY)
 
     def click_icon_password_reset(self):
-        self.click_element(self.ICON_PASSWORD_RESET)
-        self.wait_for_element_present(self.LEFT_SIDE_MENU_PASSWORD_RESET)
-        self.wait_for_element_present(self.TITLE_PASSWORD_RESET)
+        self.click_element(LeftSideMenu.ICON_PASSWORD_RESET)
+        self.wait_for_element_not_present(LeftSideMenu.ICON_PASSWORD_RESET_GREY)
 
     def open_menu_home(self):
         try:
-            cond = self.is_element_not_present(self.TITLE_WELCOME_TO_CLOUD_MANAGEMENT_SUITE)
+            self.wait_for_element_present(LeftSideMenu.ICON_HOME)
+            cond = self.is_element_present(LeftSideMenu.ICON_HOME_GREY)
             if cond:
                 self.click_icon_home()
             else:
@@ -77,8 +79,8 @@ class LeftSideMenu(Base):
 
     def open_menu_devices(self):
         try:
-            self.wait_for_element_present(self.ICON_DEVICES)
-            cond = self.is_element_not_present(Locators.LEFT_SIDE_MENU_DEVICES + Locators.LEFT_SIDE_MENU_VISIBLE)
+            self.wait_for_element_present(LeftSideMenu.ICON_DEVICES)
+            cond = self.is_element_not_present(LeftSideMenu.MENU_DEVICES + LeftSideMenu.VISIBLE)
             if cond:
                 self.click_icon_devices()
             else:
@@ -88,8 +90,8 @@ class LeftSideMenu(Base):
 
     def open_menu_administration(self):
         try:
-            self.wait_for_element_present(self.ICON_ADMINISTRATION)
-            cond = self.is_element_not_present(self.LEFT_SIDE_MENU_ADMINISTRATION + self.MENU_IS_VISIBLE)
+            self.wait_for_element_present(LeftSideMenu.ICON_ADMINISTRATION)
+            cond = self.is_element_not_present(LeftSideMenu.MENU_ADMINISTRATION + LeftSideMenu.VISIBLE)
             if cond:
                 self.click_icon_administration()
             else:
@@ -98,9 +100,9 @@ class LeftSideMenu(Base):
             print "Object not found"
 
     def open_menu_tasks(self):
-        self.wait_for_element_present(self.ICON_TASKS)
         try:
-            cond = self.is_element_not_present(self.LEFT_SIDE_MENU_TASKS + self.MENU_IS_VISIBLE)
+            self.wait_for_element_present(LeftSideMenu.ICON_TASKS)
+            cond = self.is_element_not_present(LeftSideMenu.MENU_TASKS + LeftSideMenu.VISIBLE)
             if cond:
                 self.click_icon_tasks()
             else:
@@ -110,7 +112,8 @@ class LeftSideMenu(Base):
 
     def open_menu_reporting(self):
         try:
-            cond = self.is_element_not_present(self.LEFT_SIDE_MENU_REPORTING + self.MENU_IS_VISIBLE)
+            self.wait_for_element_present(LeftSideMenu.ICON_REPORTING)
+            cond = self.is_element_not_present(LeftSideMenu.MENU_REPORTING + LeftSideMenu.VISIBLE)
             if cond:
                 self.click_icon_reporting()
             else:
@@ -120,7 +123,8 @@ class LeftSideMenu(Base):
 
     def open_menu_software_and_patch_manager(self):
         try:
-            cond = self.is_element_not_present(self.LEFT_SIDE_MENU_SOFTWARE_AND_PATCH_MANAGER + self.MENU_IS_VISIBLE)
+            self.wait_for_element_present(LeftSideMenu.ICON_SOFT_AND_PATCH_MANAGER)
+            cond = self.is_element_not_present(LeftSideMenu.MENU_SOFTWARE_AND_PATCH_MANAGER + LeftSideMenu.VISIBLE)
             if cond:
                 self.click_icon_software_and_patch_manager()
             else:
@@ -130,7 +134,8 @@ class LeftSideMenu(Base):
 
     def open_menu_password_reset(self):
         try:
-            cond = self.is_element_not_present(self.LEFT_SIDE_MENU_PASSWORD_RESET + self.MENU_IS_VISIBLE)
+            self.wait_for_element_present(LeftSideMenu.ICON_PASSWORD_RESET)
+            cond = self.is_element_not_present(self.MENU_PASSWORD_RESET + self.VISIBLE)
             if cond:
                 self.click_icon_password_reset()
             else:

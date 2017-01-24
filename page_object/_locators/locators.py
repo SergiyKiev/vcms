@@ -306,7 +306,7 @@ class Locators:
 
   '''BUTTONS (BTN) XPATH'''
   BTN_                         = "//div[contains(@class,'Button')][contains(@id,'VWG_')]"
-  BTN_SIGN_IN                  = TEXT_SIGN_IN + anc + EL_BUTTON
+  BTN_SIGN_IN                  = "//span[text()='Sign In']/ancestor::" + EL_BUTTON
   BTN_EXIT                     = "//img[@alt='Exit']"
   ICON_HOME                    = "//td[contains(@style,'Home')]"
   ICON_DEVICES                 = "//div[@title='Devices']"
@@ -606,3 +606,9 @@ class Locators:
     if h == Variables.columns_list1:
       print "GOOD"
     else: print "NOT GOOD"
+    print BTN_SIGN_IN
+    print POPUP_CONFIGURATION
+    print LEFT_SIDE_MENU_TASKS
+    print LEFT_SIDE_MENU_REPORTING
+    print LEFT_SIDE_MENU_SOFT_AND_PATCH_MANAGER
+    print LEFT_SIDE_MENU_PASSWORD_RESET
