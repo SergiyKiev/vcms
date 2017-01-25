@@ -2,6 +2,8 @@ from _settings.settings import Settings
 from _locators.locators import Locators
 from _feature_objects.popups import TermsAndConditionsPopup, SubscriptionHasExpitredPopup
 from pageMain import MainPage
+from _feature_objects.ribbonBar import RibbonBar
+from _feature_objects.leftSideMenu import LeftSideMenu
 
 
 class LoginPage(TermsAndConditionsPopup, SubscriptionHasExpitredPopup):
@@ -21,10 +23,11 @@ class LoginPage(TermsAndConditionsPopup, SubscriptionHasExpitredPopup):
                 SubscriptionHasExpitredPopup.close_popup(self)
             else:
                 pass
-            self.wait_for_element_present(Locators.BTN_EXIT)
+            self.wait_for_element_present(RibbonBar.BUTTON_EXIT)
+            self.wait_for_element_present(LeftSideMenu.ICON_HOME)
             return MainPage(self.driver)
-        except:
-            print "Login is not successful"
+        except Exception as e:
+            print "Login is not successful " ,e
 
     def enter_username(self, username = Settings.username):
         self._find_element(Locators.FIELD_USERNAME).send_keys(username)

@@ -247,7 +247,7 @@ class ConfigurationPopup(Base):
         scroll_height = self._find_element(scroll).size['height']
         row_height = self._find_element(row).size['height']
         rows_number = scroll_height / row_height
-        print scroll_height, row_height, rows_number
+        # print "DROP-DOWN: list_height, one row height, number of rows are: ", scroll_height, row_height, rows_number
         element = ConfigurationPopup.DROP_DOWN_LIST + "/*//span[text()='" + columnsetname + "']"
         i = 0
         visible_rows = 8
@@ -264,18 +264,19 @@ class ConfigurationPopup(Base):
         self.click_element(ConfigurationPopup.DROP_DOWN_LIST + "/*//span[text()='" + columnsetname + "']")
         self.wait_for_element_not_present(self.DROP_DOWN_LIST)
 
+    def check_columnset_is_selected_from_drop_down_list(self, columnsetname):
+            cond = self.wait_for_element_present(
+                ConfigurationPopup.DROP_DOWN_CONTAINER + "/*//span[text()='" + columnsetname + "']")
+            return True if cond else False
+
     def enter_text_into_name_text_field(self, sitename):
         self._find_element(ConfigurationPopup.TEXT_FIELD_NAME).send_keys(sitename)
         self.click_element(ConfigurationPopup.TEXT_FIELD_NAME)
 
-    def check_columnset_is_selected_from_drop_down_list(self, columnsetname):
-        cond = self.wait_for_element_present(ConfigurationPopup.DROP_DOWN_CONTAINER + "/*//span[text()='" + columnsetname + "']")
-        return True if cond else False
-
     def get_name_text_field_value(self):
         elem = ConfigurationPopup.TEXT_FIELD_NAME
         actual_attribute_value = self.get_attribute_value(elem, "value")
-        print ("The actual Name text field value of the attribute 'value' is: " + actual_attribute_value)
+        print ("The actual value in the Name textfield is: " + actual_attribute_value)
         return actual_attribute_value
 
 

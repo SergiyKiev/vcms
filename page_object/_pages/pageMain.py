@@ -7,6 +7,7 @@ from _settings.settings import Settings
 class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, ColumnSetDesignerPopup, AreYouSurePopup,
                NewSitePopup, ErrorPopup):
 
+
     def check_main_page_loaded(self):
         time.sleep(5)
         # cond1 = self.wait_for_element_present(Locators.TEXT_WELCOME_TO_CLOUD_MANAGEMENT_SUITE)
@@ -177,9 +178,6 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
     #     self.add_columns_to_list_view(columns_list)
     #     ColumnSetDesignerPopup.click_button_add(self, columns_list)
 
-    def select_columnset_from_configuration_popup_column_set_dropdown_list(self, columnsetname):
-        ConfigurationPopup.select_columnset_in_configuration_popup_drop_down_list(self, columnsetname)
-
     def check_columns_are_presented_in_devices_list_header(self, columns_list):
         columnset = []
         for i in columns_list:
@@ -189,16 +187,12 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
                 columnset.append(i)
             else:
                 pass
-        print columnset
+        print "Created column set is: ", columns_list
+        print "Expected column set is : ", columnset
         if columnset == columns_list:
             pass
         else:
-            print "\n" + "Expected columns for columnset is"
-            print columns_list
-            print "Actual columns for columnset is"
-            print columnset
-            print "The result is "
-            print columns_list == columnset
+            print "Columnsets are not similar ", columns_list, columnset
         return True if columnset == columns_list else False
 
     def create_columnset_from_column_sets_popup(self, columnsetname, columns_list):

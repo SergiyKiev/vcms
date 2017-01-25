@@ -5,7 +5,7 @@ from _feature_objects.popups import *
 class RibbonBar(Base):
 
     #CONSTANTS
-    RIBBON_BAR = Locators.RIBBON_BAR_TAB
+    RIBBON_BAR = "//div[@class='RibbonBarTabControl-Control']"
     BUTTON_EXIT = "//img[@alt='Exit']"
     BUTTONS_BOX_DISPLAY = Locators.BUTTONS_BOX_DISPLAY
     BUTTONS_BOX_ACTIONS = Locators.BUTTONS_BOX_ACTIONS

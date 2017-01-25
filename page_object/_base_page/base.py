@@ -57,7 +57,7 @@ class Base(object):
             print locator + " is not found"
             return None
         except Exception as e:
-            print "The element is not found in the reason of ", e
+            print "The element is not found ", e
 
     def _find_elements(self, locator):
         try:
@@ -67,16 +67,18 @@ class Base(object):
             return self.driver.find_elements(By.XPATH, locator)
         except (NoSuchElementException, TimeoutException):
             return None
+        except Exception as e:
+            print "The elements are not found ", e
 
     def click_element(self, locator):
         try:
+            time.sleep(1)
             self.wait.until(EC.presence_of_element_located((By.XPATH, locator)))
             elem = self._find_element(locator)
             if elem is not None:
                 elem.click()
                 time.sleep(1)
                 self.wait.until(EC.invisibility_of_element_located((By.XPATH, Base.LOADING_SCREEN_VISIBLE)))
-                # print "CLICK " + locator
                 return True
         except NoSuchElementException:
             print locator + " is not clickable"
@@ -105,13 +107,12 @@ class Base(object):
             self.wait.until(EC.invisibility_of_element_located((By.XPATH, Base.LOADING_SCREEN_VISIBLE)))
             self.wait.until(EC.presence_of_element_located((By.XPATH, locator)))
             self.wait.until(EC.visibility_of_element_located((By.XPATH, locator)))
-            # print locator + " is presented"
             return True
         except TimeoutException:
-            print locator + " returns False"
+            print " element was not found after " +  str(self.timeout) + " seconds:  " + locator
             return False
         except Exception as e:
-            print "After wait fol element present, false ", e
+            print "Wait for element present, returns false ", e
 
     def wait_for_elements_present(self, locator):
         try:
