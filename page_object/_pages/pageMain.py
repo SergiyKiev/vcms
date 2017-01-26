@@ -5,7 +5,7 @@ from _settings.settings import Settings
 
 
 class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, ColumnSetDesignerPopup, AreYouSurePopup,
-               NewSitePopup, ErrorPopup):
+               SiteNamePopup, ErrorPopup):
 
     def check_main_page_loaded(self):
         time.sleep(5)
@@ -38,8 +38,8 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
     def create_new_site(self, sitename):
         self.click_global_site_view_label()
         RibbonBar.click_button_new_site(self)
-        NewSitePopup.enter_text_into_name_text_field(self, sitename)
-        NewSitePopup.click_button_ok(self)
+        SiteNamePopup.enter_text_into_name_text_field(self, sitename)
+        SiteNamePopup.click_button_ok(self)
         self.check_site_is_in_global_site_view_tree(sitename)
 
     def create_site_if_not_exists(self, sitename):
@@ -47,8 +47,8 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
         if cond:
             self.click_global_site_view_label()
             RibbonBar.click_button_new_site(self)
-            NewSitePopup.enter_text_into_name_text_field(self, sitename)
-            NewSitePopup.click_button_ok(self)
+            SiteNamePopup.enter_text_into_name_text_field(self, sitename)
+            SiteNamePopup.click_button_ok(self)
             self.check_site_is_in_global_site_view_tree(sitename)
         else:
             pass
@@ -56,8 +56,8 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
     def create_new_subsite(self, sitename, subsitename):
         self.click_site_in_global_site_view_tree(sitename)
         RibbonBar.click_button_new_site(self)
-        NewSitePopup.enter_text_into_name_text_field(self, subsitename)
-        NewSitePopup.click_button_ok(self)
+        SiteNamePopup.enter_text_into_name_text_field(self, subsitename)
+        SiteNamePopup.click_button_ok(self)
         # self.expand_site_tree(sitename)
         self.check_subsite_is_in_parent_site(sitename, subsitename)
 
@@ -78,7 +78,7 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
         contains_subsite_name = "//span[contains(text(),'" + subsitename + "')]"
         elem = site_name + Locators.fol + Locators.EL_CHILD_SITE + "/*" + subsite_name
         self.click_element(elem)
-        self.wait_for_element_selected(elem + Locators.anc + Locators.EL_NODE_CONTAINER)
+        self.wait_for_element_selected(elem + Locators.anc + Locators.EL_TREE_CONTAINER)
         RibbonBar.wait_for_element_present(self, Locators.BTN_CONFIG)
         RibbonBar.wait_for_element_present(self, Locators.BTN_NEW_SITE)
         self.wait_for_element_present(Locators.CONTAINER_PANEL_TITLE_DEVICES + "/*" + contains_subsite_name)

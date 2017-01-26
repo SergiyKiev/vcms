@@ -28,7 +28,7 @@ class RibbonBar(Base):
 
     def click_button_new_site(self):
         self.click_element(Locators.BTN_NEW_SITE)
-        self.wait_for_element_present(Locators.POPUP_SITE_NAME)
+        self.wait_for_element_present(SiteNamePopup.FRAME)
 
     def click_delete_button(self):
         self.click_element(Locators.BTN_DELETE)

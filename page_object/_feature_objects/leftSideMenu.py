@@ -172,7 +172,7 @@ class LeftSideMenu(Base):
     def click_site_in_global_site_view_tree(self, sitename):
         elem = "//span[text()='" + sitename + "']"
         self.click_element(Locators.TREE_GLOBAL_SITE_VIEW + "/*" + elem)
-        self.wait_for_element_selected(elem + Locators.anc + Locators.EL_NODE_CONTAINER)
+        self.wait_for_element_selected(elem + Locators.anc + Locators.EL_TREE_CONTAINER)
         # self.wait_for_element_present(Locators.BTN_CONFIG)
         # self.wait_for_element_present(Locators.BTN_NEW_SITE)
 

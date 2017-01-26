@@ -52,8 +52,8 @@ class Locators:
   EL_TREE_ARROW                     = "div[@data-vwgtype='joint']"
   # EL_TREE_CONTAINER                 = "div[@class='TreeView-Container']"
   EL_PADDING_CONTAINER              = "div[contains(@class,'PaddingContainer')]"
-  EL_NODE_CONTAINER                 = "div[contains(@class,'RowContainer')]"
-  EL_SUBNODE_CONTAINER              = "div[contains(@class,'SubNodesContainer')]"
+  EL_TREE_CONTAINER                 = "div[contains(@class,'RowContainer')]"
+  EL_SUBTREE_CONTAINER              = "div[contains(@class,'SubNodesContainer')]"
   EL_PAGE_HEADER_PANEL              = "div[@class='Panel-Control'][contains(@style,'85px')]"
   EL_LEFT_MENU_CONTAINER            = "div[contains(@style,'transform')]"
   EL_BUTTONS_BOX                    = "div[contains(@class,'GroupBox-Control')]"
@@ -283,17 +283,17 @@ class Locators:
   BUTTONS_BOX_COLUMN_SETS           = TEXT_BUTTONS_BOX_COLUMN_SETS + anc + EL_BUTTONS_BOX
 
   '''TREES XPATH'''
-  TREE_GLOBAL_SITE_VIEW        = CONTAINER_GLOBAL_SITE_VIEW + "/" + EL_SUBNODE_CONTAINER
-  TREE_ACTIVE_DERICTORIES      = CONTAINER_ACTIVE_DIRECTORIES + ch + EL_SUBNODE_CONTAINER
-  TREE_QUERIES                 = CONTAINER_QUERIES + ch + EL_SUBNODE_CONTAINER
-  TREE_GROUPS                  = CONTAINER_GROUPS + ch + EL_SUBNODE_CONTAINER
+  TREE_GLOBAL_SITE_VIEW        = CONTAINER_GLOBAL_SITE_VIEW + "/" + EL_SUBTREE_CONTAINER
+  TREE_ACTIVE_DERICTORIES      = CONTAINER_ACTIVE_DIRECTORIES + ch + EL_SUBTREE_CONTAINER
+  TREE_QUERIES                 = CONTAINER_QUERIES + ch + EL_SUBTREE_CONTAINER
+  TREE_GROUPS                  = CONTAINER_GROUPS + ch + EL_SUBTREE_CONTAINER
 
   '''LABELS XPATH'''
-  LABEL_GLOBAL_SITE_VIEW       = CONTAINER_GLOBAL_SITE_VIEW + "/" + EL_NODE_CONTAINER
-  LABEL_ACTIVE_DIRECTORIES     = CONTAINER_ACTIVE_DIRECTORIES + ch + EL_NODE_CONTAINER
-  LABEL_QUERIES                = CONTAINER_QUERIES + ch + EL_NODE_CONTAINER
-  LABEL_GROUPS                 = CONTAINER_GROUPS + ch + EL_NODE_CONTAINER
-  LABEL_DEFAULT_SITE           = TREE_GLOBAL_SITE_VIEW + "/div/div/*" + TEXT_DEFAULT_SITE + anc + EL_NODE_CONTAINER
+  LABEL_GLOBAL_SITE_VIEW       = CONTAINER_GLOBAL_SITE_VIEW + "/" + EL_TREE_CONTAINER
+  LABEL_ACTIVE_DIRECTORIES     = CONTAINER_ACTIVE_DIRECTORIES + ch + EL_TREE_CONTAINER
+  LABEL_QUERIES                = CONTAINER_QUERIES + ch + EL_TREE_CONTAINER
+  LABEL_GROUPS                 = CONTAINER_GROUPS + ch + EL_TREE_CONTAINER
+  LABEL_DEFAULT_SITE           = TREE_GLOBAL_SITE_VIEW + "/div/div/*" + TEXT_DEFAULT_SITE + anc + EL_TREE_CONTAINER
 
   '''SITES XPATH'''
   SITE_GLOBAL_SITE_VIEW           = "//span[text()='Global Site View']"
