@@ -16,7 +16,6 @@ class RibbonBar(Base):
     def click_tab_view(self):
         self.click_element(self.TAB_VIEW)
         self.wait_for_element_selected(self.TAB_VIEW)
-        self.wait_for_element_present(self.BUTTONS_BOX_DISPLAY)
 
     def click_tab_home(self):
         self.click_element(self.TAB_HOME)

@@ -45,7 +45,6 @@ class Locators:
   EL_RIBBON_BAR_TAB                 = "div[@class='RibbonBarTabControl-Control']"
   EL_RIBBON_BAR_BODY                = "div[@class='RibbonBarTabControl-CenterFrame']"
   EL_POPUP                          = "div[contains(@id,'WRP')]"
-  EL_BUTTON                         = "div[contains(@class,'Button')][contains(@id,'VWG_')]"
   EL_TABEL_HEADER                   = "div[contains(@id,'HEADER')]"
   EL_TABLE_BODY                     = "div[contains(@id,'VWGLVBODY')]"
   EL_TAB_BTN                        = "div[contains(@id,'TAB')]"
@@ -300,12 +299,13 @@ class Locators:
   SITE_GLOBAL_SITE_VIEW           = "//span[text()='Global Site View']"
 
   '''FIELD (FD) XPATH'''
-  FIELD_                             = "//input"
+  _FIELD                             = "//input"
   FIELD_USERNAME                     = "//input[@type='text']"
   FIELD_PASSWORD                     = "//input[@type='password']"
 
   '''BUTTONS (BTN) XPATH'''
-  BTN_                         = "//div[contains(@class,'Button')][contains(@id,'VWG_')]"
+  EL_BUTTON                    = "div[contains(@class,'Button')][contains(@id,'VWG_')]"
+  _BTN                         = "//div[contains(@class,'Button')][contains(@id,'VWG_')]"
   BTN_SIGN_IN                  = "//span[text()='Sign In']/ancestor::" + EL_BUTTON
   BTN_EXIT                     = "//img[@alt='Exit']"
   ICON_HOME                    = "//td[contains(@style,'Home')]"

@@ -197,7 +197,7 @@ class ConfigurationPopup(Base):
     #CONSTANTS
     POPUP_CONFIGURATION = "//span[text()='Configuration']/ancestor::div[contains(@id,'WRP')]"
     TAB_PANEL = POPUP_CONFIGURATION + "/*" + Locators.TAB_PANEL
-    TEXT_FIELD_NAME = POPUP_CONFIGURATION + "/*" + Locators.FIELD_
+    TEXT_FIELD_NAME = POPUP_CONFIGURATION + "/*" + Locators._FIELD
     BUTTON_CLOSE = POPUP_CONFIGURATION + "/*" + Locators.BTN_CLOSE
     BUTTON_NEW = POPUP_CONFIGURATION + "/*" + Locators.BTN_NEW_by_text
     SYSTEM_BUTTON_CLOSE = POPUP_CONFIGURATION + "/*" + Locators.SYS_BTN_CLOSE
@@ -285,7 +285,7 @@ class NewSitePopup(Base):
     POPUP_SITE_NAME = Locators.POPUP_SITE_NAME
 
     def enter_text_into_name_text_field(self, sitename):
-        self._find_element(self.POPUP_SITE_NAME + "/*" + Locators.FIELD_).send_keys(sitename)
+        self._find_element(self.POPUP_SITE_NAME + "/*" + Locators._FIELD).send_keys(sitename)
 
     def click_button_ok(self):
         self.click_element(self.POPUP_SITE_NAME + "/*" + Locators.BTN_OK)
@@ -319,7 +319,6 @@ class AreYouSurePopup(Base):
 
     def click_button_ok(self):
         self.click_element(Locators.POPUP_ARE_YOU_SURE + "/*" + Locators.BTN_OK)
-        # self.click_element(Locators.POPUP_ARE_YOU_SURE + "/*" + Locators.BTN_OK)
         self.wait_for_element_not_present(Locators.POPUP_ARE_YOU_SURE)
 
     def click_system_button_close(self):

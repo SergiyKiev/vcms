@@ -7,25 +7,12 @@ from _settings.settings import Settings
 class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, ColumnSetDesignerPopup, AreYouSurePopup,
                NewSitePopup, ErrorPopup):
 
-
     def check_main_page_loaded(self):
         time.sleep(5)
-        # cond1 = self.wait_for_element_present(Locators.TEXT_WELCOME_TO_CLOUD_MANAGEMENT_SUITE)
         cond1 = self.is_element_present(RibbonBar.BUTTON_EXIT)
         cond2 = self.is_element_present(LeftSideMenu.ICON_HOME)
         cond3 = self.is_element_present(LeftSideMenu.ICON_DEVICES)
         return True if (cond1 and cond2 and cond3) else False
-
-    # def click_global_site_view_label(self):
-    #     self.click_element(Locators.LABEL_GLOBAL_SITE_VIEW)
-    #     self.wait_for_element_present(Locators.BTN_NEW_SITE)
-    #     self.wait_for_element_selected(Locators.LABEL_GLOBAL_SITE_VIEW)
-    #     self.wait_for_element_present(Locators.CONTAINER_PANEL_TITLE_DEVICES + "/*" + Locators.TEXT_CONTAINS_GLOBAL_SITE_VIEW)
-    #     self.wait_for_element_not_present(Locators.BTN_DELETE)
-
-    # def click_ok(self):
-    #     self.click_element(Locators.POPUP_ARE_YOU_SURE + "/*" + Locators.BTN_OK)
-    #     self.wait_for_element_not_present(Locators.POPUP_ARE_YOU_SURE)
 
     def click_unable_to_remove_popup_ok_button(self):
         self.click_element(Locators.POPUP_UNABLE_TO_REMOVE + "/*" + Locators.BTN_Ok)
@@ -47,22 +34,6 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
         RibbonBar.click_delete_button(self)
         AreYouSurePopup.click_button_ok(self)
         self.wait_for_element_not_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
-        # return True if cond else False
-
-    # def click_site_expand_button(self, sitename):
-    #     expand = "//span[text()='" + sitename + "']/ancestor::" + Locators.EL_EXPAND_ARROW
-    #     self.click_element(expand)
-    #     self.wait_for_element_not_present(expand)
-    #
-    # def expand_site_tree(self, sitename):
-    #     elem = "//span[text()='" + sitename + "']/ancestor::"
-    #     self.expand_tree(elem)
-    #
-    # def expand_default_site_tree(self):
-    #     self.expand_tree(Locators.LABEL_DEFAULT_SITE + "/")
-    #
-    # def expand_global_site_view_tree(self):
-    #     self.expand_tree(Locators.LABEL_GLOBAL_SITE_VIEW + "/")
 
     def create_new_site(self, sitename):
         self.click_global_site_view_label()
@@ -123,10 +94,6 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
     def click_configuration_popup_vreps_tab(self):
         self.click_element(Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_VREPS)
         self.wait_for_element_selected(Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_VREPS)
-
-    def check_site_is_in_global_site_view_tree(self, sitename):
-        cond = self.is_element_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
-        return True if cond else False
 
     def check_subsite_is_in_parent_site(self, sitename, subsitename):
         cond = self.is_element_present("//span[text()='" + sitename + "']/following::span[text() = '" + subsitename + "']")
