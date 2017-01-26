@@ -157,7 +157,6 @@ class LeftSideMenu(Base):
         return True if cond else False
 
     def click_global_site_view_label(self):
-        time.sleep(3)
         self.click_element(Locators.LABEL_GLOBAL_SITE_VIEW)
         self.wait_for_element_selected(Locators.LABEL_GLOBAL_SITE_VIEW)
         # self.wait_for_element_present(Locators.BTN_CONFIG)
@@ -165,14 +164,12 @@ class LeftSideMenu(Base):
         # self.wait_for_element_not_present(Locators.BTN_DELETE)
 
     def click_default_site_in_global_site_view(self):
-        time.sleep(3)
         self.click_element(Locators.LABEL_DEFAULT_SITE)
         self.wait_for_element_selected(Locators.LABEL_DEFAULT_SITE)
         # self.wait_for_element_present(Locators.BTN_CONFIG)
         # self.wait_for_element_present(Locators.BTN_NEW_SITE)
 
     def click_site_in_global_site_view_tree(self, sitename):
-        time.sleep(3)
         elem = "//span[text()='" + sitename + "']"
         self.click_element(Locators.TREE_GLOBAL_SITE_VIEW + "/*" + elem)
         self.wait_for_element_selected(elem + Locators.anc + Locators.EL_NODE_CONTAINER)

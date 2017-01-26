@@ -18,8 +18,9 @@ class Base(object):
     FIELD_USERNAME = "//input[@type='text']"
     FIELD_PASSWORD = "//input[@type='password']"
     BUTTON_SIGN_IN = "//span[text()='Sign In']/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
-    # LOADING_SCREEN_VISIBLE = Locators.LOADING_SCREEN_VISIBLE
-    LOADING_SCREEN_VISIBLE = "//div[@id='VWG_LoadingAnimationBox'][contains(@style,'display: block']"
+    # LOADING_ANIMATION_VISIBLE = Locators.LOADING_ANIMATION_VISIBLE
+    LOADING_ANIMATION_VISIBLE = "//div[@id='VWG_LoadingAnimationBox'][contains(@style,'display: block')]"
+    LOADING_SCREEN_VISIBLE = "//div[@id='VWG_LoadingScreen'][contains(@style,'display: block')]"
     POPUP = "//div[contains(@id,'WRP')][last()]"
     SYSTEM_BUTTON_CLOSE = "//div[contains(@id,'WRP')][last()]/*//div[@title='Close']"
     DISABLED = "[contains(@class,'Disabled')]"
@@ -51,7 +52,8 @@ class Base(object):
     def _find_element(self, locator):
         try:
             # time.sleep(1)
-            # self.wait.until_not(EC.visibility_of_element_located((By.XPATH, Base.LOADING_SCREEN_VISIBLE)))
+            self.wait.until_not(EC.visibility_of_element_located((By.XPATH, Base.LOADING_ANIMATION_VISIBLE)))
+            self.wait.until_not(EC.visibility_of_element_located((By.XPATH, Base.LOADING_SCREEN_VISIBLE)))
             self.wait.until(EC.presence_of_element_located((By.XPATH, locator)))
             self.wait.until(EC.visibility_of_element_located((By.XPATH, locator)))
             return self.driver.find_element(By.XPATH, locator)
@@ -64,7 +66,8 @@ class Base(object):
     def _find_elements(self, locator):
         try:
             # time.sleep(1)
-            # self.wait.until(EC.invisibility_of_element_located((By.XPATH, Base.LOADING_SCREEN_VISIBLE)))
+            self.wait.until_not(EC.visibility_of_element_located((By.XPATH, Base.LOADING_ANIMATION_VISIBLE)))
+            self.wait.until_not(EC.visibility_of_element_located((By.XPATH, Base.LOADING_SCREEN_VISIBLE)))
             self.wait.until(EC.presence_of_all_elements_located((By.XPATH, locator)))
             self.wait.until(EC.visibility_of_any_elements_located((By.XPATH, locator)))
             return self.driver.find_elements(By.XPATH, locator)
@@ -76,18 +79,15 @@ class Base(object):
     def click_element(self, locator):
         try:
             time.sleep(1)
-            self.wait.until(EC.invisibility_of_element_located((By.XPATH, Base.LOADING_SCREEN_VISIBLE)))
             cond = self.wait_for_element_present(locator)
             if cond:
-                # print "\n" + "Element to click is: ", cond, locator
+                print "\n" + "CLICK ELEMENT:  ", locator
                 self._find_element(locator).click()
-                # time.sleep(1)
-                # self.wait.until_not(EC.visibility_of_element_located((By.XPATH, Base.LOADING_SCREEN_VISIBLE)))
                 return True
             else: return False
-        except NoSuchElementException:
-            print locator + " is not clickable"
-            return False
+        # except NoSuchElementException:
+        #     print locator + " is not clickable"
+        #     return False
         except Exception as e:
             print "The element is not clickable in the reason of ", e
 
@@ -101,7 +101,7 @@ class Base(object):
                 time.sleep(1)
                 actionChains.click(elem).perform()
                 time.sleep(1)
-                self.wait.until(EC.invisibility_of_element_located((By.XPATH, Base.LOADING_SCREEN_VISIBLE)))
+                self.wait.until(EC.invisibility_of_element_located((By.XPATH, Base.LOADING_ANIMATION_VISIBLE)))
                 return True
         except NoSuchElementException:
             print locator + " is not clickable"
@@ -110,12 +110,12 @@ class Base(object):
     def wait_for_element_present(self, locator):
         try:
             # time.sleep(1)
-            # self.wait.until(EC.invisibility_of_element_located((By.XPATH, Base.LOADING_SCREEN_VISIBLE)))
+            # self.wait.until(EC.invisibility_of_element_located((By.XPATH, Base.LOADING_ANIMATION_VISIBLE)))
             self.wait.until(EC.presence_of_element_located((By.XPATH, locator)))
             self.wait.until(EC.visibility_of_element_located((By.XPATH, locator)))
             return True
         except TimeoutException:
-            print " element was not found after " +  str(self.timeout) + " seconds:  " + locator
+            print "Element was not found after " +  str(self.timeout) + " seconds:  " + locator
             return False
         except Exception as e:
             print "Wait for element present, returns false ", e
@@ -123,7 +123,7 @@ class Base(object):
     def wait_for_elements_present(self, locator):
         try:
             # time.sleep(1)
-            # self.wait.until(EC.invisibility_of_element_located((By.XPATH, self.LOADING_SCREEN_VISIBLE)))
+            # self.wait.until(EC.invisibility_of_element_located((By.XPATH, self.LOADING_ANIMATION_VISIBLE)))
             self.wait.until(EC.presence_of_all_elements_located((By.XPATH, locator)))
             self.wait.until(EC.visibility_of_any_elements_located((By.XPATH, locator)))
             # print locator + " is presented"
@@ -135,7 +135,7 @@ class Base(object):
     def wait_for_element_not_present(self, locator):
         try:
             # time.sleep(1)
-            # self.wait.until(EC.invisibility_of_element_located((By.XPATH, Base.LOADING_SCREEN_VISIBLE)))
+            # self.wait.until(EC.invisibility_of_element_located((By.XPATH, Base.LOADING_ANIMATION_VISIBLE)))
             self.wait.until_not(EC.presence_of_element_located((By.XPATH, locator)))
             self.wait.until_not(EC.visibility_of_element_located((By.XPATH, locator)))
             # print locator + " is not presented"
@@ -150,7 +150,7 @@ class Base(object):
     def wait_for_element_selected(self, locator):
         try:
             # time.sleep(1)
-            # self.wait.until(EC.invisibility_of_element_located((By.XPATH, Base.LOADING_SCREEN_VISIBLE)))
+            # self.wait.until(EC.invisibility_of_element_located((By.XPATH, Base.LOADING_ANIMATION_VISIBLE)))
             self.wait.until(EC.presence_of_element_located((By.XPATH, locator + self.SELECTED)))
             self.wait.until(EC.visibility_of_element_located((By.XPATH, locator + self.SELECTED)))
             return True
@@ -161,7 +161,7 @@ class Base(object):
     def wait_for_element_disabled(self, locator):
         try:
             # time.sleep(1)
-            # self.wait.until(EC.invisibility_of_element_located((By.XPATH, Base.LOADING_SCREEN_VISIBLE)))
+            # self.wait.until(EC.invisibility_of_element_located((By.XPATH, Base.LOADING_ANIMATION_VISIBLE)))
             self.wait.until(EC.presence_of_element_located((By.XPATH, locator + self.DISABLED)))
             self.wait.until(EC.visibility_of_element_located((By.XPATH, locator + self.DISABLED)))
             # print locator + " is disabled"
@@ -173,7 +173,7 @@ class Base(object):
     def wait_for_element_visible(self, locator):
         try:
             # time.sleep(1)
-            # self.wait.until(EC.invisibility_of_element_located((By.XPATH, Base.LOADING_SCREEN_VISIBLE)))
+            # self.wait.until(EC.invisibility_of_element_located((By.XPATH, Base.LOADING_ANIMATION_VISIBLE)))
             self.wait.until(EC.visibility_of_element_located((By.XPATH, locator)))
             return True
         except TimeoutException:
@@ -242,7 +242,7 @@ class Base(object):
             return False
 
     def close_popups(self):
-        self.wait.until(EC.invisibility_of_element_located((By.XPATH, Base.LOADING_SCREEN_VISIBLE)))
+        self.wait.until(EC.invisibility_of_element_located((By.XPATH, Base.LOADING_ANIMATION_VISIBLE)))
         cond = self.is_element_present(Base.POPUP)
         i = 0
         while i < 10:
