@@ -4,8 +4,10 @@ from _feature_objects.popups import *
 from _settings.settings import Settings
 
 
-class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, ColumnSetDesignerPopup, AreYouSurePopup,
-               SiteNamePopup, ErrorPopup):
+class MainPage(BaseActions, LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, ColumnSetDesignerPopup,
+               AreYouSurePopup, SiteNamePopup, ErrorPopup):
+
+    _PANEL = "//div[@class='Panel-Control']"
 
     def check_main_page_loaded(self):
         time.sleep(5)
@@ -172,18 +174,3 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
             return True
         else:
             pass
-
-    # def delete_columnset_if_exists(self, columnsetname):
-    #     elem = self.CS_TABLE_BODY + "/*//span[text()='" + columnsetname + "']"
-    #     cond = self.is_element_present(elem)
-    #     cond_pages = self.is_element_present(Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_PAGES_PANEL)
-    #     pages_number = self.get_attribute_value(Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_PAGES_NUMBER)
-    #
-    #     if cond:
-    #         ColumnSetsPopup.click_columnset_in_table_list(self, columnsetname)
-    #         ColumnSetsPopup.click_button_delete(self)
-    #         AreYouSurePopup.click_button_yes(self)
-    #         self.wait_for_element_not_present(elem)
-    #         return True
-    #     else:
-    #         pass

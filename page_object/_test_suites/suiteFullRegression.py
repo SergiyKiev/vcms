@@ -1,3 +1,4 @@
+
 import unittest
 from _variables.variables import *
 from _pages.pageLogin import LoginPage
@@ -23,7 +24,7 @@ class SiteCreation(unittest.TestCase):
 
     def setUp(self):
         main_page = MainPage(self.driver)
-        main_page.close_popups()
+        main_page._close_popups()
         left_side_menu = LeftSideMenu(self.driver)
         left_side_menu.open_menu_devices()
 
@@ -130,7 +131,7 @@ class SiteCreation(unittest.TestCase):
 
     # def tearDown(self):
     #     page = MainPage(self.driver)
-    #     page.close_popups()
+    #     page._close_popups()
 
     @classmethod
     def tearDownClass(cls):
@@ -153,7 +154,7 @@ class SiteConfiguration(unittest.TestCase):
 
     def setUp(self):
         main_page = MainPage(self.driver)
-        main_page.close_popups()
+        main_page._close_popups()
         left_side_menu = LeftSideMenu(self.driver)
         left_side_menu.open_menu_devices()
 
@@ -214,7 +215,7 @@ class SiteConfiguration(unittest.TestCase):
 
     # def tearDown(self):
     #     page = MainPage(self.driver)
-    #     page.close_popups()
+    #     page._close_popups()
 
     @classmethod
     def tearDownClass(cls):
@@ -236,7 +237,7 @@ class SiteConfiguration_SiteTab(unittest.TestCase):
 
     def setUp(self):
         main_page = MainPage(self.driver)
-        main_page.close_popups()
+        main_page._close_popups()
         left_side_menu = LeftSideMenu(self.driver)
         left_side_menu.open_menu_devices()
 
@@ -357,7 +358,7 @@ class SiteConfiguration_SiteTab(unittest.TestCase):
 
     # def tearDown(self):
     #     page = MainPage(self.driver)
-    #     page.close_popups()
+    #     page._close_popups()
 
     @classmethod
     def tearDownClass(cls):
@@ -379,13 +380,13 @@ class SiteConfiguration_IpAddressRangesTab(unittest.TestCase):
 
     def setUp(self):
         main_page = MainPage(self.driver)
-        main_page.close_popups()
+        main_page._close_popups()
         left_side_menu = LeftSideMenu(self.driver)
         left_side_menu.open_menu_devices()
 
     # def tearDown(self):
     #     page = MainPage(self.driver)
-    #     page.close_popups()
+    #     page._close_popups()
 
     @classmethod
     def tearDownClass(cls):
@@ -407,7 +408,7 @@ class SiteDeletion(unittest.TestCase):
 
     def setUp(self):
         main_page = MainPage(self.driver)
-        main_page.close_popups()
+        main_page._close_popups()
         left_side_menu = LeftSideMenu(self.driver)
         left_side_menu.open_menu_devices()
 
@@ -501,7 +502,7 @@ class SiteDeletion(unittest.TestCase):
 
     # def tearDown(self):
     #     page = MainPage(self.driver)
-    #     page.close_popups()
+    #     page._close_popups()
 
     @classmethod
     def tearDownClass(cls):
@@ -523,13 +524,13 @@ class SiteRelocation(unittest.TestCase):
 
     def setUp(self):
         main_page = MainPage(self.driver)
-        main_page.close_popups()
+        main_page._close_popups()
         left_side_menu = LeftSideMenu(self.driver)
         left_side_menu.open_menu_devices()
 
     # def tearDown(self):
     #     page = MainPage(self.driver)
-    #     page.close_popups()
+    #     page._close_popups()
 
     @classmethod
     def tearDownClass(cls):

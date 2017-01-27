@@ -1,36 +1,43 @@
 
 import time
 from _base_page.base import Base
-from _base_page.base_elements import Buttons
+from _base_page.base_actions import BaseActions
 from _locators.locators import Locators
 from selenium.webdriver.common.keys import Keys
 
 
-class SubscriptionHasExpitredPopup(Base):
+class SubscriptionHasExpitredPopup(BaseActions):
+
+    FRAME = "//span[text()='Manage Subscriptions']/ancestor::div[contains(@id,'WRP')]"
 
     def click_system_button_close(self):
-        self._click_element(Locators.POPUP_SUBSCRIPTION_HAS_EXPIRED + "/*" + Locators.SYS_BTN_CLOSE)
-        self.wait_for_element_not_present(Locators.POPUP_SUBSCRIPTION_HAS_EXPIRED)
+        self._click_system_button_close(SubscriptionHasExpitredPopup.FRAME)
+        # self._click_element(Locators.POPUP_SUBSCRIPTION_HAS_EXPIRED + "/*" + Locators.SYS_BTN_CLOSE)
+        # self.wait_for_element_not_present(Locators.POPUP_SUBSCRIPTION_HAS_EXPIRED)
 
-    def close_popup(self):
-        cond = self.is_element_present(Locators.POPUP_SUBSCRIPTION_HAS_EXPIRED)
-        if cond:
-            self.click_system_button_close()
-        else:
-            pass
+    # def close_popup(self):
+    #     cond = self.is_element_present(SubscriptionHasExpitredPopup.FRAME)
+    #     if cond:
+    #         self._click_system_button_close()
+    #     else:
+    #         pass
 
 
-class TermsAndConditionsPopup(Base):
+class TermsAndConditionsPopup(BaseActions):
+
+    FRAME = "//span[text()='Terms and Conditions']/ancestor::div[contains(@id,'WRP')]"
+    BTN_I_AGREE = "//span[text()='I Agree']"
+    BTN_I_DO_NOT_AGREE = "//span[text()='I Do Not Agree']"
 
     def click_button_i_agree(self):
-        self._click_element(Locators.POPUP_TERMS_AND_CONDITIONS + "/*" + Locators.BTN_I_AGREE)
-        self.wait_for_element_not_present(Locators.POPUP_TERMS_AND_CONDITIONS)
+        self._click_element(TermsAndConditionsPopup.BTN_I_AGREE)
+        self.wait_for_element_not_present(TermsAndConditionsPopup.FRAME)
 
     def click_button_i_do_not_agree(self):
-        self._click_element(Locators.POPUP_TERMS_AND_CONDITIONS + "/*" + Locators.BTN_I_DO_NOT_AGREE)
+        self._click_element(TermsAndConditionsPopup.BTN_I_DO_NOT_AGREE)
 
     def click_system_button_close(self):
-        self._click_element(Locators.POPUP_TERMS_AND_CONDITIONS + "/*" + Locators.SYS_BTN_CLOSE)
+        self._click_system_button_close(TermsAndConditionsPopup.FRAME)
 
     def close_popup_if_exists(self):
         cond = self.is_element_present(Locators.POPUP_TERMS_AND_CONDITIONS)
@@ -58,7 +65,7 @@ class ColumnSetsPopup(Base):
     CS_TABLE_BODY = Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_TABLE_BODY
 
     def click_button_ok(self):
-        Buttons(self.driver).click_ok(ColumnSetsPopup.FRAME)
+        BaseActions(self.driver)._click_button_ok(ColumnSetsPopup.FRAME)
         # self._click_element(self.FRAME + "/*" + Locators.BTN_OK)
         # self.wait_for_element_not_present(self.FRAME)
 
@@ -312,8 +319,8 @@ class AreYouSurePopup(Base):
     BUTTON_CANCEL = FRAME + "/*//span[text()='Cancel']/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
     BUTTON_NO = FRAME + "/*//span[text()='No']/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
     BUTTON_YES = FRAME + "/*//span[text()='Yes']/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
-    BUTTON_OK = FRAME + "/*//span[text()='OK']/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
-    BUTTON_Ok = FRAME + "/*//span[text()='Ok']/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
+    # BUTTON_OK = FRAME + "/*//span[text()='OK']/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
+    # BUTTON_Ok = FRAME + "/*//span[text()='Ok']/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
     SYSTEM_BUTTON_CLOSE = FRAME + "/*//div[@title='Close']"
 
     def check_is_popup_present(self):
@@ -321,7 +328,7 @@ class AreYouSurePopup(Base):
         return True if cond else False
 
     def click_button_ok(self):
-        Buttons(self.driver).click_ok(AreYouSurePopup.FRAME)
+        BaseActions(self.driver)._click_button_ok(AreYouSurePopup.FRAME)
         # self.wait_for_element_present(AreYouSurePopup.FRAME)
         # cond1 = self.is_element_present(AreYouSurePopup.BUTTON_OK)
         # cond2 = self.is_element_present(AreYouSurePopup.BUTTON_Ok)
@@ -332,8 +339,9 @@ class AreYouSurePopup(Base):
         # self.wait_for_element_not_present(AreYouSurePopup.FRAME)
 
     def click_system_button_close(self):
-        self._click_element(AreYouSurePopup.SYSTEM_BUTTON_CLOSE)
-        self.wait_for_element_not_present(AreYouSurePopup.FRAME)
+        BaseActions(self.driver)._click_system_button_close(AreYouSurePopup.FRAME)
+        # self._click_element(AreYouSurePopup.SYSTEM_BUTTON_CLOSE)
+        # self.wait_for_element_not_present(AreYouSurePopup.FRAME)
 
     def click_button_cancel(self):
         self._click_element(AreYouSurePopup.BUTTON_CANCEL)
@@ -351,16 +359,13 @@ class AreYouSurePopup(Base):
 class UnableToRemovePopup(Base):
     # CONSTANTS
     FRAME =  "//span[text()='Unable to remove']/ancestor::div[contains(@id,'WRP')]"
-    BUTTON_OK = FRAME + "/*//span[text()='OK']/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
-    BUTTON_Ok = FRAME + "/*//span[text()='Ok']/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
-    TOP_SYSTEM_BUTTON_CLOSE = FRAME + "/*//div[@title='Close']"
 
     def check_is_popup_present(self):
         cond = self.is_element_present(UnableToRemovePopup.FRAME)
         return True if cond else False
 
     def click_button_ok(self):
-        Buttons(self.driver).click_ok(UnableToRemovePopup.FRAME)
+        BaseActions(self.driver)._click_button_ok(UnableToRemovePopup.FRAME)
         # self.wait_for_element_present(UnableToRemovePopup.FRAME)
         # cond1 = self.is_element_present(UnableToRemovePopup.BUTTON_OK)
         # cond2 = self.is_element_present(UnableToRemovePopup.BUTTON_Ok)
@@ -371,23 +376,25 @@ class UnableToRemovePopup(Base):
         # self.wait_for_element_not_present(UnableToRemovePopup.FRAME)
 
     def click_system_button_close(self):
-        self._click_element(self.SYSTEM_BUTTON_CLOSE)
-        self.wait_for_element_not_present(Locators.POPUP_ARE_YOU_SURE)
+        BaseActions(self.driver)._click_system_button_close(UnableToRemovePopup.FRAME)
+        # self._click_element(UnableToRemovePopup.SYSTEM_BUTTON_CLOSE)
+        # self.wait_for_element_not_present(UnableToRemovePopup.FRAME)
 
 
 class ErrorPopup(Base):
 
-    POPUP_ERROR = Locators.POPUP_ERROR
-
-    def click_system_button_close(self):
-        self._click_element(self.POPUP_ERROR + "/*" + Locators.SYS_BTN_CLOSE)
-        self.wait_for_element_not_present(self.POPUP_ERROR)
-
-    def click_button_ok(self):
-        self._click_element(self.POPUP_ERROR + "/*" + Locators.BTN_Ok)
-        self.wait_for_element_not_present(self.POPUP_ERROR)
+    FRAME = "//span[text()='Error']/ancestor::div[contains(@id,'WRP')]"
 
     def check_is_popup_present(self):
-        cond = self.is_element_present(self.POPUP_ERROR)
+        cond = self.is_element_present(ErrorPopup.FRAME)
         return True if cond else False
+
+    def click_system_button_close(self):
+        BaseActions(self.driver)._click_system_button_close(ErrorPopup.FRAME)
+        # self._click_element(self.POPUP_ERROR + "/*" + Locators.SYS_BTN_CLOSE)
+        # self.wait_for_element_not_present(self.POPUP_ERROR)
+
+    def click_button_ok(self):
+        BaseActions(self.driver)._click_button_ok(ErrorPopup.FRAME)
+
 

@@ -9,6 +9,8 @@ file_name = wgetter.download('https://testteamtest.cloudmanagementsuite.com/WebS
                              outdir='C:\\')
 # os.system('msiexec /i %s /qn' % 'D:\\vRepSetup-testteamdev.msi')
 p = subprocess.call('msiexec /i %s /qn' % ('C:\\vRepSetup-testteamdev.msi'), shell=True)
+#run as administrator
+# x = subprocess.call(['runas', '/user:Administrator', 'ADMIN_PASS','vRepSetup-testteamdev.msi'])
 print p
 # subprocess.call('msiexec /i %s TRANSFORMS=%s /qn' % ('D:\\python\\vcms\\vcms\\page_object\\vRepSetup-testteamdev.msi',
 #                                                      '%CD%\EXTRACT'), shell=True)

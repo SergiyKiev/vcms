@@ -306,7 +306,7 @@ class Locators:
   '''BUTTONS (BTN) XPATH'''
   EL_BUTTON                    = "div[contains(@class,'Button')][contains(@id,'VWG_')]"
   _BTN                         = "//div[contains(@class,'Button')][contains(@id,'VWG_')]"
-  BTN_SIGN_IN                  = "//span[text()='Sign In']/ancestor::" + EL_BUTTON
+  BTN_SIGN_IN                  = "//span[text()='Sign In']/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
   BTN_EXIT                     = "//img[@alt='Exit']"
   ICON_HOME                    = "//td[contains(@style,'Home')]"
   ICON_DEVICES                 = "//div[@title='Devices']"

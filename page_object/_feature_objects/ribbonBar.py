@@ -5,7 +5,7 @@ from _feature_objects.popups import *
 class RibbonBar(Base):
 
     #CONSTANTS
-    RIBBON_BAR = "//div[@class='RibbonBarTabControl-Control']"
+    _RIBBON_BAR = "//div[@class='RibbonBarTabControl-Control']"
     RIBBON_BAR_TAB_HEADER = "//div[@class='RibbonBarTabControl-HeadersRow']"
     RIBBON_BAR_TAB_PAGE = "//div[@class='RibbonBarTabControl-CenterFrame']"
     TAB_VIEW = "//span[text()='View']/ancestor::div[contains(@id,'TAB')]"
