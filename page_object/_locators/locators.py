@@ -251,7 +251,7 @@ class Locators:
 
 
   '''RIBBON BAR'''
-  RIBBON_BAR_TAB                        = "//div[@class='RibbonBarTabControl-Control']"
+  RIBBON_BAR_TAB                        = "//div[@class='RibbonBarTabControl-HeadersRow']"
 
   '''LEFT MENU LIST'''
   LEFT_MENU_CONTAINER                      = "//div[contains(@style,'transform')]"
@@ -277,7 +277,7 @@ class Locators:
   # CONTAINER_PATCHES_LIST_VIEW    = "//div[contains(@id,'VWG')][contains(@class,'ListView')]"
 
   '''GROUP BOX XPATH'''
-  BUTTONS_BOX_ACTIONS              =  TEXT_BUTTONS_BOX_ACTIONS + anc + EL_BUTTONS_BOX
+  GROUP_BOX_ACTIONS              = TEXT_BUTTONS_BOX_ACTIONS + anc + EL_BUTTONS_BOX
   BUTTONS_BOX_DISPLAY               = TEXT_BUTTONS_BOX_DISPLAY + anc + EL_BUTTONS_BOX
   BUTTONS_BOX_ALIASES               = TEXT_BUTTONS_BOX_ALIASES + anc + EL_BUTTONS_BOX
   BUTTONS_BOX_COLUMN_SETS           = TEXT_BUTTONS_BOX_COLUMN_SETS + anc + EL_BUTTONS_BOX

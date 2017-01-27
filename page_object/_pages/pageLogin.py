@@ -36,7 +36,7 @@ class LoginPage(TermsAndConditionsPopup, SubscriptionHasExpitredPopup):
         self._find_element(Locators.FIELD_PASSWORD).send_keys(password)
 
     def click_sign_in_button(self):
-        self.click_element(Locators.BTN_SIGN_IN)
+        self._click_element(Locators.BTN_SIGN_IN)
 
     def check_login_page_loaded(self):
         cond1 = self.is_element_present(Locators.BTN_SIGN_IN)

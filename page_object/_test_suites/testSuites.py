@@ -6,7 +6,6 @@ from _feature_objects.popups import *
 from _feature_objects.ribbonBar import *
 from _feature_objects.leftSideMenu import *
 from selenium import webdriver
-from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 
 
 class SiteCreation(unittest.TestCase):
@@ -18,17 +17,15 @@ class SiteCreation(unittest.TestCase):
         print ("\n" + "TEST SUITE: Site creation (Suite ID: 9111)")
         cls.driver = webdriver.Chrome()
         login_page = LoginPage(cls.driver)
-        left_side_menu = LeftSideMenu(cls.driver)
         login_page.open_page()
         main_page = login_page.login()
         main_page.check_main_page_loaded()
 
     def setUp(self):
         main_page = MainPage(self.driver)
-        left_side_menu = LeftSideMenu(self.driver)
         main_page.close_popups()
+        left_side_menu = LeftSideMenu(self.driver)
         left_side_menu.open_menu_devices()
-        left_side_menu.click_global_site_view_label()
 
     def test_open_left_side_menus(self):
         print ("\n" + "TC#xxxx. Open left side menus")
@@ -120,13 +117,14 @@ class SiteCreation(unittest.TestCase):
         subsitename_one = sitename + "-01"
         subsitename_two = sitename + "-02"
         main_page = MainPage(self.driver)
+        left_side_menu = LeftSideMenu(self.driver)
         main_page.delete_site_if_exists(sitename)
         main_page.create_new_site(sitename)
-        self.assertTrue(main_page.check_site_is_in_global_site_view_tree(sitename))
+        self.assertTrue(left_side_menu.check_site_is_in_global_site_view_tree(sitename))
         main_page.create_new_subsite(sitename, subsitename_one)
-        self.assertTrue(main_page.check_subsite_is_in_parent_site(sitename, subsitename_one))
+        self.assertTrue(left_side_menu.check_subsite_is_in_parent_site(sitename, subsitename_one))
         main_page.create_new_subsite(sitename, subsitename_two)
-        self.assertTrue(main_page.check_subsite_is_in_parent_site(sitename, subsitename_two))
+        self.assertTrue(left_side_menu.check_subsite_is_in_parent_site(sitename, subsitename_two))
         main_page.delete_site_from_global_site_view_tree(sitename)
         print ("Test is passed" + "\n")
 
@@ -152,10 +150,11 @@ class SiteConfiguration(unittest.TestCase):
         main_page = login_page.login()
         main_page.check_main_page_loaded()
 
+
     def setUp(self):
         main_page = MainPage(self.driver)
-        left_side_menu = LeftSideMenu(self.driver)
         main_page.close_popups()
+        left_side_menu = LeftSideMenu(self.driver)
         left_side_menu.open_menu_devices()
 
     def test_open_configuration_popup(self):
@@ -237,10 +236,9 @@ class SiteConfiguration_SiteTab(unittest.TestCase):
 
     def setUp(self):
         main_page = MainPage(self.driver)
-        left_side_menu = LeftSideMenu(self.driver)
         main_page.close_popups()
+        left_side_menu = LeftSideMenu(self.driver)
         left_side_menu.open_menu_devices()
-        left_side_menu.click_global_site_view_label()
 
     def test_configuration_popup_change_site_name(self):
         print ("\n" + "TC#9237. Devices page. Configuration popup. Change site name")
@@ -308,18 +306,19 @@ class SiteConfiguration_SiteTab(unittest.TestCase):
         columnset1 = "ColumnSet#9239-01"
         columnset2 = "test1"
         main_page = MainPage(self.driver)
+        left_side_menu = LeftSideMenu(self.driver)
         column_sets_popup = ColumnSetsPopup(self.driver)
         configuration_popup = ConfigurationPopup(self.driver)
         ribbon_bar = RibbonBar(self.driver)
         main_page.open_column_sets_popup_from_ribbon_bar()
-        main_page.delete_columnset_if_exist(columnset1)
-        main_page.delete_columnset_if_exist(columnset2)
+        main_page.delete_columnset_if_exists(columnset1)
+        main_page.delete_columnset_if_exists(columnset2)
         main_page.create_columnset_from_column_sets_popup(columnset1, Variables.columns_list1)
         main_page.create_columnset_from_column_sets_popup(columnset2, Variables.columns_list2)
         column_sets_popup.click_button_ok()
         ribbon_bar.click_tab_home()
         main_page.create_site_if_not_exists(sitename)
-        main_page.click_site_in_global_site_view_tree(sitename)
+        left_side_menu.click_site_in_global_site_view_tree(sitename)
         ribbon_bar.click_button_config()
         configuration_popup.select_columnset_in_configuration_popup_drop_down_list(columnset1)
         configuration_popup.click_button_close()
@@ -328,7 +327,7 @@ class SiteConfiguration_SiteTab(unittest.TestCase):
         configuration_popup.select_columnset_in_configuration_popup_drop_down_list(columnset2)
         configuration_popup.click_button_close()
         self.assertTrue(main_page.check_columns_are_presented_in_devices_list_header(Variables.columns_list2))
-        # main_page.delete_site_from_global_site_view_tree(sitename)
+        main_page.delete_site_from_global_site_view_tree(sitename)
         print ("Test is passed" + "\n")
 
     def test_configuration_popup_create_column_set(self):
@@ -342,7 +341,7 @@ class SiteConfiguration_SiteTab(unittest.TestCase):
         configuration_popup = ConfigurationPopup(self.driver)
         ribbon_bar = RibbonBar(self.driver)
         main_page.open_column_sets_popup_from_ribbon_bar()
-        main_page.delete_columnset_if_exist(columnsetname)
+        main_page.delete_columnset_if_exists(columnsetname)
         column_sets_popup.click_button_ok()
         ribbon_bar.click_tab_home()
         main_page.create_site_if_not_exists(sitename)
@@ -380,10 +379,9 @@ class SiteConfiguration_IpAddressRangesTab(unittest.TestCase):
 
     def setUp(self):
         main_page = MainPage(self.driver)
-        left_side_menu = LeftSideMenu(self.driver)
         main_page.close_popups()
+        left_side_menu = LeftSideMenu(self.driver)
         left_side_menu.open_menu_devices()
-        left_side_menu.click_global_site_view_label()
 
     # def tearDown(self):
     #     page = MainPage(self.driver)
@@ -403,19 +401,15 @@ class SiteDeletion(unittest.TestCase):
         print ("\n" + "TEST SUITE: Site creation (Suite ID: 9111)")
         cls.driver = webdriver.Chrome()
         login_page = LoginPage(cls.driver)
-        left_side_menu = LeftSideMenu(cls.driver)
         login_page.open_page()
         main_page = login_page.login()
         main_page.check_main_page_loaded()
-        main_page.close_popups()
-        left_side_menu.open_menu_devices()
-        left_side_menu.click_global_site_view_label()
 
     def setUp(self):
         main_page = MainPage(self.driver)
         main_page.close_popups()
-        # main_page = main_page.open_menu_devices()
-        # main_page.check_main_page_loaded()
+        left_side_menu = LeftSideMenu(self.driver)
+        left_side_menu.open_menu_devices()
 
     def test_delete_created_site_from_global_site_view_tree(self):
         print ("\n" + "TC#9607. Devices page. Delete created site from Global Site View tree")
@@ -449,15 +443,16 @@ class SiteDeletion(unittest.TestCase):
         sitename = "TC#3333"
         subsitename = "TC#3333-01"
         main_page = MainPage(self.driver)
+        left_side_menu = LeftSideMenu(self.driver)
         ribbon_bar = RibbonBar(self.driver)
         are_you_sure_popup = AreYouSurePopup(self.driver)
         main_page.delete_site_if_exists(sitename)
         main_page.create_new_site(sitename)
         main_page.create_new_subsite(sitename, subsitename)
-        main_page.click_subsite_in_site_tree(sitename, subsitename)
+        left_side_menu.click_subsite_in_site_tree(sitename, subsitename)
         ribbon_bar.click_delete_button()
         are_you_sure_popup.click_button_ok()
-        self.assertFalse(main_page.check_subsite_is_in_parent_site(sitename, subsitename))
+        self.assertFalse(left_side_menu.check_subsite_is_in_parent_site(sitename, subsitename))
         main_page.delete_site_from_global_site_view_tree(sitename)
         print ("Test is passed" + "\n")
 
@@ -466,22 +461,24 @@ class SiteDeletion(unittest.TestCase):
         sitename = "TC#0000"
         subsitename = "TC#0000-01"
         main_page = MainPage(self.driver)
+        left_side_menu = LeftSideMenu(self.driver)
         main_page.delete_site_if_exists(sitename)
         main_page.create_new_site(sitename)
         main_page.create_new_subsite(sitename, subsitename)
         main_page.delete_site_from_global_site_view_tree(sitename)
-        self.assertFalse(main_page.check_subsite_is_in_parent_site(sitename, subsitename))
-        self.assertFalse(main_page.check_site_is_in_global_site_view_tree(sitename))
+        self.assertFalse(left_side_menu.check_subsite_is_in_parent_site(sitename, subsitename))
+        self.assertFalse(left_side_menu.check_site_is_in_global_site_view_tree(sitename))
         print ("Test is passed" + "\n")
 
     def test_cancel_site_deletion_from_global_site_view(self):
         print ("\n" + "TC#1111. Devices page. Cancel site deletion")
         sitename = "TC#1111"
         main_page = MainPage(self.driver)
+        left_side_menu = LeftSideMenu(self.driver)
         ribbon_bar = RibbonBar(self.driver)
         are_you_sure_popup = AreYouSurePopup(self.driver)
         main_page.create_site_if_not_exists(sitename)
-        main_page.click_site_in_global_site_view_tree(sitename)
+        left_side_menu.click_site_in_global_site_view_tree(sitename)
         ribbon_bar.click_delete_button()
         are_you_sure_popup.click_button_cancel()
         self.assertTrue(main_page.check_site_is_in_global_site_view_tree(sitename))
@@ -520,17 +517,15 @@ class SiteRelocation(unittest.TestCase):
         print ("\n" + "TEST SUITE: Site creation (Suite ID: 9111)")
         cls.driver = webdriver.Chrome()
         login_page = LoginPage(cls.driver)
-        left_side_menu = LeftSideMenu(cls.driver)
         login_page.open_page()
         main_page = login_page.login()
         main_page.check_main_page_loaded()
 
     def setUp(self):
         main_page = MainPage(self.driver)
-        left_side_menu = LeftSideMenu(self.driver)
         main_page.close_popups()
+        left_side_menu = LeftSideMenu(self.driver)
         left_side_menu.open_menu_devices()
-        left_side_menu.click_global_site_view_label()
 
     # def tearDown(self):
     #     page = MainPage(self.driver)

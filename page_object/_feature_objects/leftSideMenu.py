@@ -40,31 +40,31 @@ class LeftSideMenu(Base):
     MENU_PASSWORD_RESET = "//span[text()='Password Reset']" + CONTAINER
 
     def click_icon_home(self):
-        self.click_element(LeftSideMenu.ICON_HOME)
+        self._click_element(LeftSideMenu.ICON_HOME)
         self.wait_for_element_not_present(LeftSideMenu.ICON_HOME_GREY)
 
     def click_icon_devices(self):
-        self.click_element(LeftSideMenu.ICON_DEVICES)
+        self._click_element(LeftSideMenu.ICON_DEVICES)
         self.wait_for_element_not_present(LeftSideMenu.ICON_DEVICES_GREY)
 
     def click_icon_administration(self):
-        self.click_element(LeftSideMenu.ICON_ADMINISTRATION)
+        self._click_element(LeftSideMenu.ICON_ADMINISTRATION)
         self.wait_for_element_not_present(LeftSideMenu.ICON_ADMINISTRATION_GREY)
 
     def click_icon_tasks(self):
-        self.click_element(LeftSideMenu.ICON_TASKS)
+        self._click_element(LeftSideMenu.ICON_TASKS)
         self.wait_for_element_not_present(LeftSideMenu.ICON_TASKS_GREY)
 
     def click_icon_reporting(self):
-        self.click_element(LeftSideMenu.ICON_REPORTING)
+        self._click_element(LeftSideMenu.ICON_REPORTING)
         self.wait_for_element_not_present(LeftSideMenu.ICON_REPORTING_GREY)
 
     def click_icon_software_and_patch_manager(self):
-        self.click_element(LeftSideMenu.ICON_SOFT_AND_PATCH_MANAGER)
+        self._click_element(LeftSideMenu.ICON_SOFT_AND_PATCH_MANAGER)
         self.wait_for_element_not_present(LeftSideMenu.ICON_SOFT_AND_PATCH_MANAGER_GREY)
 
     def click_icon_password_reset(self):
-        self.click_element(LeftSideMenu.ICON_PASSWORD_RESET)
+        self._click_element(LeftSideMenu.ICON_PASSWORD_RESET)
         self.wait_for_element_not_present(LeftSideMenu.ICON_PASSWORD_RESET_GREY)
 
     def open_menu_home(self):
@@ -145,24 +145,30 @@ class LeftSideMenu(Base):
             print "Object not found"
 
     def click_global_site_view_label(self):
-        self.click_element(Locators.LABEL_GLOBAL_SITE_VIEW)
+        self._click_element(Locators.LABEL_GLOBAL_SITE_VIEW)
         self.wait_for_element_selected(Locators.LABEL_GLOBAL_SITE_VIEW)
         # self.wait_for_element_present(Locators.BTN_CONFIG)
         # self.wait_for_element_present(Locators.BTN_NEW_SITE)
         # self.wait_for_element_not_present(Locators.BTN_DELETE)
 
     def click_default_site_in_global_site_view(self):
-        self.click_element(Locators.LABEL_DEFAULT_SITE)
+        self._click_element(Locators.LABEL_DEFAULT_SITE)
         self.wait_for_element_selected(Locators.LABEL_DEFAULT_SITE)
         # self.wait_for_element_present(Locators.BTN_CONFIG)
         # self.wait_for_element_present(Locators.BTN_NEW_SITE)
 
     def click_site_in_global_site_view_tree(self, sitename):
         elem = "//span[text()='" + sitename + "']"
-        self.click_element(Locators.TREE_GLOBAL_SITE_VIEW + "/*" + elem)
+        self._click_element(Locators.TREE_GLOBAL_SITE_VIEW + "/*" + elem)
         self.wait_for_element_selected(elem + Locators.anc + Locators.EL_TREE_CONTAINER)
-        # self.wait_for_element_present(Locators.BTN_CONFIG)
-        # self.wait_for_element_present(Locators.BTN_NEW_SITE)
+
+    def click_subsite_in_site_tree(self, sitename, subsitename):
+        site_name = "//span[text()='" + sitename + "']"
+        subsite_name = "//span[text()='" + subsitename + "']"
+        contains_subsite_name = "//span[contains(text(),'" + subsitename + "')]"
+        elem = site_name + "/following::div[contains(@style,'10LTR')]/*" + subsite_name
+        self._click_element(elem)
+        self.wait_for_element_selected(elem + "/ancestor::" + Locators.EL_TREE_CONTAINER)
 
     def check_menu_devices_is_visible(self):
         cond = self.is_element_present(LeftSideMenu.MENU_DEVICES + LeftSideMenu.VISIBLE)
@@ -178,6 +184,10 @@ class LeftSideMenu(Base):
 
     def check_site_is_in_global_site_view_tree(self, sitename):
         cond = self.is_element_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
+        return True if cond else False
+
+    def check_subsite_is_in_parent_site(self, sitename, subsitename):
+        cond = self.is_element_present("//span[text()='" + sitename + "']/following::span[text() = '" + subsitename + "']")
         return True if cond else False
 
 
