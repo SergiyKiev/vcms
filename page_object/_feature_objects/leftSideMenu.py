@@ -7,9 +7,10 @@ import time
 
 class LeftSideMenu(Base):
 
+    VISIBLE = "[contains(@style,'translate3d(0px, 0px, 0px)')]"
     GREY_COLOR = "[contains(@style,'#E8E8E8')]"
     ICON_HOME = "//td[contains(@style,'Home')]"
-    ICON_HOME_GREY = ICON_HOME + "/ancestor::div[@class='PictureBox-Control'][contains(@style,'#E8E8E8')]" + GREY_COLOR
+    ICON_HOME_GREY = ICON_HOME + "/ancestor::div[@class='PictureBox-Control']" + GREY_COLOR
     ICON_DEVICES = "//div[@title='Devices']"
     ICON_DEVICES_GREY = ICON_DEVICES + GREY_COLOR
     ICON_ADMINISTRATION = "//div[@title='Administration']"
@@ -31,7 +32,6 @@ class LeftSideMenu(Base):
     # TITLE_SOFTWARE_AND_PATCH_MANAGER = "//" + Locators.EL_PAGE_HEADER_PANEL + "/*" + Locators.TEXT_SOFTWARE_AND_PATCH_MANAGER
     # TITLE_PASSWORD_RESET = "//" + Locators.EL_PAGE_HEADER_PANEL + "/*" + Locators.TEXT_PASSWORD_RESET
     CONTAINER = "/ancestor::div[contains(@style,'transform')]"
-    VISIBLE = "[contains(@style,'translate3d(0px, 0px, 0px)')]"
     MENU_DEVICES = "//span[text()='Devices']" + CONTAINER
     MENU_ADMINISTRATION = "//span[text()='Administration']" + CONTAINER
     MENU_TASKS = "//span[text()='Tasks']" + CONTAINER
@@ -144,18 +144,6 @@ class LeftSideMenu(Base):
         except (NoSuchElementException, TimeoutException):
             print "Object not found"
 
-    def check_is_menu_devices_is_visible(self):
-        cond = self.is_element_present(LeftSideMenu.MENU_DEVICES + LeftSideMenu.VISIBLE)
-        return True if cond else False
-
-    def check_is_menu_tasks_is_visible(self):
-        cond = self.is_element_present(LeftSideMenu.MENU_TASKS + LeftSideMenu.VISIBLE)
-        return True if cond else False
-
-    def check_is_menu_reporting_is_visible(self):
-        cond = self.is_element_present(LeftSideMenu.MENU_REPORTING + LeftSideMenu.VISIBLE)
-        return True if cond else False
-
     def click_global_site_view_label(self):
         self.click_element(Locators.LABEL_GLOBAL_SITE_VIEW)
         self.wait_for_element_selected(Locators.LABEL_GLOBAL_SITE_VIEW)
@@ -175,6 +163,18 @@ class LeftSideMenu(Base):
         self.wait_for_element_selected(elem + Locators.anc + Locators.EL_TREE_CONTAINER)
         # self.wait_for_element_present(Locators.BTN_CONFIG)
         # self.wait_for_element_present(Locators.BTN_NEW_SITE)
+
+    def check_menu_devices_is_visible(self):
+        cond = self.is_element_present(LeftSideMenu.MENU_DEVICES + LeftSideMenu.VISIBLE)
+        return True if cond else False
+
+    def check_menu_tasks_is_visible(self):
+        cond = self.is_element_present(LeftSideMenu.MENU_TASKS + LeftSideMenu.VISIBLE)
+        return True if cond else False
+
+    def check_menu_reporting_is_visible(self):
+        cond = self.is_element_present(LeftSideMenu.MENU_REPORTING + LeftSideMenu.VISIBLE)
+        return True if cond else False
 
     def check_site_is_in_global_site_view_tree(self, sitename):
         cond = self.is_element_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
