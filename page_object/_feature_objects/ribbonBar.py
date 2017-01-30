@@ -1,11 +1,9 @@
+
 from _base_page.base import Base
-from _locators.locators import Locators
 from _feature_objects.popups import *
 
 class RibbonBar(Base):
 
-    #CONSTANTS
-    _RIBBON_BAR = "//div[@class='RibbonBarTabControl-Control']"
     RIBBON_BAR_TAB_HEADER = "//div[@class='RibbonBarTabControl-HeadersRow']"
     RIBBON_BAR_TAB_PAGE = "//div[@class='RibbonBarTabControl-CenterFrame']"
     TAB_VIEW = "//span[text()='View']/ancestor::div[contains(@id,'TAB')]"
@@ -36,8 +34,6 @@ class RibbonBar(Base):
     def click_button_edit_or_create(self):
         self._click_element(RibbonBar.BUTTON_EDIT_OR_CREATE)
         self.wait_for_element_present(ColumnSetsPopup.FRAME)
-        # cond = self.wait_for_element_present(ColumnSetsPopup.FRAME)
-        # return ColumnSetsPopup(self.driver) if cond else None
 
     def click_button_new_site(self):
         self._click_element(RibbonBar.BUTTON_NEW_SITE)
@@ -45,13 +41,13 @@ class RibbonBar(Base):
 
     def click_delete_button(self):
         self._click_element(RibbonBar.BUTTON_DELETE)
-        cond = self.wait_for_element_present(Locators.POPUP)
-        if cond:
-            return AreYouSurePopup(self.driver)
-        else:
-            return UnableToRemovePopup(self.driver)
+        # cond = self.wait_for_element_present(BaseElements._POPUP)
+        # if cond:
+        #     return AreYouSurePopup(self.driver)
+        # else:
+        #     return UnableToRemovePopup(self.driver)
 
     def click_button_config(self):
-        self._click_element(Locators.BTN_CONFIG)
+        self._click_element(RibbonBar.BUTTON_CONFIG)
         self.wait_for_element_present(ConfigurationPopup.FRAME)
 

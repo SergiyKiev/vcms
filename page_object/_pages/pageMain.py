@@ -4,54 +4,47 @@ from _feature_objects.popups import *
 from _settings.settings import Settings
 
 
-class MainPage(BaseActions, LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, ColumnSetDesignerPopup,
+class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, ColumnSetDesignerPopup,
                AreYouSurePopup, SiteNamePopup, ErrorPopup):
 
-    _PANEL = "//div[@class='Panel-Control']"
-
     def check_main_page_loaded(self):
-        time.sleep(5)
-        cond1 = self.is_element_present(RibbonBar.BUTTON_EXIT)
-        cond2 = self.is_element_present(LeftSideMenu.ICON_HOME)
-        cond3 = self.is_element_present(LeftSideMenu.ICON_DEVICES)
+        self.wait_for_element_present(BaseElements._RIBBON_BAR)
+        self.wait_for_elements_present(BaseElements._PANEL)
+        cond1 = self._is_element_present(RibbonBar.BUTTON_EXIT)
+        cond2 = self._is_element_present(LeftSideMenu.ICON_HOME)
+        cond3 = self._is_element_present(LeftSideMenu.ICON_DEVICES)
         return True if (cond1 and cond2 and cond3) else False
 
-    def click_unable_to_remove_popup_ok_button(self):
-        self._click_element(Locators.POPUP_UNABLE_TO_REMOVE + "/*" + Locators.BTN_Ok)
-        self.wait_for_element_not_present(Locators.POPUP_UNABLE_TO_REMOVE)
-
     def delete_site_if_exists(self, sitename):
-        elem = Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']"
-        cond = self.is_element_present(elem)
+        element = LeftSideMenu.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']"
+        cond = self._is_element_present(element)
         if cond:
-            self.click_site_in_global_site_view_tree(sitename)
-            self.click_delete_button()
+            LeftSideMenu.click_site_in_global_site_view_tree(self, sitename)
+            RibbonBar.click_delete_button(self)
             AreYouSurePopup.click_button_ok(self)
-            self.wait_for_element_not_present(elem)
         else:
             pass
 
     def delete_site_from_global_site_view_tree(self, sitename):
-        self.click_site_in_global_site_view_tree(sitename)
+        LeftSideMenu.click_site_in_global_site_view_tree(self, sitename)
         RibbonBar.click_delete_button(self)
         AreYouSurePopup.click_button_ok(self)
-        self.wait_for_element_not_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
 
     def create_new_site(self, sitename):
-        self.click_global_site_view_label()
+        LeftSideMenu.click_global_site_view_label(self)
         RibbonBar.click_button_new_site(self)
         SiteNamePopup.enter_text_into_name_text_field(self, sitename)
         SiteNamePopup.click_button_ok(self)
-        self.check_site_is_in_global_site_view_tree(sitename)
+        LeftSideMenu.check_site_is_in_global_site_view_tree(self, sitename)
 
     def create_site_if_not_exists(self, sitename):
-        cond = self.is_element_not_present(Locators.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
+        cond = self._is_element_not_present(LeftSideMenu.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
         if cond:
-            self.click_global_site_view_label()
+            LeftSideMenu.click_global_site_view_label(self)
             RibbonBar.click_button_new_site(self)
             SiteNamePopup.enter_text_into_name_text_field(self, sitename)
             SiteNamePopup.click_button_ok(self)
-            self.check_site_is_in_global_site_view_tree(sitename)
+            LeftSideMenu.check_site_is_in_global_site_view_tree(self, sitename)
         else:
             pass
 
@@ -60,31 +53,17 @@ class MainPage(BaseActions, LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnS
         RibbonBar.click_button_new_site(self)
         SiteNamePopup.enter_text_into_name_text_field(self, subsitename)
         SiteNamePopup.click_button_ok(self)
-        # self.expand_site_tree(sitename)
         LeftSideMenu.check_subsite_is_in_parent_site(self, sitename, subsitename)
 
     def create_subsite_if_not_exists(self, sitename, subsitename):
-        elem = "//span[text()='" + sitename + "']/following::span[text() = '" + subsitename + "']"
-        self.click_site_in_global_site_view_tree(sitename)
+        element = "//span[text()='" + sitename + "']/following::span[text() = '" + subsitename + "']"
+        LeftSideMenu.click_site_in_global_site_view_tree(self, sitename)
         # self.expand_site_tree(sitename)
-        cond = self.is_element_not_present(elem)
+        cond = self._is_element_not_present(element)
         if cond:
             self.create_new_subsite(sitename, subsitename)
-            self.check_subsite_is_in_parent_site(sitename, subsitename)
         else:
             pass
-
-    def click_configuration_popup_site_tab(self):
-        self._click_element(Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_SITE)
-        self.wait_for_element_selected(Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_SITE)
-
-    def click_configuration_popup_ip_address_ranges_tab(self):
-        self._click_element(Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_IP_ADDRESS_RANGES)
-        self.wait_for_element_selected(Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_IP_ADDRESS_RANGES)
-
-    def click_configuration_popup_vreps_tab(self):
-        self._click_element(Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_VREPS)
-        self.wait_for_element_selected(Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_VREPS)
 
     def open_column_sets_popup_from_ribbon_bar(self):
         LeftSideMenu.click_global_site_view_label(self)
@@ -96,7 +75,7 @@ class MainPage(BaseActions, LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnS
         RibbonBar.click_tab_view(self)
         RibbonBar.click_button_edit_or_create(self)
         cond = ColumnSetsPopup.check_is_columnset_present(self, columnsetname)
-        pages = self.is_element_present(Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_PAGES_PANEL)
+        pages = self._is_element_present(Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_PAGES_PANEL)
         # if pages:
         #     pages_number = self._find_element(Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_LIST_PAGES_NUMBER).text()
         #     # number = pages_number.text()
@@ -114,7 +93,7 @@ class MainPage(BaseActions, LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnS
         ColumnSetsPopup.click_button_new(self)
         ColumnSetDesignerPopup.click_system_button_maximize(self)
         ColumnSetDesignerPopup.enter_text_into_text_field_name(self, columnsetname)
-        ColumnSetDesignerPopup.expand_all_left_side_lists(self)
+        ColumnSetDesignerPopup.expand_all_left_side_trees(self)
         for columnname in list(column_list):
             ColumnSetDesignerPopup.click_column_in_left_side_tree(self, columnname)
             ColumnSetDesignerPopup.click_button_add(self, columnname)
@@ -136,7 +115,7 @@ class MainPage(BaseActions, LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnS
         columnset = []
         for i in columns_list:
             elem = Locators.DEVICES_LIST_HEADER + "/*//span[contains(text(),'" + str(i) + "')]"
-            cond = self.is_element_present(elem)
+            cond = self._is_element_present(elem)
             if cond:
                 columnset.append(i)
             else:
@@ -164,8 +143,8 @@ class MainPage(BaseActions, LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnS
         ColumnSetDesignerPopup.click_button_ok(self)
 
     def delete_columnset_if_exists(self, columnsetname):
-        elem = self.CS_TABLE_BODY + "/*//span[text()='" + columnsetname + "']"
-        cond = self.is_element_present(elem)
+        elem = ColumnSetsPopup.TABLE_BODY + "/*//span[text()='" + columnsetname + "']"
+        cond = self._is_element_present(elem)
         if cond:
             ColumnSetsPopup.click_columnset_in_table_list(self, columnsetname)
             ColumnSetsPopup.click_button_delete(self)

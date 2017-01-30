@@ -4,10 +4,6 @@ from _variables.variables import Variables
 
 class Locators:
 
-  def __init__(self):
-    pass
-
-
   '''HTML CONNECTORS'''
   anc                     = "/ancestor::"
   dec                     = "/descendant::"
@@ -50,12 +46,12 @@ class Locators:
   EL_TAB_BTN                        = "div[contains(@id,'TAB')]"
   EL_CHECKBOX                       = "div[contains(@class,'CheckBox')]"
   EL_TREE_ARROW                     = "div[@data-vwgtype='joint']"
-  # EL_TREE_CONTAINER                 = "div[@class='TreeView-Container']"
-  EL_PADDING_CONTAINER              = "div[contains(@class,'PaddingContainer')]"
-  EL_TREE_CONTAINER                 = "div[contains(@class,'RowContainer')]"
-  EL_SUBTREE_CONTAINER              = "div[contains(@class,'SubNodesContainer')]"
+  # EL_TREE_BOX                 = "div[@class='TreeView-Container']"
+  EL_PADDING_BOX              = "div[contains(@class,'PaddingContainer')]"
+  EL_TREE_BOX                 = "div[contains(@class,'RowContainer')]"
+  EL_SUBTREE_BOX              = "div[contains(@class,'SubNodesContainer')]"
   EL_PAGE_HEADER_PANEL              = "div[@class='Panel-Control'][contains(@style,'85px')]"
-  EL_LEFT_MENU_CONTAINER            = "div[contains(@style,'transform')]"
+  EL_LEFT_MENU_BOX            = "div[contains(@style,'transform')]"
   EL_BUTTONS_BOX                    = "div[contains(@class,'GroupBox-Control')]"
   EL_LIST_ROW                       = "tr[contains(@class,'ListView-DataFullRow')]"
   EL_DROP_DOWN_ARROW                = "img[contains(@src,'DropDown')]"
@@ -66,7 +62,7 @@ class Locators:
   EL_DROP_DOWN_LIST                 = "div[@class='ComboBox-PopupWindow']"
   EL_DROP_DOWN_TABLE                = "div[contains(@class,'ComboBox-ItemTable')]"
   EL_DROP_DOWN_ITEM                 = "tr[contains(@class,'ComboBox-Item')]"
-  EL_DROP_DOWN_CONTAINER            = "div[contains(@class,'ComboBox-Container')]"
+  EL_DROP_DOWN_BOX            = "div[contains(@class,'ComboBox-Container')]"
   EL_PAGES_PANEL               = "div[contains(@class,'ListView-PagingPanel')]"
   EL_FIELD_GO_TO                    = "input[contains(@class,'PagingGotoBox')]"
   EL_PAGES_NUMBER              = "input[contains(@class,'PagingGotoBox')]/../parent::tr/td[3]"
@@ -254,27 +250,27 @@ class Locators:
   RIBBON_BAR_TAB                        = "//div[@class='RibbonBarTabControl-HeadersRow']"
 
   '''LEFT MENU LIST'''
-  LEFT_MENU_CONTAINER                      = "//div[contains(@style,'transform')]"
-  # LEFT_SIDE_MENU_DEVICES                      = TEXT_DEVICES + anc + EL_LEFT_MENU_CONTAINER + MENU_IS_VISIBLE
-  # LEFT_SIDE_MENU_DEVICES                      = TEXT_DEVICES + anc + EL_LEFT_MENU_CONTAINER
+  LEFT_MENU_BOX                      = "//div[contains(@style,'transform')]"
+  # LEFT_SIDE_MENU_DEVICES                      = TEXT_DEVICES + anc + EL_LEFT_MENU_BOX + MENU_IS_VISIBLE
+  # LEFT_SIDE_MENU_DEVICES                      = TEXT_DEVICES + anc + EL_LEFT_MENU_BOX
   LEFT_SIDE_MENU_DEVICES                   = "//span[text()='Devices']/ancestor::div[contains(@style,'transform')]"
-  # LEFT_SIDE_MENU_ADMINISTRATION            = TEXT_ADMINISTRATION + anc + EL_LEFT_MENU_CONTAINER
+  # LEFT_SIDE_MENU_ADMINISTRATION            = TEXT_ADMINISTRATION + anc + EL_LEFT_MENU_BOX
   LEFT_SIDE_MENU_ADMINISTRATION            = "//span[text()='Administration']/ancestor::div[contains(@style,'transform')]"
-  LEFT_SIDE_MENU_TASKS                     = TEXT_TASKS + anc + EL_LEFT_MENU_CONTAINER
-  LEFT_SIDE_MENU_REPORTING                 = TEXT_REPORTING + anc + EL_LEFT_MENU_CONTAINER
-  LEFT_SIDE_MENU_SOFT_AND_PATCH_MANAGER    = TEXT_SOFTWARE_AND_PATCH_MANAGER + anc + EL_LEFT_MENU_CONTAINER
-  LEFT_SIDE_MENU_PASSWORD_RESET            = TEXT_PASSWORD_RESET + anc + EL_LEFT_MENU_CONTAINER
+  LEFT_SIDE_MENU_TASKS                     = TEXT_TASKS + anc + EL_LEFT_MENU_BOX
+  LEFT_SIDE_MENU_REPORTING                 = TEXT_REPORTING + anc + EL_LEFT_MENU_BOX
+  LEFT_SIDE_MENU_SOFT_AND_PATCH_MANAGER    = TEXT_SOFTWARE_AND_PATCH_MANAGER + anc + EL_LEFT_MENU_BOX
+  LEFT_SIDE_MENU_PASSWORD_RESET            = TEXT_PASSWORD_RESET + anc + EL_LEFT_MENU_BOX
 
-  '''CONTAINERS XPATH'''
-  # CONTAINER_GLOBAL_SITE_VIEW     = TEXT_GLOBAL_SITE_VIEW + anc + EL_PADDING_CONTAINER + "/div[1]"
-  CONTAINER_GLOBAL_SITE_VIEW       = LEFT_SIDE_MENU_DEVICES + dec + EL_PADDING_CONTAINER + "/div[1]"
-  CONTAINER_ACTIVE_DIRECTORIES     = LEFT_SIDE_MENU_DEVICES + dec + EL_PADDING_CONTAINER + "/div[2]"
-  CONTAINER_QUERIES                = LEFT_SIDE_MENU_DEVICES + dec + EL_PADDING_CONTAINER + "/div[3]"
-  CONTAINER_GROUPS                 = LEFT_SIDE_MENU_DEVICES + dec + EL_PADDING_CONTAINER + "/div[4]"
-  CONTAINER_PANEL_TITLE_DEVICES    = TEXT_DEVICES + anc + EL_PAGE_HEADER_PANEL
-  DEVICES_LIST_HEADER              = CONTAINER_PANEL_TITLE_DEVICES + fol + EL_TABEL_HEADER
-  DEVICES_LIST_BODY                = CONTAINER_PANEL_TITLE_DEVICES + fol + EL_TABLE_BODY
-  # CONTAINER_PATCHES_LIST_VIEW    = "//div[contains(@id,'VWG')][contains(@class,'ListView')]"
+  '''BOXS XPATH'''
+  # BOX_GLOBAL_SITE_VIEW     = TEXT_GLOBAL_SITE_VIEW + anc + EL_PADDING_BOX + "/div[1]"
+  BOX_GLOBAL_SITE_VIEW       = LEFT_SIDE_MENU_DEVICES + dec + EL_PADDING_BOX + "/div[1]"
+  BOX_ACTIVE_DIRECTORIES     = LEFT_SIDE_MENU_DEVICES + dec + EL_PADDING_BOX + "/div[2]"
+  BOX_QUERIES                = LEFT_SIDE_MENU_DEVICES + dec + EL_PADDING_BOX + "/div[3]"
+  BOX_GROUPS                 = LEFT_SIDE_MENU_DEVICES + dec + EL_PADDING_BOX + "/div[4]"
+  BOX_PANEL_TITLE_DEVICES    = TEXT_DEVICES + anc + EL_PAGE_HEADER_PANEL
+  DEVICES_LIST_HEADER              = BOX_PANEL_TITLE_DEVICES + fol + EL_TABEL_HEADER
+  DEVICES_LIST_BODY                = BOX_PANEL_TITLE_DEVICES + fol + EL_TABLE_BODY
+  # BOX_PATCHES_LIST_VIEW    = "//div[contains(@id,'VWG')][contains(@class,'ListView')]"
 
   '''GROUP BOX XPATH'''
   GROUP_BOX_ACTIONS              = TEXT_BUTTONS_BOX_ACTIONS + anc + EL_BUTTONS_BOX
@@ -283,18 +279,17 @@ class Locators:
   BUTTONS_BOX_COLUMN_SETS           = TEXT_BUTTONS_BOX_COLUMN_SETS + anc + EL_BUTTONS_BOX
 
   '''TREES XPATH'''
-  TREE_GLOBAL_SITE_VIEW        = CONTAINER_GLOBAL_SITE_VIEW + "/" + EL_SUBTREE_CONTAINER
-  TREE_ACTIVE_DERICTORIES      = CONTAINER_ACTIVE_DIRECTORIES + ch + EL_SUBTREE_CONTAINER
-  TREE_QUERIES                 = CONTAINER_QUERIES + ch + EL_SUBTREE_CONTAINER
-  TREE_GROUPS                  = CONTAINER_GROUPS + ch + EL_SUBTREE_CONTAINER
+  TREE_GLOBAL_SITE_VIEW        = BOX_GLOBAL_SITE_VIEW + "/" + EL_SUBTREE_BOX
+  TREE_ACTIVE_DERICTORIES      = BOX_ACTIVE_DIRECTORIES + ch + EL_SUBTREE_BOX
+  TREE_QUERIES                 = BOX_QUERIES + ch + EL_SUBTREE_BOX
+  TREE_GROUPS                  = BOX_GROUPS + ch + EL_SUBTREE_BOX
 
   '''LABELS XPATH'''
-  LABEL_GLOBAL_SITE_VIEW       = CONTAINER_GLOBAL_SITE_VIEW + "/" + EL_TREE_CONTAINER
-  LABEL_ACTIVE_DIRECTORIES     = CONTAINER_ACTIVE_DIRECTORIES + ch + EL_TREE_CONTAINER
-  LABEL_QUERIES                = CONTAINER_QUERIES + ch + EL_TREE_CONTAINER
-  LABEL_GROUPS                 = CONTAINER_GROUPS + ch + EL_TREE_CONTAINER
-  LABEL_DEFAULT_SITE           = TREE_GLOBAL_SITE_VIEW + "/div/div/*" + TEXT_DEFAULT_SITE + anc + EL_TREE_CONTAINER
-
+  LABEL_GLOBAL_SITE_VIEW       = BOX_GLOBAL_SITE_VIEW + "/" + EL_TREE_BOX
+  LABEL_ACTIVE_DIRECTORIES     = BOX_ACTIVE_DIRECTORIES + ch + EL_TREE_BOX
+  LABEL_QUERIES                = BOX_QUERIES + ch + EL_TREE_BOX
+  LABEL_GROUPS                 = BOX_GROUPS + ch + EL_TREE_BOX
+  LABEL_DEFAULT_SITE           = TREE_GLOBAL_SITE_VIEW + "/div/div/*" + TEXT_DEFAULT_SITE + anc + EL_TREE_BOX
   '''SITES XPATH'''
   SITE_GLOBAL_SITE_VIEW           = "//span[text()='Global Site View']"
 
@@ -350,8 +345,8 @@ class Locators:
   BTN_ADD_right                = TEXT_ADD_right + anc + EL_BUTTON
   BTN_DELETE_MEMBERS           = TEXT_DELETE_MEMBERS + anc + EL_BUTTON
   BTN_HOME                     = "//img[@alt='Home']"
-  BTN_ARROW_UP                 = "//td[contains(@style,'arrow_up')]" + anc + EL_BUTTON
-  BTN_ARROW_DOWN               = "//td[contains(@style,'arrow_down')]" + anc + EL_BUTTON
+  BTN_ARROW_UP                 = "//td[contains(@style,'arrow_up')]/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
+  BTN_ARROW_DOWN               = "//td[contains(@style,'arrow_down')]/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
   BTN_HOME_DROP_DOWN_ARROW     = BTN_HOME + fol + EL_DROP_DOWN_ARROW
   BTN_INVENTORY                = "//img[@alt='Inventory']"
   BTN_INVENTORY_DROP_DOWN      = BTN_INVENTORY + fol + EL_DROP_DOWN_ARROW
@@ -585,30 +580,34 @@ class Locators:
 
 
   if __name__ == '__main__':
-    sitename = "TC#____"
-    subsitename = "TC#____-01"
-    s = POPUP_CONFIGURATION + "/following::" + EL_DROP_DOWN_ITEM
-    print s
-    x = POPUP_CONFIGURATION + fol + EL_DROP_DOWN_LIST + "/*//span[text()='Test IK']"
-    print x
-    y = POPUP_CONFIGURATION + dec + EL_DROP_DOWN_CONTAINER + "/*//span[text()='Test IK']"
-    print y
-    o = POPUP_CONFIGURATION + "/following::" + EL_DROP_DOWN_LIST
-    print o
-    l = CONTAINER_PANEL_TITLE_DEVICES + fol + EL_TABLE_BODY
-    print l
-    h = []
-    for i in Variables.columns_list1:
-      m = DEVICES_LIST_HEADER + "/*//span[text()='" + str(i) + "']"
-      h.append(i)
-      print m
-    print h
-    if h == Variables.columns_list1:
-      print "GOOD"
-    else: print "NOT GOOD"
-    print BTN_SIGN_IN
-    print POPUP_CONFIGURATION
-    print LEFT_SIDE_MENU_TASKS
-    print LEFT_SIDE_MENU_REPORTING
-    print LEFT_SIDE_MENU_SOFT_AND_PATCH_MANAGER
-    print LEFT_SIDE_MENU_PASSWORD_RESET
+    # sitename = "TC#____"
+    # subsitename = "TC#____-01"
+    # s = POPUP_CONFIGURATION + "/following::" + EL_DROP_DOWN_ITEM
+    # print s
+    # x = POPUP_CONFIGURATION + fol + EL_DROP_DOWN_LIST + "/*//span[text()='Test IK']"
+    # print x
+    # y = POPUP_CONFIGURATION + dec + EL_DROP_DOWN_BOX + "/*//span[text()='Test IK']"
+    # print y
+    # o = POPUP_CONFIGURATION + "/following::" + EL_DROP_DOWN_LIST
+    # print o
+    # l = BOX_PANEL_TITLE_DEVICES + fol + EL_TABLE_BODY
+    # print l
+    # h = []
+    # for i in Variables.columns_list1:
+    #   m = DEVICES_LIST_HEADER + "/*//span[text()='" + str(i) + "']"
+    #   h.append(i)
+    #   print m
+    # print h
+    # if h == Variables.columns_list1:
+    #   print "GOOD"
+    # else: print "NOT GOOD"
+    # print BTN_SIGN_IN
+    # print POPUP_CONFIGURATION
+    # print LEFT_SIDE_MENU_TASKS
+    # print LEFT_SIDE_MENU_REPORTING
+    # print LEFT_SIDE_MENU_SOFT_AND_PATCH_MANAGER
+    # print LEFT_SIDE_MENU_PASSWORD_RESET
+    print TREE_GLOBAL_SITE_VIEW
+    print TAB_IP_ADDRESS_RANGES
+    print TAB_SITE
+    print TAB_VREPS
