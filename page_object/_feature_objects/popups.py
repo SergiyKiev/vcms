@@ -75,7 +75,6 @@ class ColumnSetsPopup(BaseActions):
         self.wait_for_element_present(ColumnSetDesignerPopup.FRAME)
 
     def click_column_sets_popup_button_edit(self):
-        # self.button_edit(self.POPUP_COLUMN_SETS)
         self._click_element(ColumnSetsPopup.BUTTON_EDIT)
         self.wait_for_element_present(ColumnSetDesignerPopup.FRAME)
 
@@ -174,7 +173,7 @@ class ColumnSetDesignerPopup(BaseActions):
         self.wait_for_element_selected(elem + "/ancestor::" + self.ELEMENT_NODE_BOX)
 
     def expand_all_left_side_trees(self):
-        self.wait_for_element_present(ColumnSetDesignerPopup)
+        self.wait_for_element_present(ColumnSetDesignerPopup.FRAME)
         elements = self._find_elements(ColumnSetDesignerPopup.LEFT_SIDE_TREE + "/div/div/div[contains(@id,'VWGJOINT')]")
         for element in elements:
             self.driver.execute_script("arguments[0].click();", element)
@@ -301,8 +300,11 @@ class SiteNamePopup(BaseActions):
         self._click_button_cancel(SiteNamePopup.FRAME)
 
     def check_is_popup_present(self):
-        cond = self._is_element_present(SiteNamePopup.FRAME)
-        return True if cond else False
+        try:
+            cond = self._is_element_present(SiteNamePopup.FRAME)
+            return True if cond else False
+        except Exception as e:
+            print "Step failed: ", e
 
 
 class AreYouSurePopup(BaseActions):
@@ -335,7 +337,8 @@ class AreYouSurePopup(BaseActions):
         self._click_button_yes(AreYouSurePopup.FRAME)
 
     def check_is_popup_present(self):
-        cond = self._is_element_present(AreYouSurePopup.FRAME)
+        cond = self.wait_for_element_present(AreYouSurePopup.FRAME)
+        # cond = self._is_element_present(AreYouSurePopup.FRAME)
         return True if cond else False
 
 class UnableToRemovePopup(BaseActions):

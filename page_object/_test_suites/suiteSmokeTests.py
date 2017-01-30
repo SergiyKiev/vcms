@@ -26,6 +26,42 @@ class SmokeTest(unittest.TestCase):
         main_page = MainPage(self.driver)
         main_page._close_popups()
 
+    def test_install_vrep(self):
+        pass
+
+    def test_apply_vrep(self):
+        pass
+
+    def test_install_mresponder(self):
+        pass
+
+    def test_install_forceresident(self):
+        pass
+
+    def test_create_new_site(self):
+        pass
+
+    def test_create_ip_address_ranges(self):
+        pass
+
+    def test_apply_vrep_to_site(self):
+        pass
+
+    def test_lock_devices_to_site(self):
+        pass
+
+    def test_create_discovery_task(self):
+        pass
+
+    def test_create_devices_groups(self):
+        pass
+
+    def test_create_patches_group(self):
+        pass
+
+
+
+
 
 
 
