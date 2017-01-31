@@ -2,6 +2,8 @@
 
 class Variables(object):
 
+    site_for_smoke_test     = "Smoke Test Site"
+    devices_for_smoke_test  = ["VKYV-DT-IK", "VKYV-VM-886IK","VKYV-VB-SRV2012IK", "VKYV-VM-VB1-W76"]
     site_name               = "New site #9101"
     default_site_name       = "Default Site"
     fifty_symbols_name      = "51symbols51symbols51symbols51symbols51symbols!<ok>"

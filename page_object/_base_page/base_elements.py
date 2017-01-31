@@ -27,7 +27,7 @@ class BaseElements:
     ICON_HELP = "/*//img[contains(@src,'About')]"
     ICON_EXPORT = "/*//img[contains(@src,'212-action2')]"
     ICON_REFRESH = "/*//img[contains(@src,'02-redo.2x')]"
-
+    ICON_SEARCH = "/*//img[contains(@src,'06-magnify.2xw')]"
 
     #DROP_DOWN
     DROP_DOWN_LIST = "/*//div[contains(@class,'ComboBox-Container')]"

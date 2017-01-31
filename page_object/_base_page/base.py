@@ -22,15 +22,18 @@ class Base(object):
     LEFT_MENU_VISIBLE = "[contains(@style,'translate3d(0px, 0px, 0px)')]"
     DISABLED = "[contains(@class,'Disabled')]"
     SELECTED = "[contains(@class,'Selected')]"
-    ARROW_EXPAND = "[contains(@style,'LTR1.gif')]"
-    ARROW_COLLAPSE = "div[contains(@style,'LTR0.gif')]"
-    ARROW_EMPTY = "div[contains(@style,'TreeViewEmpty')]"
+    CHECKED = "[contains(@style,'CheckBox1')]"
+    UNCHECKED = "[contains(@style,'CheckBox0')]"
+    ARROW_EXPAND = "/div[contains(@style,'LTR1.gif')]"
+    ARROW_COLLAPSE = "/div[contains(@style,'LTR0.gif')]"
+    ARROW_EMPTY = "/div[contains(@style,'TreeViewEmpty')]"
+
 
     def __init__(self, driver, base_url=Settings.baseUrl):
         self.driver = driver
         self.base_url = base_url
         self.timeout = 120
-        self.timeout_condition = 3
+        self.timeout_condition = 2
         self.wait = WebDriverWait(self.driver, self.timeout)
         self.wait_condition = WebDriverWait(self.driver, self.timeout_condition)
 
@@ -80,14 +83,14 @@ class Base(object):
         try:
             element = self._find_element(locator)
             if element is not None:
-                time.sleep(1)
+                time.sleep(0.8)
                 self.wait.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
                 self.wait.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
                 self.wait.until(EC.element_to_be_clickable((By.XPATH, locator)))
-                # print "\n" + "CLICK:  ", locator
+                print "\n" + "CLICK:  ", locator
                 # self.wait.until(EC.element_to_be_clickable((By.XPATH, locator))).click()
                 element.click()
-                time.sleep(1)
+                time.sleep(0.7)
                 self.wait.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
                 self.wait.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
                 return True
@@ -165,6 +168,30 @@ class Base(object):
             print locator + " returns False"
             return False
 
+    def wait_for_element_checked(self, locator):
+        try:
+            self.wait.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait.until(EC.presence_of_element_located((By.XPATH, locator + Base.CHECKED)))
+            self.wait.until(EC.visibility_of_element_located((By.XPATH, locator + Base.CHECKED)))
+            return True
+        except TimeoutException:
+            print locator + " returns False"
+            return False
+
+    def wait_for_element_unchecked(self, locator):
+        try:
+            self.wait.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait.until(EC.presence_of_element_located((By.XPATH, locator + Base.UNCHECKED)))
+            self.wait.until(EC.visibility_of_element_located((By.XPATH, locator + Base.UNCHECKED)))
+            return True
+        except TimeoutException:
+            print locator + " returns False"
+            return False
+
+
+
     def wait_for_element_disabled(self, locator):
         try:
             self.wait.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
@@ -194,6 +221,14 @@ class Base(object):
         except TimeoutException:
             return False
 
+    def _is_tree_arrow_present(self, locator):
+        try:
+            self.wait_condition.until(EC.presence_of_element_located((By.XPATH, locator + Base.ARROW_EMPTY)))
+            self.wait_condition.until(EC.visibility_of_element_located((By.XPATH, locator + Base.ARROW_EMPTY)))
+            return False
+        except TimeoutException:
+            return True
+
     def _is_element_not_present(self, locator):
         try:
             self.wait_condition.until_not(EC.presence_of_element_located((By.XPATH, locator)))
@@ -209,6 +244,14 @@ class Base(object):
         try:
             self.wait_condition.until(EC.presence_of_element_located((By.XPATH, locator + Base.SELECTED)))
             self.wait_condition.until(EC.visibility_of_element_located((By.XPATH, locator + Base.SELECTED)))
+            return True
+        except TimeoutException:
+            return False
+
+    def _is_element_checked(self, locator):
+        try:
+            self.wait_condition.until(EC.presence_of_element_located((By.XPATH, locator + Base.CHECKED)))
+            self.wait_condition.until(EC.visibility_of_element_located((By.XPATH, locator + Base.CHECKED)))
             return True
         except TimeoutException:
             return False
@@ -292,27 +335,26 @@ class Base(object):
         hover = ActionChains(self.driver).move_to_element(element)
         hover.perform()
 
-    def expand_tree(self, locator):
+    def _expand_tree(self, locator):
         try:
-            element = self._find_element(locator)
-            if element is not None:
-                self.driver.execute_script("arguments[0].click();", element)
-                # self.wait_for_element_not_present(locator + Base.ARROW_EXPAND)
-            else:
-                pass
-        except (NoSuchElementException, TimeoutException):
-            print "Element not found"
+            element = self._find_element(locator + Base.ARROW_EXPAND)
+            self.driver.execute_script("arguments[0].click();", element)
+        except Exception as e:
+            print "Massage: ", e
+
+    def _collaps_tree(self, locator):
+        try:
+            element = self._find_element(locator + Base.ARROW_COLLAPSE)
+            self.driver.execute_script("arguments[0].click();", element)
+        except Exception as e:
+            print "Massage: ", e
 
     def scroll_list_to_top(self):
         try:
             self.wait_for_element_present("//div[contains(@id,'VWGVLSC_')]")
             element = self._find_element("//div[contains(@id,'VWGVLSC_')]")
-            # self.hover("//table[contains(@id,'VWGVL_')]/*//tr")
             self.driver.execute_script("arguments[0].scrollTop = 0", element)
             self.wait_for_element_present("//table[contains(@id,'VWGVL_')]/*//tr[1][@data-vwgindex='0']")
-            # self._find_element("//table[contains(@id,'VWGVL_')]/*//tr")
-            # self.hover("//table[contains(@id,'VWGVL_')]/*//tr")
-            # self.driver.execute_script("arguments[0].scrollTop = argument[1];", element, 150)
         except (NoSuchElementException, TimeoutException):
             print "Element not found"
 
@@ -333,17 +375,3 @@ class Base(object):
             self.driver.execute_script("return arguments[0].scrollIntoView();", element)
         except Exception as e:
             print "error scrolling into view ", e
-
-
-    # def collapse_tree(self, locator):
-    #     try:
-    #         cond = self._find_element(locator + self.EL_COLLAPSE_ARROW)
-    #         if cond:
-    #             self._click_element(locator + self.EL_COLLAPSE_ARROW)
-    #             self.wait_for_element_present(locator + self.EL_EXPAND_ARROW)
-    #         else:
-    #             pass
-    #     except (NoSuchElementException, TimeoutException):
-    #         print "Element not found"
-    #         # print locator + " is not found"
-

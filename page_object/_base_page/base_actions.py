@@ -68,12 +68,18 @@ class BaseActions(Base):
     def _click_icon_help(self, locator):
         self.wait_for_element_present(locator)
         self._click_element(locator + BaseElements.ICON_HELP)
-        # self.wait_for_element_not_present(locator)
 
-    def _click_icon_restore(self, locator):
+    def _click_button_restore(self, locator):
         self.wait_for_element_present(locator)
         self._click_element(locator + BaseElements.BUTTON_RESTORE)
-        # self.wait_for_element_not_present(locator)
+
+    def _click_icon_refresh(self, locator):
+        self.wait_for_element_present(locator)
+        self._click_element(locator + BaseElements.ICON_REFRESH)
+
+    def _click_icon_search(self, locator):
+        self.wait_for_element_present(locator)
+        self._click_element(locator + BaseElements.ICON_SEARCH)
 
     def _click_system_button_close(self, locator):
         self.wait_for_element_present(locator)

@@ -2,10 +2,11 @@ from _feature_objects.leftSideMenu import LeftSideMenu
 from _feature_objects.ribbonBar import RibbonBar
 from _feature_objects.popups import *
 from _settings.settings import Settings
+from _feature_objects.tabDevices import *
 
 
 class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, ColumnSetDesignerPopup,
-               AreYouSurePopup, SiteNamePopup, ErrorPopup):
+               AreYouSurePopup, SiteNamePopup, ErrorPopup, RemoveDevicesPopup, DevicesTab):
 
     def check_main_page_loaded(self):
         self.wait_for_element_present(BaseElements._RIBBON_BAR)
@@ -153,3 +154,22 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
             return True
         else:
             pass
+
+    def delete_devices_in_devices_tab_table(self, *names):
+        for name in list(*names):
+            if DevicesTab.check_is_device_present(name):
+                print "Name is: ", name
+                DevicesTab.select_device_in_table(self, name)
+                RibbonBar.click_button_delete_or_archive(self)
+                cond = self._is_element_checked(RemoveDevicesPopup.CHECKBOX_KEEP_HIST_INFORM)
+                if cond:
+                    RemoveDevicesPopup.uncheck_keep_historical_information_check_box(self)
+                else:
+                    pass
+                RemoveDevicesPopup.click_button_ok(self)
+                DevicesTab.click_icon_refresh(self)
+            else:
+                print "No more devices was found:"
+
+
+

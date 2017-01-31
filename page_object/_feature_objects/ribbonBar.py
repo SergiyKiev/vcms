@@ -1,8 +1,9 @@
 
-from _base_page.base import Base
+from _base_page.base_actions import BaseActions
 from _feature_objects.popups import *
 
-class RibbonBar(Base):
+
+class RibbonBar(BaseActions):
 
     RIBBON_BAR_TAB_HEADER = "//div[@class='RibbonBarTabControl-HeadersRow']"
     RIBBON_BAR_TAB_PAGE = "//div[@class='RibbonBarTabControl-CenterFrame']"
@@ -22,6 +23,7 @@ class RibbonBar(Base):
     BUTTON_ABOUT = "//img[@alt='About']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_SAVE_CURRENT = "//img[@alt='Save Current Columns']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_EDIT_OR_CREATE = "//img[@alt='Edit/ Create']/ancestor::div[contains(@class,'RibbonBarButton')]"
+    BUTTON_DELETE_OR_ARCHIVE = "//img[@alt='Delete / Archive']/ancestor::div[contains(@class,'RibbonBarButton')]"
 
     def click_tab_view(self):
         self._click_element(RibbonBar.TAB_VIEW)
@@ -50,4 +52,9 @@ class RibbonBar(Base):
     def click_button_config(self):
         self._click_element(RibbonBar.BUTTON_CONFIG)
         self.wait_for_element_present(ConfigurationPopup.FRAME)
+
+    def click_button_delete_or_archive(self):
+        self._click_element(RibbonBar.BUTTON_DELETE_OR_ARCHIVE)
+        self.wait_for_element_present(RemoveDevicesPopup.FRAME)
+
 

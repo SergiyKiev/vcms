@@ -40,7 +40,7 @@ class TermsAndConditionsPopup(BaseActions):
         self._click_system_button_close(TermsAndConditionsPopup.FRAME)
 
     def close_popup_if_exists(self):
-        cond = self._is_element_present(Locators.POPUP_TERMS_AND_CONDITIONS)
+        cond = self._is_element_present(TermsAndConditionsPopup.FRAME)
         if cond:
             self.click_button_i_agree()
         else:
@@ -337,9 +337,10 @@ class AreYouSurePopup(BaseActions):
         self._click_button_yes(AreYouSurePopup.FRAME)
 
     def check_is_popup_present(self):
-        cond = self.wait_for_element_present(AreYouSurePopup.FRAME)
-        # cond = self._is_element_present(AreYouSurePopup.FRAME)
+        # cond = self.wait_for_element_present(AreYouSurePopup.FRAME)
+        cond = self._is_element_present(AreYouSurePopup.FRAME)
         return True if cond else False
+
 
 class UnableToRemovePopup(BaseActions):
 
@@ -379,5 +380,35 @@ class ErrorPopup(BaseActions):
 
     def click_button_ok(self):
         self._click_button_ok(ErrorPopup.FRAME)
+
+
+class RemoveDevicesPopup(BaseActions):
+
+    FRAME = "//span[text()='Remove Devices']/ancestor::div[contains(@id,'WRP')]"
+    CHECKBOX_KEEP_HIST_INFORM = FRAME + "//span[contains(text(),'Keep')][@class='CheckBox-Label']/ancestor::tr/td[contains(@id,'TRG')]"
+
+    def click_button_ok(self):
+        self._click_button_ok(RemoveDevicesPopup.FRAME)
+
+    def click_system_button_close(self):
+       self._click_system_button_close(RemoveDevicesPopup.FRAME)
+
+    def click_button_cancel(self):
+        self._click_button_cancel(RemoveDevicesPopup.FRAME)
+
+    def check_is_popup_present(self):
+        cond = self._is_element_present(RemoveDevicesPopup.FRAME)
+        return True if cond else False
+
+    def check_keep_historical_information_check_box(self):
+        self.wait_for_element_checked(RemoveDevicesPopup.FRAME)
+        self._click_element(RemoveDevicesPopup.CHECKBOX_KEEP_HIST_INFORM)
+        self.wait_for_element_checked(RemoveDevicesPopup.CHECKBOX_KEEP_HIST_INFORM)
+
+    def uncheck_keep_historical_information_check_box(self):
+        self.wait_for_element_present(RemoveDevicesPopup.FRAME)
+        self._click_element(RemoveDevicesPopup.CHECKBOX_KEEP_HIST_INFORM)
+        self.wait_for_element_unchecked(RemoveDevicesPopup.CHECKBOX_KEEP_HIST_INFORM)
+
 
 

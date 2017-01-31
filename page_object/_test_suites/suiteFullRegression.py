@@ -27,6 +27,7 @@ class SiteCreation(unittest.TestCase):
         main_page._close_popups()
         left_side_menu = LeftSideMenu(self.driver)
         left_side_menu.open_menu_devices()
+        left_side_menu.expand_global_site_view_tree()
 
     def test_open_left_side_menus(self):
         print ("\n" + "TC#xxxx. Open left side menus")

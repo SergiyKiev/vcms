@@ -199,4 +199,14 @@ class LeftSideMenu(Base):
         cond = self._is_element_present(LeftSideMenu.LABEL_DEFAULT_SITE)
         return True if cond else False
 
+    def expand_global_site_view_tree(self):
+        self.wait_for_element_present(LeftSideMenu.LABEL_GLOBAL_SITE_VIEW)
+        arrow_expand = self._is_element_present(LeftSideMenu.LABEL_GLOBAL_SITE_VIEW + Base.ARROW_EXPAND)
+        if arrow_expand:
+            self._expand_tree(LeftSideMenu.LABEL_GLOBAL_SITE_VIEW)
+        else:
+            pass
+
+
+
 

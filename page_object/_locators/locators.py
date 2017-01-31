@@ -267,7 +267,7 @@ class Locators:
   BOX_ACTIVE_DIRECTORIES     = LEFT_SIDE_MENU_DEVICES + dec + EL_PADDING_BOX + "/div[2]"
   BOX_QUERIES                = LEFT_SIDE_MENU_DEVICES + dec + EL_PADDING_BOX + "/div[3]"
   BOX_GROUPS                 = LEFT_SIDE_MENU_DEVICES + dec + EL_PADDING_BOX + "/div[4]"
-  BOX_PANEL_TITLE_DEVICES    = TEXT_DEVICES + anc + EL_PAGE_HEADER_PANEL
+  BOX_PANEL_TITLE_DEVICES    = "//span[text()='Devices']/ancestor::div[@class='Panel-Control'][contains(@style,'85px')]"
   DEVICES_LIST_HEADER              = BOX_PANEL_TITLE_DEVICES + fol + EL_TABEL_HEADER
   DEVICES_LIST_BODY                = BOX_PANEL_TITLE_DEVICES + fol + EL_TABLE_BODY
   # BOX_PATCHES_LIST_VIEW    = "//div[contains(@id,'VWG')][contains(@class,'ListView')]"
