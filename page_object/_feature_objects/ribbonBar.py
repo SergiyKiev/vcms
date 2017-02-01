@@ -41,13 +41,16 @@ class RibbonBar(BaseActions):
         self._click_element(RibbonBar.BUTTON_NEW_SITE)
         self.wait_for_element_present(SiteNamePopup.FRAME)
 
-    def click_delete_button(self):
+    def click_button_delete(self):
         self._click_element(RibbonBar.BUTTON_DELETE)
-        # cond = self.wait_for_element_present(BaseElements._POPUP)
-        # if cond:
-        #     return AreYouSurePopup(self.driver)
-        # else:
-        #     return UnableToRemovePopup(self.driver)
+        cond1 = self._is_element_present(AreYouSurePopup.FRAME)
+        cond2 = self._is_element_present(UnableToRemovePopup.FRAME)
+        if cond1:
+            return AreYouSurePopup(self.driver)
+        elif cond2:
+            return UnableToRemovePopup(self.driver)
+        else:
+            return None
 
     def click_button_config(self):
         self._click_element(RibbonBar.BUTTON_CONFIG)

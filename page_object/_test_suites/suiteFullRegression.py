@@ -422,7 +422,7 @@ class SiteDeletion(unittest.TestCase):
         left_side_menu = LeftSideMenu(self.driver)
         main_page.create_site_if_not_exists(sitename)
         left_side_menu.click_site_in_global_site_view_tree(sitename)
-        ribbon_bar.click_delete_button()
+        ribbon_bar.click_button_delete()
         self.assertTrue(are_you_sure_popup.check_is_popup_present())
         are_you_sure_popup.click_button_ok()
         self.assertFalse(left_side_menu.check_site_is_in_global_site_view_tree(sitename))
@@ -434,7 +434,7 @@ class SiteDeletion(unittest.TestCase):
         left_side_menu = LeftSideMenu(self.driver)
         unable_to_remove_popup = UnableToRemovePopup(self.driver)
         left_side_menu.click_default_site_in_global_site_view()
-        ribbon_bar.click_delete_button()
+        ribbon_bar.click_button_delete()
         self.assertTrue(unable_to_remove_popup.check_is_popup_present())
         unable_to_remove_popup.click_button_ok()
         self.assertTrue(left_side_menu.check_default_site_is_in_global_site_view_tree())
@@ -452,7 +452,7 @@ class SiteDeletion(unittest.TestCase):
         main_page.create_new_site(sitename)
         main_page.create_new_subsite(sitename, subsitename)
         left_side_menu.click_subsite_in_site_tree(sitename, subsitename)
-        ribbon_bar.click_delete_button()
+        ribbon_bar.click_button_delete()
         self.assertTrue(are_you_sure_popup.check_is_popup_present())
         are_you_sure_popup.click_button_ok()
         self.assertFalse(left_side_menu.check_subsite_is_in_parent_site(sitename, subsitename))
@@ -471,7 +471,7 @@ class SiteDeletion(unittest.TestCase):
         main_page.create_new_site(sitename)
         main_page.create_new_subsite(sitename, subsitename)
         left_side_menu.click_site_in_global_site_view_tree(sitename)
-        ribbon_bar.click_delete_button()
+        ribbon_bar.click_button_delete()
         self.assertTrue(are_you_sure_popup.check_is_popup_present())
         are_you_sure_popup.click_button_ok()
         self.assertFalse(left_side_menu.check_subsite_is_in_parent_site(sitename, subsitename))
@@ -487,7 +487,7 @@ class SiteDeletion(unittest.TestCase):
         are_you_sure_popup = AreYouSurePopup(self.driver)
         main_page.create_site_if_not_exists(sitename)
         left_side_menu.click_site_in_global_site_view_tree(sitename)
-        ribbon_bar.click_delete_button()
+        ribbon_bar.click_button_delete()
         self.assertTrue(are_you_sure_popup.check_is_popup_present())
         are_you_sure_popup.click_button_cancel()
         self.assertTrue(main_page.check_site_is_in_global_site_view_tree(sitename))
@@ -503,9 +503,10 @@ class SiteDeletion(unittest.TestCase):
         ribbon_bar = RibbonBar(self.driver)
         main_page.create_site_if_not_exists(sitename)
         left_side_menu.click_site_in_global_site_view_tree(sitename)
-        ribbon_bar.click_delete_button()
+        ribbon_bar.click_button_delete()
         self.assertTrue(are_you_sure_popup.check_is_popup_present())
         are_you_sure_popup.click_system_button_close()
+        self.assertFalse(are_you_sure_popup.check_is_popup_present())
         main_page.delete_site_from_global_site_view_tree(sitename)
         print ("Test is passed" + "\n")
 
@@ -544,6 +545,41 @@ class SiteRelocation(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.driver.quit()
+
+@unittest.skip
+class Invenotry(unittest.TestCase):
+
+    driver = None
+
+    @classmethod
+    def setUpClass(cls):
+        print ("\n" + "TEST SUITE: INVENTORY")
+        cls.driver = webdriver.Chrome()
+        login_page = LoginPage(cls.driver)
+        login_page.open_page()
+        main_page = login_page.login()
+        main_page.check_main_page_loaded()
+
+    def setUp(self):
+        main_page = MainPage(self.driver)
+        main_page._close_popups()
+
+    def test_inventory_view_folder_full_check(self):
+        print ("\n" + "TC#7545: Devices: Inventory - Folder full check")
+        main_page = MainPage(self.driver)
+        left_side_menu = LeftSideMenu(self.driver)
+
+
+
+    # def tearDown(self):
+    #     page = MainPage(self.driver)
+    #     page._close_popups()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.driver.quit()
+
+
 
 
 if __name__ == "__main__":

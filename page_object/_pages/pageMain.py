@@ -21,14 +21,14 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
         cond = self._is_element_present(element)
         if cond:
             LeftSideMenu.click_site_in_global_site_view_tree(self, sitename)
-            RibbonBar.click_delete_button(self)
+            RibbonBar.click_button_delete(self)
             AreYouSurePopup.click_button_ok(self)
         else:
             pass
 
     def delete_site_from_global_site_view_tree(self, sitename):
         LeftSideMenu.click_site_in_global_site_view_tree(self, sitename)
-        RibbonBar.click_delete_button(self)
+        RibbonBar.click_button_delete(self)
         AreYouSurePopup.click_button_ok(self)
 
     def create_new_site(self, sitename):
@@ -157,8 +157,8 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
 
     def delete_devices_in_devices_tab_table(self, *names):
         for name in list(*names):
-            if DevicesTab.check_is_device_present(name):
-                print "Name is: ", name
+            cond = DevicesTab.check_is_device_present(self, name)
+            if cond:
                 DevicesTab.select_device_in_table(self, name)
                 RibbonBar.click_button_delete_or_archive(self)
                 cond = self._is_element_checked(RemoveDevicesPopup.CHECKBOX_KEEP_HIST_INFORM)
@@ -168,8 +168,9 @@ class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, Col
                     pass
                 RemoveDevicesPopup.click_button_ok(self)
                 DevicesTab.click_icon_refresh(self)
+                print "Device was found and deleted: ", name
             else:
-                print "No more devices was found:"
+                print "No device was found:", name
 
 
 

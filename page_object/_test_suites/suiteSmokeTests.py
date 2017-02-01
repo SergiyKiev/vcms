@@ -27,10 +27,8 @@ class SmokeTest(unittest.TestCase):
         main_page = MainPage(self.driver)
         main_page._close_popups()
 
-    def test_01_delete_device_from_the_console(self):
-        devices = ["VKYV-DT-IK", "VKYV-VM-886IK","VKYV-VB-SRV2012IK", "VKYV-VM-VB1-W76"]
-        # devices = ["VKYV-DT-IK", "VKYV-VM-786SB", "VKYV-VM-764SB"]
-        sitename = Variables.site_for_smoke_test
+    def test_01_delete_devices_from_the_console(self):
+        devices = Variables.devices_for_smoke_test
         left_side_menu = LeftSideMenu(self.driver)
         ribbon_bar = RibbonBar(self.driver)
         main_page = MainPage(self.driver)
