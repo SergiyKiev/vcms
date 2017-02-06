@@ -176,12 +176,20 @@ class LeftSideMenu(Base):
         cond = self._is_left_menu_visible(LeftSideMenu.MENU_DEVICES)
         return True if cond else False
 
+    def check_menu_administration_is_visible(self):
+        cond = self._is_left_menu_visible(LeftSideMenu.MENU_ADMINISTRATION)
+        return True if cond else False
+
     def check_menu_tasks_is_visible(self):
         cond = self._is_left_menu_visible(LeftSideMenu.MENU_TASKS)
         return True if cond else False
 
     def check_menu_reporting_is_visible(self):
         cond = self._is_left_menu_visible(LeftSideMenu.MENU_REPORTING)
+        return True if cond else False
+
+    def check_menu_software_and_patch_manager_is_visible(self):
+        cond = self._is_left_menu_visible(LeftSideMenu.MENU_SOFTWARE_AND_PATCH_MANAGER)
         return True if cond else False
 
     def check_site_is_in_global_site_view_tree(self, sitename):

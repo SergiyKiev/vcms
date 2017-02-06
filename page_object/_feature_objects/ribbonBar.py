@@ -35,16 +35,16 @@ class RibbonBar(BaseActions):
 
     def click_button_edit_or_create(self):
         self._click_element(RibbonBar.BUTTON_EDIT_OR_CREATE)
-        self.wait_for_element_present(ColumnSetsPopup.FRAME)
+        self.wait_for_element_present(ColumnSetsPopup.BODY)
 
     def click_button_new_site(self):
         self._click_element(RibbonBar.BUTTON_NEW_SITE)
-        self.wait_for_element_present(SiteNamePopup.FRAME)
+        self.wait_for_element_present(SiteNamePopup.BODY)
 
     def click_button_delete(self):
         self._click_element(RibbonBar.BUTTON_DELETE)
-        cond1 = self._is_element_present(AreYouSurePopup.FRAME)
-        cond2 = self._is_element_present(UnableToRemovePopup.FRAME)
+        cond1 = self._is_element_present(AreYouSurePopup.BODY)
+        cond2 = self._is_element_present(UnableToRemovePopup.BODY)
         if cond1:
             return AreYouSurePopup(self.driver)
         elif cond2:
@@ -54,10 +54,30 @@ class RibbonBar(BaseActions):
 
     def click_button_config(self):
         self._click_element(RibbonBar.BUTTON_CONFIG)
-        self.wait_for_element_present(ConfigurationPopup.FRAME)
+        self.wait_for_element_present(ConfigurationPopup.BODY)
 
     def click_button_delete_or_archive(self):
         self._click_element(RibbonBar.BUTTON_DELETE_OR_ARCHIVE)
-        self.wait_for_element_present(RemoveDevicesPopup.FRAME)
+        self.wait_for_element_present(RemoveDevicesPopup.BODY)
+
+    def check_button_new_site_is_present(self):
+        cond = self._is_element_present(RibbonBar.BUTTON_NEW_SITE)
+        return True if cond else False
+
+    def check_button_config_is_present(self):
+        cond = self._is_element_present(RibbonBar.BUTTON_CONFIG)
+        return True if cond else False
+
+    def check_button_exit_is_present(self):
+        cond = self._is_element_present(RibbonBar.BUTTON_EXIT)
+        return True if cond else False
+
+    def check_button_edit_or_create_is_present(self):
+        cond = self._is_element_present(RibbonBar.BUTTON_EDIT_OR_CREATE)
+        return True if cond else False
+
+    def check_button_delete_is_present(self):
+        cond = self._is_element_present(RibbonBar.BUTTON_DELETE)
+        return True if cond else False
 
 

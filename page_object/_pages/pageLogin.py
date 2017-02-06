@@ -8,6 +8,7 @@ from _base_page.base_elements import BaseElements
 
 class LoginPage(TermsAndConditionsPopup, SubscriptionHasExpitredPopup, ErrorPopup):
 
+    BODY = "//div[@id='VWG_Body']"
     BUTTON_SIGN_IN = "//span[text()='Sign In']/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
     FIELD_PASSWORD = "//input[@type='password']"
     FIELD_USERNAME = "//input[@type='text']"
@@ -19,8 +20,8 @@ class LoginPage(TermsAndConditionsPopup, SubscriptionHasExpitredPopup, ErrorPopu
             self.enter_username(Settings.username)
             self.enter_password(Settings.password)
             self.click_sign_in_button()
-            cond1 = self._is_element_present(ErrorPopup.FRAME)
-            cond2 = self._is_element_present(SubscriptionHasExpitredPopup.FRAME)
+            cond1 = self._is_element_present(ErrorPopup.BODY)
+            cond2 = self._is_element_present(SubscriptionHasExpitredPopup.BODY)
             if cond1:
                 print Settings.username + " or " + Settings.password + " are incorrect"
             elif cond2:
@@ -48,3 +49,11 @@ class LoginPage(TermsAndConditionsPopup, SubscriptionHasExpitredPopup, ErrorPopu
         cond2 = self._is_element_present(LoginPage.FIELD_USERNAME)
         cond3 = self._is_element_present(LoginPage.FIELD_PASSWORD)
         return True if (cond1 and cond2 and cond3) else False
+
+    def click_icon_help(self):
+        self._click_icon_help(LoginPage.BODY)
+        return
+
+    def check_is_help_link_opened(self):
+        self.wait_for_element_present()
+

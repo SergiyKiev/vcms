@@ -83,14 +83,14 @@ class Base(object):
         try:
             element = self._find_element(locator)
             if element is not None:
-                time.sleep(1)
+                time.sleep(0.8)
                 self.wait.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
                 self.wait.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
                 self.wait.until(EC.element_to_be_clickable((By.XPATH, locator)))
-                print "\n" + "CLICK:  ", locator
+                # print "\n" + "CLICK:  ", locator
                 # self.wait.until(EC.element_to_be_clickable((By.XPATH, locator))).click()
                 element.click()
-                time.sleep(1)
+                time.sleep(0.7)
                 self.wait.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
                 self.wait.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
                 return True
