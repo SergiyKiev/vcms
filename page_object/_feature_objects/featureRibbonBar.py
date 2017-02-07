@@ -1,6 +1,6 @@
 
 from _base_page.base_actions import BaseActions
-from _feature_objects.popups import *
+from _feature_objects.featurePopups import *
 
 
 class RibbonBar(BaseActions):

@@ -12,6 +12,7 @@ from _base_page.base_elements import *
 from selenium.webdriver.support import select
 
 
+
 class Base(object):
 
     '''CONSTANTS'''

@@ -3,10 +3,10 @@ import unittest
 from _variables.variables import *
 from _pages.pageLogin import LoginPage
 from _pages.pageMain import MainPage
-from _feature_objects.popups import *
-from _feature_objects.ribbonBar import *
-from _feature_objects.leftSideMenu import *
-from _feature_objects.tabDevices import DevicesTab
+from _feature_objects.featurePopups import *
+from _feature_objects.featureRibbonBar import *
+from _feature_objects.featureLeftSideMenu import *
+from _feature_objects.featureTabs import DevicesTab
 from selenium import webdriver
 
 

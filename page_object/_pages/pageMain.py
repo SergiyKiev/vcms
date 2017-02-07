@@ -1,8 +1,8 @@
-from _feature_objects.leftSideMenu import LeftSideMenu
-from _feature_objects.ribbonBar import RibbonBar
-from _feature_objects.popups import *
+from _feature_objects.featureLeftSideMenu import LeftSideMenu
+from _feature_objects.featureRibbonBar import RibbonBar
+from _feature_objects.featurePopups import *
 from _settings.settings import Settings
-from _feature_objects.tabDevices import *
+from _feature_objects.featureTabs import *
 
 
 class MainPage(LeftSideMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, ColumnSetDesignerPopup,

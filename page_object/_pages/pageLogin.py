@@ -1,12 +1,13 @@
 
 from _settings.settings import Settings
-from _feature_objects.popups import *
+from _feature_objects.featurePopups import *
 from pageMain import MainPage
 from _base_page.base_elements import BaseElements
+from  _feature_objects.featureHelp import HelpWindow
 
 
 
-class LoginPage(TermsAndConditionsPopup, SubscriptionHasExpitredPopup, ErrorPopup):
+class LoginPage(TermsAndConditionsPopup, SubscriptionHasExpitredPopup, ErrorPopup, HelpWindow):
 
     BODY = "//div[@id='VWG_Body']"
     BUTTON_SIGN_IN = "//span[text()='Sign In']/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
@@ -52,8 +53,6 @@ class LoginPage(TermsAndConditionsPopup, SubscriptionHasExpitredPopup, ErrorPopu
 
     def click_icon_help(self):
         self._click_icon_help(LoginPage.BODY)
-        return
 
-    def check_is_help_link_opened(self):
-        self.wait_for_element_present()
+
 

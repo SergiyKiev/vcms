@@ -4,8 +4,8 @@ from _locators.locators import Locators
 
 class DevicesTab(BaseActions):
 
-    BODY = "//span[text()='Devices']/ancestor::div[@class='Panel-Control'][contains(@style,'85px')]/parent::div"
     TAB_HEADER = "//span[text()='Devices']/ancestor::div[@class='Panel-Control'][contains(@style,'85px')]"
+    BODY = TAB_HEADER + "/parent::div"
     TABLE_HEADER = BODY + "/*//div[contains(@id,'HEADER')]"
     TABLE_BODY = BODY + "/*//div[contains(@id,'VWGLVBODY')]"
     TABLE_ROW = TABLE_BODY + "/*//tr"
@@ -58,4 +58,11 @@ class DevicesTab(BaseActions):
         self._click_icon_help(DevicesTab.TAB_HEADER)
 
 
+class HomeTab(BaseActions):
+
+    TAB_HEADER = "//span[text()='Welcome To Cloud Management Suite']/ancestor::div[@class='Panel-Control'][contains(@style,'85px')]"
+    BODY = TAB_HEADER + "/parent::div"
+
+    def click_icon_help(self):
+        self._click_icon_help(HomeTab.TAB_HEADER)
 

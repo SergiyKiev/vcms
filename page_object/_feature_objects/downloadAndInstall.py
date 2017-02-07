@@ -5,17 +5,18 @@ import os
 import wgetter
 import time
 
-x = subprocess.Popen(['D:\\verismicCleanUp.cmd'])
+# x = subprocess.Popen(['D:\\verismicCleanUp.cmd']) #work
+x = subprocess.Popen(['C:\\VCMS\\verismicCleanUp.cmd']) #home
 print x
-time.sleep(60)
-wgetter.download('https://testteamtest.cloudmanagementsuite.com/WebService/api/v1/Downloads/vRepSetup.msi', outdir='D:\\')
-time.sleep(15)
-os.system('msiexec /i %s /qn' % 'D:\\vRepSetup-testteamtest.msi')
-time.sleep(60)
+time.sleep(120)
+# wgetter.download('https://testteamtest.cloudmanagementsuite.com/WebService/api/v1/Downloads/vRepSetup.msi', outdir='D:\\')
+# time.sleep(15)
+# os.system('msiexec /i %s /qn' % 'D:\\vRepSetup-testteamtest.msi')
+# time.sleep(60)
 
 
 
-
+#
 
 
 

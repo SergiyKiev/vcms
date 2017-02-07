@@ -3,10 +3,11 @@ import unittest
 from _variables.variables import *
 from _pages.pageLogin import LoginPage
 from _pages.pageMain import MainPage
-from _feature_objects.popups import *
-from _feature_objects.ribbonBar import *
-from _feature_objects.leftSideMenu import *
-from _feature_objects.tabDevices import *
+from _feature_objects.featurePopups import *
+from _feature_objects.featureRibbonBar import *
+from _feature_objects.featureLeftSideMenu import *
+from _feature_objects.featureTabs import *
+from _feature_objects.featureHelp import *
 from selenium import webdriver
 
 
@@ -651,7 +652,7 @@ class HelpLinks(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        print ("\n" + "TEST SUITE: INVENTORY")
+        print ("\n" + "TEST SUITE: HELP")
         cls.driver = webdriver.Chrome()
         login_page = LoginPage(cls.driver)
         login_page.open_page()
@@ -662,13 +663,18 @@ class HelpLinks(unittest.TestCase):
 
     def test_open_help_links(self):
         print ("\n" + "TC#0000: Open help links")
-        main_page = MainPage(self.driver)
         login_page = LoginPage(self.driver)
+        help_window = HelpWindow(self.driver)
+        home_tab = HomeTab(self.driver)
         left_side_menu = LeftSideMenu(self.driver)
         login_page.click_icon_help()
-        self
-        main_page = login_page.login()
-        main_page.check_main_page_loaded()
+        self.assertTrue(help_window.check_logon_page_help_window())
+        # help_window.close_help_window()
+        # main_page = login_page.login()
+        # main_page.check_main_page_loaded()
+        # home_tab.click_icon_help()
+        # self.assertTrue(help_window.check_home_tab_help_window())
+        # # help_window.close_help_window()
 
     def tearDown(self):
         pass
