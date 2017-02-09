@@ -299,9 +299,9 @@ class Locators:
   FIELD_PASSWORD                     = "//input[@type='password']"
 
   '''BUTTONS (BTN) XPATH'''
-  EL_BUTTON                    = "div[contains(@class,'Button')][contains(@id,'VWG_')]"
-  _BTN                         = "//div[contains(@class,'Button')][contains(@id,'VWG_')]"
-  BTN_SIGN_IN                  = "//span[text()='Sign In']/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
+  EL_BUTTON                    = "div[contains(@class,'Button')]"
+  _BTN                         = "//div[contains(@class,'Button')]"
+  BTN_SIGN_IN                  = "//span[text()='Sign In']/ancestor::div[contains(@class,'Button')]"
   BTN_EXIT                     = "//img[@alt='Exit']"
   ICON_HOME                    = "//td[contains(@style,'Home')]"
   ICON_DEVICES                 = "//div[@title='Devices']"
@@ -345,8 +345,8 @@ class Locators:
   BTN_ADD_right                = TEXT_ADD_right + anc + EL_BUTTON
   BTN_DELETE_MEMBERS           = TEXT_DELETE_MEMBERS + anc + EL_BUTTON
   BTN_HOME                     = "//img[@alt='Home']"
-  BTN_ARROW_UP                 = "//td[contains(@style,'arrow_up')]/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
-  BTN_ARROW_DOWN               = "//td[contains(@style,'arrow_down')]/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
+  BTN_ARROW_UP                 = "//td[contains(@style,'arrow_up')]/ancestor::div[contains(@class,'Button')]"
+  BTN_ARROW_DOWN               = "//td[contains(@style,'arrow_down')]/ancestor::div[contains(@class,'Button')]"
   BTN_HOME_DROP_DOWN_ARROW     = BTN_HOME + fol + EL_DROP_DOWN_ARROW
   BTN_INVENTORY                = "//img[@alt='Inventory']"
   BTN_INVENTORY_DROP_DOWN      = BTN_INVENTORY + fol + EL_DROP_DOWN_ARROW

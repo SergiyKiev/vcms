@@ -1,20 +1,22 @@
 
 class BaseElements:
 
+    LOADING_SCREEN = "//div[@id='VWG_LoadingScreen']"
+
     #BUTTONS
-    BUTTON_EDIT = "/*//img[@alt='Edit']/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
+    BUTTON_EDIT = "/*//img[@alt='Edit']/ancestor::div[contains(@class,'Button')]"
     BUTTON_EDIT_by_text = "/*//*[text()='Edit']"
-    # BUTTON_NEW = "//img[@alt='New']/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
-    # BUTTON_NEW_by_text = "//span[text()='New']/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
-    BUTTON_OK = "/*//span[text()='OK']/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
-    BUTTON_Ok = "/*//span[text()='Ok']/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
-    BUTTON_CANCEL = "/*//span[text()='Cancel']/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
-    BUTTON_NO = "/*//span[text()='No']/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
-    BUTTON_YES = "/*//span[text()='Yes']/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
-    BUTTON_CLOSE = "/*//span[text()='Close']/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
-    BUTTON_RESTORE = "/*//td[contains(@style,'circlex')]/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
-    BUTTON_ARROW_UP = "/*//td[contains(@style,'arrow_up')]/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
-    BUTTON_ARROW_DOWN = "/*//td[contains(@style,'arrow_down')]/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
+    # BUTTON_NEW = "//img[@alt='New']/ancestor::div[contains(@class,'Button')]"
+    # BUTTON_NEW_by_text = "//span[text()='New']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_OK = "/*//span[text()='OK']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_Ok = "/*//span[text()='Ok']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_CANCEL = "/*//span[text()='Cancel']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_NO = "/*//span[text()='No']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_YES = "/*//span[text()='Yes']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_CLOSE = "/*//span[text()='Close']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_RESTORE = "/*//td[contains(@style,'circlex')]/ancestor::div[contains(@class,'Button')]"
+    BUTTON_ARROW_UP = "/*//td[contains(@style,'arrow_up')]/ancestor::div[contains(@class,'Button')]"
+    BUTTON_ARROW_DOWN = "/*//td[contains(@style,'arrow_down')]/ancestor::div[contains(@class,'Button')]"
 
    #SYSTEM_BUTTONS
     SYSTEM_BUTTON_CLOSE = "/*//div[@title='Close']"
@@ -41,6 +43,13 @@ class BaseElements:
     _DROP_DOWN_LIST = "//div[@class='ComboBox-PopupWindow']"
     _TAB_PANEL = "//div[contains(@id,'VWGTCHD_')]"
     _LOGIN_PAGE_LOGO = "//img[contains(@src,'Images.CMS-Login')]"
+
+    #HELP WINDOW
+    HELP_WINDOW_BODY = "//title[text()='ConsoleOperationGuide']"
+    HELP_WINDOW_HEADER = "//*[@id='topic_header_text']"
+    HELP_FRAME_MAIN = "//frame[@name='FrameMain']"
+    HELP_FRAME_TITLE_SERVER_ERROR = "//h1[text()='Server Error']"
+    HELP_FRAME_TITLE_GETTING_STARTED = "//h1[text()='Getting Started in CMS']"
 
 
 

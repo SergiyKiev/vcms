@@ -5,7 +5,7 @@ from selenium.common.exceptions import TimeoutException
 import time
 
 
-class LeftSideMenu(Base):
+class LeftMenu(Base):
 
     '''CONSTANTS'''
     LEFT_MENU_VISIBLE = "[contains(@style,'translate3d(0px, 0px, 0px)')]"
@@ -47,37 +47,37 @@ class LeftSideMenu(Base):
     LABEL_DEFAULT_SITE = TREE_GLOBAL_SITE_VIEW + "/div/div/*//span[text()='Default Site']/ancestor::" + LABEL
 
     def click_icon_home(self):
-        self._click_element(LeftSideMenu.ICON_HOME)
-        self.wait_for_element_not_present(LeftSideMenu.ICON_HOME_GREY)
+        self._click_element(LeftMenu.ICON_HOME)
+        self.wait_for_element_not_present(LeftMenu.ICON_HOME_GREY)
 
     def click_icon_devices(self):
-        self._click_element(LeftSideMenu.ICON_DEVICES)
-        self.wait_for_element_not_present(LeftSideMenu.ICON_DEVICES_GREY)
+        self._click_element(LeftMenu.ICON_DEVICES)
+        self.wait_for_element_not_present(LeftMenu.ICON_DEVICES_GREY)
 
     def click_icon_administration(self):
-        self._click_element(LeftSideMenu.ICON_ADMINISTRATION)
-        self.wait_for_element_not_present(LeftSideMenu.ICON_ADMINISTRATION_GREY)
+        self._click_element(LeftMenu.ICON_ADMINISTRATION)
+        self.wait_for_element_not_present(LeftMenu.ICON_ADMINISTRATION_GREY)
 
     def click_icon_tasks(self):
-        self._click_element(LeftSideMenu.ICON_TASKS)
-        self.wait_for_element_not_present(LeftSideMenu.ICON_TASKS_GREY)
+        self._click_element(LeftMenu.ICON_TASKS)
+        self.wait_for_element_not_present(LeftMenu.ICON_TASKS_GREY)
 
     def click_icon_reporting(self):
-        self._click_element(LeftSideMenu.ICON_REPORTING)
-        self.wait_for_element_not_present(LeftSideMenu.ICON_REPORTING_GREY)
+        self._click_element(LeftMenu.ICON_REPORTING)
+        self.wait_for_element_not_present(LeftMenu.ICON_REPORTING_GREY)
 
     def click_icon_software_and_patch_manager(self):
-        self._click_element(LeftSideMenu.ICON_SOFT_AND_PATCH_MANAGER)
-        self.wait_for_element_not_present(LeftSideMenu.ICON_SOFT_AND_PATCH_MANAGER_GREY)
+        self._click_element(LeftMenu.ICON_SOFT_AND_PATCH_MANAGER)
+        self.wait_for_element_not_present(LeftMenu.ICON_SOFT_AND_PATCH_MANAGER_GREY)
 
     def click_icon_password_reset(self):
-        self._click_element(LeftSideMenu.ICON_PASSWORD_RESET)
-        self.wait_for_element_not_present(LeftSideMenu.ICON_PASSWORD_RESET_GREY)
+        self._click_element(LeftMenu.ICON_PASSWORD_RESET)
+        self.wait_for_element_not_present(LeftMenu.ICON_PASSWORD_RESET_GREY)
 
     def open_menu_home(self):
         try:
-            self.wait_for_element_present(LeftSideMenu.ICON_HOME)
-            cond = self._is_left_menu_visible(LeftSideMenu.ICON_HOME_GREY)
+            self.wait_for_element_present(LeftMenu.ICON_HOME)
+            cond = self._is_left_menu_visible(LeftMenu.ICON_HOME_GREY)
             if cond:
                 pass
             else:
@@ -87,8 +87,8 @@ class LeftSideMenu(Base):
 
     def open_menu_devices(self):
         try:
-            self.wait_for_element_present(LeftSideMenu.ICON_DEVICES)
-            cond = self._is_left_menu_visible(LeftSideMenu.MENU_DEVICES)
+            self.wait_for_element_present(LeftMenu.ICON_DEVICES)
+            cond = self._is_left_menu_visible(LeftMenu.MENU_DEVICES)
             if cond:
                 pass
             else:
@@ -98,8 +98,8 @@ class LeftSideMenu(Base):
 
     def open_menu_administration(self):
         try:
-            self.wait_for_element_present(LeftSideMenu.ICON_ADMINISTRATION)
-            cond = self._is_left_menu_visible(LeftSideMenu.MENU_ADMINISTRATION)
+            self.wait_for_element_present(LeftMenu.ICON_ADMINISTRATION)
+            cond = self._is_left_menu_visible(LeftMenu.MENU_ADMINISTRATION)
             if cond:
                 pass
             else:
@@ -109,8 +109,8 @@ class LeftSideMenu(Base):
 
     def open_menu_tasks(self):
         try:
-            self.wait_for_element_present(LeftSideMenu.ICON_TASKS)
-            cond = self._is_left_menu_visible(LeftSideMenu.MENU_TASKS)
+            self.wait_for_element_present(LeftMenu.ICON_TASKS)
+            cond = self._is_left_menu_visible(LeftMenu.MENU_TASKS)
             if cond:
                 pass
             else:
@@ -120,8 +120,8 @@ class LeftSideMenu(Base):
 
     def open_menu_reporting(self):
         try:
-            self.wait_for_element_present(LeftSideMenu.ICON_REPORTING)
-            cond = self._is_left_menu_visible(LeftSideMenu.MENU_REPORTING)
+            self.wait_for_element_present(LeftMenu.ICON_REPORTING)
+            cond = self._is_left_menu_visible(LeftMenu.MENU_REPORTING)
             if cond:
                 pass
             else:
@@ -131,8 +131,8 @@ class LeftSideMenu(Base):
 
     def open_menu_software_and_patch_manager(self):
         try:
-            self.wait_for_element_present(LeftSideMenu.ICON_SOFT_AND_PATCH_MANAGER)
-            cond = self._is_left_menu_visible(LeftSideMenu.MENU_SOFTWARE_AND_PATCH_MANAGER)
+            self.wait_for_element_present(LeftMenu.ICON_SOFT_AND_PATCH_MANAGER)
+            cond = self._is_left_menu_visible(LeftMenu.MENU_SOFTWARE_AND_PATCH_MANAGER)
             if cond:
                 pass
             else:
@@ -142,8 +142,8 @@ class LeftSideMenu(Base):
 
     def open_menu_password_reset(self):
         try:
-            self.wait_for_element_present(LeftSideMenu.ICON_PASSWORD_RESET)
-            cond = self._is_left_menu_visible(LeftSideMenu.MENU_PASSWORD_RESET)
+            self.wait_for_element_present(LeftMenu.ICON_PASSWORD_RESET)
+            cond = self._is_left_menu_visible(LeftMenu.MENU_PASSWORD_RESET)
             if cond:
                 pass
             else:
@@ -152,66 +152,66 @@ class LeftSideMenu(Base):
             print "Object not found"
 
     def click_global_site_view_label(self):
-        self.wait_for_element_present(LeftSideMenu.LABEL_GLOBAL_SITE_VIEW)
-        self._click_element(LeftSideMenu.LABEL_GLOBAL_SITE_VIEW)
-        self.wait_for_element_selected(LeftSideMenu.LABEL_GLOBAL_SITE_VIEW)
+        self.wait_for_element_present(LeftMenu.LABEL_GLOBAL_SITE_VIEW)
+        self._click_element(LeftMenu.LABEL_GLOBAL_SITE_VIEW)
+        self.wait_for_element_selected(LeftMenu.LABEL_GLOBAL_SITE_VIEW)
 
     def click_default_site_in_global_site_view(self):
-        self._click_element(LeftSideMenu.LABEL_DEFAULT_SITE)
-        self.wait_for_element_selected(LeftSideMenu.LABEL_DEFAULT_SITE)
+        self._click_element(LeftMenu.LABEL_DEFAULT_SITE)
+        self.wait_for_element_selected(LeftMenu.LABEL_DEFAULT_SITE)
 
     def click_site_in_global_site_view_tree(self, sitename):
-        element = LeftSideMenu.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']/ancestor::" + LeftSideMenu.LABEL
+        element = LeftMenu.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']/ancestor::" + LeftMenu.LABEL
         self._click_element(element)
         self.wait_for_element_selected(element)
 
     def click_subsite_in_site_tree(self, sitename, subsitename):
-        site_name = "//span[text()='" + sitename + "']/ancestor::" + LeftSideMenu.LABEL
-        subsite_name = "//span[text()='" + subsitename + "']/ancestor::" + LeftSideMenu.LABEL
-        element = LeftSideMenu.TREE_GLOBAL_SITE_VIEW + site_name + "/parent::div/div[2]/*" + subsite_name
+        site_name = "//span[text()='" + sitename + "']/ancestor::" + LeftMenu.LABEL
+        subsite_name = "//span[text()='" + subsitename + "']/ancestor::" + LeftMenu.LABEL
+        element = LeftMenu.TREE_GLOBAL_SITE_VIEW + site_name + "/parent::div/div[2]/*" + subsite_name
         self._click_element(element)
         self.wait_for_element_selected(element)
 
     def check_menu_devices_is_visible(self):
-        cond = self._is_left_menu_visible(LeftSideMenu.MENU_DEVICES)
+        cond = self._is_left_menu_visible(LeftMenu.MENU_DEVICES)
         return True if cond else False
 
     def check_menu_administration_is_visible(self):
-        cond = self._is_left_menu_visible(LeftSideMenu.MENU_ADMINISTRATION)
+        cond = self._is_left_menu_visible(LeftMenu.MENU_ADMINISTRATION)
         return True if cond else False
 
     def check_menu_tasks_is_visible(self):
-        cond = self._is_left_menu_visible(LeftSideMenu.MENU_TASKS)
+        cond = self._is_left_menu_visible(LeftMenu.MENU_TASKS)
         return True if cond else False
 
     def check_menu_reporting_is_visible(self):
-        cond = self._is_left_menu_visible(LeftSideMenu.MENU_REPORTING)
+        cond = self._is_left_menu_visible(LeftMenu.MENU_REPORTING)
         return True if cond else False
 
     def check_menu_software_and_patch_manager_is_visible(self):
-        cond = self._is_left_menu_visible(LeftSideMenu.MENU_SOFTWARE_AND_PATCH_MANAGER)
+        cond = self._is_left_menu_visible(LeftMenu.MENU_SOFTWARE_AND_PATCH_MANAGER)
         return True if cond else False
 
     def check_site_is_in_global_site_view_tree(self, sitename):
-        cond = self._is_element_present(LeftSideMenu.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
+        cond = self._is_element_present(LeftMenu.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
         return True if cond else False
 
     def check_subsite_is_in_parent_site(self, sitename, subsitename):
-        site_name = "//span[text()='" + sitename + "']/ancestor::" + LeftSideMenu.LABEL
-        subsite_name = "//span[text()='" + subsitename + "']/ancestor::" + LeftSideMenu.LABEL
-        element = LeftSideMenu.TREE_GLOBAL_SITE_VIEW + site_name + "/parent::div/div[2]/*" + subsite_name
+        site_name = "//span[text()='" + sitename + "']/ancestor::" + LeftMenu.LABEL
+        subsite_name = "//span[text()='" + subsitename + "']/ancestor::" + LeftMenu.LABEL
+        element = LeftMenu.TREE_GLOBAL_SITE_VIEW + site_name + "/parent::div/div[2]/*" + subsite_name
         cond = self._is_element_present(element)
         return True if cond else False
 
     def check_default_site_is_in_global_site_view_tree(self):
-        cond = self._is_element_present(LeftSideMenu.LABEL_DEFAULT_SITE)
+        cond = self._is_element_present(LeftMenu.LABEL_DEFAULT_SITE)
         return True if cond else False
 
     def expand_global_site_view_tree(self):
-        self.wait_for_element_present(LeftSideMenu.LABEL_GLOBAL_SITE_VIEW)
-        arrow_expand = self._is_element_present(LeftSideMenu.LABEL_GLOBAL_SITE_VIEW + Base.ARROW_EXPAND)
+        self.wait_for_element_present(LeftMenu.LABEL_GLOBAL_SITE_VIEW)
+        arrow_expand = self._is_element_present(LeftMenu.LABEL_GLOBAL_SITE_VIEW + Base.ARROW_EXPAND)
         if arrow_expand:
-            self._expand_tree(LeftSideMenu.LABEL_GLOBAL_SITE_VIEW)
+            self._expand_tree(LeftMenu.LABEL_GLOBAL_SITE_VIEW)
         else:
             pass
 

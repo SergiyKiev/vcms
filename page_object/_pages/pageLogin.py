@@ -3,16 +3,15 @@ from _settings.settings import Settings
 from _feature_objects.featurePopups import *
 from pageMain import MainPage
 from _base_page.base_elements import BaseElements
-from  _feature_objects.featureHelp import HelpWindow
 
 
-
-class LoginPage(TermsAndConditionsPopup, SubscriptionHasExpitredPopup, ErrorPopup, HelpWindow):
+class LoginPage(TermsAndConditionsPopup, SubscriptionHasExpitredPopup, ErrorPopup):
 
     BODY = "//div[@id='VWG_Body']"
-    BUTTON_SIGN_IN = "//span[text()='Sign In']/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
+    BUTTON_SIGN_IN = "//span[text()='Sign In']/ancestor::div[contains(@class,'Button')]"
     FIELD_PASSWORD = "//input[@type='password']"
     FIELD_USERNAME = "//input[@type='text']"
+    RESET_PASSWORD_LABEL = "//span[text()='Reset Password']/ancestor::div[contains(@class,'LinkLabel-Control')]"
 
     def login(self):
         try:
@@ -53,6 +52,15 @@ class LoginPage(TermsAndConditionsPopup, SubscriptionHasExpitredPopup, ErrorPopu
 
     def click_icon_help(self):
         self._click_icon_help(LoginPage.BODY)
+
+    def check_help_link_is_correct(self):
+        # self._select_help_window()
+        cond = self._check_help_frame_header("Sign In")
+        return True if cond else False
+
+    def click_reset_password_label(self):
+        self.wait_for_element_present(LoginPage.RESET_PASSWORD_LABEL)
+        self._click_element(LoginPage.RESET_PASSWORD_LABEL)
 
 
 

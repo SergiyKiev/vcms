@@ -98,13 +98,73 @@ class BaseActions(Base):
         self._click_element(locator + BaseElements.SYSTEM_BUTTON_DROP_DOWN)
 
     def _close_popups(self):
-        cond = self._is_element_present(BaseElements._POPUP)
-        i = 0
-        while i < 10:
-            i += 1
-            if cond:
-                self._click_element(BaseElements._POPUP + BaseElements.SYSTEM_BUTTON_CLOSE)
-                print "All popups are closed"
-                return True
+        try:
+            cond = self._is_element_present(BaseElements._POPUP)
+            i = 0
+            while i < 10:
+                i += 1
+                if cond:
+                    self._click_element(BaseElements._POPUP + BaseElements.SYSTEM_BUTTON_CLOSE)
+                    print "All popups are closed"
+                    return True
+                else:
+                    pass
+        except Exception as e:
+            print "No such element: ", e
+
+    def _check_help_frame_header(self, expected_header_name):
+        # element = HelpWindow.HEADER + "[text()='" + header_name + "']"
+        # cond1 = self._is_element_present(element)
+        # cond2 = self._is_element_present(BaseElements.HELP_FRAME_TITLE_GETTING_STARTED)
+        # cond3 = self._is_element_present(BaseElements.HELP_FRAME_TITLE_SERVER_ERROR)
+        self._select_help_window()
+        current_header_name = self._find_element(BaseElements.HELP_WINDOW_HEADER).text
+        if current_header_name == expected_header_name:
+            print "Link is correct: ", current_header_name
+            return True
+        elif current_header_name == BaseElements.HELP_FRAME_TITLE_GETTING_STARTED:
+            default_text = self._find_element(BaseElements.HELP_WINDOW_HEADER).text
+            print "Link is incorrect: ", default_text
+            return False
+        elif current_header_name == BaseElements.HELP_FRAME_TITLE_SERVER_ERROR:
+            error_text = self._find_element("//h2").text
+            print "Server error: ", error_text
+            return False
+
+    def _select_help_window(self):
+        handles = self.driver.window_handles
+        help_window = handles[1]
+        # WebDriverWait(self.driver, 10).until(lambda d: len(d.window_handles) == 2)
+        self.driver.switch_to_window(help_window)
+        self.wait_general.until(lambda d: d.title != "")
+        title = self.driver.title
+        print "Title is: " , title
+        self.driver.switch_to_frame(self.driver.find_element_by_name('FrameMain'))
+        header = self._find_element(BaseElements.HELP_WINDOW_HEADER).text
+        # print "Header is: ", header
+
+    def _close_help_window(self):
+        handles = self.driver.window_handles
+        main_window = handles[0]
+        try:
+            help_window = handles[1]
+        except IndexError:
+            help_window = 'null'
+        if help_window != 'null':
+            self.driver.switch_to_window(help_window)
+            self.driver.close()
+            print "Help window is closed"
+        self.driver.switch_to_window(main_window)
+
+    def _close_help_windows(self):
+        handles = self.driver.window_handles
+        main_window = handles[0]
+        for i in list(handles):
+            if i == 0:
+                continue
             else:
-                pass
+                help_window = handles[i]
+                self.driver.switch_to_window(help_window)
+                self.driver.close()
+        self.driver.switch_to_window(main_window)
+        print "Help windows are closed"

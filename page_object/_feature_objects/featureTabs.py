@@ -2,6 +2,20 @@
 from _base_page.base_actions import BaseActions
 from _locators.locators import Locators
 
+
+class HomeTab(BaseActions):
+
+    TAB_HEADER = "//span[text()='Welcome To Cloud Management Suite']/ancestor::div[@class='Panel-Control'][contains(@style,'85px')]"
+    BODY = TAB_HEADER + "/parent::div"
+
+    def click_icon_help(self):
+        self._click_icon_help(HomeTab.TAB_HEADER)
+
+    def check_help_link_is_correct(self):
+        cond = self._check_help_frame_header("Getting Started in CMS")
+        return True if cond else False
+
+
 class DevicesTab(BaseActions):
 
     TAB_HEADER = "//span[text()='Devices']/ancestor::div[@class='Panel-Control'][contains(@style,'85px')]"
@@ -33,7 +47,7 @@ class DevicesTab(BaseActions):
         except Exception as e:
             print "Step failed: ", e
 
-    def check_is_device_present(self, *name):
+    def check_device_is_present(self, *name):
         cond = self._is_element_present(DevicesTab.TABLE_ROW + "/*//span[text()='" + str(*name) + "']/ancestor::tr")
         return True if cond else False
 
@@ -57,12 +71,57 @@ class DevicesTab(BaseActions):
     def click_icon_help(self):
         self._click_icon_help(DevicesTab.TAB_HEADER)
 
+    def check_help_link_is_correct(self):
+        cond = self._check_help_frame_header("Devices")
+        return True if cond else False
 
-class HomeTab(BaseActions):
 
-    TAB_HEADER = "//span[text()='Welcome To Cloud Management Suite']/ancestor::div[@class='Panel-Control'][contains(@style,'85px')]"
+class AdministrationTab(BaseActions):
+
+    TAB_HEADER = "//span[text()='Administration']/ancestor::div[@class='Panel-Control'][contains(@style,'85px')]"
     BODY = TAB_HEADER + "/parent::div"
 
     def click_icon_help(self):
-        self._click_icon_help(HomeTab.TAB_HEADER)
+        self._click_icon_help(AdministrationTab.TAB_HEADER)
 
+    def check_help_link_is_correct(self):
+        cond = self._check_help_frame_header("Administration")
+        return True if cond else False
+
+class TasksTab(BaseActions):
+
+    TAB_HEADER = "//span[text()='Tasks']/ancestor::div[@class='Panel-Control'][contains(@style,'85px')]"
+    BODY = TAB_HEADER + "/parent::div"
+
+    def click_icon_help(self):
+        self._click_icon_help(TasksTab.TAB_HEADER)
+
+    def check_help_link_is_correct(self):
+        cond = self._check_help_frame_header("Tasks")
+        return True if cond else False
+
+
+class ReportingTab(BaseActions):
+
+    TAB_HEADER = "//span[text()='Reporting']/ancestor::div[@class='Panel-Control'][contains(@style,'85px')]"
+    BODY = TAB_HEADER + "/parent::div"
+
+    def click_icon_help(self):
+        self._click_icon_help(ReportingTab.TAB_HEADER)
+
+    def check_help_link_is_correct(self):
+        cond = self._check_help_frame_header("Reporting")
+        return True if cond else False
+
+
+class SoftwareAndPatchManagerTab(BaseActions):
+
+    TAB_HEADER = "//span[text()='Software / Patch Manager']/ancestor::div[@class='Panel-Control'][contains(@style,'85px')]"
+    BODY = TAB_HEADER + "/parent::div"
+
+    def click_icon_help(self):
+        self._click_icon_help(SoftwareAndPatchManagerTab.TAB_HEADER)
+
+    def check_help_link_is_correct(self):
+        cond = self._check_help_frame_header("Software / Patch Manager")
+        return True if cond else False

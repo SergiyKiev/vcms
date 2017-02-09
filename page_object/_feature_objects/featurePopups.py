@@ -116,7 +116,7 @@ class ColumnSetsPopup(BaseActions):
         cond = self._is_element_present(ColumnSetsPopup.TABLE_BODY + "/*//span[text()='" + columsetname  + "']")
         return True if cond else False
 
-    def check_is_popup_present(self):
+    def check_popup_is_present(self):
         cond = self._is_element_present(ColumnSetsPopup.BODY)
         return True if cond else False
 
@@ -139,8 +139,8 @@ class ColumnSetDesignerPopup(BaseActions):
     TABLE_HEADER = BODY + "/*//div[contains(@id,'HEADER')]"
     TABLE_BODY = BODY  + "/*//div[contains(@id,'VWGLVBODY')]"
     BUTTON_CANCEL = BODY + "/*" + Locators.BTN_CANCEL
-    BUTTON_ADD = BODY + "/*//span[text()='Add >>']/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
-    BUTTON_REMOVE = BODY + "/*//span[text()='<< Remove']/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
+    BUTTON_ADD = BODY + "/*//span[text()='Add >>']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_REMOVE = BODY + "/*//span[text()='<< Remove']/ancestor::div[contains(@class,'Button')]"
     BUTTON_ARROW_UP = BODY + BaseElements.BUTTON_ARROW_UP
     BUTTON_ARROW_DOWN = BODY + BaseElements.BUTTON_ARROW_DOWN
     TEXT_FIELD_NAME = BODY  + "/*//div[2]/input"
@@ -155,7 +155,7 @@ class ColumnSetDesignerPopup(BaseActions):
     TABLE_ROW = "/ancestor::tr[contains(@class,'ListView-DataFullRow')]"
     ELEMENT_NODE_BOX = Locators.EL_TREE_BOX
 
-    def check_is_popup_present(self):
+    def check_popup_is_present(self):
         cond = self._is_element_present(ColumnSetDesignerPopup.BODY)
         return True if cond else False
 
@@ -216,14 +216,14 @@ class ConfigurationPopup(BaseActions):
 
     BODY = "//span[text()='Configuration']/ancestor::div[contains(@id,'WRP')]"
     TEXT_FIELD_NAME = BODY + "/*//input"
-    BUTTON_NEW = BODY + "//span[text()='New']/ancestor::div[contains(@class,'Button')][contains(@id,'VWG_')]"
+    BUTTON_NEW = BODY + "//span[text()='New']/ancestor::div[contains(@class,'Button')]"
     COLUMN_SET_DROP_DOWN_LIST = BODY + "/following::div[@class='ComboBox-PopupWindow']"
     DROP_DOWN_APPLIED_VALUE = BODY + "/*//div[contains(@class,'ComboBox-Container')]/*//span[@data-vwg_appliedvalue]"
     TAB_IP_ADDRESS = "//span[text()='IP Address Ranges'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]"
     TAB_SITE = "//span[text()='Site'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]"
     TAB_VREPS = "//span[text()='vReps'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]"
 
-    def check_is_popup_present(self):
+    def check_popup_is_present(self):
         cond = self._is_element_present(ConfigurationPopup.BODY)
         return True if cond else False
 
@@ -240,6 +240,10 @@ class ConfigurationPopup(BaseActions):
 
     def click_icon_help(self):
         self._click_icon_help(ConfigurationPopup.BODY)
+
+    def check_help_link_is_correct(self):
+        cond = self._check_help_frame_header("Configure a site")
+        return True if cond else False
 
     def click_icon_restore(self):
         self._click_element(ConfigurationPopup.BODY)
@@ -303,6 +307,7 @@ class ConfigurationPopup(BaseActions):
         print ("The actual value in the Name textfield is: " + actual_attribute_value)
         return actual_attribute_value
 
+
 class SiteNamePopup(BaseActions):
 
     BODY = "//span[contains(text(),'Site') and contains(text(),'Name')]/ancestor::div[contains(@id,'WRP')]"
@@ -320,12 +325,19 @@ class SiteNamePopup(BaseActions):
     def click_button_cancel(self):
         self._click_button_cancel(SiteNamePopup.BODY)
 
-    def check_is_popup_present(self):
+    def check_popup_is_present(self):
         try:
             cond = self._is_element_present(SiteNamePopup.BODY)
             return True if cond else False
         except Exception as e:
             print "Step failed: ", e
+
+    def click_icon_help(self):
+        self._click_icon_help(SiteNamePopup.BODY)
+
+    def check_help_link_is_correct(self):
+        cond = self._check_help_frame_header("Create a site")
+        return True if cond else False
 
 
 class AreYouSurePopup(BaseActions):
@@ -357,7 +369,7 @@ class AreYouSurePopup(BaseActions):
     def click_button_yes(self):
         self._click_button_yes(AreYouSurePopup.BODY)
 
-    def check_is_popup_present(self):
+    def check_popup_is_present(self):
         # cond = self.wait_for_element_present(AreYouSurePopup.BODY)
         cond = self._is_element_present(AreYouSurePopup.BODY)
         return True if cond else False
@@ -367,7 +379,7 @@ class UnableToRemovePopup(BaseActions):
 
     BODY =  "//span[text()='Unable to remove']/ancestor::div[contains(@id,'WRP')]"
 
-    def check_is_popup_present(self):
+    def check_popup_is_present(self):
         cond = self._is_element_present(UnableToRemovePopup.BODY)
         return True if cond else False
 
@@ -392,7 +404,7 @@ class ErrorPopup(BaseActions):
 
     BODY = "//span[text()='Error']/ancestor::div[contains(@id,'WRP')]"
 
-    def check_is_popup_present(self):
+    def check_popup_is_present(self):
         cond = self._is_element_present(ErrorPopup.BODY)
         return True if cond else False
 
@@ -417,7 +429,7 @@ class RemoveDevicesPopup(BaseActions):
     def click_button_cancel(self):
         self._click_button_cancel(RemoveDevicesPopup.BODY)
 
-    def check_is_popup_present(self):
+    def check_popup_is_present(self):
         cond = self._is_element_present(RemoveDevicesPopup.BODY)
         return True if cond else False
 
@@ -432,4 +444,127 @@ class RemoveDevicesPopup(BaseActions):
         self.wait_for_element_unchecked(RemoveDevicesPopup.CHECKBOX_KEEP_HIST_INFORM)
 
 
+class ResetPasswordPopup(BaseActions):
+
+    BODY = "//span[text()='Reset Password']/ancestor::div[contains(@id,'WRP')]"
+
+    def check_popup_is_present(self):
+        cond = self._is_element_present(ResetPasswordPopup.BODY)
+        return True if cond else False
+
+    def click_icon_help(self):
+        self._click_icon_help(ResetPasswordPopup.BODY)
+
+    def check_help_link_is_correct(self):
+        cond = self._check_help_frame_header("Reset Password")
+        return True if cond else False
+
+
+# class SettingsPopup(BaseActions):
+#
+#     BODY = "//span[text()='Settings']/ancestor::div[contains(@id,'WRP')]"
+#
+#     def check_popup_is_present(self):
+#         cond = self._is_element_present(SettingsPopup.BODY)
+#         return True if cond else False
+#
+#     def click_icon_help(self):
+#         self._click_icon_help(SettingsPopup.BODY)
+#
+#     def check_help_link_is_correct(self):
+#         cond = self._check_help_frame_header("Settings")
+#         return True if cond else False
+
+
+# class ClientSettingsPopup(BaseActions):
+#
+#     BODY = "//span[text()='Client Settings']/ancestor::div[contains(@id,'WRP')]"
+#     TREE_VIEW = BODY + "/*//div[@class='TreeView-Control']"
+#     TAB_TIMERS = TREE_VIEW + "/*//span[text()='Timers']/ancestor::div[contains(@id,'VWGNODE')]"
+#     TAB_FEATURES = TREE_VIEW + "/*//span[text()='Features']/ancestor::div[contains(@id,'VWGNODE')]"
+#     TAB_CLIENT_URLS = TREE_VIEW + "/*//span[text()='Client URLs']/ancestor::div[contains(@id,'VWGNODE')]"
+#     TAB_REBOOT_UI_CONFIG = TREE_VIEW + "/*//span[text()='Reboot UI Config']/ancestor::div[contains(@id,'VWGNODE')]"
+#     TAB_CLIENT_PROXY_SETTINGS = TREE_VIEW + "/*//span[text()='Client Proxy Settings']/ancestor::div[contains(@id,'VWGNODE')]"
+#
+#     def check_popup_is_present(self):
+#         cond = self._is_element_present(ClientSettingsPopup.BODY)
+#         return True if cond else False
+#
+#     def click_icon_help(self):
+#         self._click_icon_help(ClientSettingsPopup.BODY)
+#
+#     def click_timers_tab(self):
+#         self._click_element(ClientSettingsPopup.TAB_TIMERS)
+#         self.wait_for_element_selected(ClientSettingsPopup.TAB_TIMERS)
+#
+#     def click_features_label(self):
+#         self._click_element(ClientSettingsPopup.TAB_FEATURES)
+#         self.wait_for_element_selected(ClientSettingsPopup.TAB_FEATURES)
+#
+#     def click_client_urls_label(self):
+#         self._click_element(ClientSettingsPopup.TAB_CLIENT_URLS)
+#         self.wait_for_element_selected(ClientSettingsPopup.TAB_CLIENT_URLS)
+#
+#     def click_reboot_ui_config_tab(self):
+#         self._click_element(ClientSettingsPopup.TAB_REBOOT_UI_CONFIG)
+#         self.wait_for_element_selected(ClientSettingsPopup.TAB_REBOOT_UI_CONFIG)
+#
+#     def click_client_proxy_settings_tab(self):
+#         self._click_element(ClientSettingsPopup.TAB_TIMERS)
+#         self.wait_for_element_selected(ClientSettingsPopup.TAB_TIMERS)
+#
+#     def check_is_timers_tab_present(self):
+#         pass
+#
+#     def check_is_features_tab_present(self):
+#         pass
+#
+#     def check_is_client_urls_tab_present(self):
+#         pass
+#
+#     def check_is_reboot_ui_config_tab_present(self):
+#         pass
+#
+#     def check_is_client_proxy_settings_tab_present(self):
+#         pass
+#
+#     def check_help_link_is_correct(self, header_name):
+#         cond = self._check_help_frame_header(header_name)
+#         return True if cond else False
+#
+#     def check_timers_tab_help_link_is_correct(self):
+#         cond = self._check_help_frame_header("Timers")
+#         return True if cond else False
+#
+#     def check_features_tab_help_link_is_correct(self):
+#         cond = self._check_help_frame_header("Features")
+#         return True if cond else False
+#
+#     def check_client_urls_tab_help_link_is_correct(self):
+#         cond = self._check_help_frame_header("Client URLs")
+#         return True if cond else False
+#
+#     def check_reboot_ui_config_tab_help_link_is_correct(self):
+#         cond = self._check_help_frame_header("Reboot UI Config")
+#         return True if cond else False
+#
+#     def check_client_proxy_settings_tab_help_link_is_correct(self):
+#         cond = self._check_help_frame_header("Client Proxy Settings")
+#         return True if cond else False
+
+
+class SubscriptionsPopup(BaseActions):
+
+    BODY = "//span[text()='Subscriptions']/ancestor::div[contains(@id,'WRP')]"
+
+    def check_popup_is_present(self):
+        cond = self._is_element_present(SubscriptionsPopup.BODY)
+        return True if cond else False
+
+    def click_icon_help(self):
+        self._click_icon_help(SubscriptionsPopup.BODY)
+
+    def check_help_link_is_correct(self):
+        cond = self._check_help_frame_header("Subscriptions")
+        return True if cond else False
 

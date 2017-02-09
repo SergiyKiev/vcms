@@ -9,9 +9,9 @@ import time
 x = subprocess.Popen(['C:\\VCMS\\verismicCleanUp.cmd']) #home
 print x
 time.sleep(120)
-# wgetter.download('https://testteamtest.cloudmanagementsuite.com/WebService/api/v1/Downloads/vRepSetup.msi', outdir='D:\\')
+# wgetter.download('https://testteamtest.cloudmanagementsuite.com/WebService/api/v1/Downloads/vRepSetup.msi', outdir='C:\\VCMS')
 # time.sleep(15)
-# os.system('msiexec /i %s /qn' % 'D:\\vRepSetup-testteamtest.msi')
+# os.system('msiexec /i %s /qn' % 'C:\\VCMS\\vRepSetup-testteamtest.msi')
 # time.sleep(60)
 
 

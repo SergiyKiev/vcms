@@ -1,6 +1,8 @@
 
 from _base_page.base_actions import BaseActions
 from _feature_objects.featurePopups import *
+from _feature_objects.featurePopupSettings import SettingsPopup
+from _feature_objects.featurePopupClientSettings import ClientSettingsPopup
 
 
 class RibbonBar(BaseActions):
@@ -43,14 +45,12 @@ class RibbonBar(BaseActions):
 
     def click_button_delete(self):
         self._click_element(RibbonBar.BUTTON_DELETE)
-        cond1 = self._is_element_present(AreYouSurePopup.BODY)
-        cond2 = self._is_element_present(UnableToRemovePopup.BODY)
-        if cond1:
-            return AreYouSurePopup(self.driver)
-        elif cond2:
-            return UnableToRemovePopup(self.driver)
-        else:
-            return None
+        # cond1 = self._is_element_present(AreYouSurePopup.BODY)
+        # cond2 = self._is_element_present(UnableToRemovePopup.BODY)
+        # if cond1:
+        #     return AreYouSurePopup(self.driver)
+        # elif cond2:
+        #     return UnableToRemovePopup(self.driver)
 
     def click_button_config(self):
         self._click_element(RibbonBar.BUTTON_CONFIG)
@@ -80,4 +80,14 @@ class RibbonBar(BaseActions):
         cond = self._is_element_present(RibbonBar.BUTTON_DELETE)
         return True if cond else False
 
+    def click_button_settings(self):
+        self._click_element(RibbonBar.BUTTON_SETTINGS)
+        self.wait_for_element_present(SettingsPopup.BODY)
 
+    def click_button_client(self):
+        self._click_element(RibbonBar.BUTTON_CLIENT)
+        self.wait_for_element_present(ClientSettingsPopup.BODY)
+
+    def click_button_subscriptions(self):
+        self._click_element(RibbonBar.BUTTON_SUBSCRIPTIONS)
+        self.wait_for_element_present(SubscriptionsPopup.BODY)

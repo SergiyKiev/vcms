@@ -5,7 +5,7 @@ from _pages.pageLogin import LoginPage
 from _pages.pageMain import MainPage
 from _feature_objects.featurePopups import *
 from _feature_objects.featureRibbonBar import *
-from _feature_objects.featureLeftSideMenu import *
+from _feature_objects.featureLeftMenu import *
 from _feature_objects.featureTabs import DevicesTab
 from selenium import webdriver
 
@@ -29,15 +29,15 @@ class SmokeTest(unittest.TestCase):
 
     def test_01_delete_devices_from_the_console(self):
         devices = Variables.devices_for_smoke_test
-        left_side_menu = LeftSideMenu(self.driver)
+        left_menu = LeftMenu(self.driver)
         ribbon_bar = RibbonBar(self.driver)
         main_page = MainPage(self.driver)
         remove_devices_popup = RemoveDevicesPopup(self.driver)
         tab_devices = DevicesTab(self.driver)
-        left_side_menu.open_menu_devices()
-        left_side_menu.expand_global_site_view_tree()
-        left_side_menu.click_global_site_view_label()
-        # left_side_menu.click_site_in_global_site_view_tree(sitename)
+        left_menu.open_menu_devices()
+        left_menu.expand_global_site_view_tree()
+        left_menu.click_global_site_view_label()
+        # left_menu.click_site_in_global_site_view_tree(sitename)
         main_page.delete_devices_in_devices_tab_table(devices)
 
     # @unittest.skip
@@ -62,14 +62,14 @@ class SmokeTest(unittest.TestCase):
         sitename = Variables.site_for_smoke_test
         main_page = MainPage(self.driver)
         site_name_popup = SiteNamePopup(self.driver)
-        left_side_menu = LeftSideMenu(self.driver)
+        left_menu = LeftMenu(self.driver)
         ribbon_bar = RibbonBar(self.driver)
         main_page.delete_site_if_exists(sitename)
-        left_side_menu.click_global_site_view_label()
+        left_menu.click_global_site_view_label()
         ribbon_bar.click_button_new_site()
         site_name_popup.enter_text_into_name_text_field(sitename)
         site_name_popup.click_button_ok()
-        self.assertTrue(left_side_menu.check_site_is_in_global_site_view_tree(sitename))
+        self.assertTrue(left_menu.check_site_is_in_global_site_view_tree(sitename))
         print ("Test is passed" + "\n")
 
     def test_create_ip_address_ranges(self):
