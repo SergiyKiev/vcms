@@ -1,16 +1,19 @@
-
+import logging
 import unittest
-from _variables.variables import *
+
+from _feature_objects.featureLeftMenu import *
+from _feature_objects.featurePopupClientSettings import *
+from _feature_objects.featurePopupColumnSetDesigner import ColumnSetDesignerPopup
+from _feature_objects.featurePopupMoveSite import MoveSitePopup
+from _feature_objects.featurePopupResetPassword import ResetPasswordPopup
+from _feature_objects.featurePopupSettings import *
+from _feature_objects.featureRibbonBar import *
+from _feature_objects.featureTabs import *
 from _pages.pageLogin import LoginPage
 from _pages.pageMain import MainPage
-from _feature_objects.featurePopups import *
-from _feature_objects.featureRibbonBar import *
-from _feature_objects.featureLeftMenu import *
-from _feature_objects.featureTabs import *
-from _feature_objects.featurePopupClientSettings import *
-from _feature_objects.featurePopupSettings import *
 from selenium import webdriver
 
+logging.basicConfig(level=logging.INFO)
 
 class SiteCreation(unittest.TestCase):
 
@@ -240,8 +243,8 @@ class SiteConfiguration(unittest.TestCase):
         left_menu.click_site_in_global_site_view_tree(sitename)
         self.assertTrue(ribbon_bar.check_button_config_is_present())
         ribbon_bar.click_button_config()
-        self.assertTrue(configuration_popup._is_element_present(Locators.POPUP_CONFIGURATION + "/*" + Locators.TAB_PANEL))
-        self.assertFalse(configuration_popup._is_element_disabled(Locators.POPUP_CONFIGURATION + "/*" + Locators._FIELD))
+        self.assertTrue(configuration_popup._is_element_present(configuration_popup.TAB_SITE))#add verification method to class
+        self.assertFalse(configuration_popup._is_element_disabled(configuration_popup.TEXT_FIELD_NAME))#add verification method to class
         self.assertEqual(sitename, configuration_popup.get_name_text_field_value())
         configuration_popup.click_system_button_close()
         self.assertFalse(configuration_popup.check_popup_is_present())
@@ -625,7 +628,7 @@ class SiteRelocation(unittest.TestCase):
         cls.driver.quit()
 
 @unittest.skip
-class Invenotry(unittest.TestCase):
+class InvenotryFeature(unittest.TestCase):
 
     driver = None
 
@@ -649,6 +652,7 @@ class Invenotry(unittest.TestCase):
 
 
 class LoginPageHelpLinks(unittest.TestCase):
+
     driver = None
 
     @classmethod
@@ -686,6 +690,7 @@ class LoginPageHelpLinks(unittest.TestCase):
 
 
 class MainPageHelpLinks(unittest.TestCase):
+
     driver = None
 
     @classmethod
@@ -701,84 +706,91 @@ class MainPageHelpLinks(unittest.TestCase):
         main_page.check_main_page_loaded()
         main_page._close_popups()
 
-    # def test_help_link_on_home_tab(self):
-    #     print ("\n" + "TC#0000: Check help link on home tab")
-    #     left_menu = LeftMenu(self.driver)
-    #     home_tab = HomeTab(self.driver)
-    #     left_menu.open_menu_home()
-    #     home_tab.click_icon_help()
-    #     self.assertTrue(home_tab.check_help_link_is_correct())
-    #
-    # def test_help_link_on_devices_tab(self):
-    #     print ("\n" + "TC#0000: Check help link on devices tab")
-    #     left_menu = LeftMenu(self.driver)
-    #     devices_tab = DevicesTab(self.driver)
-    #     left_menu.open_menu_devices()
-    #     devices_tab.click_icon_help()
-    #     self.assertTrue(devices_tab.check_help_link_is_correct())
-    #
-    # def test_help_link_on_administration_tab(self):
-    #     print ("\n" + "TC#0000: Check help link on administration tab")
-    #     left_menu = LeftMenu(self.driver)
-    #     administration_tab = AdministrationTab(self.driver)
-    #     left_menu.open_menu_administration()
-    #     administration_tab.click_icon_help()
-    #     self.assertTrue(administration_tab.check_help_link_is_correct())
-    #
-    # def test_help_link_on_tasks_tab(self):
-    #     print ("\n" + "TC#0000: Check help link on tasks tab")
-    #     left_menu = LeftMenu(self.driver)
-    #     tasks_tab = TasksTab(self.driver)
-    #     left_menu.open_menu_tasks()
-    #     tasks_tab.click_icon_help()
-    #     self.assertTrue(tasks_tab.check_help_link_is_correct())
-    #
-    # def test_help_link_on_reporting_tab(self):
-    #     print ("\n" + "TC#0000: Check help link on reporting tab")
-    #     left_menu = LeftMenu(self.driver)
-    #     reporting_tab = ReportingTab(self.driver)
-    #     left_menu.open_menu_reporting()
-    #     reporting_tab.click_icon_help()
-    #     self.assertTrue(reporting_tab.check_help_link_is_correct())
-    #
-    # def test_help_link_on_software_and_patch_manager_tab(self):
-    #     print ("\n" + "TC#0000: Check help link on software and patch manager tab")
-    #     left_menu = LeftMenu(self.driver)
-    #     software_and_patch_manager_tab = SoftwareAndPatchManagerTab(self.driver)
-    #     left_menu.open_menu_software_and_patch_manager()
-    #     software_and_patch_manager_tab.click_icon_help()
-    #     self.assertTrue(software_and_patch_manager_tab.check_help_link_is_correct())
-    #
-    # def test_help_link_on_site_name_popup(self):
-    #     print ("\n" + "TC#0000: Check help link on Site Name popup")
-    #     left_menu = LeftMenu(self.driver)
-    #     ribbon_bar = RibbonBar(self.driver)
-    #     site_name_popup = SiteNamePopup(self.driver)
-    #     left_menu.open_menu_devices()
-    #     left_menu.click_global_site_view_label()
-    #     self.assertTrue(ribbon_bar.check_button_new_site_is_present)
-    #     ribbon_bar.click_button_new_site()
-    #     self.assertTrue(site_name_popup.check_popup_is_present())
-    #     site_name_popup.click_icon_help()
-    #     self.assertTrue(site_name_popup.check_help_link_is_correct())
-    #
-    # def test_help_link_on_configuration_popup(self):
-    #     print ("\n" + "TC#0000: Check help link on Configuration popup")
-    #     left_menu = LeftMenu(self.driver)
-    #     ribbon_bar = RibbonBar(self.driver)
-    #     configuration_popup = ConfigurationPopup(self.driver)
-    #     left_menu.open_menu_devices()
-    #     left_menu.click_global_site_view_label()
-    #     self.assertTrue(ribbon_bar.check_button_config_is_present())
-    #     ribbon_bar.click_button_config()
-    #     self.assertTrue(configuration_popup.check_popup_is_present())
-    #     configuration_popup.click_icon_help()
-    #     self.assertTrue(configuration_popup.check_help_link_is_correct())
+    def test_help_link_on_home_tab(self):
+        print ("\n" + "TC#0000: Check help link on home tab")
+        left_menu = LeftMenu(self.driver)
+        home_tab = HomeTab(self.driver)
+        left_menu.open_menu_home()
+        self.assertTrue(home_tab.check_tab_is_present())
+        home_tab.click_icon_help()
+        self.assertTrue(home_tab.check_help_link_is_correct())
+
+    def test_help_link_on_devices_tab(self):
+        print ("\n" + "TC#0000: Check help link on devices tab")
+        left_menu = LeftMenu(self.driver)
+        devices_tab = DevicesTab(self.driver)
+        left_menu.open_menu_devices()
+        devices_tab.click_icon_help()
+        self.assertTrue(devices_tab.check_help_link_is_correct())
+
+    def test_help_link_on_administration_tab(self):
+        print ("\n" + "TC#0000: Check help link on administration tab")
+        left_menu = LeftMenu(self.driver)
+        administration_tab = AdministrationTab(self.driver)
+        left_menu.open_menu_administration()
+        administration_tab.click_icon_help()
+        self.assertTrue(administration_tab.check_help_link_is_correct())
+
+    def test_help_link_on_tasks_tab(self):
+        print ("\n" + "TC#0000: Check help link on tasks tab")
+        left_menu = LeftMenu(self.driver)
+        tasks_tab = TasksTab(self.driver)
+        left_menu.open_menu_tasks()
+        tasks_tab.click_icon_help()
+        self.assertTrue(tasks_tab.check_help_link_is_correct())
+
+    def test_help_link_on_reporting_tab(self):
+        print ("\n" + "TC#0000: Check help link on reporting tab")
+        left_menu = LeftMenu(self.driver)
+        reporting_tab = ReportingTab(self.driver)
+        left_menu.open_menu_reporting()
+        self.assertTrue(left_menu.check_menu_reporting_is_visible())
+        reporting_tab.click_icon_help()
+        self.assertTrue(reporting_tab.check_help_link_is_correct())
+
+    def test_help_link_on_software_and_patch_manager_tab(self):
+        print ("\n" + "TC#0000: Check help link on software and patch manager tab")
+        left_menu = LeftMenu(self.driver)
+        software_and_patch_manager_tab = SoftwareAndPatchManagerTab(self.driver)
+        left_menu.open_menu_software_and_patch_manager()
+        software_and_patch_manager_tab.click_icon_help()
+        self.assertTrue(software_and_patch_manager_tab.check_help_link_is_correct())
+
+    def test_help_link_on_ribbon_bar_console_guide_button(self):
+        print ("\n" + "TC#0000: Check help link on Ribbon bar - Console guide button")
+        ribbon_bar = RibbonBar(self.driver)
+        ribbon_bar.open_tab_home()
+        self.assertTrue(ribbon_bar.check_tab_home_is_present())
+        ribbon_bar.click_button_console_guide()
+        self.assertTrue(ribbon_bar.check_help_link_is_correct())
+
+    def test_help_link_on_select_dashboard_popup(self):
+        print ("\n" + "TC#0000: Check help link on Select Dashboard popup")
+        ribbon_bar = RibbonBar(self.driver)
+        select_dashboard = SelectDashboardPopup(self.driver)
+        ribbon_bar.open_tab_home()
+        self.assertTrue(ribbon_bar.check_tab_home_is_present())
+        ribbon_bar.click_button_home()
+        self.assertTrue(ribbon_bar.check_home_drop_down_list_is_present())
+        ribbon_bar.click_change_home_screen_label()
+        self.assertTrue(select_dashboard.check_popup_is_present())
+        select_dashboard.click_icon_help()
+        self.assertTrue(select_dashboard.check_help_link_is_correct())
+
+    def test_help_link_on_subscription_popup(self):
+        print ("\n" + "TC#0000: Check help link on Ribbon bar - Console guide button")
+        ribbon_bar = RibbonBar(self.driver)
+        ribbon_bar.open_tab_home()
+        self.assertTrue(ribbon_bar.check_tab_home_is_present())
+        ribbon_bar.click_button_console_guide()
+        self.assertTrue(ribbon_bar.check_help_link_is_correct())
 
     def test_help_link_on_settings_popup(self):
         print ("\n" + "TC#0000: Check help link on Settings popup")
         ribbon_bar = RibbonBar(self.driver)
         settings_popup = SettingsPopup(self.driver)
+        ribbon_bar.open_tab_home()
+        self.assertTrue(ribbon_bar.check_tab_home_is_present())
         ribbon_bar.click_button_settings()
         self.assertTrue(settings_popup.check_popup_is_present())
         settings_popup.click_icon_help()
@@ -789,6 +801,8 @@ class MainPageHelpLinks(unittest.TestCase):
         ribbon_bar = RibbonBar(self.driver)
         settings_popup = SettingsPopup(self.driver)
         content_services_tab = ContentServicesTab(self.driver)
+        ribbon_bar.open_tab_home()
+        self.assertTrue(ribbon_bar.check_tab_home_is_present())
         ribbon_bar.click_button_settings()
         self.assertTrue(settings_popup.check_popup_is_present())
         settings_popup.click_content_services_label()
@@ -801,6 +815,8 @@ class MainPageHelpLinks(unittest.TestCase):
         ribbon_bar = RibbonBar(self.driver)
         settings_popup = SettingsPopup(self.driver)
         email_settings_tab = EmailSettingsTab(self.driver)
+        ribbon_bar.open_tab_home()
+        self.assertTrue(ribbon_bar.check_tab_home_is_present())
         ribbon_bar.click_button_settings()
         self.assertTrue(settings_popup.check_popup_is_present())
         settings_popup.click_email_settings_label()
@@ -813,6 +829,8 @@ class MainPageHelpLinks(unittest.TestCase):
         ribbon_bar = RibbonBar(self.driver)
         settings_popup = SettingsPopup(self.driver)
         initial_setup_tab = InitialSetupTab(self.driver)
+        ribbon_bar.open_tab_home()
+        self.assertTrue(ribbon_bar.check_tab_home_is_present())
         ribbon_bar.click_button_settings()
         self.assertTrue(settings_popup.check_popup_is_present())
         settings_popup.click_initial_setup_label()
@@ -825,6 +843,8 @@ class MainPageHelpLinks(unittest.TestCase):
         ribbon_bar = RibbonBar(self.driver)
         settings_popup = SettingsPopup(self.driver)
         locale_option_tab = LocaleOptionsTab(self.driver)
+        ribbon_bar.open_tab_home()
+        self.assertTrue(ribbon_bar.check_tab_home_is_present())
         ribbon_bar.click_button_settings()
         self.assertTrue(settings_popup.check_popup_is_present())
         settings_popup.click_locale_options_label()
@@ -837,6 +857,8 @@ class MainPageHelpLinks(unittest.TestCase):
         ribbon_bar = RibbonBar(self.driver)
         settings_popup = SettingsPopup(self.driver)
         inventory_tab = InventoryTab(self.driver)
+        ribbon_bar.open_tab_home()
+        self.assertTrue(ribbon_bar.check_tab_home_is_present())
         ribbon_bar.click_button_settings()
         self.assertTrue(settings_popup.check_popup_is_present())
         settings_popup.click_inventory_label()
@@ -849,6 +871,8 @@ class MainPageHelpLinks(unittest.TestCase):
         ribbon_bar = RibbonBar(self.driver)
         settings_popup = SettingsPopup(self.driver)
         user_options_tab = UserOptionsTab(self.driver)
+        ribbon_bar.open_tab_home()
+        self.assertTrue(ribbon_bar.check_tab_home_is_present())
         ribbon_bar.click_button_settings()
         self.assertTrue(settings_popup.check_popup_is_present())
         settings_popup.click_user_options_label()
@@ -861,6 +885,8 @@ class MainPageHelpLinks(unittest.TestCase):
         ribbon_bar = RibbonBar(self.driver)
         settings_popup = SettingsPopup(self.driver)
         audit_log_settings_tab = AuditLogSettingsTab(self.driver)
+        ribbon_bar.open_tab_home()
+        self.assertTrue(ribbon_bar.check_tab_home_is_present())
         ribbon_bar.click_button_settings()
         self.assertTrue(settings_popup.check_popup_is_present())
         settings_popup.click_audit_log_settings_label()
@@ -872,6 +898,8 @@ class MainPageHelpLinks(unittest.TestCase):
         print ("\n" + "TC#0000: Check help link on Client Settings popup")
         ribbon_bar = RibbonBar(self.driver)
         client_settings_popup = ClientSettingsPopup(self.driver)
+        ribbon_bar.open_tab_home()
+        self.assertTrue(ribbon_bar.check_tab_home_is_present())
         ribbon_bar.click_button_client()
         self.assertTrue(client_settings_popup.check_popup_is_present())
         client_settings_popup.click_icon_help()
@@ -882,6 +910,8 @@ class MainPageHelpLinks(unittest.TestCase):
         ribbon_bar = RibbonBar(self.driver)
         client_settings_popup = ClientSettingsPopup(self.driver)
         timers_tab = TimersTab(self.driver)
+        ribbon_bar.open_tab_home()
+        self.assertTrue(ribbon_bar.check_tab_home_is_present())
         ribbon_bar.click_button_client()
         self.assertTrue(client_settings_popup.check_popup_is_present())
         client_settings_popup.click_timers_tab()
@@ -894,6 +924,8 @@ class MainPageHelpLinks(unittest.TestCase):
         ribbon_bar = RibbonBar(self.driver)
         client_settings_popup = ClientSettingsPopup(self.driver)
         feature_tab = FeaturesTab(self.driver)
+        ribbon_bar.open_tab_home()
+        self.assertTrue(ribbon_bar.check_tab_home_is_present())
         ribbon_bar.click_button_client()
         self.assertTrue(client_settings_popup.check_popup_is_present())
         client_settings_popup.click_features_label()
@@ -906,6 +938,8 @@ class MainPageHelpLinks(unittest.TestCase):
         ribbon_bar = RibbonBar(self.driver)
         client_settings_popup = ClientSettingsPopup(self.driver)
         client_urls_tab = ClientUrlsTab(self.driver)
+        ribbon_bar.open_tab_home()
+        self.assertTrue(ribbon_bar.check_tab_home_is_present())
         ribbon_bar.click_button_client()
         self.assertTrue(client_settings_popup.check_popup_is_present())
         client_settings_popup.click_client_urls_label()
@@ -918,6 +952,8 @@ class MainPageHelpLinks(unittest.TestCase):
         ribbon_bar = RibbonBar(self.driver)
         client_settings_popup = ClientSettingsPopup(self.driver)
         reboot_ui_config_tab = RebootUIConfigTab(self.driver)
+        ribbon_bar.open_tab_home()
+        self.assertTrue(ribbon_bar.check_tab_home_is_present())
         ribbon_bar.click_button_client()
         self.assertTrue(client_settings_popup.check_popup_is_present())
         client_settings_popup.click_reboot_ui_config_tab()
@@ -930,6 +966,8 @@ class MainPageHelpLinks(unittest.TestCase):
         ribbon_bar = RibbonBar(self.driver)
         client_settings_popup = ClientSettingsPopup(self.driver)
         client_proxy_settings_tab = ClientProxySettingsTab(self.driver)
+        ribbon_bar.open_tab_home()
+        self.assertTrue(ribbon_bar.check_tab_home_is_present())
         ribbon_bar.click_button_client()
         self.assertTrue(client_settings_popup.check_popup_is_present())
         client_settings_popup.click_client_proxy_settings_tab()
@@ -937,10 +975,60 @@ class MainPageHelpLinks(unittest.TestCase):
         client_settings_popup.click_icon_help()
         self.assertTrue(client_proxy_settings_tab.check_help_link_is_correct())
 
+    def test_help_link_on_site_name_popup(self):
+        print ("\n" + "TC#0000: Check help link on Site Name popup")
+        ribbon_bar = RibbonBar(self.driver)
+        left_menu = LeftMenu(self.driver)
+        site_name_popup = SiteNamePopup(self.driver)
+        ribbon_bar.open_tab_home()
+        self.assertTrue(ribbon_bar.check_tab_home_is_present())
+        left_menu.open_menu_devices()
+        self.assertTrue(left_menu.check_menu_devices_is_visible())
+        left_menu.click_global_site_view_label()
+        self.assertTrue(ribbon_bar.check_button_new_site_is_present())
+        ribbon_bar.click_button_new_site()
+        self.assertTrue(site_name_popup.check_popup_is_present())
+        site_name_popup.click_icon_help()
+        self.assertTrue(site_name_popup.check_help_link_is_correct())
+
+    def test_help_link_on_configuration_popup(self):
+        print ("\n" + "TC#0000: Check help link on Configuration popup")
+        ribbon_bar = RibbonBar(self.driver)
+        left_menu = LeftMenu(self.driver)
+        configuration_popup = ConfigurationPopup(self.driver)
+        ribbon_bar.open_tab_home()
+        self.assertTrue(ribbon_bar.check_tab_home_is_present())
+        left_menu.open_menu_devices()
+        self.assertTrue(left_menu.check_menu_devices_is_visible())
+        left_menu.click_global_site_view_label()
+        self.assertTrue(ribbon_bar.check_button_config_is_present())
+        ribbon_bar.click_button_config()
+        self.assertTrue(configuration_popup.check_popup_is_present())
+        configuration_popup.click_icon_help()
+        self.assertTrue(configuration_popup.check_help_link_is_correct())
+
+    def test_help_link_on_move_site(self):
+        print ("\n" + "TC#0000: Check help link on Move Site popup")
+        sitename = "HelpTest"
+        ribbon_bar = RibbonBar(self.driver)
+        left_menu = LeftMenu(self.driver)
+        main_page = MainPage(self.driver)
+        move_site_popup = MoveSitePopup(self.driver)
+        ribbon_bar.open_tab_home()
+        self.assertTrue(ribbon_bar.check_tab_home_is_present())
+        left_menu.open_menu_devices()
+        self.assertTrue(left_menu.check_menu_devices_is_visible())
+        main_page.create_site_if_not_exists(sitename)
+        left_menu.click_site_in_global_site_view_tree(sitename)
+        self.assertTrue(ribbon_bar.check_button_config_is_present())
+        ribbon_bar.click_button_move()
+        self.assertTrue(move_site_popup.check_popup_is_present())
+        move_site_popup.click_icon_help()
+        self.assertTrue(move_site_popup.check_help_link_is_correct())
+
     def tearDown(self):
         help_window = BaseActions(self.driver)
         help_window._close_help_window()
-        # help_window._close_help_windows()
 
     @classmethod
     def tearDownClass(cls):
@@ -948,6 +1036,6 @@ class MainPageHelpLinks(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main(verbosity=2)
+    unittest.main(verbosity=1)
     # suite = unittest.TestLoader().loadTestsFromTestCase(TestCases)
     # unittest.TextTestRunner(verbosity=2).run(suite())

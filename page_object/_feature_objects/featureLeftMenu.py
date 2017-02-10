@@ -1,11 +1,10 @@
-from _base_page.base import Base
-from _locators.locators import Locators
+
+from _base_page.base_actions import BaseActions
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
-import time
 
 
-class LeftMenu(Base):
+class LeftMenu(BaseActions):
 
     '''CONSTANTS'''
     LEFT_MENU_VISIBLE = "[contains(@style,'translate3d(0px, 0px, 0px)')]"
@@ -204,12 +203,12 @@ class LeftMenu(Base):
         return True if cond else False
 
     def check_default_site_is_in_global_site_view_tree(self):
-        cond = self._is_element_present(LeftMenu.LABEL_DEFAULT_SITE)
+        cond = self._is_element_present(self.LABEL_DEFAULT_SITE)
         return True if cond else False
 
     def expand_global_site_view_tree(self):
-        self.wait_for_element_present(LeftMenu.LABEL_GLOBAL_SITE_VIEW)
-        arrow_expand = self._is_element_present(LeftMenu.LABEL_GLOBAL_SITE_VIEW + Base.ARROW_EXPAND)
+        self.wait_for_element_present(self.LABEL_GLOBAL_SITE_VIEW)
+        arrow_expand = self._is_element_present(self.LABEL_GLOBAL_SITE_VIEW + self.ARROW_EXPAND)
         if arrow_expand:
             self._expand_tree(LeftMenu.LABEL_GLOBAL_SITE_VIEW)
         else:

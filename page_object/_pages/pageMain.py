@@ -1,7 +1,14 @@
+
+
+from _base_page.base_elements import *
 from _feature_objects.featureLeftMenu import LeftMenu
-from _feature_objects.featureRibbonBar import RibbonBar
+from _feature_objects.featurePopupColumnSetDesigner import ColumnSetDesignerPopup
+from _feature_objects.featurePopupColumnSets import ColumnSetsPopup
+from _feature_objects.featurePopupConfiguration import ConfigurationPopup
+from _feature_objects.featurePopupRemoveDevices import RemoveDevicesPopup
+from _feature_objects.featurePopupSiteName import SiteNamePopup
 from _feature_objects.featurePopups import *
-from _settings.settings import Settings
+from _feature_objects.featureRibbonBar import RibbonBar
 from _feature_objects.featureTabs import *
 
 
@@ -39,7 +46,7 @@ class MainPage(LeftMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, ColumnS
         LeftMenu.check_site_is_in_global_site_view_tree(self, sitename)
 
     def create_site_if_not_exists(self, sitename):
-        cond = self._is_element_not_present(LeftMenu.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
+        cond = self._is_element_not_present(self.TREE_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
         if cond:
             LeftMenu.click_global_site_view_label(self)
             RibbonBar.click_button_new_site(self)
@@ -70,41 +77,6 @@ class MainPage(LeftMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, ColumnS
         LeftMenu.click_global_site_view_label(self)
         RibbonBar.click_tab_view(self)
         RibbonBar.click_button_edit_or_create(self)
-
-    def create_columnset_from_ribbon_bar(self, columnsetname, column_list):
-        LeftMenu.click_global_site_view_label(self)
-        RibbonBar.click_tab_view(self)
-        RibbonBar.click_button_edit_or_create(self)
-        cond = ColumnSetsPopup.check_is_columnset_present(self, columnsetname)
-        pages = self._is_element_present(Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_PAGES_PANEL)
-        # if pages:
-        #     pages_number = self._find_element(Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_LIST_PAGES_NUMBER).text()
-        #     # number = pages_number.text()
-        #     print pages_number
-        #     while pages_number >= 1:
-        #         self.send_keys_and_enter(Locators.POPUP_COLUMN_SETS + "/*//" + Locators.EL_FIELD_GO_TO, pages_number)
-        # else:
-        #     pass
-        while cond:
-            ColumnSetsPopup.click_columnset_in_table_list(self, columnsetname)
-            ColumnSetsPopup.click_button_delete(self)
-            AreYouSurePopup.click_button_ok(self)
-        else:
-            pass
-        ColumnSetsPopup.click_button_new(self)
-        ColumnSetDesignerPopup.click_system_button_maximize(self)
-        ColumnSetDesignerPopup.enter_text_into_text_field_name(self, columnsetname)
-        ColumnSetDesignerPopup.expand_all_left_side_trees(self)
-        for columnname in list(column_list):
-            ColumnSetDesignerPopup.click_column_in_left_side_tree(self, columnname)
-            ColumnSetDesignerPopup.click_button_add(self, columnname)
-        # ColumnSetDesignerPopup.add_columns_to_list_view(self, column_list)
-        ColumnSetDesignerPopup.click_button_ok(self)
-        result = ColumnSetsPopup.check_is_columnset_present(self,columnsetname)
-        ColumnSetsPopup.click_button_ok(self)
-        RibbonBar.click_tab_home(self)
-        LeftMenu.click_global_site_view_label(self)
-        return result
 
     # def create_columnset_from_column_sets_popup(self, columnsetname, columns_list):
     #     self.click_button_new()

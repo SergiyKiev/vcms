@@ -1,5 +1,4 @@
 
-import time
 from _base_page.base_actions import BaseActions
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -41,9 +40,6 @@ class SettingsPopup(BaseActions):
 
     def click_inventory_label(self):
         self._click_element(InventoryTab.LEFT_MENU_LABEL)
-        wait = WebDriverWait(self.driver, 600).\
-            until(EC.presence_of_element_located((By.ID, InventoryTab.LABEL_INVENTORY_ARCHIVE_SETTINGS)))
-        print "Waiting is over", wait
         self.wait_for_element_selected(InventoryTab.LEFT_MENU_LABEL)
 
     def click_user_options_label(self):
@@ -140,6 +136,8 @@ class InventoryTab(SettingsPopup):
                            + "/*//span[text()='Delete ALL Archive Data']/ancestor::div[contains(@class,'Button')]"
 
     def check_tab_is_present(self):
+        WebDriverWait(self.driver, 600).\
+            until(EC.presence_of_element_located((By.XPATH, self.LABEL_INVENTORY_ARCHIVE_SETTINGS)))
         cond1 = self._is_element_present(self.LABEL_INVENTORY_ARCHIVE_SETTINGS)
         cond2 = self._is_element_present(self.LABEL_DATE_FORMAT)
         cond3 = self._is_element_present(self.BUTTON_PURGE_RECORDS)
@@ -164,6 +162,7 @@ class UserOptionsTab(SettingsPopup):
     def check_help_link_is_correct(self):
         cond = self._check_help_frame_header("User Options")
         return True if cond else False
+
 
 class AuditLogSettingsTab(SettingsPopup):
 

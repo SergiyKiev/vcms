@@ -1,12 +1,15 @@
 
 from _base_page.base_actions import BaseActions
-from _locators.locators import Locators
 
 
 class HomeTab(BaseActions):
 
-    TAB_HEADER = "//span[text()='Welcome To Cloud Management Suite']/ancestor::div[@class='Panel-Control'][contains(@style,'85px')]"
+    TAB_HEADER = "//span[contains(text(),'Welcome To Cloud')]/ancestor::div[@class='Panel-Control'][contains(@style,'85px')]"
     BODY = TAB_HEADER + "/parent::div"
+
+    def check_tab_is_present(self):
+        cond = self._is_element_present(HomeTab.TAB_HEADER)
+        return True if cond else False
 
     def click_icon_help(self):
         self._click_icon_help(HomeTab.TAB_HEADER)
@@ -32,13 +35,13 @@ class DevicesTab(BaseActions):
         self.wait_for_element_selected(row)
 
     def click_icon_refresh(self):
-        self._click_icon_refresh(DevicesTab.TAB_HEADER)
+        self._click_icon_refresh(self.TAB_HEADER)
 
     def click_icon_search(self):
-        self._click_icon_search(DevicesTab.TAB_HEADER)
+        self._click_icon_search(self.TAB_HEADER)
 
     def enter_text_into_search_field(self, text = None):
-        self._find_element(DevicesTab.SEARCH_FIELD).send_keys(text)
+        self._find_element(self.SEARCH_FIELD).send_keys(text)
 
     def check_is_tab_present(self):
         try:

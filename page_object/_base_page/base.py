@@ -43,9 +43,6 @@ class Base(object):
             self.driver.maximize_window()
             self.driver.get(Settings.baseUrl)
             self.wait_for_element_present(BaseElements._LOGIN_PAGE_LOGO)
-            # self.wait.until(EC.presence_of_element_located((By.XPATH, Base.FIELD_USERNAME)))
-            # self.wait.until(EC.presence_of_element_located((By.XPATH, Base.FIELD_PASSWORD)))
-            # self.wait.until(EC.presence_of_element_located((By.XPATH, Base.BUTTON_SIGN_IN)))
         except TimeoutException:
             print "Page is not loaded"
         except Exception as e:
@@ -84,23 +81,22 @@ class Base(object):
         try:
             element = self._find_element(locator)
             if element is not None:
-                time.sleep(0.8)
-                self.wait_general.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
-                self.wait_general.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
-                self.wait_general.until(EC.element_to_be_clickable((By.XPATH, locator)))
                 # print "\n" + "CLICK:  ", locator
-                # self.wait.until(EC.element_to_be_clickable((By.XPATH, locator))).click()
+                self.wait_general.until(EC.element_to_be_clickable((By.XPATH, locator)))
                 element.click()
-                time.sleep(0.7)
+                time.sleep(1)
                 self.wait_general.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
                 self.wait_general.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
                 return True
-            else: return False
-        # except NoSuchElementException:
-        #     print locator + " is not clickable"
-        #     return False
+        except NoSuchElementException:
+            print locator + " is not found"
+            return False
+        except TimeoutException:
+            print "Loading process timeout after clicking. Timeout set: ", self.timeout, "seconds"
+            return False
         except Exception as e:
             print "The element is not clickable in the reason of ", e
+            return False
 
     def hover_and_click_element(self, locator):
         try:

@@ -611,3 +611,5 @@ class Locators:
     print TAB_IP_ADDRESS_RANGES
     print TAB_SITE
     print TAB_VREPS
+    print BTN_HOME_DROP_DOWN_ARROW
+    print BTN_HOME

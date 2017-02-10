@@ -133,14 +133,14 @@ class BaseActions(Base):
 
     def _select_help_window(self):
         handles = self.driver.window_handles
+        self.wait_condition.until(lambda d: len(d.window_handles) == 2)
         help_window = handles[1]
-        # WebDriverWait(self.driver, 10).until(lambda d: len(d.window_handles) == 2)
         self.driver.switch_to_window(help_window)
         self.wait_general.until(lambda d: d.title != "")
         title = self.driver.title
         print "Title is: " , title
         self.driver.switch_to_frame(self.driver.find_element_by_name('FrameMain'))
-        header = self._find_element(BaseElements.HELP_WINDOW_HEADER).text
+        # header = self._find_element(BaseElements.HELP_WINDOW_HEADER).text
         # print "Header is: ", header
 
     def _close_help_window(self):
