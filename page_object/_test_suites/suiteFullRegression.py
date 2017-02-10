@@ -852,19 +852,19 @@ class MainPageHelpLinks(unittest.TestCase):
         settings_popup.click_icon_help()
         self.assertTrue(locale_option_tab.check_help_link_is_correct())
 
-    def test_help_link_on_settings_popup_inventory_tab(self):
-        print ("\n" + "TC#0000: Check help link on Settings popup - Inventory tab")
-        ribbon_bar = RibbonBar(self.driver)
-        settings_popup = SettingsPopup(self.driver)
-        inventory_tab = InventoryTab(self.driver)
-        ribbon_bar.open_tab_home()
-        self.assertTrue(ribbon_bar.check_tab_home_is_present())
-        ribbon_bar.click_button_settings()
-        self.assertTrue(settings_popup.check_popup_is_present())
-        settings_popup.click_inventory_label()
-        self.assertTrue(inventory_tab.check_tab_is_present())
-        settings_popup.click_icon_help()
-        self.assertTrue(inventory_tab.check_help_link_is_correct())
+    # def test_help_link_on_settings_popup_inventory_tab(self):
+    #     print ("\n" + "TC#0000: Check help link on Settings popup - Inventory tab")
+    #     ribbon_bar = RibbonBar(self.driver)
+    #     settings_popup = SettingsPopup(self.driver)
+    #     inventory_tab = InventoryTab(self.driver)
+    #     ribbon_bar.open_tab_home()
+    #     self.assertTrue(ribbon_bar.check_tab_home_is_present())
+    #     ribbon_bar.click_button_settings()
+    #     self.assertTrue(settings_popup.check_popup_is_present())
+    #     settings_popup.click_inventory_label()
+    #     self.assertTrue(inventory_tab.check_tab_is_present())
+    #     settings_popup.click_icon_help()
+    #     self.assertTrue(inventory_tab.check_help_link_is_correct())
 
     def test_help_link_on_settings_popup_user_options_tab(self):
         print ("\n" + "TC#0000: Check help link on Settings popup - User Options tab")

@@ -21,7 +21,6 @@ class SiteNamePopup(BaseActions):
 
     def check_popup_is_present(self):
         cond = self._is_element_present(SiteNamePopup.BODY)
-        print cond
         return True if cond else False
 
     def click_icon_help(self):
