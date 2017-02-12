@@ -1,5 +1,6 @@
 
 from _base_page.base_actions import BaseActions
+from _feature_objects.featurePopupInitialSetup import InitialSetupPopup
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
@@ -90,19 +91,23 @@ class InitialSetupTab(SettingsPopup):
 
     LEFT_MENU_LABEL = SettingsPopup._LEFT_MENU \
                       + "/*//span[text()='Initial Setup']/ancestor::div[contains(@id,'VWGNODE')]"
-    BUTTON_INITIAL_SETUP = SettingsPopup._TAB \
-                           + "/*//span[text()='Run Initial Setup']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_RUN_INITIAL_SETUP = SettingsPopup._TAB \
+                               + "/*//span[text()='Run Initial Setup']/ancestor::div[contains(@class,'Button')]"
     CHECKBOX_TERMS_AND_CONDITIONS = SettingsPopup._TAB \
                               + "/*//span[contains(text(),'Show Terms')]/ancestor::div[contains(@class,'CheckBox')]"
 
     def check_tab_is_present(self):
-        cond1 = self._is_element_present(self.BUTTON_INITIAL_SETUP)
+        cond1 = self._is_element_present(self.BUTTON_RUN_INITIAL_SETUP)
         cond2 = self._is_element_present(self.CHECKBOX_TERMS_AND_CONDITIONS)
         return True if cond1 and cond2 else False
 
     def check_help_link_is_correct(self):
         cond = self._check_help_frame_header("Initial Setup")
         return True if cond else False
+
+    def click_button_run_initial_setup(self):
+        self._click_element(InitialSetupTab.BUTTON_RUN_INITIAL_SETUP)
+        self.wait_for_element_present(InitialSetupPopup.BODY)
 
 
 class LocaleOptionsTab(SettingsPopup):

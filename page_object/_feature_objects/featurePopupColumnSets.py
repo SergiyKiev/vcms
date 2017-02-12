@@ -1,7 +1,7 @@
 
 from _base_page.base_actions import BaseActions
 from _feature_objects.featurePopupColumnSetDesigner import ColumnSetDesignerPopup
-from _feature_objects.featurePopups import AreYouSurePopup
+from _feature_objects.featurePopupAreYouSure import AreYouSurePopup
 
 
 class ColumnSetsPopup(BaseActions):

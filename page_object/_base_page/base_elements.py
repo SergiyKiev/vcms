@@ -4,19 +4,18 @@ class BaseElements:
     LOADING_SCREEN = "//div[@id='VWG_LoadingScreen']"
 
     #BUTTONS
-    BUTTON_EDIT = "/*//img[@alt='Edit']/ancestor::div[contains(@class,'Button')]"
-    BUTTON_EDIT_by_text = "/*//*[text()='Edit']"
-    # BUTTON_NEW = "//img[@alt='New']/ancestor::div[contains(@class,'Button')]"
-    # BUTTON_NEW_by_text = "//span[text()='New']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_EDIT = "/*//*[text()='Edit']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_NEW = "//span[text()='New']/ancestor::div[contains(@class,'Button')]"
     BUTTON_OK = "/*//span[text()='OK']/ancestor::div[contains(@class,'Button')]"
     BUTTON_Ok = "/*//span[text()='Ok']/ancestor::div[contains(@class,'Button')]"
     BUTTON_CANCEL = "/*//span[text()='Cancel']/ancestor::div[contains(@class,'Button')]"
     BUTTON_NO = "/*//span[text()='No']/ancestor::div[contains(@class,'Button')]"
     BUTTON_YES = "/*//span[text()='Yes']/ancestor::div[contains(@class,'Button')]"
     BUTTON_CLOSE = "/*//span[text()='Close']/ancestor::div[contains(@class,'Button')]"
-    BUTTON_RESTORE = "/*//td[contains(@style,'circlex')]/ancestor::div[contains(@class,'Button')]"
     BUTTON_ARROW_UP = "/*//td[contains(@style,'arrow_up')]/ancestor::div[contains(@class,'Button')]"
     BUTTON_ARROW_DOWN = "/*//td[contains(@style,'arrow_down')]/ancestor::div[contains(@class,'Button')]"
+    BUTTON_ADD = "/*//span[text()='Add']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_DELETE = "/*//span[text()='Delete']/ancestor::div[contains(@class,'Button')]"
 
    #SYSTEM_BUTTONS
     SYSTEM_BUTTON_CLOSE = "/*//div[@title='Close']"
@@ -30,6 +29,7 @@ class BaseElements:
     ICON_EXPORT = "/*//img[contains(@src,'212-action2')]"
     ICON_REFRESH = "/*//img[contains(@src,'02-redo.2x')]"
     ICON_SEARCH = "/*//img[contains(@src,'06-magnify.2xw')]"
+    ICON_RESTORE = "/*//img[contains(@src,'298-circlex')]"
 
     #DROP_DOWN
     DROP_DOWN_LIST = "/*//div[contains(@class,'ComboBox-Container')]"
@@ -46,10 +46,10 @@ class BaseElements:
 
     #HELP WINDOW
     HELP_WINDOW_BODY = "//title[text()='ConsoleOperationGuide']"
-    HELP_WINDOW_HEADER = "//*[@id='topic_header_text']"
+    HELP_FRAME_HEADER = "//*[@id='topic_header_text']"
     HELP_FRAME_MAIN = "//frame[@name='FrameMain']"
-    HELP_FRAME_TITLE_SERVER_ERROR = "//h1[text()='Server Error']"
-    HELP_FRAME_TITLE_GETTING_STARTED = "//h1[text()='Getting Started in CMS']"
+    HELP_FRAME_HEADER_SERVER_ERROR = "//h1[text()='Server Error']"
+    HELP_FRAME_HEADER_GETTING_STARTED = "//h1[text()='Getting Started in CMS']"
 
 
 

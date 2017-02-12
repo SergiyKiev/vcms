@@ -6,7 +6,7 @@ from selenium.common.exceptions import TimeoutException
 
 class LeftMenu(BaseActions):
 
-    '''CONSTANTS'''
+    #CONSTANTS
     LEFT_MENU_VISIBLE = "[contains(@style,'translate3d(0px, 0px, 0px)')]"
     GREY_COLOR = "[contains(@style,'#E8E8E8')]"
     ICON_HOME = "//td[contains(@style,'Home')]"

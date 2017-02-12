@@ -9,31 +9,9 @@ from selenium.common.exceptions import NoSuchElementException
 class BaseActions(Base):
 
     def _button_edit(self, locator):
-        try:
-            cond1 = self._is_element_present(locator + "/*" + BaseElements.BUTTON_EDIT)
-            cond2 = self._is_element_present(locator + "/*" + BaseElements.BUTTON_EDIT_by_text)
-            if cond1:
-                return self._find_element(locator + "/*" + BaseElements.BUTTON_EDIT)
-            elif cond2:
-                return self._find_element(locator + "/*" + BaseElements.BUTTON_EDIT_by_text)
-
-        except NoSuchElementException:
-                print "Button Edit for " + locator +  " is not found"
-
-    # def _click_button_new(self, locator=None):
-    #     self.wait_for_element_present(locator)
-    #     try:
-    #         cond1 = self._is_element_present(locator + BaseElements.BUTTON_NEW)
-    #         cond2 = self._is_element_present(locator + BaseElements.BUTTON_NEW_by_text)
-    #         if cond1:
-    #             self._click_element(locator + BaseElements.BUTTON_NEW)
-    #         elif cond2:
-    #             self._click_element(locator + BaseElements.BUTTON_NEW_by_text)
-    #     except Exception as e:
-    #         print "Button is not found ", e
+        self._click_element(locator + BaseElements.BUTTON_EDIT)
 
     def _click_button_ok(self, locator=None):
-        self.wait_for_element_present(locator)
         try:
             cond1 = self._is_element_present(locator + BaseElements.BUTTON_OK)
             cond2 = self._is_element_present(locator + BaseElements.BUTTON_Ok)
@@ -46,17 +24,14 @@ class BaseActions(Base):
             print "Button is not found ", e
 
     def _click_button_no(self, locator):
-        self.wait_for_element_present(locator)
         self._click_element(locator + BaseElements.BUTTON_NO)
         self.wait_for_element_not_present(locator)
 
     def _click_button_yes(self, locator):
-        self.wait_for_element_present(locator)
         self._click_element(locator + BaseElements.BUTTON_YES)
         self.wait_for_element_not_present(locator)
 
     def _click_button_cancel(self, locator):
-        self.wait_for_element_present(locator)
         self._click_element(locator + BaseElements.BUTTON_CANCEL)
         self.wait_for_element_not_present(locator)
 
@@ -65,13 +40,22 @@ class BaseActions(Base):
         self._click_element(locator + BaseElements.BUTTON_CLOSE)
         self.wait_for_element_not_present(locator)
 
+    def _click_button_add(self, locator):
+        self._click_element(locator + BaseElements.BUTTON_ADD)
+
+    def _click_button_new(self, locator):
+        self._click_element(locator + BaseElements.BUTTON_NEW)
+
+    def _click_button_delete(self, locator):
+        self._click_element(locator + BaseElements.BUTTON_DELETE)
+
     def _click_icon_help(self, locator):
-        self.wait_for_element_present(locator + BaseElements.ICON_HELP)
+        # self.wait_for_element_present(locator + BaseElements.ICON_HELP)
         self._click_element(locator + BaseElements.ICON_HELP)
 
-    def _click_button_restore(self, locator):
+    def _click_icon_restore(self, locator):
         self.wait_for_element_present(locator)
-        self._click_element(locator + BaseElements.BUTTON_RESTORE)
+        self._click_element(locator + BaseElements.ICON_RESTORE)
 
     def _click_icon_refresh(self, locator):
         self.wait_for_element_present(locator)
@@ -82,7 +66,6 @@ class BaseActions(Base):
         self._click_element(locator + BaseElements.ICON_SEARCH)
 
     def _click_system_button_close(self, locator):
-        self.wait_for_element_present(locator)
         self._click_element(locator + BaseElements.SYSTEM_BUTTON_CLOSE)
         self.wait_for_element_not_present(locator)
 
@@ -98,50 +81,67 @@ class BaseActions(Base):
         self._click_element(locator + BaseElements.SYSTEM_BUTTON_DROP_DOWN)
 
     def _close_popups(self):
-        try:
-            cond = self._is_element_present(BaseElements._POPUP)
+        cond = self._is_element_present(BaseElements._POPUP + BaseElements.SYSTEM_BUTTON_CLOSE)
+        if cond:
             i = 0
             while i < 10:
                 i += 1
-                if cond:
+                popup = self._is_element_present(BaseElements._POPUP + BaseElements.SYSTEM_BUTTON_CLOSE)
+                if popup:
                     self._click_element(BaseElements._POPUP + BaseElements.SYSTEM_BUTTON_CLOSE)
-                    print "All popups are closed"
-                    return True
                 else:
-                    pass
-        except Exception as e:
-            print "No such element: ", e
+                    break
+            print "Popups are closed"
+        else:
+            pass
 
     def _check_help_frame_header(self, expected_header_name):
-        # element = HelpWindow.HEADER + "[text()='" + header_name + "']"
-        # cond1 = self._is_element_present(element)
-        # cond2 = self._is_element_present(BaseElements.HELP_FRAME_TITLE_GETTING_STARTED)
-        # cond3 = self._is_element_present(BaseElements.HELP_FRAME_TITLE_SERVER_ERROR)
-        self._select_help_window()
-        current_header_name = self._find_element(BaseElements.HELP_WINDOW_HEADER).text
-        if current_header_name == expected_header_name:
-            print "Link is correct: ", current_header_name
-            return True
-        elif current_header_name == BaseElements.HELP_FRAME_TITLE_GETTING_STARTED:
-            default_text = self._find_element(BaseElements.HELP_WINDOW_HEADER).text
-            print "Link is incorrect: ", default_text
-            return False
-        elif current_header_name == BaseElements.HELP_FRAME_TITLE_SERVER_ERROR:
-            error_text = self._find_element("//h2").text
-            print "Server error: ", error_text
-            return False
+        self._select_help_window(expected_header_name)
+        cond = self._is_element_present(BaseElements.HELP_FRAME_HEADER + "[text()='" + expected_header_name + "']")
+        return True if cond else False
+        # current_header_name = self._find_element(BaseElements.HELP_FRAME_HEADER).text
+        # if current_header_name == expected_header_name:
+        #     print "Link is correct: ", current_header_name
+        #     return True
+        # else:
+        #     return False
+        # elif current_header_name == BaseElements.HELP_FRAME_HEADER_GETTING_STARTED:
+        #     default_text = self._find_element(BaseElements.HELP_FRAME_HEADER).text
+        #     print "Link is incorrect: ", default_text
+        #     return False
+        # elif current_header_name == BaseElements.HELP_FRAME_HEADER_SERVER_ERROR:
+        #     error_text = self._find_element("//h2").text
+        #     print "Server error: ", error_text
+        #     return False
 
-    def _select_help_window(self):
-        handles = self.driver.window_handles
-        self.wait_condition.until(lambda d: len(d.window_handles) == 2)
-        help_window = handles[1]
-        self.driver.switch_to_window(help_window)
-        self.wait_general.until(lambda d: d.title != "")
-        title = self.driver.title
-        print "Title is: " , title
-        self.driver.switch_to_frame(self.driver.find_element_by_name('FrameMain'))
-        # header = self._find_element(BaseElements.HELP_WINDOW_HEADER).text
-        # print "Header is: ", header
+    def _select_help_window(self, expected_header_name):
+        try:
+            handles = self.driver.window_handles
+            self.wait_condition.until(lambda d: len(d.window_handles) == 2)
+            help_window = handles[1]
+            self.driver.switch_to_window(help_window)
+            self.wait_general.until(lambda d: d.title != "")
+            title = self.driver.title
+            print "\n" + "Title is: ", title
+            self.driver.switch_to_frame(self.driver.find_element_by_name('FrameMain'))
+            cond1 = self._is_element_present(BaseElements.HELP_FRAME_HEADER + "[text()='" + expected_header_name + "']")
+            cond2 = self._is_element_present(BaseElements.HELP_FRAME_HEADER)
+            cond3 = self._is_element_present(BaseElements.HELP_FRAME_HEADER_SERVER_ERROR)
+            if cond1:
+                current_header_name = self._find_element(BaseElements.HELP_FRAME_HEADER).text
+                print "Link is correct. Header is: ", current_header_name
+            elif cond2:
+                current_header = self._find_element(BaseElements.HELP_FRAME_HEADER).text
+                print "Link is incorrect. Actual header is: ", current_header
+            elif cond3:
+                error_header = self._find_element(BaseElements.HELP_FRAME_HEADER_SERVER_ERROR).text
+                error_text1 = self._find_element("//*[@id='content']/div/fieldset/h2").text
+                error_text2 = self._find_element("//*[@id='content']/div/fieldset/h3").text
+                print "Link is incorrect. Header is: ", error_header
+                print "Error text is: ", error_text1, error_text2
+        except IndexError:
+            help_window = 'null'
+            print "Window is not found"
 
     def _close_help_window(self):
         handles = self.driver.window_handles

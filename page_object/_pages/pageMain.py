@@ -2,12 +2,13 @@
 
 from _base_page.base_elements import *
 from _feature_objects.featureLeftMenu import LeftMenu
+from _feature_objects.featurePopupAreYouSure import AreYouSurePopup
 from _feature_objects.featurePopupColumnSetDesigner import ColumnSetDesignerPopup
 from _feature_objects.featurePopupColumnSets import ColumnSetsPopup
 from _feature_objects.featurePopupConfiguration import ConfigurationPopup
+from _feature_objects.featurePopupError import ErrorPopup
 from _feature_objects.featurePopupRemoveDevices import RemoveDevicesPopup
 from _feature_objects.featurePopupSiteName import SiteNamePopup
-from _feature_objects.featurePopups import *
 from _feature_objects.featureRibbonBar import RibbonBar
 from _feature_objects.featureTabs import *
 
@@ -77,54 +78,6 @@ class MainPage(LeftMenu, RibbonBar, ConfigurationPopup, ColumnSetsPopup, ColumnS
         LeftMenu.click_global_site_view_label(self)
         RibbonBar.click_tab_view(self)
         RibbonBar.click_button_edit_or_create(self)
-
-    # def create_columnset_from_column_sets_popup(self, columnsetname, columns_list):
-    #     self.click_button_new()
-    #     self.enter_text_into_text_field_name(columnsetname)
-    #     self.add_columns_to_list_view(columns_list)
-    #     ColumnSetDesignerPopup.click_button_add(self, columns_list)
-
-    # def check_columns_are_present(self, columns_list):
-    #     columnset = []
-    #     for i in columns_list:
-    #         elem = Locators.DEVICES_LIST_HEADER + "/*//span[contains(text(),'" + str(i) + "')]"
-    #         cond = self._is_element_present(elem)
-    #         if cond:
-    #             columnset.append(i)
-    #         else:
-    #             pass
-    #     print "Created column set is: ", columns_list
-    #     print "Expected column set is : ", columnset
-    #     if columnset == columns_list:
-    #         pass
-    #     else:
-    #         print "Columnsets are not similar ", columns_list, columnset
-    #     return True if columnset == columns_list else False
-
-    # def create_columnset_from_column_sets_popup(self, columnsetname, columns_list):
-    #     ColumnSetsPopup.click_button_new(self)
-    #     ColumnSetDesignerPopup.click_system_button_maximize(self)
-    #     ColumnSetDesignerPopup.enter_text_into_text_field_name(self,columnsetname)
-    #     ColumnSetDesignerPopup.add_columns_to_list_view(self, columns_list)
-    #     ColumnSetDesignerPopup.click_button_ok(self)
-    #
-    # def create_columnset_from_configuration_popup(self, columnsetname, columns_list):
-    #     ConfigurationPopup.click_button_new(self)
-    #     ColumnSetDesignerPopup.click_system_button_maximize(self)
-    #     ColumnSetDesignerPopup.enter_text_into_text_field_name(self,columnsetname)
-    #     ColumnSetDesignerPopup.add_columns_to_list_view(self, columns_list)
-    #     ColumnSetDesignerPopup.click_button_ok(self)
-
-    # def delete_columnset_if_exists(self, columnsetname):
-    #     elem = ColumnSetsPopup.TABLE_BODY + "/*//span[text()='" + columnsetname + "']"
-    #     cond = self._is_element_present(elem)
-    #     if cond:
-    #         ColumnSetsPopup.click_columnset_in_table_list(self, columnsetname)
-    #         ColumnSetsPopup.click_button_delete(self)
-    #         AreYouSurePopup.click_button_yes(self)
-    #         self.wait_for_element_not_present(elem)
-    #     else:
-    #         pass
 
     def delete_devices_in_devices_tab_table(self, *names):
         for name in list(*names):
