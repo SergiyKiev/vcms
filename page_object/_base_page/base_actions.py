@@ -117,7 +117,7 @@ class BaseActions(Base):
     def _select_help_window(self, expected_header_name):
         try:
             handles = self.driver.window_handles
-            self.wait_condition.until(lambda d: len(d.window_handles) == 2)
+            self.wait_general.until(lambda d: len(d.window_handles) == 2)
             help_window = handles[1]
             self.driver.switch_to_window(help_window)
             self.wait_general.until(lambda d: d.title != "")
@@ -129,16 +129,18 @@ class BaseActions(Base):
             cond3 = self._is_element_present(BaseElements.HELP_FRAME_HEADER_SERVER_ERROR)
             if cond1:
                 current_header_name = self._find_element(BaseElements.HELP_FRAME_HEADER).text
-                print "Link is correct. Header is: ", current_header_name
+                print "Link is correct. Actual header: ", current_header_name
+                print "Expected header: ", expected_header_name
             elif cond2:
                 current_header = self._find_element(BaseElements.HELP_FRAME_HEADER).text
-                print "Link is incorrect. Actual header is: ", current_header
+                print "Link is incorrect. Actual header: ", current_header
+                print "Expected header: ", expected_header_name
             elif cond3:
                 error_header = self._find_element(BaseElements.HELP_FRAME_HEADER_SERVER_ERROR).text
                 error_text1 = self._find_element("//*[@id='content']/div/fieldset/h2").text
                 error_text2 = self._find_element("//*[@id='content']/div/fieldset/h3").text
-                print "Link is incorrect. Header is: ", error_header
-                print "Error text is: ", error_text1, error_text2
+                print "Link is incorrect. Header: ", error_header
+                print "Error text: ", error_text1, error_text2
         except IndexError:
             help_window = 'null'
             print "Window is not found"

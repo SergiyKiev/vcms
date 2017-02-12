@@ -1,7 +1,8 @@
+
 from _base_page.base_elements import BaseElements
-from _feature_objects.featurePopupError import ErrorPopup
-from _feature_objects.featurePopupTermsAndConditions import TermsAndConditionsPopup
-from _feature_objects.featurePopupSubscriptionHasExpired import *
+from _feature_objects._feature_popups.featurePopupTermsAndConditions import TermsAndConditionsPopup
+from _feature_objects._feature_popups.featurePopupError import ErrorPopup
+from _feature_objects._feature_popups.featurePopupSubscriptionHasExpired import *
 from _settings.settings import Settings
 from pageMain import MainPage
 

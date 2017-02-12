@@ -1,8 +1,8 @@
 import unittest
 
-from _feature_objects.featureLeftMenu import *
+from _feature_objects._featureTabs.featureTabDevices import DevicesTab
+from _feature_objects._feature_left_menus.featureLeftMenu import *
 from _feature_objects.featureRibbonBar import *
-from _feature_objects.featureTabs import DevicesTab
 from _pages.pageLogin import LoginPage
 from _pages.pageMain import MainPage
 from _variables.variables import *
@@ -34,7 +34,7 @@ class SmokeTest(unittest.TestCase):
         remove_devices_popup = RemoveDevicesPopup(self.driver)
         tab_devices = DevicesTab(self.driver)
         left_menu.open_menu_devices()
-        left_menu.expand_global_site_view_tree()
+        left_menu_devices.expand_global_site_view_tree()
         left_menu.click_global_site_view_label()
         # left_menu.click_site_in_global_site_view_tree(sitename)
         main_page.delete_devices_in_devices_tab_table(devices)
