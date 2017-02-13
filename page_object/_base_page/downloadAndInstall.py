@@ -1,21 +1,42 @@
 # run PyCharm as administrator
+
 import subprocess
 from subprocess import Popen, PIPE
 import os
 import wgetter
 import time
+from _base_page.base_actions import BaseActions
 
-# x = subprocess.Popen(['D:\\verismicCleanUp.cmd']) #work
-x = subprocess.Popen(['C:\\VCMS\\verismicCleanUp.cmd']) #home
-print x
-time.sleep(120)
-# wgetter.download('https://testteamtest.cloudmanagementsuite.com/WebService/api/v1/Downloads/vRepSetup.msi', outdir='C:\\VCMS')
-# time.sleep(15)
-# os.system('msiexec /i %s /qn' % 'C:\\VCMS\\vRepSetup-testteamtest.msi')
+
+# # x = subprocess.Popen(['D:\\verismicCleanUp.cmd']) #work
+# clean_up = subprocess.Popen(['C:\\VCMS\\verismicCleanUp.cmd']) #home
+# # print clean_up
+# time.sleep(120)
+# download_agent = \
+#     wgetter.download('https://testteamtest.cloudmanagementsuite.com/WebService/api/v1/Downloads/vRepSetup.msi', outdir='C:\\VCMS')
+# print download_agent
+# time.sleep(20)
+# install_agent = os.system('msiexec /i %s /qn' % 'C:\\VCMS\\vRepSetup-testteamtest.msi')
+# print install_agent
 # time.sleep(60)
 
+class DownloadAndInstall(BaseActions):
+# x = subprocess.Popen(['D:\\verismicCleanUp.cmd']) #work
+    def clean_up_device(self):
+        x = subprocess.Popen(['C:\\VCMS\\verismicCleanUp.cmd']) #home
+        # print x
+        time.sleep(60)
 
+    def download_agent(self):
+        x = wgetter.download('https://testteamtest.cloudmanagementsuite.com/WebService/api/v1/Downloads/vRepSetup.msi', outdir='C:\\VCMS')
+        # wgetter.download(str(url), outdir='C:\\VCMS')
+        print x
+        time.sleep(10)
 
+    def install_agent(self):
+        # os.system('msiexec /i %s /qn' % 'C:\\VCMS\\vRepSetup-testteamtest.msi')
+        x = os.system('msiexec /i %s /qn' % 'C:\\VCMS\\vRepSetup-testteamtest.msi')
+        time.sleep(60)
 #
 
 

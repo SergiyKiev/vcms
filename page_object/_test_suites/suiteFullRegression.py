@@ -1,20 +1,32 @@
 
 import logging
 import unittest
-from _feature_objects._featureTabs.featureTabDevices import *
-from _feature_objects._feature_left_menus.featureLeftMenu import LeftMenu
-from _feature_objects._feature_left_menus.featureLeftMenuDevices import LeftMenuDevices
-from _feature_objects._feature_popups.featurePopupAreYouSure import AreYouSurePopup
-from _feature_objects._feature_popups.featurePopupClientSettings import *
-from _feature_objects._feature_popups.featurePopupConfiguration import *
-from _feature_objects._feature_popups.featurePopupError import ErrorPopup
-from _feature_objects._feature_popups.featurePopupIPAddress import IPAddressPopup
-from _feature_objects._feature_popups.featurePopupResetPassword import ResetPasswordPopup
-from _feature_objects._feature_popups.featurePopupSettings import *
-from _feature_objects._feature_popups.featurePopupUnableToRemove import UnableToRemovePopup
-from _feature_objects.featureRibbonBar import *
-from _pages.pageLogin import LoginPage
-from _pages.pageMain import MainPage
+
+from _base_page.downloadAndInstall import DownloadAndInstall
+from _feature_objects._left_menus.leftMenu import LeftMenu
+from _feature_objects._left_menus.leftMenuDevices import LeftMenuDevices
+from _feature_objects._pages.pageAdministration import AdministrationPage
+from _feature_objects._pages.pageDevices import *
+from _feature_objects._pages.pageHome import HomePage
+from _feature_objects._pages.pageMain import MainPage
+from _feature_objects._pages.pageReporting import ReportingPage
+from _feature_objects._pages.pageSoftwareAndPatchManger import SoftwareAndPatchManagerPage
+from _feature_objects._pages.pageTasks import TasksPage
+from _feature_objects._popups.popupAreYouSure import AreYouSurePopup
+from _feature_objects._popups.popupClientSettings import *
+from _feature_objects._popups.popupConditionEditor import ConditionEditorPopup
+from _feature_objects._popups.popupConfiguration import *
+from _feature_objects._popups.popupError import ErrorPopup
+from _feature_objects._popups.popupIPAddress import IPAddressPopup
+from _feature_objects._popups.popupNewGroup import NewGroupPopup
+from _feature_objects._popups.popupQueryDesigner import QueryDesignerPopup
+from _feature_objects._popups.popupResetPassword import ResetPasswordPopup
+from _feature_objects._popups.popupSelectTargets import SelectTargetsPopup
+from _feature_objects._popups.popupSettings import *
+from _feature_objects._popups.popupUnableToRemove import UnableToRemovePopup
+from _feature_objects.ribbonBar import *
+from _feature_objects._pages.pageLogin import LoginPage
+from _variables.variables import Variables
 from selenium import webdriver
 
 logging.basicConfig(level=logging.INFO)
@@ -76,7 +88,7 @@ class SiteCreation(unittest.TestCase):
         site_name_popup = SiteNamePopup(self.driver)
         left_menu_devices = LeftMenuDevices(self.driver)
         ribbon_bar = RibbonBar(self.driver)
-        main_page.delete_site_if_exists(sitename)
+        left_menu_devices.delete_site_if_exists(sitename)
         self.assertFalse(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
         left_menu_devices.click_global_site_view_label()
         self.assertTrue(ribbon_bar.check_button_new_site_is_present())
@@ -85,7 +97,7 @@ class SiteCreation(unittest.TestCase):
         site_name_popup.enter_text_into_name_text_field(sitename)
         site_name_popup.click_button_ok()
         self.assertTrue(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
-        main_page.delete_site_from_global_site_view_tree(sitename)
+        left_menu_devices.delete_site_from_global_site_view_tree(sitename)
         self.assertFalse(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
         print ("Test is passed" + "\n")
 
@@ -131,9 +143,9 @@ class SiteCreation(unittest.TestCase):
         left_menu_devices = LeftMenuDevices(self.driver)
         site_name_popup = SiteNamePopup(self.driver)
         ribbon_bar = RibbonBar(self.driver)
-        main_page.delete_site_if_exists(fifty_symbols_name)
+        left_menu_devices.delete_site_if_exists(fifty_symbols_name)
         self.assertFalse(left_menu_devices.check_site_is_in_global_site_view_tree(fifty_symbols_name))
-        main_page.delete_site_if_exists(fifty_one_symbols_name)
+        left_menu_devices.delete_site_if_exists(fifty_one_symbols_name)
         self.assertFalse(left_menu_devices.check_site_is_in_global_site_view_tree(fifty_one_symbols_name))
         left_menu_devices.click_global_site_view_label()
         self.assertTrue(ribbon_bar.check_button_new_site_is_present())
@@ -143,7 +155,7 @@ class SiteCreation(unittest.TestCase):
         site_name_popup.click_button_ok()
         self.assertFalse(left_menu_devices.check_site_is_in_global_site_view_tree(fifty_one_symbols_name))
         self.assertTrue(left_menu_devices.check_site_is_in_global_site_view_tree(fifty_symbols_name))
-        main_page.delete_site_from_global_site_view_tree(fifty_symbols_name)
+        left_menu_devices.delete_site_from_global_site_view_tree(fifty_symbols_name)
         self.assertFalse(left_menu_devices.check_site_is_in_global_site_view_tree(fifty_symbols_name))
         print ("Test is passed" + "\n")
 
@@ -154,15 +166,15 @@ class SiteCreation(unittest.TestCase):
         subsitename_two = sitename + "-02"
         main_page = MainPage(self.driver)
         left_menu_devices = LeftMenuDevices(self.driver)
-        main_page.delete_site_if_exists(sitename)
+        left_menu_devices.delete_site_if_exists(sitename)
         self.assertFalse(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
-        main_page.create_new_site(sitename)
+        left_menu_devices.create_new_site(sitename)
         self.assertTrue(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
-        main_page.create_new_subsite(sitename, subsitename_one)
+        left_menu_devices.create_new_subsite(sitename, subsitename_one)
         self.assertTrue(left_menu_devices.check_subsite_is_in_parent_site(sitename, subsitename_one))
-        main_page.create_new_subsite(sitename, subsitename_two)
+        left_menu_devices.create_new_subsite(sitename, subsitename_two)
         self.assertTrue(left_menu_devices.check_subsite_is_in_parent_site(sitename, subsitename_two))
-        main_page.delete_site_from_global_site_view_tree(sitename)
+        left_menu_devices.delete_site_from_global_site_view_tree(sitename)
         self.assertFalse(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
         print ("Test is passed" + "\n")
 
@@ -241,12 +253,11 @@ class SiteConfiguration(unittest.TestCase):
     def test_open_configuration_popup_from_created_site(self):
         print ("\n" + "TC#9236. Devices page. Open Configuration popup from the created site")
         sitename = "Site#9236"
-        main_page = MainPage(self.driver)
         ribbon_bar = RibbonBar(self.driver)
         site_tab = SiteTab(self.driver)
         configuration_popup = ConfigurationPopup(self.driver)
         left_menu_devices = LeftMenuDevices(self.driver)
-        main_page.create_site_if_not_exists(sitename)
+        left_menu_devices.create_site_if_not_exists(sitename)
         self.assertTrue(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
         left_menu_devices.click_site_in_global_site_view_tree(sitename)
         self.assertTrue(ribbon_bar.check_button_config_is_present())
@@ -258,7 +269,7 @@ class SiteConfiguration(unittest.TestCase):
         self.assertEqual(sitename, site_tab.get_name_text_field_value())
         configuration_popup.click_system_button_close()
         self.assertFalse(configuration_popup.check_popup_is_present())
-        main_page.delete_site_from_global_site_view_tree(sitename)
+        left_menu_devices.delete_site_from_global_site_view_tree(sitename)
         self.assertFalse(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
         print ("Test is passed" + "\n")
 
@@ -297,9 +308,9 @@ class SiteConfigurationSiteTab(unittest.TestCase):
         ribbon_bar = RibbonBar(self.driver)
         site_tab = SiteTab(self.driver)
         configuration_popup = ConfigurationPopup(self.driver)
-        main_page.create_site_if_not_exists(sitename)
+        left_menu_devices.create_site_if_not_exists(sitename)
         self.assertTrue(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
-        main_page.delete_site_if_exists(sitename + modifed)
+        left_menu_devices.delete_site_if_exists(sitename + modifed)
         self.assertFalse(left_menu_devices.check_site_is_in_global_site_view_tree(sitename + modifed))
         left_menu_devices.click_site_in_global_site_view_tree(sitename)
         self.assertTrue(ribbon_bar.check_button_config_is_present())
@@ -316,9 +327,9 @@ class SiteConfigurationSiteTab(unittest.TestCase):
         self.assertEqual(sitename + modifed, site_tab.get_name_text_field_value())
         configuration_popup.click_system_button_close()
         self.assertFalse(configuration_popup.check_popup_is_present())
-        main_page.delete_site_from_global_site_view_tree(sitename + modifed)
+        left_menu_devices.delete_site_from_global_site_view_tree(sitename + modifed)
         self.assertFalse(left_menu_devices.check_site_is_in_global_site_view_tree(sitename + modifed))
-        main_page.delete_site_if_exists(sitename)
+        left_menu_devices.delete_site_if_exists(sitename)
         self.assertFalse(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
         print ("Test is passed" + "\n")
 
@@ -355,7 +366,7 @@ class SiteConfigurationSiteTab(unittest.TestCase):
         configuration_popup = ConfigurationPopup(self.driver)
         ribbon_bar = RibbonBar(self.driver)
         column_set_designer_popup = ColumnSetDesignerPopup(self.driver)
-        devices_tab = DevicesTab(self.driver)
+        devices_tab = DevicesPage(self.driver)
         left_menu_devices.click_global_site_view_label()
         ribbon_bar.click_tab_view()
         self.assertTrue(ribbon_bar.check_button_edit_or_create_is_present())
@@ -379,7 +390,7 @@ class SiteConfigurationSiteTab(unittest.TestCase):
         self.assertFalse(column_sets_popup.check_popup_is_present())
         ribbon_bar.click_tab_home()
         self.assertTrue(ribbon_bar.check_button_exit_is_present())
-        main_page.create_site_if_not_exists(sitename)
+        left_menu_devices.create_site_if_not_exists(sitename)
         self.assertTrue(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
         left_menu_devices.click_site_in_global_site_view_tree(sitename)
         self.assertTrue(ribbon_bar.check_button_config_is_present())
@@ -396,7 +407,7 @@ class SiteConfigurationSiteTab(unittest.TestCase):
         configuration_popup.click_button_close()
         self.assertFalse(configuration_popup.check_popup_is_present())
         self.assertTrue(devices_tab.check_columns_are_present(columns_list2))
-        main_page.delete_site_from_global_site_view_tree(sitename)
+        left_menu_devices.delete_site_from_global_site_view_tree(sitename)
         self.assertFalse(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
         print ("Test is passed" + "\n")
 
@@ -406,7 +417,7 @@ class SiteConfigurationSiteTab(unittest.TestCase):
         columnsetname = "ColumnSet#9999-01"
         columns_list = ["Device Name", "Device ID", "Domain", "Site"]
         main_page = MainPage(self.driver)
-        devices_tab = DevicesTab(self.driver)
+        devices_tab = DevicesPage(self.driver)
         left_menu_devices = LeftMenuDevices(self.driver)
         site_tab = SiteTab(self.driver)
         column_set_designer_popup = ColumnSetDesignerPopup(self.driver)
@@ -423,7 +434,7 @@ class SiteConfigurationSiteTab(unittest.TestCase):
         self.assertFalse(column_sets_popup.check_popup_is_present())
         ribbon_bar.click_tab_home()
         self.assertTrue(ribbon_bar.check_button_exit_is_present())
-        main_page.create_site_if_not_exists(sitename)
+        left_menu_devices.create_site_if_not_exists(sitename)
         self.assertTrue(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
         left_menu_devices.click_site_in_global_site_view_tree(sitename)
         self.assertTrue(ribbon_bar.check_button_config_is_present())
@@ -438,7 +449,7 @@ class SiteConfigurationSiteTab(unittest.TestCase):
         configuration_popup.click_button_close()
         self.assertFalse(configuration_popup.check_popup_is_present())
         self.assertTrue(devices_tab.check_columns_are_present(columns_list))
-        main_page.delete_site_from_global_site_view_tree(sitename)
+        left_menu_devices.delete_site_from_global_site_view_tree(sitename)
         print ("Test is passed" + "\n")
 
     def tearDown(self):
@@ -502,7 +513,7 @@ class SiteDeletion(unittest.TestCase):
         ribbon_bar = RibbonBar(self.driver)
         are_you_sure_popup = AreYouSurePopup(self.driver)
         left_menu_devices = LeftMenuDevices(self.driver)
-        main_page.create_site_if_not_exists(sitename)
+        left_menu_devices.create_site_if_not_exists(sitename)
         self.assertTrue(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
         left_menu_devices.click_site_in_global_site_view_tree(sitename)
         self.assertTrue(ribbon_bar.check_button_delete_is_present())
@@ -533,9 +544,9 @@ class SiteDeletion(unittest.TestCase):
         left_menu_devices = LeftMenuDevices(self.driver)
         ribbon_bar = RibbonBar(self.driver)
         are_you_sure_popup = AreYouSurePopup(self.driver)
-        main_page.create_site_if_not_exists(sitename)
+        left_menu_devices.create_site_if_not_exists(sitename)
         self.assertTrue(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
-        main_page.create_subsite_if_not_exists(sitename, subsitename)
+        left_menu_devices.create_subsite_if_not_exists(sitename, subsitename)
         self.assertTrue(left_menu_devices.check_subsite_is_in_parent_site(sitename, subsitename))
         left_menu_devices.click_subsite_in_site_tree(sitename, subsitename)
         self.assertTrue(ribbon_bar.check_button_delete_is_present())
@@ -543,7 +554,7 @@ class SiteDeletion(unittest.TestCase):
         self.assertTrue(are_you_sure_popup.check_popup_is_present())
         are_you_sure_popup.click_button_ok()
         self.assertFalse(left_menu_devices.check_subsite_is_in_parent_site(sitename, subsitename))
-        main_page.delete_site_from_global_site_view_tree(sitename)
+        left_menu_devices.delete_site_from_global_site_view_tree(sitename)
         print ("Test is passed" + "\n")
 
     def test_delete_site_with_subsite(self):
@@ -554,10 +565,10 @@ class SiteDeletion(unittest.TestCase):
         left_menu_devices = LeftMenuDevices(self.driver)
         ribbon_bar = RibbonBar(self.driver)
         are_you_sure_popup = AreYouSurePopup(self.driver)
-        main_page.delete_site_if_exists(sitename)
-        main_page.create_site_if_not_exists(sitename)
+        left_menu_devices.delete_site_if_exists(sitename)
+        left_menu_devices.create_site_if_not_exists(sitename)
         self.assertTrue(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
-        main_page.create_subsite_if_not_exists(sitename, subsitename)
+        left_menu_devices.create_subsite_if_not_exists(sitename, subsitename)
         self.assertTrue(left_menu_devices.check_site_is_in_global_site_view_tree(subsitename))
         left_menu_devices.click_site_in_global_site_view_tree(sitename)
         self.assertTrue(ribbon_bar.check_button_delete_is_present())
@@ -575,15 +586,15 @@ class SiteDeletion(unittest.TestCase):
         left_menu_devices = LeftMenuDevices(self.driver)
         ribbon_bar = RibbonBar(self.driver)
         are_you_sure_popup = AreYouSurePopup(self.driver)
-        main_page.create_site_if_not_exists(sitename)
+        left_menu_devices.create_site_if_not_exists(sitename)
         self.assertTrue(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
         left_menu_devices.click_site_in_global_site_view_tree(sitename)
         self.assertTrue(ribbon_bar.check_button_delete_is_present())
         ribbon_bar.click_button_delete()
         self.assertTrue(are_you_sure_popup.check_popup_is_present())
         are_you_sure_popup.click_button_cancel()
-        self.assertTrue(main_page.check_site_is_in_global_site_view_tree(sitename))
-        main_page.delete_site_from_global_site_view_tree(sitename)
+        self.assertTrue(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
+        left_menu_devices.delete_site_from_global_site_view_tree(sitename)
         print ("Test is passed" + "\n")
 
     def test_open_are_you_sure_popup(self):
@@ -593,7 +604,7 @@ class SiteDeletion(unittest.TestCase):
         left_menu_devices = LeftMenuDevices(self.driver)
         are_you_sure_popup = AreYouSurePopup(self.driver)
         ribbon_bar = RibbonBar(self.driver)
-        main_page.create_site_if_not_exists(sitename)
+        left_menu_devices.create_site_if_not_exists(sitename)
         self.assertTrue(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
         left_menu_devices.click_site_in_global_site_view_tree(sitename)
         self.assertTrue(ribbon_bar.check_button_delete_is_present())
@@ -601,7 +612,7 @@ class SiteDeletion(unittest.TestCase):
         self.assertTrue(are_you_sure_popup.check_popup_is_present())
         are_you_sure_popup.click_system_button_close()
         self.assertFalse(are_you_sure_popup.check_popup_is_present())
-        main_page.delete_site_from_global_site_view_tree(sitename)
+        left_menu_devices.delete_site_from_global_site_view_tree(sitename)
         print ("Test is passed" + "\n")
 
     def tearDown(self):
@@ -713,9 +724,18 @@ class MainPageHelpLinks(unittest.TestCase):
         cls.driver = webdriver.Chrome()
         login_page = LoginPage(cls.driver)
         main_page = MainPage(cls.driver)
+        devices_page = DevicesPage(cls.driver)
+        desktop = DownloadAndInstall(cls.driver)
         login_page.open_page()
         login_page.login()
         main_page.check_main_page_loaded()
+        main_page._close_popups()
+        main_page.delete_device_from_the_console(Variables.vrep)
+        desktop.clean_up_device()
+        desktop.download_agent()
+        desktop.install_agent()
+        devices_page.click_icon_refresh()
+        devices_page.check_device_is_present(Variables.vrep)
 
     def setUp(self):
         main_page = MainPage(self.driver)
@@ -724,16 +744,16 @@ class MainPageHelpLinks(unittest.TestCase):
     def test_help_link_on_home_tab(self):
         print ("\n" + "TC#0000: Check help link on home tab")
         left_menu = LeftMenu(self.driver)
-        home_tab = HomeTab(self.driver)
+        home_tab = HomePage(self.driver)
         left_menu.open_menu_home()
-        self.assertTrue(home_tab.check_tab_is_present())
+        self.assertTrue(home_tab.check_page_is_present())
         home_tab.click_icon_help()
         self.assertTrue(home_tab.check_help_link_is_correct())
 
     def test_help_link_on_devices_tab(self):
         print ("\n" + "TC#0000: Check help link on devices tab")
         left_menu = LeftMenu(self.driver)
-        devices_tab = DevicesTab(self.driver)
+        devices_tab = DevicesPage(self.driver)
         left_menu.open_menu_devices()
         devices_tab.click_icon_help()
         self.assertTrue(devices_tab.check_help_link_is_correct())
@@ -741,7 +761,7 @@ class MainPageHelpLinks(unittest.TestCase):
     def test_help_link_on_administration_tab(self):
         print ("\n" + "TC#0000: Check help link on administration tab")
         left_menu = LeftMenu(self.driver)
-        administration_tab = AdministrationTab(self.driver)
+        administration_tab = AdministrationPage(self.driver)
         left_menu.open_menu_administration()
         administration_tab.click_icon_help()
         self.assertTrue(administration_tab.check_help_link_is_correct())
@@ -749,7 +769,7 @@ class MainPageHelpLinks(unittest.TestCase):
     def test_help_link_on_tasks_tab(self):
         print ("\n" + "TC#0000: Check help link on tasks tab")
         left_menu = LeftMenu(self.driver)
-        tasks_tab = TasksTab(self.driver)
+        tasks_tab = TasksPage(self.driver)
         left_menu.open_menu_tasks()
         tasks_tab.click_icon_help()
         self.assertTrue(tasks_tab.check_help_link_is_correct())
@@ -757,7 +777,7 @@ class MainPageHelpLinks(unittest.TestCase):
     def test_help_link_on_reporting_tab(self):
         print ("\n" + "TC#0000: Check help link on reporting tab")
         left_menu = LeftMenu(self.driver)
-        reporting_tab = ReportingTab(self.driver)
+        reporting_tab = ReportingPage(self.driver)
         left_menu.open_menu_reporting()
         self.assertTrue(left_menu.check_menu_reporting_is_visible())
         reporting_tab.click_icon_help()
@@ -766,7 +786,7 @@ class MainPageHelpLinks(unittest.TestCase):
     def test_help_link_on_software_and_patch_manager_tab(self):
         print ("\n" + "TC#0000: Check help link on software and patch manager tab")
         left_menu = LeftMenu(self.driver)
-        software_and_patch_manager_tab = SoftwareAndPatchManagerTab(self.driver)
+        software_and_patch_manager_tab = SoftwareAndPatchManagerPage(self.driver)
         left_menu.open_menu_software_and_patch_manager()
         software_and_patch_manager_tab.click_icon_help()
         self.assertTrue(software_and_patch_manager_tab.check_help_link_is_correct())
@@ -786,7 +806,7 @@ class MainPageHelpLinks(unittest.TestCase):
         ribbon_bar.open_tab_home()
         self.assertTrue(ribbon_bar.check_tab_home_is_present())
         ribbon_bar.click_button_home()
-        self.assertTrue(ribbon_bar.check_home_drop_down_list_is_present())
+        self.assertTrue(ribbon_bar.check_drop_down_list_is_present())
         ribbon_bar.click_change_home_screen_label()
         self.assertTrue(select_dashboard_popup.check_popup_is_present())
         select_dashboard_popup.click_icon_help()
@@ -797,7 +817,7 @@ class MainPageHelpLinks(unittest.TestCase):
         ribbon_bar = RibbonBar(self.driver)
         user_settings_popup = UserSettingsPopup(self.driver)
         ribbon_bar.click_button_admin_user()
-        self.assertTrue(ribbon_bar.check_home_drop_down_list_is_present())
+        self.assertTrue(ribbon_bar.check_drop_down_list_is_present())
         ribbon_bar.click_settings_label()
         self.assertTrue(user_settings_popup.check_popup_is_present())
         user_settings_popup.click_icon_help()
@@ -888,7 +908,7 @@ class MainPageHelpLinks(unittest.TestCase):
     #     ribbon_bar.click_button_settings()
     #     self.assertTrue(settings_popup.check_popup_is_present())
     #     settings_popup.click_inventory_label()
-    #     self.assertTrue(inventory_tab.check_tab_is_present())
+    #     self.assertTrue(inventory_tab.check_page_is_present())
     #     settings_popup.click_icon_help()
     #     self.assertTrue(inventory_tab.check_help_link_is_correct())
 
@@ -1049,7 +1069,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(ribbon_bar.check_tab_home_is_present())
         left_menu.open_menu_devices()
         self.assertTrue(left_menu.check_menu_devices_is_visible())
-        main_page.create_site_if_not_exists(sitename)
+        left_menu_devices.create_site_if_not_exists(sitename)
         left_menu_devices.click_site_in_global_site_view_tree(sitename)
         self.assertTrue(ribbon_bar.check_button_config_is_present())
         ribbon_bar.click_button_config()
@@ -1073,7 +1093,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(ribbon_bar.check_tab_home_is_present())
         left_menu.open_menu_devices()
         self.assertTrue(left_menu.check_menu_devices_is_visible())
-        main_page.create_site_if_not_exists(sitename)
+        left_menu_devices.create_site_if_not_exists(sitename)
         left_menu_devices.click_site_in_global_site_view_tree(sitename)
         self.assertTrue(ribbon_bar.check_button_config_is_present())
         ribbon_bar.click_button_move()
@@ -1081,22 +1101,94 @@ class MainPageHelpLinks(unittest.TestCase):
         move_site_popup.click_icon_help()
         self.assertTrue(move_site_popup.check_help_link_is_correct())
 
-    #Not finished
-    # def test_help_link_on_query_designer_popup(self):
-    #     print ("\n" + "TC#0000: Check help link on Query Designer popup")
-    #     ribbon_bar = RibbonBar(self.driver)
-    #     left_menu = LeftMenu(self.driver)
-    #     configuration_popup = ConfigurationPopup(self.driver)
-    #     ribbon_bar.open_tab_home()
-    #     self.assertTrue(ribbon_bar.check_tab_home_is_present())
-    #     left_menu.open_menu_devices()
-    #     self.assertTrue(left_menu.check_menu_devices_is_visible())
-    #     left_menu.click_global_site_view_label()
-    #     self.assertTrue(ribbon_bar.check_button_config_is_present())
-    #     ribbon_bar.click_button_config()
-    #     self.assertTrue(configuration_popup.check_popup_is_present())
-    #     configuration_popup.click_icon_help()
-    #     self.assertTrue(configuration_popup.check_help_link_is_correct())
+    def test_help_link_on_query_designer_popup(self):
+        print ("\n" + "TC#0000: Check help link on Query Designer popup")
+        ribbon_bar = RibbonBar(self.driver)
+        left_menu_devices = LeftMenuDevices(self.driver)
+        query_designer_popup = QueryDesignerPopup(self.driver)
+        ribbon_bar.open_tab_home()
+        self.assertTrue(ribbon_bar.check_tab_home_is_present())
+        left_menu_devices.open_menu_devices()
+        self.assertTrue(left_menu_devices.check_menu_devices_is_visible())
+        left_menu_devices.click_queries_label()
+        self.assertTrue(ribbon_bar.check_queries_group_box_is_present())
+        ribbon_bar.click_button_new()
+        self.assertTrue(query_designer_popup.check_popup_is_present())
+        query_designer_popup.click_icon_help()
+        self.assertTrue(query_designer_popup.check_help_link_is_correct())
+
+    def test_help_link_on_condition_editor_popup(self):
+        print ("\n" + "TC#0000: Check help link on Condition Editor popup")
+        ribbon_bar = RibbonBar(self.driver)
+        left_menu_devices = LeftMenuDevices(self.driver)
+        query_designer_popup = QueryDesignerPopup(self.driver)
+        condition_editor_popup = ConditionEditorPopup(self.driver)
+        ribbon_bar.open_tab_home()
+        self.assertTrue(ribbon_bar.check_tab_home_is_present())
+        left_menu_devices.open_menu_devices()
+        self.assertTrue(left_menu_devices.check_menu_devices_is_visible())
+        left_menu_devices.click_queries_label()
+        self.assertTrue(ribbon_bar.check_queries_group_box_is_present())
+        ribbon_bar.click_button_new()
+        self.assertTrue(query_designer_popup.check_popup_is_present())
+        query_designer_popup.click_button_add()
+        self.assertTrue(condition_editor_popup.check_popup_is_present())
+        condition_editor_popup.click_icon_help()
+        self.assertTrue(condition_editor_popup.check_help_link_is_correct())
+
+    def test_help_link_on_new_group_popup(self):
+        print ("\n" + "TC#0000: Check help link on New Group popup")
+        ribbon_bar = RibbonBar(self.driver)
+        new_group_popup = NewGroupPopup(self.driver)
+        left_menu_devices = LeftMenuDevices(self.driver)
+        ribbon_bar.open_tab_home()
+        self.assertTrue(ribbon_bar.check_tab_home_is_present())
+        left_menu_devices.open_menu_devices()
+        left_menu_devices.click_groups_label()
+        self.assertTrue(ribbon_bar.check_groups_group_box_is_present())
+        ribbon_bar.click_button_new()
+        self.assertTrue(ribbon_bar.check_drop_down_list_is_present())
+        ribbon_bar.click_new_group_label()
+        self.assertTrue(new_group_popup.check_popup_is_present())
+        new_group_popup.click_icon_help()
+        self.assertTrue(new_group_popup.check_help_link_is_correct())
+
+    def test_help_link_on_select_targets_popup(self):
+        print ("\n" + "TC#0000: Check help link on Select Targets popup")
+        ribbon_bar = RibbonBar(self.driver)
+        left_menu_devices = LeftMenuDevices(self.driver)
+        new_group_popup = NewGroupPopup(self.driver)
+        select_targets_popup = SelectTargetsPopup(self.driver)
+        ribbon_bar.open_tab_home()
+        self.assertTrue(ribbon_bar.check_tab_home_is_present())
+        left_menu_devices.open_menu_devices()
+        left_menu_devices.click_groups_label()
+        self.assertTrue(ribbon_bar.check_groups_group_box_is_present())
+        ribbon_bar.click_button_new()
+        self.assertTrue(ribbon_bar.check_drop_down_list_is_present())
+        ribbon_bar.click_new_group_label()
+        self.assertTrue(new_group_popup.check_popup_is_present())
+        new_group_popup.click_button_add_members()
+        self.assertTrue(select_targets_popup.check_popup_is_present())
+        select_targets_popup.click_icon_help()
+        self.assertTrue(select_targets_popup.check_help_link_is_correct())
+
+    def test_help_link_on_new_folder_popup(self):
+        print ("\n" + "TC#0000: Check help link on New Folder popup")
+        ribbon_bar = RibbonBar(self.driver)
+        new_folder_popup = NewFolderPopup(self.driver)
+        left_menu_devices = LeftMenuDevices(self.driver)
+        ribbon_bar.open_tab_home()
+        self.assertTrue(ribbon_bar.check_tab_home_is_present())
+        left_menu_devices.open_menu_devices()
+        left_menu_devices.click_groups_label()
+        self.assertTrue(ribbon_bar.check_groups_group_box_is_present())
+        ribbon_bar.click_button_new()
+        self.assertTrue(ribbon_bar.check_drop_down_list_is_present())
+        ribbon_bar.click_new_folder_label()
+        self.assertTrue(new_folder_popup.check_popup_is_present())
+        new_folder_popup.click_icon_help()
+        self.assertTrue(new_folder_popup.check_help_link_is_correct())
 
     def test_help_link_on_currency_popup(self):
         print ("\n" + "TC#0000: Check help link on Currency popup")
@@ -1158,6 +1250,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(initial_setup_popup.check_popup_is_present())
         initial_setup_popup.click_icon_help()
         self.assertTrue(initial_setup_popup.check_help_link_is_correct())
+
 
     def tearDown(self):
         help_window = BaseActions(self.driver)

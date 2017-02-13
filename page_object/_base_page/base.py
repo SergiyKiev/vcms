@@ -20,7 +20,7 @@ class Base(object):
     LOADING_VISIBLE = "//div[contains(@id,'VWG_Loading')][contains(@style,'display: block')]"
     LOADING_ANIMATION_VISIBLE = "//div[@id='VWG_LoadingAnimationBox'][contains(@style,'display: block')]"
     LOADING_SCREEN_VISIBLE = "//div[@id='VWG_LoadingScreen'][contains(@style,'display: block')]"
-    LEFT_MENU_VISIBLE = "[contains(@style,'translate3d(0px, 0px, 0px)')]"
+    LEFT_MENU_VISIBLE = "[contains(@style,'(0px, 0px, 0px)')]"
     DISABLED = "[contains(@class,'Disabled')]"
     SELECTED = "[contains(@class,'Selected')]"
     CHECKED = "[contains(@style,'CheckBox1')]"
@@ -82,12 +82,12 @@ class Base(object):
             element = self._find_element(locator)
             if element is not None:
                 # print "\n" + "CLICK:  ", locator
-                time.sleep(0.5)
+                time.sleep(0.8)
                 self.wait_general.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
                 self.wait_general.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
                 self.wait_general.until(EC.element_to_be_clickable((By.XPATH, locator)))
                 element.click()
-                time.sleep(0.5)
+                time.sleep(0.8)
                 self.wait_general.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
                 self.wait_general.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
                 return True
@@ -154,7 +154,7 @@ class Base(object):
             # print locator + " is not presented"
             return True
         except TimeoutException:
-            print locator + " returns False"
+            print "Method returns false, " + locator + " is present"
             return False
 
     def wait_for_element_selected(self, locator):
@@ -198,6 +198,17 @@ class Base(object):
             self.wait_general.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
             self.wait_general.until(EC.presence_of_element_located((By.XPATH, locator + Base.DISABLED)))
             self.wait_general.until(EC.visibility_of_element_located((By.XPATH, locator + Base.DISABLED)))
+            return True
+        except TimeoutException:
+            print locator + " returns False"
+            return False
+
+    def wait_for_menu_visible(self, locator):
+        try:
+            self.wait_general.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait_general.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait_general.until(EC.presence_of_element_located((By.XPATH, locator + Base.LEFT_MENU_VISIBLE)))
+            self.wait_general.until(EC.visibility_of_element_located((By.XPATH, locator + Base.LEFT_MENU_VISIBLE)))
             return True
         except TimeoutException:
             print locator + " returns False"
@@ -273,7 +284,7 @@ class Base(object):
 
     def _is_left_menu_visible(self, locator):
         try:
-            self.wait_condition.until(EC.visibility_of_element_located((By.XPATH, locator + Base.LEFT_MENU_VISIBLE)))
+            self.wait_condition.until(EC.presence_of_element_located((By.XPATH, locator + Base.LEFT_MENU_VISIBLE)))
             return True
         except TimeoutException:
             return False

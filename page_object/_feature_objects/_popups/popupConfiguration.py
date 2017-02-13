@@ -1,7 +1,7 @@
 
 from _base_page.base_actions import BaseActions
-from _feature_objects._feature_popups.featurePopupColumnSetDesigner import ColumnSetDesignerPopup
-from _feature_objects._feature_popups.featurePopupIPAddress import IPAddressPopup
+from _feature_objects._popups.popupColumnSetDesigner import ColumnSetDesignerPopup
+from _feature_objects._popups.popupIPAddress import IPAddressPopup
 
 
 class ConfigurationPopup(BaseActions):

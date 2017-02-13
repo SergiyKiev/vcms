@@ -3,7 +3,7 @@ import time
 from _base_page.base import Base
 from _base_page.base_elements import *
 from _locators.locators import Locators
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
 
 
 class BaseActions(Base):
@@ -129,21 +129,27 @@ class BaseActions(Base):
             cond3 = self._is_element_present(BaseElements.HELP_FRAME_HEADER_SERVER_ERROR)
             if cond1:
                 current_header_name = self._find_element(BaseElements.HELP_FRAME_HEADER).text
-                print "Link is correct. Actual header: ", current_header_name
                 print "Expected header: ", expected_header_name
+                print "Link is correct. Actual header: ", current_header_name
             elif cond2:
                 current_header = self._find_element(BaseElements.HELP_FRAME_HEADER).text
-                print "Link is incorrect. Actual header: ", current_header
                 print "Expected header: ", expected_header_name
+                print "Link is incorrect. Actual header: ", current_header
             elif cond3:
                 error_header = self._find_element(BaseElements.HELP_FRAME_HEADER_SERVER_ERROR).text
                 error_text1 = self._find_element("//*[@id='content']/div/fieldset/h2").text
                 error_text2 = self._find_element("//*[@id='content']/div/fieldset/h3").text
                 print "Link is incorrect. Header: ", error_header
                 print "Error text: ", error_text1, error_text2
+        except NoSuchElementException:
+            massage1 = self._find_element("//*[@id='main-message']/h1").text
+            massage2 = self._find_element("//*[@id='main-message']/div[2]").text
+            print "HELP LINK IS UNAVAILABLE. Massage: ", massage1, massage2
+        except TimeoutException:
+            print "Help window is not opened"
         except IndexError:
             help_window = 'null'
-            print "Window is not found"
+            print "Help window is not found"
 
     def _close_help_window(self):
         handles = self.driver.window_handles

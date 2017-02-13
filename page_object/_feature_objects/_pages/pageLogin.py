@@ -1,13 +1,13 @@
 
 from _base_page.base_elements import BaseElements
-from _feature_objects._feature_popups.featurePopupTermsAndConditions import TermsAndConditionsPopup
-from _feature_objects._feature_popups.featurePopupError import ErrorPopup
-from _feature_objects._feature_popups.featurePopupSubscriptionHasExpired import *
+from _feature_objects._pages.pageMain import MainPage
+from _feature_objects._popups.popupTermsAndConditions import TermsAndConditionsPopup
+from _feature_objects._popups.popupError import ErrorPopup
+from _feature_objects._popups.popupSubscriptionHasExpired import *
 from _settings.settings import Settings
-from pageMain import MainPage
 
 
-class LoginPage(TermsAndConditionsPopup, SubscriptionHasExpiredPopup, ErrorPopup):
+class LoginPage(BaseActions):
 
     BODY = "//div[@id='VWG_Body']"
     BUTTON_SIGN_IN = "//span[text()='Sign In']/ancestor::div[contains(@class,'Button')]"
@@ -18,7 +18,8 @@ class LoginPage(TermsAndConditionsPopup, SubscriptionHasExpiredPopup, ErrorPopup
     def login(self):
         try:
             self.check_login_page_loaded()
-            TermsAndConditionsPopup.close_popup_if_exists(self)
+            terms_and_conditions_popup = TermsAndConditionsPopup(self.driver)
+            terms_and_conditions_popup.close_popup_if_exists()
             self.enter_username(Settings.username)
             self.enter_password(Settings.password)
             self.click_sign_in_button()
@@ -27,7 +28,8 @@ class LoginPage(TermsAndConditionsPopup, SubscriptionHasExpiredPopup, ErrorPopup
             if cond1:
                 print Settings.username + " or " + Settings.password + " are incorrect"
             elif cond2:
-                SubscriptionHasExpiredPopup.click_system_button_close(self)
+                subscription_has_expired_popup = SubscriptionHasExpiredPopup(self.driver)
+                subscription_has_expired_popup.click_system_button_close()
             else:
                 pass
             # self.wait_for_element_present(BaseElements._RIBBON_BAR)

@@ -1,5 +1,6 @@
 
 from _base_page.base_actions import BaseActions
+from _feature_objects._popups.popupConditionEditor import ConditionEditorPopup
 
 
 class QueryDesignerPopup(BaseActions):
@@ -23,13 +24,13 @@ class QueryDesignerPopup(BaseActions):
         self._click_button_ok(QueryDesignerPopup.BODY)
         self.wait_for_element_not_present(QueryDesignerPopup.BODY)
 
-    def click_button_cancel(self):
-        self._click_button_cancel(QueryDesignerPopup.BODY)
-        self.wait_for_element_not_present(QueryDesignerPopup.BODY)
-
     def click_system_button_close(self):
         self._click_system_button_close(QueryDesignerPopup.BODY)
         self.wait_for_element_not_present(QueryDesignerPopup.BODY)
+
+    def click_button_add(self):
+        self._click_button_add(QueryDesignerPopup.BODY)
+        self.wait_for_element_present(ConditionEditorPopup.BODY)
 
 
 

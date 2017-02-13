@@ -51,5 +51,8 @@ class BaseElements:
     HELP_FRAME_HEADER_SERVER_ERROR = "//h1[text()='Server Error']"
     HELP_FRAME_HEADER_GETTING_STARTED = "//h1[text()='Getting Started in CMS']"
 
+    #LEFT MENU
+    GREY_COLOR = "[contains(@style,'#E8E8E8')]"
+
 
 

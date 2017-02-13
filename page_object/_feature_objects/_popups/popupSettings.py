@@ -1,5 +1,5 @@
 from _base_page.base_actions import BaseActions
-from _feature_objects._feature_popups.featurePopupInitialSetup import InitialSetupPopup
+from _feature_objects._popups.popupInitialSetup import InitialSetupPopup
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait

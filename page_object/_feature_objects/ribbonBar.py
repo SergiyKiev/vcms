@@ -1,25 +1,30 @@
 
-from _feature_objects._feature_popups.featurePopupColumnSets import ColumnSetsPopup
-from _feature_objects._feature_popups.featurePopupClientSettings import ClientSettingsPopup
-from _feature_objects._feature_popups.featurePopupConfiguration import ConfigurationPopup
-from _feature_objects._feature_popups.featurePopupCurrency import CurrencyPopup
-from _feature_objects._feature_popups.featurePopupManufacturerAlias import ManufacturerAliasPopup
-from _feature_objects._feature_popups.featurePopupModelAlias import ModelAliasPopup
-from _feature_objects._feature_popups.featurePopupMoveSite import MoveSitePopup
-from _feature_objects._feature_popups.featurePopupRemoveDevices import RemoveDevicesPopup
-from _feature_objects._feature_popups.featurePopupSelectDashboard import SelectDashboardPopup
-from _feature_objects._feature_popups.featurePopupSettings import SettingsPopup
-from _feature_objects._feature_popups.featurePopupSiteName import SiteNamePopup
-from _feature_objects._feature_popups.featurePopupSubscriptionHasExpired import *
-from _feature_objects._feature_popups.featurePopupSubscriptions import SubscriptionsPopup
-from _feature_objects._feature_popups.featurePopupUserSettings import UserSettingsPopup
-from _feature_objects._feature_popups.featurePopupWeightDisplay import WeightDisplayPopup
+from _feature_objects._popups.popupColumnSets import ColumnSetsPopup
+from _feature_objects._popups.popupClientSettings import ClientSettingsPopup
+from _feature_objects._popups.popupConfiguration import ConfigurationPopup
+from _feature_objects._popups.popupCurrency import CurrencyPopup
+from _feature_objects._popups.popupManufacturerAlias import ManufacturerAliasPopup
+from _feature_objects._popups.popupModelAlias import ModelAliasPopup
+from _feature_objects._popups.popupMoveSite import MoveSitePopup
+from _feature_objects._popups.popupNewFolder import NewFolderPopup
+from _feature_objects._popups.popupNewGroup import NewGroupPopup
+from _feature_objects._popups.popupRemoveDevices import RemoveDevicesPopup
+from _feature_objects._popups.popupSelectDashboard import SelectDashboardPopup
+from _feature_objects._popups.popupSettings import SettingsPopup
+from _feature_objects._popups.popupSiteName import SiteNamePopup
+from _feature_objects._popups.popupSubscriptionHasExpired import *
+from _feature_objects._popups.popupSubscriptions import SubscriptionsPopup
+from _feature_objects._popups.popupUserSettings import UserSettingsPopup
+from _feature_objects._popups.popupWeightDisplay import WeightDisplayPopup
+from _feature_objects._popups.popupAreYouSure import AreYouSurePopup
+from _feature_objects._popups.popupUnableToRemove import UnableToRemovePopup
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 
 
 class RibbonBar(BaseActions):
 
     DROP_DOWN_LIST = "//div[@class='Menu-PopupWindow']"
+    DROP_DOWN_ARROW = "/*//img[contains(@src,'DropDown')]"
     BUTTONS_GROUP_BOX = "/ancestor::div[@class='RibbonBarGroupBox-Control']"
     MENU_ITEM = "/ancestor::div[contains(@class,'MenuItem-Control')]"
     RIBBON_BAR_TAB_HEADER = "//div[@class='RibbonBarTabControl-HeadersRow']"
@@ -28,6 +33,8 @@ class RibbonBar(BaseActions):
     TAB_HOME = "//span[text()='Home']/ancestor::div[contains(@id,'TAB')]"
     GROUP_BOX_DISPLAY = "//div[text()='Display'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
     GROUP_BOX_ACTIONS = "//div[text()='Actions'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
+    GROUP_BOX_QUERIES = "//div[text()='Queries'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
+    GROUP_BOX_GROUPS = "//div[text()='Groups'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
     BUTTON_EXIT = "//img[@alt='Exit']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_HOME = "//img[@alt='Home']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_NEW = "//img[@alt='New']/ancestor::div[contains(@class,'RibbonBarButton')]"
@@ -49,12 +56,12 @@ class RibbonBar(BaseActions):
     BUTTON_MAKES = "//img[@alt='Makes']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_MODELS = "//img[@alt='Models']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_ADMIN_USER = "//td[contains(@style,'icons-gray.111-user')]/ancestor::div[contains(@class,'Button')]"
-    DROP_DOWN_ARROW_HOME = "//img[@alt='Home']/following::img[contains(@src,'DropDown')]"
     MENU_ITEM_SETTINGS = DROP_DOWN_LIST + "/*//span[text()='Settings']" + MENU_ITEM
     MENU_ITEM_LOG_OUT = DROP_DOWN_LIST + "/*//span[contains(text(),'Log Out')]" + MENU_ITEM
     MENU_ITEM_GO_TO_HOME_SCREEN = DROP_DOWN_LIST + "/*//span[contains(text(),'Go To')]" + MENU_ITEM
     MENU_ITEM_CHANGE_HOME_SCREEN = DROP_DOWN_LIST + "/*//span[contains(text(),'Change Home')]" + MENU_ITEM
-
+    MENU_ITEM_NEW_GROUP = DROP_DOWN_LIST + "/*//span[contains(text(),'New Group')]" + MENU_ITEM
+    MENU_ITEM_NEW_FOLDER = DROP_DOWN_LIST + "/*//span[contains(text(),'New Folder')]" + MENU_ITEM
 
     def click_tab_view(self):
         self._click_element(RibbonBar.TAB_VIEW)
@@ -65,26 +72,20 @@ class RibbonBar(BaseActions):
         self.wait_for_element_selected(RibbonBar.TAB_HOME)
 
     def open_tab_home(self):
-        try:
-            self.wait_for_element_present(RibbonBar.TAB_HOME)
-            cond = self._is_element_selected(RibbonBar.TAB_HOME)
-            if cond:
-                pass
-            else:
-                self.click_tab_home()
-        except (NoSuchElementException, TimeoutException):
-            print "Object not found"
+        self.wait_for_element_present(RibbonBar.TAB_HOME)
+        cond = self._is_element_selected(RibbonBar.TAB_HOME)
+        if cond:
+            pass
+        else:
+            self.click_tab_home()
 
     def open_tab_view(self):
-        try:
-            self.wait_for_element_present(RibbonBar.TAB_VIEW)
-            cond = self._is_element_selected(RibbonBar.TAB_VIEW)
-            if cond:
-                pass
-            else:
-                self.click_tab_view()
-        except (NoSuchElementException, TimeoutException):
-            print "Object not found"
+        self.wait_for_element_present(RibbonBar.TAB_VIEW)
+        cond = self._is_element_selected(RibbonBar.TAB_VIEW)
+        if cond:
+            pass
+        else:
+            self.click_tab_view()
 
     def check_tab_home_is_present(self):
         cond = self._is_element_present(RibbonBar.GROUP_BOX_ACTIONS)
@@ -103,14 +104,13 @@ class RibbonBar(BaseActions):
         self.wait_for_element_present(SiteNamePopup.BODY)
 
     def click_button_delete(self):
-        cond = self._click_element(RibbonBar.BUTTON_DELETE)
-        print "Delete is:", cond
-        # cond1 = self._is_element_present(AreYouSurePopup.BODY)
-        # cond2 = self._is_element_present(UnableToRemovePopup.BODY)
-        # if cond1:
-        #     return AreYouSurePopup(self.driver)
-        # elif cond2:
-        #     return UnableToRemovePopup(self.driver)
+        self._click_element(RibbonBar.BUTTON_DELETE)
+        cond1 = self._is_element_present(AreYouSurePopup.BODY)
+        cond2 = self._is_element_present(UnableToRemovePopup.BODY)
+        if cond1:
+            return AreYouSurePopup(self.driver)
+        elif cond2:
+            return UnableToRemovePopup(self.driver)
 
     def click_button_config(self):
         self._click_element(RibbonBar.BUTTON_CONFIG)
@@ -181,7 +181,7 @@ class RibbonBar(BaseActions):
         cond = self._check_help_frame_header("CMS Quick Help Videos")
         return True if cond else False
 
-    def check_home_drop_down_list_is_present(self):
+    def check_drop_down_list_is_present(self):
         cond = self._is_element_present(RibbonBar.DROP_DOWN_LIST)
         return True if cond else False
 
@@ -201,6 +201,27 @@ class RibbonBar(BaseActions):
         self._click_element(RibbonBar.BUTTON_MODELS)
         self.wait_for_element_present(ModelAliasPopup.BODY)
 
+    def check_queries_group_box_is_present(self):
+        cond = self._is_element_present(RibbonBar.GROUP_BOX_QUERIES)
+        return True if cond else False
 
+    def check_groups_group_box_is_present(self):
+        cond = self._is_element_present(RibbonBar.GROUP_BOX_GROUPS)
+        return True if cond else False
 
+    def click_button_new(self):
+        cond = self._is_element_present(RibbonBar.BUTTON_NEW + RibbonBar.DROP_DOWN_ARROW)
+        self._click_element(RibbonBar.BUTTON_NEW)
+        if cond:
+            self.wait_for_element_present(RibbonBar.DROP_DOWN_LIST)
+
+    def click_new_folder_label(self):
+        self._click_element(RibbonBar.MENU_ITEM_NEW_FOLDER)
+        self.wait_for_element_not_present(RibbonBar.DROP_DOWN_LIST)
+        self.wait_for_element_present(NewFolderPopup.BODY)
+
+    def click_new_group_label(self):
+        self._click_element(RibbonBar.MENU_ITEM_NEW_GROUP)
+        self.wait_for_element_not_present(RibbonBar.DROP_DOWN_LIST)
+        self.wait_for_element_present(NewGroupPopup.BODY)
 
