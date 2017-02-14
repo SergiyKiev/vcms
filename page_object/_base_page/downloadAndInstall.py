@@ -25,7 +25,7 @@ class DownloadAndInstall(BaseActions):
     def clean_up_device(self):
         x = subprocess.Popen(['C:\\VCMS\\verismicCleanUp.cmd']) #home
         # print x
-        time.sleep(60)
+        time.sleep(120)
 
     def download_agent(self):
         x = wgetter.download('https://testteamtest.cloudmanagementsuite.com/WebService/api/v1/Downloads/vRepSetup.msi', outdir='C:\\VCMS')
@@ -35,8 +35,8 @@ class DownloadAndInstall(BaseActions):
 
     def install_agent(self):
         # os.system('msiexec /i %s /qn' % 'C:\\VCMS\\vRepSetup-testteamtest.msi')
-        x = os.system('msiexec /i %s /qn' % 'C:\\VCMS\\vRepSetup-testteamtest.msi')
-        time.sleep(60)
+        os.system('msiexec /i %s /qn' % 'C:\\VCMS\\vRepSetup-testteamtest.msi')
+        time.sleep(120)
 #
 
 

@@ -3,11 +3,13 @@ from _feature_objects._popups.popupColumnSets import ColumnSetsPopup
 from _feature_objects._popups.popupClientSettings import ClientSettingsPopup
 from _feature_objects._popups.popupConfiguration import ConfigurationPopup
 from _feature_objects._popups.popupCurrency import CurrencyPopup
+from _feature_objects._popups.popupInventoryView import InventoryViewPopup
 from _feature_objects._popups.popupManufacturerAlias import ManufacturerAliasPopup
 from _feature_objects._popups.popupModelAlias import ModelAliasPopup
 from _feature_objects._popups.popupMoveSite import MoveSitePopup
 from _feature_objects._popups.popupNewFolder import NewFolderPopup
 from _feature_objects._popups.popupNewGroup import NewGroupPopup
+from _feature_objects._popups.popupOnDemandInventoryScan import OnDemandInventoryScanPopup
 from _feature_objects._popups.popupRemoveDevices import RemoveDevicesPopup
 from _feature_objects._popups.popupSelectDashboard import SelectDashboardPopup
 from _feature_objects._popups.popupSettings import SettingsPopup
@@ -31,10 +33,12 @@ class RibbonBar(BaseActions):
     RIBBON_BAR_TAB_PAGE = "//div[@class='RibbonBarTabControl-CenterFrame']"
     TAB_VIEW = "//span[text()='View']/ancestor::div[contains(@id,'TAB')]"
     TAB_HOME = "//span[text()='Home']/ancestor::div[contains(@id,'TAB')]"
+    TAB_DEVICES = "//span[text()='Devices']/ancestor::div[contains(@id,'TAB')]"
     GROUP_BOX_DISPLAY = "//div[text()='Display'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
     GROUP_BOX_ACTIONS = "//div[text()='Actions'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
     GROUP_BOX_QUERIES = "//div[text()='Queries'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
     GROUP_BOX_GROUPS = "//div[text()='Groups'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
+    GROUP_BOX_INVENTORY = "//div[text()='Inventory'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
     BUTTON_EXIT = "//img[@alt='Exit']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_HOME = "//img[@alt='Home']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_NEW = "//img[@alt='New']/ancestor::div[contains(@class,'RibbonBarButton')]"
@@ -44,6 +48,7 @@ class RibbonBar(BaseActions):
     BUTTON_DELETE = "//img[@alt='Delete']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_MOVE = "//img[@alt='Move']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_SETTINGS = "//img[@alt='Settings']/ancestor::div[contains(@class,'RibbonBarButton')]"
+    BUTTON_INVENTORY = "//img[@alt='Inventory']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_CLIENT = "//img[@alt='Client']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_SUBSCRIPTIONS = "//img[@alt='Subscriptions']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_CONSOLE_GUIDE = "//img[@alt='Console Guide']/ancestor::div[contains(@class,'RibbonBarButton')]"
@@ -62,6 +67,8 @@ class RibbonBar(BaseActions):
     MENU_ITEM_CHANGE_HOME_SCREEN = DROP_DOWN_LIST + "/*//span[contains(text(),'Change Home')]" + MENU_ITEM
     MENU_ITEM_NEW_GROUP = DROP_DOWN_LIST + "/*//span[contains(text(),'New Group')]" + MENU_ITEM
     MENU_ITEM_NEW_FOLDER = DROP_DOWN_LIST + "/*//span[contains(text(),'New Folder')]" + MENU_ITEM
+    MENU_ITEM_VIEW = DROP_DOWN_LIST + "/*//span[contains(text(),'View')]" + MENU_ITEM
+    MENU_ITEM_ON_DEMAND = DROP_DOWN_LIST + "/*//span[contains(text(),'On Demand')]" + MENU_ITEM
 
     def click_tab_view(self):
         self._click_element(RibbonBar.TAB_VIEW)
@@ -70,6 +77,10 @@ class RibbonBar(BaseActions):
     def click_tab_home(self):
         self._click_element(RibbonBar.TAB_HOME)
         self.wait_for_element_selected(RibbonBar.TAB_HOME)
+
+    def click_tab_devices(self):
+        self._click_element(RibbonBar.TAB_DEVICES)
+        self.wait_for_element_selected(RibbonBar.TAB_DEVICES)
 
     def open_tab_home(self):
         self.wait_for_element_present(RibbonBar.TAB_HOME)
@@ -87,12 +98,24 @@ class RibbonBar(BaseActions):
         else:
             self.click_tab_view()
 
+    def open_tab_devices(self):
+        self.wait_for_element_present(RibbonBar.TAB_DEVICES)
+        cond = self._is_element_selected(RibbonBar.TAB_DEVICES)
+        if cond:
+            pass
+        else:
+            self.click_tab_devices()
+
     def check_tab_home_is_present(self):
         cond = self._is_element_present(RibbonBar.GROUP_BOX_ACTIONS)
         return True if cond else False
 
     def check_tab_view_is_present(self):
         cond = self._is_element_present(RibbonBar.GROUP_BOX_DISPLAY)
+        return True if cond else False
+
+    def check_devices_tab_is_present(self):
+        cond = self._is_element_present(RibbonBar.GROUP_BOX_INVENTORY)
         return True if cond else False
 
     def click_button_edit_or_create(self):
@@ -209,6 +232,10 @@ class RibbonBar(BaseActions):
         cond = self._is_element_present(RibbonBar.GROUP_BOX_GROUPS)
         return True if cond else False
 
+    def check_inventory_group_box_is_present(self):
+        cond = self._is_element_present(RibbonBar.GROUP_BOX_INVENTORY)
+        return True if cond else False
+
     def click_button_new(self):
         cond = self._is_element_present(RibbonBar.BUTTON_NEW + RibbonBar.DROP_DOWN_ARROW)
         self._click_element(RibbonBar.BUTTON_NEW)
@@ -224,4 +251,20 @@ class RibbonBar(BaseActions):
         self._click_element(RibbonBar.MENU_ITEM_NEW_GROUP)
         self.wait_for_element_not_present(RibbonBar.DROP_DOWN_LIST)
         self.wait_for_element_present(NewGroupPopup.BODY)
+
+    def click_button_inventory(self):
+        cond = self._is_element_present(RibbonBar.BUTTON_INVENTORY + RibbonBar.DROP_DOWN_ARROW)
+        self._click_element(RibbonBar.BUTTON_INVENTORY)
+        if cond:
+            self.wait_for_element_present(RibbonBar.DROP_DOWN_LIST)
+
+    def click_view_label(self):
+        self._click_element(RibbonBar.MENU_ITEM_VIEW)
+        self.wait_for_element_not_present(RibbonBar.DROP_DOWN_LIST)
+        self.wait_for_element_present(InventoryViewPopup.BODY)
+
+    def click_on_demand_label(self):
+        self._click_element(RibbonBar.MENU_ITEM_ON_DEMAND)
+        self.wait_for_element_not_present(RibbonBar.DROP_DOWN_LIST)
+        self.wait_for_element_present(OnDemandInventoryScanPopup.BODY)
 

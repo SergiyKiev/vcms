@@ -366,7 +366,7 @@ class SiteConfigurationSiteTab(unittest.TestCase):
         configuration_popup = ConfigurationPopup(self.driver)
         ribbon_bar = RibbonBar(self.driver)
         column_set_designer_popup = ColumnSetDesignerPopup(self.driver)
-        devices_tab = DevicesPage(self.driver)
+        devices_page = DevicesPage(self.driver)
         left_menu_devices.click_global_site_view_label()
         ribbon_bar.click_tab_view()
         self.assertTrue(ribbon_bar.check_button_edit_or_create_is_present())
@@ -399,14 +399,14 @@ class SiteConfigurationSiteTab(unittest.TestCase):
         self.assertTrue(site_tab.check_columnset_is_selected_from_drop_down_list(columnset1))
         configuration_popup.click_button_close()
         self.assertFalse(configuration_popup.check_popup_is_present())
-        self.assertTrue(devices_tab.check_columns_are_present(columns_list1))
+        self.assertTrue(devices_page.check_columns_are_present(columns_list1))
         ribbon_bar.click_button_config()
         self.assertTrue(configuration_popup.check_popup_is_present())
         site_tab.select_columnset_in_drop_down_list(columnset2)
         self.assertTrue(site_tab.check_columnset_is_selected_from_drop_down_list(columnset2))
         configuration_popup.click_button_close()
         self.assertFalse(configuration_popup.check_popup_is_present())
-        self.assertTrue(devices_tab.check_columns_are_present(columns_list2))
+        self.assertTrue(devices_page.check_columns_are_present(columns_list2))
         left_menu_devices.delete_site_from_global_site_view_tree(sitename)
         self.assertFalse(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
         print ("Test is passed" + "\n")
@@ -417,7 +417,7 @@ class SiteConfigurationSiteTab(unittest.TestCase):
         columnsetname = "ColumnSet#9999-01"
         columns_list = ["Device Name", "Device ID", "Domain", "Site"]
         main_page = MainPage(self.driver)
-        devices_tab = DevicesPage(self.driver)
+        devices_page = DevicesPage(self.driver)
         left_menu_devices = LeftMenuDevices(self.driver)
         site_tab = SiteTab(self.driver)
         column_set_designer_popup = ColumnSetDesignerPopup(self.driver)
@@ -448,7 +448,7 @@ class SiteConfigurationSiteTab(unittest.TestCase):
         self.assertTrue(site_tab.check_columnset_is_selected_from_drop_down_list(columnsetname))
         configuration_popup.click_button_close()
         self.assertFalse(configuration_popup.check_popup_is_present())
-        self.assertTrue(devices_tab.check_columns_are_present(columns_list))
+        self.assertTrue(devices_page.check_columns_are_present(columns_list))
         left_menu_devices.delete_site_from_global_site_view_tree(sitename)
         print ("Test is passed" + "\n")
 
@@ -724,18 +724,18 @@ class MainPageHelpLinks(unittest.TestCase):
         cls.driver = webdriver.Chrome()
         login_page = LoginPage(cls.driver)
         main_page = MainPage(cls.driver)
-        devices_page = DevicesPage(cls.driver)
-        desktop = DownloadAndInstall(cls.driver)
         login_page.open_page()
         login_page.login()
         main_page.check_main_page_loaded()
-        main_page._close_popups()
-        main_page.delete_device_from_the_console(Variables.vrep)
-        desktop.clean_up_device()
-        desktop.download_agent()
-        desktop.install_agent()
-        devices_page.click_icon_refresh()
-        devices_page.check_device_is_present(Variables.vrep)
+        # devices_page = DevicesPage(cls.driver)
+        # desktop = DownloadAndInstall(cls.driver)
+        # main_page._close_popups()
+        # main_page.delete_single_device_in_devices_page_table(Variables.vrep)
+        # desktop.clean_up_device()
+        # desktop.download_agent()
+        # desktop.install_agent()
+        # devices_page.click_icon_refresh()
+        # devices_page.check_device_is_present(Variables.vrep)
 
     def setUp(self):
         main_page = MainPage(self.driver)
@@ -750,13 +750,13 @@ class MainPageHelpLinks(unittest.TestCase):
         home_tab.click_icon_help()
         self.assertTrue(home_tab.check_help_link_is_correct())
 
-    def test_help_link_on_devices_tab(self):
+    def test_help_link_on_devices_page(self):
         print ("\n" + "TC#0000: Check help link on devices tab")
         left_menu = LeftMenu(self.driver)
-        devices_tab = DevicesPage(self.driver)
+        devices_page = DevicesPage(self.driver)
         left_menu.open_menu_devices()
-        devices_tab.click_icon_help()
-        self.assertTrue(devices_tab.check_help_link_is_correct())
+        devices_page.click_icon_help()
+        self.assertTrue(devices_page.check_help_link_is_correct())
 
     def test_help_link_on_administration_tab(self):
         print ("\n" + "TC#0000: Check help link on administration tab")
@@ -1250,6 +1250,47 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(initial_setup_popup.check_popup_is_present())
         initial_setup_popup.click_icon_help()
         self.assertTrue(initial_setup_popup.check_help_link_is_correct())
+
+    def test_help_link_on_inventory_view_popup(self):
+        print ("\n" + "TC#0000: Check help link on Inventory View popup")
+        device = Variables.vrep
+        inventory_view_popup = InventoryViewPopup(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        left_menu_devices = LeftMenuDevices(self.driver)
+        devices_page = DevicesPage(self.driver)
+        left_menu_devices.open_menu_devices()
+        left_menu_devices.click_global_site_view_label()
+        self.assertTrue(devices_page.check_device_is_present(device))
+        devices_page.select_device_in_table(device)
+        self.assertTrue(ribbon_bar.check_devices_tab_is_present())
+        ribbon_bar.open_tab_devices()
+        self.assertTrue(ribbon_bar.check_inventory_group_box_is_present())
+        ribbon_bar.click_button_inventory()
+        ribbon_bar.click_view_label()
+        self.assertTrue(inventory_view_popup.check_popup_is_present(device))
+        inventory_view_popup.click_icon_help()
+        self.assertTrue(inventory_view_popup.check_help_link_is_correct())
+
+    def test_help_link_on_on_demand_inventory_scan_popup(self):
+        print ("\n" + "TC#0000: Check help link on On Demand Inventory Scan popup")
+        device = Variables.vrep
+        on_demand_inventory_scan_popup = OnDemandInventoryScanPopup(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        left_menu_devices = LeftMenuDevices(self.driver)
+        devices_page = DevicesPage(self.driver)
+        left_menu_devices.open_menu_devices()
+        left_menu_devices.click_global_site_view_label()
+        self.assertTrue(devices_page.check_device_is_present(device))
+        devices_page.select_device_in_table(device)
+        self.assertTrue(ribbon_bar.check_devices_tab_is_present())
+        ribbon_bar.open_tab_devices()
+        self.assertTrue(ribbon_bar.check_inventory_group_box_is_present())
+        ribbon_bar.click_button_inventory()
+        ribbon_bar.click_on_demand_label()
+        self.assertTrue(on_demand_inventory_scan_popup.check_popup_is_present())
+        on_demand_inventory_scan_popup.click_icon_help()
+        self.assertTrue(on_demand_inventory_scan_popup.check_help_link_is_correct())
+
 
 
     def tearDown(self):
