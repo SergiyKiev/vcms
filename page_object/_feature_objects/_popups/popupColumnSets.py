@@ -1,3 +1,4 @@
+
 from _base_page.base_actions import BaseActions
 from _feature_objects._popups.popupAreYouSure import AreYouSurePopup
 from _feature_objects._popups.popupColumnSetDesigner import ColumnSetDesignerPopup
@@ -23,18 +24,25 @@ class ColumnSetsPopup(BaseActions):
         # self._click_element(self.BODY + "/*" + Locators.BTN_OK)
         # self.wait_for_element_not_present(self.BODY)
 
-    def click_column_sets_popup_button_cancel(self):
+    def click_icon_help(self):
+        self._click_icon_help(ColumnSetsPopup.BODY)
+
+    def check_help_link_is_correct(self):
+        cond = self._check_help_frame_header("Column Sets")
+        return True if cond else False
+
+    def click_button_cancel(self):
         self._click_button_cancel(ColumnSetsPopup.BODY)
 
     def click_button_new(self):
         self._click_element(ColumnSetsPopup.BUTTON_NEW)
         self.wait_for_element_present(ColumnSetDesignerPopup.BODY)
 
-    def click_column_sets_popup_button_edit(self):
+    def click_popup_button_edit(self):
         self._click_element(ColumnSetsPopup.BUTTON_EDIT)
         self.wait_for_element_present(ColumnSetDesignerPopup.BODY)
 
-    def click_column_sets_popup_button_copy(self):
+    def click_popup_button_copy(self):
         self._click_element(ColumnSetsPopup.BUTTON_COPY)
         # self.wait_for_element_present(ColumnSetsPopup.TABLE_BODY + "/*//span[text()='Copy of " + columnsetname + "']")
 
@@ -42,25 +50,25 @@ class ColumnSetsPopup(BaseActions):
         self._click_element(ColumnSetsPopup.BUTTON_DELETE)
         # self.wait_for_element_present(AreYouSurePopup.BODY)
 
-    def click_column_sets_popup_button_set_as_default(self):
+    def click_popup_button_set_as_default(self):
         self._click_element(ColumnSetsPopup.BUTTON_SET_AS_DEFAULT)
 
     def click_system_button_close(self):
         self._click_system_button_close(ColumnSetsPopup.BODY)
 
-    def click_column_sets_popup_help_icon(self):
+    def click_popup_help_icon(self):
         self._click_icon_help(ColumnSetsPopup.BODY)
 
-    def click_column_sets_popup_table_header_is_default(self):
+    def click_popup_table_header_is_default(self):
         self._click_element(ColumnSetsPopup.TABLE_HEADER_IS_DEFAULT)
 
-    def click_column_sets_popup_table_header_name(self):
+    def click_popup_table_header_name(self):
         self._click_element(ColumnSetsPopup.TABLE_HEADER_NAME)
 
-    def click_column_sets_popup_table_header_description(self):
+    def click_popup_table_header_description(self):
         self._click_element(ColumnSetsPopup.TABLE_HEADER_DESCRIPTION)
 
-    def click_column_sets_popup_table_header_columns(self):
+    def click_popup_table_header_columns(self):
         self._click_element(ColumnSetsPopup.TABLE_HEADER_COLUMNS)
 
     def click_columnset_in_table_list(self, columnsetname):

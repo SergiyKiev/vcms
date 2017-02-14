@@ -11,8 +11,6 @@ class AreYouSurePopup(BaseActions):
 
     def click_system_button_close(self):
        self._click_system_button_close(AreYouSurePopup.BODY)
-        # self._click_element(AreYouSurePopup.SYSTEM_BUTTON_CLOSE)
-        # self.wait_for_element_not_present(AreYouSurePopup.BODY)
 
     def click_button_cancel(self):
         self._click_button_cancel(AreYouSurePopup.BODY)

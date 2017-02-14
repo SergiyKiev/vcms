@@ -21,7 +21,7 @@ class ColumnSetDesignerPopup(BaseActions):
     TABLE_HEADER_DEFAULT_WIDTH = TABLE_HEADER + "/*//span[contains(text(),'Default Width')]"
     TABLE_HEADER_AGGREGATE = TABLE_HEADER + "/*//span[contains(text(),'Aggregate')]"
     TABLE_ROW = "/ancestor::tr[contains(@class,'ListView-DataFullRow')]"
-    ELEMENT_NODE_BOX = "/ancestor::div[contains(@class,'RowContainer')]"
+    ELEMENT_LABEL = "/ancestor::div[contains(@class,'RowContainer')]"
 
     def check_popup_is_present(self):
         cond = self._is_element_present(ColumnSetDesignerPopup.BODY)
@@ -55,16 +55,20 @@ class ColumnSetDesignerPopup(BaseActions):
     def click_column_in_left_side_tree(self, columnname):
         elem = ColumnSetDesignerPopup.LEFT_SIDE_SUBNODE + "/*//span[text()='" + columnname + "']"
         self._click_element(elem)
-        self.wait_for_element_selected(elem + ColumnSetDesignerPopup.ELEMENT_NODE_BOX)
+        self.wait_for_element_selected(elem + ColumnSetDesignerPopup.ELEMENT_LABEL)
 
     def expand_all_left_side_trees(self):
-        self.wait_for_element_present(ColumnSetDesignerPopup.BODY)
-        elements = self._find_elements(ColumnSetDesignerPopup.LEFT_SIDE_TREE + "/div/div/div[contains(@id,'VWGJOINT')]")
-        for element in elements:
-            self.driver.execute_script("arguments[0].click();", element)
+        self._expand_all_trees(ColumnSetDesignerPopup.LEFT_SIDE_TREE)
+        # self.wait_for_element_present(ColumnSetDesignerPopup.BODY)
+        # elements = self._find_elements(ColumnSetDesignerPopup.LEFT_SIDE_TREE + "/div/div/div[contains(@id,'VWGJOINT')]")
+        # elements = self._find_elements(ColumnSetDesignerPopup.LEFT_SIDE_TREE + BaseElements.ARROW_EXPAND)
+        # for element in elements:
+        #     self.driver.execute_script("arguments[0].click();", element)
+    def collaps_all_left_side_trees(self):
+        self._collaps_all_trees(ColumnSetDesignerPopup.LEFT_SIDE_TREE)
+
 
     def add_columns_to_list_view(self, columns_list):
-        self.expand_all_left_side_trees()
         for columnname in list(columns_list):
             self.scroll_to_element(ColumnSetDesignerPopup.BODY + "/*//span[contains(text(),'" + columnname + "')]")
             self.click_column_in_left_side_tree(columnname)
@@ -77,5 +81,6 @@ class ColumnSetDesignerPopup(BaseActions):
     def create_columnset(self, columnsetname=None, columns_list=None):
         self.click_system_button_maximize()
         self.enter_text_into_text_field_name(columnsetname)
+        self.expand_all_left_side_trees()
         self.add_columns_to_list_view(columns_list)
         self.click_button_ok()

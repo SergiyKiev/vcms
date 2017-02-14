@@ -7,8 +7,9 @@ class NewGroupPopup(BaseActions):
 
     BODY = "//span[text()='New Group']/ancestor::div[contains(@id,'WRP')]"
     BUTTON_ADD_MEMBERS = BODY + "/*//span[text()='Add Members']/ancestor::div[contains(@class,'Button')]"
-    _LEFT_MENU = BODY + "/*//div[@class='TreeView-Control']"
-    _TAB = BODY + "/*//div[@class='TabControl-Control']"
+    LEFT_MENU = BODY + "/*//div[@class='TreeView-Control']"
+    TAB = BODY + "/*//div[@class='TabControl-Control']"
+    FIELD_GROUP_NAME = BODY + "/*//input[contains(@class,'TextBox-Input')][@type='text']"
 
     def check_popup_is_present(self):
         cond = self._is_element_present(NewGroupPopup.BODY)
@@ -36,6 +37,9 @@ class NewGroupPopup(BaseActions):
     def click_button_add_members(self):
         self._click_element(NewGroupPopup.BUTTON_ADD_MEMBERS)
         self.wait_for_element_present(SelectTargetsPopup.BODY)
+
+    def enter_text_into_group_name_text_field(self, text = None):
+        self._find_element(NewGroupPopup.FIELD_GROUP_NAME).send_keys(text)
 
 
 

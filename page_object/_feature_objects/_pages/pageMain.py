@@ -1,11 +1,8 @@
-
 from _base_page.base_elements import *
-from _base_page.downloadAndInstall import DownloadAndInstall
+from _feature_objects._left_menus.leftMenu import LeftMenu
 from _feature_objects._left_menus.leftMenuDevices import LeftMenuDevices
 from _feature_objects._pages.pageDevices import *
-from _feature_objects._left_menus.leftMenu import LeftMenu
-from _feature_objects.ribbonBar import RibbonBar
-from _variables.variables import Variables
+from _feature_objects._ribbon_bar.ribbonBar import RibbonBar
 
 
 class MainPage(DevicesPage, RibbonBar, LeftMenuDevices):

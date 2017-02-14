@@ -91,7 +91,7 @@ class BaseActions(Base):
                     self._click_element(BaseElements._POPUP + BaseElements.SYSTEM_BUTTON_CLOSE)
                 else:
                     break
-            print "Popups are closed"
+            # print "Popups are closed"
         else:
             pass
 
@@ -122,7 +122,7 @@ class BaseActions(Base):
             self.driver.switch_to_window(help_window)
             self.wait_general.until(lambda d: d.title != "")
             title = self.driver.title
-            print "\n" + "Title is: ", title
+            print "Title is: ", title
             self.driver.switch_to_frame(self.driver.find_element_by_name('FrameMain'))
             cond1 = self._is_element_present(BaseElements.HELP_FRAME_HEADER + "[text()='" + expected_header_name + "']")
             cond2 = self._is_element_present(BaseElements.HELP_FRAME_HEADER)
@@ -161,7 +161,7 @@ class BaseActions(Base):
         if help_window != 'null':
             self.driver.switch_to_window(help_window)
             self.driver.close()
-            print "Help window is closed"
+            # print "Help window is closed"
         self.driver.switch_to_window(main_window)
 
     def _close_help_windows(self):
@@ -176,3 +176,29 @@ class BaseActions(Base):
                 self.driver.close()
         self.driver.switch_to_window(main_window)
         print "Help windows are closed"
+
+    def _expand_tree(self, locator):
+        try:
+            element = self._find_element(locator + BaseElements.ARROW_EXPAND)
+            self.driver.execute_script("arguments[0].click();", element)
+        except Exception as e:
+            print "Massage: ", e
+
+    def _expand_all_trees(self, locator):
+        self.wait_for_element_present(locator)
+        elements = self._find_elements(locator + BaseElements.ARROW_EXPAND)
+        for element in elements:
+            self.driver.execute_script("arguments[0].click();", element)
+
+    def _collaps_tree(self, locator):
+        try:
+            element = self._find_element(locator + BaseElements.ARROW_COLLAPSE)
+            self.driver.execute_script("arguments[0].click();", element)
+        except Exception as e:
+            print "Massage: ", e
+
+    def _collaps_all_trees(self, locator):
+        self.wait_for_element_present(locator)
+        elements = self._find_elements(locator + BaseElements.ARROW_COLLAPSE)
+        for element in elements:
+            self.driver.execute_script("arguments[0].click();", element)

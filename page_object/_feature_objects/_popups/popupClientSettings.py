@@ -5,8 +5,8 @@ from _base_page.base_actions import BaseActions
 class ClientSettingsPopup(BaseActions):
 
     BODY = "//span[text()='Client Settings']/ancestor::div[contains(@id,'WRP')]"
-    _LEFT_MENU = BODY + "/*//div[@class='TreeView-Control']"
-    _TAB = BODY + "/*//div[@class='TabControl-Control']"
+    LEFT_MENU = BODY + "/*//div[@class='TreeView-Control']"
+    TAB = BODY + "/*//div[@class='TabControl-Control']"
 
     def check_popup_is_present(self):
         cond = self._is_element_present(ClientSettingsPopup.BODY)
@@ -42,8 +42,8 @@ class ClientSettingsPopup(BaseActions):
 
 class TimersTab(ClientSettingsPopup):
 
-    LEFT_MENU_LABEL = ClientSettingsPopup._LEFT_MENU + "/*//span[text()='Timers']/ancestor::div[contains(@id,'VWGNODE')]"
-    CHECKBOX_DISSOLVE = ClientSettingsPopup._TAB \
+    LEFT_MENU_LABEL = ClientSettingsPopup.LEFT_MENU + "/*//span[text()='Timers']/ancestor::div[contains(@id,'VWGNODE')]"
+    CHECKBOX_DISSOLVE = ClientSettingsPopup.TAB \
                         + "/*//span[contains(text(),'Dissolve')]/ancestor::div[contains(@class,'CheckBox')]"
 
     def check_tab_is_present(self):
@@ -57,9 +57,9 @@ class TimersTab(ClientSettingsPopup):
 
 class FeaturesTab(ClientSettingsPopup):
 
-    LEFT_MENU_LABEL = ClientSettingsPopup._LEFT_MENU \
+    LEFT_MENU_LABEL = ClientSettingsPopup.LEFT_MENU \
                       + "/*//span[text()='Features']/ancestor::div[contains(@id,'VWGNODE')]"
-    CHECKBOX_ARCHIVE = ClientSettingsPopup._TAB\
+    CHECKBOX_ARCHIVE = ClientSettingsPopup.TAB\
                        + "/*//span[text()='Auto Archive:']/ancestor::div[contains(@class,'CheckBox')]"
 
     def check_tab_is_present(self):
@@ -73,10 +73,10 @@ class FeaturesTab(ClientSettingsPopup):
 
 class ClientUrlsTab(ClientSettingsPopup):
 
-    LEFT_MENU_LABEL = ClientSettingsPopup._LEFT_MENU \
+    LEFT_MENU_LABEL = ClientSettingsPopup.LEFT_MENU \
                       + "/*//span[text()='Client URLs']/ancestor::div[contains(@id,'VWGNODE')]"
-    LABEL_VREP_INSTALLER = ClientSettingsPopup._TAB + "/*//span[text()='vRep Installer']"
-    LABEL_MICRO_RESPONDER_INSTALLER = ClientSettingsPopup._TAB + "/*//span[text()='Micro Responder Installer']"
+    LABEL_VREP_INSTALLER = ClientSettingsPopup.TAB + "/*//span[text()='vRep Installer']"
+    LABEL_MICRO_RESPONDER_INSTALLER = ClientSettingsPopup.TAB + "/*//span[text()='Micro Responder Installer']"
 
     def check_tab_is_present(self):
         cond1 = self._is_element_present(self.LABEL_VREP_INSTALLER)
@@ -90,11 +90,11 @@ class ClientUrlsTab(ClientSettingsPopup):
 
 class RebootUIConfigTab(ClientSettingsPopup):
 
-    LEFT_MENU_LABEL = ClientSettingsPopup._LEFT_MENU \
+    LEFT_MENU_LABEL = ClientSettingsPopup.LEFT_MENU \
                       + "/*//span[text()='Reboot UI Config']/ancestor::div[contains(@id,'VWGNODE')]"
-    LABEL_REBOOT_MASSAGE = ClientSettingsPopup._TAB + "/*//span[text()='Custom Reboot Message']"
-    LABEL_REBOOT_TIMERS = ClientSettingsPopup._TAB + "/*//span[text()='Reboot Timers']"
-    LABEL_SNOOZE = ClientSettingsPopup._TAB + "/*//span[text()='Snooze']"
+    LABEL_REBOOT_MASSAGE = ClientSettingsPopup.TAB + "/*//span[text()='Custom Reboot Message']"
+    LABEL_REBOOT_TIMERS = ClientSettingsPopup.TAB + "/*//span[text()='Reboot Timers']"
+    LABEL_SNOOZE = ClientSettingsPopup.TAB + "/*//span[text()='Snooze']"
 
     def check_tab_is_present(self):
         cond1 = self._is_element_present(self.LABEL_REBOOT_MASSAGE)
@@ -109,12 +109,12 @@ class RebootUIConfigTab(ClientSettingsPopup):
 
 class ClientProxySettingsTab(ClientSettingsPopup):
 
-    LEFT_MENU_LABEL = ClientSettingsPopup._LEFT_MENU \
+    LEFT_MENU_LABEL = ClientSettingsPopup.LEFT_MENU \
                       + "/*//span[text()='Client Proxy Settings']/ancestor::div[contains(@id,'VWGNODE')]"
-    LABEL_PROXY_SERVER_URL = ClientSettingsPopup._TAB + "/*//span[text()='Proxy Server URL:']"
-    LABEL_PORT_NUMBER = ClientSettingsPopup._TAB + "/*//span[text()='Port Number:']"
-    LABEL_LOGIN_CREDENTIALS = ClientSettingsPopup._TAB + "/*//span[text()='Login Credentials']"
-    LABEL_PASSWORD = ClientSettingsPopup._TAB + "/*//span[text()='Password']"
+    LABEL_PROXY_SERVER_URL = ClientSettingsPopup.TAB + "/*//span[text()='Proxy Server URL:']"
+    LABEL_PORT_NUMBER = ClientSettingsPopup.TAB + "/*//span[text()='Port Number:']"
+    LABEL_LOGIN_CREDENTIALS = ClientSettingsPopup.TAB + "/*//span[text()='Login Credentials']"
+    LABEL_PASSWORD = ClientSettingsPopup.TAB + "/*//span[text()='Password']"
 
     def check_tab_is_present(self):
         cond1 = self._is_element_present(self.LABEL_PROXY_SERVER_URL)

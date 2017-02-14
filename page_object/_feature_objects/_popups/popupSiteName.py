@@ -5,10 +5,10 @@ from _base_page.base_actions import BaseActions
 class SiteNamePopup(BaseActions):
 
     BODY = "//span[contains(text(),'Site') and contains(text(),'Name')]/ancestor::div[contains(@id,'WRP')]"
-    TEXT_FIELD_NAME = BODY + "/*//input"
+    FIELD_NAME = BODY + "/*//input"
 
     def enter_text_into_name_text_field(self, sitename):
-        self._find_element(SiteNamePopup.TEXT_FIELD_NAME).send_keys(sitename)
+        self._find_element(SiteNamePopup.FIELD_NAME).send_keys(sitename)
 
     def click_button_ok(self):
         self._click_button_ok(SiteNamePopup.BODY)

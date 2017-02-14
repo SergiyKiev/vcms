@@ -6,8 +6,8 @@ from _feature_objects._popups.popupConditionEditor import ConditionEditorPopup
 class QueryDesignerPopup(BaseActions):
 
     BODY = "//span[text()='Query Designer']/ancestor::div[contains(@id,'WRP')]"
-    _LEFT_MENU = BODY + "/*//div[@class='TreeView-Control']"
-    _TAB = BODY + "/*//div[@class='TabControl-Control']"
+    LEFT_MENU = BODY + "/*//div[@class='TreeView-Control']"
+    TAB = BODY + "/*//div[@class='TabControl-Control']"
 
     def check_popup_is_present(self):
         cond = self._is_element_present(QueryDesignerPopup.BODY)
@@ -31,9 +31,6 @@ class QueryDesignerPopup(BaseActions):
     def click_button_add(self):
         self._click_button_add(QueryDesignerPopup.BODY)
         self.wait_for_element_present(ConditionEditorPopup.BODY)
-
-
-
 
 
 

@@ -25,10 +25,6 @@ class Base(object):
     SELECTED = "[contains(@class,'Selected')]"
     CHECKED = "[contains(@style,'CheckBox1')]"
     UNCHECKED = "[contains(@style,'CheckBox0')]"
-    ARROW_EXPAND = "/div[contains(@style,'LTR1.gif')]"
-    ARROW_COLLAPSE = "/div[contains(@style,'LTR0.gif')]"
-    ARROW_EMPTY = "/div[contains(@style,'TreeViewEmpty')]"
-
 
     def __init__(self, driver, base_url=Settings.baseUrl):
         self.driver = driver
@@ -345,20 +341,6 @@ class Base(object):
         self.wait_general.until(EC.presence_of_element_located((By.XPATH, locator)))
         hover = ActionChains(self.driver).move_to_element(element)
         hover.perform()
-
-    def _expand_tree(self, locator):
-        try:
-            element = self._find_element(locator + Base.ARROW_EXPAND)
-            self.driver.execute_script("arguments[0].click();", element)
-        except Exception as e:
-            print "Massage: ", e
-
-    def _collaps_tree(self, locator):
-        try:
-            element = self._find_element(locator + Base.ARROW_COLLAPSE)
-            self.driver.execute_script("arguments[0].click();", element)
-        except Exception as e:
-            print "Massage: ", e
 
     def scroll_list_to_top(self):
         try:

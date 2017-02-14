@@ -81,7 +81,7 @@ class LeftMenu(BaseActions):
                     self.click_icon_devices()
                 else:
                     break
-            print "Left Menu is opened"
+            # print "Left Menu is opened"
         else:
             pass
 

@@ -54,5 +54,10 @@ class BaseElements:
     #LEFT MENU
     GREY_COLOR = "[contains(@style,'#E8E8E8')]"
 
+    #BASE ELEMENTS
+    ARROW_EXPAND = "/*//div[contains(@style,'LTR1.gif')]"
+    ARROW_COLLAPSE = "/*//div[contains(@style,'LTR0.gif')]"
+    ARROW_EMPTY = "/*//div[contains(@style,'TreeViewEmpty')]"
+
 
 

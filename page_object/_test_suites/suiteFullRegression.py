@@ -2,30 +2,28 @@
 import logging
 import unittest
 
-from _base_page.downloadAndInstall import DownloadAndInstall
 from _feature_objects._left_menus.leftMenu import LeftMenu
 from _feature_objects._left_menus.leftMenuDevices import LeftMenuDevices
 from _feature_objects._pages.pageAdministration import AdministrationPage
 from _feature_objects._pages.pageDevices import *
+from _feature_objects._pages.pageGroups import GroupsPage
 from _feature_objects._pages.pageHome import HomePage
+from _feature_objects._pages.pageLogin import LoginPage
 from _feature_objects._pages.pageMain import MainPage
+from _feature_objects._pages.pageQueries import QueriesPage
 from _feature_objects._pages.pageReporting import ReportingPage
 from _feature_objects._pages.pageSoftwareAndPatchManger import SoftwareAndPatchManagerPage
 from _feature_objects._pages.pageTasks import TasksPage
-from _feature_objects._popups.popupAreYouSure import AreYouSurePopup
-from _feature_objects._popups.popupClientSettings import *
 from _feature_objects._popups.popupConditionEditor import ConditionEditorPopup
 from _feature_objects._popups.popupConfiguration import *
 from _feature_objects._popups.popupError import ErrorPopup
-from _feature_objects._popups.popupIPAddress import IPAddressPopup
-from _feature_objects._popups.popupNewGroup import NewGroupPopup
+from _feature_objects._popups.popupPatchManager import PatchManagerPopup
 from _feature_objects._popups.popupQueryDesigner import QueryDesignerPopup
 from _feature_objects._popups.popupResetPassword import ResetPasswordPopup
 from _feature_objects._popups.popupSelectTargets import SelectTargetsPopup
 from _feature_objects._popups.popupSettings import *
-from _feature_objects._popups.popupUnableToRemove import UnableToRemovePopup
-from _feature_objects.ribbonBar import *
-from _feature_objects._pages.pageLogin import LoginPage
+from _feature_objects._popups.popupClientSettings import *
+from _feature_objects._ribbon_bar.ribbonBar import *
 from _variables.variables import Variables
 from selenium import webdriver
 
@@ -52,22 +50,22 @@ class SiteCreation(unittest.TestCase):
         left_menu.open_menu_devices()
         left_menu_devices.expand_global_site_view_tree()
 
-    def test_open_left_menus(self):
-        print ("\n" + "TC#xxxx. Open left side menus")
-        left_menu = LeftMenu(self.driver)
-        left_menu.open_menu_home()
-        left_menu.open_menu_devices()
-        self.assertTrue(left_menu.check_menu_devices_is_visible())
-        left_menu.open_menu_administration()
-        self.assertTrue(left_menu.check_menu_administration_is_visible())
-        left_menu.open_menu_tasks()
-        self.assertTrue(left_menu.check_menu_tasks_is_visible())
-        left_menu.open_menu_reporting()
-        self.assertTrue(left_menu.check_menu_reporting_is_visible())
-        left_menu.open_menu_software_and_patch_manager()
-        self.assertTrue(left_menu.check_menu_software_and_patch_manager_is_visible())
-        # left_menu.open_menu_password_reset()
-        print ("Test is passed" + "\n")
+    # def test_open_left_menus(self):
+    #     print ("\n" + "TC#xxxx. Open left side menus")
+    #     left_menu = LeftMenu(self.driver)
+    #     left_menu.open_menu_home()
+    #     left_menu.open_menu_devices()
+    #     self.assertTrue(left_menu.check_menu_devices_is_visible())
+    #     left_menu.open_menu_administration()
+    #     self.assertTrue(left_menu.check_menu_administration_is_visible())
+    #     left_menu.open_menu_tasks()
+    #     self.assertTrue(left_menu.check_menu_tasks_is_visible())
+    #     left_menu.open_menu_reporting()
+    #     self.assertTrue(left_menu.check_menu_reporting_is_visible())
+    #     left_menu.open_menu_software_and_patch_manager()
+    #     self.assertTrue(left_menu.check_menu_software_and_patch_manager_is_visible())
+    #     # left_menu.open_menu_password_reset()
+    #     print ("Test is passed" + "\n")
 
     def test_open_site_name_popup(self):
         print ("\n" + "TC#9057. Open Site Name popup")
@@ -84,7 +82,6 @@ class SiteCreation(unittest.TestCase):
     def test_create_new_site_with_acceptable_name(self):
         print ("\n" + "TC#9101. Create new site with acceptable name")
         sitename = "New site #9101"
-        main_page = MainPage(self.driver)
         site_name_popup = SiteNamePopup(self.driver)
         left_menu_devices = LeftMenuDevices(self.driver)
         ribbon_bar = RibbonBar(self.driver)
@@ -359,7 +356,6 @@ class SiteConfigurationSiteTab(unittest.TestCase):
         columnset2 = "test1"
         columns_list1 = ["Device Name", "OS Name", "Caption", "IP Address"]
         columns_list2 = ["Device Name", "Device ID", "Domain", "Site", "User Name"]
-        main_page = MainPage(self.driver)
         left_menu_devices = LeftMenuDevices(self.driver)
         site_tab = SiteTab(self.driver)
         column_sets_popup = ColumnSetsPopup(self.driver)
@@ -751,12 +747,30 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(home_tab.check_help_link_is_correct())
 
     def test_help_link_on_devices_page(self):
-        print ("\n" + "TC#0000: Check help link on devices tab")
-        left_menu = LeftMenu(self.driver)
+        print ("\n" + "TC#0000: Check help link on Devices page")
+        left_menu_devices = LeftMenuDevices(self.driver)
         devices_page = DevicesPage(self.driver)
-        left_menu.open_menu_devices()
+        left_menu_devices.open_menu_devices()
         devices_page.click_icon_help()
         self.assertTrue(devices_page.check_help_link_is_correct())
+
+    def test_help_link_on_queries_page(self):
+        print ("\n" + "TC#0000: Check help link on Queries page")
+        left_menu_devices = LeftMenuDevices(self.driver)
+        queries_page = QueriesPage(self.driver)
+        left_menu_devices.open_menu_devices()
+        left_menu_devices.click_queries_label()
+        queries_page.click_icon_help()
+        self.assertTrue(queries_page.check_help_link_is_correct())
+
+    def test_help_link_on_groups_page(self):
+        print ("\n" + "TC#0000: Check help link on Groups page")
+        left_menu_devices = LeftMenuDevices(self.driver)
+        groups_page = GroupsPage(self.driver)
+        left_menu_devices.open_menu_devices()
+        left_menu_devices.click_queries_label()
+        groups_page.click_icon_help()
+        self.assertTrue(groups_page.check_help_link_is_correct())
 
     def test_help_link_on_administration_tab(self):
         print ("\n" + "TC#0000: Check help link on administration tab")
@@ -1111,7 +1125,7 @@ class MainPageHelpLinks(unittest.TestCase):
         left_menu_devices.open_menu_devices()
         self.assertTrue(left_menu_devices.check_menu_devices_is_visible())
         left_menu_devices.click_queries_label()
-        self.assertTrue(ribbon_bar.check_queries_group_box_is_present())
+        self.assertTrue(ribbon_bar.check_queries_box_is_present())
         ribbon_bar.click_button_new()
         self.assertTrue(query_designer_popup.check_popup_is_present())
         query_designer_popup.click_icon_help()
@@ -1128,7 +1142,7 @@ class MainPageHelpLinks(unittest.TestCase):
         left_menu_devices.open_menu_devices()
         self.assertTrue(left_menu_devices.check_menu_devices_is_visible())
         left_menu_devices.click_queries_label()
-        self.assertTrue(ribbon_bar.check_queries_group_box_is_present())
+        self.assertTrue(ribbon_bar.check_queries_box_is_present())
         ribbon_bar.click_button_new()
         self.assertTrue(query_designer_popup.check_popup_is_present())
         query_designer_popup.click_button_add()
@@ -1145,7 +1159,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(ribbon_bar.check_tab_home_is_present())
         left_menu_devices.open_menu_devices()
         left_menu_devices.click_groups_label()
-        self.assertTrue(ribbon_bar.check_groups_group_box_is_present())
+        self.assertTrue(ribbon_bar.check_groups_box_is_present())
         ribbon_bar.click_button_new()
         self.assertTrue(ribbon_bar.check_drop_down_list_is_present())
         ribbon_bar.click_new_group_label()
@@ -1163,7 +1177,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(ribbon_bar.check_tab_home_is_present())
         left_menu_devices.open_menu_devices()
         left_menu_devices.click_groups_label()
-        self.assertTrue(ribbon_bar.check_groups_group_box_is_present())
+        self.assertTrue(ribbon_bar.check_groups_box_is_present())
         ribbon_bar.click_button_new()
         self.assertTrue(ribbon_bar.check_drop_down_list_is_present())
         ribbon_bar.click_new_group_label()
@@ -1182,7 +1196,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(ribbon_bar.check_tab_home_is_present())
         left_menu_devices.open_menu_devices()
         left_menu_devices.click_groups_label()
-        self.assertTrue(ribbon_bar.check_groups_group_box_is_present())
+        self.assertTrue(ribbon_bar.check_groups_box_is_present())
         ribbon_bar.click_button_new()
         self.assertTrue(ribbon_bar.check_drop_down_list_is_present())
         ribbon_bar.click_new_folder_label()
@@ -1234,6 +1248,20 @@ class MainPageHelpLinks(unittest.TestCase):
         model_alias_popup.click_icon_help()
         self.assertTrue(model_alias_popup.check_help_link_is_correct())
 
+    def test_help_link_on_column_sets_popup(self):
+        print ("\n" + "TC#0000: Check help link on Column Sets popup")
+        ribbon_bar = RibbonBar(self.driver)
+        column_sets_popup = ColumnSetsPopup(self.driver)
+        left_menu_devices = LeftMenuDevices(self.driver)
+        left_menu_devices.open_menu_devices()
+        left_menu_devices.click_global_site_view_label()
+        ribbon_bar.open_tab_view()
+        self.assertTrue(ribbon_bar.check_tab_view_is_present())
+        ribbon_bar.click_button_edit_or_create()
+        self.assertTrue(column_sets_popup.check_popup_is_present())
+        column_sets_popup.click_icon_help()
+        self.assertTrue(column_sets_popup.check_help_link_is_correct())
+
     def test_help_link_on_initial_setup_popup(self):
         print ("\n" + "TC#0000: Check help link on Initial Setup popup")
         ribbon_bar = RibbonBar(self.driver)
@@ -1264,7 +1292,7 @@ class MainPageHelpLinks(unittest.TestCase):
         devices_page.select_device_in_table(device)
         self.assertTrue(ribbon_bar.check_devices_tab_is_present())
         ribbon_bar.open_tab_devices()
-        self.assertTrue(ribbon_bar.check_inventory_group_box_is_present())
+        self.assertTrue(ribbon_bar.check_inventory_box_is_present())
         ribbon_bar.click_button_inventory()
         ribbon_bar.click_view_label()
         self.assertTrue(inventory_view_popup.check_popup_is_present(device))
@@ -1284,14 +1312,183 @@ class MainPageHelpLinks(unittest.TestCase):
         devices_page.select_device_in_table(device)
         self.assertTrue(ribbon_bar.check_devices_tab_is_present())
         ribbon_bar.open_tab_devices()
-        self.assertTrue(ribbon_bar.check_inventory_group_box_is_present())
+        self.assertTrue(ribbon_bar.check_inventory_box_is_present())
         ribbon_bar.click_button_inventory()
         ribbon_bar.click_on_demand_label()
         self.assertTrue(on_demand_inventory_scan_popup.check_popup_is_present())
         on_demand_inventory_scan_popup.click_icon_help()
         self.assertTrue(on_demand_inventory_scan_popup.check_help_link_is_correct())
 
+    def test_help_link_on_wake_up_popup(self):
+        print ("\n" + "TC#0000: Check help link on Wake on LAN popup")
+        device = Variables.vrep
+        wake_on_lan_popup = WakeOnLANPopup(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        left_menu_devices = LeftMenuDevices(self.driver)
+        devices_page = DevicesPage(self.driver)
+        left_menu_devices.open_menu_devices()
+        left_menu_devices.click_global_site_view_label()
+        self.assertTrue(devices_page.check_device_is_present(device))
+        devices_page.select_device_in_table(device)
+        self.assertTrue(ribbon_bar.check_devices_tab_is_present())
+        ribbon_bar.open_tab_devices()
+        self.assertTrue(ribbon_bar.check_button_wake_up_is_present())
+        ribbon_bar.click_button_wake_up()
+        self.assertTrue(wake_on_lan_popup.check_popup_is_present())
+        wake_on_lan_popup.click_icon_help()
+        self.assertTrue(wake_on_lan_popup.check_help_link_is_correct())
 
+    def test_help_link_on_move_device_popup(self):
+        print ("\n" + "TC#0000: Check help link on Move Device popup")
+        device = Variables.vrep
+        move_device_popup = MoveDevicePopup(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        left_menu_devices = LeftMenuDevices(self.driver)
+        devices_page = DevicesPage(self.driver)
+        left_menu_devices.open_menu_devices()
+        left_menu_devices.click_global_site_view_label()
+        self.assertTrue(devices_page.check_device_is_present(device))
+        devices_page.select_device_in_table(device)
+        self.assertTrue(ribbon_bar.check_devices_tab_is_present())
+        ribbon_bar.open_tab_devices()
+        self.assertTrue(ribbon_bar.check_site_management_box_is_present())
+        ribbon_bar.click_button_move_device()
+        self.assertTrue(move_device_popup.check_popup_is_present())
+        move_device_popup.click_icon_help()
+        self.assertTrue(move_device_popup.check_help_link_is_correct())
+
+    def test_help_link_on_patch_manager_popup(self):
+        print ("\n" + "TC#0000: Check help link on Patch Manager popup")
+        device = Variables.vrep
+        patch_manager_popup = PatchManagerPopup(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        left_menu_devices = LeftMenuDevices(self.driver)
+        devices_page = DevicesPage(self.driver)
+        left_menu_devices.open_menu_devices()
+        left_menu_devices.click_global_site_view_label()
+        self.assertTrue(devices_page.check_device_is_present(device))
+        devices_page.select_device_in_table(device)
+        self.assertTrue(ribbon_bar.check_devices_tab_is_present())
+        ribbon_bar.open_tab_devices()
+        self.assertTrue(ribbon_bar.check_site_management_box_is_present())
+        ribbon_bar.click_button_move_device()
+        self.assertTrue(patch_manager_popup.check_popup_is_present())
+        patch_manager_popup.click_icon_help()
+        self.assertTrue(patch_manager_popup.check_help_link_is_correct())
+
+    def test_help_link_on_reports_popup(self):
+        print ("\n" + "TC#0000: Check help link on Reports popup")
+        device = Variables.vrep
+        reports_popup = ReportsPopup(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        left_menu_devices = LeftMenuDevices(self.driver)
+        devices_page = DevicesPage(self.driver)
+        left_menu_devices.open_menu_devices()
+        left_menu_devices.click_global_site_view_label()
+        self.assertTrue(devices_page.check_device_is_present(device))
+        devices_page.select_device_in_table(device)
+        self.assertTrue(ribbon_bar.check_devices_tab_is_present())
+        ribbon_bar.open_tab_devices()
+        self.assertTrue(ribbon_bar.check_site_management_box_is_present())
+        ribbon_bar.click_button_reports()
+        self.assertTrue(reports_popup.check_popup_is_present())
+        reports_popup.click_icon_help()
+        self.assertTrue(reports_popup.check_help_link_is_correct())
+
+    def test_help_link_on_file_browser_popup(self):
+        print ("\n" + "TC#0000: Check help link on File Browser popup")
+        device = Variables.vrep
+        file_expplorer_popup = FileExplorerPopup(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        left_menu_devices = LeftMenuDevices(self.driver)
+        devices_page = DevicesPage(self.driver)
+        left_menu_devices.open_menu_devices()
+        left_menu_devices.click_global_site_view_label()
+        self.assertTrue(devices_page.check_device_is_present(device))
+        devices_page.select_device_in_table(device)
+        self.assertTrue(ribbon_bar.check_devices_tab_is_present())
+        ribbon_bar.open_tab_tools()
+        self.assertTrue(ribbon_bar.check_computer_tools_box_is_present())
+        ribbon_bar.click_button_file_browser()
+        self.assertTrue(file_expplorer_popup.check_popup_is_present())
+        file_expplorer_popup.click_icon_help()
+        self.assertTrue(file_expplorer_popup.check_help_link_is_correct())
+
+    def test_help_link_on_ping_result_popup(self):
+        print ("\n" + "TC#0000: Check help link on Ping Result popup")
+        device = Variables.vrep
+        ping_result_popup = PingResultPopup(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        left_menu_devices = LeftMenuDevices(self.driver)
+        devices_page = DevicesPage(self.driver)
+        left_menu_devices.open_menu_devices()
+        left_menu_devices.click_global_site_view_label()
+        self.assertTrue(devices_page.check_device_is_present(device))
+        devices_page.select_device_in_table(device)
+        self.assertTrue(ribbon_bar.check_devices_tab_is_present())
+        ribbon_bar.open_tab_tools()
+        self.assertTrue(ribbon_bar.check_computer_tools_box_is_present())
+        ribbon_bar.click_button_ping()
+        self.assertTrue(ping_result_popup.check_popup_is_present())
+        ping_result_popup.click_icon_help()
+        self.assertTrue(ping_result_popup.check_help_link_is_correct())
+
+    def test_help_link_on_process_viewer_popup(self):
+        print ("\n" + "TC#0000: Check help link on Process Viewer popup")
+        device = Variables.vrep
+        process_explorer_popup = ProcessExplorerPopup(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        left_menu_devices = LeftMenuDevices(self.driver)
+        devices_page = DevicesPage(self.driver)
+        left_menu_devices.open_menu_devices()
+        left_menu_devices.click_global_site_view_label()
+        self.assertTrue(devices_page.check_device_is_present(device))
+        devices_page.select_device_in_table(device)
+        self.assertTrue(ribbon_bar.check_devices_tab_is_present())
+        ribbon_bar.open_tab_tools()
+        self.assertTrue(ribbon_bar.check_computer_tools_box_is_present())
+        ribbon_bar.click_button_process_viewer()
+        self.assertTrue(process_explorer_popup.check_popup_is_present())
+        process_explorer_popup.click_icon_help()
+        self.assertTrue(process_explorer_popup.check_help_link_is_correct())
+
+    def test_help_link_on_event_viewer_popup(self):
+        print ("\n" + "TC#0000: Check help link on Event Viewer popup")
+        device = Variables.vrep
+        event_viewer_popup = EventViewerPopup(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        left_menu_devices = LeftMenuDevices(self.driver)
+        devices_page = DevicesPage(self.driver)
+        left_menu_devices.open_menu_devices()
+        left_menu_devices.click_global_site_view_label()
+        self.assertTrue(devices_page.check_device_is_present(device))
+        devices_page.select_device_in_table(device)
+        self.assertTrue(ribbon_bar.check_devices_tab_is_present())
+        ribbon_bar.open_tab_tools()
+        self.assertTrue(ribbon_bar.check_computer_tools_box_is_present())
+        ribbon_bar.click_button_event_viewer()
+        self.assertTrue(event_viewer_popup.check_popup_is_present())
+        event_viewer_popup.click_icon_help()
+        self.assertTrue(event_viewer_popup.check_help_link_is_correct())
+
+    def test_help_link_on_wmi_explorer_popup(self):
+        print ("\n" + "TC#0000: Check help link on WMI Explorer popup")
+        device = Variables.vrep
+        wmi_explorer_popup = WMIExplorerPopup(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        left_menu_devices = LeftMenuDevices(self.driver)
+        devices_page = DevicesPage(self.driver)
+        left_menu_devices.open_menu_devices()
+        left_menu_devices.click_global_site_view_label()
+        self.assertTrue(devices_page.check_device_is_present(device))
+        devices_page.select_device_in_table(device)
+        self.assertTrue(ribbon_bar.check_devices_tab_is_present())
+        ribbon_bar.open_tab_tools()
+        self.assertTrue(ribbon_bar.check_computer_tools_box_is_present())
+        ribbon_bar.click_button_wmi_explorer()
+        self.assertTrue(wmi_explorer_popup.check_popup_is_present())
+        wmi_explorer_popup.click_icon_help()
+        self.assertTrue(wmi_explorer_popup.check_help_link_is_correct())
 
     def tearDown(self):
         help_window = BaseActions(self.driver)

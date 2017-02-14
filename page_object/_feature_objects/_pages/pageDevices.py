@@ -1,7 +1,7 @@
 
 from _base_page.base_actions import BaseActions
 from _feature_objects._popups.popupRemoveDevices import RemoveDevicesPopup
-from _feature_objects.ribbonBar import RibbonBar
+from _feature_objects._ribbon_bar.ribbonBar import RibbonBar
 
 
 class DevicesPage(BaseActions):
@@ -24,13 +24,13 @@ class DevicesPage(BaseActions):
         self.wait_for_element_selected(row)
 
     def click_icon_refresh(self):
-        self._click_icon_refresh(self.PAGE_HEADER)
+        self._click_icon_refresh(DevicesPage.PAGE_HEADER)
 
     def click_icon_search(self):
-        self._click_icon_search(self.PAGE_HEADER)
+        self._click_icon_search(DevicesPage.PAGE_HEADER)
 
-    def enter_text_into_search_field(self, text = None):
-        self._find_element(self.SEARCH_FIELD).send_keys(text)
+    def enter_text_into_search_text_field(self, text = None):
+        self._find_element(DevicesPage.SEARCH_FIELD).send_keys(text)
 
     def check_device_is_present(self, name):
         cond = self._is_element_present(DevicesPage.TABLE_ROW + "/*//span[text()='" + str(name) + "']/ancestor::tr")
@@ -62,7 +62,7 @@ class DevicesPage(BaseActions):
 
     def delete_devices_in_devices_page_table(self, *names):
         for name in list(*names):
-            self.enter_text_into_search_field(name)
+            self.enter_text_into_search_text_field(name)
             self.click_icon_search()
             cond = self.check_device_is_present(name)
             if cond:
@@ -82,7 +82,7 @@ class DevicesPage(BaseActions):
                 print "No device was found:", name
 
     def delete_single_device_in_devices_page_table(self, name):
-        self.enter_text_into_search_field(name)
+        self.enter_text_into_search_text_field(name)
         self.click_icon_search()
         cond = self.check_device_is_present(name)
         if cond:

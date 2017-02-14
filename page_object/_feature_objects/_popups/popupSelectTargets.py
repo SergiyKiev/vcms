@@ -5,8 +5,8 @@ from _base_page.base_actions import BaseActions
 class SelectTargetsPopup(BaseActions):
 
     BODY = "//span[text()='Select Targets']/ancestor::div[contains(@id,'WRP')]"
-    _LEFT_MENU = BODY + "/*//div[@class='TreeView-Control']"
-    _TAB = BODY + "/*//div[@class='TabControl-Control']"
+    LEFT_MENU = BODY + "/*//div[@class='TreeView-Control']"
+    TAB = BODY + "/*//div[@class='TabControl-Control']"
 
     def check_popup_is_present(self):
         cond = self._is_element_present(SelectTargetsPopup.BODY)

@@ -1,12 +1,11 @@
 import unittest
 
-from _base_page.downloadAndInstall import DownloadAndInstall
 from _feature_objects._left_menus.leftMenu import *
 from _feature_objects._left_menus.leftMenuDevices import LeftMenuDevices
 from _feature_objects._pages.pageDevices import DevicesPage
-from _feature_objects._pages.pageMain import MainPage
-from _feature_objects.ribbonBar import *
 from _feature_objects._pages.pageLogin import LoginPage
+from _feature_objects._pages.pageMain import MainPage
+from _feature_objects._ribbon_bar.ribbonBar import *
 from _variables.variables import *
 from selenium import webdriver
 

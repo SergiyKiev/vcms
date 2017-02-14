@@ -1,3 +1,4 @@
+
 from _base_page.base_actions import BaseActions
 from _feature_objects._popups.popupInitialSetup import InitialSetupPopup
 from selenium.webdriver.common.by import By
@@ -8,8 +9,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 class SettingsPopup(BaseActions):
 
     BODY = "//span[text()='Settings']/ancestor::div[contains(@id,'WRP')]"
-    _LEFT_MENU = BODY + "/*//div[@class='TreeView-Control']"
-    _TAB = BODY + "/*//div[@class='TabControl-Control']"
+    LEFT_MENU = BODY + "/*//div[@class='TreeView-Control']"
+    TAB = BODY + "/*//div[@class='TabControl-Control']"
 
     def check_popup_is_present(self):
         cond = self._is_element_present(SettingsPopup.BODY)
@@ -53,10 +54,10 @@ class SettingsPopup(BaseActions):
 
 class ContentServicesTab(SettingsPopup):
 
-    LEFT_MENU_LABEL = SettingsPopup._LEFT_MENU + "/*//span[text()='Content Services']/ancestor::div[contains(@id,'VWGNODE')]"
-    TAB_OPTIONS = SettingsPopup._TAB + "/*//span[text()='Options']/ancestor::div[contains(@id,'TAB')]"
-    TAB_LOG = SettingsPopup._TAB + "/*//span[text()='Log']/ancestor::div[contains(@id,'TAB')]"
-    CHECKBOX_CHECK_NEW_DATA = SettingsPopup._TAB \
+    LEFT_MENU_LABEL = SettingsPopup.LEFT_MENU + "/*//span[text()='Content Services']/ancestor::div[contains(@id,'VWGNODE')]"
+    TAB_OPTIONS = SettingsPopup.TAB + "/*//span[text()='Options']/ancestor::div[contains(@id,'TAB')]"
+    TAB_LOG = SettingsPopup.TAB + "/*//span[text()='Log']/ancestor::div[contains(@id,'TAB')]"
+    CHECKBOX_CHECK_NEW_DATA = SettingsPopup.TAB \
                               + "/*//span[contains(text(),'check for new data')]/ancestor::div[contains(@class,'CheckBox')]"
 
     def check_tab_is_present(self):
@@ -71,10 +72,10 @@ class ContentServicesTab(SettingsPopup):
 
 class EmailSettingsTab(SettingsPopup):
 
-    LEFT_MENU_LABEL = SettingsPopup._LEFT_MENU \
+    LEFT_MENU_LABEL = SettingsPopup.LEFT_MENU \
                       + "/*//span[text()='Email Settings']/ancestor::div[contains(@id,'VWGNODE')]"
-    TAB_SMTP = SettingsPopup._TAB + "/*//span[text()='SMTP']/ancestor::div[contains(@id,'TAB')]"
-    TAB_IMAP = SettingsPopup._TAB + "/*//span[text()='IMAP']/ancestor::div[contains(@id,'TAB')]"
+    TAB_SMTP = SettingsPopup.TAB + "/*//span[text()='SMTP']/ancestor::div[contains(@id,'TAB')]"
+    TAB_IMAP = SettingsPopup.TAB + "/*//span[text()='IMAP']/ancestor::div[contains(@id,'TAB')]"
 
     def check_tab_is_present(self):
         cond1 = self._is_element_present(self.TAB_SMTP)
@@ -88,11 +89,11 @@ class EmailSettingsTab(SettingsPopup):
 
 class InitialSetupTab(SettingsPopup):
 
-    LEFT_MENU_LABEL = SettingsPopup._LEFT_MENU \
+    LEFT_MENU_LABEL = SettingsPopup.LEFT_MENU \
                       + "/*//span[text()='Initial Setup']/ancestor::div[contains(@id,'VWGNODE')]"
-    BUTTON_RUN_INITIAL_SETUP = SettingsPopup._TAB \
+    BUTTON_RUN_INITIAL_SETUP = SettingsPopup.TAB \
                                + "/*//span[text()='Run Initial Setup']/ancestor::div[contains(@class,'Button')]"
-    CHECKBOX_TERMS_AND_CONDITIONS = SettingsPopup._TAB \
+    CHECKBOX_TERMS_AND_CONDITIONS = SettingsPopup.TAB \
                               + "/*//span[contains(text(),'Show Terms')]/ancestor::div[contains(@class,'CheckBox')]"
 
     def check_tab_is_present(self):
@@ -111,11 +112,11 @@ class InitialSetupTab(SettingsPopup):
 
 class LocaleOptionsTab(SettingsPopup):
 
-    LEFT_MENU_LABEL = SettingsPopup._LEFT_MENU + \
+    LEFT_MENU_LABEL = SettingsPopup.LEFT_MENU + \
                       "/*//span[text()='Locale Options']/ancestor::div[contains(@id,'VWGNODE')]"
-    LABEL_DATE_AND_TIME_SETTINGS = SettingsPopup._TAB + "/*//span[text()='Date And Time Settings']"
-    LABEL_DATE_FORMAT = SettingsPopup._TAB + "/*//span[text()='Date Format']"
-    LABEL_TIME_ZONE = SettingsPopup._TAB + "/*//span[text()='Time Zone']"
+    LABEL_DATE_AND_TIME_SETTINGS = SettingsPopup.TAB + "/*//span[text()='Date And Time Settings']"
+    LABEL_DATE_FORMAT = SettingsPopup.TAB + "/*//span[text()='Date Format']"
+    LABEL_TIME_ZONE = SettingsPopup.TAB + "/*//span[text()='Time Zone']"
 
     def check_tab_is_present(self):
         cond1 = self._is_element_present(self.LABEL_DATE_AND_TIME_SETTINGS)
@@ -130,13 +131,13 @@ class LocaleOptionsTab(SettingsPopup):
 
 class InventoryTab(SettingsPopup):
 
-    LEFT_MENU_LABEL = SettingsPopup._LEFT_MENU + \
+    LEFT_MENU_LABEL = SettingsPopup.LEFT_MENU + \
                       "/*//span[text()='Inventory']/ancestor::div[contains(@id,'VWGNODE')]"
-    LABEL_INVENTORY_ARCHIVE_SETTINGS = SettingsPopup._TAB + "/*//span[text()='Inventory Archive Settings']"
-    LABEL_DATE_FORMAT = SettingsPopup._TAB + "/*//span[text()='Date Format']"
-    BUTTON_PURGE_RECORDS = SettingsPopup._TAB \
+    LABEL_INVENTORY_ARCHIVE_SETTINGS = SettingsPopup.TAB + "/*//span[text()='Inventory Archive Settings']"
+    LABEL_DATE_FORMAT = SettingsPopup.TAB + "/*//span[text()='Date Format']"
+    BUTTON_PURGE_RECORDS = SettingsPopup.TAB \
                            + "/*//span[text()='Purge Older Records']/ancestor::div[contains(@class,'Button')]"
-    BUTTON_DELETE_DATA = SettingsPopup._TAB \
+    BUTTON_DELETE_DATA = SettingsPopup.TAB \
                            + "/*//span[text()='Delete ALL Archive Data']/ancestor::div[contains(@class,'Button')]"
 
     def check_tab_is_present(self):
@@ -155,9 +156,9 @@ class InventoryTab(SettingsPopup):
 
 class UserOptionsTab(SettingsPopup):
 
-    LEFT_MENU_LABEL = SettingsPopup._LEFT_MENU + \
+    LEFT_MENU_LABEL = SettingsPopup.LEFT_MENU + \
                       "/*//span[text()='User Options']/ancestor::div[contains(@id,'VWGNODE')]"
-    LABEL_USER_AUTHENTICATION = SettingsPopup._TAB + "/*//span[text()='User Authentication']"
+    LABEL_USER_AUTHENTICATION = SettingsPopup.TAB + "/*//span[text()='User Authentication']"
 
     def check_tab_is_present(self):
         cond = self._is_element_present(self.LABEL_USER_AUTHENTICATION)
@@ -170,13 +171,13 @@ class UserOptionsTab(SettingsPopup):
 
 class AuditLogSettingsTab(SettingsPopup):
 
-    LEFT_MENU_LABEL = SettingsPopup._LEFT_MENU + \
+    LEFT_MENU_LABEL = SettingsPopup.LEFT_MENU + \
                       "/*//span[text()='Audit Log Settings']/ancestor::div[contains(@id,'VWGNODE')]"
-    LABEL_AUDIT_LOG_SETTINGS = SettingsPopup._TAB + "/*//span[text()='Audit Log Settings']"
-    LABEL_AUDIT_EMAIL_SETTINGS = SettingsPopup._TAB + "/*//span[text()='Audit Email Settings']"
-    BUTTON_PURGE_ENTRIES = SettingsPopup._TAB \
+    LABEL_AUDIT_LOG_SETTINGS = SettingsPopup.TAB + "/*//span[text()='Audit Log Settings']"
+    LABEL_AUDIT_EMAIL_SETTINGS = SettingsPopup.TAB + "/*//span[text()='Audit Email Settings']"
+    BUTTON_PURGE_ENTRIES = SettingsPopup.TAB \
                            + "/*//span[text()='Purge older entries now']/ancestor::div[contains(@class,'Button')]"
-    BUTTON_DELETE_LOGS = SettingsPopup._TAB \
+    BUTTON_DELETE_LOGS = SettingsPopup.TAB \
                            + "/*//span[text()='Delete all audit logs']/ancestor::div[contains(@class,'Button')]"
 
     def check_tab_is_present(self):
