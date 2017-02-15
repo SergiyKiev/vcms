@@ -40,16 +40,12 @@ class LeftMenuDevices(LeftMenu):
         arrow = self._is_element_present(LeftMenuDevices.TREE_GLOBAL_SITE_VIEW + BaseElements.ARROW_EXPAND)
         if arrow:
             self._expand_tree(LeftMenuDevices.TREE_GLOBAL_SITE_VIEW)
-        else:
-            pass
 
     def expand_groups_tree(self):
         self.wait_for_element_present(LeftMenuDevices.LABEL_GROUPS)
         arrow = self._is_element_present(LeftMenuDevices.TREE_GROUPS + BaseElements.ARROW_EXPAND)
         if arrow:
             self._expand_tree(LeftMenuDevices.TREE_GROUPS)
-        else:
-            pass
 
     def expand_queries_tree(self):
         self.wait_for_element_present(LeftMenuDevices.LABEL_QUERIES)
@@ -124,13 +120,11 @@ class LeftMenuDevices(LeftMenu):
         if cond:
             ribbon_bar = RibbonBar(self.driver)
             site_name_popup = SiteNamePopup(self.driver)
-            LeftMenuDevices.click_global_site_view_label(self)
+            left_menu_devices = LeftMenuDevices(self.driver)
+            left_menu_devices.click_global_site_view_label()
             ribbon_bar.click_button_new_site()
             site_name_popup.enter_text_into_name_text_field(sitename)
             site_name_popup.click_button_ok()
-            self.check_site_is_in_global_site_view_tree(sitename)
-        else:
-            pass
 
     def create_new_subsite(self, sitename, subsitename):
         self.click_site_in_global_site_view_tree(sitename)
@@ -139,23 +133,22 @@ class LeftMenuDevices(LeftMenu):
         ribbon_bar.click_button_new_site()
         site_name_popup.enter_text_into_name_text_field(subsitename)
         site_name_popup.click_button_ok()
-        self.check_subsite_is_in_parent_site(sitename, subsitename)
 
     def create_subsite_if_not_exists(self, sitename, subsitename):
-        element = "//span[text()='" + sitename + "']/following::span[text() = '" + subsitename + "']"
+        element = "//span[text()='" + sitename + "']/following::span[text() = '" + subsitename + "']/ancestor::div[contains(@class,'RowContainer')]"
         self.click_site_in_global_site_view_tree(sitename)
-        # self.expand_site_tree(sitename)
-        cond = self._is_element_not_present(element)
-        if cond:
-            self.create_new_subsite(sitename, subsitename)
+        site = "//span[text()='" + sitename + "']/ancestor::div[contains(@class,'RowContainer')]/parent::div"
+        arrow_expand = self._is_element_present(site + BaseElements.ARROW_EXPAND)
+        if arrow_expand:
+            self._expand_tree(site)
+            print "SITE WAS EXPANDED"
+            cond = self._is_element_not_present(element)
+            print cond
+            if cond:
+                self.create_new_subsite(sitename, subsitename)
+                print "SUBSITE WAS CREATED"
         else:
-            pass
-
-    # def open_column_sets_popup_from_ribbon_bar(self):
-    #     self.click_global_site_view_label()
-    #     ribbon_bar = RibbonBar(self.driver)
-    #     ribbon_bar.click_tab_view()
-    #     ribbon_bar.click_button_edit_or_create()
+            print "NO SUBSITES FOUND"
 
     def check_subsite_is_in_parent_site(self, sitename, subsitename):
         site_name = "//span[text()='" + sitename + "']/ancestor::" + LeftMenu.LABEL
@@ -173,6 +166,7 @@ class LeftMenuDevices(LeftMenu):
         return True if cond else False
 
     def create_group_if_not_exists(self, name):
+        self.expand_groups_tree()
         cond = self._is_element_not_present(
             LeftMenuDevices.LIST_GROUPS + "/*//span[text()='" + name + "']")
         if cond:
@@ -184,14 +178,12 @@ class LeftMenuDevices(LeftMenu):
             ribbon_bar.click_new_group_label()
             new_group_popup.enter_text_into_group_name_text_field(name)
             new_group_popup.click_button_ok()
-            left_menu_devices.expand_groups_tree()
-            self.check_group_is_in_groups_tree(name)
-        else:
-            pass
 
     def create_group_folder_if_not_exists(self, name):
-        cond = self._is_element_not_present(
-            LeftMenuDevices.LIST_GROUPS + "/*//span[text()='" + name + "']")
+        self.expand_groups_tree()
+        self.scroll_to_element(LeftMenuDevices.LIST_GROUPS)
+        element = LeftMenuDevices.LIST_GROUPS + "/*//span[text()='" + name + "']"
+        cond = self._is_element_not_present(element)
         if cond:
             ribbon_bar = RibbonBar(self.driver)
             new_folder_popup = NewFolderPopup(self.driver)
@@ -201,10 +193,6 @@ class LeftMenuDevices(LeftMenu):
             ribbon_bar.click_new_folder_label()
             new_folder_popup.enter_text_into_new_folder_text_field(name)
             new_folder_popup.click_button_ok()
-            left_menu_devices.expand_groups_tree()
-            self.check_folder_is_in_groups_tree(name)
-        else:
-            pass
 
     def create_queries_folder_if_not_exists(self, name):
         cond = self._is_element_not_present(
@@ -218,6 +206,23 @@ class LeftMenuDevices(LeftMenu):
             ribbon_bar.click_new_folder_label()
             new_folder_popup.enter_text_into_new_folder_text_field(name)
             new_folder_popup.click_button_ok()
-            self.check_folder_is_in_groups_tree(name)
+            self.check_folder_is_in_queries_tree(name)
         else:
             pass
+
+    def check_group_is_in_groups_tree(self, name):
+        cond = self._is_element_present(LeftMenuDevices.LIST_GROUPS + "/*//span[text()='" + name + "']")
+        return True if cond else False
+
+    def check_folder_is_in_groups_tree(self, name):
+        cond = self._is_element_present(LeftMenuDevices.LIST_GROUPS + "/*//span[text()='" + name + "']")
+        return True if cond else False
+
+    def check_folder_is_in_queries_tree(self, name):
+        cond = self._is_element_present(LeftMenuDevices.LIST_QUERIES + "/*//span[text()='" + name + "']")
+        return True if cond else False
+
+    def click_group_in_groups_tree(self, name):
+        element = LeftMenuDevices.LIST_GROUPS + "/*//span[text()='" + name + "']/ancestor::div[contains(@class,'RowContainer')]"
+        self._click_element(element)
+        self.wait_for_element_selected(element)

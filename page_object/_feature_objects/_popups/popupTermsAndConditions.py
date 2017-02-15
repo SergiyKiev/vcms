@@ -1,9 +1,7 @@
-
 from _base_page.base_actions import BaseActions
 
 
 class TermsAndConditionsPopup(BaseActions):
-
     BODY = "//span[text()='Terms and Conditions']/ancestor::div[contains(@id,'WRP')]"
     BTN_I_AGREE = "//span[text()='I Agree']"
     BTN_I_DO_NOT_AGREE = "//span[text()='I Do Not Agree']"
@@ -22,5 +20,3 @@ class TermsAndConditionsPopup(BaseActions):
         cond = self._is_element_present(TermsAndConditionsPopup.BODY)
         if cond:
             self.click_button_i_agree()
-        else:
-            pass

@@ -7,6 +7,10 @@ class SiteNamePopup(BaseActions):
     BODY = "//span[contains(text(),'Site') and contains(text(),'Name')]/ancestor::div[contains(@id,'WRP')]"
     FIELD_NAME = BODY + "/*//input"
 
+    def check_popup_is_present(self):
+        cond = self._is_element_present(SiteNamePopup.BODY)
+        return True if cond else False
+
     def enter_text_into_name_text_field(self, sitename):
         self._find_element(SiteNamePopup.FIELD_NAME).send_keys(sitename)
 
@@ -18,10 +22,6 @@ class SiteNamePopup(BaseActions):
 
     def click_button_cancel(self):
         self._click_button_cancel(SiteNamePopup.BODY)
-
-    def check_popup_is_present(self):
-        cond = self._is_element_present(SiteNamePopup.BODY)
-        return True if cond else False
 
     def click_icon_help(self):
         self._click_icon_help(SiteNamePopup.BODY)

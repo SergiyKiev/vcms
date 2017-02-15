@@ -29,16 +29,19 @@ class Base(object):
     def __init__(self, driver, base_url=Settings.baseUrl):
         self.driver = driver
         self.base_url = base_url
-        self.timeout = 120
+        self.timeout_loading = 120
         self.timeout_condition = 2
-        self.wait_general = WebDriverWait(self.driver, self.timeout)
+        self.timeout_webelement = 30
+        self.wait_webelement = WebDriverWait(self.driver, self.timeout_webelement)
         self.wait_condition = WebDriverWait(self.driver, self.timeout_condition)
+        self.wait_loading = WebDriverWait(self.driver, self.timeout_loading)
 
     def open_page(self):
         try:
             self.driver.maximize_window()
             self.driver.get(Settings.baseUrl)
-            self.wait_for_element_present(BaseElements._LOGIN_PAGE_LOGO)
+            self.wait_loading.until(EC.presence_of_element_located((By.XPATH,BaseElements._LOGIN_PAGE_LOGO)))
+            # self.wait_for_element_present(BaseElements._LOGIN_PAGE_LOGO)
         except TimeoutException:
             print "Page is not loaded"
         except Exception as e:
@@ -49,10 +52,10 @@ class Base(object):
             # # time.sleep(0.5)
             # # self.wait.until_not(EC.presence_of_element_located((By.XPATH, Base.LOADING_ANIMATION_VISIBLE)))
             # # self.wait.until_not(EC.presence_of_element_located((By.XPATH, Base.LOADING_SCREEN_VISIBLE)))
-            self.wait_general.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
-            self.wait_general.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
-            self.wait_general.until(EC.presence_of_element_located((By.XPATH, locator)))
-            self.wait_general.until(EC.visibility_of_element_located((By.XPATH, locator)))
+            self.wait_loading.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
+            self.wait_webelement.until(EC.visibility_of_element_located((By.XPATH, locator)))
             return self.driver.find_element(By.XPATH, locator)
         except (NoSuchElementException, TimeoutException):
             print locator + " is not found"
@@ -63,10 +66,10 @@ class Base(object):
     def _find_elements(self, locator):
         try:
             # time.sleep(0.5)
-            self.wait_general.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
-            self.wait_general.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
-            self.wait_general.until(EC.presence_of_all_elements_located((By.XPATH, locator)))
-            self.wait_general.until(EC.visibility_of_any_elements_located((By.XPATH, locator)))
+            self.wait_loading.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait_webelement.until(EC.presence_of_all_elements_located((By.XPATH, locator)))
+            self.wait_webelement.until(EC.visibility_of_any_elements_located((By.XPATH, locator)))
             return self.driver.find_elements(By.XPATH, locator)
         except (NoSuchElementException, TimeoutException):
             return None
@@ -79,19 +82,19 @@ class Base(object):
             if element is not None:
                 # print "\n" + "CLICK:  ", locator
                 time.sleep(0.8)
-                self.wait_general.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
-                self.wait_general.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
-                self.wait_general.until(EC.element_to_be_clickable((By.XPATH, locator)))
+                self.wait_loading.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+                self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+                self.wait_webelement.until(EC.element_to_be_clickable((By.XPATH, locator)))
                 element.click()
                 time.sleep(0.8)
-                self.wait_general.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
-                self.wait_general.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+                self.wait_loading.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+                self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
                 return True
         except NoSuchElementException:
             print locator + " is not found"
             return False
         except TimeoutException:
-            print "Loading process timeout after clicking. Timeout set: ", self.timeout, "seconds"
+            print "Page is not clickable after ", self.timeout_loading, "seconds"
             return False
         except Exception as e:
             print "The element is not clickable in the reason of ", e
@@ -99,7 +102,7 @@ class Base(object):
 
     def hover_and_click_element(self, locator):
         try:
-            self.wait_general.until(EC.presence_of_element_located((By.XPATH, locator)))
+            self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
             elem = self._find_element(locator)
             if elem is not None:
                 actionChains = ActionChains(self.driver)
@@ -107,7 +110,7 @@ class Base(object):
                 time.sleep(1)
                 actionChains.click(elem).perform()
                 time.sleep(1)
-                self.wait_general.until(EC.invisibility_of_element_located((By.XPATH, Base.LOADING_ANIMATION_VISIBLE)))
+                self.wait_webelement.until(EC.invisibility_of_element_located((By.XPATH, Base.LOADING_ANIMATION_VISIBLE)))
                 return True
         except NoSuchElementException:
             print locator + " is not clickable"
@@ -115,23 +118,23 @@ class Base(object):
 
     def wait_for_element_present(self, locator):
         try:
-            self.wait_general.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
-            self.wait_general.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
-            self.wait_general.until(EC.presence_of_element_located((By.XPATH, locator)))
-            self.wait_general.until(EC.visibility_of_element_located((By.XPATH, locator)))
+            self.wait_loading.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
+            self.wait_webelement.until(EC.visibility_of_element_located((By.XPATH, locator)))
             return True
         except TimeoutException:
-            print "Element was not found after " +  str(self.timeout) + " seconds:  " + locator
+            print "Element was not found after " +  str(self.timeout_loading) + " seconds:  " + locator
             return False
         except Exception as e:
             print "Wait for element present, returns false ", e
 
     def wait_for_elements_present(self, locator):
         try:
-            self.wait_general.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
-            self.wait_general.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
-            self.wait_general.until(EC.presence_of_all_elements_located((By.XPATH, locator)))
-            self.wait_general.until(EC.visibility_of_any_elements_located((By.XPATH, locator)))
+            self.wait_loading.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait_webelement.until(EC.presence_of_all_elements_located((By.XPATH, locator)))
+            self.wait_webelement.until(EC.visibility_of_any_elements_located((By.XPATH, locator)))
             return True
         except TimeoutException:
             print locator + " returns False"
@@ -140,10 +143,10 @@ class Base(object):
     def wait_for_element_not_present(self, locator):
         try:
             # time.sleep(1)
-            self.wait_general.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
-            self.wait_general.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
-            self.wait_general.until_not(EC.presence_of_element_located((By.XPATH, locator)))
-            self.wait_general.until_not(EC.visibility_of_element_located((By.XPATH, locator)))
+            self.wait_loading.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait_webelement.until_not(EC.presence_of_element_located((By.XPATH, locator)))
+            self.wait_webelement.until_not(EC.visibility_of_element_located((By.XPATH, locator)))
             # print locator + " is not presented"
             return True
         except NoSuchElementException:
@@ -155,10 +158,10 @@ class Base(object):
 
     def wait_for_element_selected(self, locator):
         try:
-            self.wait_general.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
-            self.wait_general.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
-            self.wait_general.until(EC.presence_of_element_located((By.XPATH, locator + Base.SELECTED)))
-            self.wait_general.until(EC.visibility_of_element_located((By.XPATH, locator + Base.SELECTED)))
+            self.wait_loading.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator + Base.SELECTED)))
+            self.wait_webelement.until(EC.visibility_of_element_located((By.XPATH, locator + Base.SELECTED)))
             return True
         except TimeoutException:
             print locator + " returns False"
@@ -166,10 +169,10 @@ class Base(object):
 
     def wait_for_element_checked(self, locator):
         try:
-            self.wait_general.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
-            self.wait_general.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
-            self.wait_general.until(EC.presence_of_element_located((By.XPATH, locator + Base.CHECKED)))
-            self.wait_general.until(EC.visibility_of_element_located((By.XPATH, locator + Base.CHECKED)))
+            self.wait_loading.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator + Base.CHECKED)))
+            self.wait_webelement.until(EC.visibility_of_element_located((By.XPATH, locator + Base.CHECKED)))
             return True
         except TimeoutException:
             print locator + " returns False"
@@ -177,10 +180,10 @@ class Base(object):
 
     def wait_for_element_unchecked(self, locator):
         try:
-            self.wait_general.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
-            self.wait_general.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
-            self.wait_general.until(EC.presence_of_element_located((By.XPATH, locator + Base.UNCHECKED)))
-            self.wait_general.until(EC.visibility_of_element_located((By.XPATH, locator + Base.UNCHECKED)))
+            self.wait_loading.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator + Base.UNCHECKED)))
+            self.wait_webelement.until(EC.visibility_of_element_located((By.XPATH, locator + Base.UNCHECKED)))
             return True
         except TimeoutException:
             print locator + " returns False"
@@ -190,10 +193,10 @@ class Base(object):
 
     def wait_for_element_disabled(self, locator):
         try:
-            self.wait_general.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
-            self.wait_general.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
-            self.wait_general.until(EC.presence_of_element_located((By.XPATH, locator + Base.DISABLED)))
-            self.wait_general.until(EC.visibility_of_element_located((By.XPATH, locator + Base.DISABLED)))
+            self.wait_loading.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator + Base.DISABLED)))
+            self.wait_webelement.until(EC.visibility_of_element_located((By.XPATH, locator + Base.DISABLED)))
             return True
         except TimeoutException:
             print locator + " returns False"
@@ -201,10 +204,10 @@ class Base(object):
 
     def wait_for_menu_visible(self, locator):
         try:
-            self.wait_general.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
-            self.wait_general.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
-            self.wait_general.until(EC.presence_of_element_located((By.XPATH, locator + Base.LEFT_MENU_VISIBLE)))
-            self.wait_general.until(EC.visibility_of_element_located((By.XPATH, locator + Base.LEFT_MENU_VISIBLE)))
+            self.wait_loading.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator + Base.LEFT_MENU_VISIBLE)))
+            self.wait_webelement.until(EC.visibility_of_element_located((By.XPATH, locator + Base.LEFT_MENU_VISIBLE)))
             return True
         except TimeoutException:
             print locator + " returns False"
@@ -212,9 +215,9 @@ class Base(object):
 
     def wait_for_element_visible(self, locator):
         try:
-            self.wait_general.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
-            self.wait_general.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
-            self.wait_general.until(EC.visibility_of_element_located((By.XPATH, locator)))
+            self.wait_loading.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+            self.wait_webelement.until(EC.visibility_of_element_located((By.XPATH, locator)))
             return True
         except TimeoutException:
             print locator + " returns False"
@@ -230,8 +233,8 @@ class Base(object):
 
     def _is_tree_arrow_present(self, locator):
         try:
-            self.wait_condition.until(EC.presence_of_element_located((By.XPATH, locator + Base.ARROW_EMPTY)))
-            self.wait_condition.until(EC.visibility_of_element_located((By.XPATH, locator + Base.ARROW_EMPTY)))
+            self.wait_condition.until(EC.presence_of_element_located((By.XPATH, locator + BaseElements.ARROW_EMPTY)))
+            self.wait_condition.until(EC.visibility_of_element_located((By.XPATH, locator + BaseElements.ARROW_EMPTY)))
             return False
         except TimeoutException:
             return True
@@ -338,7 +341,7 @@ class Base(object):
 
     def hover(self, locator):
         element = self._find_element(locator)
-        self.wait_general.until(EC.presence_of_element_located((By.XPATH, locator)))
+        self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
         hover = ActionChains(self.driver).move_to_element(element)
         hover.perform()
 

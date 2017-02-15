@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c7c96859-35be-4aa1-b143-52cb0122a0f9" name="Default" comment="" />
+    <list default="true" id="c7c96859-35be-4aa1-b143-52cb0122a0f9" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Test Results - suiteFullRegression_MainPageHelpLinks.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_feature_objects/_popups/popupEditFolder.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_base_page/base.py" afterPath="$PROJECT_DIR$/_base_page/base.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_base_page/base_actions.py" afterPath="$PROJECT_DIR$/_base_page/base_actions.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_feature_objects/_left_menus/leftMenuDevices.py" afterPath="$PROJECT_DIR$/_feature_objects/_left_menus/leftMenuDevices.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupNewFolder.py" afterPath="$PROJECT_DIR$/_feature_objects/_popups/popupNewFolder.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupSiteName.py" afterPath="$PROJECT_DIR$/_feature_objects/_popups/popupSiteName.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupTermsAndConditions.py" afterPath="$PROJECT_DIR$/_feature_objects/_popups/popupTermsAndConditions.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupUnableToRemove.py" afterPath="$PROJECT_DIR$/_feature_objects/_popups/popupUnableToRemove.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_feature_objects/_ribbon_bar/ribbonBar.py" afterPath="$PROJECT_DIR$/_feature_objects/_ribbon_bar/ribbonBar.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_settings/settings.py" afterPath="$PROJECT_DIR$/_settings/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_test_suites/suiteFullRegression.py" afterPath="$PROJECT_DIR$/_test_suites/suiteFullRegression.py" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,7 +27,7 @@
     <option name="PATCH_PATH" value="" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
-  <component name="ExportTestResults" exportFormat="Xml" outputFolder="$PROJECT_DIR$/.." openResultsInEditor="true" userTempatePath="" />
+  <component name="ExportTestResults" outputFolder="$PROJECT_DIR$/.." openResultsInEditor="true" userTempatePath="" />
   <component name="FavoritesManager">
     <favorites_list name="page_object" />
   </component>
@@ -25,136 +39,111 @@
       <file leaf-file-name="suiteFullRegression.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/_test_suites/suiteFullRegression.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="716" column="6" lean-forward="false" selection-start-line="716" selection-start-column="6" selection-end-line="716" selection-end-column="6" />
+            <state relative-caret-position="815">
+              <caret line="742" column="8" lean-forward="false" selection-start-line="742" selection-start-column="8" selection-end-line="742" selection-end-column="8" />
               <folding>
                 <element signature="e#1#15#0" expanded="true" />
-                <element signature="e#1821#2076#0" expanded="false" />
-                <element signature="e#2107#2368#0" expanded="false" />
-                <element signature="e#2414#3201#0" expanded="false" />
-                <element signature="e#3252#3771#0" expanded="false" />
-                <element signature="e#3838#4928#0" expanded="false" />
-                <element signature="e#4979#5595#0" expanded="false" />
-                <element signature="e#5658#6687#0" expanded="false" />
-                <element signature="e#6752#8302#0" expanded="false" />
-                <element signature="e#8373#9511#0" expanded="false" />
-                <element signature="e#9545#9549#0" expanded="false" />
-                <element signature="e#9604#9621#0" expanded="false" />
-                <element signature="e#9737#9997#0" expanded="false" />
-                <element signature="e#10028#10175#0" expanded="false" />
-                <element signature="e#10230#10863#0" expanded="false" />
-                <element signature="e#10940#11863#0" expanded="false" />
-                <element signature="e#11936#12796#0" expanded="false" />
-                <element signature="e#12869#14214#0" expanded="false" />
-                <element signature="e#14248#14252#0" expanded="false" />
-                <element signature="e#14307#14324#0" expanded="false" />
-                <element signature="e#14447#14718#0" expanded="false" />
-                <element signature="e#14749#14896#0" expanded="false" />
-                <element signature="e#14963#17054#0" expanded="false" />
-                <element signature="e#17135#18142#0" expanded="false" />
-                <element signature="e#21933#24330#0" expanded="false" />
-                <element signature="e#24364#24368#0" expanded="false" />
-                <element signature="e#24423#24440#0" expanded="false" />
-                <element signature="e#24589#24873#0" expanded="false" />
-                <element signature="e#24904#25051#0" expanded="false" />
-                <element signature="e#25057#25078#0" expanded="false" />
-                <element signature="e#25203#25220#0" expanded="false" />
-                <element signature="e#25331#25586#0" expanded="false" />
-                <element signature="e#25617#25764#0" expanded="false" />
-                <element signature="e#25841#26742#0" expanded="false" />
-                <element signature="e#26819#27503#0" expanded="false" />
-                <element signature="e#27563#28753#0" expanded="false" />
-                <element signature="e#28808#30077#0" expanded="false" />
-                <element signature="e#30150#31101#0" expanded="false" />
-                <element signature="e#31155#32093#0" expanded="false" />
-                <element signature="e#32127#32131#0" expanded="false" />
-                <element signature="e#32186#32203#0" expanded="false" />
-                <element signature="e#32331#32586#0" expanded="false" />
-                <element signature="e#32617#32764#0" expanded="false" />
-                <element signature="e#32770#32791#0" expanded="false" />
-                <element signature="e#32916#32933#0" expanded="false" />
-                <element signature="e#33063#33297#0" expanded="false" />
-                <element signature="e#33328#33395#0" expanded="false" />
-                <element signature="e#33458#33606#0" expanded="false" />
-                <element signature="e#33724#33936#0" expanded="false" />
-                <element signature="e#33967#34037#0" expanded="false" />
-                <element signature="e#34091#34292#0" expanded="false" />
-                <element signature="e#34356#34769#0" expanded="false" />
-                <element signature="e#34803#34882#0" expanded="false" />
-                <element signature="e#34937#34954#0" expanded="false" />
-                <element signature="e#35925#36252#0" expanded="false" />
-                <element signature="e#36308#36598#0" expanded="false" />
-                <element signature="e#36660#36989#0" expanded="false" />
-                <element signature="e#37042#37317#0" expanded="false" />
-                <element signature="e#37374#37742#0" expanded="false" />
-                <element signature="e#37816#38214#0" expanded="false" />
-                <element signature="e#38289#38623#0" expanded="false" />
-                <element signature="e#38689#39326#0" expanded="false" />
-                <element signature="e#39389#39905#0" expanded="false" />
-                <element signature="e#39967#40301#0" expanded="false" />
-                <element signature="e#40359#40831#0" expanded="false" />
-                <element signature="e#40910#41597#0" expanded="false" />
-                <element signature="e#41674#42349#0" expanded="false" />
-                <element signature="e#42425#43094#0" expanded="false" />
-                <element signature="e#43170#43841#0" expanded="false" />
-                <element signature="e#43847#43906#0" expanded="false" />
-                <element signature="e#44661#45324#0" expanded="false" />
-                <element signature="e#45405#46103#0" expanded="false" />
-                <element signature="e#46168#46679#0" expanded="false" />
-                <element signature="e#46755#47420#0" expanded="false" />
-                <element signature="e#47497#48172#0" expanded="false" />
-                <element signature="e#48253#48949#0" expanded="false" />
-                <element signature="e#49035#49758#0" expanded="false" />
-                <element signature="e#49849#50602#0" expanded="false" />
-                <element signature="e#50661#51470#0" expanded="false" />
-                <element signature="e#51533#52363#0" expanded="false" />
-                <element signature="e#52423#53756#0" expanded="false" />
-                <element signature="e#53815#54767#0" expanded="false" />
-                <element signature="e#54831#55632#0" expanded="false" />
-                <element signature="e#55698#56693#0" expanded="false" />
-                <element signature="e#56752#57559#0" expanded="false" />
-                <element signature="e#57623#58630#0" expanded="false" />
-                <element signature="e#58690#59504#0" expanded="false" />
-                <element signature="e#59562#60034#0" expanded="false" />
-                <element signature="e#60098#60616#0" expanded="false" />
-                <element signature="e#60684#61212#0" expanded="false" />
-                <element signature="e#61273#61760#0" expanded="false" />
-                <element signature="e#61823#62674#0" expanded="false" />
-                <element signature="e#63807#64859#0" expanded="false" />
-                <element signature="e#64895#64974#0" expanded="false" />
-                <element signature="e#65029#65046#0" expanded="false" />
-                <element signature="e#65111#65175#0" expanded="false" />
+                <element signature="e#1685#1940#0" expanded="false" />
+                <element signature="e#1971#2198#0" expanded="false" />
+                <element signature="e#2204#2237#0" expanded="false" />
+                <element signature="e#3114#3633#0" expanded="false" />
+                <element signature="e#3700#4748#0" expanded="false" />
+                <element signature="e#4799#5415#0" expanded="false" />
+                <element signature="e#5478#6507#0" expanded="false" />
+                <element signature="e#6572#8122#0" expanded="false" />
+                <element signature="e#8193#9331#0" expanded="false" />
+                <element signature="e#9365#9369#0" expanded="false" />
+                <element signature="e#9424#9441#0" expanded="false" />
+                <element signature="e#9557#9817#0" expanded="false" />
+                <element signature="e#9848#9995#0" expanded="false" />
+                <element signature="e#10050#10683#0" expanded="false" />
+                <element signature="e#10760#11683#0" expanded="false" />
+                <element signature="e#11756#12616#0" expanded="false" />
+                <element signature="e#12689#14034#0" expanded="false" />
+                <element signature="e#14068#14072#0" expanded="false" />
+                <element signature="e#14127#14144#0" expanded="false" />
+                <element signature="e#14267#14538#0" expanded="false" />
+                <element signature="e#14569#14716#0" expanded="false" />
+                <element signature="e#14783#16874#0" expanded="false" />
+                <element signature="e#16955#17962#0" expanded="false" />
+                <element signature="e#18029#21643#0" expanded="false" />
+                <element signature="e#21711#24108#0" expanded="false" />
+                <element signature="e#24142#24146#0" expanded="false" />
+                <element signature="e#24201#24218#0" expanded="false" />
+                <element signature="e#24367#24651#0" expanded="false" />
+                <element signature="e#24682#24829#0" expanded="false" />
+                <element signature="e#24835#24856#0" expanded="false" />
+                <element signature="e#24981#24998#0" expanded="false" />
+                <element signature="e#25109#25364#0" expanded="false" />
+                <element signature="e#25395#25622#0" expanded="false" />
+                <element signature="e#25699#26558#0" expanded="false" />
+                <element signature="e#26635#27319#0" expanded="false" />
+                <element signature="e#27379#28617#0" expanded="false" />
+                <element signature="e#28672#29931#0" expanded="false" />
+                <element signature="e#30004#30955#0" expanded="false" />
+                <element signature="e#31009#31947#0" expanded="false" />
+                <element signature="e#31981#31985#0" expanded="false" />
+                <element signature="e#32040#32057#0" expanded="false" />
+                <element signature="e#32185#32440#0" expanded="false" />
+                <element signature="e#32471#32618#0" expanded="false" />
+                <element signature="e#32624#32645#0" expanded="false" />
+                <element signature="e#32770#32787#0" expanded="false" />
+                <element signature="e#32917#33151#0" expanded="false" />
+                <element signature="e#33182#33249#0" expanded="false" />
+                <element signature="e#33312#33460#0" expanded="false" />
+                <element signature="e#33578#33790#0" expanded="false" />
+                <element signature="e#33821#33891#0" expanded="false" />
+                <element signature="e#33945#34146#0" expanded="false" />
+                <element signature="e#34210#34623#0" expanded="false" />
+                <element signature="e#34657#34736#0" expanded="false" />
+                <element signature="e#34791#34808#0" expanded="false" />
+                <element signature="e#34925#35629#0" expanded="false" />
+                <element signature="e#35660#35727#0" expanded="false" />
+                <element signature="e#36168#36482#0" expanded="false" />
+                <element signature="e#39022#39356#0" expanded="false" />
+                <element signature="e#39422#40059#0" expanded="false" />
+                <element signature="e#40122#40638#0" expanded="false" />
+                <element signature="e#40700#41034#0" expanded="false" />
+                <element signature="e#41092#41564#0" expanded="false" />
+                <element signature="e#41643#42330#0" expanded="false" />
+                <element signature="e#42407#43082#0" expanded="false" />
+                <element signature="e#43158#43827#0" expanded="false" />
+                <element signature="e#43903#44574#0" expanded="false" />
+                <element signature="e#44580#44639#0" expanded="false" />
+                <element signature="e#45394#46057#0" expanded="false" />
+                <element signature="e#46138#46836#0" expanded="false" />
+                <element signature="e#46901#47412#0" expanded="false" />
+                <element signature="e#48230#48905#0" expanded="false" />
+                <element signature="e#48986#49682#0" expanded="false" />
+                <element signature="e#49768#50491#0" expanded="false" />
+                <element signature="e#50582#51335#0" expanded="false" />
+                <element signature="e#51394#52203#0" expanded="false" />
+                <element signature="e#52266#53096#0" expanded="false" />
+                <element signature="e#53156#54489#0" expanded="false" />
+                <element signature="e#54548#55500#0" expanded="false" />
+                <element signature="e#55564#56359#0" expanded="false" />
+                <element signature="e#56425#57414#0" expanded="false" />
+                <element signature="e#57473#58274#0" expanded="false" />
+                <element signature="e#58338#59339#0" expanded="false" />
+                <element signature="e#59399#60207#0" expanded="false" />
+                <element signature="e#60268#61357#0" expanded="false" />
+                <element signature="e#61415#61887#0" expanded="false" />
+                <element signature="e#61951#62469#0" expanded="false" />
+                <element signature="e#62537#63065#0" expanded="false" />
+                <element signature="e#63126#63613#0" expanded="false" />
+                <element signature="e#63674#64329#0" expanded="false" />
+                <element signature="e#64392#65243#0" expanded="false" />
+                <element signature="e#65307#66296#0" expanded="false" />
+                <element signature="e#66370#67416#0" expanded="false" />
+                <element signature="e#67473#68398#0" expanded="false" />
+                <element signature="e#68459#69394#0" expanded="false" />
+                <element signature="e#69457#70404#0" expanded="false" />
+                <element signature="e#70461#71369#0" expanded="false" />
+                <element signature="e#71375#71424#0" expanded="false" />
+                <element signature="e#76628#76707#0" expanded="false" />
+                <element signature="e#76762#76779#0" expanded="false" />
+                <element signature="e#76844#76908#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="case.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../../Lib/unittest/case.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="420" column="65" lean-forward="false" selection-start-line="420" selection-start-column="65" selection-end-line="420" selection-end-column="65" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="util.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../../Lib/unittest/util.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2176">
-              <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="variables.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_variables/variables.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="4" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -162,60 +151,178 @@
       <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_base_page/base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="228" column="0" lean-forward="false" selection-start-line="228" selection-start-column="0" selection-end-line="228" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="popupInventoryView.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupInventoryView.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="30" column="42" lean-forward="false" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
+            <state relative-caret-position="-671">
+              <caret line="239" column="23" lean-forward="false" selection-start-line="239" selection-start-column="23" selection-end-line="239" selection-end-column="23" />
               <folding>
-                <element signature="e#0#32#0" expanded="true" />
+                <element signature="e#1#12#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="downloadAndInstall.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_base_page/downloadAndInstall.py">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_base_page/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="37" column="8" lean-forward="false" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pageDevices.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_feature_objects/_pages/pageDevices.py">
+      <file leaf-file-name="ribbonBar.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_feature_objects/_ribbon_bar/ribbonBar.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="34" column="8" lean-forward="false" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
+            <state relative-caret-position="102">
+              <caret line="384" column="69" lean-forward="false" selection-start-line="384" selection-start-column="69" selection-end-line="384" selection-end-column="69" />
+              <folding>
+                <element signature="e#1#69#0" expanded="true" />
+                <element signature="e#8299#8397#0" expanded="false" />
+                <element signature="e#8437#8535#0" expanded="false" />
+                <element signature="e#8578#8682#0" expanded="false" />
+                <element signature="e#8723#8823#0" expanded="false" />
+                <element signature="e#8862#9054#0" expanded="false" />
+                <element signature="e#9093#9285#0" expanded="false" />
+                <element signature="e#9327#9528#0" expanded="false" />
+                <element signature="e#9568#9763#0" expanded="false" />
+                <element signature="e#9814#9915#0" expanded="false" />
+                <element signature="e#9966#10067#0" expanded="false" />
+                <element signature="e#10121#10224#0" expanded="false" />
+                <element signature="e#10277#10389#0" expanded="false" />
+                <element signature="e#10436#10540#0" expanded="false" />
+                <element signature="e#10585#10909#0" expanded="false" />
+                <element signature="e#11439#11546#0" expanded="false" />
+                <element signature="e#11589#11689#0" expanded="false" />
+                <element signature="e#11739#11848#0" expanded="false" />
+                <element signature="e#11897#12009#0" expanded="false" />
+                <element signature="e#12067#12164#0" expanded="false" />
+                <element signature="e#12220#12315#0" expanded="false" />
+                <element signature="e#12369#12462#0" expanded="false" />
+                <element signature="e#12526#12629#0" expanded="false" />
+                <element signature="e#12837#12933#0" expanded="false" />
+                <element signature="e#12990#13086#0" expanded="false" />
+                <element signature="e#13133#13237#0" expanded="false" />
+                <element signature="e#13282#13390#0" expanded="false" />
+                <element signature="e#13442#13556#0" expanded="false" />
+                <element signature="e#13608#13659#0" expanded="false" />
+                <element signature="e#13702#13808#0" expanded="false" />
+                <element signature="e#13856#13961#0" expanded="false" />
+                <element signature="e#14012#14124#0" expanded="false" />
+                <element signature="e#14167#14269#0" expanded="false" />
+                <element signature="e#14322#14439#0" expanded="false" />
+                <element signature="e#14490#14601#0" expanded="false" />
+                <element signature="e#14652#14763#0" expanded="false" />
+                <element signature="e#14815#14915#0" expanded="false" />
+                <element signature="e#14972#15068#0" expanded="false" />
+                <element signature="e#15115#15219#0" expanded="false" />
+                <element signature="e#15277#15393#0" expanded="false" />
+                <element signature="e#15437#15547#0" expanded="false" />
+                <element signature="e#15593#15697#0" expanded="false" />
+                <element signature="e#15751#15867#0" expanded="false" />
+                <element signature="e#15912#16016#0" expanded="false" />
+                <element signature="e#16064#16292#0" expanded="false" />
+                <element signature="e#16338#16440#0" expanded="false" />
+                <element signature="e#16911#17012#0" expanded="false" />
+                <element signature="e#17065#17165#0" expanded="false" />
+                <element signature="e#17221#17324#0" expanded="false" />
+                <element signature="e#17385#17493#0" expanded="false" />
+                <element signature="e#17712#17890#0" expanded="false" />
+                <element signature="e#17937#18113#0" expanded="false" />
+                <element signature="e#18155#18331#0" expanded="false" />
+                <element signature="e#18378#18567#0" expanded="false" />
+                <element signature="e#18613#18792#0" expanded="false" />
+                <element signature="e#18848#19040#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="popupEditFolder.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupEditFolder.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="6" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+              <folding>
+                <marker date="1487107906902" expanded="true" signature="86:1184" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="popupNewFolder.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupNewFolder.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="561">
+              <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="utrunner.py" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pycharm/utrunner.py">
+      <file leaf-file-name="leftMenuDevices.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_feature_objects/_left_menus/leftMenuDevices.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="155" column="0" lean-forward="false" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
+            <state relative-caret-position="579">
+              <caret line="106" column="0" lean-forward="false" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#49#0" expanded="true" />
+                <element signature="e#1789#1927#0" expanded="false" />
+                <element signature="e#2002#2399#0" expanded="false" />
+                <element signature="e#2453#2717#0" expanded="false" />
+                <element signature="e#2761#2995#0" expanded="false" />
+                <element signature="e#3040#3308#0" expanded="false" />
+                <element signature="e#3363#3661#0" expanded="false" />
+                <element signature="e#3725#3855#0" expanded="false" />
+                <element signature="e#3926#4165#0" expanded="false" />
+                <element signature="e#4221#4363#0" expanded="false" />
+                <element signature="e#4408#4528#0" expanded="false" />
+                <element signature="e#4572#4690#0" expanded="false" />
+                <element signature="e#4747#5272#0" expanded="false" />
+                <element signature="e#5346#5584#0" expanded="false" />
+                <element signature="e#5635#5980#0" expanded="false" />
+                <element signature="e#6041#6575#0" expanded="false" />
+                <element signature="e#6642#6943#0" expanded="false" />
+                <element signature="e#7020#7770#0" expanded="false" />
+                <element signature="e#7850#8212#0" expanded="false" />
+                <element signature="e#8286#8435#0" expanded="false" />
+                <element signature="e#8507#8613#0" expanded="false" />
+                <element signature="e#8671#9259#0" expanded="false" />
+                <element signature="e#9324#9990#0" expanded="false" />
+                <element signature="e#10057#10704#0" expanded="false" />
+                <element signature="e#10765#10900#0" expanded="false" />
+                <element signature="e#11354#11559#0" expanded="false" />
+                <marker date="1487115817752" expanded="false" signature="10953:11097" ph="..." />
+                <marker date="1487115817752" expanded="false" signature="11151:11296" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="leftMenu.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_feature_objects/_left_menus/leftMenu.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-379">
+              <caret line="26" column="4" lean-forward="false" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="popupOnDemandInventoryScan.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupOnDemandInventoryScan.py">
+      <file leaf-file-name="base_actions.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_base_page/base_actions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="19" column="70" lean-forward="false" selection-start-line="19" selection-start-column="70" selection-end-line="19" selection-end-column="70" />
+            <state relative-caret-position="162">
+              <caret line="179" column="8" lean-forward="false" selection-start-line="179" selection-start-column="8" selection-end-line="179" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base_elements.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_base_page/base_elements.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="269">
+              <caret line="57" column="4" lean-forward="false" selection-start-line="57" selection-start-column="4" selection-end-line="57" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -232,16 +339,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>self.POPUP_SITE_NAME</find>
-      <find>Locators.POPUP_SITE_NAME</find>
-      <find>DROP</find>
-      <find>self.click_site_in_global_site_view_tree(sitename)</find>
-      <find>Def</find>
-      <find>CONTAINER</find>
-      <find>UNABLE</find>
-      <find>check_</find>
-      <find>_frame</find>
-      <find>SelectDashboardPopup.BODY</find>
       <find>ICON_AD</find>
       <find>self.BUTTON</find>
       <find>self.MENU_</find>
@@ -262,16 +359,18 @@
       <find>ColumnSetDesigner</find>
       <find>ManufacturerAlias</find>
       <find>devices_tab</find>
+      <find>_edit_popup</find>
+      <find>NewFolder</find>
+      <find>delete_or_archi</find>
+      <find>self.wait_webelement.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))</find>
+      <find>self.wait_webelement.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))</find>
+      <find>tasks_tab</find>
+      <find>reporting_tab</find>
+      <find>software_and_patch_manager_tab</find>
+      <find>administration_tab</find>
+      <find>home_tab</find>
     </findStrings>
     <replaceStrings>
-      <replace>FRAME</replace>
-      <replace />
-      <replace>(ColumnSetDesignerPopup.FRAME</replace>
-      <replace>ColumnSetDesignerPopup.FRAME</replace>
-      <replace>TABLE_HEADER</replace>
-      <replace>site_name_popup</replace>
-      <replace>SiteNamePopup.FRAME</replace>
-      <replace>LeftSideMenu.click_site_in_global_site_view_tree(self, sitename)</replace>
       <replace>BOX</replace>
       <replace>_window</replace>
       <replace>UserSettingsPopup.BODY</replace>
@@ -294,21 +393,28 @@
       <replace>InventoryView</replace>
       <replace>OnDemandInventoryScan</replace>
       <replace>devices_page</replace>
+      <replace>EditFolder</replace>
+      <replace>self.wait_loading.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))</replace>
+      <replace>self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))</replace>
+      <replace>tasks_page</replace>
+      <replace>reporting_page</replace>
+      <replace>software_and_patch_manager_page</replace>
+      <replace>administration_page</replace>
+      <replace>home_page</replace>
     </replaceStrings>
     <dirStrings>
       <dir>E:\python\vcms\vcms\page_object</dir>
     </dirStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/_test_suites/suiteFullRegression.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/base.py" />
-        <option value="$PROJECT_DIR$/settings.py" />
-        <option value="$PROJECT_DIR$/testSuites.py" />
-        <option value="$PROJECT_DIR$/_pages/pageEndUserAccessLogin.py" />
-        <option value="$PROJECT_DIR$/_pages/pageEndUserAccessMain.py" />
-        <option value="$PROJECT_DIR$/_test_suites/testSuites.py" />
-        <option value="$PROJECT_DIR$/_locators/locators.py" />
         <option value="$PROJECT_DIR$/_feature_objects/leftSideMenu.py" />
         <option value="$PROJECT_DIR$/_feature_objects/popups.py" />
         <option value="$PROJECT_DIR$/_feature_objects/frameHelp.py" />
@@ -342,8 +448,6 @@
         <option value="$PROJECT_DIR$/_pages/pageMain.py" />
         <option value="$PROJECT_DIR$/_feature_objects/_feature_left_menus/featureLeftMenuDevices.py" />
         <option value="$PROJECT_DIR$/_base_page/base_actions.py" />
-        <option value="$PROJECT_DIR$/_base_page/base.py" />
-        <option value="$PROJECT_DIR$/_settings/settings.py" />
         <option value="$PROJECT_DIR$/_base_page/downloadAndInstall.py" />
         <option value="$PROJECT_DIR$/_feature_objects/_popups/popupInventoryViewPopup.py" />
         <option value="$PROJECT_DIR$/_feature_objects/_popups/popupColumnSetDesigner.py" />
@@ -352,6 +456,15 @@
         <option value="$PROJECT_DIR$/_feature_objects/_popups/popupOnDemandInventoryScan.py" />
         <option value="$PROJECT_DIR$/_variables/variables.py" />
         <option value="$PROJECT_DIR$/_feature_objects/_popups/popupInventoryView.py" />
+        <option value="$PROJECT_DIR$/_feature_objects/_popups/popupSiteName.py" />
+        <option value="$PROJECT_DIR$/_settings/settings.py" />
+        <option value="$PROJECT_DIR$/_feature_objects/_popups/popupTermsAndConditions.py" />
+        <option value="$PROJECT_DIR$/_feature_objects/_popups/popupUnableToRemove.py" />
+        <option value="$PROJECT_DIR$/_feature_objects/_popups/popupNewFolder.py" />
+        <option value="$PROJECT_DIR$/_feature_objects/_popups/popupEditFolder.py" />
+        <option value="$PROJECT_DIR$/_feature_objects/_ribbon_bar/ribbonBar.py" />
+        <option value="$PROJECT_DIR$/_feature_objects/_left_menus/leftMenuDevices.py" />
+        <option value="$PROJECT_DIR$/_base_page/base.py" />
         <option value="$PROJECT_DIR$/_test_suites/suiteFullRegression.py" />
       </list>
     </option>
@@ -378,6 +491,7 @@
       </profile-state>
     </entry>
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -393,6 +507,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -503,6 +618,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="_ribbon_bar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="page_object" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="page_object" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_feature_objects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="_popups" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -535,6 +668,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="_feature_objects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_left_menus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="page_object" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="page_object" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="_base_page" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -542,12 +693,11 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Python" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -559,34 +709,17 @@
     </option>
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\python\vcms\vcms\page_object\_feature_objects\_popups" />
-      <recent name="E:\python\vcms\vcms\page_object\_feature_objects" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\python\vcms\vcms\page_object\_feature_objects\_featureTabs" />
       <recent name="E:\python\vcms\vcms\page_object\_feature_objects\_feature_left_menus" />
       <recent name="E:\python\vcms\vcms\page_object\_feature_objects\_feature_popups" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\python\vcms\vcms\page_object\_feature_objects\_popups" />
+      <recent name="E:\python\vcms\vcms\page_object\_feature_objects" />
+    </key>
   </component>
   <component name="RunManager" selected="Python tests.suiteFullRegression.MainPageHelpLinks">
-    <configuration default="false" name="popups" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/_feature_objects" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="page_object" />
-      <option name="SCRIPT_NAME" value="E:\python\vcms\vcms\page_object\_feature_objects\_feature_popups\featurePopupSubscriptionHasExpired.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="locators" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -651,6 +784,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="page_object" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/_feature_objects/_popups/popupInventoryView.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="popupTermsAndConditions" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/_feature_objects/_popups" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="page_object" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/_feature_objects/_popups/popupTermsAndConditions.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -801,7 +951,7 @@
       <module name="page_object" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/_test_suites/suiteFullRegression.py" />
       <option name="CLASS_NAME" value="MainPageHelpLinks" />
-      <option name="METHOD_NAME" value="test_help_link_on_inventory_view_popup" />
+      <option name="METHOD_NAME" value="test_help_link_on_edit_folder_popup" />
       <option name="FOLDER_NAME" value="$PROJECT_DIR$" />
       <option name="TEST_TYPE" value="TEST_CLASS" />
       <option name="PATTERN" value="" />
@@ -974,19 +1124,19 @@
       <item index="5" class="java.lang.String" itemvalue="Python tests.suiteFullRegression.SiteConfigurationSiteTab" />
       <item index="6" class="java.lang.String" itemvalue="Python tests.suiteFullRegression" />
       <item index="7" class="java.lang.String" itemvalue="Python tests.suiteFullRegression.SiteCreation.test_open_site_name_popup" />
-      <item index="8" class="java.lang.String" itemvalue="Python.popups" />
-      <item index="9" class="java.lang.String" itemvalue="Python.locators" />
-      <item index="10" class="java.lang.String" itemvalue="Python.suiteFullRegression" />
-      <item index="11" class="java.lang.String" itemvalue="Python.downloadAndInstall" />
-      <item index="12" class="java.lang.String" itemvalue="Python.popupInventoryView" />
+      <item index="8" class="java.lang.String" itemvalue="Python.locators" />
+      <item index="9" class="java.lang.String" itemvalue="Python.suiteFullRegression" />
+      <item index="10" class="java.lang.String" itemvalue="Python.downloadAndInstall" />
+      <item index="11" class="java.lang.String" itemvalue="Python.popupInventoryView" />
+      <item index="12" class="java.lang.String" itemvalue="Python.popupTermsAndConditions" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.popupInventoryView" />
-        <item index="1" class="java.lang.String" itemvalue="Python.downloadAndInstall" />
-        <item index="2" class="java.lang.String" itemvalue="Python.locators" />
-        <item index="3" class="java.lang.String" itemvalue="Python.suiteFullRegression" />
-        <item index="4" class="java.lang.String" itemvalue="Python.popups" />
+        <item index="0" class="java.lang.String" itemvalue="Python.popupTermsAndConditions" />
+        <item index="1" class="java.lang.String" itemvalue="Python.popupInventoryView" />
+        <item index="2" class="java.lang.String" itemvalue="Python.downloadAndInstall" />
+        <item index="3" class="java.lang.String" itemvalue="Python.locators" />
+        <item index="4" class="java.lang.String" itemvalue="Python.suiteFullRegression" />
       </list>
     </recent_temporary>
   </component>
@@ -1004,34 +1154,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.13 at 20h 37m 34s.xml">
+    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.15 at 01h 18m 36s.xml">
       <configuration name="suiteFullRegression.MainPageHelpLinks" configurationId="tests" />
     </history-entry>
-    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.13 at 22h 55m 02s.xml">
+    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.15 at 01h 25m 19s.xml">
       <configuration name="suiteFullRegression.MainPageHelpLinks" configurationId="tests" />
     </history-entry>
-    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.13 at 22h 58m 00s.xml">
+    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.15 at 01h 26m 31s.xml">
       <configuration name="suiteFullRegression.MainPageHelpLinks" configurationId="tests" />
     </history-entry>
-    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.13 at 23h 01m 20s.xml">
+    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.15 at 01h 30m 02s.xml">
       <configuration name="suiteFullRegression.MainPageHelpLinks" configurationId="tests" />
     </history-entry>
-    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.13 at 23h 03m 51s.xml">
+    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.15 at 01h 35m 43s.xml">
       <configuration name="suiteFullRegression.MainPageHelpLinks" configurationId="tests" />
     </history-entry>
-    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.13 at 23h 06m 27s.xml">
+    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.15 at 01h 39m 54s.xml">
       <configuration name="suiteFullRegression.MainPageHelpLinks" configurationId="tests" />
     </history-entry>
-    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.13 at 23h 07m 35s.xml">
+    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.15 at 01h 42m 38s.xml">
       <configuration name="suiteFullRegression.MainPageHelpLinks" configurationId="tests" />
     </history-entry>
-    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.13 at 23h 11m 14s.xml">
+    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.15 at 01h 44m 49s.xml">
       <configuration name="suiteFullRegression.MainPageHelpLinks" configurationId="tests" />
     </history-entry>
-    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.13 at 23h 12m 48s.xml">
+    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.15 at 02h 02m 35s.xml">
       <configuration name="suiteFullRegression.MainPageHelpLinks" configurationId="tests" />
     </history-entry>
-    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.13 at 23h 25m 36s.xml">
+    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.15 at 07h 55m 01s.xml">
       <configuration name="suiteFullRegression.MainPageHelpLinks" configurationId="tests" />
     </history-entry>
   </component>
@@ -1045,27 +1195,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25602028" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30735108" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.52719665" sideWeight="0.50253487" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41283125" sideWeight="0.49789253" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32217574" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33891213" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.52719665" sideWeight="0.49746513" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39888424" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39748955" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1074,158 +1224,26 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="35" />
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+      <option name="time" value="44" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/featurePopupUserSettings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="40" lean-forward="false" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/featurePopupUnableToRemove.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/featurePopupTermsAndConditions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/featurePopupSubscriptions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/featurePopupSubscriptionHasExpired.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/featurePopupSiteName.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/featurePopupSettings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/featurePopupSelectDashboard.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/featurePopupResetPassword.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="24" lean-forward="false" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/featurePopupQueryDesigner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="53" lean-forward="false" selection-start-line="18" selection-start-column="53" selection-end-line="18" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/featurePopupMoveSite.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/featurePopupModelAlias.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="33" lean-forward="false" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/featurePopupInitialSetup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/featurePopupCurrency.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="10" column="8" lean-forward="false" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/featurePopupConfiguration.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="19" column="69" lean-forward="false" selection-start-line="19" selection-start-column="69" selection-end-line="19" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/featurePopupConditionEditor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="8" lean-forward="false" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/featurePopupColumnSets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/featurePopupClientSettings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/featurePopupAreYouSure.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/featureRibbonBar.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_featureTabs/featureTabDevices.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/featurePopupCurrency.py" />
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/featurePopupConfiguration.py" />
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/featurePopupConditionEditor.py" />
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/featurePopupColumnSets.py" />
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/featurePopupClientSettings.py" />
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/featurePopupAreYouSure.py" />
+    <entry file="file://$PROJECT_DIR$/_feature_objects/featureRibbonBar.py" />
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_featureTabs/featureTabDevices.py" />
     <entry file="file://$PROJECT_DIR$/_test_suites/suiteSmokeTests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
@@ -1233,30 +1251,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_pages/pageLogin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_pages/pageMain.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="20" column="63" lean-forward="true" selection-start-line="20" selection-start-column="63" selection-end-line="20" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_left_menus/featureLeftMenu.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="80" column="41" lean-forward="false" selection-start-line="80" selection-start-column="41" selection-end-line="80" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/_pages/pageLogin.py" />
+    <entry file="file://$PROJECT_DIR$/_pages/pageMain.py" />
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_left_menus/featureLeftMenu.py" />
     <entry file="file://$PROJECT_DIR$/../../../Lib/site-packages/selenium/webdriver/support/wait.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1309">
@@ -1265,45 +1262,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/featurePopupIPAddress.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="8" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_base_page/base_actions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2023">
-          <caret line="119" column="0" lean-forward="false" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
-          <folding>
-            <element signature="e#1#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_left_menus/featureLeftMenuDevices.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_settings/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/featurePopupIPAddress.py" />
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_left_menus/featureLeftMenuDevices.py" />
     <entry file="file://$PROJECT_DIR$/_test_suites/.cache/v/cache/lastfailed">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1319,9 +1283,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-127">
           <caret line="23" column="35" lean-forward="false" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
-          <folding>
-            <element signature="e#1#48#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1353,7 +1314,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1369,16 +1329,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="95" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_left_menus/leftMenu.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="72" column="8" lean-forward="false" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="8" />
           <folding />
         </state>
       </provider>
@@ -1387,74 +1337,121 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1459">
           <caret line="106" column="36" lean-forward="false" selection-start-line="106" selection-start-column="36" selection-end-line="106" selection-end-column="36" />
-          <folding>
-            <element signature="e#1#69#0" expanded="true" />
-            <element signature="e#5758#5856#0" expanded="false" />
-            <element signature="e#7354#7466#0" expanded="false" />
-            <element signature="e#7513#7617#0" expanded="false" />
-            <element signature="e#7662#7974#0" expanded="false" />
-            <element signature="e#8019#8126#0" expanded="false" />
-            <element signature="e#8169#8269#0" expanded="false" />
-            <element signature="e#8325#8443#0" expanded="false" />
-            <element signature="e#8492#8604#0" expanded="false" />
-            <element signature="e#8650#8829#0" expanded="false" />
-            <element signature="e#8887#8984#0" expanded="false" />
-            <element signature="e#9040#9135#0" expanded="false" />
-            <element signature="e#9189#9282#0" expanded="false" />
-            <element signature="e#9346#9449#0" expanded="false" />
-            <element signature="e#9505#9600#0" expanded="false" />
-            <element signature="e#9647#9751#0" expanded="false" />
-            <element signature="e#9796#9904#0" expanded="false" />
-            <element signature="e#9956#10070#0" expanded="false" />
-            <element signature="e#10122#10173#0" expanded="false" />
-            <element signature="e#10216#10322#0" expanded="false" />
-            <element signature="e#10378#10570#0" expanded="false" />
-            <element signature="e#10622#10722#0" expanded="false" />
-            <element signature="e#10779#10875#0" expanded="false" />
-            <element signature="e#10922#11026#0" expanded="false" />
-            <element signature="e#11084#11200#0" expanded="false" />
-            <element signature="e#11244#11354#0" expanded="false" />
-            <element signature="e#11399#11503#0" expanded="false" />
-            <element signature="e#11563#11662#0" expanded="false" />
-            <element signature="e#11721#11819#0" expanded="false" />
-            <element signature="e#12024#12240#0" expanded="false" />
-            <element signature="e#12288#12466#0" expanded="false" />
-            <element signature="e#12513#12689#0" expanded="false" />
-            <element signature="e#12737#12965#0" expanded="false" />
-            <element signature="e#13007#13183#0" expanded="false" />
-            <element signature="e#13230#13419#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupOnDemandInventoryScan.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
+        <state relative-caret-position="323">
           <caret line="19" column="70" lean-forward="false" selection-start-line="19" selection-start-column="70" selection-end-line="19" selection-end-column="70" />
-          <folding />
+          <folding>
+            <marker date="1487101117024" expanded="true" signature="97:1294" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pycharm/utrunner.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
+        <state relative-caret-position="2584">
           <caret line="155" column="0" lean-forward="false" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_base_page/downloadAndInstall.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="37" column="8" lean-forward="false" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Lib/unittest/util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2176">
+          <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Lib/unittest/case.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="420" column="65" lean-forward="false" selection-start-line="420" selection-start-column="65" selection-end-line="420" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupInventoryView.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/ide/ide-scripting.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/_feature_objects/_pages/pageDevices.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="34" column="8" lean-forward="false" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
+        <state relative-caret-position="709">
+          <caret line="83" column="63" lean-forward="false" selection-start-line="83" selection-start-column="63" selection-end-line="83" selection-end-column="63" />
+          <folding>
+            <element signature="e#2506#3415#0" expanded="false" />
+            <element signature="e#3489#4292#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_settings/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_base_page/base.py">
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="228" column="0" lean-forward="false" selection-start-line="228" selection-start-column="0" selection-end-line="228" selection-end-column="0" />
+        <state relative-caret-position="170">
+          <caret line="973" column="0" lean-forward="false" selection-start-line="973" selection-start-column="0" selection-end-line="973" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupSubscriptions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_pages/pageLogin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="71" lean-forward="true" selection-start-line="3" selection-start-column="71" selection-end-line="3" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupTermsAndConditions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupUnableToRemove.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="38" lean-forward="false" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
           <folding />
         </state>
       </provider>
@@ -1467,141 +1464,282 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupInventoryView.py">
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupSiteName.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="30" column="42" lean-forward="false" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
+        <state relative-caret-position="153">
+          <caret line="9" column="8" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupNewFolder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupEditFolder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="6" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
           <folding>
-            <element signature="e#0#32#0" expanded="true" />
+            <marker date="1487107906902" expanded="true" signature="86:1184" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_base_page/downloadAndInstall.py">
+    <entry file="file://$PROJECT_DIR$/_base_page/base_elements.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="37" column="8" lean-forward="false" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
+        <state relative-caret-position="269">
+          <caret line="57" column="4" lean-forward="false" selection-start-line="57" selection-start-column="4" selection-end-line="57" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../Lib/unittest/case.py">
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_left_menus/leftMenu.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="420" column="65" lean-forward="false" selection-start-line="420" selection-start-column="65" selection-end-line="420" selection-end-column="65" />
+        <state relative-caret-position="-379">
+          <caret line="26" column="4" lean-forward="false" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../Lib/unittest/util.py">
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_ribbon_bar/ribbonBar.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2176">
-          <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+        <state relative-caret-position="102">
+          <caret line="384" column="69" lean-forward="false" selection-start-line="384" selection-start-column="69" selection-end-line="384" selection-end-column="69" />
+          <folding>
+            <element signature="e#1#69#0" expanded="true" />
+            <element signature="e#8299#8397#0" expanded="false" />
+            <element signature="e#8437#8535#0" expanded="false" />
+            <element signature="e#8578#8682#0" expanded="false" />
+            <element signature="e#8723#8823#0" expanded="false" />
+            <element signature="e#8862#9054#0" expanded="false" />
+            <element signature="e#9093#9285#0" expanded="false" />
+            <element signature="e#9327#9528#0" expanded="false" />
+            <element signature="e#9568#9763#0" expanded="false" />
+            <element signature="e#9814#9915#0" expanded="false" />
+            <element signature="e#9966#10067#0" expanded="false" />
+            <element signature="e#10121#10224#0" expanded="false" />
+            <element signature="e#10277#10389#0" expanded="false" />
+            <element signature="e#10436#10540#0" expanded="false" />
+            <element signature="e#10585#10909#0" expanded="false" />
+            <element signature="e#11439#11546#0" expanded="false" />
+            <element signature="e#11589#11689#0" expanded="false" />
+            <element signature="e#11739#11848#0" expanded="false" />
+            <element signature="e#11897#12009#0" expanded="false" />
+            <element signature="e#12067#12164#0" expanded="false" />
+            <element signature="e#12220#12315#0" expanded="false" />
+            <element signature="e#12369#12462#0" expanded="false" />
+            <element signature="e#12526#12629#0" expanded="false" />
+            <element signature="e#12837#12933#0" expanded="false" />
+            <element signature="e#12990#13086#0" expanded="false" />
+            <element signature="e#13133#13237#0" expanded="false" />
+            <element signature="e#13282#13390#0" expanded="false" />
+            <element signature="e#13442#13556#0" expanded="false" />
+            <element signature="e#13608#13659#0" expanded="false" />
+            <element signature="e#13702#13808#0" expanded="false" />
+            <element signature="e#13856#13961#0" expanded="false" />
+            <element signature="e#14012#14124#0" expanded="false" />
+            <element signature="e#14167#14269#0" expanded="false" />
+            <element signature="e#14322#14439#0" expanded="false" />
+            <element signature="e#14490#14601#0" expanded="false" />
+            <element signature="e#14652#14763#0" expanded="false" />
+            <element signature="e#14815#14915#0" expanded="false" />
+            <element signature="e#14972#15068#0" expanded="false" />
+            <element signature="e#15115#15219#0" expanded="false" />
+            <element signature="e#15277#15393#0" expanded="false" />
+            <element signature="e#15437#15547#0" expanded="false" />
+            <element signature="e#15593#15697#0" expanded="false" />
+            <element signature="e#15751#15867#0" expanded="false" />
+            <element signature="e#15912#16016#0" expanded="false" />
+            <element signature="e#16064#16292#0" expanded="false" />
+            <element signature="e#16338#16440#0" expanded="false" />
+            <element signature="e#16911#17012#0" expanded="false" />
+            <element signature="e#17065#17165#0" expanded="false" />
+            <element signature="e#17221#17324#0" expanded="false" />
+            <element signature="e#17385#17493#0" expanded="false" />
+            <element signature="e#17712#17890#0" expanded="false" />
+            <element signature="e#17937#18113#0" expanded="false" />
+            <element signature="e#18155#18331#0" expanded="false" />
+            <element signature="e#18378#18567#0" expanded="false" />
+            <element signature="e#18613#18792#0" expanded="false" />
+            <element signature="e#18848#19040#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_left_menus/leftMenuDevices.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="579">
+          <caret line="106" column="0" lean-forward="false" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+            <element signature="e#1789#1927#0" expanded="false" />
+            <element signature="e#2002#2399#0" expanded="false" />
+            <element signature="e#2453#2717#0" expanded="false" />
+            <element signature="e#2761#2995#0" expanded="false" />
+            <element signature="e#3040#3308#0" expanded="false" />
+            <element signature="e#3363#3661#0" expanded="false" />
+            <element signature="e#3725#3855#0" expanded="false" />
+            <element signature="e#3926#4165#0" expanded="false" />
+            <element signature="e#4221#4363#0" expanded="false" />
+            <element signature="e#4408#4528#0" expanded="false" />
+            <element signature="e#4572#4690#0" expanded="false" />
+            <element signature="e#4747#5272#0" expanded="false" />
+            <element signature="e#5346#5584#0" expanded="false" />
+            <element signature="e#5635#5980#0" expanded="false" />
+            <element signature="e#6041#6575#0" expanded="false" />
+            <element signature="e#6642#6943#0" expanded="false" />
+            <element signature="e#7020#7770#0" expanded="false" />
+            <element signature="e#7850#8212#0" expanded="false" />
+            <element signature="e#8286#8435#0" expanded="false" />
+            <element signature="e#8507#8613#0" expanded="false" />
+            <element signature="e#8671#9259#0" expanded="false" />
+            <element signature="e#9324#9990#0" expanded="false" />
+            <element signature="e#10057#10704#0" expanded="false" />
+            <element signature="e#10765#10900#0" expanded="false" />
+            <element signature="e#11354#11559#0" expanded="false" />
+            <marker date="1487115817752" expanded="false" signature="10953:11097" ph="..." />
+            <marker date="1487115817752" expanded="false" signature="11151:11296" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_base_page/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_base_page/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-671">
+          <caret line="239" column="23" lean-forward="false" selection-start-line="239" selection-start-column="23" selection-end-line="239" selection-end-column="23" />
+          <folding>
+            <element signature="e#1#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_base_page/base_actions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="179" column="8" lean-forward="false" selection-start-line="179" selection-start-column="8" selection-end-line="179" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/_test_suites/suiteFullRegression.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="716" column="6" lean-forward="false" selection-start-line="716" selection-start-column="6" selection-end-line="716" selection-end-column="6" />
+        <state relative-caret-position="815">
+          <caret line="742" column="8" lean-forward="false" selection-start-line="742" selection-start-column="8" selection-end-line="742" selection-end-column="8" />
           <folding>
             <element signature="e#1#15#0" expanded="true" />
-            <element signature="e#1821#2076#0" expanded="false" />
-            <element signature="e#2107#2368#0" expanded="false" />
-            <element signature="e#2414#3201#0" expanded="false" />
-            <element signature="e#3252#3771#0" expanded="false" />
-            <element signature="e#3838#4928#0" expanded="false" />
-            <element signature="e#4979#5595#0" expanded="false" />
-            <element signature="e#5658#6687#0" expanded="false" />
-            <element signature="e#6752#8302#0" expanded="false" />
-            <element signature="e#8373#9511#0" expanded="false" />
-            <element signature="e#9545#9549#0" expanded="false" />
-            <element signature="e#9604#9621#0" expanded="false" />
-            <element signature="e#9737#9997#0" expanded="false" />
-            <element signature="e#10028#10175#0" expanded="false" />
-            <element signature="e#10230#10863#0" expanded="false" />
-            <element signature="e#10940#11863#0" expanded="false" />
-            <element signature="e#11936#12796#0" expanded="false" />
-            <element signature="e#12869#14214#0" expanded="false" />
-            <element signature="e#14248#14252#0" expanded="false" />
-            <element signature="e#14307#14324#0" expanded="false" />
-            <element signature="e#14447#14718#0" expanded="false" />
-            <element signature="e#14749#14896#0" expanded="false" />
-            <element signature="e#14963#17054#0" expanded="false" />
-            <element signature="e#17135#18142#0" expanded="false" />
-            <element signature="e#21933#24330#0" expanded="false" />
-            <element signature="e#24364#24368#0" expanded="false" />
-            <element signature="e#24423#24440#0" expanded="false" />
-            <element signature="e#24589#24873#0" expanded="false" />
-            <element signature="e#24904#25051#0" expanded="false" />
-            <element signature="e#25057#25078#0" expanded="false" />
-            <element signature="e#25203#25220#0" expanded="false" />
-            <element signature="e#25331#25586#0" expanded="false" />
-            <element signature="e#25617#25764#0" expanded="false" />
-            <element signature="e#25841#26742#0" expanded="false" />
-            <element signature="e#26819#27503#0" expanded="false" />
-            <element signature="e#27563#28753#0" expanded="false" />
-            <element signature="e#28808#30077#0" expanded="false" />
-            <element signature="e#30150#31101#0" expanded="false" />
-            <element signature="e#31155#32093#0" expanded="false" />
-            <element signature="e#32127#32131#0" expanded="false" />
-            <element signature="e#32186#32203#0" expanded="false" />
-            <element signature="e#32331#32586#0" expanded="false" />
-            <element signature="e#32617#32764#0" expanded="false" />
-            <element signature="e#32770#32791#0" expanded="false" />
-            <element signature="e#32916#32933#0" expanded="false" />
-            <element signature="e#33063#33297#0" expanded="false" />
-            <element signature="e#33328#33395#0" expanded="false" />
-            <element signature="e#33458#33606#0" expanded="false" />
-            <element signature="e#33724#33936#0" expanded="false" />
-            <element signature="e#33967#34037#0" expanded="false" />
-            <element signature="e#34091#34292#0" expanded="false" />
-            <element signature="e#34356#34769#0" expanded="false" />
-            <element signature="e#34803#34882#0" expanded="false" />
-            <element signature="e#34937#34954#0" expanded="false" />
-            <element signature="e#35925#36252#0" expanded="false" />
-            <element signature="e#36308#36598#0" expanded="false" />
-            <element signature="e#36660#36989#0" expanded="false" />
-            <element signature="e#37042#37317#0" expanded="false" />
-            <element signature="e#37374#37742#0" expanded="false" />
-            <element signature="e#37816#38214#0" expanded="false" />
-            <element signature="e#38289#38623#0" expanded="false" />
-            <element signature="e#38689#39326#0" expanded="false" />
-            <element signature="e#39389#39905#0" expanded="false" />
-            <element signature="e#39967#40301#0" expanded="false" />
-            <element signature="e#40359#40831#0" expanded="false" />
-            <element signature="e#40910#41597#0" expanded="false" />
-            <element signature="e#41674#42349#0" expanded="false" />
-            <element signature="e#42425#43094#0" expanded="false" />
-            <element signature="e#43170#43841#0" expanded="false" />
-            <element signature="e#43847#43906#0" expanded="false" />
-            <element signature="e#44661#45324#0" expanded="false" />
-            <element signature="e#45405#46103#0" expanded="false" />
-            <element signature="e#46168#46679#0" expanded="false" />
-            <element signature="e#46755#47420#0" expanded="false" />
-            <element signature="e#47497#48172#0" expanded="false" />
-            <element signature="e#48253#48949#0" expanded="false" />
-            <element signature="e#49035#49758#0" expanded="false" />
-            <element signature="e#49849#50602#0" expanded="false" />
-            <element signature="e#50661#51470#0" expanded="false" />
-            <element signature="e#51533#52363#0" expanded="false" />
-            <element signature="e#52423#53756#0" expanded="false" />
-            <element signature="e#53815#54767#0" expanded="false" />
-            <element signature="e#54831#55632#0" expanded="false" />
-            <element signature="e#55698#56693#0" expanded="false" />
-            <element signature="e#56752#57559#0" expanded="false" />
-            <element signature="e#57623#58630#0" expanded="false" />
-            <element signature="e#58690#59504#0" expanded="false" />
-            <element signature="e#59562#60034#0" expanded="false" />
-            <element signature="e#60098#60616#0" expanded="false" />
-            <element signature="e#60684#61212#0" expanded="false" />
-            <element signature="e#61273#61760#0" expanded="false" />
-            <element signature="e#61823#62674#0" expanded="false" />
-            <element signature="e#63807#64859#0" expanded="false" />
-            <element signature="e#64895#64974#0" expanded="false" />
-            <element signature="e#65029#65046#0" expanded="false" />
-            <element signature="e#65111#65175#0" expanded="false" />
+            <element signature="e#1685#1940#0" expanded="false" />
+            <element signature="e#1971#2198#0" expanded="false" />
+            <element signature="e#2204#2237#0" expanded="false" />
+            <element signature="e#3114#3633#0" expanded="false" />
+            <element signature="e#3700#4748#0" expanded="false" />
+            <element signature="e#4799#5415#0" expanded="false" />
+            <element signature="e#5478#6507#0" expanded="false" />
+            <element signature="e#6572#8122#0" expanded="false" />
+            <element signature="e#8193#9331#0" expanded="false" />
+            <element signature="e#9365#9369#0" expanded="false" />
+            <element signature="e#9424#9441#0" expanded="false" />
+            <element signature="e#9557#9817#0" expanded="false" />
+            <element signature="e#9848#9995#0" expanded="false" />
+            <element signature="e#10050#10683#0" expanded="false" />
+            <element signature="e#10760#11683#0" expanded="false" />
+            <element signature="e#11756#12616#0" expanded="false" />
+            <element signature="e#12689#14034#0" expanded="false" />
+            <element signature="e#14068#14072#0" expanded="false" />
+            <element signature="e#14127#14144#0" expanded="false" />
+            <element signature="e#14267#14538#0" expanded="false" />
+            <element signature="e#14569#14716#0" expanded="false" />
+            <element signature="e#14783#16874#0" expanded="false" />
+            <element signature="e#16955#17962#0" expanded="false" />
+            <element signature="e#18029#21643#0" expanded="false" />
+            <element signature="e#21711#24108#0" expanded="false" />
+            <element signature="e#24142#24146#0" expanded="false" />
+            <element signature="e#24201#24218#0" expanded="false" />
+            <element signature="e#24367#24651#0" expanded="false" />
+            <element signature="e#24682#24829#0" expanded="false" />
+            <element signature="e#24835#24856#0" expanded="false" />
+            <element signature="e#24981#24998#0" expanded="false" />
+            <element signature="e#25109#25364#0" expanded="false" />
+            <element signature="e#25395#25622#0" expanded="false" />
+            <element signature="e#25699#26558#0" expanded="false" />
+            <element signature="e#26635#27319#0" expanded="false" />
+            <element signature="e#27379#28617#0" expanded="false" />
+            <element signature="e#28672#29931#0" expanded="false" />
+            <element signature="e#30004#30955#0" expanded="false" />
+            <element signature="e#31009#31947#0" expanded="false" />
+            <element signature="e#31981#31985#0" expanded="false" />
+            <element signature="e#32040#32057#0" expanded="false" />
+            <element signature="e#32185#32440#0" expanded="false" />
+            <element signature="e#32471#32618#0" expanded="false" />
+            <element signature="e#32624#32645#0" expanded="false" />
+            <element signature="e#32770#32787#0" expanded="false" />
+            <element signature="e#32917#33151#0" expanded="false" />
+            <element signature="e#33182#33249#0" expanded="false" />
+            <element signature="e#33312#33460#0" expanded="false" />
+            <element signature="e#33578#33790#0" expanded="false" />
+            <element signature="e#33821#33891#0" expanded="false" />
+            <element signature="e#33945#34146#0" expanded="false" />
+            <element signature="e#34210#34623#0" expanded="false" />
+            <element signature="e#34657#34736#0" expanded="false" />
+            <element signature="e#34791#34808#0" expanded="false" />
+            <element signature="e#34925#35629#0" expanded="false" />
+            <element signature="e#35660#35727#0" expanded="false" />
+            <element signature="e#36168#36482#0" expanded="false" />
+            <element signature="e#39022#39356#0" expanded="false" />
+            <element signature="e#39422#40059#0" expanded="false" />
+            <element signature="e#40122#40638#0" expanded="false" />
+            <element signature="e#40700#41034#0" expanded="false" />
+            <element signature="e#41092#41564#0" expanded="false" />
+            <element signature="e#41643#42330#0" expanded="false" />
+            <element signature="e#42407#43082#0" expanded="false" />
+            <element signature="e#43158#43827#0" expanded="false" />
+            <element signature="e#43903#44574#0" expanded="false" />
+            <element signature="e#44580#44639#0" expanded="false" />
+            <element signature="e#45394#46057#0" expanded="false" />
+            <element signature="e#46138#46836#0" expanded="false" />
+            <element signature="e#46901#47412#0" expanded="false" />
+            <element signature="e#48230#48905#0" expanded="false" />
+            <element signature="e#48986#49682#0" expanded="false" />
+            <element signature="e#49768#50491#0" expanded="false" />
+            <element signature="e#50582#51335#0" expanded="false" />
+            <element signature="e#51394#52203#0" expanded="false" />
+            <element signature="e#52266#53096#0" expanded="false" />
+            <element signature="e#53156#54489#0" expanded="false" />
+            <element signature="e#54548#55500#0" expanded="false" />
+            <element signature="e#55564#56359#0" expanded="false" />
+            <element signature="e#56425#57414#0" expanded="false" />
+            <element signature="e#57473#58274#0" expanded="false" />
+            <element signature="e#58338#59339#0" expanded="false" />
+            <element signature="e#59399#60207#0" expanded="false" />
+            <element signature="e#60268#61357#0" expanded="false" />
+            <element signature="e#61415#61887#0" expanded="false" />
+            <element signature="e#61951#62469#0" expanded="false" />
+            <element signature="e#62537#63065#0" expanded="false" />
+            <element signature="e#63126#63613#0" expanded="false" />
+            <element signature="e#63674#64329#0" expanded="false" />
+            <element signature="e#64392#65243#0" expanded="false" />
+            <element signature="e#65307#66296#0" expanded="false" />
+            <element signature="e#66370#67416#0" expanded="false" />
+            <element signature="e#67473#68398#0" expanded="false" />
+            <element signature="e#68459#69394#0" expanded="false" />
+            <element signature="e#69457#70404#0" expanded="false" />
+            <element signature="e#70461#71369#0" expanded="false" />
+            <element signature="e#71375#71424#0" expanded="false" />
+            <element signature="e#76628#76707#0" expanded="false" />
+            <element signature="e#76762#76779#0" expanded="false" />
+            <element signature="e#76844#76908#0" expanded="false" />
           </folding>
         </state>
       </provider>

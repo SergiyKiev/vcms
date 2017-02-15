@@ -7,6 +7,7 @@ class NewFolderPopup(BaseActions):
     BODY = "//span[text()='New Folder']/ancestor::div[contains(@id,'WRP')]"
     LEFT_MENU = BODY + "/*//div[@class='TreeView-Control']"
     TAB = BODY + "/*//div[@class='TabControl-Control']"
+    FIELD_NEW_FOLDER = BODY + "/*//input"
 
     def check_popup_is_present(self):
         cond = self._is_element_present(NewFolderPopup.BODY)
@@ -34,6 +35,9 @@ class NewFolderPopup(BaseActions):
     def click_button_add_members(self):
         self._click_button_cancel(NewFolderPopup.BODY)
         self.wait_for_element_not_present(NewFolderPopup.BODY)
+
+    def enter_text_into_new_folder_text_field(self, name):
+        self._find_element(NewFolderPopup.FIELD_NEW_FOLDER).send_keys(name)
 
 
 

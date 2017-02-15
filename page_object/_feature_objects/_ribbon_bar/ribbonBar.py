@@ -3,6 +3,7 @@ from _feature_objects._popups.popupColumnSets import ColumnSetsPopup
 from _feature_objects._popups.popupClientSettings import ClientSettingsPopup
 from _feature_objects._popups.popupConfiguration import ConfigurationPopup
 from _feature_objects._popups.popupCurrency import CurrencyPopup
+from _feature_objects._popups.popupEditFolder import EditFolderPopup
 from _feature_objects._popups.popupEndUserAccess import EndUserAccessPopup
 from _feature_objects._popups.popupEventViewer import EventViewerPopup
 from _feature_objects._popups.popupFileExplorer import FileExplorerPopup
@@ -56,13 +57,14 @@ class RibbonBar(BaseActions):
     BUTTON_HOME = "//img[@alt='Home']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_NEW = "//img[@alt='New']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_EDIT = "//img[@alt='Edit']/ancestor::div[contains(@class,'RibbonBarButton')]"
+    BUTTON_EDIT_FOLDER = "//img[@alt='Edit Folder']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_NEW_SITE = "//img[@alt='New Site']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_CONFIG = "//img[@alt='Config']/ancestor::div[contains(@class,'RibbonBarButton')]"
-    BUTTON_DELETE = "//img[contians(@alt,'Delete')]/ancestor::div[contains(@class,'RibbonBarButton')]"
-    # BUTTON_DELETE_OR_ARCHIVE = "//img[@alt='Delete / Archive']/ancestor::div[contains(@class,'RibbonBarButton')]"
-    # BUTTON_DELETE_SELECTED = "//img[@alt='Delete Selected']/ancestor::div[contains(@class,'RibbonBarButton')]"
-    # BUTTON_DELETE_GROUP = "//img[@alt='Delete Group']/ancestor::div[contains(@class,'RibbonBarButton')]"
-    # BUTTON_DELETE_FOLDER = "//img[@alt='Delete Folder']/ancestor::div[contains(@class,'RibbonBarButton')]"
+    BUTTON_DELETE = "//img[@alt='Delete']/ancestor::div[contains(@class,'RibbonBarButton')]"
+    BUTTON_DELETE_OR_ARCHIVE = "//img[@alt='Delete / Archive']/ancestor::div[contains(@class,'RibbonBarButton')]"
+    BUTTON_DELETE_SELECTED = "//img[@alt='Delete Selected']/ancestor::div[contains(@class,'RibbonBarButton')]"
+    BUTTON_DELETE_GROUP = "//img[@alt='Delete Group']/ancestor::div[contains(@class,'RibbonBarButton')]"
+    BUTTON_DELETE_FOLDER = "//img[@alt='Delete Folder']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_MOVE = "//img[@alt='Move']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_SETTINGS = "//img[@alt='Settings']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_INVENTORY = "//img[@alt='Inventory']/ancestor::div[contains(@class,'RibbonBarButton')]"
@@ -174,13 +176,17 @@ class RibbonBar(BaseActions):
         #     return UnableToRemovePopup(self.driver)
 
     def click_button_delete_selected(self):
-        self._click_element(RibbonBar.BUTTON_DELETE)
+        self._click_element(RibbonBar.BUTTON_DELETE_SELECTED)
 
     def click_button_delete_group(self):
-        self._click_element(RibbonBar.BUTTON_DELETE)
+        self._click_element(RibbonBar.BUTTON_DELETE_GROUP)
 
     def click_button_delete_folder(self):
-        self._click_element(RibbonBar.BUTTON_DELETE)
+        self._click_element(RibbonBar.BUTTON_DELETE_FOLDER)
+
+    def click_button_delete_or_archive(self):
+        self._click_element(RibbonBar.BUTTON_DELETE_OR_ARCHIVE)
+        self.wait_for_element_present(RemoveDevicesPopup.BODY)
 
     def click_button_config(self):
         self._click_element(RibbonBar.BUTTON_CONFIG)
@@ -189,10 +195,6 @@ class RibbonBar(BaseActions):
     def click_button_move(self):
         self._click_element(RibbonBar.BUTTON_MOVE)
         self.wait_for_element_present(MoveSitePopup.BODY)
-
-    def click_button_delete_or_archive(self):
-        self._click_element(RibbonBar.BUTTON_DELETE)
-        self.wait_for_element_present(RemoveDevicesPopup.BODY)
 
     def click_button_move_device(self):
         self._click_element(RibbonBar.BUTTON_MOVE_DEVICE)
@@ -315,6 +317,16 @@ class RibbonBar(BaseActions):
         self._click_element(RibbonBar.BUTTON_REPORTS)
         self.wait_for_element_present(ReportsPopup.BODY)
 
+    def click_button_new(self):
+        cond = self._is_element_present(RibbonBar.BUTTON_NEW + RibbonBar.DROP_DOWN_ARROW)
+        self._click_element(RibbonBar.BUTTON_NEW)
+        if cond:
+            self.wait_for_element_present(RibbonBar.DROP_DOWN_LIST)
+
+    def click_button_edit_folder(self):
+        self._click_element(RibbonBar.BUTTON_EDIT_FOLDER)
+        self.wait_for_element_present(EditFolderPopup.BODY)
+
     def check_queries_box_is_present(self):
         cond = self._is_element_present(RibbonBar.BUTTONS_BOX_QUERIES)
         return True if cond else False
@@ -334,12 +346,6 @@ class RibbonBar(BaseActions):
     def check_site_management_box_is_present(self):
         cond = self._is_element_present(RibbonBar.BUTTONS_BOX_SITE_MANAGEMENT)
         return True if cond else False
-
-    def click_button_new(self):
-        cond = self._is_element_present(RibbonBar.BUTTON_NEW + RibbonBar.DROP_DOWN_ARROW)
-        self._click_element(RibbonBar.BUTTON_NEW)
-        if cond:
-            self.wait_for_element_present(RibbonBar.DROP_DOWN_LIST)
 
     def click_new_folder_label(self):
         self._click_element(RibbonBar.MENU_ITEM_NEW_FOLDER)
@@ -370,4 +376,12 @@ class RibbonBar(BaseActions):
         self._click_element(RibbonBar.MENU_ITEM_CHANGE_HOME_SCREEN)
         self.wait_for_element_not_present(RibbonBar.DROP_DOWN_LIST)
         self.wait_for_element_present(SelectDashboardPopup.BODY)
+
+    def check_button_edit_is_present(self):
+        cond = self._is_element_present(RibbonBar.BUTTON_EDIT)
+        return True if cond else False
+
+    def check_button_edit_folder_is_present(self):
+        cond = self._is_element_present(RibbonBar.BUTTON_EDIT_FOLDER)
+        return True if cond else False
 
