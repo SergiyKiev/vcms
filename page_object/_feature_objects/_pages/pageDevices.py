@@ -22,6 +22,7 @@ class DevicesPage(BaseActions):
         row = DevicesPage.TABLE_ROW + "/*//span[text()='" + str(*name) + "']/ancestor::tr"
         self._click_element(row)
         self.wait_for_element_selected(row)
+        self.scroll_to_element(row + "/td[1]")
 
     def click_icon_refresh(self):
         self._click_icon_refresh(DevicesPage.PAGE_HEADER)
@@ -61,7 +62,31 @@ class DevicesPage(BaseActions):
         return True if cond else False
 
     def delete_devices_in_devices_page_table(self, *names):
-        for name in list(*names):
+        try:
+            for name in list(*names):
+                self.enter_text_into_search_text_field(name)
+                self.click_icon_search()
+                cond = self.check_device_is_present(name)
+                if cond:
+                    self.select_device_in_table(name)
+                    ribbon_bar = RibbonBar(self.driver)
+                    remove_devices_popup = RemoveDevicesPopup(self.driver)
+                    ribbon_bar.click_button_delete_or_archive()
+                    cond = self._is_element_checked(RemoveDevicesPopup.CHECKBOX_KEEP_HIST_INFORM)
+                    if cond:
+                        remove_devices_popup.uncheck_keep_historical_information_check_box()
+                    else:
+                        pass
+                    remove_devices_popup.click_button_ok()
+                    self.click_icon_refresh()
+                    print "Device was found and deleted: ", name
+                else:
+                    print "No device was found:", name
+        except Exception as e:
+            print "DELETE DEVICES METHOD FAILED ", e
+
+    def delete_single_device_in_devices_page_table(self, name):
+        try:
             self.enter_text_into_search_text_field(name)
             self.click_icon_search()
             cond = self.check_device_is_present(name)
@@ -80,26 +105,8 @@ class DevicesPage(BaseActions):
                 print "Device was found and deleted: ", name
             else:
                 print "No device was found:", name
-
-    def delete_single_device_in_devices_page_table(self, name):
-        self.enter_text_into_search_text_field(name)
-        self.click_icon_search()
-        cond = self.check_device_is_present(name)
-        if cond:
-            self.select_device_in_table(name)
-            ribbon_bar = RibbonBar(self.driver)
-            remove_devices_popup = RemoveDevicesPopup(self.driver)
-            ribbon_bar.click_button_delete_or_archive()
-            cond = self._is_element_checked(RemoveDevicesPopup.CHECKBOX_KEEP_HIST_INFORM)
-            if cond:
-                remove_devices_popup.uncheck_keep_historical_information_check_box()
-            else:
-                pass
-            remove_devices_popup.click_button_ok()
-            self.click_icon_refresh()
-            print "Device was found and deleted: ", name
-        else:
-            print "No device was found:", name
+        except Exception as e:
+            print "DELETE SINGLE DEVICE METHOD FAILED ", e
 
 
 

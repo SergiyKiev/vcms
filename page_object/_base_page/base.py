@@ -49,9 +49,7 @@ class Base(object):
 
     def _find_element(self, locator):
         try:
-            # # time.sleep(0.5)
-            # # self.wait.until_not(EC.presence_of_element_located((By.XPATH, Base.LOADING_ANIMATION_VISIBLE)))
-            # # self.wait.until_not(EC.presence_of_element_located((By.XPATH, Base.LOADING_SCREEN_VISIBLE)))
+            # time.sleep(0.5)
             self.wait_loading.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
             self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
             self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
@@ -81,7 +79,7 @@ class Base(object):
             element = self._find_element(locator)
             if element is not None:
                 # print "\n" + "CLICK:  ", locator
-                time.sleep(0.8)
+                time.sleep(0.2)
                 self.wait_loading.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
                 self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
                 self.wait_webelement.until(EC.element_to_be_clickable((By.XPATH, locator)))
@@ -262,6 +260,14 @@ class Base(object):
         try:
             self.wait_condition.until(EC.presence_of_element_located((By.XPATH, locator + Base.CHECKED)))
             self.wait_condition.until(EC.visibility_of_element_located((By.XPATH, locator + Base.CHECKED)))
+            return True
+        except TimeoutException:
+            return False
+
+    def _is_element_unchecked(self, locator):
+        try:
+            self.wait_condition.until(EC.presence_of_element_located((By.XPATH, locator + Base.UNCHECKED)))
+            self.wait_condition.until(EC.visibility_of_element_located((By.XPATH, locator + Base.UNCHECKED)))
             return True
         except TimeoutException:
             return False

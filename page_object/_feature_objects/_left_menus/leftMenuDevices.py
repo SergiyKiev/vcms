@@ -95,8 +95,6 @@ class LeftMenuDevices(LeftMenu):
             left_menu_devices.click_site_in_global_site_view_tree(sitename)
             ribbon_bar.click_button_delete()
             are_you_sure_popup.click_button_ok()
-        else:
-            pass
 
     def delete_site_from_global_site_view_tree(self, sitename):
         ribbon_bar = RibbonBar(self.driver)
@@ -115,8 +113,8 @@ class LeftMenuDevices(LeftMenu):
         self.check_site_is_in_global_site_view_tree(sitename)
 
     def create_site_if_not_exists(self, sitename):
-        cond = self._is_element_not_present(
-            LeftMenuDevices.LIST_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
+        self.scroll_to_element(LeftMenuDevices.LIST_GLOBAL_SITE_VIEW)
+        cond = self._is_element_not_present(LeftMenuDevices.LIST_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
         if cond:
             ribbon_bar = RibbonBar(self.driver)
             site_name_popup = SiteNamePopup(self.driver)
@@ -135,18 +133,15 @@ class LeftMenuDevices(LeftMenu):
         site_name_popup.click_button_ok()
 
     def create_subsite_if_not_exists(self, sitename, subsitename):
+        site = "//span[text()='" + sitename + "']/ancestor::div[contains(@class,'RowContainer')]/parent::div"
         element = "//span[text()='" + sitename + "']/following::span[text() = '" + subsitename + "']/ancestor::div[contains(@class,'RowContainer')]"
         self.click_site_in_global_site_view_tree(sitename)
-        site = "//span[text()='" + sitename + "']/ancestor::div[contains(@class,'RowContainer')]/parent::div"
-        arrow_expand = self._is_element_present(site + BaseElements.ARROW_EXPAND)
-        if arrow_expand:
-            self._expand_tree(site)
-            print "SITE WAS EXPANDED"
-            cond = self._is_element_not_present(element)
-            print cond
-            if cond:
-                self.create_new_subsite(sitename, subsitename)
-                print "SUBSITE WAS CREATED"
+        self._expand_tree(site)
+        self.scroll_to_element(site)
+        cond = self._is_element_not_present(element)
+        if cond:
+            self.create_new_subsite(sitename, subsitename)
+            print "SUBSITE WAS CREATED"
         else:
             print "NO SUBSITES FOUND"
 

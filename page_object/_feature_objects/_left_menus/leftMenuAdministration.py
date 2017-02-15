@@ -44,8 +44,6 @@ class LeftMenuAdministration(LeftMenu):
         arrow = self._is_element_present(LeftMenuAdministration.TREE_ENDPOINT_MANAGEMENT + BaseElements.ARROW_EXPAND)
         if arrow:
             self._expand_tree(LeftMenuAdministration.TREE_ENDPOINT_MANAGEMENT)
-        else:
-            pass
 
     def collaps_endpoint_management_tree(self):
         self.wait_for_element_present(LeftMenuAdministration.LABEL_ENDPOINT_MANAGEMENT)
@@ -90,3 +88,36 @@ class LeftMenuAdministration(LeftMenu):
     def click_audit_log_label(self):
         self._click_element(LeftMenuAdministration.LABEL_AUDIT_LOG)
         self.wait_for_element_selected(LeftMenuAdministration.LABEL_AUDIT_LOG)
+
+    def click_dynamically_managed_label(self):
+        self._click_element(LeftMenuAdministration.LABEL_DYNAMICALLY_MANAGED)
+        self.wait_for_element_selected(LeftMenuAdministration.LABEL_DYNAMICALLY_MANAGED)
+
+    def click_excluded_devices_label(self):
+        self._click_element(LeftMenuAdministration.LABEL_EXCLUDED_DEVICES)
+        self.wait_for_element_selected(LeftMenuAdministration.LABEL_EXCLUDED_DEVICES)
+
+    def click_unmanaged_devices_label(self):
+        self._click_element(LeftMenuAdministration.LABEL_UNMANAGED_DEVICES)
+        self.wait_for_element_selected(LeftMenuAdministration.LABEL_UNMANAGED_DEVICES)
+
+    def click_infrastructure_label(self):
+        self._click_element(LeftMenuAdministration.LABEL_INFRASTRUCTURE)
+        self.wait_for_element_selected(LeftMenuAdministration.LABEL_INFRASTRUCTURE)
+
+    def check_dynamically_managed_label_is_present(self):
+        cond = self._is_element_present(LeftMenuAdministration.LABEL_DYNAMICALLY_MANAGED)
+        return True if cond else False
+
+    def check_excluded_devices_label_is_present(self):
+        cond = self._is_element_present(LeftMenuAdministration.LABEL_EXCLUDED_DEVICES)
+        return True if cond else False
+
+    def check_unmanaged_devices_label_is_present(self):
+        cond = self._is_element_present(LeftMenuAdministration.LABEL_UNMANAGED_DEVICES)
+        return True if cond else False
+
+    def check_infrastructure_label_is_present(self):
+        cond = self._is_element_present(LeftMenuAdministration.LABEL_INFRASTRUCTURE)
+        return True if cond else False
+

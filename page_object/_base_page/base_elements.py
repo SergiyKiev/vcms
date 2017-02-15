@@ -26,9 +26,9 @@ class BaseElements:
 
     #ICONS
     ICON_HELP = "/*//img[contains(@src,'About')]"
-    ICON_EXPORT = "/*//img[contains(@src,'212-action2')]"
-    ICON_REFRESH = "/*//img[contains(@src,'02-redo.2x')]"
-    ICON_SEARCH = "/*//img[contains(@src,'06-magnify.2xw')]"
+    ICON_EXPORT = "/*//img[contains(@src,'212-action')]"
+    ICON_REFRESH = "/*//img[contains(@src,'02-redo')]"
+    ICON_SEARCH = "/*//img[contains(@src,'06-magnify')]"
     ICON_RESTORE = "/*//img[contains(@src,'298-circlex')]"
 
     #DROP_DOWN

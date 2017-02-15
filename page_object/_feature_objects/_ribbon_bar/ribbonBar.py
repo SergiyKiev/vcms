@@ -377,6 +377,10 @@ class RibbonBar(BaseActions):
         self.wait_for_element_not_present(RibbonBar.DROP_DOWN_LIST)
         self.wait_for_element_present(SelectDashboardPopup.BODY)
 
+    def click_go_to_home_screen_label(self):
+        self._click_element(RibbonBar.MENU_ITEM_GO_TO_HOME_SCREEN)
+        self.wait_for_element_not_present(RibbonBar.DROP_DOWN_LIST)
+
     def check_button_edit_is_present(self):
         cond = self._is_element_present(RibbonBar.BUTTON_EDIT)
         return True if cond else False
