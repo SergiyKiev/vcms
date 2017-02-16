@@ -721,7 +721,7 @@ class MainPageHelpLinks(unittest.TestCase):
     console = logging.StreamHandler()
     console.setLevel(logging.WARNING)
     console.setFormatter(formatter)
-    filehandler = logging.FileHandler('Started MainPageHelpLinks.log')
+    filehandler = logging.FileHandler('/test_suites/Started MainPageHelpLinks.log')
     filehandler.setLevel(logging.INFO)
     filehandler.setFormatter(formatter)
     logger.addHandler(console)
@@ -776,7 +776,9 @@ class MainPageHelpLinks(unittest.TestCase):
         ribbon_bar.click_go_to_home_screen_label()
         self.assertTrue(devices_page.check_page_is_present())
         devices_page.click_icon_help()
-        self.assertEqual(expected_header, devices_page._get_help_frame_header())
+        x = self.assertEqual(expected_header, devices_page._get_help_frame_header(),
+                         devices_page._help_message(expected_header))
+        self.logger.info(x)
 
     def test_help_link_on_administration_home_screen(self):
         print ("\n" + "TC#0000: Check help link on Administration home screen")
@@ -790,8 +792,9 @@ class MainPageHelpLinks(unittest.TestCase):
         ribbon_bar.click_go_to_home_screen_label()
         self.assertTrue(administration_page.check_page_is_present())
         administration_page.click_icon_help()
-        self.assertEqual(administration_page._get_help_frame_header(),
-                         expected_header, administration_page._help_message(expected_header))
+        self.assertEqual(expected_header, administration_page._get_help_frame_header(),
+                         administration_page._help_message(expected_header))
+
 
     # def test_help_link_on_tasks_home_screen(self):
     #     print ("\n" + "TC#0000: Check help link on Tasks home screen")
@@ -1630,8 +1633,4 @@ if __name__ == "__main__":
     # suite = unittest.TestLoader().loadTestsFromTestCase(TestCases)
     # unittest.TextTestRunner(verbosity=2).run(suite())
     # logger.info('Started MainPageHelpLinks')
-    logger = logging.getLogger(__name__)
-    logger.info('Started MainPageHelpLinks')
-    # эта строка пойдёт и в файл и на консоль
-    logger.warning('Started logging to console and log')
-    logger.info('Finished logging')
+
