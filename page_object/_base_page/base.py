@@ -317,7 +317,7 @@ class Base(object):
     #         else:
     #             pass
 
-    def get_text(self, locator):
+    def _get_text(self, locator):
         try:
             get = self._find_element(locator)
             return get.text()

@@ -16,3 +16,4 @@ class AdministrationPage(BaseActions):
     def check_help_link_is_correct(self):
         cond = self._check_help_frame_header("Administration")
         return True if cond else False
+
