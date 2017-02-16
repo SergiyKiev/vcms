@@ -5,7 +5,7 @@ from _feature_objects._ribbon_bar.ribbonBar import RibbonBar
 
 class EndpointManagementPage(BaseActions):
 
-    PAGE_HEADER = "//span[text()='Endpoint']/ancestor::div[@class='Panel-Control'][contains(@style,'85px')]"
+    PAGE_HEADER = "//span[text()='Endpoint Management Summary']/ancestor::div[@class='Panel-Control'][contains(@style,'85px')]"
     BODY = PAGE_HEADER + "/parent::div"
 
     def check_page_is_present(self):

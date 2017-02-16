@@ -122,7 +122,7 @@ class BaseActions(Base):
             self.driver.switch_to_window(help_window)
             self.wait_webelement.until(lambda d: d.title != "")
             title = self.driver.title
-            print "Title is: ", title
+            print "Help window title is: ", title
             self.driver.switch_to_frame(self.driver.find_element_by_name('FrameMain'))
             cond1 = self._is_element_present(BaseElements.HELP_FRAME_HEADER + "[text()='" + expected_header_name + "']")
             cond2 = self._is_element_present(BaseElements.HELP_FRAME_HEADER)
@@ -130,7 +130,7 @@ class BaseActions(Base):
             if cond1:
                 current_header_name = self._find_element(BaseElements.HELP_FRAME_HEADER).text
                 print "Expected header: ", expected_header_name
-                print "Link is correct. Actual header: ", current_header_name
+                print "Actual header: ", current_header_name
             elif cond2:
                 current_header = self._find_element(BaseElements.HELP_FRAME_HEADER).text
                 print "Expected header: ", expected_header_name
@@ -139,7 +139,7 @@ class BaseActions(Base):
                 error_header = self._find_element(BaseElements.HELP_FRAME_HEADER_SERVER_ERROR).text
                 error_text1 = self._find_element("//*[@id='content']/div/fieldset/h2").text
                 error_text2 = self._find_element("//*[@id='content']/div/fieldset/h3").text
-                print "Link is incorrect. Header: ", error_header
+                print "Link is missed. Header: ", error_header
                 print "Error text: ", error_text1, error_text2
         except NoSuchElementException:
             massage1 = self._find_element("//*[@id='main-message']/h1").text

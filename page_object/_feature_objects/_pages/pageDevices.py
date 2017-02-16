@@ -23,6 +23,8 @@ class DevicesPage(BaseActions):
         self._click_element(row)
         self.wait_for_element_selected(row)
         self.scroll_to_element(row + "/td[1]")
+        self.wait_for_element_present(RibbonBar.TAB_DEVICES)
+        self.wait_for_element_present(RibbonBar.TAB_TOOLS)
 
     def click_icon_refresh(self):
         self._click_icon_refresh(DevicesPage.PAGE_HEADER)

@@ -13,6 +13,7 @@ from _feature_objects._pages.pageEndpointManagement import EndpointManagementPag
 from _feature_objects._pages.pageExcludedDevices import ExcludedDevicesPage
 from _feature_objects._pages.pageGroups import GroupsPage
 from _feature_objects._pages.pageHome import HomePage
+from _feature_objects._pages.pageInfrastructure import InfrastructurePage
 from _feature_objects._pages.pageLogin import LoginPage
 from _feature_objects._pages.pageMain import MainPage
 from _feature_objects._pages.pageQueries import QueriesPage
@@ -727,7 +728,7 @@ class MainPageHelpLinks(unittest.TestCase):
         login_page.open_page()
         login_page.login()
         main_page.check_main_page_loaded()
-        main_page._close_popups()
+        # main_page._close_popups()
         # device_name = Variables.vrep
         # delete_vrep = main_page.delete_device_from_the_console(device_name)
         # print "DEVICE IS NOT EXIST IN THE CONSOLE ", delete_vrep
@@ -738,23 +739,17 @@ class MainPageHelpLinks(unittest.TestCase):
         # main_page.click_icon_refresh()
         # install_vrep = main_page.check_device_is_present(device_name)
         # print "VREP WAS INSTALLED ", install_vrep
-        # result = main_page.upprove_vrep(device_name)
-        # print "SUITE SETUP CLASS RETURNS: ", result, " NEW VREP WAS INSTALLED AND UPPROVED"
+        # main_page.upprove_vrep(device_name)
 
     def setUp(self):
         main_page = MainPage(self.driver)
         main_page._close_popups()
 
-    def test_help_link_on_home_home_screen(self):
-        print ("\n" + "TC#0000: Check help link on Home home screen")
+    def test_help_link_on_home_screen(self):
+        print ("\n" + "TC#0000: Check help link on Home screen")
         left_menu = LeftMenu(self.driver)
         home_page = HomePage(self.driver)
         left_menu.open_menu_home()
-        ribbon_bar = RibbonBar(self.driver)
-        ribbon_bar.open_tab_home()
-        ribbon_bar.click_button_home()
-        ribbon_bar.click_go_to_home_screen_label()
-        self.assertTrue(home_page.check_page_is_present())
         self.assertTrue(home_page.check_page_is_present())
         home_page.click_icon_help()
         self.assertTrue(home_page.check_help_link_is_correct())
@@ -895,7 +890,7 @@ class MainPageHelpLinks(unittest.TestCase):
     def test_help_link_on_infrastructure_page(self):
         print ("\n" + "TC#0000: Check help link on Infrastructure page")
         left_menu_administration = LeftMenuAdministration(self.driver)
-        infrastructure_page = UnmanagedDevicesPage(self.driver)
+        infrastructure_page = InfrastructurePage(self.driver)
         left_menu_administration.open_menu_administration()
         left_menu_administration.click_endpoint_management_label()
         left_menu_administration.expand_endpoint_management_tree()
@@ -1119,7 +1114,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(client_settings_popup.check_popup_is_present())
         client_settings_popup.click_reboot_ui_config_tab()
         self.assertTrue(reboot_ui_config_tab.check_tab_is_present())
-        client_settings_popup.click_icon_help()
+        reboot_ui_config_tab.click_icon_help()
         self.assertTrue(reboot_ui_config_tab.check_help_link_is_correct())
 
     def test_help_link_on_client_settings_popup_client_proxy_settings_tab(self):
@@ -1176,7 +1171,6 @@ class MainPageHelpLinks(unittest.TestCase):
         ribbon_bar = RibbonBar(self.driver)
         left_menu = LeftMenu(self.driver)
         left_menu_devices = LeftMenuDevices(self.driver)
-        main_page = MainPage(self.driver)
         ip_address_ranges_tab = IPAddressRangesTab(self.driver)
         ip_address_popup = IPAddressPopup(self.driver)
         configuration_popup = ConfigurationPopup(self.driver)
@@ -1492,8 +1486,8 @@ class MainPageHelpLinks(unittest.TestCase):
         devices_page.select_device_in_table(device)
         self.assertTrue(ribbon_bar.check_devices_tab_is_present())
         ribbon_bar.open_tab_devices()
-        self.assertTrue(ribbon_bar.check_site_management_box_is_present())
-        ribbon_bar.click_button_move_device()
+        self.assertTrue(ribbon_bar.check_button_patch_manager_is_present())
+        ribbon_bar.click_button_patch_manager()
         self.assertTrue(patch_manager_popup.check_popup_is_present())
         patch_manager_popup.click_icon_help()
         self.assertTrue(patch_manager_popup.check_help_link_is_correct())
@@ -1566,7 +1560,6 @@ class MainPageHelpLinks(unittest.TestCase):
         left_menu_devices.click_global_site_view_label()
         self.assertTrue(devices_page.check_device_is_present(device))
         devices_page.select_device_in_table(device)
-        self.assertTrue(ribbon_bar.check_devices_tab_is_present())
         ribbon_bar.open_tab_tools()
         self.assertTrue(ribbon_bar.check_computer_tools_box_is_present())
         ribbon_bar.click_button_process_viewer()
@@ -1604,7 +1597,6 @@ class MainPageHelpLinks(unittest.TestCase):
         left_menu_devices.click_global_site_view_label()
         self.assertTrue(devices_page.check_device_is_present(device))
         devices_page.select_device_in_table(device)
-        self.assertTrue(ribbon_bar.check_devices_tab_is_present())
         ribbon_bar.open_tab_tools()
         self.assertTrue(ribbon_bar.check_computer_tools_box_is_present())
         ribbon_bar.click_button_wmi_explorer()
@@ -1621,6 +1613,6 @@ class MainPageHelpLinks(unittest.TestCase):
         cls.driver.quit()
 
 if __name__ == "__main__":
-    unittest.main(verbosity=1)
+    unittest.main(verbosity=3)
     # suite = unittest.TestLoader().loadTestsFromTestCase(TestCases)
     # unittest.TextTestRunner(verbosity=2).run(suite())

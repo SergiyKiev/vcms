@@ -94,6 +94,7 @@ class VRepsPage(BaseActions):
                 # print "VREP IS PRESENT", cond
                 self.select_vrep_in_table(name)
                 self.scroll_to_element(checkbox)
+                self.click_icon_refresh()
                 self.wait_for_element_present(checkbox)
                 unchecked = self._is_element_not_present(checkbox + BaseActions.CHECKED)
                 # print checkbox + BaseActions.CHECKED + " is " + str(unchecked)
@@ -101,7 +102,6 @@ class VRepsPage(BaseActions):
                     self._click_element(checkbox)
                     self.click_icon_refresh()
                     self.wait_for_element_present(checkbox)
-                    checked = self._is_element_present(checkbox + BaseActions.CHECKED)
                     cond1 = self.check_vrep_is_approved(name)
                     cond2 = self.check_vrep_is_connected(name)
                     cond3 = self.check_vrep_is_online_and_ready(name)

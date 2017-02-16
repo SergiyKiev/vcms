@@ -30,8 +30,8 @@ class Base(object):
         self.driver = driver
         self.base_url = base_url
         self.timeout_loading = 120
-        self.timeout_condition = 2
-        self.timeout_webelement = 30
+        self.timeout_condition = 3
+        self.timeout_webelement = 90
         self.wait_webelement = WebDriverWait(self.driver, self.timeout_webelement)
         self.wait_condition = WebDriverWait(self.driver, self.timeout_condition)
         self.wait_loading = WebDriverWait(self.driver, self.timeout_loading)
@@ -81,18 +81,20 @@ class Base(object):
                 # print "\n" + "CLICK:  ", locator
                 time.sleep(0.2)
                 self.wait_loading.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+                time.sleep(0.2)
                 self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
                 self.wait_webelement.until(EC.element_to_be_clickable((By.XPATH, locator)))
                 element.click()
-                time.sleep(0.8)
+                time.sleep(0.2)
                 self.wait_loading.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
+                time.sleep(0.2)
                 self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
                 return True
         except NoSuchElementException:
             print locator + " is not found"
             return False
         except TimeoutException:
-            print "Page is not clickable after ", self.timeout_loading, "seconds"
+            print "Element is not clickable after ", self.timeout_loading, "seconds"
             return False
         except Exception as e:
             print "The element is not clickable in the reason of ", e
@@ -116,6 +118,7 @@ class Base(object):
 
     def wait_for_element_present(self, locator):
         try:
+            time.sleep(0.2)
             self.wait_loading.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
             self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
             self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
@@ -129,6 +132,7 @@ class Base(object):
 
     def wait_for_elements_present(self, locator):
         try:
+            time.sleep(0.2)
             self.wait_loading.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
             self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))
             self.wait_webelement.until(EC.presence_of_all_elements_located((By.XPATH, locator)))

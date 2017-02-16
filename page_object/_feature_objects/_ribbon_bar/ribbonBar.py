@@ -15,6 +15,7 @@ from _feature_objects._popups.popupMoveSite import MoveSitePopup
 from _feature_objects._popups.popupNewFolder import NewFolderPopup
 from _feature_objects._popups.popupNewGroup import NewGroupPopup
 from _feature_objects._popups.popupOnDemandInventoryScan import OnDemandInventoryScanPopup
+from _feature_objects._popups.popupPatchManager import PatchManagerPopup
 from _feature_objects._popups.popupPingResult import PingResultPopup
 from _feature_objects._popups.popupProcessExplorer import ProcessExplorerPopup
 from _feature_objects._popups.popupRemoveDevices import RemoveDevicesPopup
@@ -75,6 +76,7 @@ class RibbonBar(BaseActions):
     BUTTON_SAVE_CURRENT = "//img[@alt='Save Current Columns']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_EDIT_OR_CREATE = "//img[@alt='Edit/ Create']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_MOVE_DEVICE = "//img[@alt='Move Device']/ancestor::div[contains(@class,'RibbonBarButton')]"
+    BUTTON_PATCH_MANAGER = "//img[@alt='Patch Manager']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_CURRENCY = "//img[@alt='Currency']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_IMPERIAL_METRIC = "//img[@alt='Imperial / Metric']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_MAKES = "//img[@alt='Makes']/ancestor::div[contains(@class,'RibbonBarButton')]"
@@ -387,5 +389,13 @@ class RibbonBar(BaseActions):
 
     def check_button_edit_folder_is_present(self):
         cond = self._is_element_present(RibbonBar.BUTTON_EDIT_FOLDER)
+        return True if cond else False
+
+    def click_button_patch_manager(self):
+        self._click_element(RibbonBar.BUTTON_PATCH_MANAGER)
+        self.wait_for_element_present(PatchManagerPopup.BODY)
+
+    def check_button_patch_manager_is_present(self):
+        cond = self._is_element_present(RibbonBar.BUTTON_PATCH_MANAGER)
         return True if cond else False
 
