@@ -26,17 +26,21 @@ class LoginPage(BaseActions):
             cond1 = self._is_element_present(ErrorPopup.BODY)
             cond2 = self._is_element_present(SubscriptionHasExpiredPopup.BODY)
             if cond1:
-                print Settings.username + " or " + Settings.password + " are incorrect"
+                elements = self._find_elements(BaseElements._POPUP + "/*//span[contains(@class,'Label-FontData')]")
+                print "LOGIN IS FAILED. ERROR MESSAGE: "
+                for element in elements:
+                    error_text = element.text
+                    print error_text
+                    self.driver.quit()
             elif cond2:
                 subscription_has_expired_popup = SubscriptionHasExpiredPopup(self.driver)
                 subscription_has_expired_popup.click_system_button_close()
-            else:
-                pass
-            # self.wait_for_element_present(BaseElements._RIBBON_BAR)
-            # self.wait_for_elements_present(BaseElements._PANEL)
+            self.wait_for_element_present(BaseElements._RIBBON_BAR)
+            self.wait_for_element_present(BaseElements._LEFT_MENU)
+            self.wait_for_element_not_present(BaseElements.LOADING_SCREEN_VISIBLE)
             return MainPage(self.driver)
         except Exception as e:
-            print "Login is not successful ", e
+            print "LOGIN ERROR: ", e
 
     def enter_username(self, username = Settings.username):
         self._find_element(LoginPage.FIELD_USERNAME).send_keys(username)
@@ -48,11 +52,10 @@ class LoginPage(BaseActions):
         self._click_element(LoginPage.BUTTON_SIGN_IN)
 
     def check_login_page_loaded(self):
-        self.wait_for_element_present(BaseElements._LOGIN_PAGE_LOGO)
         cond1 = self._is_element_present(LoginPage.BUTTON_SIGN_IN)
         cond2 = self._is_element_present(LoginPage.FIELD_USERNAME)
         cond3 = self._is_element_present(LoginPage.FIELD_PASSWORD)
-        return True if (cond1 and cond2 and cond3) else False
+        return True if cond1 and cond2 and cond3 else False
 
     def click_icon_help(self):
         self._click_icon_help(LoginPage.BODY)
@@ -63,7 +66,6 @@ class LoginPage(BaseActions):
         return True if cond else False
 
     def click_reset_password_label(self):
-        self.wait_for_element_present(LoginPage.RESET_PASSWORD_LABEL)
         self._click_element(LoginPage.RESET_PASSWORD_LABEL)
 
 

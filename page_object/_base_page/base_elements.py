@@ -1,5 +1,8 @@
 
-class BaseElements:
+from _base_page.base import Base
+
+
+class BaseElements(Base):
 
     LOADING_SCREEN = "//div[@id='VWG_LoadingScreen']"
 
@@ -38,26 +41,22 @@ class BaseElements:
     #GENERAL ELEMENTS
     _POPUP = "//div[contains(@id,'WRP')][last()]"
     _FIELD = "/*//input"
-    _RIBBON_BAR = "//div[@class='RibbonBarTabControl-Control']"
+    # _RIBBON_BAR = "//div[@class='RibbonBarTabControl-Control']"
+    _RIBBON_BAR = "//div[@class='RibbonBar-Control']"
+    _LEFT_MENU = "//td[contains(@style,'Home')]/ancestor::div[@class='Panel-Control']/following-sibling::div[@class='FlowLayoutPanel-Control']"
     _PANEL = "//div[@class='Panel-Control']"
     _DROP_DOWN_LIST = "//div[@class='ComboBox-PopupWindow']"
     _TAB_PANEL = "//div[contains(@id,'VWGTCHD_')]"
-    _LOGIN_PAGE_LOGO = "//img[contains(@src,'Images.CMS-Login')]"
 
     #HELP WINDOW
     HELP_WINDOW_BODY = "//title[text()='ConsoleOperationGuide']"
     HELP_FRAME_HEADER = "//*[@id='topic_header_text']"
     HELP_FRAME_MAIN = "//frame[@name='FrameMain']"
+    HELP_FRAME_TOC = "//frame[@name='FrameTOC']"
     HELP_FRAME_HEADER_SERVER_ERROR = "//h1[text()='Server Error']"
     HELP_FRAME_HEADER_GETTING_STARTED = "//h1[text()='Getting Started in CMS']"
 
-    #LEFT MENU
-    GREY_COLOR = "[contains(@style,'#E8E8E8')]"
 
-    #BASE ELEMENTS
-    ARROW_EXPAND = "/*//div[contains(@style,'LTR1.gif')]"
-    ARROW_COLLAPSE = "/*//div[contains(@style,'LTR0.gif')]"
-    ARROW_EMPTY = "/*//div[contains(@style,'TreeViewEmpty')]"
 
 
 

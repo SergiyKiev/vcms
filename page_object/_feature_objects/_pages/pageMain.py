@@ -1,3 +1,4 @@
+
 from _base_page.base_elements import *
 from _feature_objects._left_menus.leftMenu import LeftMenu
 from _feature_objects._left_menus.leftMenuAdministration import LeftMenuAdministration
@@ -11,12 +12,9 @@ from _feature_objects._ribbon_bar.ribbonBar import RibbonBar
 class MainPage(RibbonBar, LeftMenuDevices, LeftMenuAdministration, DevicesPage, AdministrationPage, VRepsPage):
 
     def check_main_page_loaded(self):
-        self.wait_for_element_present(BaseElements._RIBBON_BAR)
-        self.wait_for_elements_present(BaseElements._PANEL)
-        cond1 = self._is_element_present(RibbonBar.BUTTON_EXIT)
-        cond2 = self._is_element_present(LeftMenu.ICON_HOME)
-        cond3 = self._is_element_present(LeftMenu.ICON_DEVICES)
-        return True if cond1 and cond2 and cond3 else False
+        cond1 = self._is_element_present(BaseElements._RIBBON_BAR)
+        cond2 = self._is_element_present(BaseElements._LEFT_MENU)
+        return True if cond1 and cond2 else False
 
     def delete_device_from_the_console(self, device_name):
         devices_page = DevicesPage(self.driver)

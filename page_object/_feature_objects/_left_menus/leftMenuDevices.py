@@ -9,10 +9,11 @@ from _feature_objects._ribbon_bar.ribbonBar import RibbonBar
 
 class LeftMenuDevices(LeftMenu):
 
-    TREE_GLOBAL_SITE_VIEW = LeftMenu.MENU_DEVICES + "/*//div[contains(@class,'PaddingContainer')]/div[1]"
-    TREE_ACTIVE_DIRECTORIES = LeftMenu.MENU_DEVICES + "/*//div[contains(@class,'PaddingContainer')]/div[2]"
-    TREE_QUERIES = LeftMenu.MENU_DEVICES + "/*//div[contains(@class,'PaddingContainer')]/div[3]"
-    TREE_GROUPS = LeftMenu.MENU_DEVICES + "/*//div[contains(@class,'PaddingContainer')]/div[4]"
+    BODY = "//span[text()='Devices']/ancestor::div[contains(@style,'transform')]"
+    TREE_GLOBAL_SITE_VIEW = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[1]"
+    TREE_ACTIVE_DIRECTORIES = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[2]"
+    TREE_QUERIES = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[3]"
+    TREE_GROUPS = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[4]"
     LIST_GLOBAL_SITE_VIEW = TREE_GLOBAL_SITE_VIEW + "/div[contains(@class,'SubNodesContainer')]"
     LIST_ACTIVE_DIRECTORIES = TREE_ACTIVE_DIRECTORIES + "/div[contains(@class,'SubNodesContainer')]"
     LIST_QUERIES = TREE_QUERIES + "/div[contains(@class,'SubNodesContainer')]"
@@ -146,8 +147,8 @@ class LeftMenuDevices(LeftMenu):
             print "NO SUBSITES FOUND"
 
     def check_subsite_is_in_parent_site(self, sitename, subsitename):
-        site_name = "//span[text()='" + sitename + "']/ancestor::" + LeftMenu.LABEL
-        subsite_name = "//span[text()='" + subsitename + "']/ancestor::" + LeftMenu.LABEL
+        site_name = "//span[text()='" + sitename + "']/ancestor::div[contains(@class,'RowContainer')]"
+        subsite_name = "//span[text()='" + subsitename + "']/ancestor::div[contains(@class,'RowContainer')]"
         element = LeftMenuDevices.LIST_GLOBAL_SITE_VIEW + site_name + "/parent::div/div[2]/*" + subsite_name
         cond = self._is_element_present(element)
         return True if cond else False

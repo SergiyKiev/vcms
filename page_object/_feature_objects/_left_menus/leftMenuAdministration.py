@@ -4,16 +4,17 @@ from _feature_objects._left_menus.leftMenu import LeftMenu
 
 class LeftMenuAdministration(LeftMenu):
 
-    TREE_ENDPOINT_MANAGEMENT = LeftMenu.MENU_ADMINISTRATION + "/*//div[contains(@class,'PaddingContainer')]/div[1]"
-    TREE_SITE_MANAGEMENT = LeftMenu.MENU_ADMINISTRATION + "/*//div[contains(@class,'PaddingContainer')]/div[2]"
-    TREE_LOGS = LeftMenu.MENU_ADMINISTRATION + "/*//div[contains(@class,'PaddingContainer')]/div[3]"
-    TREE_COLUMN_SETS = LeftMenu.MENU_ADMINISTRATION + "/*//div[contains(@class,'PaddingContainer')]/div[4]"
-    TREE_USER_MANAGEMENT = LeftMenu.MENU_ADMINISTRATION + "/*//div[contains(@class,'PaddingContainer')]/div[5]"
-    TREE_INVENTORY = LeftMenu.MENU_ADMINISTRATION + "/*//div[contains(@class,'PaddingContainer')]/div[6]"
-    TREE_VREPS = LeftMenu.MENU_ADMINISTRATION + "/*//div[contains(@class,'PaddingContainer')]/div[7]"
-    TREE_MAINTENANCE_WINDOWS = LeftMenu.MENU_ADMINISTRATION + "/*//div[contains(@class,'PaddingContainer')]/div[8]"
-    TREE_NOTIFICATIONS = LeftMenu.MENU_ADMINISTRATION + "/*//div[contains(@class,'PaddingContainer')]/div[9]"
-    TREE_AUDIT_LOGS = LeftMenu.MENU_ADMINISTRATION + "/*//div[contains(@class,'PaddingContainer')]/div[10]"
+    BODY = "//span[text()='Administration']/ancestor::div[contains(@style,'transform')]"
+    TREE_ENDPOINT_MANAGEMENT = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[1]"
+    TREE_SITE_MANAGEMENT = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[2]"
+    TREE_LOGS = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[3]"
+    TREE_COLUMN_SETS = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[4]"
+    TREE_USER_MANAGEMENT = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[5]"
+    TREE_INVENTORY = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[6]"
+    TREE_VREPS = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[7]"
+    TREE_MAINTENANCE_WINDOWS = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[8]"
+    TREE_NOTIFICATIONS = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[9]"
+    TREE_AUDIT_LOGS = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[10]"
     LIST_ENDPOINT_MANAGEMENT = TREE_ENDPOINT_MANAGEMENT + "/div[contains(@class,'SubNodesContainer')]"
     LABEL_DYNAMICALLY_MANAGED = LIST_ENDPOINT_MANAGEMENT \
                                 + "/div/div/*//span[text()='Dynamically Managed']/ancestor::div[contains(@class,'RowContainer')]"
@@ -50,8 +51,6 @@ class LeftMenuAdministration(LeftMenu):
         arrow = self._is_element_present(LeftMenuAdministration.TREE_ENDPOINT_MANAGEMENT + BaseElements.ARROW_EXPAND)
         if arrow:
             self._collaps_tree(LeftMenuAdministration.TREE_ENDPOINT_MANAGEMENT)
-        else:
-            pass
 
     def click_site_management_label(self):
         self._click_element(LeftMenuAdministration.LABEL_SITE_MANAGEMENT)

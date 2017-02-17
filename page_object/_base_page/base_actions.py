@@ -53,6 +53,7 @@ class BaseActions(Base):
     def _click_icon_help(self, locator):
         # self.wait_for_element_present(locator + BaseElements.ICON_HELP)
         self._click_element(locator + BaseElements.ICON_HELP)
+        self.wait_webelement.until(lambda d: len(d.window_handles) == 2)
 
     def _click_icon_restore(self, locator):
         self.wait_for_element_present(locator)
@@ -111,16 +112,16 @@ class BaseActions(Base):
             cond3 = self._is_element_present(BaseElements.HELP_FRAME_HEADER_SERVER_ERROR)
             if cond1:
                 current_header_name = self._find_element(BaseElements.HELP_FRAME_HEADER).text
-                return "\n" + "Expected header: " + expected_header_name + "\n" +  " Actual header: " + str(current_header_name)
+                result =  "\n" + "Expected header: " + expected_header_name + "\n" + " Actual header: " + str(current_header_name)
+                return result
             elif cond2:
                 current_header = self._find_element(BaseElements.HELP_FRAME_HEADER).text
-                print "\n\n" + "INCORRECT HEADER: " + "\n" + "1. Expected header: " + expected_header_name + \
+                return "\n\n" + "INCORRECT HEADER: " + "\n" + "1. Expected header: " + expected_header_name + \
                       "\n" + "2. Actual header: " + str(current_header)
             elif cond3:
                 error_header = self._find_element(BaseElements.HELP_FRAME_HEADER_SERVER_ERROR).text
                 error_text1 = self._find_element("//*[@id='content']/div/fieldset/h2").text
                 error_text2 = self._find_element("//*[@id='content']/div/fieldset/h3").text
-
                 return "\n\n" + "LINK IS NOT FOUND: " + "\n" + "Header: " + str(error_header) + \
                        "\n" + "Error text: " + str(error_text1) + str(error_text2)
         except NoSuchElementException:
@@ -139,12 +140,16 @@ class BaseActions(Base):
             self.wait_webelement.until(lambda d: len(d.window_handles) == 2)
             help_window = handles[1]
             self.driver.switch_to_window(help_window)
-            self.wait_webelement.until(lambda d: d.title != "")
             title = self.driver.title
-            print "Help window title is: ", title
+            print "Help window is opened. Title is: ", title
+            self.wait_for_element_present(BaseElements.HELP_FRAME_MAIN)
+            self.wait_for_element_present(BaseElements.HELP_FRAME_TOC)
+            self.wait_webelement.until(lambda d: d.title != "")
             self.driver.switch_to_frame(self.driver.find_element_by_name('FrameMain'))
-            header = self._find_element(BaseElements.HELP_FRAME_HEADER).text
-            return str(header)
+            cond = self._is_element_present(BaseElements.HELP_FRAME_HEADER)
+            if cond:
+                header = self._get_text(BaseElements.HELP_FRAME_HEADER)
+                return str(header)
         except NoSuchElementException:
             massage1 = self._find_element("//*[@id='main-message']/h1").text
             massage2 = self._find_element("//*[@id='main-message']/div[2]").text
@@ -154,6 +159,8 @@ class BaseActions(Base):
         except IndexError:
             help_window = 'null'
             return "Help window is not found"
+        except Exception as e:
+            return "Window was not found"
 
     def _select_help_window(self, expected_header_name):
         try:
@@ -244,3 +251,4 @@ class BaseActions(Base):
         elements = self._find_elements(locator + BaseElements.ARROW_COLLAPSE)
         for element in elements:
             self.driver.execute_script("arguments[0].click();", element)
+
