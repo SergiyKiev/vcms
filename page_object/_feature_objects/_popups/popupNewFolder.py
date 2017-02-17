@@ -22,19 +22,19 @@ class NewFolderPopup(BaseActions):
 
     def click_button_ok(self):
         self._click_button_ok(NewFolderPopup.BODY)
-        self.wait_for_element_not_present(NewFolderPopup.BODY)
+        self._wait_for_element_not_present(NewFolderPopup.BODY)
 
     def click_button_cancel(self):
         self._click_button_cancel(NewFolderPopup.BODY)
-        self.wait_for_element_not_present(NewFolderPopup.BODY)
+        self._wait_for_element_not_present(NewFolderPopup.BODY)
 
     def click_system_button_close(self):
         self._click_system_button_close(NewFolderPopup.BODY)
-        self.wait_for_element_not_present(NewFolderPopup.BODY)
+        self._wait_for_element_not_present(NewFolderPopup.BODY)
 
     def click_button_add_members(self):
         self._click_button_cancel(NewFolderPopup.BODY)
-        self.wait_for_element_not_present(NewFolderPopup.BODY)
+        self._wait_for_element_not_present(NewFolderPopup.BODY)
 
     def enter_text_into_new_folder_text_field(self, name):
         self._find_element(NewFolderPopup.FIELD_NEW_FOLDER).send_keys(name)

@@ -39,8 +39,8 @@ class ProcessExplorerPopup(BaseActions):
 
     def click_services_tab(self):
         self._click_element(ProcessExplorerPopup.TAB_SERVICES)
-        self.wait_for_element_selected(ProcessExplorerPopup.TAB_SERVICES)
+        self._wait_for_element_selected(ProcessExplorerPopup.TAB_SERVICES)
 
     def click_processes_tab(self):
         self._click_element(ProcessExplorerPopup.TAB_PROCESSES)
-        self.wait_for_element_selected(ProcessExplorerPopup.TAB_PROCESSES)
+        self._wait_for_element_selected(ProcessExplorerPopup.TAB_PROCESSES)

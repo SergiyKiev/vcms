@@ -21,7 +21,7 @@ class FileExplorerPopup(BaseActions):
 
     def click_system_button_close(self):
         self._click_system_button_close(FileExplorerPopup.BODY)
-        self.wait_for_element_not_present(FileExplorerPopup.BODY)
+        self._wait_for_element_not_present(FileExplorerPopup.BODY)
 
 
 

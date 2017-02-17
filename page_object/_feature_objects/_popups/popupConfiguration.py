@@ -35,15 +35,15 @@ class ConfigurationPopup(BaseActions):
 
     def click_site_tab(self):
         self._click_element(ConfigurationPopup.TAB_SITE)
-        self.wait_for_element_selected(ConfigurationPopup.TAB_SITE)
+        self._wait_for_element_selected(ConfigurationPopup.TAB_SITE)
 
     def click_ip_address_ranges_tab(self):
         self._click_element(ConfigurationPopup.TAB_IP_ADDRESS)
-        self.wait_for_element_selected(ConfigurationPopup.TAB_IP_ADDRESS)
+        self._wait_for_element_selected(ConfigurationPopup.TAB_IP_ADDRESS)
 
     def click_vreps_tab(self):
         self._click_element(ConfigurationPopup.TAB_VREPS)
-        self.wait_for_element_selected(ConfigurationPopup.TAB_VREPS)
+        self._wait_for_element_selected(ConfigurationPopup.TAB_VREPS)
 
 
 class SiteTab(ConfigurationPopup):
@@ -55,15 +55,15 @@ class SiteTab(ConfigurationPopup):
 
     def click_button_new(self):
         self._click_button_new(SiteTab.TAB)
-        self.wait_for_element_present(ColumnSetDesignerPopup.BODY)
+        self._wait_for_element_present(ColumnSetDesignerPopup.BODY)
 
     def click_column_set_dropdown_button(self):
         self._click_system_button_drop_down(ConfigurationPopup.BODY)
-        self.wait_for_element_present(SiteTab.COLUMN_SET_DROP_DOWN_LIST)
+        self._wait_for_element_present(SiteTab.COLUMN_SET_DROP_DOWN_LIST)
 
     def click_icon_restore(self):
         self._click_icon_restore(SiteTab.TAB)
-        self.wait_for_element_not_present(SiteTab.DROP_DOWN_APPLIED_VALUE)
+        self._wait_for_element_not_present(SiteTab.DROP_DOWN_APPLIED_VALUE)
 
     def enter_text_into_name_text_field(self, sitename):
         self._click_element(SiteTab.FIELD_NAME)
@@ -98,7 +98,7 @@ class SiteTab(ConfigurationPopup):
                 break
         # self._click_element(BaseElements._DROP_DOWN_LIST + "/*//span[text()='" + columnsetname + "']")
         self._click_element(element)
-        self.wait_for_element_not_present(SiteTab.COLUMN_SET_DROP_DOWN_LIST)
+        self._wait_for_element_not_present(SiteTab.COLUMN_SET_DROP_DOWN_LIST)
 
     def check_columnset_is_selected_from_drop_down_list(self, columnsetname):
         cond = self._is_element_present(SiteTab.DROP_DOWN_APPLIED_VALUE + "[text()='" + columnsetname + "']")
@@ -125,5 +125,5 @@ class IPAddressRangesTab(ConfigurationPopup):
 
     def click_button_add(self):
         self._click_button_add(IPAddressRangesTab.BUTTON_ADD)
-        self.wait_for_element_present(IPAddressPopup.BODY)
+        self._wait_for_element_present(IPAddressPopup.BODY)
 

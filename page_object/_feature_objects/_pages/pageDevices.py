@@ -18,13 +18,13 @@ class DevicesPage(BaseActions):
         return True if cond else False
 
     def select_device_in_table(self, *name):
-        self.wait_for_element_present(DevicesPage.TABLE_ROW)
+        self._wait_for_element_present(DevicesPage.TABLE_ROW)
         row = DevicesPage.TABLE_ROW + "/*//span[text()='" + str(*name) + "']/ancestor::tr"
         self._click_element(row)
-        self.wait_for_element_selected(row)
+        self._wait_for_element_selected(row)
         self.scroll_to_element(row + "/td[1]")
-        self.wait_for_element_present(RibbonBar.TAB_DEVICES)
-        self.wait_for_element_present(RibbonBar.TAB_TOOLS)
+        self._wait_for_element_present(RibbonBar.TAB_DEVICES)
+        self._wait_for_element_present(RibbonBar.TAB_TOOLS)
 
     def click_icon_refresh(self):
         self._click_icon_refresh(DevicesPage.PAGE_HEADER)
@@ -60,8 +60,7 @@ class DevicesPage(BaseActions):
         self._click_icon_help(DevicesPage.PAGE_HEADER)
 
     def check_help_link_is_correct(self):
-        cond = self._check_help_frame_header("Devices")
-        return True if cond else False
+        self._help_message("Devices")
 
     def delete_devices_in_devices_page_table(self, *names):
         try:
@@ -81,11 +80,11 @@ class DevicesPage(BaseActions):
                         pass
                     remove_devices_popup.click_button_ok()
                     self.click_icon_refresh()
-                    print "Device was found and deleted: ", name
+                    self.logger.info("Device was found and deleted: ", str(name))
                 else:
-                    print "No device was found:", name
+                    self.logger.info("No device was found:", str(name))
         except Exception as e:
-            print "DELETE DEVICES METHOD FAILED ", e
+            self.logger.error("Method 'delete_devices_in_devices_page_table' failed: ", e)
 
     def delete_single_device_in_devices_page_table(self, name):
         try:

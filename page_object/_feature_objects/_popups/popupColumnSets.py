@@ -22,7 +22,7 @@ class ColumnSetsPopup(BaseActions):
     def click_button_ok(self):
         self._click_button_ok(ColumnSetsPopup.BODY)
         # self._click_element(self.BODY + "/*" + Locators.BTN_OK)
-        # self.wait_for_element_not_present(self.BODY)
+        # self._wait_for_element_not_present(self.BODY)
 
     def click_icon_help(self):
         self._click_icon_help(ColumnSetsPopup.BODY)
@@ -36,19 +36,19 @@ class ColumnSetsPopup(BaseActions):
 
     def click_button_new(self):
         self._click_element(ColumnSetsPopup.BUTTON_NEW)
-        self.wait_for_element_present(ColumnSetDesignerPopup.BODY)
+        self._wait_for_element_present(ColumnSetDesignerPopup.BODY)
 
     def click_popup_button_edit(self):
         self._click_element(ColumnSetsPopup.BUTTON_EDIT)
-        self.wait_for_element_present(ColumnSetDesignerPopup.BODY)
+        self._wait_for_element_present(ColumnSetDesignerPopup.BODY)
 
     def click_popup_button_copy(self):
         self._click_element(ColumnSetsPopup.BUTTON_COPY)
-        # self.wait_for_element_present(ColumnSetsPopup.TABLE_BODY + "/*//span[text()='Copy of " + columnsetname + "']")
+        # self._wait_for_element_present(ColumnSetsPopup.TABLE_BODY + "/*//span[text()='Copy of " + columnsetname + "']")
 
     def click_button_delete(self):
         self._click_element(ColumnSetsPopup.BUTTON_DELETE)
-        # self.wait_for_element_present(AreYouSurePopup.BODY)
+        # self._wait_for_element_present(AreYouSurePopup.BODY)
 
     def click_popup_button_set_as_default(self):
         self._click_element(ColumnSetsPopup.BUTTON_SET_AS_DEFAULT)
@@ -74,7 +74,7 @@ class ColumnSetsPopup(BaseActions):
     def click_columnset_in_table_list(self, columnsetname):
         element = ColumnSetsPopup.TABLE_BODY + "/*//span[text()='" + columnsetname + "']" + ColumnSetsPopup.TABLE_ROW
         self._click_element(element)
-        self.wait_for_element_selected(element)
+        self._wait_for_element_selected(element)
 
     def check_is_columnset_present(self, columsetname):
         cond = self._is_element_present(ColumnSetsPopup.TABLE_BODY + "/*//span[text()='" + columsetname  + "']")
@@ -92,6 +92,6 @@ class ColumnSetsPopup(BaseActions):
             ColumnSetsPopup.click_button_delete(self)
             are_you_sure_popup = AreYouSurePopup(self.driver)
             are_you_sure_popup.click_button_yes()
-            self.wait_for_element_not_present(elem)
+            self._wait_for_element_not_present(elem)
         else:
             pass

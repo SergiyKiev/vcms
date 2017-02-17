@@ -19,7 +19,7 @@ class ReportsPopup(BaseActions):
 
     def click_system_button_close(self):
         self._click_system_button_close(ReportsPopup.BODY)
-        self.wait_for_element_not_present(ReportsPopup.BODY)
+        self._wait_for_element_not_present(ReportsPopup.BODY)
 
 
 

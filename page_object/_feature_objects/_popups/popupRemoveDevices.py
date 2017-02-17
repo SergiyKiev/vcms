@@ -29,11 +29,11 @@ class RemoveDevicesPopup(BaseActions):
         return True if cond else False
 
     def check_keep_historical_information_check_box(self):
-        self.wait_for_element_checked(RemoveDevicesPopup.BODY)
+        self._wait_for_element_checked(RemoveDevicesPopup.BODY)
         self._click_element(RemoveDevicesPopup.CHECKBOX_KEEP_HIST_INFORM)
-        self.wait_for_element_checked(RemoveDevicesPopup.CHECKBOX_KEEP_HIST_INFORM)
+        self._wait_for_element_checked(RemoveDevicesPopup.CHECKBOX_KEEP_HIST_INFORM)
 
     def uncheck_keep_historical_information_check_box(self):
-        self.wait_for_element_present(RemoveDevicesPopup.BODY)
+        self._wait_for_element_present(RemoveDevicesPopup.BODY)
         self._click_element(RemoveDevicesPopup.CHECKBOX_KEEP_HIST_INFORM)
-        self.wait_for_element_unchecked(RemoveDevicesPopup.CHECKBOX_KEEP_HIST_INFORM)
+        self._wait_for_element_unchecked(RemoveDevicesPopup.CHECKBOX_KEEP_HIST_INFORM)

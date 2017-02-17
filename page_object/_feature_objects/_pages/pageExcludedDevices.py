@@ -52,7 +52,7 @@ class ExcludedDevicesPage(BaseActions):
     def select_device_in_table(self, name):
         row = ExcludedDevicesPage.TABLE_ROW + "/*//span[text()='" + name + "']/ancestor::tr"
         self._click_element(row)
-        self.wait_for_element_selected(row)
+        self._wait_for_element_selected(row)
 
 
 

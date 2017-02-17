@@ -30,20 +30,20 @@ class EventViewerPopup(BaseActions):
 
     def click_button_ok(self):
         self._click_button_ok(EventViewerPopup.BODY)
-        self.wait_for_element_not_present(EventViewerPopup.BODY)
+        self._wait_for_element_not_present(EventViewerPopup.BODY)
 
     def click_button_cancel(self):
         self._click_button_cancel(EventViewerPopup.BODY)
-        self.wait_for_element_not_present(EventViewerPopup.BODY)
+        self._wait_for_element_not_present(EventViewerPopup.BODY)
 
     def click_system_button_close(self):
         self._click_system_button_close(EventViewerPopup.BODY)
-        self.wait_for_element_not_present(EventViewerPopup.BODY)
+        self._wait_for_element_not_present(EventViewerPopup.BODY)
 
     def click_label_in_left_side_tree(self, label):
         elem = EventViewerPopup.LEFT_SIDE_SUBNODE + "/*//span[text()='" + label + "']"
         self._click_element(elem)
-        self.wait_for_element_selected(elem + EventViewerPopup.ELEMENT_LABEL)
+        self._wait_for_element_selected(elem + EventViewerPopup.ELEMENT_LABEL)
 
     def expand_all_left_side_trees(self):
         self._expand_all_trees(EventViewerPopup.LEFT_SIDE_TREE)
@@ -53,10 +53,10 @@ class EventViewerPopup(BaseActions):
         return True if cond else False
 
     def select_device_in_table(self, name):
-        self.wait_for_element_present(EventViewerPopup.TABLE_ROW)
+        self._wait_for_element_present(EventViewerPopup.TABLE_ROW)
         row = EventViewerPopup.TABLE_ROW + "/*//span[text()='" + name + "']/ancestor::tr"
         self._click_element(row)
-        self.wait_for_element_selected(row)
+        self._wait_for_element_selected(row)
 
 
 

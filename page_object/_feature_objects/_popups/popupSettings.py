@@ -20,36 +20,36 @@ class SettingsPopup(BaseActions):
         self._click_icon_help(SettingsPopup.BODY)
 
     def check_help_link_is_correct(self):
-        cond = self._check_help_frame_header("Client")
+        cond = self._check_help_frame_header("Settings")
         return True if cond else False
 
     def click_content_services_label(self):
         self._click_element(ContentServicesTab.LEFT_MENU_LABEL)
-        self.wait_for_element_selected(ContentServicesTab.LEFT_MENU_LABEL)
+        self._wait_for_element_selected(ContentServicesTab.LEFT_MENU_LABEL)
 
     def click_email_settings_label(self):
         self._click_element(EmailSettingsTab.LEFT_MENU_LABEL)
-        self.wait_for_element_selected(EmailSettingsTab.LEFT_MENU_LABEL)
+        self._wait_for_element_selected(EmailSettingsTab.LEFT_MENU_LABEL)
 
     def click_initial_setup_label(self):
         self._click_element(InitialSetupTab.LEFT_MENU_LABEL)
-        self.wait_for_element_selected(InitialSetupTab.LEFT_MENU_LABEL)
+        self._wait_for_element_selected(InitialSetupTab.LEFT_MENU_LABEL)
 
     def click_locale_options_label(self):
         self._click_element(LocaleOptionsTab.LEFT_MENU_LABEL)
-        self.wait_for_element_selected(LocaleOptionsTab.LEFT_MENU_LABEL)
+        self._wait_for_element_selected(LocaleOptionsTab.LEFT_MENU_LABEL)
 
     def click_inventory_label(self):
         self._click_element(InventoryTab.LEFT_MENU_LABEL)
-        self.wait_for_element_selected(InventoryTab.LEFT_MENU_LABEL)
+        self._wait_for_element_selected(InventoryTab.LEFT_MENU_LABEL)
 
     def click_user_options_label(self):
         self._click_element(UserOptionsTab.LEFT_MENU_LABEL)
-        self.wait_for_element_selected(UserOptionsTab.LEFT_MENU_LABEL)
+        self._wait_for_element_selected(UserOptionsTab.LEFT_MENU_LABEL)
 
     def click_audit_log_settings_label(self):
         self._click_element(AuditLogSettingsTab.LEFT_MENU_LABEL)
-        self.wait_for_element_selected(AuditLogSettingsTab.LEFT_MENU_LABEL)
+        self._wait_for_element_selected(AuditLogSettingsTab.LEFT_MENU_LABEL)
 
 
 class ContentServicesTab(SettingsPopup):
@@ -107,7 +107,7 @@ class InitialSetupTab(SettingsPopup):
 
     def click_button_run_initial_setup(self):
         self._click_element(InitialSetupTab.BUTTON_RUN_INITIAL_SETUP)
-        self.wait_for_element_present(InitialSetupPopup.BODY)
+        self._wait_for_element_present(InitialSetupPopup.BODY)
 
 
 class LocaleOptionsTab(SettingsPopup):

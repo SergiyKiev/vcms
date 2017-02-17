@@ -51,6 +51,7 @@ class BaseElements(Base):
     #HELP WINDOW
     HELP_WINDOW_BODY = "//title[text()='ConsoleOperationGuide']"
     HELP_FRAME_HEADER = "//*[@id='topic_header_text']"
+    HELP_FRAME_HEADER_ERROR = "//body/*[@id='header']/h1"
     HELP_FRAME_MAIN = "//frame[@name='FrameMain']"
     HELP_FRAME_TOC = "//frame[@name='FrameTOC']"
     HELP_FRAME_HEADER_SERVER_ERROR = "//h1[text()='Server Error']"

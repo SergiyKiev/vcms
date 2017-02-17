@@ -30,24 +30,24 @@ class MoveDevicePopup(BaseActions):
 
     def click_button_ok(self):
         self._click_button_ok(MoveDevicePopup.BODY)
-        self.wait_for_element_not_present(MoveDevicePopup.BODY)
+        self._wait_for_element_not_present(MoveDevicePopup.BODY)
 
     def click_button_cancel(self):
         self._click_button_cancel(MoveDevicePopup.BODY)
-        self.wait_for_element_not_present(MoveDevicePopup.BODY)
+        self._wait_for_element_not_present(MoveDevicePopup.BODY)
 
     def click_system_button_close(self):
         self._click_system_button_close(MoveDevicePopup.BODY)
-        self.wait_for_element_not_present(MoveDevicePopup.BODY)
+        self._wait_for_element_not_present(MoveDevicePopup.BODY)
 
     def click_label_in_left_side_tree(self, label):
         elem = MoveDevicePopup.LEFT_SIDE_SUBNODE + "/*//span[text()='" + label + "']"
         self._click_element(elem)
-        self.wait_for_element_selected(elem + MoveDevicePopup.ELEMENT_LABEL)
+        self._wait_for_element_selected(elem + MoveDevicePopup.ELEMENT_LABEL)
 
     def expand_all_left_side_trees(self):
         self._expand_all_trees(MoveDevicePopup.LEFT_SIDE_TREE)
-        # self.wait_for_element_present(MoveDevicePopup.BODY)
+        # self._wait_for_element_present(MoveDevicePopup.BODY)
         # elements = self._find_elements(MoveDevicePopup.LEFT_SIDE_TREE + "/div/div/div[contains(@id,'VWGJOINT')]")
         # for element in elements:
         #     self.driver.execute_script("arguments[0].click();", element)
@@ -57,10 +57,10 @@ class MoveDevicePopup(BaseActions):
         return True if cond else False
 
     def select_device_in_table(self, name):
-        self.wait_for_element_present(MoveDevicePopup.TABLE_ROW)
+        self._wait_for_element_present(MoveDevicePopup.TABLE_ROW)
         row = MoveDevicePopup.TABLE_ROW + "/*//span[text()='" + name + "']/ancestor::tr"
         self._click_element(row)
-        self.wait_for_element_selected(row)
+        self._wait_for_element_selected(row)
 
 
 

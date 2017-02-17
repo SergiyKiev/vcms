@@ -21,15 +21,15 @@ class UserSettingsPopup(BaseActions):
 
     def click_button_ok(self):
         self._click_button_ok(UserSettingsPopup.BODY)
-        self.wait_for_element_not_present(UserSettingsPopup.BODY)
+        self._wait_for_element_not_present(UserSettingsPopup.BODY)
 
     def click_button_cancel(self):
         self._click_button_cancel(UserSettingsPopup.BODY)
-        self.wait_for_element_not_present(UserSettingsPopup.BODY)
+        self._wait_for_element_not_present(UserSettingsPopup.BODY)
 
     def click_system_button_close(self):
         self._click_system_button_close(UserSettingsPopup.BODY)
-        self.wait_for_element_not_present(UserSettingsPopup.BODY)
+        self._wait_for_element_not_present(UserSettingsPopup.BODY)
 
 
 

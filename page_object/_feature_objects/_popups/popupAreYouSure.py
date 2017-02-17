@@ -22,6 +22,6 @@ class AreYouSurePopup(BaseActions):
         self._click_button_yes(AreYouSurePopup.BODY)
 
     def check_popup_is_present(self):
-        # cond = self.wait_for_element_present(AreYouSurePopup.BODY)
+        # cond = self._wait_for_element_present(AreYouSurePopup.BODY)
         cond = self._is_element_present(AreYouSurePopup.BODY)
         return True if cond else False

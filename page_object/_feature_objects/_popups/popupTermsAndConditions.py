@@ -8,7 +8,7 @@ class TermsAndConditionsPopup(BaseActions):
 
     def click_button_i_agree(self):
         self._click_element(TermsAndConditionsPopup.BTN_I_AGREE)
-        self.wait_for_element_not_present(TermsAndConditionsPopup.BODY)
+        self._wait_for_element_not_present(TermsAndConditionsPopup.BODY)
 
     def click_button_i_do_not_agree(self):
         self._click_element(TermsAndConditionsPopup.BTN_I_DO_NOT_AGREE)

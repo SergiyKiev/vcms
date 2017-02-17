@@ -35,7 +35,7 @@ class ColumnSetDesignerPopup(BaseActions):
 
     def click_button_add(self, columnname):
         self._click_element(ColumnSetDesignerPopup.BUTTON_ADD)
-        self.wait_for_element_present(ColumnSetDesignerPopup.TABLE_BODY + "/*//span[contains(text(),'" + columnname + "')]")
+        self._wait_for_element_present(ColumnSetDesignerPopup.TABLE_BODY + "/*//span[contains(text(),'" + columnname + "')]")
 
     def click_icon_help(self):
         self._click_icon_help(ColumnSetDesignerPopup.BODY)
@@ -55,11 +55,11 @@ class ColumnSetDesignerPopup(BaseActions):
     def click_column_in_left_side_tree(self, columnname):
         elem = ColumnSetDesignerPopup.LEFT_SIDE_SUBNODE + "/*//span[text()='" + columnname + "']"
         self._click_element(elem)
-        self.wait_for_element_selected(elem + ColumnSetDesignerPopup.ELEMENT_LABEL)
+        self._wait_for_element_selected(elem + ColumnSetDesignerPopup.ELEMENT_LABEL)
 
     def expand_all_left_side_trees(self):
         self._expand_all_trees(ColumnSetDesignerPopup.LEFT_SIDE_TREE)
-        # self.wait_for_element_present(ColumnSetDesignerPopup.BODY)
+        # self._wait_for_element_present(ColumnSetDesignerPopup.BODY)
         # elements = self._find_elements(ColumnSetDesignerPopup.LEFT_SIDE_TREE + "/div/div/div[contains(@id,'VWGJOINT')]")
         # elements = self._find_elements(ColumnSetDesignerPopup.LEFT_SIDE_TREE + BaseElements.ARROW_EXPAND)
         # for element in elements:

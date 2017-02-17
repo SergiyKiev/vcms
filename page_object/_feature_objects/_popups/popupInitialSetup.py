@@ -21,7 +21,7 @@ class InitialSetupPopup(BaseActions):
 
     def click_system_button_close(self):
         self._click_system_button_close(InitialSetupPopup.BODY)
-        self.wait_for_element_not_present(InitialSetupPopup.BODY)
+        self._wait_for_element_not_present(InitialSetupPopup.BODY)
 
 
 

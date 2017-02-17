@@ -21,7 +21,7 @@ class PingResultPopup(BaseActions):
 
     def click_system_button_close(self):
         self._click_system_button_close(PingResultPopup.BODY)
-        self.wait_for_element_not_present(PingResultPopup.BODY)
+        self._wait_for_element_not_present(PingResultPopup.BODY)
 
 
 

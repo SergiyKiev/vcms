@@ -21,15 +21,15 @@ class CurrencyPopup(BaseActions):
 
     def click_button_ok(self):
         self._click_button_ok(CurrencyPopup.BODY)
-        self.wait_for_element_not_present(CurrencyPopup.BODY)
+        self._wait_for_element_not_present(CurrencyPopup.BODY)
 
     def click_button_cancel(self):
         self._click_button_cancel(CurrencyPopup.BODY)
-        self.wait_for_element_not_present(CurrencyPopup.BODY)
+        self._wait_for_element_not_present(CurrencyPopup.BODY)
 
     def click_system_button_close(self):
         self._click_system_button_close(CurrencyPopup.BODY)
-        self.wait_for_element_not_present(CurrencyPopup.BODY)
+        self._wait_for_element_not_present(CurrencyPopup.BODY)
 
 
 

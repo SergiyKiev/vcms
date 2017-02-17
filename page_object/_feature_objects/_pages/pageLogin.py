@@ -27,20 +27,20 @@ class LoginPage(BaseActions):
             cond2 = self._is_element_present(SubscriptionHasExpiredPopup.BODY)
             if cond1:
                 elements = self._find_elements(BaseElements._POPUP + "/*//span[contains(@class,'Label-FontData')]")
-                print "LOGIN IS FAILED. ERROR MESSAGE: "
+                self.logger.error("LOGIN IS FAILED. ERROR MESSAGE: ")
                 for element in elements:
                     error_text = element.text
-                    print error_text
+                    self.logger.error(str(error_text))
                     self.driver.quit()
             elif cond2:
                 subscription_has_expired_popup = SubscriptionHasExpiredPopup(self.driver)
                 subscription_has_expired_popup.click_system_button_close()
-            self.wait_for_element_present(BaseElements._RIBBON_BAR)
-            self.wait_for_element_present(BaseElements._LEFT_MENU)
-            self.wait_for_element_not_present(BaseElements.LOADING_SCREEN_VISIBLE)
+            self._wait_for_element_present(BaseElements._RIBBON_BAR)
+            self._wait_for_element_present(BaseElements._LEFT_MENU)
+            self._wait_for_element_not_present(BaseElements.LOADING_SCREEN_VISIBLE)
             return MainPage(self.driver)
         except Exception as e:
-            print "LOGIN ERROR: ", e
+            self.logger.fatal("LOGIN ERROR: ", e)
 
     def enter_username(self, username = Settings.username):
         self._find_element(LoginPage.FIELD_USERNAME).send_keys(username)
@@ -52,10 +52,26 @@ class LoginPage(BaseActions):
         self._click_element(LoginPage.BUTTON_SIGN_IN)
 
     def check_login_page_loaded(self):
-        cond1 = self._is_element_present(LoginPage.BUTTON_SIGN_IN)
-        cond2 = self._is_element_present(LoginPage.FIELD_USERNAME)
-        cond3 = self._is_element_present(LoginPage.FIELD_PASSWORD)
-        return True if cond1 and cond2 and cond3 else False
+        try:
+            cond = self._is_element_present(ErrorPopup.BODY)
+            cond1 = self._is_element_present(LoginPage.BUTTON_SIGN_IN)
+            cond2 = self._is_element_present(LoginPage.FIELD_USERNAME)
+            cond3 = self._is_element_present(LoginPage.FIELD_PASSWORD)
+            if cond:
+                elements = self._find_elements(BaseElements._POPUP + "/*//span[contains(@class,'Label-FontData')]")
+                self.logger.error("LOGIN IS FAILED. Error massage: ")
+                for element in elements:
+                    error_text = element.text
+                    self.logger.error(str(error_text)+ "\n")
+                    self.driver.quit()
+            elif cond1 and cond2 and cond3:
+                return LoginPage(self.driver)
+            else:
+                return Exception
+        except Exception as e:
+            self.logger.fatal("LOGIN PAGE IS NOT LOADED", e)
+            self.driver.quit()
+
 
     def click_icon_help(self):
         self._click_icon_help(LoginPage.BODY)

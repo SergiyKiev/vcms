@@ -27,29 +27,29 @@ class LeftMenuDevices(LeftMenu):
 
     def click_global_site_view_label(self):
         self._click_element(LeftMenuDevices.LABEL_GLOBAL_SITE_VIEW)
-        self.wait_for_element_selected(LeftMenuDevices.LABEL_GLOBAL_SITE_VIEW)
+        self._wait_for_element_selected(LeftMenuDevices.LABEL_GLOBAL_SITE_VIEW)
 
     def click_subsite_in_site_tree(self, sitename, subsitename):
         site_name = "//span[text()='" + sitename + "']/ancestor::div[contains(@class,'RowContainer')]"
         subsite_name = "//span[text()='" + subsitename + "']/ancestor::div[contains(@class,'RowContainer')]"
         element = LeftMenuDevices.LIST_GLOBAL_SITE_VIEW + site_name + "/parent::div/div[2]/*" + subsite_name
         self._click_element(element)
-        self.wait_for_element_selected(element)
+        self._wait_for_element_selected(element)
 
     def expand_global_site_view_tree(self):
-        self.wait_for_element_present(LeftMenuDevices.LABEL_GLOBAL_SITE_VIEW)
+        self._wait_for_element_present(LeftMenuDevices.LABEL_GLOBAL_SITE_VIEW)
         arrow = self._is_element_present(LeftMenuDevices.TREE_GLOBAL_SITE_VIEW + BaseElements.ARROW_EXPAND)
         if arrow:
             self._expand_tree(LeftMenuDevices.TREE_GLOBAL_SITE_VIEW)
 
     def expand_groups_tree(self):
-        self.wait_for_element_present(LeftMenuDevices.LABEL_GROUPS)
+        self._wait_for_element_present(LeftMenuDevices.LABEL_GROUPS)
         arrow = self._is_element_present(LeftMenuDevices.TREE_GROUPS + BaseElements.ARROW_EXPAND)
         if arrow:
             self._expand_tree(LeftMenuDevices.TREE_GROUPS)
 
     def expand_queries_tree(self):
-        self.wait_for_element_present(LeftMenuDevices.LABEL_QUERIES)
+        self._wait_for_element_present(LeftMenuDevices.LABEL_QUERIES)
         arrow = self._is_element_present(LeftMenuDevices.TREE_QUERIES + BaseElements.ARROW_EXPAND)
         if arrow:
             self._expand_tree(LeftMenuDevices.TREE_QUERIES)
@@ -57,7 +57,7 @@ class LeftMenuDevices(LeftMenu):
             pass
 
     def collaps_global_site_view_tree(self):
-        self.wait_for_element_present(LeftMenuDevices.LABEL_GLOBAL_SITE_VIEW)
+        self._wait_for_element_present(LeftMenuDevices.LABEL_GLOBAL_SITE_VIEW)
         arrow = self._is_element_present(LeftMenuDevices.TREE_GLOBAL_SITE_VIEW + BaseElements.ARROW_COLLAPSE)
         if arrow:
             self._collaps_tree(LeftMenuDevices.TREE_GLOBAL_SITE_VIEW)
@@ -66,25 +66,25 @@ class LeftMenuDevices(LeftMenu):
 
     def click_default_site_in_global_site_view(self):
         self._click_element(LeftMenuDevices.LABEL_DEFAULT_SITE)
-        self.wait_for_element_selected(LeftMenuDevices.LABEL_DEFAULT_SITE)
+        self._wait_for_element_selected(LeftMenuDevices.LABEL_DEFAULT_SITE)
 
     def click_site_in_global_site_view_tree(self, sitename):
         element = LeftMenuDevices.LIST_GLOBAL_SITE_VIEW \
                   + "/*//span[text()='" + sitename + "']/ancestor::div[contains(@class,'RowContainer')]"
         self._click_element(element)
-        self.wait_for_element_selected(element)
+        self._wait_for_element_selected(element)
 
     def click_active_directories_label(self):
         self._click_element(LeftMenuDevices.LABEL_ACTIVE_DIRECTORIES)
-        self.wait_for_element_selected(LeftMenuDevices.LABEL_ACTIVE_DIRECTORIES)
+        self._wait_for_element_selected(LeftMenuDevices.LABEL_ACTIVE_DIRECTORIES)
 
     def click_queries_label(self):
         self._click_element(LeftMenuDevices.LABEL_QUERIES)
-        self.wait_for_element_selected(LeftMenuDevices.LABEL_QUERIES)
+        self._wait_for_element_selected(LeftMenuDevices.LABEL_QUERIES)
 
     def click_groups_label(self):
         self._click_element(LeftMenuDevices.LABEL_GROUPS)
-        self.wait_for_element_selected(LeftMenuDevices.LABEL_GROUPS)
+        self._wait_for_element_selected(LeftMenuDevices.LABEL_GROUPS)
 
     def delete_site_if_exists(self, sitename):
         element = LeftMenuDevices.LIST_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']"
@@ -221,4 +221,4 @@ class LeftMenuDevices(LeftMenu):
     def click_group_in_groups_tree(self, name):
         element = LeftMenuDevices.LIST_GROUPS + "/*//span[text()='" + name + "']/ancestor::div[contains(@class,'RowContainer')]"
         self._click_element(element)
-        self.wait_for_element_selected(element)
+        self._wait_for_element_selected(element)

@@ -20,15 +20,15 @@ class MoveSitePopup(BaseActions):
 
     def click_button_ok(self):
         self._click_button_ok(MoveSitePopup.BODY)
-        self.wait_for_element_not_present(MoveSitePopup.BODY)
+        self._wait_for_element_not_present(MoveSitePopup.BODY)
 
     def click_button_cancel(self):
         self._click_button_cancel(MoveSitePopup.BODY)
-        self.wait_for_element_not_present(MoveSitePopup.BODY)
+        self._wait_for_element_not_present(MoveSitePopup.BODY)
 
     def click_system_button_close(self):
         self._click_system_button_close(MoveSitePopup.BODY)
-        self.wait_for_element_not_present(MoveSitePopup.BODY)
+        self._wait_for_element_not_present(MoveSitePopup.BODY)
 
 
 

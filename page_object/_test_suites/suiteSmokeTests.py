@@ -68,7 +68,7 @@ class SmokeTest(unittest.TestCase):
         site_name_popup.enter_text_into_name_text_field(sitename)
         site_name_popup.click_button_ok()
         self.assertTrue(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
-        print ("Test is passed" + "\n")
+        print ("Test passed" + "\n")
 
     '''D0 NOT DELETE!!!'''
     # def test_add_vrep_to_the_console(self):

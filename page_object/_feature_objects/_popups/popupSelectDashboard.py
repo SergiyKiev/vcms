@@ -21,15 +21,15 @@ class SelectDashboardPopup(BaseActions):
 
     def click_button_ok(self):
         self._click_button_ok(SelectDashboardPopup.BODY)
-        self.wait_for_element_not_present(SelectDashboardPopup.BODY)
+        self._wait_for_element_not_present(SelectDashboardPopup.BODY)
 
     def click_button_cancel(self):
         self._click_button_cancel(SelectDashboardPopup.BODY)
-        self.wait_for_element_not_present(SelectDashboardPopup.BODY)
+        self._wait_for_element_not_present(SelectDashboardPopup.BODY)
 
     def click_system_button_close(self):
         self._click_system_button_close(SelectDashboardPopup.BODY)
-        self.wait_for_element_not_present(SelectDashboardPopup.BODY)
+        self._wait_for_element_not_present(SelectDashboardPopup.BODY)
 
 
 

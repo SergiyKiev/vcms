@@ -1,0 +1,137 @@
+2017-02-17 17:53:49,622 INFO     Start testing
+2017-02-17 17:53:49,622 INFO     TEST SUITE: HELP LINKS ON MAIN PAGE
+
+2017-02-17 17:53:59,009 INFO     Instance is: https://testteamtest.cloudmanagementsuite.com/
+
+2017-02-17 17:58:30,072 INFO     vRep VKYV-DT-IK is installed - True
+2017-02-17 17:59:01,002 INFO     vRep VKYV-DT-IK is checked, online, connected and approved
+
+2017-02-17 17:59:01,062 INFO     [Test start]
+2017-02-17 17:59:04,155 INFO     TC#0000: Check help link on Administration page
+2017-02-17 17:59:10,384 INFO     Help window is opened. Title is: ConsoleOperationGuide
+2017-02-17 17:59:20,503 ERROR    Test failed: Expected header: Administration, Actual header: Getting Started in CMS
+2017-02-17 17:59:20,546 INFO     [Test end]
+
+2017-02-17 17:59:20,546 INFO     [Test start]
+2017-02-17 17:59:23,703 INFO     TC#0000: Check help link on Devices page
+2017-02-17 17:59:39,421 INFO     Help window is opened. Title is: ConsoleOperationGuide
+2017-02-17 17:59:49,134 ERROR    Test failed: Expected header: Devices, Actual header: Getting Started in CMS
+2017-02-17 17:59:49,157 INFO     [Test end]
+
+2017-02-17 17:59:49,157 INFO     [Test start]
+2017-02-17 17:59:52,290 INFO     TC#0000: Check help link on Dynamically Managed page
+2017-02-17 18:00:07,293 INFO     Help window is opened. Title is: ConsoleOperationGuide
+2017-02-17 18:00:17,006 ERROR    Test failed. Header: Server Error, Error text: 404 - File or directory not found.The resource you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+2017-02-17 18:00:17,028 INFO     [Test end]
+
+2017-02-17 18:00:17,029 INFO     [Test start]
+2017-02-17 18:00:20,142 INFO     TC#0000: Check help link on Endpoint Management page
+2017-02-17 18:00:25,535 INFO     Help window is opened. Title is: ConsoleOperationGuide
+2017-02-17 18:00:32,065 INFO     Expected header: Endpoint Management, Actual header: Endpoint Management
+2017-02-17 18:00:32,065 INFO     Test passed
+2017-02-17 18:00:32,088 INFO     [Test end]
+
+2017-02-17 18:00:32,088 INFO     [Test start]
+2017-02-17 18:00:35,194 INFO     TC#0000: Check help link on Excluded Devices page
+2017-02-17 18:00:43,628 INFO     Help window is opened. Title is: ConsoleOperationGuide
+2017-02-17 18:00:53,338 ERROR    Test failed. Header: Server Error, Error text: 404 - File or directory not found.The resource you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+2017-02-17 18:00:53,358 INFO     [Test end]
+
+2017-02-17 18:00:53,359 INFO     [Test start]
+2017-02-17 18:00:56,453 INFO     TC#0000: Check help link on Groups page
+2017-02-17 18:01:08,911 INFO     Help window is opened. Title is: ConsoleOperationGuide
+2017-02-17 18:01:18,457 ERROR    Test failed: Expected header: Groups, Actual header: Devices
+2017-02-17 18:01:18,479 INFO     [Test end]
+
+2017-02-17 18:01:18,479 INFO     [Test start]
+2017-02-17 18:01:26,226 INFO     Help window is opened. Title is: ConsoleOperationGuide
+2017-02-17 18:01:32,770 INFO     Expected header: Getting Started in CMS, Actual header: Getting Started in CMS
+2017-02-17 18:01:32,770 INFO     Test passed
+2017-02-17 18:01:32,799 INFO     [Test end]
+
+2017-02-17 18:01:32,799 INFO     [Test start]
+2017-02-17 18:01:35,887 INFO     TC#0000: Check help link on Infrastructure page
+2017-02-17 18:01:53,312 INFO     Help window is opened. Title is: ConsoleOperationGuide
+2017-02-17 18:02:02,986 ERROR    Test failed. Header: Server Error, Error text: 404 - File or directory not found.The resource you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+2017-02-17 18:02:03,006 INFO     [Test end]
+
+2017-02-17 18:02:03,006 INFO     [Test start]
+2017-02-17 18:02:06,109 INFO     TC#0000: Check help link on Queries page
+2017-02-17 18:02:18,292 INFO     Help window is opened. Title is: ConsoleOperationGuide
+2017-02-17 18:02:28,058 ERROR    Test failed. Header: Server Error, Error text: 404 - File or directory not found.The resource you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+2017-02-17 18:02:28,078 INFO     [Test end]
+
+2017-02-17 18:02:28,078 INFO     [Test start]
+2017-02-17 18:02:31,190 INFO     TC#0000: Check help link on Reporting page
+2017-02-17 18:02:45,170 INFO     Help window is opened. Title is: ConsoleOperationGuide
+2017-02-17 18:02:54,888 ERROR    Test failed: Expected header: Reporting, Actual header: Getting Started in CMS
+2017-02-17 18:02:54,914 INFO     [Test end]
+
+2017-02-17 18:02:54,915 INFO     [Test start]
+2017-02-17 18:02:58,023 INFO     TC#0000: Check help link on Ribbon bar
+2017-02-17 18:03:01,002 INFO     Help window is opened. Title is: ConsoleOperationGuide
+2017-02-17 18:03:07,572 INFO     Expected header: CMS Quick Help Videos, Actual header: CMS Quick Help Videos
+2017-02-17 18:03:07,572 INFO     Test passed
+2017-02-17 18:03:07,599 INFO     [Test end]
+
+2017-02-17 18:03:07,599 INFO     [Test start]
+2017-02-17 18:03:10,694 INFO     TC#0000: Check help link on Select Dashboard popup
+2017-02-17 18:03:16,039 INFO     Help window is opened. Title is: ConsoleOperationGuide
+2017-02-17 18:03:25,690 ERROR    Test failed: Expected header: Select Dashboard, Actual header: Devices
+2017-02-17 18:03:25,713 INFO     [Test end]
+
+2017-02-17 18:03:25,714 INFO     [Test start]
+2017-02-17 18:03:30,115 INFO     TC#0000: Check help link on Settings popup
+2017-02-17 18:03:34,181 INFO     Help window is opened. Title is: ConsoleOperationGuide
+2017-02-17 18:03:43,838 ERROR    Test failed: Expected header: Settings, Actual header: CMS Quick Help Videos
+2017-02-17 18:03:43,865 INFO     [Test end]
+
+2017-02-17 18:03:43,867 INFO     [Test start]
+2017-02-17 18:03:48,184 INFO     TC#0000: Check help link on Settings popup - Content Services tab
+2017-02-17 18:03:53,799 INFO     Help window is opened. Title is: ConsoleOperationGuide
+2017-02-17 18:04:00,341 INFO     Expected header: Content Services, Actual header: Content Services
+2017-02-17 18:04:00,341 INFO     Test passed
+2017-02-17 18:04:00,365 INFO     [Test end]
+
+2017-02-17 18:04:00,367 INFO     [Test start]
+2017-02-17 18:04:04,634 INFO     TC#0000: Check help link on Settings popup - Email Settings tab
+2017-02-17 18:04:10,296 INFO     Help window is opened. Title is: ConsoleOperationGuide
+2017-02-17 18:04:16,835 INFO     Expected header: Email Settings, Actual header: Email Settings
+2017-02-17 18:04:16,835 INFO     Test passed
+2017-02-17 18:04:16,865 INFO     [Test end]
+
+2017-02-17 18:04:16,865 INFO     [Test start]
+2017-02-17 18:04:21,214 INFO     TC#0000: Check help link on Settings popup - Initial Setup tab
+2017-02-17 18:04:27,380 INFO     Help window is opened. Title is: ConsoleOperationGuide
+2017-02-17 18:04:33,940 INFO     Expected header: Initial Setup, Actual header: Initial Setup
+2017-02-17 18:04:33,940 INFO     Test passed
+2017-02-17 18:04:33,963 INFO     [Test end]
+
+2017-02-17 18:04:33,964 INFO     [Test start]
+2017-02-17 18:04:38,246 INFO     TC#0000: Check help link on Settings popup - Locale Options tab
+2017-02-17 18:04:43,289 INFO     Help window is opened. Title is: ConsoleOperationGuide
+2017-02-17 18:04:49,750 INFO     Expected header: Locale Options, Actual header: Locale Options
+2017-02-17 18:04:49,750 INFO     Test passed
+2017-02-17 18:04:49,769 INFO     [Test end]
+
+2017-02-17 18:04:49,769 INFO     [Test start]
+2017-02-17 18:04:54,048 INFO     TC#0000: Check help link on Reporting page
+2017-02-17 18:05:08,046 INFO     Help window is opened. Title is: ConsoleOperationGuide
+2017-02-17 18:05:17,630 ERROR    Test failed: Expected header: Software / Patch Manager, Actual header: Getting Started in CMS
+2017-02-17 18:05:17,657 INFO     [Test end]
+
+2017-02-17 18:05:17,657 INFO     [Test start]
+2017-02-17 18:05:20,783 INFO     TC#0000: Check help link on Subscription popup
+2017-02-17 18:05:27,595 INFO     Help window is opened. Title is: ConsoleOperationGuide
+2017-02-17 18:05:34,121 INFO     Expected header: Subscriptions, Actual header: Subscriptions
+2017-02-17 18:05:34,121 INFO     Test passed
+2017-02-17 18:05:34,141 INFO     [Test end]
+
+2017-02-17 18:05:34,141 INFO     [Test start]
+2017-02-17 18:05:38,434 INFO     TC#0000: Check help link on Tasks page
+2017-02-17 18:05:52,640 INFO     Help window is opened. Title is: ConsoleOperationGuide
+2017-02-17 18:06:02,255 ERROR    Test failed: Expected header: Tasks, Actual header: Getting Started in CMS
+2017-02-17 18:06:02,279 INFO     [Test end]
+
+2017-02-17 18:06:02,279 INFO     [Test start]
+2017-02-17 18:06:05,369 INFO     TC#0000: Check help link on Unmanaged Devices page

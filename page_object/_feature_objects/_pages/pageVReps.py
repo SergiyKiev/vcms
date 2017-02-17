@@ -24,7 +24,7 @@ class VRepsPage(BaseActions):
     CELL_NAME = "/td[9]"
     CELL_IP_ADDRESS = "/td[11]"
     CELL_LOCATION = "/td[13]"
-    CHECK_BOX_APPROVE = "/td[1]/img[@class='ListView-CheckBoxImage']"
+    ROW_CHECK_BOX = "/td[1]/img[@class='ListView-CheckBoxImage']"
     TRUE = "/*//span[text()='true']"
     FALSE = "/*//span[text()='false']"
 
@@ -34,11 +34,11 @@ class VRepsPage(BaseActions):
 
     def click_icon_refresh(self):
         self._click_icon_refresh(VRepsPage.PAGE_HEADER)
-        time.sleep(5)
+        time.sleep(3)
 
     def click_icon_search(self):
         self._click_icon_search(VRepsPage.PAGE_HEADER)
-        time.sleep(5)
+        time.sleep(3)
 
     def enter_text_into_search_text_field(self, text = None):
         self._find_element(VRepsPage.SEARCH_FIELD).send_keys(text)
@@ -63,12 +63,12 @@ class VRepsPage(BaseActions):
             cond = self.check_vrep_is_present(name)
             if cond:
                 self.select_vrep_in_table(name)
-                checked = self._is_element_checked(row + VRepsPage.CHECK_BOX_APPROVE)
+                checked = self._is_element_checked(row + self.ROW_CHECK_BOX)
                 if checked:
                     pass
                 else:
-                    self._click_element(row + VRepsPage.CHECK_BOX_APPROVE)
-                    self.wait_for_element_checked(row + VRepsPage.CHECK_BOX_APPROVE)
+                    self._click_element(row + VRepsPage.ROW_CHECK_BOX)
+                    self._wait_for_element_checked(row + VRepsPage.ROW_CHECK_BOX)
                     print "vRep is checked: ", name
                     cond1 = self.check_vrep_is_approved(name)
                     cond2 = self.check_vrep_is_connected(name)
@@ -84,42 +84,48 @@ class VRepsPage(BaseActions):
 
     def upprove_single_vrep_in_vreps_page_table(self, name):
         try:
-            row = VRepsPage.TABLE_ROW + "/*//span[text()='" + name + "']/ancestor::tr"
-            checkbox = row + VRepsPage.CHECK_BOX_APPROVE
+            row = self.TABLE_ROW + "/*//span[text()='" + name + "']/ancestor::tr"
+            checkbox = row + self.ROW_CHECK_BOX
+            self.click_icon_refresh()
             self.enter_text_into_search_text_field(name)
             self.click_icon_search()
-            self.wait_for_element_present(row)
+            self._wait_for_element_present(row)
             cond = self.check_vrep_is_present(name)
             if cond:
-                # print "VREP IS PRESENT", cond
                 self.select_vrep_in_table(name)
-                self.scroll_to_element(checkbox)
                 self.click_icon_refresh()
-                self.wait_for_element_present(checkbox)
-                unchecked = self._is_element_not_present(checkbox + BaseActions.CHECKED)
+                self.scroll_to_element(checkbox)
+                self._wait_for_element_present(checkbox)
+                unchecked = self._is_element_not_present(checkbox + "[contains(@src,'CheckBox1')]")
                 # print checkbox + BaseActions.CHECKED + " is " + str(unchecked)
                 if unchecked:
+                    self.logger.info("vRep " + str(name) + " was not upproved" )
                     self._click_element(checkbox)
                     self.click_icon_refresh()
-                    self.wait_for_element_present(checkbox)
-                    cond1 = self.check_vrep_is_approved(name)
-                    cond2 = self.check_vrep_is_connected(name)
-                    cond3 = self.check_vrep_is_online_and_ready(name)
-                    if cond1 and cond2 and cond3:
-                        print "vRep " + name + " is online, connected and approved"
-                    elif cond1 is not True:
-                        print "vRep" + name + " is not approved"
-                    elif cond2 is not True:
-                        print "vRep" + name + " is not connected"
-                    elif cond3 is not True:
-                        print "vRep" + name + " is not online and ready"
+                    self._wait_for_element_present(checkbox + "[contains(@src,'CheckBox1')]")
+                else:
+                    pass
+            cond1 = self.check_vrep_is_approved(name)
+            cond2 = self.check_vrep_is_connected(name)
+            cond3 = self.check_vrep_is_online_and_ready(name)
+            cond4 = self._is_element_present(checkbox + "[contains(@src,'CheckBox1')]")
+            if cond1 and cond2 and cond3 and cond4:
+                self.logger.info("vRep " + str(name) + " is checked, online, connected and approved\n")
+            elif cond1 is not True:
+                self.logger.error("vRep " + str(name) + " is not approved\n")
+            elif cond2 is not True:
+                self.logger.error("vRep " + str(name) + " is not connected\n")
+            elif cond3 is not True:
+                self.logger.error("vRep " + str(name) + " is not online and ready\n")
+            elif cond4 is not True:
+                self.logger.error("vRep " + str(name) + " is not checked\n")
         except Exception as e:
-            print "UPPROVE SINGLE VREP METHOD FAILED ", e
+            self.logger.error("Method 'Upprove a single vrep' is failed ", e)
 
     def select_vrep_in_table(self, name):
         row = VRepsPage.TABLE_ROW + "/*//span[text()='" + name + "']/ancestor::tr"
         self._click_element(row)
-        self.wait_for_element_selected(row)
+        self._wait_for_element_selected(row)
 
     def check_vrep_is_approved(self, name):
         row = VRepsPage.TABLE_ROW + "/*//span[text()='" + name + "']/ancestor::tr"

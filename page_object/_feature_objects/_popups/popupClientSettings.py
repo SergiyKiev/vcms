@@ -21,23 +21,23 @@ class ClientSettingsPopup(BaseActions):
 
     def click_timers_tab(self):
         self._click_element(TimersTab.LEFT_MENU_LABEL)
-        self.wait_for_element_selected(TimersTab.LEFT_MENU_LABEL)
+        self._wait_for_element_selected(TimersTab.LEFT_MENU_LABEL)
 
     def click_features_label(self):
         self._click_element(FeaturesTab.LEFT_MENU_LABEL)
-        self.wait_for_element_selected(FeaturesTab.LEFT_MENU_LABEL)
+        self._wait_for_element_selected(FeaturesTab.LEFT_MENU_LABEL)
 
     def click_client_urls_label(self):
         self._click_element(ClientUrlsTab.LEFT_MENU_LABEL)
-        self.wait_for_element_selected(ClientUrlsTab.LEFT_MENU_LABEL)
+        self._wait_for_element_selected(ClientUrlsTab.LEFT_MENU_LABEL)
 
     def click_reboot_ui_config_tab(self):
         self._click_element(RebootUIConfigTab.LEFT_MENU_LABEL)
-        self.wait_for_element_selected(RebootUIConfigTab.LEFT_MENU_LABEL)
+        self._wait_for_element_selected(RebootUIConfigTab.LEFT_MENU_LABEL)
 
     def click_client_proxy_settings_tab(self):
         self._click_element(ClientProxySettingsTab.LEFT_MENU_LABEL)
-        self.wait_for_element_selected(ClientProxySettingsTab.LEFT_MENU_LABEL)
+        self._wait_for_element_selected(ClientProxySettingsTab.LEFT_MENU_LABEL)
 
 
 class TimersTab(ClientSettingsPopup):

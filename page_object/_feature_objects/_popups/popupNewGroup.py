@@ -24,19 +24,19 @@ class NewGroupPopup(BaseActions):
 
     def click_button_ok(self):
         self._click_button_ok(NewGroupPopup.BODY)
-        self.wait_for_element_not_present(NewGroupPopup.BODY)
+        self._wait_for_element_not_present(NewGroupPopup.BODY)
 
     def click_button_cancel(self):
         self._click_button_cancel(NewGroupPopup.BODY)
-        self.wait_for_element_not_present(NewGroupPopup.BODY)
+        self._wait_for_element_not_present(NewGroupPopup.BODY)
 
     def click_system_button_close(self):
         self._click_system_button_close(NewGroupPopup.BODY)
-        self.wait_for_element_not_present(NewGroupPopup.BODY)
+        self._wait_for_element_not_present(NewGroupPopup.BODY)
 
     def click_button_add_members(self):
         self._click_element(NewGroupPopup.BUTTON_ADD_MEMBERS)
-        self.wait_for_element_present(SelectTargetsPopup.BODY)
+        self._wait_for_element_present(SelectTargetsPopup.BODY)
 
     def enter_text_into_group_name_text_field(self, text = None):
         self._find_element(NewGroupPopup.FIELD_GROUP_NAME).send_keys(text)

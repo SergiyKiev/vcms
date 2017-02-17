@@ -21,11 +21,11 @@ class ManufacturerAliasPopup(BaseActions):
 
     def click_button_close(self):
         self._click_button_close(ManufacturerAliasPopup.BODY)
-        self.wait_for_element_not_present(ManufacturerAliasPopup.BODY)
+        self._wait_for_element_not_present(ManufacturerAliasPopup.BODY)
 
     def click_system_button_close(self):
         self._click_system_button_close(ManufacturerAliasPopup.BODY)
-        self.wait_for_element_not_present(ManufacturerAliasPopup.BODY)
+        self._wait_for_element_not_present(ManufacturerAliasPopup.BODY)
 
 
 

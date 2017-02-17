@@ -22,15 +22,15 @@ class QueryDesignerPopup(BaseActions):
 
     def click_button_ok(self):
         self._click_button_ok(QueryDesignerPopup.BODY)
-        self.wait_for_element_not_present(QueryDesignerPopup.BODY)
+        self._wait_for_element_not_present(QueryDesignerPopup.BODY)
 
     def click_system_button_close(self):
         self._click_system_button_close(QueryDesignerPopup.BODY)
-        self.wait_for_element_not_present(QueryDesignerPopup.BODY)
+        self._wait_for_element_not_present(QueryDesignerPopup.BODY)
 
     def click_button_add(self):
         self._click_button_add(QueryDesignerPopup.BODY)
-        self.wait_for_element_present(ConditionEditorPopup.BODY)
+        self._wait_for_element_present(ConditionEditorPopup.BODY)
 
 
 

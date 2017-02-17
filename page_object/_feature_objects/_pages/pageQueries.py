@@ -67,10 +67,10 @@ class QueriesPage(BaseActions):
             print "No query was found:", name
 
     def select_query_in_table(self, *name):
-        self.wait_for_element_present(QueriesPage.TABLE_ROW)
+        self._wait_for_element_present(QueriesPage.TABLE_ROW)
         row = QueriesPage.TABLE_ROW + "/*//span[text()='" + str(*name) + "']/ancestor::tr"
         self._click_element(row)
-        self.wait_for_element_selected(row)
+        self._wait_for_element_selected(row)
 
 
 

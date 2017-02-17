@@ -39,7 +39,7 @@ class MaintenanceWindowsPage(BaseActions):
     def select_maintenance_window_in_table(self, name):
         row = MaintenanceWindowsPage.TABLE_ROW + "/*//span[text()='" + name + "']/ancestor::tr"
         self._click_element(row)
-        self.wait_for_element_selected(row)
+        self._wait_for_element_selected(row)
 
 
 

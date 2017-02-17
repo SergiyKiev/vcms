@@ -46,7 +46,7 @@ class InventoryViewPopup(BaseActions):
     def click_label_in_left_side_tree(self, label):
         elem = InventoryViewPopup.LEFT_SIDE_SUBNODE + "/*//span[text()='" + label + "']"
         self._click_element(elem)
-        self.wait_for_element_selected(elem + InventoryViewPopup.ELEMENT_LABEL)
+        self._wait_for_element_selected(elem + InventoryViewPopup.ELEMENT_LABEL)
 
     def expand_all_left_side_trees(self):
         self._expand_all_trees(InventoryViewPopup.LEFT_SIDE_TREE)

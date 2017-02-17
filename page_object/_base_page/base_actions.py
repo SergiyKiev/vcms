@@ -1,5 +1,7 @@
 
 import time
+
+from _base_page import logs
 from _base_page.base import Base
 from _base_page.base_elements import *
 from _locators.locators import Locators
@@ -8,6 +10,13 @@ import logging
 
 
 class BaseActions(Base):
+
+    # logging.basicConfig(filename='D:\\python\\vcms\\vcms\\page_object\\_test_suites\\SuiteMainPageHelpLinks.log',
+    #                     level=logging.INFO, format='%(asctime)s %(levelname)-8s %(message)s')
+    # logger = logging.getLogger(__name__)
+    # console = logging.StreamHandler()
+    # logger.addHandler(console)
+
 
     def _button_edit(self, locator):
         self._click_element(locator + BaseElements.BUTTON_EDIT)
@@ -20,26 +29,26 @@ class BaseActions(Base):
                 self._click_element(locator + BaseElements.BUTTON_OK)
             elif cond2:
                 self._click_element(locator + BaseElements.BUTTON_Ok)
-            self.wait_for_element_not_present(locator)
+            self._wait_for_element_not_present(locator)
         except Exception as e:
             print "Button is not found ", e
 
     def _click_button_no(self, locator):
         self._click_element(locator + BaseElements.BUTTON_NO)
-        self.wait_for_element_not_present(locator)
+        self._wait_for_element_not_present(locator)
 
     def _click_button_yes(self, locator):
         self._click_element(locator + BaseElements.BUTTON_YES)
-        self.wait_for_element_not_present(locator)
+        self._wait_for_element_not_present(locator)
 
     def _click_button_cancel(self, locator):
         self._click_element(locator + BaseElements.BUTTON_CANCEL)
-        self.wait_for_element_not_present(locator)
+        self._wait_for_element_not_present(locator)
 
     def _click_button_close(self, locator):
-        self.wait_for_element_present(locator)
+        self._wait_for_element_present(locator)
         self._click_element(locator + BaseElements.BUTTON_CLOSE)
-        self.wait_for_element_not_present(locator)
+        self._wait_for_element_not_present(locator)
 
     def _click_button_add(self, locator):
         self._click_element(locator + BaseElements.BUTTON_ADD)
@@ -51,34 +60,38 @@ class BaseActions(Base):
         self._click_element(locator + BaseElements.BUTTON_DELETE)
 
     def _click_icon_help(self, locator):
-        # self.wait_for_element_present(locator + BaseElements.ICON_HELP)
         self._click_element(locator + BaseElements.ICON_HELP)
-        self.wait_webelement.until(lambda d: len(d.window_handles) == 2)
+        # try:
+        #     self.wait_webelement.until(lambda d: len(d.window_handles) == 2)
+        # except TimeoutException, NoSuchElementException:
+        #     return Exception
+        # except Exception as e:
+        #     self.logger.error("Window is not opened", e)
 
     def _click_icon_restore(self, locator):
-        self.wait_for_element_present(locator)
+        self._wait_for_element_present(locator)
         self._click_element(locator + BaseElements.ICON_RESTORE)
 
     def _click_icon_refresh(self, locator):
-        self.wait_for_element_present(locator)
+        self._wait_for_element_present(locator)
         self._click_element(locator + BaseElements.ICON_REFRESH)
 
     def _click_icon_search(self, locator):
-        self.wait_for_element_present(locator)
+        self._wait_for_element_present(locator)
         self._click_element(locator + BaseElements.ICON_SEARCH)
 
     def _click_system_button_close(self, locator):
         self._click_element(locator + BaseElements.SYSTEM_BUTTON_CLOSE)
-        self.wait_for_element_not_present(locator)
+        self._wait_for_element_not_present(locator)
 
     def _click_system_button_maximize(self, locator):
-        self.wait_for_element_present(locator)
+        self._wait_for_element_present(locator)
         self._click_element(locator + BaseElements.SYSTEM_BUTTON_MAXIMIZE)
         time.sleep(2)
-        self.wait_for_element_present(locator + BaseElements.SYS_BUTTON_RESTORE_DOWN)
+        self._wait_for_element_present(locator + BaseElements.SYS_BUTTON_RESTORE_DOWN)
 
     def _click_system_button_drop_down(self, locator):
-        self.wait_for_element_present(locator)
+        self._wait_for_element_present(locator)
         self.hover(locator + BaseElements.SYSTEM_BUTTON_DROP_DOWN)
         self._click_element(locator + BaseElements.SYSTEM_BUTTON_DROP_DOWN)
 
@@ -112,18 +125,24 @@ class BaseActions(Base):
             cond3 = self._is_element_present(BaseElements.HELP_FRAME_HEADER_SERVER_ERROR)
             if cond1:
                 current_header_name = self._find_element(BaseElements.HELP_FRAME_HEADER).text
-                result =  "\n" + "Expected header: " + expected_header_name + "\n" + " Actual header: " + str(current_header_name)
-                return result
+                result = "Expected header: " + expected_header_name \
+                         + ", Actual header: " + str(current_header_name)
+                self.logger.info(result)
+                # return result
             elif cond2:
                 current_header = self._find_element(BaseElements.HELP_FRAME_HEADER).text
-                return "\n\n" + "INCORRECT HEADER: " + "\n" + "1. Expected header: " + expected_header_name + \
-                      "\n" + "2. Actual header: " + str(current_header)
+                error_message = "Test failed: Expected header: " + expected_header_name \
+                                + ", Actual header: " +  str(current_header)
+                self.logger.error(error_message)
+                # return error_message
             elif cond3:
                 error_header = self._find_element(BaseElements.HELP_FRAME_HEADER_SERVER_ERROR).text
                 error_text1 = self._find_element("//*[@id='content']/div/fieldset/h2").text
                 error_text2 = self._find_element("//*[@id='content']/div/fieldset/h3").text
-                return "\n\n" + "LINK IS NOT FOUND: " + "\n" + "Header: " + str(error_header) + \
-                       "\n" + "Error text: " + str(error_text1) + str(error_text2)
+                error_message = "Test failed. Header: " + str(error_header) + ", Error text: " \
+                                + str(error_text1) + str(error_text2)
+                self.logger.error(error_message)
+                # return error_message
         except NoSuchElementException:
             massage1 = self._find_element("//*[@id='main-message']/h1").text
             massage2 = self._find_element("//*[@id='main-message']/div[2]").text
@@ -141,26 +160,35 @@ class BaseActions(Base):
             help_window = handles[1]
             self.driver.switch_to_window(help_window)
             title = self.driver.title
-            print "Help window is opened. Title is: ", title
-            self.wait_for_element_present(BaseElements.HELP_FRAME_MAIN)
-            self.wait_for_element_present(BaseElements.HELP_FRAME_TOC)
+            # print "Help window is opened. Title is: ", title
+            self.logger.info("Help window is opened. Title is: " + str(title))
+            self._wait_for_element_present(BaseElements.HELP_FRAME_MAIN)
+            self._wait_for_element_present(BaseElements.HELP_FRAME_TOC)
             self.wait_webelement.until(lambda d: d.title != "")
             self.driver.switch_to_frame(self.driver.find_element_by_name('FrameMain'))
             cond = self._is_element_present(BaseElements.HELP_FRAME_HEADER)
+            error = self._is_element_present(BaseElements.HELP_FRAME_HEADER_ERROR)
             if cond:
                 header = self._get_text(BaseElements.HELP_FRAME_HEADER)
                 return str(header)
+            elif error:
+                error_header = self._get_text(BaseElements.HELP_FRAME_HEADER_ERROR)
+                return str(error_header)
         except NoSuchElementException:
             massage1 = self._find_element("//*[@id='main-message']/h1").text
             massage2 = self._find_element("//*[@id='main-message']/div[2]").text
+            self.logger.error("HELP LINK IS UNAVAILABLE. Massage: " + massage1 + massage2)
             return "HELP LINK IS UNAVAILABLE. Massage: ", massage1, massage2
         except TimeoutException:
+            self.logger.error("Help window is not opened")
             return "Help window is not opened"
         except IndexError:
             help_window = 'null'
+            self.logger.error("Help window is not found")
             return "Help window is not found"
         except Exception as e:
-            return "Window was not found"
+            self.logger.error("Help window is not found")
+            return "Help window is not found"
 
     def _select_help_window(self, expected_header_name):
         try:
@@ -234,7 +262,7 @@ class BaseActions(Base):
             print "Massage: ", e
 
     def _expand_all_trees(self, locator):
-        self.wait_for_element_present(locator)
+        self._wait_for_element_present(locator)
         elements = self._find_elements(locator + BaseElements.ARROW_EXPAND)
         for element in elements:
             self.driver.execute_script("arguments[0].click();", element)
@@ -247,7 +275,7 @@ class BaseActions(Base):
             print "Massage: ", e
 
     def _collaps_all_trees(self, locator):
-        self.wait_for_element_present(locator)
+        self._wait_for_element_present(locator)
         elements = self._find_elements(locator + BaseElements.ARROW_COLLAPSE)
         for element in elements:
             self.driver.execute_script("arguments[0].click();", element)

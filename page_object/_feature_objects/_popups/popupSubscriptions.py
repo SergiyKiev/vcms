@@ -8,7 +8,7 @@ class SubscriptionsPopup(BaseActions):
 
     def check_popup_is_present(self):
         cond = self._is_element_present(SubscriptionsPopup.BODY)
-        return True if cond else False
+        return self._find_element(SubscriptionsPopup.BODY) if cond else None
 
     def click_icon_help(self):
         self._click_icon_help(SubscriptionsPopup.BODY)

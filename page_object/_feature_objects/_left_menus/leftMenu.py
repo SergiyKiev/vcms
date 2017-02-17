@@ -19,7 +19,7 @@ class LeftMenu(BaseActions):
     def _click_left_menu(self, locator):
         ICON = "//div[@title='" + locator + "']"
         self._click_element(ICON)
-        self.wait_for_element_not_present(ICON + self.GREY_COLOR)
+        self._wait_for_element_not_present(ICON + self.GREY_COLOR)
 
     def _check_left_menu_visible(self, locator):
         LEFT_MENU = "//span[text()='" + locator + "']/ancestor::div[contains(@style,'transform')]"
@@ -42,7 +42,7 @@ class LeftMenu(BaseActions):
 
     def click_icon_home(self):
         self._click_element(self.ICON_HOME)
-        self.wait_for_element_not_present(self.ICON_HOME + self.GREY_COLOR)
+        self._wait_for_element_not_present(self.ICON_HOME + self.GREY_COLOR)
 
     def click_icon_devices(self):
         self._click_left_menu(self.DEVICES)

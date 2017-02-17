@@ -38,71 +38,71 @@ class LeftMenuAdministration(LeftMenu):
 
     def click_endpoint_management_label(self):
         self._click_element(LeftMenuAdministration.LABEL_ENDPOINT_MANAGEMENT)
-        self.wait_for_element_selected(LeftMenuAdministration.LABEL_ENDPOINT_MANAGEMENT)
+        self._wait_for_element_selected(LeftMenuAdministration.LABEL_ENDPOINT_MANAGEMENT)
 
     def expand_endpoint_management_tree(self):
-        self.wait_for_element_present(LeftMenuAdministration.LABEL_ENDPOINT_MANAGEMENT)
+        self._wait_for_element_present(LeftMenuAdministration.LABEL_ENDPOINT_MANAGEMENT)
         arrow = self._is_element_present(LeftMenuAdministration.TREE_ENDPOINT_MANAGEMENT + BaseElements.ARROW_EXPAND)
         if arrow:
             self._expand_tree(LeftMenuAdministration.TREE_ENDPOINT_MANAGEMENT)
 
     def collaps_endpoint_management_tree(self):
-        self.wait_for_element_present(LeftMenuAdministration.LABEL_ENDPOINT_MANAGEMENT)
+        self._wait_for_element_present(LeftMenuAdministration.LABEL_ENDPOINT_MANAGEMENT)
         arrow = self._is_element_present(LeftMenuAdministration.TREE_ENDPOINT_MANAGEMENT + BaseElements.ARROW_EXPAND)
         if arrow:
             self._collaps_tree(LeftMenuAdministration.TREE_ENDPOINT_MANAGEMENT)
 
     def click_site_management_label(self):
         self._click_element(LeftMenuAdministration.LABEL_SITE_MANAGEMENT)
-        self.wait_for_element_selected(LeftMenuAdministration.LABEL_SITE_MANAGEMENT)
+        self._wait_for_element_selected(LeftMenuAdministration.LABEL_SITE_MANAGEMENT)
 
     def click_logs_label(self):
         self._click_element(LeftMenuAdministration.LABEL_LOGS)
-        self.wait_for_element_selected(LeftMenuAdministration.LABEL_LOGS)
+        self._wait_for_element_selected(LeftMenuAdministration.LABEL_LOGS)
 
     def click_column_sets_label(self):
         self._click_element(LeftMenuAdministration.LABEL_COLUMN_SETS)
-        self.wait_for_element_selected(LeftMenuAdministration.LABEL_COLUMN_SETS)
+        self._wait_for_element_selected(LeftMenuAdministration.LABEL_COLUMN_SETS)
 
     def click_user_management_label(self):
         self._click_element(LeftMenuAdministration.LABEL_USER_MANAGEMENT)
-        self.wait_for_element_selected(LeftMenuAdministration.LABEL_USER_MANAGEMENT)
+        self._wait_for_element_selected(LeftMenuAdministration.LABEL_USER_MANAGEMENT)
 
     def click_inventory_scan_configuration_label(self):
         self._click_element(LeftMenuAdministration.LABEL_INVENTORY_SCAN)
-        self.wait_for_element_selected(LeftMenuAdministration.LABEL_INVENTORY_SCAN)
+        self._wait_for_element_selected(LeftMenuAdministration.LABEL_INVENTORY_SCAN)
 
     def click_vreps_label(self):
         self._click_element(LeftMenuAdministration.LABEL_VREPS)
-        self.wait_for_element_selected(LeftMenuAdministration.LABEL_VREPS)
+        self._wait_for_element_selected(LeftMenuAdministration.LABEL_VREPS)
 
     def click_maintenance_windows_label(self):
         self._click_element(LeftMenuAdministration.LABEL_MAINTENANCE_WINDOWS)
-        self.wait_for_element_selected(LeftMenuAdministration.LABEL_MAINTENANCE_WINDOWS)
+        self._wait_for_element_selected(LeftMenuAdministration.LABEL_MAINTENANCE_WINDOWS)
 
     def click_notifications_label(self):
         self._click_element(LeftMenuAdministration.LABEL_NOTIFICATIONS)
-        self.wait_for_element_selected(LeftMenuAdministration.LABEL_NOTIFICATIONS)
+        self._wait_for_element_selected(LeftMenuAdministration.LABEL_NOTIFICATIONS)
 
     def click_audit_log_label(self):
         self._click_element(LeftMenuAdministration.LABEL_AUDIT_LOG)
-        self.wait_for_element_selected(LeftMenuAdministration.LABEL_AUDIT_LOG)
+        self._wait_for_element_selected(LeftMenuAdministration.LABEL_AUDIT_LOG)
 
     def click_dynamically_managed_label(self):
         self._click_element(LeftMenuAdministration.LABEL_DYNAMICALLY_MANAGED)
-        self.wait_for_element_selected(LeftMenuAdministration.LABEL_DYNAMICALLY_MANAGED)
+        self._wait_for_element_selected(LeftMenuAdministration.LABEL_DYNAMICALLY_MANAGED)
 
     def click_excluded_devices_label(self):
         self._click_element(LeftMenuAdministration.LABEL_EXCLUDED_DEVICES)
-        self.wait_for_element_selected(LeftMenuAdministration.LABEL_EXCLUDED_DEVICES)
+        self._wait_for_element_selected(LeftMenuAdministration.LABEL_EXCLUDED_DEVICES)
 
     def click_unmanaged_devices_label(self):
         self._click_element(LeftMenuAdministration.LABEL_UNMANAGED_DEVICES)
-        self.wait_for_element_selected(LeftMenuAdministration.LABEL_UNMANAGED_DEVICES)
+        self._wait_for_element_selected(LeftMenuAdministration.LABEL_UNMANAGED_DEVICES)
 
     def click_infrastructure_label(self):
         self._click_element(LeftMenuAdministration.LABEL_INFRASTRUCTURE)
-        self.wait_for_element_selected(LeftMenuAdministration.LABEL_INFRASTRUCTURE)
+        self._wait_for_element_selected(LeftMenuAdministration.LABEL_INFRASTRUCTURE)
 
     def check_dynamically_managed_label_is_present(self):
         cond = self._is_element_present(LeftMenuAdministration.LABEL_DYNAMICALLY_MANAGED)

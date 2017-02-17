@@ -21,15 +21,15 @@ class IPAddressPopup(BaseActions):
 
     def click_button_ok(self):
         self._click_button_ok(IPAddressPopup.BODY)
-        self.wait_for_element_not_present(IPAddressPopup.BODY)
+        self._wait_for_element_not_present(IPAddressPopup.BODY)
 
     def click_button_cancel(self):
         self._click_button_cancel(IPAddressPopup.BODY)
-        self.wait_for_element_not_present(IPAddressPopup.BODY)
+        self._wait_for_element_not_present(IPAddressPopup.BODY)
 
     def click_system_button_close(self):
         self._click_system_button_close(IPAddressPopup.BODY)
-        self.wait_for_element_not_present(IPAddressPopup.BODY)
+        self._wait_for_element_not_present(IPAddressPopup.BODY)
 
     def enter_start_ip_address(self, ipaddress = "0.0.0.0"):
         self._find_element(IPAddressPopup.FIELD_START).send_keys(ipaddress)

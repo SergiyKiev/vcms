@@ -21,19 +21,19 @@ class SelectTargetsPopup(BaseActions):
 
     def click_button_ok(self):
         self._click_button_ok(SelectTargetsPopup.BODY)
-        self.wait_for_element_not_present(SelectTargetsPopup.BODY)
+        self._wait_for_element_not_present(SelectTargetsPopup.BODY)
 
     def click_button_cancel(self):
         self._click_button_cancel(SelectTargetsPopup.BODY)
-        self.wait_for_element_not_present(SelectTargetsPopup.BODY)
+        self._wait_for_element_not_present(SelectTargetsPopup.BODY)
 
     def click_system_button_close(self):
         self._click_system_button_close(SelectTargetsPopup.BODY)
-        self.wait_for_element_not_present(SelectTargetsPopup.BODY)
+        self._wait_for_element_not_present(SelectTargetsPopup.BODY)
 
     def click_button_add_members(self):
         self._click_button_cancel(SelectTargetsPopup.BODY)
-        self.wait_for_element_not_present(SelectTargetsPopup.BODY)
+        self._wait_for_element_not_present(SelectTargetsPopup.BODY)
 
 
 

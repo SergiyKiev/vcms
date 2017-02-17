@@ -21,11 +21,11 @@ class ModelAliasPopup(BaseActions):
 
     def click_button_close(self):
         self._click_button_close(ModelAliasPopup.BODY)
-        self.wait_for_element_not_present(ModelAliasPopup.BODY)
+        self._wait_for_element_not_present(ModelAliasPopup.BODY)
 
     def click_system_button_close(self):
         self._click_system_button_close(ModelAliasPopup.BODY)
-        self.wait_for_element_not_present(ModelAliasPopup.BODY)
+        self._wait_for_element_not_present(ModelAliasPopup.BODY)
 
 
 

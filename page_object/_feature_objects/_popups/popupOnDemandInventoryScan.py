@@ -22,14 +22,14 @@ class OnDemandInventoryScanPopup(BaseActions):
 
     def click_button_close(self):
         self._click_button_close(OnDemandInventoryScanPopup.BODY)
-        self.wait_for_element_not_present(OnDemandInventoryScanPopup.BODY)
+        self._wait_for_element_not_present(OnDemandInventoryScanPopup.BODY)
 
     def click_button_start_now(self):
         self._click_element(OnDemandInventoryScanPopup.BUTTON_START_NOW)
 
     def click_system_button_close(self):
         self._click_system_button_close(OnDemandInventoryScanPopup.BODY)
-        self.wait_for_element_not_present(OnDemandInventoryScanPopup.BODY)
+        self._wait_for_element_not_present(OnDemandInventoryScanPopup.BODY)
 
 
 

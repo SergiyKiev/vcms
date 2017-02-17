@@ -20,15 +20,15 @@ class EditFolderPopup(BaseActions):
 
     def click_button_ok(self):
         self._click_button_ok(EditFolderPopup.BODY)
-        self.wait_for_element_not_present(EditFolderPopup.BODY)
+        self._wait_for_element_not_present(EditFolderPopup.BODY)
 
     def click_button_cancel(self):
         self._click_button_cancel(EditFolderPopup.BODY)
-        self.wait_for_element_not_present(EditFolderPopup.BODY)
+        self._wait_for_element_not_present(EditFolderPopup.BODY)
 
     def click_system_button_close(self):
         self._click_system_button_close(EditFolderPopup.BODY)
-        self.wait_for_element_not_present(EditFolderPopup.BODY)
+        self._wait_for_element_not_present(EditFolderPopup.BODY)
 
     def enter_text_into_edit_folder_text_field(self, name):
         self._find_element(EditFolderPopup.FIELD_EDIT_FOLDER).send_keys(name)
