@@ -1,5 +1,6 @@
 from _base_page.base_elements import BaseElements
 from _feature_objects._left_menus.leftMenu import LeftMenu
+from _feature_objects._pages.pageEndpointManagement import EndpointManagementPage
 
 
 class LeftMenuAdministration(LeftMenu):
@@ -35,20 +36,18 @@ class LeftMenuAdministration(LeftMenu):
     LABEL_NOTIFICATIONS = TREE_NOTIFICATIONS + "/div[contains(@class,'RowContainer')]"
     LABEL_AUDIT_LOG = TREE_AUDIT_LOGS + "/div[contains(@class,'RowContainer')]"
 
-
     def click_endpoint_management_label(self):
         self._click_element(LeftMenuAdministration.LABEL_ENDPOINT_MANAGEMENT)
         self._wait_for_element_selected(LeftMenuAdministration.LABEL_ENDPOINT_MANAGEMENT)
 
     def expand_endpoint_management_tree(self):
-        self.click_endpoint_management_label()
-        arrow = self._is_element_present(LeftMenuAdministration.TREE_ENDPOINT_MANAGEMENT + BaseElements.ARROW_EXPAND)
+        arrow = self._is_element_present(self.TREE_ENDPOINT_MANAGEMENT + BaseElements.ARROW_EXPAND)
         if arrow:
-            self._expand_tree(LeftMenuAdministration.TREE_ENDPOINT_MANAGEMENT)
+            self._expand_tree(self.TREE_ENDPOINT_MANAGEMENT)
 
     def collaps_endpoint_management_tree(self):
         self._wait_for_element_present(LeftMenuAdministration.LABEL_ENDPOINT_MANAGEMENT)
-        arrow = self._is_element_present(LeftMenuAdministration.TREE_ENDPOINT_MANAGEMENT + BaseElements.ARROW_EXPAND)
+        arrow = self._is_element_not_present(LeftMenuAdministration.TREE_ENDPOINT_MANAGEMENT + "/div[2][contains(@style,'display: none')]")
         if arrow:
             self._collaps_tree(LeftMenuAdministration.TREE_ENDPOINT_MANAGEMENT)
 

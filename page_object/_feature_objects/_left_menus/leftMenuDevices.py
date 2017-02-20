@@ -39,32 +39,25 @@ class LeftMenuDevices(LeftMenu):
         self._wait_for_element_selected(element)
 
     def expand_global_site_view_tree(self):
-        self._wait_for_element_present(LeftMenuDevices.LABEL_GLOBAL_SITE_VIEW)
         arrow = self._is_element_present(LeftMenuDevices.TREE_GLOBAL_SITE_VIEW + BaseElements.ARROW_EXPAND)
         if arrow:
             self._expand_tree(LeftMenuDevices.TREE_GLOBAL_SITE_VIEW)
 
     def expand_groups_tree(self):
-        self._wait_for_element_present(LeftMenuDevices.LABEL_GROUPS)
         arrow = self._is_element_present(LeftMenuDevices.TREE_GROUPS + BaseElements.ARROW_EXPAND)
         if arrow:
             self._expand_tree(LeftMenuDevices.TREE_GROUPS)
 
     def expand_queries_tree(self):
-        self._wait_for_element_present(LeftMenuDevices.LABEL_QUERIES)
         arrow = self._is_element_present(LeftMenuDevices.TREE_QUERIES + BaseElements.ARROW_EXPAND)
         if arrow:
             self._expand_tree(LeftMenuDevices.TREE_QUERIES)
-        else:
-            pass
 
     def collaps_global_site_view_tree(self):
-        self._wait_for_element_present(LeftMenuDevices.LABEL_GLOBAL_SITE_VIEW)
+        # self._wait_for_element_present(LeftMenuDevices.LABEL_GLOBAL_SITE_VIEW)
         arrow = self._is_element_present(LeftMenuDevices.TREE_GLOBAL_SITE_VIEW + BaseElements.ARROW_COLLAPSE)
         if arrow:
             self._collaps_tree(LeftMenuDevices.TREE_GLOBAL_SITE_VIEW)
-        else:
-            pass
 
     def click_default_site_in_global_site_view(self):
         self._click_element(LeftMenuDevices.LABEL_DEFAULT_SITE)
@@ -76,7 +69,10 @@ class LeftMenuDevices(LeftMenu):
                   + "/*//span[text()='" + sitename + "']/ancestor::div[contains(@class,'RowContainer')]"
         self._click_element(element)
         self._wait_for_element_selected(element)
-        self._wait_for_element_present(RibbonBar.BUTTONS_BOX_SITE_CONFIG)
+        self._wait_for_element_present(RibbonBar.BUTTON_DELETE)
+        self._wait_for_element_present(RibbonBar.BUTTON_MOVE)
+        self._wait_for_element_present(RibbonBar.BUTTON_CONFIG)
+        self._wait_for_element_present(RibbonBar.BUTTON_NEW_SITE)
 
     def click_active_directories_label(self):
         self._click_element(LeftMenuDevices.LABEL_ACTIVE_DIRECTORIES)
@@ -229,3 +225,7 @@ class LeftMenuDevices(LeftMenu):
         self._click_element(element)
         self._wait_for_element_selected(element)
         self._wait_for_element_present(RibbonBar.BUTTONS_BOX_GROUPS)
+
+    def open_global_site_view_tree(self):
+        self.click_global_site_view_label()
+        self.expand_global_site_view_tree()

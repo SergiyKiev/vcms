@@ -1,7 +1,9 @@
 from _base_page.base_elements import BaseElements
+from _feature_objects._popups.popupAdminAccounts import AdminAccountsPopup
 from _feature_objects._popups.popupColumnSets import ColumnSetsPopup
 from _feature_objects._popups.popupClientSettings import ClientSettingsPopup
 from _feature_objects._popups.popupConfiguration import ConfigurationPopup
+from _feature_objects._popups.popupConfigureExclusions import ConfigureExclusionsPopup
 from _feature_objects._popups.popupConnecting import ConnectingPopup
 from _feature_objects._popups.popupCurrency import CurrencyPopup
 from _feature_objects._popups.popupEditFolder import EditFolderPopup
@@ -39,6 +41,7 @@ from selenium.common.exceptions import NoSuchElementException, TimeoutException
 
 class RibbonBar(BaseActions):
 
+
     DROP_DOWN_LIST = "//div[@class='Menu-PopupWindow']"
     DROP_DOWN_ARROW = "/*//img[contains(@src,'DropDown')]"
     BUTTONS_GROUP_BOX = "/ancestor::div[@class='RibbonBarGroupBox-Control']"
@@ -57,11 +60,14 @@ class RibbonBar(BaseActions):
     BUTTONS_BOX_INVENTORY = "//div[text()='Inventory'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
     BUTTONS_BOX_SITE_MANAGEMENT = "//div[text()='Site Management'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
     BUTTONS_BOX_COMPUTER_TOOLS = "//div[text()='Computer Tools'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
+    BUTTONS_BOX_CONFIGURATION = "//div[text()='Configuration'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
     BUTTON_EXIT = "//img[@alt='Exit']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_HOME = "//img[@alt='Home']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_NEW = "//img[@alt='New']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_EDIT = "//img[@alt='Edit']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_EDIT_FOLDER = "//img[@alt='Edit Folder']/ancestor::div[contains(@class,'RibbonBarButton')]"
+    BUTTON_ACCOUNTS = "//img[@alt='Accounts']/ancestor::div[contains(@class,'RibbonBarButton')]"
+    BUTTON_EXCLUSIONS = "//img[@alt='Exclusions']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_NEW_SITE = "//img[@alt='New Site']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_CONFIG = "//img[@alt='Config']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_DELETE = "//img[@alt='Delete']/ancestor::div[contains(@class,'RibbonBarButton')]"
@@ -215,7 +221,7 @@ class RibbonBar(BaseActions):
         return True if cond else False
 
     def check_button_config_is_present(self):
-        cond = self._is_element_present(RibbonBar.BUTTON_CONFIG)
+        cond = self._wait_for_element_present(RibbonBar.BUTTON_CONFIG)
         return True if cond else False
 
     def check_button_exit_is_present(self):
@@ -264,27 +270,27 @@ class RibbonBar(BaseActions):
     def click_button_file_browser(self):
         self._click_element(RibbonBar.BUTTON_FILE_BROWSER)
         self.wait_for_not_loading()
-        # self._wait_for_element_present(FileExplorerPopup.PAGE_BODY)
+        self._wait_for_element_present(FileExplorerPopup.BODY)
 
     def click_button_ping(self):
         self._click_element(RibbonBar.BUTTON_PING)
         self.wait_for_not_loading()
-        # self._wait_for_element_present(PingResultPopup.PAGE_BODY)
+        self._wait_for_element_present(PingResultPopup.BODY)
 
     def click_button_process_viewer(self):
         self._click_element(RibbonBar.BUTTON_PROCESS_VIEWER)
         self.wait_for_not_loading()
-        # self._wait_for_element_present(ProcessExplorerPopup.PAGE_BODY)
+        self._wait_for_element_present(ProcessExplorerPopup.BODY)
 
     def click_button_event_viewer(self):
         self._click_element(RibbonBar.BUTTON_EVENT_VIEWER)
         self.wait_for_not_loading()
-        # self._wait_for_element_present(EventViewerPopup.PAGE_BODY)
+        self._wait_for_element_present(EventViewerPopup.BODY)
 
     def click_button_wmi_explorer(self):
         self._click_element(RibbonBar.BUTTON_WMI_EXPLORER)
         self.wait_for_not_loading()
-        # self._wait_for_element_present(WMIExplorerPopup.PAGE_BODY)
+        self._wait_for_element_present(WMIExplorerPopup.BODY)
 
     def check_help_link_is_correct(self):
         cond = self._check_help_frame_header("CMS Quick Help Videos")
@@ -344,6 +350,10 @@ class RibbonBar(BaseActions):
 
     def check_groups_box_is_present(self):
         cond = self._is_element_present(RibbonBar.BUTTONS_BOX_GROUPS)
+        return True if cond else False
+
+    def check_configuration_box_is_present(self):
+        cond = self._is_element_present(RibbonBar.BUTTONS_BOX_CONFIGURATION)
         return True if cond else False
 
     def check_inventory_box_is_present(self):
@@ -407,4 +417,12 @@ class RibbonBar(BaseActions):
     def check_button_patch_manager_is_present(self):
         cond = self._is_element_present(RibbonBar.BUTTON_PATCH_MANAGER)
         return True if cond else False
+
+    def click_button_accounts(self):
+        self._click_element(RibbonBar.BUTTON_ACCOUNTS)
+        self._wait_for_element_present(AdminAccountsPopup.BODY)
+
+    def click_button_exclusions(self):
+        self._click_element(RibbonBar.BUTTON_EXCLUSIONS)
+        self._wait_for_element_present(ConfigureExclusionsPopup.BODY)
 

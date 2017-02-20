@@ -50,12 +50,7 @@ class BaseActions(Base):
 
     def _click_icon_help(self, locator):
         self._click_element(locator + BaseElements.ICON_HELP)
-        # try:
-        #     self.wait_webelement.until(lambda d: len(d.window_handles) == 2)
-        # except TimeoutException, NoSuchElementException:
-        #     return Exception
-        # except Exception as e:
-        #     self.logger.error("Window is not opened", e)
+        self.wait_webelement.until(lambda d: len(d.window_handles) == 2)
 
     def _click_icon_restore(self, locator):
         self._wait_for_element_present(locator)
@@ -167,8 +162,8 @@ class BaseActions(Base):
                 error = self._find_element(BaseElements.HELP_FRAME_HEADER_SERVER_ERROR).text
                 error_text1 = self._find_element("//*[@id='content']/div/fieldset/h2").text
                 # error_text2 = self._find_element("//*[@id='content']/div/fieldset/h3").text
-                self.logger.error("Test failed. Header: " + str(error))
-                self.logger.error("Error message: " + str(error_text1))
+                self.logger.error("Test failed. Header: " + str(error) + ". Message: " + str(error_text1))
+                # self.logger.error("Error message: " + str(error_text1))
                 # self.logger.error(str(error_text2))
         except NoSuchElementException:
             massage1 = self._find_element("//*[@id='main-message']/h1").text
@@ -285,6 +280,11 @@ class BaseActions(Base):
         try:
             element = self._find_element(locator + BaseElements.ARROW_EXPAND)
             self.driver.execute_script("arguments[0].click();", element)
+            # cond = self._wait_for_element_not_present(locator + BaseElements.ARROW_EXPAND)
+            # if cond:
+            #     return True
+            # else:
+            #     return False
         except Exception as e:
             print "Massage: ", e
 
@@ -293,11 +293,13 @@ class BaseActions(Base):
         elements = self._find_elements(locator + BaseElements.ARROW_EXPAND)
         for element in elements:
             self.driver.execute_script("arguments[0].click();", element)
+            # self._wait_for_element_not_present(locator + BaseElements.ARROW_EXPAND)
 
     def _collaps_tree(self, locator):
         try:
             element = self._find_element(locator + BaseElements.ARROW_COLLAPSE)
             self.driver.execute_script("arguments[0].click();", element)
+            # self._wait_for_element_not_present(locator + BaseElements.ARROW_COLLAPSE)
         except Exception as e:
             print "Massage: ", e
 
@@ -306,6 +308,7 @@ class BaseActions(Base):
         elements = self._find_elements(locator + BaseElements.ARROW_COLLAPSE)
         for element in elements:
             self.driver.execute_script("arguments[0].click();", element)
+            # self._wait_for_element_not_present(locator + BaseElements.ARROW_COLLAPSE)
 
     def _get_tree_view(self, locator):
         tree_view = str(locator) + BaseElements.TREE_VIEW

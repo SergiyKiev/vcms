@@ -38,7 +38,7 @@ class Base(object):
         self.driver = driver
         self.base_url = base_url
         self.timeout_loading = 120
-        self.timeout_condition = 2
+        self.timeout_condition = 1.5
         self.timeout_webelement = 10
         self.wait_webelement = WebDriverWait(self.driver, self.timeout_webelement)
         self.wait_condition = WebDriverWait(self.driver, self.timeout_condition)

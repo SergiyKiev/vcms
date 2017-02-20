@@ -1,5 +1,6 @@
 
 from _base_page.base_elements import *
+from _base_page.downloadAndInstall import DownloadAndInstall
 from _feature_objects._left_menus.leftMenu import LeftMenu
 from _feature_objects._left_menus.leftMenuAdministration import LeftMenuAdministration
 from _feature_objects._left_menus.leftMenuDevices import LeftMenuDevices
@@ -7,6 +8,7 @@ from _feature_objects._pages.pageAdministration import AdministrationPage
 from _feature_objects._pages.pageDevices import *
 from _feature_objects._pages.pageVReps import VRepsPage
 from _feature_objects._ribbon_bar.ribbonBar import RibbonBar
+from _variables.variables import Variables
 
 
 class MainPage(BaseActions):
@@ -33,5 +35,25 @@ class MainPage(BaseActions):
         vreps_page.upprove_single_vrep_in_vreps_page_table(device_name)
         cond = vreps_page.check_vrep_ready_for_work(device_name)
         return True if cond else False
+
+    def setup_for_help_tests(self):
+        device_name = Variables.vrep
+        devices_page = DevicesPage(self.driver)
+        delete_vrep = self.delete_device_from_the_console(device_name)
+        self.logger.info("Device is not presented in the console: " + str(device_name) + " - " + str(delete_vrep))
+        desktop = DownloadAndInstall(self.driver)
+        desktop.clean_up_device()
+        desktop.download_agent()
+        desktop.install_agent()
+        devices_page.click_icon_refresh()
+        install_vrep = devices_page.check_device_is_present(device_name)
+        self.logger.info("vRep " + str(device_name) + " is installed - " + str(install_vrep))
+        upprove_vrep = self.upprove_vrep(device_name)
+        if upprove_vrep:
+            self.logger.info("Setup is finished successfully: " + str(upprove_vrep) + "\n")
+            return True
+        else:
+            self.logger.info("Setup is finished successfully: " + str(upprove_vrep) + "\n")
+            return False
 
 
