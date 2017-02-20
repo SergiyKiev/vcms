@@ -25,21 +25,20 @@ class DownloadAndInstall(BaseActions):
     def clean_up_device(self):
         subprocess.Popen(['C:\\VCMS\\verismicCleanUp.cmd'], shell = True) #home
         # subprocess.Popen(['runas', '/user:VKYV\igork', 'C:\\VCMS\\verismicCleanUp.cmd'], shell=True)  # home
-        time.sleep(120)
-        print "Clean_up is finished"
+        time.sleep(90)
+        self.logger.info("Clean_up on device is finished")
 
     def download_agent(self):
         installer = wgetter.download('https://testteamtest.cloudmanagementsuite.com/WebService/api/v1/Downloads/vRepSetup.msi', outdir='C:\\VCMS')
         # wgetter.download(str(url), outdir='C:\\VCMS')
-        print "Installer is downloaded", installer
         time.sleep(10)
+        self.logger.info("Installation is downloaded" + str(installer))
 
     def install_agent(self):
         # os.system('msiexec /i %s /qn' % 'C:\\VCMS\\vRepSetup-testteamtest.msi')
         install = os.system('msiexec /i %s /qn' % 'C:\\VCMS\\vRepSetup-testteamtest.msi')
         time.sleep(60)
-        print "Installation is finished", install
-#
+        self.logger.info("Installation is finished" + str(install))
 
 
 

@@ -24,7 +24,7 @@ class InventoryViewPopup(BaseActions):
     def check_popup_is_present(self, name):
         element = "//span[text()='" + name + "']/ancestor::div[contains(@id,'WRP')]"
         cond = self._is_element_present(element)
-        # cond = self._is_element_present(InventoryViewPopup.BODY)
+        # cond = self._is_element_present(InventoryViewPopup.PAGE_BODY)
         return True if cond else False
 
     def click_button_ok(self):

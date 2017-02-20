@@ -59,7 +59,7 @@ class ColumnSetDesignerPopup(BaseActions):
 
     def expand_all_left_side_trees(self):
         self._expand_all_trees(ColumnSetDesignerPopup.LEFT_SIDE_TREE)
-        # self._wait_for_element_present(ColumnSetDesignerPopup.BODY)
+        # self._wait_for_element_present(ColumnSetDesignerPopup.PAGE_BODY)
         # elements = self._find_elements(ColumnSetDesignerPopup.LEFT_SIDE_TREE + "/div/div/div[contains(@id,'VWGJOINT')]")
         # elements = self._find_elements(ColumnSetDesignerPopup.LEFT_SIDE_TREE + BaseElements.ARROW_EXPAND)
         # for element in elements:

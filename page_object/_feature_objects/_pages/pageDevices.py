@@ -60,7 +60,7 @@ class DevicesPage(BaseActions):
         self._click_icon_help(DevicesPage.PAGE_HEADER)
 
     def check_help_link_is_correct(self):
-        self._help_message("Devices")
+        self._help_results("Devices")
 
     def delete_devices_in_devices_page_table(self, *names):
         try:
@@ -84,7 +84,7 @@ class DevicesPage(BaseActions):
                 else:
                     self.logger.info("No device was found:", str(name))
         except Exception as e:
-            self.logger.error("Method 'delete_devices_in_devices_page_table' failed: ", e)
+            self.logger.error("Method 'delete_devices_in_devices_page_table' is failed\n" + str(e))
 
     def delete_single_device_in_devices_page_table(self, name):
         try:

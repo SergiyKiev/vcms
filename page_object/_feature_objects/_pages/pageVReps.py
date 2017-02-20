@@ -99,7 +99,7 @@ class VRepsPage(BaseActions):
                 unchecked = self._is_element_not_present(checkbox + "[contains(@src,'CheckBox1')]")
                 # print checkbox + BaseActions.CHECKED + " is " + str(unchecked)
                 if unchecked:
-                    self.logger.info("vRep " + str(name) + " was not upproved" )
+                    self.logger.info("vRep " + str(name) + " needs to be upproved" )
                     self._click_element(checkbox)
                     self.click_icon_refresh()
                     self._wait_for_element_present(checkbox + "[contains(@src,'CheckBox1')]")
@@ -120,7 +120,7 @@ class VRepsPage(BaseActions):
             elif cond4 is not True:
                 self.logger.error("vRep " + str(name) + " is not checked\n")
         except Exception as e:
-            self.logger.error("Method 'Upprove a single vrep' is failed ", e)
+            self.logger.error("Method 'Upprove a single vrep' is failed\n", str(e))
 
     def select_vrep_in_table(self, name):
         row = VRepsPage.TABLE_ROW + "/*//span[text()='" + name + "']/ancestor::tr"

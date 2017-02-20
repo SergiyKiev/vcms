@@ -70,7 +70,7 @@ class SiteTab(ConfigurationPopup):
         self._find_element(SiteTab.FIELD_NAME).send_keys(sitename)
 
     def get_name_text_field_value(self):
-        actual_attribute_value = self.get_attribute_value(SiteTab.FIELD_NAME, "value")
+        actual_attribute_value = self._get_attribute_value(SiteTab.FIELD_NAME, "value")
         print ("The actual value in the Name textfield is: " + actual_attribute_value)
         return actual_attribute_value
 

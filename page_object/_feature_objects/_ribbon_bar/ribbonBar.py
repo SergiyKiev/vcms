@@ -1,10 +1,12 @@
-
+from _base_page.base_elements import BaseElements
 from _feature_objects._popups.popupColumnSets import ColumnSetsPopup
 from _feature_objects._popups.popupClientSettings import ClientSettingsPopup
 from _feature_objects._popups.popupConfiguration import ConfigurationPopup
+from _feature_objects._popups.popupConnecting import ConnectingPopup
 from _feature_objects._popups.popupCurrency import CurrencyPopup
 from _feature_objects._popups.popupEditFolder import EditFolderPopup
 from _feature_objects._popups.popupEndUserAccess import EndUserAccessPopup
+from _feature_objects._popups.popupError import ErrorPopup
 from _feature_objects._popups.popupEventViewer import EventViewerPopup
 from _feature_objects._popups.popupFileExplorer import FileExplorerPopup
 from _feature_objects._popups.popupInventoryView import InventoryViewPopup
@@ -47,6 +49,7 @@ class RibbonBar(BaseActions):
     TAB_VIEW = "//span[text()='View']/ancestor::div[contains(@id,'TAB')]"
     TAB_TOOLS = "//span[text()='Tools']/ancestor::div[contains(@id,'TAB')]"
     TAB_DEVICES = "//span[text()='Devices']/ancestor::div[contains(@id,'TAB')]"
+    BUTTONS_BOX_SITE_CONFIG = "//div[text()='Site Config'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
     BUTTONS_BOX_DISPLAY = "//div[text()='Display'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
     BUTTONS_BOX_ACTIONS = "//div[text()='Actions'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
     BUTTONS_BOX_QUERIES = "//div[text()='Queries'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
@@ -111,6 +114,7 @@ class RibbonBar(BaseActions):
     def click_tab_devices(self):
         self._click_element(RibbonBar.TAB_DEVICES)
         self._wait_for_element_selected(RibbonBar.TAB_DEVICES)
+        self._wait_for_element_present(RibbonBar.BUTTON_PATCH_MANAGER)
 
     def click_tab_tools(self):
         self._click_element(RibbonBar.TAB_TOOLS)
@@ -135,10 +139,9 @@ class RibbonBar(BaseActions):
     def open_tab_devices(self):
         self._wait_for_element_present(RibbonBar.TAB_DEVICES)
         cond = self._is_element_selected(RibbonBar.TAB_DEVICES)
-        if cond:
-            pass
-        else:
+        if cond is not True:
             self.click_tab_devices()
+
 
     def open_tab_tools(self):
         self._wait_for_element_present(RibbonBar.TAB_TOOLS)
@@ -170,8 +173,8 @@ class RibbonBar(BaseActions):
 
     def click_button_delete(self):
         self._click_element(RibbonBar.BUTTON_DELETE)
-        # cond1 = self._is_element_present(AreYouSurePopup.BODY)
-        # cond2 = self._is_element_present(UnableToRemovePopup.BODY)
+        # cond1 = self._is_element_present(AreYouSurePopup.PAGE_BODY)
+        # cond2 = self._is_element_present(UnableToRemovePopup.PAGE_BODY)
         # if cond1:
         #     return AreYouSurePopup(self.driver)
         # elif cond2:
@@ -191,6 +194,7 @@ class RibbonBar(BaseActions):
         self._wait_for_element_present(RemoveDevicesPopup.BODY)
 
     def click_button_config(self):
+        self._wait_for_element_present(RibbonBar.BUTTON_CONFIG)
         self._click_element(RibbonBar.BUTTON_CONFIG)
         self._wait_for_element_present(ConfigurationPopup.BODY)
 
@@ -259,23 +263,28 @@ class RibbonBar(BaseActions):
 
     def click_button_file_browser(self):
         self._click_element(RibbonBar.BUTTON_FILE_BROWSER)
-        self._wait_for_element_present(FileExplorerPopup.BODY)
+        self.wait_for_not_loading()
+        # self._wait_for_element_present(FileExplorerPopup.PAGE_BODY)
 
     def click_button_ping(self):
         self._click_element(RibbonBar.BUTTON_PING)
-        self._wait_for_element_present(PingResultPopup.BODY)
+        self.wait_for_not_loading()
+        # self._wait_for_element_present(PingResultPopup.PAGE_BODY)
 
     def click_button_process_viewer(self):
         self._click_element(RibbonBar.BUTTON_PROCESS_VIEWER)
-        self._wait_for_element_present(ProcessExplorerPopup.BODY)
+        self.wait_for_not_loading()
+        # self._wait_for_element_present(ProcessExplorerPopup.PAGE_BODY)
 
     def click_button_event_viewer(self):
         self._click_element(RibbonBar.BUTTON_EVENT_VIEWER)
-        self._wait_for_element_present(EventViewerPopup.BODY)
+        self.wait_for_not_loading()
+        # self._wait_for_element_present(EventViewerPopup.PAGE_BODY)
 
     def click_button_wmi_explorer(self):
         self._click_element(RibbonBar.BUTTON_WMI_EXPLORER)
-        self._wait_for_element_present(WMIExplorerPopup.BODY)
+        self.wait_for_not_loading()
+        # self._wait_for_element_present(WMIExplorerPopup.PAGE_BODY)
 
     def check_help_link_is_correct(self):
         cond = self._check_help_frame_header("CMS Quick Help Videos")

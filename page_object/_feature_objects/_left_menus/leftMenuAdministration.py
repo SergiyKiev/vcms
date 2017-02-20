@@ -41,7 +41,7 @@ class LeftMenuAdministration(LeftMenu):
         self._wait_for_element_selected(LeftMenuAdministration.LABEL_ENDPOINT_MANAGEMENT)
 
     def expand_endpoint_management_tree(self):
-        self._wait_for_element_present(LeftMenuAdministration.LABEL_ENDPOINT_MANAGEMENT)
+        self.click_endpoint_management_label()
         arrow = self._is_element_present(LeftMenuAdministration.TREE_ENDPOINT_MANAGEMENT + BaseElements.ARROW_EXPAND)
         if arrow:
             self._expand_tree(LeftMenuAdministration.TREE_ENDPOINT_MANAGEMENT)

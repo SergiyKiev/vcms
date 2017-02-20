@@ -28,6 +28,8 @@ class LeftMenuDevices(LeftMenu):
     def click_global_site_view_label(self):
         self._click_element(LeftMenuDevices.LABEL_GLOBAL_SITE_VIEW)
         self._wait_for_element_selected(LeftMenuDevices.LABEL_GLOBAL_SITE_VIEW)
+        self._wait_for_element_present(RibbonBar.BUTTONS_BOX_SITE_CONFIG)
+        # self._wait_for_elements_present(RibbonBar.BUTTONS_BOX_SITE_CONFIG + "/*//div[contains(@class,'RibbonBarButton-Text')]")
 
     def click_subsite_in_site_tree(self, sitename, subsitename):
         site_name = "//span[text()='" + sitename + "']/ancestor::div[contains(@class,'RowContainer')]"
@@ -67,12 +69,14 @@ class LeftMenuDevices(LeftMenu):
     def click_default_site_in_global_site_view(self):
         self._click_element(LeftMenuDevices.LABEL_DEFAULT_SITE)
         self._wait_for_element_selected(LeftMenuDevices.LABEL_DEFAULT_SITE)
+        self._wait_for_element_present(RibbonBar.BUTTONS_BOX_SITE_CONFIG)
 
     def click_site_in_global_site_view_tree(self, sitename):
         element = LeftMenuDevices.LIST_GLOBAL_SITE_VIEW \
                   + "/*//span[text()='" + sitename + "']/ancestor::div[contains(@class,'RowContainer')]"
         self._click_element(element)
         self._wait_for_element_selected(element)
+        self._wait_for_element_present(RibbonBar.BUTTONS_BOX_SITE_CONFIG)
 
     def click_active_directories_label(self):
         self._click_element(LeftMenuDevices.LABEL_ACTIVE_DIRECTORIES)
@@ -81,10 +85,12 @@ class LeftMenuDevices(LeftMenu):
     def click_queries_label(self):
         self._click_element(LeftMenuDevices.LABEL_QUERIES)
         self._wait_for_element_selected(LeftMenuDevices.LABEL_QUERIES)
+        self._wait_for_element_present(RibbonBar.BUTTONS_BOX_QUERIES)
 
     def click_groups_label(self):
         self._click_element(LeftMenuDevices.LABEL_GROUPS)
         self._wait_for_element_selected(LeftMenuDevices.LABEL_GROUPS)
+        self._wait_for_element_present(RibbonBar.BUTTONS_BOX_GROUPS)
 
     def delete_site_if_exists(self, sitename):
         element = LeftMenuDevices.LIST_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']"
@@ -222,3 +228,4 @@ class LeftMenuDevices(LeftMenu):
         element = LeftMenuDevices.LIST_GROUPS + "/*//span[text()='" + name + "']/ancestor::div[contains(@class,'RowContainer')]"
         self._click_element(element)
         self._wait_for_element_selected(element)
+        self._wait_for_element_present(RibbonBar.BUTTONS_BOX_GROUPS)

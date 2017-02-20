@@ -21,8 +21,8 @@ class ColumnSetsPopup(BaseActions):
 
     def click_button_ok(self):
         self._click_button_ok(ColumnSetsPopup.BODY)
-        # self._click_element(self.BODY + "/*" + Locators.BTN_OK)
-        # self._wait_for_element_not_present(self.BODY)
+        # self._click_element(self.PAGE_BODY + "/*" + Locators.BTN_OK)
+        # self._wait_for_element_not_present(self.PAGE_BODY)
 
     def click_icon_help(self):
         self._click_icon_help(ColumnSetsPopup.BODY)
@@ -48,7 +48,7 @@ class ColumnSetsPopup(BaseActions):
 
     def click_button_delete(self):
         self._click_element(ColumnSetsPopup.BUTTON_DELETE)
-        # self._wait_for_element_present(AreYouSurePopup.BODY)
+        # self._wait_for_element_present(AreYouSurePopup.PAGE_BODY)
 
     def click_popup_button_set_as_default(self):
         self._click_element(ColumnSetsPopup.BUTTON_SET_AS_DEFAULT)

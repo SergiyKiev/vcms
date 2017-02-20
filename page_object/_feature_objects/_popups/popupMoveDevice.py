@@ -47,7 +47,7 @@ class MoveDevicePopup(BaseActions):
 
     def expand_all_left_side_trees(self):
         self._expand_all_trees(MoveDevicePopup.LEFT_SIDE_TREE)
-        # self._wait_for_element_present(MoveDevicePopup.BODY)
+        # self._wait_for_element_present(MoveDevicePopup.PAGE_BODY)
         # elements = self._find_elements(MoveDevicePopup.LEFT_SIDE_TREE + "/div/div/div[contains(@id,'VWGJOINT')]")
         # for element in elements:
         #     self.driver.execute_script("arguments[0].click();", element)

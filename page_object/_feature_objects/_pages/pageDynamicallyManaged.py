@@ -6,9 +6,9 @@ from _feature_objects._ribbon_bar.ribbonBar import RibbonBar
 class DynamicallyManagedPage(BaseActions):
 
     PAGE_HEADER = "//span[text()='Dynamically Managed']/ancestor::div[@class='Panel-Control'][contains(@style,'85px')]"
-    BODY = PAGE_HEADER + "/parent::div"
-    TABLE_HEADER = BODY + "/*//div[contains(@id,'HEADER')]"
-    TABLE_BODY = BODY + "/*//div[contains(@id,'VWGLVBODY')]"
+    PAGE_BODY = PAGE_HEADER + "/parent::div"
+    TABLE_HEADER = PAGE_BODY + "/*//div[contains(@id,'HEADER')]"
+    TABLE_BODY = PAGE_BODY + "/*//div[contains(@id,'VWGLVBODY')]"
     TABLE_ROW = TABLE_BODY + "/*//tr"
     SEARCH_FIELD = PAGE_HEADER + "/*//input[contains(@class,'TextBox-Input')][@type='text']"
     HEADER_DEVICE_NAME = TABLE_HEADER + "/*//span[contains(text(),'Device Name')]"

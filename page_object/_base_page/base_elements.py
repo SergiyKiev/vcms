@@ -21,7 +21,8 @@ class BaseElements(Base):
     BUTTON_DELETE = "/*//span[text()='Delete']/ancestor::div[contains(@class,'Button')]"
 
    #SYSTEM_BUTTONS
-    SYSTEM_BUTTON_CLOSE = "/*//div[@title='Close']"
+    SYSTEM_BUTTON_CLOSE = "/*//div[@title='Close'][@onclick]"
+    "[@class='Common-HandCursor Form-CloseButton']"
     SYSTEM_BUTTON_MAXIMIZE = "//div[@title='Maximize']"
     SYS_BUTTON_MINIMIZE = "//div[@title='Minimize']"
     SYS_BUTTON_RESTORE_DOWN = "//div[@title='Restore Down']"
@@ -35,18 +36,21 @@ class BaseElements(Base):
     ICON_RESTORE = "/*//img[contains(@src,'298-circlex')]"
 
     #DROP_DOWN
-    DROP_DOWN_LIST = "/*//div[contains(@class,'ComboBox-Container')]"
+    DROP_DOWN_LIST          = "/*//div[contains(@class,'ComboBox-Container')]"
     DROP_DOWN_APPLIED_VALUE = "/*//div[contains(@class,'ComboBox-Container')]/*//span[@data-vwg_appliedvalue]"
+    GREY_COLOR = "[contains(@style,'#E8E8E8')]"
 
     #GENERAL ELEMENTS
-    _POPUP = "//div[contains(@id,'WRP')][last()]"
-    _FIELD = "/*//input"
-    # _RIBBON_BAR = "//div[@class='RibbonBarTabControl-Control']"
-    _RIBBON_BAR = "//div[@class='RibbonBar-Control']"
-    _LEFT_MENU = "//td[contains(@style,'Home')]/ancestor::div[@class='Panel-Control']/following-sibling::div[@class='FlowLayoutPanel-Control']"
-    _PANEL = "//div[@class='Panel-Control']"
-    _DROP_DOWN_LIST = "//div[@class='ComboBox-PopupWindow']"
-    _TAB_PANEL = "//div[contains(@id,'VWGTCHD_')]"
+    POPUP = "//div[contains(@id,'WRP')][last()]"
+    POPUP_ERROR = "//span[text()='Error']/ancestor::div[contains(@id,'WRP')]/*//span[contains(@class,'Label-FontData')]"
+    FIELD = "/*//input"
+    # RIBBON_BAR = "//div[@class='RibbonBarTabControl-Control']"
+    RIBBON_BAR = "//div[@class='RibbonBar-Control']"
+    LEFT_MENU_HOME = "//td[contains(@style,'Home')]/ancestor::div[@class='Panel-Control']/following-sibling::div[@class='FlowLayoutPanel-Control']"
+    PANEL_CONTROL = "//div[@class='Panel-Control']"
+    DROP_DOWN_WINDOW = "//div[@class='ComboBox-PopupWindow']"
+    TAB_PANEL = "//div[contains(@id,'VWGTCHD_')]"
+    TREE_VIEW = "/*//div[@class='Common-Unselectable TreeView-Container']"
 
     #HELP WINDOW
     HELP_WINDOW_BODY = "//title[text()='ConsoleOperationGuide']"

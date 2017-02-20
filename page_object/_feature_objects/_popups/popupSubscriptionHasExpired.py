@@ -10,7 +10,7 @@ class SubscriptionHasExpiredPopup(BaseActions):
         self._click_system_button_close(SubscriptionHasExpiredPopup.BODY)
 
     # def close_popup(self):
-    #     cond = self._is_element_present(SubscriptionHasExpitredPopup.BODY)
+    #     cond = self._is_element_present(SubscriptionHasExpitredPopup.PAGE_BODY)
     #     if cond:
     #         self._click_system_button_close()
     #     else:

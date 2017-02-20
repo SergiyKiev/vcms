@@ -21,15 +21,13 @@ class WeightDisplayPopup(BaseActions):
 
     def click_button_ok(self):
         self._click_button_ok(WeightDisplayPopup.BODY)
-        self._wait_for_element_not_present(WeightDisplayPopup.BODY)
 
     def click_button_cancel(self):
         self._click_button_cancel(WeightDisplayPopup.BODY)
-        self._wait_for_element_not_present(WeightDisplayPopup.BODY)
 
     def click_system_button_close(self):
         self._click_system_button_close(WeightDisplayPopup.BODY)
-        self._wait_for_element_not_present(WeightDisplayPopup.BODY)
+
 
 
 

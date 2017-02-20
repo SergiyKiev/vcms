@@ -11,27 +11,17 @@ import logging
 
 class BaseActions(Base):
 
-    # logging.basicConfig(filename='D:\\python\\vcms\\vcms\\page_object\\_test_suites\\SuiteMainPageHelpLinks.log',
-    #                     level=logging.INFO, format='%(asctime)s %(levelname)-8s %(message)s')
-    # logger = logging.getLogger(__name__)
-    # console = logging.StreamHandler()
-    # logger.addHandler(console)
-
-
     def _button_edit(self, locator):
         self._click_element(locator + BaseElements.BUTTON_EDIT)
 
     def _click_button_ok(self, locator):
-        try:
-            cond1 = self._is_element_present(locator + BaseElements.BUTTON_OK)
-            cond2 = self._is_element_present(locator + BaseElements.BUTTON_Ok)
-            if cond1:
-                self._click_element(locator + BaseElements.BUTTON_OK)
-            elif cond2:
-                self._click_element(locator + BaseElements.BUTTON_Ok)
-            self._wait_for_element_not_present(locator)
-        except Exception as e:
-            print "Button is not found ", e
+        cond1 = self._is_element_present(locator + BaseElements.BUTTON_OK)
+        cond2 = self._is_element_present(locator + BaseElements.BUTTON_Ok)
+        if cond1:
+            self._click_element(locator + BaseElements.BUTTON_OK)
+        elif cond2:
+            self._click_element(locator + BaseElements.BUTTON_Ok)
+        self._wait_for_element_not_present(locator)
 
     def _click_button_no(self, locator):
         self._click_element(locator + BaseElements.BUTTON_NO)
@@ -46,7 +36,6 @@ class BaseActions(Base):
         self._wait_for_element_not_present(locator)
 
     def _click_button_close(self, locator):
-        self._wait_for_element_present(locator)
         self._click_element(locator + BaseElements.BUTTON_CLOSE)
         self._wait_for_element_not_present(locator)
 
@@ -85,30 +74,63 @@ class BaseActions(Base):
         self._wait_for_element_not_present(locator)
 
     def _click_system_button_maximize(self, locator):
-        self._wait_for_element_present(locator)
         self._click_element(locator + BaseElements.SYSTEM_BUTTON_MAXIMIZE)
         time.sleep(2)
         self._wait_for_element_present(locator + BaseElements.SYS_BUTTON_RESTORE_DOWN)
 
     def _click_system_button_drop_down(self, locator):
-        self._wait_for_element_present(locator)
         self.hover(locator + BaseElements.SYSTEM_BUTTON_DROP_DOWN)
         self._click_element(locator + BaseElements.SYSTEM_BUTTON_DROP_DOWN)
 
     def _close_popups(self):
-        cond = self._is_element_present(BaseElements._POPUP + BaseElements.SYSTEM_BUTTON_CLOSE)
+        # cond = self._is_element_present(BaseElements.POPUP)
+        # if cond:
+        #     elements = self._find_elements(BaseElements.POPUP + BaseElements.SYSTEM_BUTTON_CLOSE)
+        #     for element in elements:
+        #         error_popup = self._is_element_present(
+        #             "//span[text()='Error']/ancestor::div[contains(@id,'WRP')][last()]/*//span[contains(@class,'Label-FontData')]")
+        #         if error_popup:
+        #             print "error popup ", str(error_popup)
+        #             text = self._get_text(
+        #                 "//span[text()='Error']/ancestor::div[contains(@id,'WRP')]/*//span[contains(@class,'Label-FontData')]")
+        #             self.logger.error("Error popup text is: " + str(text))
+        #         elif element:
+        #             print element
+        #             self._click_element(BaseElements.POPUP + "[last()]" + BaseElements.SYSTEM_BUTTON_CLOSE)
+        #         else:
+        #             break
+        #     button_close = self._is_element_present(BaseElements.POPUP + "[last()]" + BaseElements.BUTTON_CLOSE)
+        #     if button_close:
+        #         self._click_button_close("//div[contains(@id,'WRP')]")
+        #         print "button close ", button_close
+        # if cond:
+        #     i = 0
+        #     while i < 10:
+        #         i += 1
+        #         system_button_close = self._is_element_present(BaseElements.POPUP + BaseElements.SYSTEM_BUTTON_CLOSE)
+        #         button_close = self._is_element_present(BaseElements.POPUP + BaseElements.BUTTON_CLOSE)
+        #         if system_button_close:
+        #             self._click_system_button_close(BaseElements.POPUP)
+        #         else:
+        #             break
+        cond = self._is_element_present(BaseElements.POPUP)
         if cond:
             i = 0
             while i < 10:
                 i += 1
-                popup = self._is_element_present(BaseElements._POPUP + BaseElements.SYSTEM_BUTTON_CLOSE)
-                if popup:
-                    self._click_element(BaseElements._POPUP + BaseElements.SYSTEM_BUTTON_CLOSE)
+                self._get_error_popups_messages()
+                system_button_close = self._is_element_present(BaseElements.POPUP + BaseElements.SYSTEM_BUTTON_CLOSE)
+                button_close = self._is_element_present(BaseElements.POPUP + BaseElements.BUTTON_CLOSE)
+                if system_button_close:
+                    self._click_element(BaseElements.POPUP + BaseElements.SYSTEM_BUTTON_CLOSE)
+                    # print "Popup #" + str(i) + " is closed: ", system_button_close
+                elif button_close:
+                    self._click_element(BaseElements.POPUP + BaseElements.BUTTON_CLOSE)
+                    # print "Popup #" + str(i) + " is closed: ", button_close
+                    # print "Popup without system button close is closed"
+                    # self.logger.error("Popup without system button close is closed. PLEASE, ADD SYSTEM BUTTON CLOSE")
                 else:
                     break
-            # print "Popups are closed"
-        else:
-            pass
 
     def _check_help_frame_header(self, expected_header_name):
         cond = self._is_element_present(BaseElements.HELP_FRAME_HEADER + "[text()='" + expected_header_name + "']")
@@ -118,7 +140,15 @@ class BaseActions(Base):
         cond = self._is_element_present(BaseElements.HELP_WINDOW_BODY)
         return True if cond else False
 
-    def _help_message(self, expected_header_name):
+    def _get_error_popups_messages(self):
+        cond = self._is_element_present(BaseElements.POPUP_ERROR)
+        if cond:
+            elements = self._find_elements(BaseElements.POPUP_ERROR)
+            for element in elements:
+                message = element.text
+                self.logger.error("Test failed. Error popup message: " + str(message))
+
+    def _help_results(self, expected_header_name):
         try:
             cond1 = self._is_element_present(BaseElements.HELP_FRAME_HEADER + "[text()='" + expected_header_name + "']")
             cond2 = self._is_element_present(BaseElements.HELP_FRAME_HEADER)
@@ -126,23 +156,20 @@ class BaseActions(Base):
             if cond1:
                 current_header_name = self._find_element(BaseElements.HELP_FRAME_HEADER).text
                 result = "Expected header: " + expected_header_name \
-                         + ", Actual header: " + str(current_header_name)
+                         + " == Actual header: " + str(current_header_name)
                 self.logger.info(result)
-                # return result
             elif cond2:
                 current_header = self._find_element(BaseElements.HELP_FRAME_HEADER).text
                 error_message = "Test failed: Expected header: " + expected_header_name \
-                                + ", Actual header: " +  str(current_header)
+                                + " !=  Actual header: " +  str(current_header)
                 self.logger.error(error_message)
-                # return error_message
             elif cond3:
-                error_header = self._find_element(BaseElements.HELP_FRAME_HEADER_SERVER_ERROR).text
+                error = self._find_element(BaseElements.HELP_FRAME_HEADER_SERVER_ERROR).text
                 error_text1 = self._find_element("//*[@id='content']/div/fieldset/h2").text
-                error_text2 = self._find_element("//*[@id='content']/div/fieldset/h3").text
-                error_message = "Test failed. Header: " + str(error_header) + ", Error text: " \
-                                + str(error_text1) + str(error_text2)
-                self.logger.error(error_message)
-                # return error_message
+                # error_text2 = self._find_element("//*[@id='content']/div/fieldset/h3").text
+                self.logger.error("Test failed. Header: " + str(error))
+                self.logger.error("Error message: " + str(error_text1))
+                # self.logger.error(str(error_text2))
         except NoSuchElementException:
             massage1 = self._find_element("//*[@id='main-message']/h1").text
             massage2 = self._find_element("//*[@id='main-message']/div[2]").text
@@ -188,45 +215,8 @@ class BaseActions(Base):
             return "Help window is not found"
         except Exception as e:
             self.logger.error("Help window is not found")
+            print e
             return "Help window is not found"
-
-    def _select_help_window(self, expected_header_name):
-        try:
-            handles = self.driver.window_handles
-            self.wait_webelement.until(lambda d: len(d.window_handles) == 2)
-            help_window = handles[1]
-            self.driver.switch_to_window(help_window)
-            self.wait_webelement.until(lambda d: d.title != "")
-            title = self.driver.title
-            print "Help window title is: ", title
-            self.driver.switch_to_frame(self.driver.find_element_by_name('FrameMain'))
-            cond1 = self._is_element_present(BaseElements.HELP_FRAME_HEADER + "[text()='" + expected_header_name + "']")
-            cond2 = self._is_element_present(BaseElements.HELP_FRAME_HEADER)
-            cond3 = self._is_element_present(BaseElements.HELP_FRAME_HEADER_SERVER_ERROR)
-            if cond1:
-                current_header_name = self._find_element(BaseElements.HELP_FRAME_HEADER).text
-                print "Expected header: ", expected_header_name
-                print "Actual header: ", current_header_name
-            elif cond2:
-                current_header = self._find_element(BaseElements.HELP_FRAME_HEADER).text
-                print "Expected header: ", expected_header_name
-                print "Link is incorrect. Actual header: ", current_header
-            elif cond3:
-                error_header = self._find_element(BaseElements.HELP_FRAME_HEADER_SERVER_ERROR).text
-                error_text1 = self._find_element("//*[@id='content']/div/fieldset/h2").text
-                error_text2 = self._find_element("//*[@id='content']/div/fieldset/h3").text
-                print "Link is missed. Header: ", error_header
-                print "Error text: ", error_text1, error_text2
-            return title
-        except NoSuchElementException:
-            massage1 = self._find_element("//*[@id='main-message']/h1").text
-            massage2 = self._find_element("//*[@id='main-message']/div[2]").text
-            print "HELP LINK IS UNAVAILABLE. Massage: ", massage1, massage2
-        except TimeoutException:
-            print "Help window is not opened"
-        except IndexError:
-            help_window = 'null'
-            print "Help window is not found"
 
     def _close_help_window(self):
         handles = self.driver.window_handles
@@ -238,21 +228,58 @@ class BaseActions(Base):
         if help_window != 'null':
             self.driver.switch_to_window(help_window)
             self.driver.close()
-            # print "Help window is closed"
         self.driver.switch_to_window(main_window)
 
-    def _close_help_windows(self):
-        handles = self.driver.window_handles
-        main_window = handles[0]
-        for i in list(handles):
-            if i == 0:
-                continue
-            else:
-                help_window = handles[i]
-                self.driver.switch_to_window(help_window)
-                self.driver.close()
-        self.driver.switch_to_window(main_window)
-        print "Help windows are closed"
+    # def _select_help_window(self, expected_header_name):
+    #     try:
+    #         handles = self.driver.window_handles
+    #         self.wait_webelement.until(lambda d: len(d.window_handles) == 2)
+    #         help_window = handles[1]
+    #         self.driver.switch_to_window(help_window)
+    #         self.wait_webelement.until(lambda d: d.title != "")
+    #         title = self.driver.title
+    #         print "Help window title is: ", title
+    #         self.driver.switch_to_frame(self.driver.find_element_by_name('FrameMain'))
+    #         cond1 = self._is_element_present(BaseElements.HELP_FRAME_HEADER + "[text()='" + expected_header_name + "']")
+    #         cond2 = self._is_element_present(BaseElements.HELP_FRAME_HEADER)
+    #         cond3 = self._is_element_present(BaseElements.HELP_FRAME_HEADER_SERVER_ERROR)
+    #         if cond1:
+    #             current_header_name = self._find_element(BaseElements.HELP_FRAME_HEADER).text
+    #             print "Expected header: ", expected_header_name
+    #             print "Actual header: ", current_header_name
+    #         elif cond2:
+    #             current_header = self._find_element(BaseElements.HELP_FRAME_HEADER).text
+    #             print "Expected header: ", expected_header_name
+    #             print "Link is incorrect. Actual header: ", current_header
+    #         elif cond3:
+    #             error_header = self._find_element(BaseElements.HELP_FRAME_HEADER_SERVER_ERROR).text
+    #             error_text1 = self._find_element("//*[@id='content']/div/fieldset/h2").text
+    #             error_text2 = self._find_element("//*[@id='content']/div/fieldset/h3").text
+    #             print "Link is missed. Header: ", error_header
+    #             print "Error text: ", error_text1, error_text2
+    #         return title
+    #     except NoSuchElementException:
+    #         massage1 = self._find_element("//*[@id='main-message']/h1").text
+    #         massage2 = self._find_element("//*[@id='main-message']/div[2]").text
+    #         print "HELP LINK IS UNAVAILABLE. Massage: ", massage1, massage2
+    #     except TimeoutException:
+    #         print "Help window is not opened"
+    #     except IndexError:
+    #         help_window = 'null'
+    #         print "Help window is not found"
+
+    # def _close_help_windows(self):
+    #     handles = self.driver.window_handles
+    #     main_window = handles[0]
+    #     for i in list(handles):
+    #         if i == 0:
+    #             continue
+    #         else:
+    #             help_window = handles[i]
+    #             self.driver.switch_to_window(help_window)
+    #             self.driver.close()
+    #     self.driver.switch_to_window(main_window)
+    #     print "Help windows are closed"
 
     def _expand_tree(self, locator):
         try:
@@ -280,3 +307,41 @@ class BaseActions(Base):
         for element in elements:
             self.driver.execute_script("arguments[0].click();", element)
 
+    def _get_tree_view(self, locator):
+        tree_view = str(locator) + BaseElements.TREE_VIEW
+        cond = self._is_element_present(tree_view)
+        return tree_view if cond else None
+
+    def _get_left_menu(self, name):
+        left_menu = "//span[text()='" + str(name) + "']/ancestor::div[contains(@style,'translate3d(0px')]"
+        return str(left_menu)
+        # left_menu = "//span[text()='" + str(locator) + "']/ancestor::div[contains(@style,'transform')]"
+        # cond = self._is_element_present(left_menu)
+        # return left_menu if cond else None
+        # print "Get left menu method returns: ", str(left_menu)
+
+    def _click_left_menu_icon(self, name):
+        icon = "//div[@title='" + name + "']"
+        self._click_element(icon)
+        self._wait_for_element_not_present(str(icon) + BaseElements.GREY_COLOR)
+
+    def _open_left_menu(self, name):
+        element = self._get_left_menu(name)
+        precond = self._is_element_present(element)
+        # print "Precond. WINDOW VISIBLE: ", precond
+        if precond is not True:
+            i = 0
+            while i < 5:
+                i += 1
+                cond = self._is_element_present(element)
+                if cond is not True:
+                    self._click_left_menu_icon(name)
+                    self._wait_for_element_present(element)
+                    # print "Cond. WINDOW VISIBLE: ", cond
+                else:
+                    break
+        postcond = self._is_element_present(element)
+        # print "Postcond. WINDOW VISIBLE: ", postcond
+        # print "Left menu '" + str(name) + "' is opened"
+        self.logger.info("Left menu '" + str(name) + "' is opened")
+        return True if postcond else False
