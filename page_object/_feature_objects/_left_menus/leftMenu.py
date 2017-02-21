@@ -14,27 +14,19 @@ class LeftMenu(BaseActions):
     REPORTING                    = "Reporting"
     SOFTWARE_AND_PATCH_MANAGER   = "Software / Patch Manager"
     PASSWORD_RESET               = "Password Reset"
-    ICON_HOME                    = "//td[contains(@style,'Home')]/ancestor::div[@class='PictureBox-Control']"
+    HOME                         = "Homes"
 
     '''NEW'''
-    def click_icon_home(self):
-        self._click_element(self.ICON_HOME)
-        self._wait_for_element_not_present(self.ICON_HOME + BaseElements.GREY_COLOR)
-
-    def open_menu_home(self):
-        element = self.ICON_HOME + BaseElements.GREY_COLOR
-        precond = self._is_element_present(element)
-        if precond:
-            self.click_icon_home()
-        cond = self._is_element_not_present(element)
-        return True if cond else False
-
-    def menu_administration(self):
-        left_menu = self._get_left_menu(self.ADMINISTRATION)
+    def menu_home(self):
+        left_menu = "//td[contains(@style,'" + self.HOME + "')]/ancestor::div[@class='PictureBox-Control']"
         return left_menu
 
     def menu_devices(self):
         left_menu = self._get_left_menu(self.DEVICES)
+        return left_menu
+
+    def menu_administration(self):
+        left_menu = self._get_left_menu(self.ADMINISTRATION)
         return left_menu
 
     def menu_tasks(self):
@@ -54,6 +46,9 @@ class LeftMenu(BaseActions):
         # print "Menu: ", left_menu
         return left_menu
 
+    def click_icon_home(self):
+        self._click_left_menu_icon(self.HOME)
+
     def click_icon_devices(self):
         self._click_left_menu_icon(self.DEVICES)
 
@@ -71,6 +66,24 @@ class LeftMenu(BaseActions):
 
     def click_icon_password_reset(self):
         self._click_left_menu_icon(self.PASSWORD_RESET)
+
+    def open_menu_home(self):
+        element = "//span[text()='Home']/ancestor::div[@class='Label-Control']" + BaseElements.WHITE_COLOR
+        i = 0
+        while i < 2:
+            i += 1
+            cond = self._is_element_present(element)
+            if cond:
+                self.logger.debug("Left menu '" + self.HOME + "' is opened")
+                break
+            elif cond is None:
+                self.logger.error("Failure. Left menu '" + self.HOME + "' is not found")
+            elif i == 2:
+                self.logger.error("Failure. Left menu '" + self.HOME + "' is not opened after " + str(i) + " attempts")
+            else:
+                self.click_icon_home()
+                self._wait_for_element_present(
+                    "//span[text()='Home']/ancestor::div[@class='Label-Control']" + BaseElements.WHITE_COLOR)
 
     def open_menu_devices(self):
         self._open_left_menu(self.DEVICES)
@@ -90,29 +103,54 @@ class LeftMenu(BaseActions):
     def open_menu_password_reset(self):
         self._open_left_menu(self.PASSWORD_RESET)
 
-    def check_menu_devices_is_visible(self):
+    def check_menu_home_is_opened(self):
+        cond = self._is_element_present(
+            "//span[text()='Home']/ancestor::div[@class='Label-Control']" + BaseElements.WHITE_COLOR)
+        msg_if_true = "Left menu '" + self.HOME + "' is opened"
+        msg_if_false = "Left menu '" + self.HOME + "' is NOT opened"
+        self._get_log_msg_for_true_or_false(cond, msg_if_true, msg_if_false)
+        return True if cond else False
+
+    def check_menu_devices_is_opened(self):
         cond = self._is_element_present(self.menu_devices())
+        msg_if_true = "Left menu '" + self.DEVICES + "' is opened"
+        msg_if_false = "Left menu '" + self.DEVICES + "' is NOT opened"
+        self._get_log_msg_for_true_or_false(cond, msg_if_true, msg_if_false)
         return True if cond else False
 
-    def check_menu_administration_is_visible(self):
+    def check_menu_administration_is_opened(self):
         cond = self._is_element_present(self.menu_administration())
+        msg_if_true = "Left menu '" + self.ADMINISTRATION + "' is opened"
+        msg_if_false = "Left menu '" + self.ADMINISTRATION + "' is NOT opened"
+        self._get_log_msg_for_true_or_false(cond, msg_if_true, msg_if_false)
         return True if cond else False
 
-    def check_menu_tasks_is_visible(self):
+    def check_menu_tasks_is_opened(self):
         cond = self._is_element_present(self.menu_tasks())
+        msg_if_true = "Left menu '" + self.TASKS + "' is opened"
+        msg_if_false = "Left menu '" + self.TASKS + "' is NOT opened"
+        self._get_log_msg_for_true_or_false(cond, msg_if_true, msg_if_false)
         return True if cond else False
 
-    def check_menu_reporting_is_visible(self):
+    def check_menu_reporting_is_opened(self):
         cond = self._is_element_present(self.menu_reporting())
+        msg_if_true = "Left menu '" + self.REPORTING + "' is opened"
+        msg_if_false = "Left menu '" + self.REPORTING + "' is NOT opened"
+        self._get_log_msg_for_true_or_false(cond, msg_if_true, msg_if_false)
         return True if cond else False
 
-    def check_menu_software_and_patch_manager_is_visible(self):
+    def check_menu_software_and_patch_manager_is_opened(self):
         cond = self._is_element_present(self.menu_software_and_patch_manager())
+        msg_if_true = "Left menu '" + self.SOFTWARE_AND_PATCH_MANAGER + "' is opened"
+        msg_if_false = "Left menu '" + self.SOFTWARE_AND_PATCH_MANAGER + "' is NOT opened"
+        self._get_log_msg_for_true_or_false(cond, msg_if_true, msg_if_false)
         return True if cond else False
 
-    def check_menu_password_reset_is_visible(self):
+    def check_menu_password_reset_is_opened(self):
         cond = self._is_element_present(self.menu_password_reset())
-        # print "CHECK METHOD RETURNS ", cond
+        msg_if_true = "Left menu '" + self.PASSWORD_RESET + "' is opened"
+        msg_if_false = "Left menu '" + self.PASSWORD_RESET + "' is NOT opened"
+        self._get_log_msg_for_true_or_false(cond, msg_if_true, msg_if_false)
         return True if cond else False
 
     '''OLD'''
@@ -211,19 +249,19 @@ class LeftMenu(BaseActions):
     # def open_menu_password_reset(self):
     #     self._open_left_menu("Password Reset")
     #
-    # def check_menu_devices_is_visible(self):
+    # def check_menu_devices_is_opened(self):
     #     cond = self._check_left_menu_visible(self.DEVICES)
     #     return True if cond else False
     #
-    # def check_menu_administration_is_visible(self):
+    # def check_menu_administration_is_opened(self):
     #     cond = self._check_left_menu_visible(self.ADMINISTRATION)
     #     return True if cond else False
     #
-    # def check_menu_tasks_is_visible(self):
+    # def check_menu_tasks_is_opened(self):
     #     cond = self._check_left_menu_visible(self.TASKS)
     #     return True if cond else False
     #
-    # def check_menu_reporting_is_visible(self):
+    # def check_menu_reporting_is_opened(self):
     #     cond = self._check_left_menu_visible(self.REPORTING)
     #     return True if cond else False
     #

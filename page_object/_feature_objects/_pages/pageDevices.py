@@ -60,7 +60,7 @@ class DevicesPage(BaseActions):
         self._click_icon_help(DevicesPage.PAGE_HEADER)
 
     def check_help_link_is_correct(self):
-        self._help_results("Devices")
+        self._get_log_for_help_link("Devices")
 
     def delete_devices_in_devices_page_table(self, *names):
         try:

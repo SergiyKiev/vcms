@@ -49,8 +49,11 @@ class BaseActions(Base):
         self._click_element(locator + BaseElements.BUTTON_DELETE)
 
     def _click_icon_help(self, locator):
-        self._click_element(locator + BaseElements.ICON_HELP)
-        self.wait_webelement.until(lambda d: len(d.window_handles) == 2)
+        try:
+            self._click_element(locator + BaseElements.ICON_HELP)
+            self.wait_webelement.until(lambda d: len(d.window_handles) == 2)
+        except TimeoutException:
+            self.logger.error("WAITING: Help window is NOT found after " + str(self.timeout_webelement) + " seconds")
 
     def _click_icon_restore(self, locator):
         self._wait_for_element_present(locator)
@@ -142,38 +145,6 @@ class BaseActions(Base):
             for element in elements:
                 message = element.text
                 self.logger.error("Test failed. Error popup message: " + str(message))
-
-    def _help_results(self, expected_header_name):
-        try:
-            cond1 = self._is_element_present(BaseElements.HELP_FRAME_HEADER + "[text()='" + expected_header_name + "']")
-            cond2 = self._is_element_present(BaseElements.HELP_FRAME_HEADER)
-            cond3 = self._is_element_present(BaseElements.HELP_FRAME_HEADER_SERVER_ERROR)
-            if cond1:
-                current_header_name = self._find_element(BaseElements.HELP_FRAME_HEADER).text
-                result = "Expected header: " + expected_header_name \
-                         + " == Actual header: " + str(current_header_name)
-                self.logger.info(result)
-            elif cond2:
-                current_header = self._find_element(BaseElements.HELP_FRAME_HEADER).text
-                error_message = "Test failed: Expected header: " + expected_header_name \
-                                + " !=  Actual header: " +  str(current_header)
-                self.logger.error(error_message)
-            elif cond3:
-                error = self._find_element(BaseElements.HELP_FRAME_HEADER_SERVER_ERROR).text
-                error_text1 = self._find_element("//*[@id='content']/div/fieldset/h2").text
-                # error_text2 = self._find_element("//*[@id='content']/div/fieldset/h3").text
-                self.logger.error("Test failed. Header: " + str(error) + ". Message: " + str(error_text1))
-                # self.logger.error("Error message: " + str(error_text1))
-                # self.logger.error(str(error_text2))
-        except NoSuchElementException:
-            massage1 = self._find_element("//*[@id='main-message']/h1").text
-            massage2 = self._find_element("//*[@id='main-message']/div[2]").text
-            return "HELP LINK IS UNAVAILABLE. Massage: ", massage1, massage2
-        except TimeoutException:
-            return "Help window is not opened"
-        except IndexError:
-            help_window = 'null'
-            return "Help window is not found ", help_window
 
     def _get_help_frame_header(self):
         try:
@@ -311,40 +282,108 @@ class BaseActions(Base):
             # self._wait_for_element_not_present(locator + BaseElements.ARROW_COLLAPSE)
 
     def _get_tree_view(self, locator):
-        tree_view = str(locator) + BaseElements.TREE_VIEW
+        tree_view = locator + BaseElements.TREE_VIEW
         cond = self._is_element_present(tree_view)
         return tree_view if cond else None
 
     def _get_left_menu(self, name):
         left_menu = "//span[text()='" + str(name) + "']/ancestor::div[contains(@style,'translate3d(0px')]"
-        return str(left_menu)
-        # left_menu = "//span[text()='" + str(locator) + "']/ancestor::div[contains(@style,'transform')]"
-        # cond = self._is_element_present(left_menu)
-        # return left_menu if cond else None
-        # print "Get left menu method returns: ", str(left_menu)
+        return left_menu
 
     def _click_left_menu_icon(self, name):
         icon = "//div[@title='" + name + "']"
-        self._click_element(icon)
-        self._wait_for_element_not_present(str(icon) + BaseElements.GREY_COLOR)
+        icon_home = "//td[contains(@style,'" + name + "')]/ancestor::div[@class='PictureBox-Control']"
+        cond = self._is_element_present(icon)
+        if cond:
+            self._click_element(icon)
+            self._wait_for_element_not_present(str(icon) + BaseElements.GREY_COLOR)
+        else:
+            self._click_element(icon_home)
+            self._wait_for_element_not_present(str(icon_home) + BaseElements.GREY_COLOR)
 
     def _open_left_menu(self, name):
         element = self._get_left_menu(name)
-        precond = self._is_element_present(element)
-        # print "Precond. WINDOW VISIBLE: ", precond
-        if precond is not True:
-            i = 0
-            while i < 5:
-                i += 1
-                cond = self._is_element_present(element)
-                if cond is not True:
-                    self._click_left_menu_icon(name)
-                    self._wait_for_element_present(element)
-                    # print "Cond. WINDOW VISIBLE: ", cond
-                else:
-                    break
-        postcond = self._is_element_present(element)
-        # print "Postcond. WINDOW VISIBLE: ", postcond
-        # print "Left menu '" + str(name) + "' is opened"
-        self.logger.info("Left menu '" + str(name) + "' is opened")
-        return True if postcond else False
+        i = 0
+        while i < 2:
+            i += 1
+            cond = self._is_element_present(element)
+            if cond:
+                self.logger.debug("Left menu '" + str(name) + "' is opened")
+                break
+            elif cond is None:
+                self.logger.error("Failure. Left menu '" + str(name) + "' is not found")
+                break
+            elif i == 2:
+                self.logger.error("Failure. Left menu '" + str(name) + "' is not opened after " + str(i) + " attempts")
+                return False
+            else:
+                self._click_left_menu_icon(name)
+                self._wait_for_element_present(element)
+        #Another worked method
+        # element = self._get_left_menu(name)
+        # precond = self._is_element_present(element)
+        # if precond is not True:
+        #     i = 0
+        #     while i < 5:
+        #         i += 1
+        #         cond = self._is_element_present(element)
+        #         if cond is not True:
+        #             self._click_left_menu_icon(name)
+        #             self._wait_for_element_present(element)
+        #             # print "Cond. WINDOW VISIBLE: ", cond
+        #         else:
+        #             break
+        # postcond = self._is_element_present(element)
+        # if postcond:
+        #     self.logger.debug("Left menu '" + str(name) + "' is opened")
+        #     return True
+        # else:
+        #     self.logger.error("Failure. Left menu '" + str(name) + "' is not opened")
+        #     return False
+
+    def _check_condition(self, locator):
+        cond = self._is_element_present(locator)
+        return True if cond else False
+
+    def _get_log_msg_for_true_or_false(self, cond=True, true_msg=None, false_msg=None):
+        # cond = self._check_condition(condition)
+        if cond:
+            self.logger.info(true_msg)
+            return True
+        else:
+            self.logger.error(false_msg)
+            return False
+
+    def _get_log_for_help_link(self, expected_header_name):
+        try:
+            cond1 = self._is_element_present(BaseElements.HELP_FRAME_HEADER + "[text()='" + expected_header_name + "']")
+            cond2 = self._is_element_present(BaseElements.HELP_FRAME_HEADER)
+            cond3 = self._is_element_present(BaseElements.HELP_FRAME_HEADER_SERVER_ERROR)
+            if cond1:
+                current_header_name = self._find_element(BaseElements.HELP_FRAME_HEADER).text
+                result = "Expected header: " + expected_header_name \
+                         + " == Actual header: " + str(current_header_name)
+                self.logger.info(result)
+            elif cond2:
+                current_header = self._find_element(BaseElements.HELP_FRAME_HEADER).text
+                error_message = "Test failed: Expected header: " + expected_header_name \
+                                + " !=  Actual header: " +  str(current_header)
+                self.logger.error(error_message)
+            elif cond3:
+                error = self._find_element(BaseElements.HELP_FRAME_HEADER_SERVER_ERROR).text
+                error_text1 = self._find_element("//*[@id='content']/div/fieldset/h2").text
+                # error_text2 = self._find_element("//*[@id='content']/div/fieldset/h3").text
+                self.logger.error("Test failed. Header: " + str(error) + ". Message: " + str(error_text1))
+                # self.logger.error("Error message: " + str(error_text1))
+                # self.logger.error(str(error_text2))
+        except NoSuchElementException:
+            massage1 = self._find_element("//*[@id='main-message']/h1").text
+            massage2 = self._find_element("//*[@id='main-message']/div[2]").text
+            self.logger.critical("Help link is unavailable.\nMassage: " + str(massage1) + str(massage2))
+        except TimeoutException:
+            self.logger.error("Help window is not opened")
+        except IndexError:
+            help_window = 'null'
+            self.logger.critical("Help window is not found " + str(help_window))
+
+

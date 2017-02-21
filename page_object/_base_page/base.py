@@ -75,10 +75,14 @@ class Base(object):
         # time.sleep(0.1)
         self.wait_loading.until_not(EC.presence_of_element_located((By.XPATH, Base.LOADING_ANIMATION_VISIBLE)))
         self.wait_loading.until_not(EC.presence_of_element_located((By.XPATH, Base.LOADING_SCREEN_VISIBLE)))
+        # self.wait_loading.until_not(EC.presence_of_element_located(
+        #     (By.XPATH,"//*[@id='VWG_MaskedModalWindowBox'][contains(@style,'display: block')]")))
         # print "finish waiting"
-        # cond = self._is_element_not_present(Base.LOADING_SCREEN_VISIBLE)
-        # if cond:
-        #     self.logger.debug("PAGE IS UNLOCKED: " + str(cond))
+        # cond = self._is_element_present(Base.LOADING_SCREEN_VISIBLE)
+        # if cond is not True:
+        #     self.logger.info("PAGE IS ACTIVE")
+        # else:
+        #     self.logger.critical("PAGE IS LOCKED: " + str(cond))
 
     def wait_for_not_loading(self):
         # time.sleep(0.3)
@@ -91,10 +95,10 @@ class Base(object):
             self.logger.info("Instance is: " + str(Settings.baseUrl) + "\n")
             self.wait_loading.until(EC.presence_of_element_located((By.XPATH, Base.LOGIN_PAGE_LOGO)))
         except TimeoutException:
-            self.logger.error("Page is not loaded: " + str(Settings.baseUrl))
+            self.logger.critical("Page is not loaded: " + str(Settings.baseUrl))
             return Exception
         except Exception as e:
-            self.logger.error("Service error: ", str(e))
+            self.logger.critical("Service error: ", str(e))
 
     def _find_element(self, locator):
         try:
@@ -102,10 +106,11 @@ class Base(object):
             self.wait_webelement.until(EC.visibility_of_element_located((By.XPATH, locator)))
             return self.driver.find_element(By.XPATH, locator)
         except (NoSuchElementException, TimeoutException):
-            self.logger.error(str(locator)+ " is not found")
+            self.logger.error("FIND ELEMENT. Element " + locator + " is NOT found")
             return None
         except Exception as e:
-            self.logger.error("The element " + locator + " is not found\n " + str(e))
+            self.logger.critical("FIND ELEMENT. The element " + locator + " is NOT found\n. Message: " + str(e))
+            return None
 
     def _find_elements(self, locator):
         try:
@@ -113,28 +118,35 @@ class Base(object):
             self.wait_webelement.until(EC.visibility_of_any_elements_located((By.XPATH, locator)))
             return self.driver.find_elements(By.XPATH, locator)
         except (NoSuchElementException, TimeoutException):
+            self.logger.error("FIND ELEMENT. Element " + locator + " is NOT found")
             return None
         except Exception as e:
-            self.logger.error("The elements " + locator + " are not found ")
-            print e
+            self.logger.critical("FIND ELEMENT. The element " + locator + " is NOT found\n. Message: " + str(e))
 
     '''CUSTOM CLICK METHOD ACTUAL'''
     def _click_element(self, locator):
         try:
-            cond = self._wait_for_element_present(locator)
-            if cond:
-                self.wait_for_action()
-                self._find_element(locator).click()
-                self.wait_for_action()
-                self.logger.debug("Click: " + str(locator))
-                # self.logger.info("Click: " + str(locator))
-        except NoSuchElementException:
-            self.logger.error("METHOD 'Click element' " + locator + " is not found")
-        except TimeoutException:
-            self.logger.error("Element " + locator + " is not clickable after ", self.timeout_webelement, "seconds")
+            # cond = self._is_element_present(locator)
+            # if cond:
+            self.wait_for_action()
+            element = self._find_element(locator)
+            if element:
+                # self.wait_loading.until_not(
+                #     EC.visibility_of_element_located((
+                #         By.XPATH,"//*[@id='VWG_MaskedModalWindowBox'][contains(@style,'display: block')]")))
+                # self.wait_webelement.until_not(
+                #     EC.presence_of_element_located((
+                #         By.XPATH,"//*[@id='VWG_MaskedModalWindowBox'][contains(@style,'display: block')]")))
+                element.click()
+                self.logger.debug("CLICK: " + str(locator))
+                # self.logger.info("CLICK: " + str(locator))
+            self.wait_for_action()
+        except (NoSuchElementException, TimeoutException):
+            self.logger.critical(
+                "CLICK: Element " + locator + " is NOT found after " + str(self.timeout_webelement) + " seconds")
         except Exception as e:
-            self.logger.error("The element " + locator + " is not clickable.\n" + str(e))
-    '''CUSTOM CLICK METHOD NOT TEMP'''
+            self.logger.critical("CLICK: Element " + locator + " is NOT clickable.\n" + str(e))
+    #Click method (not actual)
     # def _click_element(self, locator):
     #     try:
     #         cond = self._wait_for_element_present(locator)
@@ -147,14 +159,14 @@ class Base(object):
     #             self.logger.info("Click: " + str(locator))
     #             # print "\n" + "CLICK:  ", locator
     #     except NoSuchElementException:
-    #         # print "CLICK METHOD: " + locator + " is not found"
-    #         self.logger.error("METHOD 'Click element' " + locator + " is not found")
+    #         # print "CLICK METHOD: " + locator + " is NOT found"
+    #         self.logger.critical("METHOD 'Click element' " + locator + " is NOT found")
     #     except TimeoutException:
     #         # print "Element is not clickable after ", self.timeout_loading, "seconds"
-    #         self.logger.error("Element " + locator +  " is not clickable after ", self.timeout_webelement, "seconds")
+    #         self.logger.critical("Element " + locator +  " is NOT clickable after ", self.timeout_webelement, "seconds")
     #     except Exception as e:
     #         # print "The element is not clickable in the reason of ", e
-    #         self.logger.error("The element " + locator + " is not clickable.\n" + str(e))
+    #         self.logger.critical("The element " + locator + " is NOT clickable.\n" + str(e))
 
     def _hover_and_click_element(self, locator):
         try:
@@ -169,171 +181,181 @@ class Base(object):
                 self.wait_webelement.until(EC.invisibility_of_element_located((By.XPATH, Base.LOADING_ANIMATION_VISIBLE)))
                 return True
         except NoSuchElementException:
-            print locator + " is not clickable"
+            print locator + " is NOT clickable"
             return False
 
     def _wait_for_element_present(self, locator):
         try:
             self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
             self.wait_webelement.until(EC.visibility_of_element_located((By.XPATH, locator)))
+            self.logger.debug("WAITING. Element " + locator + " is present.")
             return True
-        except TimeoutException:
-            self.logger.error("METHOD 'Wait for element present'. Element was not found after " + str(self.timeout_webelement) + " seconds: " + locator)
+        except (NoSuchElementException, TimeoutException):
+            self.logger.error(
+                "WAITING. Element " + locator + " is NOT found after " + str(self.timeout_webelement) + " seconds")
             return False
-        except Exception as e:
-            self.logger.error("METHOD 'Wait for element present' is failed\n" + str(e))
+        # except Exception as e:
+        #     self.logger.critical("METHOD 'Wait for element present' is failed\n" + str(e))
 
     def _wait_for_elements_present(self, locator):
         try:
             self.wait_webelement.until(EC.presence_of_all_elements_located((By.XPATH, locator)))
             self.wait_webelement.until(EC.visibility_of_any_elements_located((By.XPATH, locator)))
+            self.logger.debug("WAITING. Elements " + locator + " are present.")
             return True
-        except TimeoutException:
-            self.logger.error("METHOD 'Wait for elements present'. Elements were not found after " + str(self.timeout_webelement) + " seconds:  " + locator)
+        except (NoSuchElementException, TimeoutException):
+            self.logger.error(
+                "WAITING. Elements " + locator + " are not found after " + str(self.timeout_webelement) + " seconds")
             return False
-        except Exception as e:
-            self.logger.error("METHOD 'Wait for elements present' is failed\n", str(e))
 
     def _wait_for_element_not_present(self, locator):
         try:
             self.wait_webelement.until_not(EC.presence_of_element_located((By.XPATH, locator)))
             self.wait_webelement.until_not(EC.visibility_of_element_located((By.XPATH, locator)))
+            self.logger.debug("WAITING. Element " + locator + " is NOT present.")
             return True
         except NoSuchElementException:
-            return True
-        except TimeoutException:
-            self.logger.error("METHOD 'Wait for element not present'. Element is found after " + str(self.timeout_webelement) + " seconds:  " + locator)
+            self.logger.critical("WAITING. Element " + locator + " is NOT found.")
             return False
-        except Exception as e:
-            self.logger.error("METHOD 'Wait for element not present' is failed\n" + str(e))
+        except TimeoutException:
+            self.logger.error(
+                "WAITING. Element " + locator + " is present after " + str(self.timeout_webelement) + " seconds")
+            return False
+            # except Exception as e:
+        #     self.logger.critical("METHOD 'Wait for element not present' is failed\n" + str(e))
 
     def _wait_for_element_selected(self, locator):
         try:
             self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator + Base.SELECTED)))
             self.wait_webelement.until(EC.visibility_of_element_located((By.XPATH, locator + Base.SELECTED)))
+            self.logger.debug("WAITING. Element " + locator + " is selected.")
             return True
-        except TimeoutException:
-            print locator + " returns False"
+        except NoSuchElementException:
+            self.logger.critical("WAITING. Element " + locator + " is NOT found.")
             return False
-        except Exception as e:
-            print "Wait for element selected, returns false ", e
+        except TimeoutException:
+            self.logger.error(
+                "WAITING. Element " + locator + " is NOT selected after " + str(self.timeout_webelement) + " seconds")
+            return False
 
     def _wait_for_element_checked(self, locator):
         try:
             self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator + Base.CHECKED)))
             self.wait_webelement.until(EC.visibility_of_element_located((By.XPATH, locator + Base.CHECKED)))
+            self.logger.debug("Element " + locator + " is checked.")
             return True
+        except NoSuchElementException:
+            self.logger.critical("WAITING. Element " + locator + " is NOT found.")
+            return False
         except TimeoutException:
-            print locator + " returns False"
+            self.logger.error(
+                "Element " + locator + " is NOT checked after " + str(self.timeout_webelement) + " seconds")
             return False
 
     def _wait_for_element_unchecked(self, locator):
         try:
             self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator + Base.UNCHECKED)))
             self.wait_webelement.until(EC.visibility_of_element_located((By.XPATH, locator + Base.UNCHECKED)))
+            self.logger.debug("Element " + locator + " is unchecked.")
             return True
+        except NoSuchElementException:
+            self.logger.critical("WAITING. Element " + locator + " is NOT found.")
+            return False
         except TimeoutException:
-            print locator + " returns False"
+            self.logger.error(
+                "Element " + locator + " is NOT unchecked after " + str(self.timeout_webelement) + " seconds")
             return False
 
     def _wait_for_element_disabled(self, locator):
         try:
             self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator + Base.DISABLED)))
             self.wait_webelement.until(EC.visibility_of_element_located((By.XPATH, locator + Base.DISABLED)))
+            self.logger.debug("WAITING. Element " + locator + " is disabled.")
             return True
-        except TimeoutException:
-            print locator + " returns False"
+        except NoSuchElementException:
+            self.logger.critical("WAITING. Element " + locator + " is NOT found.")
             return False
-
-    def _wait_for_left_menu_visible(self, locator):
-        try:
-            self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator + Base.LEFT_MENU_VISIBLE)))
-            self.wait_webelement.until(EC.visibility_of_element_located((By.XPATH, locator + Base.LEFT_MENU_VISIBLE)))
-            return True
         except TimeoutException:
-            self.logger.error("Element is not visible: " + str(locator))
-            return False
-
-    def _wait_for_element_visible(self, locator):
-        try:
-            self.wait_loading.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOCKED_SCREEN)))
-            self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOCKED_SCREEN)))
-            self.wait_webelement.until(EC.visibility_of_element_located((By.XPATH, locator)))
-            return True
-        except TimeoutException:
-            print locator + " returns False"
+            self.logger.error(
+                "WAITING. Element " + locator + " is NOT disabled after " + str(self.timeout_webelement) + " seconds")
             return False
 
     def _is_element_present(self, locator):
         try:
             self.wait_condition.until(EC.presence_of_element_located((By.XPATH, locator)))
             self.wait_condition.until(EC.visibility_of_element_located((By.XPATH, locator)))
+            self.logger.debug("CHECK. Element " + locator + " is present.")
             return True
+        except NoSuchElementException:
+            self.logger.critical("CHECK. Element " + locator + " is NOT found.")
+            return None
         except TimeoutException:
-            return False
-        except Exception as e:
-            print e
+            self.logger.debug(
+                "CHECK. Element " + locator + " is NOT present after " + str(self.timeout_condition) + " seconds")
             return False
 
     def _is_element_not_present(self, locator):
         try:
             self.wait_condition.until_not(EC.presence_of_element_located((By.XPATH, locator)))
             self.wait_condition.until_not(EC.visibility_of_element_located((By.XPATH, locator)))
+            self.logger.debug("CHECK. Element " + locator + " is NOT present.")
             return True
         except NoSuchElementException:
-            return True
+            self.logger.critical("CHECK. Element " + locator + " is NOT found.")
+            return None
         except TimeoutException:
-            return False
-        except Exception as e:
-            print e
+            self.logger.debug(
+                "CHECK. Element " + locator + " is present after " + str(self.timeout_condition) + " seconds")
             return False
 
     def _is_element_selected(self, locator):
         try:
             self.wait_condition.until(EC.presence_of_element_located((By.XPATH, locator + Base.SELECTED)))
             self.wait_condition.until(EC.visibility_of_element_located((By.XPATH, locator + Base.SELECTED)))
+            self.logger.debug("CHECK. Element " + locator + " is selected.")
             return True
         except TimeoutException:
+            self.logger.debug("CHECK. Element " + locator + " is NOT selected.")
             return False
 
     def _is_element_checked(self, locator):
         try:
             self.wait_condition.until(EC.presence_of_element_located((By.XPATH, locator + Base.CHECKED)))
             self.wait_condition.until(EC.visibility_of_element_located((By.XPATH, locator + Base.CHECKED)))
+            self.logger.debug("CHECK. Element " + locator + " is checked.")
             return True
         except TimeoutException:
+            self.logger.debug("CHECK. Element " + locator + " is NOT checked.")
             return False
 
     def _is_element_unchecked(self, locator):
         try:
             self.wait_condition.until(EC.presence_of_element_located((By.XPATH, locator + Base.UNCHECKED)))
             self.wait_condition.until(EC.visibility_of_element_located((By.XPATH, locator + Base.UNCHECKED)))
+            self.logger.debug("CHECK. Element " + locator + " is unchecked.")
             return True
         except TimeoutException:
+            self.logger.debug("CHECK. Element " + locator + " is NOT unchecked.")
             return False
 
     def _is_element_disabled(self, locator):
         try:
             self.wait_condition.until(EC.presence_of_element_located((By.XPATH, locator + Base.DISABLED)))
             self.wait_condition.until(EC.visibility_of_element_located((By.XPATH, locator + Base.DISABLED)))
+            self.logger.debug("CHECK. Element " + locator + " is present.")
             return True
         except TimeoutException:
+            self.logger.debug("CHECK. Element " + locator + " is NOT disabled.")
             return False
 
     def _is_tree_arrow_present(self, locator):
         try:
             self.wait_condition.until(EC.presence_of_element_located((By.XPATH, locator + Base.ARROW_EMPTY)))
             self.wait_condition.until(EC.visibility_of_element_located((By.XPATH, locator + Base.ARROW_EMPTY)))
-            return False
-        except TimeoutException:
-            return True
-
-    def _is_left_menu_visible(self, locator):
-        try:
-            self.wait_condition.until(EC.presence_of_element_located((By.XPATH, locator + Base.LEFT_MENU_VISIBLE)))
-            self.wait_condition.until(EC.presence_of_element_located((By.XPATH, locator + Base.LEFT_MENU_VISIBLE)))
+            self.logger.debug("CHECK. Element " + locator + " is present.")
             return True
         except TimeoutException:
+            self.logger.debug("CHECK. Element " + locator + " is NOT present.")
             return False
 
     def _get_text(self, locator):
@@ -343,7 +365,7 @@ class Base(object):
         except Exception as e:
             print "Error finding the text of the element " , e
 
-    def send_keys_and_enter(self, locator, value):
+    def _send_keys_and_enter(self, locator, value):
         try:
             field = self._find_element(locator)
             field.self.send_keys(value)
@@ -377,15 +399,15 @@ class Base(object):
             element = self._find_element("//div[contains(@id,'VWGVLSC_')]")
             self.driver.execute_script("arguments[0].scrollTop = 0", element)
             self._wait_for_element_present("//table[contains(@id,'VWGVL_')]/*//tr[1][@data-vwgindex='0']")
-        except (NoSuchElementException, TimeoutException):
-            print "Element not found"
+        except Exception as e:
+            self.logger.critical("Error on scroll to top method.\n Message " + str(e))
 
     def scroll_list_down(self, step):
         try:
             element = self._find_element("//div[contains(@id,'VWGVLSC_')]")
             self.driver.execute_script("arguments[0].scrollTop = arguments[1]", element, step)
         except Exception as e:
-            print "error scrolling down web element", e
+            self.logger.critical("Error on scroll list down method.\n Message " + str(e))
 
     def scroll_to_element(self, locator):
         try:
@@ -393,4 +415,4 @@ class Base(object):
             element = self._find_element(locator)
             self.driver.execute_script("return arguments[0].scrollIntoView();", element)
         except Exception as e:
-            print "error scrolling into view ", e
+            self.logger.critical("Error on scroll to element method.\n Message " + str(e))

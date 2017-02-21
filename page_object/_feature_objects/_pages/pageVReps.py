@@ -76,11 +76,11 @@ class VRepsPage(BaseActions):
                     if cond1 and cond2 and cond3:
                         print "vRep " + name + " is online, connected and approved"
                     elif cond1 is not True:
-                        print "vRep" + name + " is not approved"
+                        print "vRep" + name + " is NOT approved"
                     elif cond2 is not True:
-                        print "vRep" + name + " is not connected"
+                        print "vRep" + name + " is NOT connected"
                     elif cond3 is not True:
-                        print "vRep" + name + " is not online and ready"
+                        print "vRep" + name + " is NOT online and ready"
 
     def upprove_single_vrep_in_vreps_page_table(self, name):
         try:
@@ -112,13 +112,13 @@ class VRepsPage(BaseActions):
             if cond1 and cond2 and cond3 and cond4:
                 self.logger.info("vRep " + str(name) + " is checked, online, connected and approved\n")
             elif cond1 is not True:
-                self.logger.error("vRep " + str(name) + " is not approved\n")
+                self.logger.error("vRep " + str(name) + " is NOT approved\n")
             elif cond2 is not True:
-                self.logger.error("vRep " + str(name) + " is not connected\n")
+                self.logger.error("vRep " + str(name) + " is NOT connected\n")
             elif cond3 is not True:
-                self.logger.error("vRep " + str(name) + " is not online and ready\n")
+                self.logger.error("vRep " + str(name) + " is NOT online and ready\n")
             elif cond4 is not True:
-                self.logger.error("vRep " + str(name) + " is not checked\n")
+                self.logger.error("vRep " + str(name) + " is NOT checked\n")
         except Exception as e:
             self.logger.error("Method 'Upprove a single vrep' is failed\n", str(e))
 

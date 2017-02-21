@@ -6,7 +6,9 @@ class Settings:
 
     os.chdir('D:\\python\\vcms\\vcms') # KIPROV WORK
     logging.basicConfig(filename='D:\\python\\vcms\\vcms\\page_object\\_test_suites\\test_logs.log',
-                        level=logging.INFO, format='%(asctime)s %(levelname)-8s %(message)s') # KIPROV WORK
+                        level=logging.INFO, format='[%(levelname)-4s] %(message)s') # KIPROV WORK
+    # logging.basicConfig(filename='D:\\python\\vcms\\vcms\\page_object\\_test_suites\\test_logs.log',
+    #                     level=logging.INFO, format='%(asctime)s [%(levelname)-3s] %(message)s') # KIPROV WORK
     # os.chdir('E:\\python\\vcms\\vcms')  # KIPROV HOME
     # logging.basicConfig(filename='E:\\python\\vcms\\vcms\\page_object\\_test_suites\\test_logs.log',
     #                     level=logging.INFO, format='%(asctime)-24s %(levelname)-6s %(message)s') # KIPROV HOME

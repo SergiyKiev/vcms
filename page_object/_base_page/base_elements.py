@@ -39,6 +39,7 @@ class BaseElements(Base):
     DROP_DOWN_LIST          = "/*//div[contains(@class,'ComboBox-Container')]"
     DROP_DOWN_APPLIED_VALUE = "/*//div[contains(@class,'ComboBox-Container')]/*//span[@data-vwg_appliedvalue]"
     GREY_COLOR = "[contains(@style,'#E8E8E8')]"
+    WHITE_COLOR = "[contains(@style,'White')]"
 
     #GENERAL ELEMENTS
     POPUP = "//div[contains(@id,'WRP')][last()]"

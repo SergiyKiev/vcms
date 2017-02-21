@@ -43,11 +43,14 @@ from selenium import webdriver
 
 
 class SiteCreation(unittest.TestCase):
+
     driver = None  # global variable
+    logger = logging.getLogger(__name__)
 
     @classmethod
     def setUpClass(cls):
-        print ("\n" + "TEST SUITE: Site creation (Suite ID: 9111)")
+        cls.logger.info("Start testing\n")
+        cls.logger.info("TEST SUITE: Site creation (Suite ID: 9111)\n")
         cls.driver = webdriver.Chrome()
         login_page = LoginPage(cls.driver)
         login_page.open_page()
@@ -56,27 +59,30 @@ class SiteCreation(unittest.TestCase):
         main_page._close_popups()
 
     def setUp(self):
-        pass
+        self.logger.info("[Test start]")
+        ribbon_bar = RibbonBar(self.driver)
+        ribbon_bar.open_tab_home()
         # left_menu_devices = LeftMenuDevices(self.driver)
         # left_menu_devices.open_menu_devices()
         # left_menu_devices.expand_global_site_view_tree()
 
     def test_open_left_menus(self):
-        print ("\n" + "TC#xxxx. Open left side menus")
+        self.logger.info("TC#xxxx. Open left side menus")
         left_menu = LeftMenu(self.driver)
         left_menu.open_menu_home()
+        self.assertTrue(left_menu.check_menu_home_is_opened())
         left_menu.open_menu_devices()
-        self.assertTrue(left_menu.check_menu_devices_is_visible())
+        self.assertTrue(left_menu.check_menu_devices_is_opened())
         left_menu.open_menu_administration()
-        self.assertTrue(left_menu.check_menu_administration_is_visible())
+        self.assertTrue(left_menu.check_menu_administration_is_opened())
         left_menu.open_menu_tasks()
-        self.assertTrue(left_menu.check_menu_tasks_is_visible())
+        self.assertTrue(left_menu.check_menu_tasks_is_opened())
         left_menu.open_menu_reporting()
-        self.assertTrue(left_menu.check_menu_reporting_is_visible())
+        self.assertTrue(left_menu.check_menu_reporting_is_opened())
         left_menu.open_menu_software_and_patch_manager()
         self.assertTrue(left_menu.check_menu_software_and_patch_manager_is_visible())
         # left_menu.open_menu_password_reset()
-        print ("Test passed" + "\n")
+        self.logger.info("Test passed")
 
     # def test_open_left_menus(self):
     #     print ("\n" + "TC#xxxx. Open left side menus")
@@ -198,7 +204,10 @@ class SiteCreation(unittest.TestCase):
         print ("Test passed" + "\n")
 
     def tearDown(self):
-        pass
+        base_actions = BaseActions(self.driver)
+        base_actions._close_help_window()
+        base_actions._close_popups()
+        self.logger.info("[Test end]\n")
 
     @classmethod
     def tearDownClass(cls):
@@ -723,7 +732,7 @@ class LoginPageHelpLinks(unittest.TestCase):
         login_page = LoginPage(self.driver)
         login_page.click_icon_help()
         actual_header = login_page._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, login_page._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, login_page._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_help_link_on_reset_password_popup(self):
@@ -735,7 +744,7 @@ class LoginPageHelpLinks(unittest.TestCase):
         self.assertTrue(reset_password_popup.check_popup_is_present())
         reset_password_popup.click_icon_help()
         actual_header = reset_password_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, reset_password_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, reset_password_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def tearDown(self):
@@ -785,7 +794,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(home_page.check_page_is_present())
         home_page.click_icon_help()
         actual_header = home_page._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, home_page._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, home_page._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_T_help_link_on_tasks_page(self):
@@ -801,7 +810,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(tasks_page.check_page_is_present())
         tasks_page.click_icon_help()
         actual_header = tasks_page._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, tasks_page._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, tasks_page._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_R_help_link_on_reporting_page(self):
@@ -815,10 +824,10 @@ class MainPageHelpLinks(unittest.TestCase):
         ribbon_bar.click_button_home()
         ribbon_bar.click_go_to_home_screen_label()
         self.assertTrue(reporting_page.check_page_is_present())
-        self.assertTrue(left_menu.check_menu_reporting_is_visible())
+        self.assertTrue(left_menu.check_menu_reporting_is_opened())
         reporting_page.click_icon_help()
         actual_header = reporting_page._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, reporting_page._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, reporting_page._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_P_help_link_on_software_and_patch_manager_page(self):
@@ -834,7 +843,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(software_and_patch_manager_page.check_page_is_present())
         software_and_patch_manager_page.click_icon_help()
         actual_header = software_and_patch_manager_page._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, software_and_patch_manager_page._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, software_and_patch_manager_page._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_A_help_link_on_administration_page(self):
@@ -848,7 +857,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(administration_page.check_page_is_present())
         administration_page.click_icon_help()
         actual_header = administration_page._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, administration_page._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, administration_page._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_A_help_link_on_endpoint_management_page(self):
@@ -857,12 +866,12 @@ class MainPageHelpLinks(unittest.TestCase):
         left_menu_administration = LeftMenuAdministration(self.driver)
         endpoint_management_page = EndpointManagementPage(self.driver)
         left_menu_administration.open_menu_administration()
-        self.assertTrue(left_menu_administration.check_menu_administration_is_visible())
+        self.assertTrue(left_menu_administration.check_menu_administration_is_opened())
         left_menu_administration.click_endpoint_management_label()
         self.assertTrue(endpoint_management_page.check_page_is_present())
         endpoint_management_page.click_icon_help()
         actual_header = endpoint_management_page._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, endpoint_management_page._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, endpoint_management_page._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_A_help_link_on_dynamically_managed_page(self):
@@ -871,14 +880,14 @@ class MainPageHelpLinks(unittest.TestCase):
         left_menu_administration = LeftMenuAdministration(self.driver)
         dynamically_managed_page = DynamicallyManagedPage(self.driver)
         left_menu_administration.open_menu_administration()
-        self.assertTrue(left_menu_administration.check_menu_administration_is_visible())
+        self.assertTrue(left_menu_administration.check_menu_administration_is_opened())
         left_menu_administration.expand_endpoint_management_tree()
         self.assertTrue(left_menu_administration.check_dynamically_managed_label_is_present())
         left_menu_administration.click_dynamically_managed_label()
         self.assertTrue(dynamically_managed_page.check_page_is_present())
         dynamically_managed_page.click_icon_help()
         actual_header = dynamically_managed_page._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, dynamically_managed_page._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, dynamically_managed_page._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_A_help_link_on_excluded_devices_page(self):
@@ -887,14 +896,14 @@ class MainPageHelpLinks(unittest.TestCase):
         left_menu_administration = LeftMenuAdministration(self.driver)
         excluded_devices_page = ExcludedDevicesPage(self.driver)
         left_menu_administration.open_menu_administration()
-        self.assertTrue(left_menu_administration.check_menu_administration_is_visible())
+        self.assertTrue(left_menu_administration.check_menu_administration_is_opened())
         left_menu_administration.expand_endpoint_management_tree()
         self.assertTrue(left_menu_administration.check_excluded_devices_label_is_present())
         left_menu_administration.click_excluded_devices_label()
         self.assertTrue(excluded_devices_page.check_page_is_present())
         excluded_devices_page.click_icon_help()
         actual_header = excluded_devices_page._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, excluded_devices_page._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, excluded_devices_page._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_A_help_link_on_unmanaged_devices_page(self):
@@ -903,14 +912,14 @@ class MainPageHelpLinks(unittest.TestCase):
         left_menu_administration = LeftMenuAdministration(self.driver)
         unmanaged_devices_page = UnmanagedDevicesPage(self.driver)
         left_menu_administration.open_menu_administration()
-        self.assertTrue(left_menu_administration.check_menu_administration_is_visible())
+        self.assertTrue(left_menu_administration.check_menu_administration_is_opened())
         left_menu_administration.expand_endpoint_management_tree()
         self.assertTrue(left_menu_administration.check_excluded_devices_label_is_present())
         left_menu_administration.click_unmanaged_devices_label()
         self.assertTrue(unmanaged_devices_page.check_page_is_present())
         unmanaged_devices_page.click_icon_help()
         actual_header = unmanaged_devices_page._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, unmanaged_devices_page._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, unmanaged_devices_page._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_A_help_link_on_infrastructure_page(self):
@@ -919,14 +928,14 @@ class MainPageHelpLinks(unittest.TestCase):
         left_menu_administration = LeftMenuAdministration(self.driver)
         infrastructure_page = InfrastructurePage(self.driver)
         left_menu_administration.open_menu_administration()
-        self.assertTrue(left_menu_administration.check_menu_administration_is_visible())
+        self.assertTrue(left_menu_administration.check_menu_administration_is_opened())
         left_menu_administration.expand_endpoint_management_tree()
         self.assertTrue(left_menu_administration.check_infrastructure_label_is_present())
         left_menu_administration.click_infrastructure_label()
         self.assertTrue(infrastructure_page.check_page_is_present())
         infrastructure_page.click_icon_help()
         actual_header = infrastructure_page._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, infrastructure_page._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, infrastructure_page._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_A_help_link_on_admin_accounts_popup(self):
@@ -936,14 +945,14 @@ class MainPageHelpLinks(unittest.TestCase):
         ribbon_bar = RibbonBar(self.driver)
         admin_accounts_popup = AdminAccountsPopup(self.driver)
         left_menu_administration.open_menu_administration()
-        self.assertTrue(left_menu_administration.check_menu_administration_is_visible())
+        self.assertTrue(left_menu_administration.check_menu_administration_is_opened())
         left_menu_administration.click_endpoint_management_label()
         self.assertTrue(ribbon_bar.check_configuration_box_is_present())
         ribbon_bar.click_button_accounts()
         self.assertTrue(admin_accounts_popup.check_popup_is_present)
         admin_accounts_popup.click_icon_help()
         actual_header = admin_accounts_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, admin_accounts_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, admin_accounts_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_A_help_link_on_user_configuration_popup(self):
@@ -954,7 +963,7 @@ class MainPageHelpLinks(unittest.TestCase):
         admin_accounts_popup = AdminAccountsPopup(self.driver)
         user_configuration_popup = UserConfigurationPopup(self.driver)
         left_menu_administration.open_menu_administration()
-        self.assertTrue(left_menu_administration.check_menu_administration_is_visible())
+        self.assertTrue(left_menu_administration.check_menu_administration_is_opened())
         left_menu_administration.click_endpoint_management_label()
         self.assertTrue(ribbon_bar.check_configuration_box_is_present())
         ribbon_bar.click_button_accounts()
@@ -963,7 +972,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(user_configuration_popup.check_popup_is_present())
         user_configuration_popup.click_icon_help()
         actual_header = user_configuration_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, user_configuration_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, user_configuration_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_A_help_link_on_configure_exclusions_popup(self):
@@ -973,14 +982,14 @@ class MainPageHelpLinks(unittest.TestCase):
         configure_exclusions_popup = ConfigureExclusionsPopup(self.driver)
         ribbon_bar = RibbonBar(self.driver)
         left_menu_administration.open_menu_administration()
-        self.assertTrue(left_menu_administration.check_menu_administration_is_visible())
+        self.assertTrue(left_menu_administration.check_menu_administration_is_opened())
         left_menu_administration.click_endpoint_management_label()
         self.assertTrue(ribbon_bar.check_configuration_box_is_present())
         ribbon_bar.click_button_exclusions()
         self.assertTrue(configure_exclusions_popup.check_popup_is_present)
         configure_exclusions_popup.click_icon_help()
         actual_header = configure_exclusions_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, configure_exclusions_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, configure_exclusions_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_A_help_link_on_exclude_site_popup(self):
@@ -992,7 +1001,7 @@ class MainPageHelpLinks(unittest.TestCase):
         sites_tab = SitesTab(self.driver)
         ribbon_bar = RibbonBar(self.driver)
         left_menu_administration.open_menu_administration()
-        self.assertTrue(left_menu_administration.check_menu_administration_is_visible())
+        self.assertTrue(left_menu_administration.check_menu_administration_is_opened())
         left_menu_administration.click_endpoint_management_label()
         self.assertTrue(ribbon_bar.check_configuration_box_is_present())
         ribbon_bar.click_button_exclusions()
@@ -1002,7 +1011,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(exclude_site_popup.check_popup_is_present())
         exclude_site_popup.click_icon_help()
         actual_header = exclude_site_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, exclude_site_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, exclude_site_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_A_help_link_on_exclude_device_popup(self):
@@ -1014,7 +1023,7 @@ class MainPageHelpLinks(unittest.TestCase):
         device_name_tab = DeviceNameTab(self.driver)
         ribbon_bar = RibbonBar(self.driver)
         left_menu_administration.open_menu_administration()
-        self.assertTrue(left_menu_administration.check_menu_administration_is_visible())
+        self.assertTrue(left_menu_administration.check_menu_administration_is_opened())
         left_menu_administration.click_endpoint_management_label()
         self.assertTrue(ribbon_bar.check_configuration_box_is_present())
         ribbon_bar.click_button_exclusions()
@@ -1024,7 +1033,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(exclude_device_popup.check_popup_is_present())
         exclude_device_popup.click_icon_help()
         actual_header = exclude_device_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, exclude_device_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, exclude_device_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_A_help_link_on_exclude_ip_address_popup(self):
@@ -1036,7 +1045,7 @@ class MainPageHelpLinks(unittest.TestCase):
         ip_address_tab = IPAddressTab(self.driver)
         ribbon_bar = RibbonBar(self.driver)
         left_menu_administration.open_menu_administration()
-        self.assertTrue(left_menu_administration.check_menu_administration_is_visible())
+        self.assertTrue(left_menu_administration.check_menu_administration_is_opened())
         left_menu_administration.click_endpoint_management_label()
         self.assertTrue(ribbon_bar.check_configuration_box_is_present())
         ribbon_bar.click_button_exclusions()
@@ -1046,7 +1055,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(exclude_ip_address_popup.check_popup_is_present())
         exclude_ip_address_popup.click_icon_help()
         actual_header = exclude_ip_address_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, exclude_ip_address_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, exclude_ip_address_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_RB_help_link_on_select_dashboard_popup(self):
@@ -1060,7 +1069,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(select_dashboard_popup.check_popup_is_present())
         select_dashboard_popup.click_icon_help()
         actual_header = select_dashboard_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, select_dashboard_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, select_dashboard_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_RB_help_link_on_user_settings_popup(self):
@@ -1074,7 +1083,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(user_settings_popup.check_popup_is_present())
         user_settings_popup.click_icon_help()
         actual_header = user_settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, user_settings_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, user_settings_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_RB_help_link_on_ribbon_bar(self):
@@ -1085,7 +1094,7 @@ class MainPageHelpLinks(unittest.TestCase):
         # self.assertTrue(ribbon_bar.check_tab_home_is_present())
         ribbon_bar.click_button_console_guide()
         actual_header = ribbon_bar._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, ribbon_bar._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, ribbon_bar._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_RB_help_link_on_subscription_popup(self):
@@ -1097,7 +1106,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertIsNotNone(subscription_popup.check_popup_is_present()) #VERIFY THIS ASSERTION
         subscription_popup.click_icon_help()
         actual_header = subscription_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, subscription_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, subscription_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_RB_help_link_on_settings_popup(self):
@@ -1109,7 +1118,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(settings_popup.check_popup_is_present())
         settings_popup.click_icon_help()
         actual_header = settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, settings_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, settings_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_RB_help_link_on_settings_popup_content_services_tab(self):
@@ -1124,7 +1133,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(content_services_tab.check_tab_is_present())
         settings_popup.click_icon_help()
         actual_header = settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, settings_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, settings_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_RB_help_link_on_settings_popup_email_settings_tab(self):
@@ -1139,7 +1148,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(email_settings_tab.check_tab_is_present())
         settings_popup.click_icon_help()
         actual_header = settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, settings_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, settings_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_RB_help_link_on_settings_popup_initial_setup_tab(self):
@@ -1154,7 +1163,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(initial_setup_tab.check_tab_is_present())
         settings_popup.click_icon_help()
         actual_header = settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, settings_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, settings_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_RB_help_link_on_settings_popup_locale_options_tab(self):
@@ -1169,7 +1178,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(locale_option_tab.check_tab_is_present())
         settings_popup.click_icon_help()
         actual_header = settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, settings_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, settings_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     @unittest.skip("Skip test_RB_help_link_on_settings_popup_inventory_tab. Inventory tab is opened too long\n")
@@ -1185,7 +1194,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(inventory_tab.check_tab_is_present())
         settings_popup.click_icon_help()
         actual_header = settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, inventory_tab._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, inventory_tab._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_RB_help_link_on_settings_popup_user_options_tab(self):
@@ -1200,7 +1209,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(user_options_tab.check_tab_is_present())
         settings_popup.click_icon_help()
         actual_header = settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, user_options_tab._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, user_options_tab._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_RB_help_link_on_settings_popup_audit_log_settings_tab(self):
@@ -1215,7 +1224,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(audit_log_settings_tab.check_tab_is_present())
         settings_popup.click_icon_help()
         actual_header = settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, audit_log_settings_tab._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, audit_log_settings_tab._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_RB_help_link_on_client_settings_popup(self):
@@ -1227,7 +1236,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(client_settings_popup.check_popup_is_present())
         client_settings_popup.click_icon_help()
         actual_header = client_settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, client_settings_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, client_settings_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_RB_help_link_on_client_settings_popup_timers_tab(self):
@@ -1242,7 +1251,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(timers_tab.check_tab_is_present())
         client_settings_popup.click_icon_help()
         actual_header = client_settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, timers_tab._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, timers_tab._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_RB_help_link_on_client_settings_popup_features_tab(self):
@@ -1257,7 +1266,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(feature_tab.check_tab_is_present())
         client_settings_popup.click_icon_help()
         actual_header = client_settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, feature_tab._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, feature_tab._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_RB_help_link_on_client_settings_popup_client_urls_tab(self):
@@ -1272,7 +1281,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(client_urls_tab.check_tab_is_present())
         client_settings_popup.click_icon_help()
         actual_header = client_settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, client_urls_tab._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, client_urls_tab._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_RB_help_link_on_client_settings_popup_reboot_ui_config_tab(self):
@@ -1287,7 +1296,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(reboot_ui_config_tab.check_tab_is_present())
         reboot_ui_config_tab.click_icon_help()
         actual_header = client_settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, reboot_ui_config_tab._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, reboot_ui_config_tab._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_RB_help_link_on_client_settings_popup_client_proxy_settings_tab(self):
@@ -1302,7 +1311,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(client_proxy_settings_tab.check_tab_is_present())
         client_settings_popup.click_icon_help()
         actual_header = client_settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, client_proxy_settings_tab._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, client_proxy_settings_tab._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_RB_help_link_on_currency_popup(self):
@@ -1316,7 +1325,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(currency_popup.check_popup_is_present())
         currency_popup.click_icon_help()
         actual_header = currency_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, currency_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, currency_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_RB_help_link_on_weight_display_popup(self):
@@ -1330,7 +1339,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(weight_display_popup.check_popup_is_present())
         weight_display_popup.click_icon_help()
         actual_header = weight_display_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, weight_display_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, weight_display_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_RB_help_link_on_manufacturer_alias_popup(self):
@@ -1344,7 +1353,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(manufacturer_alias_popup.check_popup_is_present())
         manufacturer_alias_popup.click_icon_help()
         actual_header = manufacturer_alias_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, manufacturer_alias_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, manufacturer_alias_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_RB_help_link_on_model_alias_popup(self):
@@ -1358,7 +1367,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(model_alias_popup.check_popup_is_present())
         model_alias_popup.click_icon_help()
         actual_header = model_alias_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, model_alias_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, model_alias_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_RB_help_link_on_column_sets_popup(self):
@@ -1375,7 +1384,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(column_sets_popup.check_popup_is_present())
         column_sets_popup.click_icon_help()
         actual_header = column_sets_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, column_sets_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, column_sets_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_RB_help_link_on_initial_setup_popup(self):
@@ -1393,7 +1402,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(initial_setup_popup.check_popup_is_present())
         initial_setup_popup.click_icon_help()
         actual_header = initial_setup_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, initial_setup_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, initial_setup_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_D_help_link_on_devices_page(self):
@@ -1408,7 +1417,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(devices_page.check_page_is_present())
         devices_page.click_icon_help()
         actual_header = devices_page._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, devices_page._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, devices_page._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_D_help_link_on_queries_page(self):
@@ -1420,7 +1429,7 @@ class MainPageHelpLinks(unittest.TestCase):
         left_menu_devices.click_queries_label()
         queries_page.click_icon_help()
         actual_header = queries_page._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, queries_page._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, queries_page._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_D_help_link_on_groups_page(self):
@@ -1432,7 +1441,7 @@ class MainPageHelpLinks(unittest.TestCase):
         left_menu_devices.click_groups_label()
         groups_page.click_icon_help()
         actual_header = groups_page._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, groups_page._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, groups_page._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_D_help_link_on_site_name_popup(self):
@@ -1443,14 +1452,14 @@ class MainPageHelpLinks(unittest.TestCase):
         left_menu_devices = LeftMenuDevices(self.driver)
         site_name_popup = SiteNamePopup(self.driver)
         left_menu.open_menu_devices()
-        self.assertTrue(left_menu.check_menu_devices_is_visible())
+        self.assertTrue(left_menu.check_menu_devices_is_opened())
         left_menu_devices.click_global_site_view_label()
         self.assertTrue(ribbon_bar.check_button_new_site_is_present())
         ribbon_bar.click_button_new_site()
         self.assertTrue(site_name_popup.check_popup_is_present())
         site_name_popup.click_icon_help()
         actual_header = site_name_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, site_name_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, site_name_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_D_help_link_on_configuration_popup(self):
@@ -1461,14 +1470,14 @@ class MainPageHelpLinks(unittest.TestCase):
         left_menu_devices = LeftMenuDevices(self.driver)
         configuration_popup = ConfigurationPopup(self.driver)
         left_menu.open_menu_devices()
-        self.assertTrue(left_menu.check_menu_devices_is_visible())
+        self.assertTrue(left_menu.check_menu_devices_is_opened())
         left_menu_devices.open_global_site_view_tree()
         self.assertTrue(ribbon_bar.check_button_config_is_present())
         ribbon_bar.click_button_config()
         self.assertTrue(configuration_popup.check_popup_is_present())
         configuration_popup.click_icon_help()
         actual_header = configuration_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, configuration_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, configuration_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_D_help_link_on_ip_address_popup(self):
@@ -1481,7 +1490,7 @@ class MainPageHelpLinks(unittest.TestCase):
         ip_address_popup = IPAddressPopup(self.driver)
         configuration_popup = ConfigurationPopup(self.driver)
         left_menu_devices.open_menu_devices()
-        self.assertTrue(left_menu_devices.check_menu_devices_is_visible())
+        self.assertTrue(left_menu_devices.check_menu_devices_is_opened())
         left_menu_devices.open_global_site_view_tree()
         left_menu_devices.create_site_if_not_exists(sitename)
         self.assertTrue(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
@@ -1495,7 +1504,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(ip_address_popup.check_popup_is_present())
         ip_address_popup.click_icon_help()
         actual_header = ip_address_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, ip_address_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, ip_address_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_D_help_link_on_move_site_popup(self):
@@ -1507,7 +1516,7 @@ class MainPageHelpLinks(unittest.TestCase):
         left_menu_devices = LeftMenuDevices(self.driver)
         move_site_popup = MoveSitePopup(self.driver)
         left_menu.open_menu_devices()
-        self.assertTrue(left_menu.check_menu_devices_is_visible())
+        self.assertTrue(left_menu.check_menu_devices_is_opened())
         left_menu_devices.create_site_if_not_exists(sitename)
         left_menu_devices.click_site_in_global_site_view_tree(sitename)
         self.assertTrue(ribbon_bar.check_button_config_is_present())
@@ -1515,7 +1524,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(move_site_popup.check_popup_is_present())
         move_site_popup.click_icon_help()
         actual_header = move_site_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, move_site_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, move_site_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_D_help_link_on_query_designer_popup(self):
@@ -1525,14 +1534,14 @@ class MainPageHelpLinks(unittest.TestCase):
         left_menu_devices = LeftMenuDevices(self.driver)
         query_designer_popup = QueryDesignerPopup(self.driver)
         left_menu_devices.open_menu_devices()
-        self.assertTrue(left_menu_devices.check_menu_devices_is_visible())
+        self.assertTrue(left_menu_devices.check_menu_devices_is_opened())
         left_menu_devices.click_queries_label()
         self.assertTrue(ribbon_bar.check_queries_box_is_present())
         ribbon_bar.click_button_new()
         self.assertTrue(query_designer_popup.check_popup_is_present())
         query_designer_popup.click_icon_help()
         actual_header = query_designer_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, query_designer_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, query_designer_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_D_help_link_on_condition_editor_popup(self):
@@ -1543,7 +1552,7 @@ class MainPageHelpLinks(unittest.TestCase):
         query_designer_popup = QueryDesignerPopup(self.driver)
         condition_editor_popup = ConditionEditorPopup(self.driver)
         left_menu_devices.open_menu_devices()
-        self.assertTrue(left_menu_devices.check_menu_devices_is_visible())
+        self.assertTrue(left_menu_devices.check_menu_devices_is_opened())
         left_menu_devices.click_queries_label()
         self.assertTrue(ribbon_bar.check_queries_box_is_present())
         ribbon_bar.click_button_new()
@@ -1552,7 +1561,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(condition_editor_popup.check_popup_is_present())
         condition_editor_popup.click_icon_help()
         actual_header = condition_editor_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, condition_editor_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, condition_editor_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_D_help_link_on_new_group_popup(self):
@@ -1570,7 +1579,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(new_group_popup.check_popup_is_present())
         new_group_popup.click_icon_help()
         actual_header = new_group_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, new_group_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, new_group_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_D_help_link_on_select_targets_popup(self):
@@ -1591,7 +1600,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(select_targets_popup.check_popup_is_present())
         select_targets_popup.click_icon_help()
         actual_header = select_targets_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, select_targets_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, select_targets_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_D_help_link_on_new_folder_popup(self):
@@ -1609,7 +1618,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(new_folder_popup.check_popup_is_present())
         new_folder_popup.click_icon_help()
         actual_header = new_folder_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, new_folder_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, new_folder_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_D_help_link_on_edit_folder_popup(self):
@@ -1620,7 +1629,7 @@ class MainPageHelpLinks(unittest.TestCase):
         left_menu_devices = LeftMenuDevices(self.driver)
         edit_folder_popup = EditFolderPopup(self.driver)
         left_menu_devices.open_menu_devices()
-        self.assertTrue(left_menu_devices.check_menu_devices_is_visible())
+        self.assertTrue(left_menu_devices.check_menu_devices_is_opened())
         left_menu_devices.click_groups_label()
         self.assertTrue(ribbon_bar.check_groups_box_is_present())
         left_menu_devices.create_group_folder_if_not_exists(name)
@@ -1631,7 +1640,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(edit_folder_popup.check_popup_is_present())
         edit_folder_popup.click_icon_help()
         actual_header = edit_folder_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, edit_folder_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, edit_folder_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_D_help_link_on_inventory_view_popup(self):
@@ -1653,7 +1662,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(inventory_view_popup.check_popup_is_present(device))
         inventory_view_popup.click_icon_help()
         actual_header = inventory_view_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, inventory_view_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, inventory_view_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_D_help_link_on_on_demand_inventory_scan_popup(self):
@@ -1675,7 +1684,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(on_demand_inventory_scan_popup.check_popup_is_present())
         on_demand_inventory_scan_popup.click_icon_help()
         actual_header = on_demand_inventory_scan_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, on_demand_inventory_scan_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, on_demand_inventory_scan_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_D_help_link_on_wake_up_popup(self):
@@ -1696,7 +1705,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(wake_on_lan_popup.check_popup_is_present())
         wake_on_lan_popup.click_icon_help()
         actual_header = wake_on_lan_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, wake_on_lan_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, wake_on_lan_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_D_help_link_on_move_device_popup(self):
@@ -1717,7 +1726,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(move_device_popup.check_popup_is_present())
         move_device_popup.click_icon_help()
         actual_header = move_device_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, move_device_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, move_device_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_D_help_link_on_patch_manager_popup(self):
@@ -1738,7 +1747,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(patch_manager_popup.check_popup_is_present())
         patch_manager_popup.click_icon_help()
         actual_header = patch_manager_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, patch_manager_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, patch_manager_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_D_help_link_on_reports_popup(self):
@@ -1759,7 +1768,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(reports_popup.check_popup_is_present())
         reports_popup.click_icon_help()
         actual_header = reports_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, reports_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, reports_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_D_help_link_on_file_explorer_popup(self):
@@ -1780,7 +1789,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(file_explorer_popup.check_popup_is_present())
         file_explorer_popup.click_icon_help()
         actual_header = file_explorer_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, file_explorer_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, file_explorer_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_D_help_link_on_ping_result_popup(self):
@@ -1801,7 +1810,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(ping_result_popup.check_popup_is_present())
         ping_result_popup.click_icon_help()
         actual_header = ping_result_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, ping_result_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, ping_result_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_D_help_link_on_process_explorer_popup(self):
@@ -1822,7 +1831,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(process_explorer_popup.check_popup_is_present())
         process_explorer_popup.click_icon_help()
         actual_header = process_explorer_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, process_explorer_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, process_explorer_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_D_help_link_on_event_viewer_popup(self):
@@ -1843,7 +1852,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(event_viewer_popup.check_popup_is_present())
         event_viewer_popup.click_icon_help()
         actual_header = event_viewer_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, event_viewer_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, event_viewer_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def test_D_help_link_on_wmi_explorer_popup(self):
@@ -1864,7 +1873,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(wmi_explorer_popup.check_popup_is_present())
         wmi_explorer_popup.click_icon_help()
         actual_header = wmi_explorer_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, wmi_explorer_popup._help_results(expected_header))
+        self.assertEqual(expected_header, actual_header, wmi_explorer_popup._get_log_for_help_link(expected_header))
         self.logger.info("Test passed")
 
     def tearDown(self):
