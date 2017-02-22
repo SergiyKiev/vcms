@@ -39,25 +39,25 @@ class LeftMenuDevices(LeftMenu):
         self._wait_for_element_selected(element)
 
     def expand_global_site_view_tree(self):
-        arrow = self._is_element_present(LeftMenuDevices.TREE_GLOBAL_SITE_VIEW + BaseElements.ARROW_EXPAND)
+        arrow = self._is_element_present(LeftMenuDevices.LABEL_GLOBAL_SITE_VIEW + BaseElements.ARROW_EXPAND)
         if arrow:
-            self._expand_tree(LeftMenuDevices.TREE_GLOBAL_SITE_VIEW)
-
-    def expand_groups_tree(self):
-        arrow = self._is_element_present(LeftMenuDevices.TREE_GROUPS + BaseElements.ARROW_EXPAND)
-        if arrow:
-            self._expand_tree(LeftMenuDevices.TREE_GROUPS)
+            self._expand_tree(LeftMenuDevices.LABEL_GLOBAL_SITE_VIEW)
 
     def expand_queries_tree(self):
-        arrow = self._is_element_present(LeftMenuDevices.TREE_QUERIES + BaseElements.ARROW_EXPAND)
+        arrow = self._is_element_present(LeftMenuDevices.LABEL_QUERIES + BaseElements.ARROW_EXPAND)
         if arrow:
-            self._expand_tree(LeftMenuDevices.TREE_QUERIES)
+            self._expand_tree(LeftMenuDevices.LABEL_QUERIES)
+
+    def expand_groups_tree(self):
+        arrow = self._is_element_present(LeftMenuDevices.LABEL_GROUPS + BaseElements.ARROW_EXPAND)
+        if arrow:
+            self._expand_tree(LeftMenuDevices.LABEL_GROUPS)
 
     def collaps_global_site_view_tree(self):
         # self._wait_for_element_present(LeftMenuDevices.LABEL_GLOBAL_SITE_VIEW)
-        arrow = self._is_element_present(LeftMenuDevices.TREE_GLOBAL_SITE_VIEW + BaseElements.ARROW_COLLAPSE)
+        arrow = self._is_element_present(LeftMenuDevices.LABEL_GLOBAL_SITE_VIEW + BaseElements.ARROW_COLLAPSE)
         if arrow:
-            self._collaps_tree(LeftMenuDevices.TREE_GLOBAL_SITE_VIEW)
+            self._collaps_tree(LeftMenuDevices.LABEL_GLOBAL_SITE_VIEW)
 
     def click_default_site_in_global_site_view(self):
         self._click_element(LeftMenuDevices.LABEL_DEFAULT_SITE)

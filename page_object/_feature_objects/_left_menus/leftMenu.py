@@ -14,7 +14,7 @@ class LeftMenu(BaseActions):
     REPORTING                    = "Reporting"
     SOFTWARE_AND_PATCH_MANAGER   = "Software / Patch Manager"
     PASSWORD_RESET               = "Password Reset"
-    HOME                         = "Homes"
+    HOME                         = "Home"
 
     '''NEW'''
     def menu_home(self):

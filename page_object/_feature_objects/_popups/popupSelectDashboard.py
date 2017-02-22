@@ -4,7 +4,7 @@ from _base_page.base_actions import BaseActions
 
 class SelectDashboardPopup(BaseActions):
 
-    BODY = "//span[text()='Select Dashboard']/ancestor::div[contains(@id,'WRP')]"
+    BODY = "//span[text()='Select Dashboard'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
     LEFT_MENU = BODY + "/*//div[@class='TreeView-Control']"
     TAB = BODY + "/*//div[@class='TabControl-Control']"
 
@@ -29,7 +29,7 @@ class SelectDashboardPopup(BaseActions):
 
     def click_system_button_close(self):
         self._click_system_button_close(SelectDashboardPopup.BODY)
-        self._wait_for_element_not_present(SelectDashboardPopup.BODY)
+
 
 
 

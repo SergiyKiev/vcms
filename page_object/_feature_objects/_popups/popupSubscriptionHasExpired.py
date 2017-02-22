@@ -4,7 +4,7 @@ from _base_page.base_actions import BaseActions
 
 class SubscriptionHasExpiredPopup(BaseActions):
 
-    BODY = "//span[text()='Manage Subscriptions']/ancestor::div[contains(@id,'WRP')]"
+    BODY = "//span[text()='Manage Subscriptions'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
 
     def click_system_button_close(self):
         self._click_system_button_close(SubscriptionHasExpiredPopup.BODY)

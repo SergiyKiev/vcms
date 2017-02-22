@@ -9,7 +9,7 @@ class InventoryViewPopup(BaseActions):
     #     self.device_name = name
 
     #CONSTANTS
-    BODY = "//div[contains(@id,'WRP')]"
+    BODY = "//div[contains(@id,'WRP')][last()]"
     TABLE_HEADER = BODY + "/*//div[contains(@id,'HEADER')]"
     TABLE_BODY = BODY  + "/*//div[contains(@id,'VWGLVBODY')]"
     LEFT_SIDE_TREE = BODY + "/*//div[contains(@class,'PaddingContainer')]"
@@ -22,7 +22,7 @@ class InventoryViewPopup(BaseActions):
     ELEMENT_LABEL = "/ancestor::div[contains(@class,'RowContainer')]"
 
     def check_popup_is_present(self, name):
-        element = "//span[text()='" + name + "']/ancestor::div[contains(@id,'WRP')]"
+        element = "//span[text()='" + name + "'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
         cond = self._is_element_present(element)
         # cond = self._is_element_present(InventoryViewPopup.PAGE_BODY)
         return True if cond else False

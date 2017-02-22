@@ -4,7 +4,7 @@ from _base_page.base_actions import BaseActions
 
 class UnableToRemovePopup(BaseActions):
 
-    BODY = "//span[text()='Unable to remove']/ancestor::div[contains(@id,'WRP')]"
+    BODY = "//span[text()='Unable to remove'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
 
     def check_popup_is_present(self):
         cond = self._is_element_present(UnableToRemovePopup.BODY)

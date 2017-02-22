@@ -4,7 +4,7 @@ from _base_page.base_actions import BaseActions
 
 class PingResultPopup(BaseActions):
 
-    BODY = "//span[text()='Ping Result']/ancestor::div[contains(@id,'WRP')]"
+    BODY = "//span[text()='Ping Result'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
     LEFT_MENU = BODY + "/*//div[@class='TreeView-Control']"
     TAB = BODY + "/*//div[@class='TabControl-Control']"
 
@@ -21,7 +21,7 @@ class PingResultPopup(BaseActions):
 
     def click_system_button_close(self):
         self._click_system_button_close(PingResultPopup.BODY)
-        self._wait_for_element_not_present(PingResultPopup.BODY)
+
 
 
 

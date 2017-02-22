@@ -7,7 +7,7 @@ from _feature_objects._popups.popupExcludeSite import ExcludeSitePopup
 
 class ConfigureExclusionsPopup(BaseActions):
 
-    BODY = "//span[text()='Configure Exclusions']/ancestor::div[contains(@id,'WRP')]"
+    BODY = "//span[text()='Configure Exclusions'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
     TAB = BODY + "/*//div[@class='TabControl-Control']"
     TABLE_HEADER = BODY + "/*//div[contains(@id,'HEADER')]"
     TABLE_BODY = BODY  + "/*//div[contains(@id,'VWGLVBODY')]"
@@ -35,7 +35,6 @@ class ConfigureExclusionsPopup(BaseActions):
 
     def click_system_button_close(self):
         self._click_system_button_close(ConfigureExclusionsPopup.BODY)
-        self._wait_for_element_not_present(ConfigureExclusionsPopup.BODY)
 
     def click_label_in_left_side_tree(self, label):
         elem = ConfigureExclusionsPopup.LEFT_MENU + "/*//span[text()='" + str(label) + "']"

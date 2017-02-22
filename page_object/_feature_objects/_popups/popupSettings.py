@@ -8,7 +8,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 class SettingsPopup(BaseActions):
 
-    BODY = "//span[text()='Settings']/ancestor::div[contains(@id,'WRP')]"
+    BODY = "//span[text()='Settings'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
     LEFT_MENU = BODY + "/*//div[@class='TreeView-Control']"
     TAB = BODY + "/*//div[@class='TabControl-Control']"
 

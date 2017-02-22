@@ -4,7 +4,7 @@ from _base_page.base_actions import BaseActions
 
 class ClientSettingsPopup(BaseActions):
 
-    BODY = "//span[text()='Client Settings']/ancestor::div[contains(@id,'WRP')]"
+    BODY = "//span[text()='Client Settings'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
     LEFT_MENU = BODY + "/*//div[@class='TreeView-Control']"
     TAB = BODY + "/*//div[@class='TabControl-Control']"
 

@@ -1,10 +1,10 @@
-
+import time
 from _base_page.base_actions import BaseActions
 
 
 class MoveSitePopup(BaseActions):
 
-    BODY = "//span[text()='Move Site']/ancestor::div[contains(@id,'WRP')]"
+    BODY = "//span[text()='Move Site'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
     LEFT_MENU = BODY + "/*//div[@class='TreeView-Control']"
 
     def check_popup_is_present(self):
@@ -28,7 +28,6 @@ class MoveSitePopup(BaseActions):
 
     def click_system_button_close(self):
         self._click_system_button_close(MoveSitePopup.BODY)
-        self._wait_for_element_not_present(MoveSitePopup.BODY)
 
 
 

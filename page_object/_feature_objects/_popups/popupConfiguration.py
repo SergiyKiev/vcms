@@ -6,7 +6,7 @@ from _feature_objects._popups.popupIPAddress import IPAddressPopup
 
 class ConfigurationPopup(BaseActions):
 
-    BODY = "//span[text()='Configuration']/ancestor::div[contains(@id,'WRP')]"
+    BODY = "//span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
     TABS_PANEL = BODY + "/*//div[contains(@id,'VWGScrollable')]/div"
     TAB_IP_ADDRESS = BODY + "/*//span[text()='IP Address Ranges'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]"
     TAB_SITE = BODY + "/*//span[text()='Site'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]"

@@ -4,7 +4,7 @@ from _base_page.base_actions import BaseActions
 
 class ExcludeSitePopup(BaseActions):
 
-    BODY = "//span[text()='Exclude Site']/ancestor::div[contains(@id,'WRP')]"
+    BODY = "//span[text()='Exclude Site'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
     FIELD_NAME = BODY + "/*//input"
 
     def check_popup_is_present(self):

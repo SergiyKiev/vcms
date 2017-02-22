@@ -5,7 +5,7 @@ from _base_page.base_elements import BaseElements
 
 class ColumnSetDesignerPopup(BaseActions):
     #CONSTANTS
-    BODY = "//span[text()='Column Set Designer']/ancestor::div[contains(@id,'WRP')]"
+    BODY = "//span[text()='Column Set Designer'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
     TABLE_HEADER = BODY + "/*//div[contains(@id,'HEADER')]"
     TABLE_BODY = BODY  + "/*//div[contains(@id,'VWGLVBODY')]"
     BUTTON_ADD = BODY + "/*//span[text()='Add >>']/ancestor::div[contains(@class,'Button')]"

@@ -2,7 +2,6 @@
 from _base_page.base_actions import BaseActions
 
 
-
 class EventLogsPage(BaseActions):
 
     PAGE_HEADER = "//span[text()='Event Logs']/ancestor::div[@class='Panel-Control'][contains(@style,'85px')]"

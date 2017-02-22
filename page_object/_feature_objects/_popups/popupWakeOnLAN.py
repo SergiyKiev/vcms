@@ -4,7 +4,7 @@ from _base_page.base_actions import BaseActions
 
 class WakeOnLANPopup(BaseActions):
 
-    BODY = "//span[text()='Wake on LAN']/ancestor::div[contains(@id,'WRP')]"
+    BODY = "//span[text()='Wake on LAN'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
 
     def check_popup_is_present(self):
         cond = self._is_element_present(WakeOnLANPopup.BODY)
@@ -23,7 +23,7 @@ class WakeOnLANPopup(BaseActions):
 
     def click_system_button_close(self):
         self._click_system_button_close(WakeOnLANPopup.BODY)
-        self._wait_for_element_not_present(WakeOnLANPopup.BODY)
+
 
 
 

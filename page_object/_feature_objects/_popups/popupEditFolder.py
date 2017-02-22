@@ -4,7 +4,7 @@ from _base_page.base_actions import BaseActions
 
 class EditFolderPopup(BaseActions):
 
-    BODY = "//span[text()='Edit Folder']/ancestor::div[contains(@id,'WRP')]"
+    BODY = "//span[text()='Edit Folder'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
     FIELD_EDIT_FOLDER = BODY + "/*//input"
 
     def check_popup_is_present(self):
@@ -28,7 +28,7 @@ class EditFolderPopup(BaseActions):
 
     def click_system_button_close(self):
         self._click_system_button_close(EditFolderPopup.BODY)
-        self._wait_for_element_not_present(EditFolderPopup.BODY)
+
 
     def enter_text_into_edit_folder_text_field(self, name):
         self._find_element(EditFolderPopup.FIELD_EDIT_FOLDER).send_keys(name)

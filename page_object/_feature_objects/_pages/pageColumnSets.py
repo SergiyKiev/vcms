@@ -5,7 +5,7 @@ from _feature_objects._ribbon_bar.ribbonBar import RibbonBar
 
 class ColumnSetsPage(BaseActions):
 
-    PAGE_HEADER = "//span[text()='Column Sets']/ancestor::div[@class='Panel-Control'][contains(@style,'85px')]"
+    PAGE_HEADER = "//span[contains(text(),'Column Sets')]/ancestor::div[@class='Panel-Control'][contains(@style,'85px')]"
     BODY = PAGE_HEADER + "/parent::div"
     TABLE_BODY = BODY + "/*//div[contains(@id,'VWGLVBODY')]"
     TABLE_HEADER = BODY + "/*//div[contains(@id,'HEADER')]"

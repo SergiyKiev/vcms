@@ -4,7 +4,7 @@ from _base_page.base_actions import BaseActions
 
 class SubscriptionsPopup(BaseActions):
 
-    BODY = "//span[text()='Subscriptions']/ancestor::div[contains(@id,'WRP')]"
+    BODY = "//span[text()='Subscriptions'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
 
     def check_popup_is_present(self):
         cond = self._is_element_present(SubscriptionsPopup.BODY)

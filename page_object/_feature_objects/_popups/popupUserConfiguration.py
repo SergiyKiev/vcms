@@ -4,7 +4,7 @@ from _base_page.base_actions import BaseActions
 
 class UserConfigurationPopup(BaseActions):
 
-    BODY = "//span[text()='User Configuration']/ancestor::div[contains(@id,'WRP')]"
+    BODY = "//span[text()='User Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
     FIELD_NAME = BODY + "/*//input"
 
     def check_popup_is_present(self):

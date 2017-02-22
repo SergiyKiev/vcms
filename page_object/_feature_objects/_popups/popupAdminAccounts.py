@@ -6,7 +6,7 @@ from _feature_objects._popups.popupUserConfiguration import UserConfigurationPop
 
 class AdminAccountsPopup(BaseActions):
 
-    BODY = "//span[text()='Admin Accounts']/ancestor::div[contains(@id,'WRP')]"
+    BODY = "//span[text()='Admin Accounts'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
     BUTTON_ADD_MEMBERS = BODY + "/*//span[text()='Add Members']/ancestor::div[contains(@class,'Button')]"
     LEFT_MENU = BODY + "/*//div[@class='TreeView-Control']"
     TAB = BODY + "/*//div[@class='TabControl-Control']"
@@ -29,7 +29,6 @@ class AdminAccountsPopup(BaseActions):
 
     def click_system_button_close(self):
         self._click_system_button_close(AdminAccountsPopup.BODY)
-        self._wait_for_element_not_present(AdminAccountsPopup.BODY)
 
     def click_button_add_members(self):
         self._click_element(AdminAccountsPopup.BUTTON_ADD_MEMBERS)

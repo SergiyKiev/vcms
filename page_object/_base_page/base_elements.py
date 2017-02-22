@@ -9,9 +9,10 @@ class BaseElements(Base):
     #BUTTONS
     BUTTON_EDIT = "/*//*[text()='Edit']/ancestor::div[contains(@class,'Button')]"
     BUTTON_NEW = "//span[text()='New']/ancestor::div[contains(@class,'Button')]"
-    BUTTON_OK = "/*//span[text()='OK']/ancestor::div[contains(@class,'Button')]"
-    BUTTON_Ok = "/*//span[text()='Ok']/ancestor::div[contains(@class,'Button')]"
-    BUTTON_CANCEL = "/*//span[text()='Cancel']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_OK_1 = "/*//span[text()='OK']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_OK_2 = "/*//span[text()='Ok']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_CANCEL_1 = "/*//span[text()='CANCEL']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_CANCEL_2 = "/*//span[text()='Cancel']/ancestor::div[contains(@class,'Button')]"
     BUTTON_NO = "/*//span[text()='No']/ancestor::div[contains(@class,'Button')]"
     BUTTON_YES = "/*//span[text()='Yes']/ancestor::div[contains(@class,'Button')]"
     BUTTON_CLOSE = "/*//span[text()='Close']/ancestor::div[contains(@class,'Button')]"
@@ -43,7 +44,7 @@ class BaseElements(Base):
 
     #GENERAL ELEMENTS
     POPUP = "//div[contains(@id,'WRP')][last()]"
-    POPUP_ERROR = "//span[text()='Error']/ancestor::div[contains(@id,'WRP')]/*//span[contains(@class,'Label-FontData')]"
+    POPUP_ERROR = "//span[text()='Error'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[contains(@class,'Label-FontData')]"
     FIELD = "/*//input"
     # RIBBON_BAR = "//div[@class='RibbonBarTabControl-Control']"
     RIBBON_BAR = "//div[@class='RibbonBar-Control']"

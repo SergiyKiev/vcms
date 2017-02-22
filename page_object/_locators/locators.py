@@ -40,7 +40,7 @@ class Locators:
   EL_LOADING                        = "div[@id='VWG_LoadingAnimationBox']"
   EL_RIBBON_BAR_TAB                 = "div[@class='RibbonBarTabControl-Control']"
   EL_RIBBON_BAR_BODY                = "div[@class='RibbonBarTabControl-CenterFrame']"
-  EL_POPUP                          = "div[contains(@id,'WRP')]"
+  EL_POPUP                          = "div[contains(@id,'WRP')][last()]"
   EL_TABEL_HEADER                   = "div[contains(@id,'HEADER')]"
   EL_TABLE_BODY                     = "div[contains(@id,'VWGLVBODY')]"
   EL_TAB_BTN                        = "div[contains(@id,'TAB')]"

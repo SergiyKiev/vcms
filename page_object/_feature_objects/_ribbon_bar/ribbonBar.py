@@ -6,6 +6,7 @@ from _feature_objects._popups.popupConfiguration import ConfigurationPopup
 from _feature_objects._popups.popupConfigureExclusions import ConfigureExclusionsPopup
 from _feature_objects._popups.popupConnecting import ConnectingPopup
 from _feature_objects._popups.popupCurrency import CurrencyPopup
+from _feature_objects._popups.popupDiscoverDevices import DiscoverDevicesPopup
 from _feature_objects._popups.popupEditFolder import EditFolderPopup
 from _feature_objects._popups.popupEndUserAccess import EndUserAccessPopup
 from _feature_objects._popups.popupError import ErrorPopup
@@ -26,6 +27,7 @@ from _feature_objects._popups.popupRemoveDevices import RemoveDevicesPopup
 from _feature_objects._popups.popupReports import ReportsPopup
 from _feature_objects._popups.popupSelectDashboard import SelectDashboardPopup
 from _feature_objects._popups.popupSettings import SettingsPopup
+from _feature_objects._popups.popupSiteConfig import SiteConfigPopup
 from _feature_objects._popups.popupSiteName import SiteNamePopup
 from _feature_objects._popups.popupSubscriptionHasExpired import *
 from _feature_objects._popups.popupSubscriptions import SubscriptionsPopup
@@ -61,9 +63,11 @@ class RibbonBar(BaseActions):
     BUTTONS_BOX_SITE_MANAGEMENT = "//div[text()='Site Management'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
     BUTTONS_BOX_COMPUTER_TOOLS = "//div[text()='Computer Tools'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
     BUTTONS_BOX_CONFIGURATION = "//div[text()='Configuration'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
+    BUTTONS_BOX_CONFIG = "//div[text()='Config'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
     BUTTON_EXIT = "//img[@alt='Exit']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_HOME = "//img[@alt='Home']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_NEW = "//img[@alt='New']/ancestor::div[contains(@class,'RibbonBarButton')]"
+    BUTTON_ADD = "//img[@alt='Add']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_EDIT = "//img[@alt='Edit']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_EDIT_FOLDER = "//img[@alt='Edit Folder']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_ACCOUNTS = "//img[@alt='Accounts']/ancestor::div[contains(@class,'RibbonBarButton')]"
@@ -100,6 +104,7 @@ class RibbonBar(BaseActions):
     BUTTON_PROCESS_VIEWER = "//img[@alt='Process Viewer']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_EVENT_VIEWER = "//img[@alt='Event Viewer']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_WMI_EXPLORER = "//img[@alt='WMI Explorer']/ancestor::div[contains(@class,'RibbonBarButton')]"
+    BUTTON_DISCOVER = "//img[@alt='Discover']/ancestor::div[contains(@class,'RibbonBarButton')]"
     MENU_ITEM_SETTINGS = DROP_DOWN_LIST + "/*//span[text()='Settings']" + MENU_ITEM
     MENU_ITEM_LOG_OUT = DROP_DOWN_LIST + "/*//span[contains(text(),'Log Out')]" + MENU_ITEM
     MENU_ITEM_GO_TO_HOME_SCREEN = DROP_DOWN_LIST + "/*//span[contains(text(),'Go To')]" + MENU_ITEM
@@ -356,6 +361,10 @@ class RibbonBar(BaseActions):
         cond = self._is_element_present(RibbonBar.BUTTONS_BOX_CONFIGURATION)
         return True if cond else False
 
+    def check_config_box_is_present(self):
+        cond = self._is_element_present(RibbonBar.BUTTONS_BOX_CONFIG)
+        return True if cond else False
+
     def check_inventory_box_is_present(self):
         cond = self._is_element_present(RibbonBar.BUTTONS_BOX_INVENTORY)
         return True if cond else False
@@ -425,4 +434,18 @@ class RibbonBar(BaseActions):
     def click_button_exclusions(self):
         self._click_element(RibbonBar.BUTTON_EXCLUSIONS)
         self._wait_for_element_present(ConfigureExclusionsPopup.BODY)
+
+    def click_button_discover(self):
+        self._click_element(RibbonBar.BUTTON_DISCOVER)
+        self._wait_for_element_present(DiscoverDevicesPopup.BODY)
+
+    def check_button_discover_is_present(self):
+        cond = self._is_element_present(RibbonBar.BUTTON_DISCOVER)
+        return True if cond else False
+
+    def click_button_add(self):
+        self._click_element(RibbonBar.BUTTON_ADD)
+        self._wait_for_element_present(SiteConfigPopup.BODY)
+
+
 

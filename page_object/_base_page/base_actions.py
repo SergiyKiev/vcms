@@ -15,12 +15,12 @@ class BaseActions(Base):
         self._click_element(locator + BaseElements.BUTTON_EDIT)
 
     def _click_button_ok(self, locator):
-        cond1 = self._is_element_present(locator + BaseElements.BUTTON_OK)
-        cond2 = self._is_element_present(locator + BaseElements.BUTTON_Ok)
+        cond1 = self._is_element_present(locator + BaseElements.BUTTON_OK_1)
+        cond2 = self._is_element_present(locator + BaseElements.BUTTON_OK_2)
         if cond1:
-            self._click_element(locator + BaseElements.BUTTON_OK)
+            self._click_element(locator + BaseElements.BUTTON_OK_1)
         elif cond2:
-            self._click_element(locator + BaseElements.BUTTON_Ok)
+            self._click_element(locator + BaseElements.BUTTON_OK_2)
         self._wait_for_element_not_present(locator)
 
     def _click_button_no(self, locator):
@@ -32,7 +32,12 @@ class BaseActions(Base):
         self._wait_for_element_not_present(locator)
 
     def _click_button_cancel(self, locator):
-        self._click_element(locator + BaseElements.BUTTON_CANCEL)
+        cond1 = self._is_element_present(locator + BaseElements.BUTTON_CANCEL_1)
+        cond2 = self._is_element_present(locator + BaseElements.BUTTON_CANCEL_2)
+        if cond1:
+            self._click_element(locator + BaseElements.BUTTON_OK_1)
+        elif cond2:
+            self._click_element(locator + BaseElements.BUTTON_OK_2)
         self._wait_for_element_not_present(locator)
 
     def _click_button_close(self, locator):
@@ -86,11 +91,11 @@ class BaseActions(Base):
         #     elements = self._find_elements(BaseElements.POPUP + BaseElements.SYSTEM_BUTTON_CLOSE)
         #     for element in elements:
         #         error_popup = self._is_element_present(
-        #             "//span[text()='Error']/ancestor::div[contains(@id,'WRP')][last()]/*//span[contains(@class,'Label-FontData')]")
+        #             "//span[text()='Error'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[contains(@class,'Label-FontData')]")
         #         if error_popup:
         #             print "error popup ", str(error_popup)
         #             text = self._get_text(
-        #                 "//span[text()='Error']/ancestor::div[contains(@id,'WRP')]/*//span[contains(@class,'Label-FontData')]")
+        #                 "//span[text()='Error'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[contains(@class,'Label-FontData')]")
         #             self.logger.error("Error popup text is: " + str(text))
         #         elif element:
         #             print element
@@ -99,7 +104,7 @@ class BaseActions(Base):
         #             break
         #     button_close = self._is_element_present(BaseElements.POPUP + "[last()]" + BaseElements.BUTTON_CLOSE)
         #     if button_close:
-        #         self._click_button_close("//div[contains(@id,'WRP')]")
+        #         self._click_button_close("//div[contains(@id,'WRP')][last()]")
         #         print "button close ", button_close
         # if cond:
         #     i = 0
@@ -174,15 +179,14 @@ class BaseActions(Base):
             return "HELP LINK IS UNAVAILABLE. Massage: ", massage1, massage2
         except TimeoutException:
             self.logger.error("Help window is not opened")
-            return "Help window is not opened"
+            return ""
         except IndexError:
             help_window = 'null'
             self.logger.error("Help window is not found")
-            return "Help window is not found"
+            return ""
         except Exception as e:
-            self.logger.error("Help window is not found")
-            print e
-            return "Help window is not found"
+            self.logger.error("Help window is not found" + str(e))
+            return ""
 
     def _close_help_window(self):
         handles = self.driver.window_handles
@@ -308,7 +312,7 @@ class BaseActions(Base):
             i += 1
             cond = self._is_element_present(element)
             if cond:
-                self.logger.debug("Left menu '" + str(name) + "' is opened")
+                self.logger.info("Left menu '" + str(name) + "' is opened")
                 break
             elif cond is None:
                 self.logger.error("Failure. Left menu '" + str(name) + "' is not found")

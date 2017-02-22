@@ -4,7 +4,7 @@ from _base_page.base_actions import BaseActions
 
 class WMIExplorerPopup(BaseActions):
 
-    BODY = "//span[text()='WMI Explorer']/ancestor::div[contains(@id,'WRP')]"
+    BODY = "//span[text()='WMI Explorer'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
 
     def check_popup_is_present(self):
         cond = self._is_element_present(WMIExplorerPopup.BODY)

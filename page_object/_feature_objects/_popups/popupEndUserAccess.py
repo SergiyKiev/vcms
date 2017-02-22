@@ -4,7 +4,7 @@ from _base_page.base_actions import BaseActions
 
 class EndUserAccessPopup(BaseActions):
 
-    BODY = "//span[text()=End User Access']/ancestor::div[contains(@id,'WRP')]"
+    BODY = "//span[text()=End User Access'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
 
     def check_popup_is_present(self):
         cond = self._is_element_present(EndUserAccessPopup.BODY)
@@ -23,7 +23,7 @@ class EndUserAccessPopup(BaseActions):
 
     def click_system_button_close(self):
         self._click_system_button_close(EndUserAccessPopup.BODY)
-        self._wait_for_element_not_present(EndUserAccessPopup.BODY)
+
 
 
 

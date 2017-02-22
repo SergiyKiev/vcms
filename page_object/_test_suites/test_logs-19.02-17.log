@@ -274,7 +274,7 @@ Message: stale element reference: element is not attached to the page document
 2017-02-19 19:04:41,516  INFO   [Test start]
 2017-02-19 19:04:41,516  INFO   TC#0000: Check help link on Reports popup
 2017-02-19 19:04:47,805  INFO   Left menu 'Devices' is opened
-2017-02-19 19:04:58,993  ERROR  The element //span[text()='Reports']/ancestor::div[contains(@id,'WRP')]/*//img[contains(@src,'About')] is not clickable.
+2017-02-19 19:04:58,993  ERROR  The element //span[text()='Reports'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//img[contains(@src,'About')] is not clickable.
 Message: unknown error: Element <img src="Icons.Metro.About.png.wgx" style="width:100%;height:100%" alt="" onmousedown="mobjApp.Web_EventCancelBubble(event,true,false);"> is not clickable at point (1339, 336). Other element would receive the click: <td style="text-align:center;vertical-align:center">...</td>
   (Session info: chrome=56.0.2924.87)
   (Driver info: chromedriver=2.26.436362 (5476ec6bf7ccbada1734a0cdec7d570bb042aa30),platform=Windows NT 10.0.10586 x86_64)

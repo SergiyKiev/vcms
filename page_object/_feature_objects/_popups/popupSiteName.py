@@ -4,7 +4,7 @@ from _base_page.base_actions import BaseActions
 
 class SiteNamePopup(BaseActions):
 
-    BODY = "//span[contains(text(),'Site') and contains(text(),'Name')]/ancestor::div[contains(@id,'WRP')]"
+    BODY = "//span[text()='Site Name'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
     FIELD_NAME = BODY + "/*//input"
 
     def check_popup_is_present(self):

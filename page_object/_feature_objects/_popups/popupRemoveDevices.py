@@ -4,7 +4,7 @@ from _base_page.base_actions import BaseActions
 
 class RemoveDevicesPopup(BaseActions):
 
-    BODY = "//span[text()='Remove Devices']/ancestor::div[contains(@id,'WRP')]"
+    BODY = "//span[text()='Remove Devices'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
     CHECKBOX_KEEP_HIST_INFORM = BODY + "//span[contains(text(),'Keep')][@class='CheckBox-Label']/" \
                                        "ancestor::tr/td[contains(@id,'TRG')]"
 

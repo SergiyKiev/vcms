@@ -4,7 +4,7 @@ from _base_page.base_actions import BaseActions
 
 class PatchManagerPopup(BaseActions):
     #CONSTANTS
-    BODY = "//span[text()='Patch Manager']/ancestor::div[contains(@id,'WRP')]"
+    BODY = "//span[text()='Patch Manager'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
     TABLE_HEADER = BODY + "/*//div[contains(@id,'HEADER')]"
     TABLE_BODY = BODY  + "/*//div[contains(@id,'VWGLVBODY')]"
     SEARCH_FIELD = BODY + "/*//input"

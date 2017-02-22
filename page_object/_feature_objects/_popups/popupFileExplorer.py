@@ -4,7 +4,7 @@ from _base_page.base_actions import BaseActions
 
 class FileExplorerPopup(BaseActions):
 
-    BODY = "//span[text()='File Explorer']/ancestor::div[contains(@id,'WRP')]"
+    BODY = "//span[text()='File Explorer'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
     LEFT_MENU = BODY + "/*//div[@class='TreeView-Control']"
     TAB = BODY + "/*//div[@class='TabControl-Control']"
 
@@ -21,7 +21,6 @@ class FileExplorerPopup(BaseActions):
 
     def click_system_button_close(self):
         self._click_system_button_close(FileExplorerPopup.BODY)
-        self._wait_for_element_not_present(FileExplorerPopup.BODY)
 
 
 

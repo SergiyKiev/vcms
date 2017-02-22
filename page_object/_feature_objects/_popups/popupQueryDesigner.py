@@ -5,7 +5,7 @@ from _feature_objects._popups.popupConditionEditor import ConditionEditorPopup
 
 class QueryDesignerPopup(BaseActions):
 
-    BODY = "//span[text()='Query Designer']/ancestor::div[contains(@id,'WRP')]"
+    BODY = "//span[text()='Query Designer'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
     LEFT_MENU = BODY + "/*//div[@class='TreeView-Control']"
     TAB = BODY + "/*//div[@class='TabControl-Control']"
 
@@ -26,7 +26,7 @@ class QueryDesignerPopup(BaseActions):
 
     def click_system_button_close(self):
         self._click_system_button_close(QueryDesignerPopup.BODY)
-        self._wait_for_element_not_present(QueryDesignerPopup.BODY)
+
 
     def click_button_add(self):
         self._click_button_add(QueryDesignerPopup.BODY)

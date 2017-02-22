@@ -30,21 +30,21 @@ class Base(object):
     CHECKED = "[contains(@style,'CheckBox1')]"
     UNCHECKED = "[contains(@style,'CheckBox0')]"
     LOGIN_PAGE_LOGO = "//img[contains(@src,'Images.CMS-Login')]"
-    ARROW_EXPAND = "/*//div[contains(@style,'LTR1.gif')]"
-    ARROW_COLLAPSE = "/*//div[contains(@style,'LTR0.gif')]"
-    ARROW_EMPTY = "/*//div[contains(@style,'TreeViewEmpty')]"
+    ARROW_EXPAND = "/div[contains(@style,'LTR1.gif')]"
+    ARROW_COLLAPSE = "/div[contains(@style,'LTR0.gif')]"
+    ARROW_EMPTY = "/div[contains(@style,'TreeViewEmpty')]"
 
     def __init__(self, driver, base_url=Settings.baseUrl):
         self.driver = driver
         self.base_url = base_url
         self.timeout_loading = 120
         self.timeout_condition = 1.5
-        self.timeout_webelement = 10
+        self.timeout_webelement = 20
         self.wait_webelement = WebDriverWait(self.driver, self.timeout_webelement)
         self.wait_condition = WebDriverWait(self.driver, self.timeout_condition)
         self.wait_loading = WebDriverWait(self.driver, self.timeout_loading)
 
-    # def wait_for_action(self):
+    # def wait_for_ajax_is_finished(self):
     #     try:
     #         i = 0
     #         while i <= 5:
@@ -67,16 +67,24 @@ class Base(object):
     #             print "System loading error\n" + str(e)
 
     '''Wait for action ACTUAL'''
-    def wait_for_action(self):
-        # time.sleep(0.2)
-        # print "waiting..."
-        self.wait_loading.until_not(EC.presence_of_element_located((By.XPATH, Base.LOADING_ANIMATION_VISIBLE )))
-        self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOCKED_SCREEN)))
-        # time.sleep(0.1)
-        self.wait_loading.until_not(EC.presence_of_element_located((By.XPATH, Base.LOADING_ANIMATION_VISIBLE)))
-        self.wait_loading.until_not(EC.presence_of_element_located((By.XPATH, Base.LOADING_SCREEN_VISIBLE)))
-        # self.wait_loading.until_not(EC.presence_of_element_located(
-        #     (By.XPATH,"//*[@id='VWG_MaskedModalWindowBox'][contains(@style,'display: block')]")))
+    def wait_for_ajax_is_finished(self):
+        i = 0
+        imax = self.timeout_condition
+        while i <= imax:
+            self.wait_loading.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOCKED_SCREEN)))
+            self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOCKED_SCREEN)))
+            # self.wait_loading.until_not(EC.presence_of_element_located((By.XPATH, Base.LOADING_ANIMATION_VISIBLE)))
+            # self.wait_loading.until_not(EC.presence_of_element_located((By.XPATH, Base.LOADING_SCREEN_VISIBLE)))
+            x = self.driver.execute_script("return jQuery.active == 0")
+            if x:
+                print "jQuery is not active: " + str(x) + " after " + str(i) + " seconds"
+                break
+            elif i > imax:
+                self.logger.critical("Timeout exception for wait for ajax method")
+            else:
+                i += 1
+                time.sleep(1)
+
         # print "finish waiting"
         # cond = self._is_element_present(Base.LOADING_SCREEN_VISIBLE)
         # if cond is not True:
@@ -104,6 +112,7 @@ class Base(object):
         try:
             self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
             self.wait_webelement.until(EC.visibility_of_element_located((By.XPATH, locator)))
+            self.logger.debug("FIND ELEMENT. Element " + locator + " is found")
             return self.driver.find_element(By.XPATH, locator)
         except (NoSuchElementException, TimeoutException):
             self.logger.error("FIND ELEMENT. Element " + locator + " is NOT found")
@@ -126,21 +135,14 @@ class Base(object):
     '''CUSTOM CLICK METHOD ACTUAL'''
     def _click_element(self, locator):
         try:
-            # cond = self._is_element_present(locator)
-            # if cond:
-            self.wait_for_action()
+            time.sleep(0.1)
+            self.wait_for_ajax_is_finished()
             element = self._find_element(locator)
             if element:
-                # self.wait_loading.until_not(
-                #     EC.visibility_of_element_located((
-                #         By.XPATH,"//*[@id='VWG_MaskedModalWindowBox'][contains(@style,'display: block')]")))
-                # self.wait_webelement.until_not(
-                #     EC.presence_of_element_located((
-                #         By.XPATH,"//*[@id='VWG_MaskedModalWindowBox'][contains(@style,'display: block')]")))
                 element.click()
                 self.logger.debug("CLICK: " + str(locator))
                 # self.logger.info("CLICK: " + str(locator))
-            self.wait_for_action()
+            self.wait_for_ajax_is_finished()
         except (NoSuchElementException, TimeoutException):
             self.logger.critical(
                 "CLICK: Element " + locator + " is NOT found after " + str(self.timeout_webelement) + " seconds")
@@ -151,10 +153,10 @@ class Base(object):
     #     try:
     #         cond = self._wait_for_element_present(locator)
     #         if cond:
-    #             self.wait_for_action()
+    #             self.wait_for_ajax_is_finished()
     #             button = self._find_element(locator)
     #             button.click()
-    #             self.wait_for_action()
+    #             self.wait_for_ajax_is_finished()
     #             self.logger.debug("Click: " + str(locator))
     #             self.logger.info("Click: " + str(locator))
     #             # print "\n" + "CLICK:  ", locator
@@ -280,6 +282,20 @@ class Base(object):
                 "WAITING. Element " + locator + " is NOT disabled after " + str(self.timeout_webelement) + " seconds")
             return False
 
+    def _wait_for_element_unabled(self, locator):
+        try:
+            self.wait_webelement.until_not(EC.presence_of_element_located((By.XPATH, locator + Base.DISABLED)))
+            self.wait_webelement.until_not(EC.visibility_of_element_located((By.XPATH, locator + Base.DISABLED)))
+            self.logger.debug("WAITING. Element " + locator + " is unabled.")
+            return True
+        except NoSuchElementException:
+            self.logger.critical("WAITING. Element " + locator + " is NOT found.")
+            return False
+        except TimeoutException:
+            self.logger.error(
+                "WAITING. Element " + locator + " is NOT unabled after " + str(self.timeout_webelement) + " seconds")
+            return False
+
     def _is_element_present(self, locator):
         try:
             self.wait_condition.until(EC.presence_of_element_located((By.XPATH, locator)))
@@ -400,14 +416,14 @@ class Base(object):
             self.driver.execute_script("arguments[0].scrollTop = 0", element)
             self._wait_for_element_present("//table[contains(@id,'VWGVL_')]/*//tr[1][@data-vwgindex='0']")
         except Exception as e:
-            self.logger.critical("Error on scroll to top method.\n Message " + str(e))
+            self.logger.critical("SCROLL. Error on scroll to top method.\n Message " + str(e))
 
     def scroll_list_down(self, step):
         try:
             element = self._find_element("//div[contains(@id,'VWGVLSC_')]")
             self.driver.execute_script("arguments[0].scrollTop = arguments[1]", element, step)
         except Exception as e:
-            self.logger.critical("Error on scroll list down method.\n Message " + str(e))
+            self.logger.critical("SCROLL. Error on scroll list down method.\n Message " + str(e))
 
     def scroll_to_element(self, locator):
         try:
@@ -415,4 +431,4 @@ class Base(object):
             element = self._find_element(locator)
             self.driver.execute_script("return arguments[0].scrollIntoView();", element)
         except Exception as e:
-            self.logger.critical("Error on scroll to element method.\n Message " + str(e))
+            self.logger.critical("SCROLL. Error on scroll to element method.\n Message " + str(e))

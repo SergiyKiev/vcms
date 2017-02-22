@@ -6,7 +6,7 @@ from _feature_objects._popups.popupColumnSetDesigner import ColumnSetDesignerPop
 
 class ColumnSetsPopup(BaseActions):
 
-    BODY = "//span[contains(text(),'Column Sets')]/ancestor::div[contains(@id,'WRP')]"
+    BODY = "//span[contains(text(),'Column Sets')][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
     BUTTON_NEW = BODY + "/*//img[@alt='New']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_EDIT = BODY + "/*//img[@alt='Edit']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_COPY = BODY + "/*//img[@alt='Copy']/ancestor::div[contains(@class,'RibbonBarButton')]"

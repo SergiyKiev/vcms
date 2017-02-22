@@ -4,7 +4,7 @@ from _base_page.base_actions import BaseActions
 
 class ProcessExplorerPopup(BaseActions):
 
-    BODY = "//span[text()='Process Explorer']/ancestor::div[contains(@id,'WRP')]"
+    BODY = "//span[text()='Process Explorer'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
     TABS_PANEL = BODY + "/*//div[contains(@id,'VWGScrollable')]/div"
     TAB_PROCESSES = BODY + "/*//span[text()='Processes'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]"
     TAB_SERVICES = BODY + "/*//span[text()='Services'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]"

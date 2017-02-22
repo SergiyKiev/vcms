@@ -1,5 +1,6 @@
 from _base_page.base_elements import BaseElements
 from _feature_objects._left_menus.leftMenu import LeftMenu
+from _feature_objects._pages.pageAuditLog import AuditLogPage
 from _feature_objects._pages.pageEndpointManagement import EndpointManagementPage
 
 
@@ -15,7 +16,7 @@ class LeftMenuAdministration(LeftMenu):
     TREE_VREPS = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[7]"
     TREE_MAINTENANCE_WINDOWS = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[8]"
     TREE_NOTIFICATIONS = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[9]"
-    TREE_AUDIT_LOGS = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[10]"
+    TREE_AUDIT_LOG = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[10]"
     LIST_ENDPOINT_MANAGEMENT = TREE_ENDPOINT_MANAGEMENT + "/div[contains(@class,'SubNodesContainer')]"
     LABEL_DYNAMICALLY_MANAGED = LIST_ENDPOINT_MANAGEMENT \
                                 + "/div/div/*//span[text()='Dynamically Managed']/ancestor::div[contains(@class,'RowContainer')]"
@@ -34,16 +35,16 @@ class LeftMenuAdministration(LeftMenu):
     LABEL_VREPS = TREE_VREPS + "/div[contains(@class,'RowContainer')]"
     LABEL_MAINTENANCE_WINDOWS = TREE_MAINTENANCE_WINDOWS + "/div[contains(@class,'RowContainer')]"
     LABEL_NOTIFICATIONS = TREE_NOTIFICATIONS + "/div[contains(@class,'RowContainer')]"
-    LABEL_AUDIT_LOG = TREE_AUDIT_LOGS + "/div[contains(@class,'RowContainer')]"
+    LABEL_AUDIT_LOG = TREE_AUDIT_LOG + "/div[contains(@class,'RowContainer')]"
 
     def click_endpoint_management_label(self):
         self._click_element(LeftMenuAdministration.LABEL_ENDPOINT_MANAGEMENT)
         self._wait_for_element_selected(LeftMenuAdministration.LABEL_ENDPOINT_MANAGEMENT)
 
     def expand_endpoint_management_tree(self):
-        arrow = self._is_element_present(self.TREE_ENDPOINT_MANAGEMENT + BaseElements.ARROW_EXPAND)
+        arrow = self._is_element_present(self.LABEL_ENDPOINT_MANAGEMENT + BaseElements.ARROW_EXPAND)
         if arrow:
-            self._expand_tree(self.TREE_ENDPOINT_MANAGEMENT)
+            self._expand_tree(self.LABEL_ENDPOINT_MANAGEMENT)
 
     def collaps_endpoint_management_tree(self):
         self._wait_for_element_present(LeftMenuAdministration.LABEL_ENDPOINT_MANAGEMENT)
@@ -86,6 +87,7 @@ class LeftMenuAdministration(LeftMenu):
     def click_audit_log_label(self):
         self._click_element(LeftMenuAdministration.LABEL_AUDIT_LOG)
         self._wait_for_element_selected(LeftMenuAdministration.LABEL_AUDIT_LOG)
+        self._wait_for_element_present(AuditLogPage.PAGE_HEADER)
 
     def click_dynamically_managed_label(self):
         self._click_element(LeftMenuAdministration.LABEL_DYNAMICALLY_MANAGED)

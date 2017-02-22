@@ -103,11 +103,11 @@ class DevicesPage(BaseActions):
                     pass
                 remove_devices_popup.click_button_ok()
                 self.click_icon_refresh()
-                print "Device was found and deleted: ", name
+                self.logger.info("Device was found and deleted: ", str(name))
             else:
-                print "No device was found:", name
+                self.logger.info("No device was found:", str(name))
         except Exception as e:
-            print "DELETE SINGLE DEVICE METHOD FAILED ", e
+            self.logger.error("Method 'delete_single_device_in_devices_page_table' is failed\n" + str(e))
 
 
 

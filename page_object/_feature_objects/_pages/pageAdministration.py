@@ -25,5 +25,5 @@ class AdministrationPage(BaseActions):
             ribbon_bar.open_tab_home()
             ribbon_bar.click_button_home()
             ribbon_bar.click_go_to_home_screen_label()
-            result = self.check_page_is_present()
-            print "Administration home screen is opened ", result
+            # self.check_page_is_present()
+            # print "Administration home screen is opened ", result

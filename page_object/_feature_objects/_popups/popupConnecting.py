@@ -2,13 +2,13 @@ from _base_page.base_actions import BaseActions
 
 class ConnectingPopup(BaseActions):
 
-    CONNECTING = "//span[text()='Connecting....']/ancestor::div[contains(@id,'WRP')]"
-    PING = "//span[text()='Ping....']/ancestor::div[contains(@id,'WRP')]"
+    CONNECTING = "//span[text()='Connecting....'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
+    PING = "//span[text()='Ping....'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
 
     def _check_popup_is_present(self, name):
         global BODY
-        NAME = "//span[text()='" + str(name) + "']/ancestor::div[contains(@id,'WRP')]"
-        PARTIAL_NAME = "//span[contains(text(),'" + name + "')]/ancestor::div[contains(@id,'WRP')]"
+        NAME = "//span[text()='" + str(name) + "'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
+        PARTIAL_NAME = "//span[contains(text(),'" + name + "')][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
         full_name = self._is_element_present(NAME)
         partial_name = self._is_element_present(PARTIAL_NAME)
         if full_name:

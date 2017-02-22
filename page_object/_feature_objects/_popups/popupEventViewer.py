@@ -4,7 +4,7 @@ from _base_page.base_actions import BaseActions
 
 class EventViewerPopup(BaseActions):
 
-    BODY = "//span[text()='Event Viewer']/ancestor::div[contains(@id,'WRP')]"
+    BODY = "//span[text()='Event Viewer'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
     TABLE_HEADER = BODY + "/*//div[contains(@id,'HEADER')]"
     TABLE_BODY = BODY  + "/*//div[contains(@id,'VWGLVBODY')]"
     LEFT_SIDE_TREE = BODY + "/*//div[contains(@class,'PaddingContainer')]"
@@ -38,7 +38,6 @@ class EventViewerPopup(BaseActions):
 
     def click_system_button_close(self):
         self._click_system_button_close(EventViewerPopup.BODY)
-        self._wait_for_element_not_present(EventViewerPopup.BODY)
 
     def click_label_in_left_side_tree(self, label):
         elem = EventViewerPopup.LEFT_SIDE_SUBNODE + "/*//span[text()='" + label + "']"
