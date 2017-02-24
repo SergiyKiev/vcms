@@ -1,12 +1,9 @@
 import unittest
 
-from _feature_objects._left_menus.leftMenu import *
-from _feature_objects._left_menus.leftMenuDevices import LeftMenuDevices
-from _feature_objects._pages.pageDevices import DevicesPage
-from _feature_objects._pages.pageLogin import LoginPage
-from _feature_objects._pages.pageMain import MainPage
-from _feature_objects._ribbon_bar.ribbonBar import *
-from _variables.variables import *
+from _feature_objects.feature_screen import DevicesScreen
+from _feature_objects.feature_left_menu import *
+from _pages.pageLogin import LoginPage
+from _pages.pageMain import MainPage
 from selenium import webdriver
 
 
@@ -29,9 +26,9 @@ class SmokeTest(unittest.TestCase):
 
     def test_01_delete_devices_from_the_console(self):
         devices = Variables.devices_for_smoke_test
-        left_menu = LeftMenu(self.driver)
+        left_menu = BaseLeftMenu(self.driver)
         left_menu_devices = LeftMenuDevices(self.driver)
-        devices_page = DevicesPage(self.driver)
+        devices_page = DevicesScreen(self.driver)
         left_menu.open_menu_devices()
         left_menu_devices.expand_global_site_view_tree()
         left_menu_devices.click_global_site_view_label()
@@ -68,13 +65,13 @@ class SmokeTest(unittest.TestCase):
         site_name_popup.enter_text_into_name_text_field(sitename)
         site_name_popup.click_button_ok()
         self.assertTrue(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
-        print ("Test passed" + "\n")
+        print ("TEST PASSED!!!" + "\n")
 
     '''D0 NOT DELETE!!!'''
     # def test_add_vrep_to_the_console(self):
     #     name = "VKYV-DT-IK"
     #     main_page = MainPage(self.driver)
-    #     devices_page = DevicesPage(self.driver)
+    #     devices_page = DevicesScreen(self.driver)
     #     x = DownloadAndInstall(self.driver)
     #     main_page.delete_device_from_the_console()
     #     x.clean_up_device()

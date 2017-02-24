@@ -5,42 +5,114 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7c96859-35be-4aa1-b143-52cb0122a0f9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Test Results - suiteFullRegression_SiteDeletion.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_feature_objects/_popups/popupConnecting.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_test_suites/test_logs_without_fails.log" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_test_suites/text_logs_help_links.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Test Results - suiteFullRegression_MainPageHelpLinks.html" afterPath="$PROJECT_DIR$/../Test Results - suiteFullRegression_MainPageHelpLinks.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_feature_objects/_feature_popups/feature_popup.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_feature_objects/feature_left_menu.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_feature_objects/feature_screen.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_left_menus/leftMenu.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_left_menus/leftMenuAdministration.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_left_menus/leftMenuDevices.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/page.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageAdministration.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageAuditLog.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageColumnSets.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageDevices.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageDynamicallyManaged.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageEndpointManagement.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageEventLogs.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageExcludedDevices.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageGroups.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageHome.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageInfrastructure.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageInventoryConfiguration.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageMaintenanceWindows.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageNotifications.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageQueries.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageReporting.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageSiteConfiguration.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageSoftwareAndPatchManger.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageTasks.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageUnmanagedDevices.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageUsers.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageVReps.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popup.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupAdminAccounts.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupAreYouSure.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupColumnSetDesigner.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupColumnSets.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupConditionEditor.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupConnecting.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupCurrency.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupDiscoverDevices.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupEditFolder.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupEndUserAccess.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupError.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupEventViewer.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupExcludeDevice.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupExcludeIPAddress.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupExcludeSite.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupFileExplorer.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupIPAddress.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupInitialSetup.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupInventoryView.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupMaintenanceWindow.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupManufacturerAlias.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupModelAlias.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupMoveDevice.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupMoveSite.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupNewFolder.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupNewGroup.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupOnDemandInventoryScan.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupPatchManager.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupPingResult.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupProcessExplorer.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupQueryDesigner.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupRemoveDevices.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupReports.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupResetPassword.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupSelectDashboard.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupSelectTargets.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupSettings.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupSiteConfig.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupSiteName.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupSubscriptionHasExpired.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupSubscriptions.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupTermsAndConditions.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupUnableToRemove.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupUserConfiguration.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupUserSettings.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupViewLogs.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupWMIExplorer.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupWakeOnLAN.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupWeightDisplay.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_feature_objects/_ribbon_bar/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_locators/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_settings/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_settings/settings.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_variables/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_variables/variables.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_base_page/base.py" afterPath="$PROJECT_DIR$/_base_page/base.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_base_page/base_actions.py" afterPath="$PROJECT_DIR$/_base_page/base_actions.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_base_page/base_elements.py" afterPath="$PROJECT_DIR$/_base_page/base_elements.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_base_page/downloadAndInstall.py" afterPath="$PROJECT_DIR$/_base_page/downloadAndInstall.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_base_page/logs.py" afterPath="$PROJECT_DIR$/_base_page/logs.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_feature_objects/_left_menus/leftMenu.py" afterPath="$PROJECT_DIR$/_feature_objects/_left_menus/leftMenu.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_feature_objects/_left_menus/leftMenuAdministration.py" afterPath="$PROJECT_DIR$/_feature_objects/_left_menus/leftMenuAdministration.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_feature_objects/_left_menus/leftMenuDevices.py" afterPath="$PROJECT_DIR$/_feature_objects/_left_menus/leftMenuDevices.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageAdministration.py" afterPath="$PROJECT_DIR$/_feature_objects/_pages/pageAdministration.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageDevices.py" afterPath="$PROJECT_DIR$/_feature_objects/_pages/pageDevices.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageDynamicallyManaged.py" afterPath="$PROJECT_DIR$/_feature_objects/_pages/pageDynamicallyManaged.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageEventLogs.py" afterPath="$PROJECT_DIR$/_feature_objects/_pages/pageEventLogs.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageLogin.py" afterPath="$PROJECT_DIR$/_feature_objects/_pages/pageLogin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageMain.py" afterPath="$PROJECT_DIR$/_feature_objects/_pages/pageMain.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageVReps.py" afterPath="$PROJECT_DIR$/_feature_objects/_pages/pageVReps.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupAreYouSure.py" afterPath="$PROJECT_DIR$/_feature_objects/_popups/popupAreYouSure.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupColumnSetDesigner.py" afterPath="$PROJECT_DIR$/_feature_objects/_popups/popupColumnSetDesigner.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupColumnSets.py" afterPath="$PROJECT_DIR$/_feature_objects/_popups/popupColumnSets.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupConfiguration.py" afterPath="$PROJECT_DIR$/_feature_objects/_popups/popupConfiguration.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupInventoryView.py" afterPath="$PROJECT_DIR$/_feature_objects/_popups/popupInventoryView.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupMoveDevice.py" afterPath="$PROJECT_DIR$/_feature_objects/_popups/popupMoveDevice.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupSubscriptionHasExpired.py" afterPath="$PROJECT_DIR$/_feature_objects/_popups/popupSubscriptionHasExpired.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupWeightDisplay.py" afterPath="$PROJECT_DIR$/_feature_objects/_popups/popupWeightDisplay.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_feature_objects/_ribbon_bar/ribbonBar.py" afterPath="$PROJECT_DIR$/_feature_objects/_ribbon_bar/ribbonBar.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_settings/settings.py" afterPath="$PROJECT_DIR$/_settings/settings.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_test_suites/suiteFullRegression.py" afterPath="$PROJECT_DIR$/_test_suites/suiteFullRegression.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_test_suites/suiteSmokeTests.py" afterPath="$PROJECT_DIR$/_test_suites/suiteSmokeTests.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_test_suites/test_logs.log" afterPath="$PROJECT_DIR$/_test_suites/test_logs.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_variables/variables.py" afterPath="$PROJECT_DIR$/_variables/variables.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/_test_suites/SuiteMainPageHelpLinks.log" afterPath="$PROJECT_DIR$/_feature_objects/_pages/page.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/_test_suites/main_logs.log" afterPath="$PROJECT_DIR$/_feature_objects/_popups/popup.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/_base_page/__init__.py" afterPath="$PROJECT_DIR$/_base/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/_base_page/base.py" afterPath="$PROJECT_DIR$/_base/base.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/_base_page/base_actions.py" afterPath="$PROJECT_DIR$/_base/base_actions.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/_base_page/base_elements.py" afterPath="$PROJECT_DIR$/_base/base_elements.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/_base_page/decorators.py" afterPath="$PROJECT_DIR$/_base/decorators.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/_base_page/downloadAndInstall.py" afterPath="$PROJECT_DIR$/_base/downloadAndInstall.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/_base_page/logs.py" afterPath="$PROJECT_DIR$/_base/logs.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/_feature_objects/_left_menus/__init__.py" afterPath="$PROJECT_DIR$/_feature_objects/_feature_popups/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/__init__.py" afterPath="$PROJECT_DIR$/_pages/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageEndUserAccessLogin.py" afterPath="$PROJECT_DIR$/_pages/pageEndUserAccessLogin.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageEndUserAccessMain.py" afterPath="$PROJECT_DIR$/_pages/pageEndUserAccessMain.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageLogin.py" afterPath="$PROJECT_DIR$/_pages/pageLogin.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/_feature_objects/_pages/pageMain.py" afterPath="$PROJECT_DIR$/_pages/pageMain.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupClientSettings.py" afterPath="$PROJECT_DIR$/_feature_objects/_feature_popups/popupClientSettings.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupConfiguration.py" afterPath="$PROJECT_DIR$/_feature_objects/_feature_popups/popupConfiguration.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/_feature_objects/_popups/popupConfigureExclusions.py" afterPath="$PROJECT_DIR$/_feature_objects/_feature_popups/popupConfigureExclusions.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/_feature_objects/_ribbon_bar/ribbonBar.py" afterPath="$PROJECT_DIR$/_feature_objects/feature_ribbon_bar.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/_locators/locators.py" afterPath="$PROJECT_DIR$/_base/locators.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -62,25 +134,73 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="suiteFullRegression.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="suiteFullRegression.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/_test_suites/suiteFullRegression.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="1574" column="50" lean-forward="true" selection-start-line="1574" selection-start-column="50" selection-end-line="1574" selection-end-column="50" />
+            <state relative-caret-position="90">
+              <caret line="977" column="54" lean-forward="false" selection-start-line="977" selection-start-column="8" selection-end-line="977" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="feature_screen.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_feature_objects/feature_screen.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="83">
+              <caret line="931" column="33" lean-forward="false" selection-start-line="931" selection-start-column="33" selection-end-line="931" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base_actions.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_base/base_actions.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="210" column="47" lean-forward="false" selection-start-line="210" selection-start-column="47" selection-end-line="210" selection-end-column="47" />
               <folding>
-                <element signature="e#46#60#0" expanded="true" />
-                <element signature="e#37341#37371#0" expanded="false" />
+                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#436#807#0" expanded="false" />
+                <element signature="e#858#963#0" expanded="false" />
+                <element signature="e#1015#1121#0" expanded="false" />
+                <element signature="e#1176#1555#0" expanded="false" />
+                <element signature="e#1609#1717#0" expanded="false" />
+                <element signature="e#1769#1823#0" expanded="false" />
+                <element signature="e#1875#1929#0" expanded="false" />
+                <element signature="e#1984#2041#0" expanded="false" />
+                <element signature="e#2092#2390#0" expanded="false" />
+                <element signature="e#2444#2548#0" expanded="false" />
+                <element signature="e#2602#2706#0" expanded="false" />
+                <element signature="e#2759#2862#0" expanded="false" />
+                <element signature="e#2923#3038#0" expanded="false" />
+                <element signature="e#3102#3277#0" expanded="false" />
+                <element signature="e#3342#3476#0" expanded="false" />
+                <element signature="e#3515#4425#0" expanded="false" />
+                <element signature="e#4497#4643#0" expanded="false" />
+                <element signature="e#4695#5001#0" expanded="false" />
+                <element signature="e#5049#6715#0" expanded="false" />
+                <element signature="e#6759#7108#0" expanded="false" />
+                <element signature="e#7157#7573#0" expanded="false" />
+                <element signature="e#7625#7932#0" expanded="false" />
+                <element signature="e#7980#8289#0" expanded="false" />
+                <element signature="e#8342#8653#0" expanded="false" />
+                <element signature="e#8702#8840#0" expanded="false" />
+                <element signature="e#8891#8970#0" expanded="false" />
+                <element signature="e#9306#11306#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="leftMenuDevices.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_feature_objects/_left_menus/leftMenuDevices.py">
+      <file leaf-file-name="feature_popup.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/feature_popup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="218" column="8" lean-forward="false" selection-start-line="218" selection-start-column="8" selection-end-line="218" selection-end-column="8" />
-              <folding />
+            <state relative-caret-position="171">
+              <caret line="1721" column="38" lean-forward="true" selection-start-line="1718" selection-start-column="8" selection-end-line="1721" selection-end-column="38" />
+              <folding>
+                <element signature="e#1#43#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -88,77 +208,19 @@
       <file leaf-file-name="test_logs.log" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_test_suites/test_logs.log">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="86" column="35" lean-forward="false" selection-start-line="86" selection-start-column="35" selection-end-line="86" selection-end-column="35" />
+            <state relative-caret-position="-6253">
+              <caret line="120" column="33" lean-forward="false" selection-start-line="120" selection-start-column="33" selection-end-line="120" selection-end-column="33" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="popupConfiguration.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupConfiguration.py">
+      <file leaf-file-name="logs.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_base/logs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="79" column="53" lean-forward="true" selection-start-line="79" selection-start-column="53" selection-end-line="80" selection-end-column="54" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base_actions.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/_base_page/base_actions.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="148" column="86" lean-forward="true" selection-start-line="148" selection-start-column="16" selection-end-line="148" selection-end-column="86" />
-              <folding>
-                <element signature="e#322#377#0" expanded="false" />
-                <element signature="e#1868#1874#0" expanded="false" />
-                <element signature="e#3260#3313#0" expanded="false" />
-                <element signature="e#5779#5836#0" expanded="false" />
-                <element signature="e#6150#6296#0" expanded="false" />
-                <element signature="e#6373#6474#0" expanded="false" />
-                <element signature="e#6893#8795#0" expanded="false" />
-                <element signature="e#8843#10799#0" expanded="false" />
-                <element signature="e#10843#11192#0" expanded="false" />
-                <element signature="e#11198#11252#0" expanded="false" />
-                <element signature="e#13998#14217#0" expanded="false" />
-                <element signature="e#14269#14490#0" expanded="false" />
-                <element signature="e#14538#14759#0" expanded="false" />
-                <element signature="e#14812#15035#0" expanded="false" />
-                <element signature="e#15410#15507#0" expanded="false" />
-                <marker date="1487570277004" expanded="true" signature="14818:15035" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="leftMenu.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_feature_objects/_left_menus/leftMenu.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1326">
-              <caret line="90" column="21" lean-forward="false" selection-start-line="90" selection-start-column="21" selection-end-line="90" selection-end-column="21" />
-              <folding>
-                <element signature="e#742#862#0" expanded="false" />
-                <element signature="e#902#1151#0" expanded="false" />
-                <element signature="e#4007#4053#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_base_page/base.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="40" column="34" lean-forward="false" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
-              <folding>
-                <element signature="e#1#12#0" expanded="true" />
-                <element signature="e#2182#2210#0" expanded="false" />
-                <element signature="e#4216#4715#0" expanded="false" />
-                <element signature="e#4763#5277#0" expanded="false" />
-                <element signature="e#5326#5801#0" expanded="false" />
-                <element signature="e#6661#6697#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -174,27 +236,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>tasks_tab</find>
-      <find>reporting_tab</find>
-      <find>software_and_patch_manager_tab</find>
-      <find>administration_tab</find>
-      <find>home_tab</find>
-      <find>self.click_icon_refresh()</find>
-      <find>file_brow</find>
-      <find>LeftMenu.MENU_ADMINISTRATION</find>
-      <find>LeftMenu.MENU_DEVICES</find>
-      <find>self.GREY_COLOR</find>
-      <find>LeftMenu.</find>
-      <find>_screen</find>
-      <find>screen(self)</find>
-      <find>home screen&quot;</find>
-      <find>...</find>
-      <find>&gt;&gt; &gt;</find>
-      <find>*names</find>
-      <find>excl</find>
-      <find>after</find>
-      <find>(self.</find>
-      <find>self.GREY</find>
       <find>10</find>
       <find>У</find>
       <find>ERROR</find>
@@ -204,25 +245,29 @@
       <find>check_devices</find>
       <find>config</find>
       <find>error_</find>
+      <find>msg_if_true</find>
+      <find>msg_if_false</find>
+      <find>LEFT_MENU</find>
+      <find>(self.</find>
+      <find>check_page_is_present</find>
+      <find>dynamically_managed_page</find>
+      <find>screen.check_page_is_present(</find>
+      <find>infrastructure_page</find>
+      <find>_page(self)</find>
+      <find>_page =</find>
+      <find>groups_page</find>
+      <find>queries_page</find>
+      <find>vreps_page</find>
+      <find>inventory_configuration_page</find>
+      <find>column_sets_page</find>
+      <find>event_logs_page</find>
+      <find>reporting_scree</find>
+      <find>audit_log_page</find>
+      <find>Maintena</find>
+      <find>maint</find>
+      <find>mainte</find>
     </findStrings>
     <replaceStrings>
-      <replace>WeightDisplay</replace>
-      <replace>Currency</replace>
-      <replace>InitialSetup</replace>
-      <replace>IPAddress</replace>
-      <replace>ConditionEditor</replace>
-      <replace>QueryDesigner</replace>
-      <replace>Query Designer</replace>
-      <replace>LeftMenuDevices.click</replace>
-      <replace>left_menu_devices.expand</replace>
-      <replace>InventoryView</replace>
-      <replace>OnDemandInventoryScan</replace>
-      <replace>devices_page</replace>
-      <replace>EditFolder</replace>
-      <replace>self.wait_loading.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOADING_VISIBLE)))</replace>
-      <replace>self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOADING_VISIBLE)))</replace>
-      <replace>tasks_page</replace>
-      <replace>reporting_page</replace>
       <replace>software_and_patch_manager_page</replace>
       <replace>administration_page</replace>
       <replace>home_page</replace>
@@ -236,6 +281,23 @@
       <replace>(LeftMenu.</replace>
       <replace>LeftMenu.GREY</replace>
       <replace>_is_element_present</replace>
+      <replace>msg_true</replace>
+      <replace>msg_false</replace>
+      <replace>TREE_VIEW</replace>
+      <replace>(SettingsPopup.</replace>
+      <replace>check_screen_is_present</replace>
+      <replace>dynamically_managed_screen</replace>
+      <replace>screen.check_screen_is_present(</replace>
+      <replace>infrastructure_screen</replace>
+      <replace>_screen(self)</replace>
+      <replace>_screen =</replace>
+      <replace>groups_screen</replace>
+      <replace>queries_screen</replace>
+      <replace>vreps_screen</replace>
+      <replace>inventory_configuration_screen</replace>
+      <replace>column_sets_screen</replace>
+      <replace>event_logs_screen</replace>
+      <replace>audit_log_screen</replace>
     </replaceStrings>
     <dirStrings>
       <dir>E:\python\vcms\vcms\page_object</dir>
@@ -250,15 +312,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/_feature_objects/featurePopupConfiguration.py" />
-        <option value="$PROJECT_DIR$/_feature_objects/featurePopupConditionEditor.py" />
-        <option value="$PROJECT_DIR$/_feature_objects/featurePopupQueryDesigner.py" />
-        <option value="$PROJECT_DIR$/_feature_objects/featureLeftMenu.py" />
-        <option value="$PROJECT_DIR$/_feature_objects/featureRibbonBar.py" />
-        <option value="$PROJECT_DIR$/_test_suites/suiteSmokeTests.py" />
-        <option value="$PROJECT_DIR$/_pages/pageLogin.py" />
-        <option value="$PROJECT_DIR$/_feature_objects/_feature_left_menus/featureLeftMenu.py" />
-        <option value="$PROJECT_DIR$/_pages/pageMain.py" />
         <option value="$PROJECT_DIR$/_feature_objects/_feature_left_menus/featureLeftMenuDevices.py" />
         <option value="$PROJECT_DIR$/_feature_objects/_popups/popupInventoryViewPopup.py" />
         <option value="$PROJECT_DIR$/_feature_objects/_popups/popupColumnSetDesigner.py" />
@@ -295,20 +348,29 @@
         <option value="$PROJECT_DIR$/_feature_objects/_left_menus/leftMenuAdministration.py" />
         <option value="$PROJECT_DIR$/_feature_objects/_pages/pageUnmanagedDevices.py" />
         <option value="$PROJECT_DIR$/../../../Lib/site-packages/selenium/webdriver/support/wait.py" />
-        <option value="$PROJECT_DIR$/_test_suites/suiteFullRegression.py" />
         <option value="$PROJECT_DIR$/_feature_objects/_left_menus/leftMenuDevices.py" />
         <option value="$PROJECT_DIR$/_feature_objects/_ribbon_bar/ribbonBar.py" />
         <option value="$PROJECT_DIR$/_base_page/base.py" />
         <option value="$PROJECT_DIR$/_base_page/base_actions.py" />
+        <option value="$PROJECT_DIR$/_base/_settings/settings.py" />
+        <option value="$PROJECT_DIR$/_feature_objects/feature_left_menu.py" />
+        <option value="$PROJECT_DIR$/_feature_objects/feature_ribbon_bar.py" />
+        <option value="$PROJECT_DIR$/_base/base_elements.py" />
+        <option value="$PROJECT_DIR$/_feature_objects/_feature_popups/popupSettings.py" />
+        <option value="$PROJECT_DIR$/_feature_objects/_feature_popups/feature_popup.py" />
+        <option value="$PROJECT_DIR$/_base/base.py" />
+        <option value="$PROJECT_DIR$/_feature_objects/feature_screen.py" />
+        <option value="$PROJECT_DIR$/_base/base_actions.py" />
         <option value="$PROJECT_DIR$/_test_suites/test_logs.log" />
+        <option value="$PROJECT_DIR$/_test_suites/suiteFullRegression.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1912" />
-    <option name="y" value="-8" />
-    <option name="width" value="1616" />
-    <option name="height" value="876" />
+    <option name="x" value="377" />
+    <option name="y" value="5" />
+    <option name="width" value="1226" />
+    <option name="height" value="867" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -345,8 +407,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -356,20 +416,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="page_object" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="page_object" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="page_object" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_variables" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -397,94 +443,82 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="_pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="page_object" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="page_object" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_feature_objects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="page_object" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="page_object" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_feature_objects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_feature_popups" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="page_object" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="page_object" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_base" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="page_object" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="page_object" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_base" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="_settings" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="page_object" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="page_object" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_locators" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="page_object" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="page_object" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_feature_objects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="page_object" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="page_object" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_feature_objects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_ribbon_bar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="page_object" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="page_object" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_feature_objects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_left_menus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="page_object" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="page_object" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_base_page" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/_feature_objects/_feature_popups/feature_popup.py" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="auto.test.manager.delay" value="1000" />
   </component>
@@ -498,15 +532,15 @@
     </option>
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\python\vcms\vcms\page_object\_test_suites" />
-      <recent name="E:\python\vcms\vcms\page_object\_feature_objects\_popups" />
-      <recent name="E:\python\vcms\vcms\page_object\_feature_objects" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\python\vcms\vcms\page_object\_feature_objects\_featureTabs" />
       <recent name="E:\python\vcms\vcms\page_object\_feature_objects\_feature_left_menus" />
       <recent name="E:\python\vcms\vcms\page_object\_feature_objects\_feature_popups" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\python\vcms\vcms\page_object\_test_suites" />
+      <recent name="E:\python\vcms\vcms\page_object\_feature_objects\_popups" />
+      <recent name="E:\python\vcms\vcms\page_object\_feature_objects" />
     </key>
   </component>
   <component name="RunManager" selected="Python tests.suiteFullRegression.MainPageHelpLinks">
@@ -729,7 +763,7 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="suiteFullRegression.MainPageHelpLinks" type="tests" factoryName="Unittests">
+    <configuration default="false" name="suiteFullRegression.MainPageHelpLinks" type="tests" factoryName="Unittests" singleton="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -741,12 +775,12 @@
       <module name="page_object" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/_test_suites/suiteFullRegression.py" />
       <option name="CLASS_NAME" value="MainPageHelpLinks" />
-      <option name="METHOD_NAME" value="test_help_link_on_settings_popup_inventory_tab" />
+      <option name="METHOD_NAME" value="test_A_help_link_on_maintenance_windows_screen" />
       <option name="FOLDER_NAME" value="$PROJECT_DIR$" />
-      <option name="TEST_TYPE" value="TEST_CLASS" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
       <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
+      <option name="PUREUNITTEST" value="false" />
       <option name="PARAMS" value="" />
       <option name="USE_PARAM" value="false" />
       <method />
@@ -944,34 +978,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.20 at 00h 20m 33s.xml">
+    <history-entry file="suiteFullRegression_LoginPageHelpLinks - 2017.02.24 at 07h 16m 10s.xml">
+      <configuration name="suiteFullRegression.LoginPageHelpLinks" configurationId="tests" />
+    </history-entry>
+    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.24 at 01h 24m 28s.xml">
       <configuration name="suiteFullRegression.MainPageHelpLinks" configurationId="tests" />
     </history-entry>
-    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.20 at 00h 54m 22s.xml">
+    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.24 at 07h 13m 42s.xml">
       <configuration name="suiteFullRegression.MainPageHelpLinks" configurationId="tests" />
     </history-entry>
-    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.20 at 01h 16m 09s.xml">
+    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.24 at 07h 14m 09s.xml">
       <configuration name="suiteFullRegression.MainPageHelpLinks" configurationId="tests" />
     </history-entry>
-    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.20 at 01h 31m 45s.xml">
+    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.24 at 07h 17m 19s.xml">
       <configuration name="suiteFullRegression.MainPageHelpLinks" configurationId="tests" />
     </history-entry>
-    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.20 at 02h 01m 03s.xml">
+    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.24 at 07h 18m 38s.xml">
       <configuration name="suiteFullRegression.MainPageHelpLinks" configurationId="tests" />
     </history-entry>
-    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.20 at 02h 07m 13s.xml">
+    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.24 at 07h 19m 47s.xml">
       <configuration name="suiteFullRegression.MainPageHelpLinks" configurationId="tests" />
     </history-entry>
-    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.20 at 02h 28m 41s.xml">
+    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.24 at 07h 21m 34s.xml">
       <configuration name="suiteFullRegression.MainPageHelpLinks" configurationId="tests" />
     </history-entry>
-    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.20 at 02h 39m 46s.xml">
+    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.24 at 07h 41m 25s.xml">
       <configuration name="suiteFullRegression.MainPageHelpLinks" configurationId="tests" />
     </history-entry>
-    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.20 at 02h 55m 12s.xml">
-      <configuration name="suiteFullRegression.MainPageHelpLinks" configurationId="tests" />
-    </history-entry>
-    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.20 at 03h 05m 16s.xml">
+    <history-entry file="suiteFullRegression_MainPageHelpLinks - 2017.02.24 at 08h 13m 47s.xml">
       <configuration name="suiteFullRegression.MainPageHelpLinks" configurationId="tests" />
     </history-entry>
   </component>
@@ -985,15 +1019,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="true" />
+    <frame x="377" y="5" width="1226" height="867" extended-state="0" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26869455" sideWeight="0.49" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20622896" sideWeight="0.49" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.53556484" sideWeight="0.5126743" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31659693" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.57461643" sideWeight="0.48732573" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.53531075" sideWeight="0.48732573" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26869455" sideWeight="0.51" order="2" side_tool="true" content_ui="tabs" />
@@ -1006,7 +1041,6 @@
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41283125" sideWeight="0.49789253" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31772575" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1022,200 +1056,19 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="63" />
+      <option name="time" value="65" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupColumnSets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="30" column="57" lean-forward="true" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_variables/variables.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupModelAlias.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="18" column="52" lean-forward="false" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupManufacturerAlias.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="18" column="59" lean-forward="true" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupError.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_test_suites/text_logs_help_links.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_pages/pageHome.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-87">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_base_page/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_pages/pageVReps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_test_suites/suiteSmokeTests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupEventViewer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="32" lean-forward="false" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupConnecting.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupWeightDisplay.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="22" column="54" lean-forward="false" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupFileExplorer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="10" column="8" lean-forward="false" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupResetPassword.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="16" column="60" lean-forward="false" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_settings/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="14" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_pages/pageAdministration.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="65" lean-forward="false" selection-start-line="28" selection-start-column="65" selection-end-line="28" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_pages/pageAuditLogs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_pages/pageColumnSets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_pages/pageDynamicallyManaged.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="20" column="30" lean-forward="false" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_pages/pageEventLogs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="110" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="110" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_pages/pageMain.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="27" column="8" lean-forward="false" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_pages/page.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="12" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupAreYouSure.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="16" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="19" lean-forward="false" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_locators/locators.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="581" column="0" lean-forward="false" selection-start-line="581" selection-start-column="0" selection-end-line="581" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_base_page/logs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="32" lean-forward="false" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_pages/pageDynamicallyManaged.py" />
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_pages/pageEventLogs.py" />
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_pages/pageMain.py" />
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_pages/page.py" />
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupAreYouSure.py" />
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popup.py" />
+    <entry file="file://$PROJECT_DIR$/_locators/locators.py" />
+    <entry file="file://$PROJECT_DIR$/_base_page/logs.py" />
     <entry file="file://$PROJECT_DIR$/_test_suites/test_logs-19.02-17.log">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1223,13 +1076,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_base_page/downloadAndInstall.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="34" column="23" lean-forward="false" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/_base_page/downloadAndInstall.py" />
     <entry file="file://$PROJECT_DIR$/../../../Lib/site-packages/selenium/webdriver/support/event_firing_webdriver.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -1237,28 +1084,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupSiteName.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="14" column="8" lean-forward="true" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_pages/pageLogin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="65" column="33" lean-forward="false" selection-start-line="65" selection-start-column="33" selection-end-line="65" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../Lib/logging/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="860" column="0" lean-forward="false" selection-start-line="860" selection-start-column="0" selection-end-line="860" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupSiteName.py" />
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_pages/pageLogin.py" />
     <entry file="file://$PROJECT_DIR$/../../../Lib/site-packages/selenium/webdriver/support/wait.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="29">
@@ -1294,198 +1121,242 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupWMIExplorer.py">
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupWMIExplorer.py" />
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_pages/pageUnmanagedDevices.py" />
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_left_menus/leftMenuAdministration.py" />
+    <entry file="file://$PROJECT_DIR$/_base_page/base_elements.py" />
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_pages/pageDevices.py" />
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_ribbon_bar/ribbonBar.py" />
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_left_menus/leftMenu.py" />
+    <entry file="file://$PROJECT_DIR$/_base_page/base.py" />
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupConfiguration.py" />
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_left_menus/leftMenuDevices.py" />
+    <entry file="file://$PROJECT_DIR$/_base_page/base_actions.py" />
+    <entry file="file://$PROJECT_DIR$/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_pages/pageUnmanagedDevices.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="28" column="38" lean-forward="false" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_left_menus/leftMenuAdministration.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="15" column="29" lean-forward="false" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_base_page/base_elements.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="52" column="19" lean-forward="true" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_pages/pageDevices.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="19" column="8" lean-forward="false" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_ribbon_bar/ribbonBar.py">
+    <entry file="file://$PROJECT_DIR$/../../../Lib/logging/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1360">
-          <caret line="116" column="69" lean-forward="false" selection-start-line="116" selection-start-column="69" selection-end-line="116" selection-end-column="69" />
+        <state relative-caret-position="92">
+          <caret line="942" column="0" lean-forward="false" selection-start-line="942" selection-start-column="0" selection-end-line="942" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_feature_objects/feature_left_menu.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="146" column="33" lean-forward="false" selection-start-line="146" selection-start-column="33" selection-end-line="146" selection-end-column="33" />
           <folding>
-            <element signature="e#0#49#0" expanded="true" />
-            <element signature="e#8770#8869#0" expanded="false" />
-            <element signature="e#8909#9008#0" expanded="false" />
-            <element signature="e#9268#9369#0" expanded="false" />
-            <element signature="e#9408#9601#0" expanded="false" />
-            <element signature="e#9640#9833#0" expanded="false" />
-            <element signature="e#10099#10295#0" expanded="false" />
-            <element signature="e#10346#10447#0" expanded="false" />
-            <element signature="e#10498#10599#0" expanded="false" />
-            <element signature="e#10809#10922#0" expanded="false" />
-            <element signature="e#10969#11074#0" expanded="false" />
-            <element signature="e#11119#11453#0" expanded="false" />
-            <element signature="e#11507#11560#0" expanded="false" />
-            <element signature="e#11611#11661#0" expanded="false" />
-            <element signature="e#11713#11764#0" expanded="false" />
-            <element signature="e#11820#11939#0" expanded="false" />
-            <element signature="e#12199#12300#0" expanded="false" />
-            <element signature="e#12350#12460#0" expanded="false" />
-            <element signature="e#12509#12622#0" expanded="false" />
-            <element signature="e#12680#12777#0" expanded="false" />
-            <element signature="e#12833#12928#0" expanded="false" />
-            <element signature="e#12982#13075#0" expanded="false" />
-            <element signature="e#13139#13242#0" expanded="false" />
-            <element signature="e#13298#13393#0" expanded="false" />
-            <element signature="e#13450#13546#0" expanded="false" />
-            <element signature="e#13603#13699#0" expanded="false" />
-            <element signature="e#13746#13851#0" expanded="false" />
-            <element signature="e#13896#14005#0" expanded="false" />
-            <element signature="e#14057#14172#0" expanded="false" />
-            <element signature="e#14224#14275#0" expanded="false" />
-            <element signature="e#14318#14425#0" expanded="false" />
-            <element signature="e#14473#14579#0" expanded="false" />
-            <element signature="e#14630#14786#0" expanded="false" />
-            <element signature="e#14829#14975#0" expanded="false" />
-            <element signature="e#15028#15189#0" expanded="false" />
-            <element signature="e#15240#15395#0" expanded="false" />
-            <element signature="e#15446#15601#0" expanded="false" />
-            <element signature="e#15653#15753#0" expanded="false" />
-            <element signature="e#15810#15906#0" expanded="false" />
-            <element signature="e#15953#16058#0" expanded="false" />
-            <element signature="e#16116#16233#0" expanded="false" />
-            <element signature="e#16277#16388#0" expanded="false" />
-            <element signature="e#16434#16539#0" expanded="false" />
-            <element signature="e#16593#16710#0" expanded="false" />
-            <element signature="e#16755#16860#0" expanded="false" />
-            <element signature="e#16908#17137#0" expanded="false" />
-            <element signature="e#17183#17286#0" expanded="false" />
-            <element signature="e#17328#17545#0" expanded="false" />
-            <element signature="e#17595#17705#0" expanded="false" />
-            <element signature="e#17759#17860#0" expanded="false" />
-            <element signature="e#18069#18172#0" expanded="false" />
-            <element signature="e#18403#18512#0" expanded="false" />
-            <element signature="e#18560#18740#0" expanded="false" />
-            <element signature="e#18787#18965#0" expanded="false" />
-            <element signature="e#19007#19185#0" expanded="false" />
-            <element signature="e#19232#19423#0" expanded="false" />
-            <element signature="e#19469#19650#0" expanded="false" />
-            <element signature="e#19706#19900#0" expanded="false" />
-            <element signature="e#19955#20082#0" expanded="false" />
-            <element signature="e#20136#20229#0" expanded="false" />
-            <element signature="e#20290#20390#0" expanded="false" />
-            <element signature="e#20442#20556#0" expanded="false" />
-            <element signature="e#20619#20721#0" expanded="false" />
+            <element signature="e#0#42#0" expanded="true" />
+            <element signature="e#1509#2233#0" expanded="false" />
+            <element signature="e#3788#4593#0" expanded="false" />
+            <marker date="1487887283853" expanded="true" signature="27274:27336" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_left_menus/leftMenu.py">
+    <entry file="file://$PROJECT_DIR$/_pages/pageLogin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1326">
-          <caret line="90" column="21" lean-forward="false" selection-start-line="90" selection-start-column="21" selection-end-line="90" selection-end-column="21" />
+        <state relative-caret-position="-765">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#742#862#0" expanded="false" />
-            <element signature="e#902#1151#0" expanded="false" />
-            <element signature="e#4007#4053#0" expanded="false" />
+            <element signature="e#0#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_base_page/base.py">
+    <entry file="file://$PROJECT_DIR$/_feature_objects/feature_ribbon_bar.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="40" column="34" lean-forward="false" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
+        <state relative-caret-position="-416">
+          <caret line="357" column="7" lean-forward="false" selection-start-line="357" selection-start-column="7" selection-end-line="357" selection-end-column="7" />
           <folding>
-            <element signature="e#1#12#0" expanded="true" />
-            <element signature="e#2182#2210#0" expanded="false" />
-            <element signature="e#4216#4715#0" expanded="false" />
-            <element signature="e#4763#5277#0" expanded="false" />
-            <element signature="e#5326#5801#0" expanded="false" />
-            <element signature="e#6661#6697#0" expanded="false" />
+            <element signature="e#0#44#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_test_suites/suiteFullRegression.py">
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/popupSettings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="1574" column="50" lean-forward="true" selection-start-line="1574" selection-start-column="50" selection-end-line="1574" selection-end-column="50" />
+        <state relative-caret-position="51">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/popupConfiguration.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1555">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/popupClientSettings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1538">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/popupConfigureExclusions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-722">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pycharm/utrunner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="155" column="0" lean-forward="false" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_base/_settings/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="14" column="4" lean-forward="false" selection-start-line="13" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
           <folding>
-            <element signature="e#46#60#0" expanded="true" />
-            <element signature="e#37341#37371#0" expanded="false" />
+            <element signature="e#0#15#0" expanded="true" />
+            <marker date="1487880677625" expanded="true" signature="334:461" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_base/base_elements.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="53" lean-forward="false" selection-start-line="6" selection-start-column="53" selection-end-line="6" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_base/decorators.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_base/downloadAndInstall.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_base/logs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_base/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_base/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-134">
+          <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#2157#2195#0" expanded="false" />
+            <element signature="e#3305#4435#0" expanded="false" />
+            <element signature="e#3606#3711#0" expanded="false" />
+            <element signature="e#4489#4980#0" expanded="false" />
+            <element signature="e#5015#5520#0" expanded="false" />
+            <element signature="e#5568#6236#0" expanded="false" />
+            <element signature="e#6285#6860#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_feature_objects/_feature_popups/feature_popup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="1721" column="38" lean-forward="true" selection-start-line="1718" selection-start-column="8" selection-end-line="1721" selection-end-column="38" />
+          <folding>
+            <element signature="e#1#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_feature_objects/feature_screen.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="931" column="33" lean-forward="false" selection-start-line="931" selection-start-column="33" selection-end-line="931" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_base/base_actions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="210" column="47" lean-forward="false" selection-start-line="210" selection-start-column="47" selection-end-line="210" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#436#807#0" expanded="false" />
+            <element signature="e#858#963#0" expanded="false" />
+            <element signature="e#1015#1121#0" expanded="false" />
+            <element signature="e#1176#1555#0" expanded="false" />
+            <element signature="e#1609#1717#0" expanded="false" />
+            <element signature="e#1769#1823#0" expanded="false" />
+            <element signature="e#1875#1929#0" expanded="false" />
+            <element signature="e#1984#2041#0" expanded="false" />
+            <element signature="e#2092#2390#0" expanded="false" />
+            <element signature="e#2444#2548#0" expanded="false" />
+            <element signature="e#2602#2706#0" expanded="false" />
+            <element signature="e#2759#2862#0" expanded="false" />
+            <element signature="e#2923#3038#0" expanded="false" />
+            <element signature="e#3102#3277#0" expanded="false" />
+            <element signature="e#3342#3476#0" expanded="false" />
+            <element signature="e#3515#4425#0" expanded="false" />
+            <element signature="e#4497#4643#0" expanded="false" />
+            <element signature="e#4695#5001#0" expanded="false" />
+            <element signature="e#5049#6715#0" expanded="false" />
+            <element signature="e#6759#7108#0" expanded="false" />
+            <element signature="e#7157#7573#0" expanded="false" />
+            <element signature="e#7625#7932#0" expanded="false" />
+            <element signature="e#7980#8289#0" expanded="false" />
+            <element signature="e#8342#8653#0" expanded="false" />
+            <element signature="e#8702#8840#0" expanded="false" />
+            <element signature="e#8891#8970#0" expanded="false" />
+            <element signature="e#9306#11306#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/_test_suites/test_logs.log">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="86" column="35" lean-forward="false" selection-start-line="86" selection-start-column="35" selection-end-line="86" selection-end-column="35" />
+        <state relative-caret-position="-6253">
+          <caret line="120" column="33" lean-forward="false" selection-start-line="120" selection-start-column="33" selection-end-line="120" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_popups/popupConfiguration.py">
+    <entry file="file://$PROJECT_DIR$/_test_suites/suiteFullRegression.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="79" column="53" lean-forward="true" selection-start-line="79" selection-start-column="53" selection-end-line="80" selection-end-column="54" />
+        <state relative-caret-position="90">
+          <caret line="977" column="54" lean-forward="false" selection-start-line="977" selection-start-column="8" selection-end-line="977" selection-end-column="54" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_feature_objects/_left_menus/leftMenuDevices.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="218" column="8" lean-forward="false" selection-start-line="218" selection-start-column="8" selection-end-line="218" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_base_page/base_actions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="148" column="86" lean-forward="true" selection-start-line="148" selection-start-column="16" selection-end-line="148" selection-end-column="86" />
-          <folding>
-            <element signature="e#322#377#0" expanded="false" />
-            <element signature="e#1868#1874#0" expanded="false" />
-            <element signature="e#3260#3313#0" expanded="false" />
-            <element signature="e#5779#5836#0" expanded="false" />
-            <element signature="e#6150#6296#0" expanded="false" />
-            <element signature="e#6373#6474#0" expanded="false" />
-            <element signature="e#6893#8795#0" expanded="false" />
-            <element signature="e#8843#10799#0" expanded="false" />
-            <element signature="e#10843#11192#0" expanded="false" />
-            <element signature="e#11198#11252#0" expanded="false" />
-            <element signature="e#13998#14217#0" expanded="false" />
-            <element signature="e#14269#14490#0" expanded="false" />
-            <element signature="e#14538#14759#0" expanded="false" />
-            <element signature="e#14812#15035#0" expanded="false" />
-            <element signature="e#15410#15507#0" expanded="false" />
-            <marker date="1487570277004" expanded="true" signature="14818:15035" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
