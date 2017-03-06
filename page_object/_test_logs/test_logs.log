@@ -1,0 +1,645 @@
+2017-03-05 11:23:08,855  [INFO] Start testing
+
+2017-03-05 11:23:08,857  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
+
+2017-03-05 11:23:16,217  [INFO] Instance is: https://testteamtest.cloudmanagementsuite.com/
+
+2017-03-05 11:23:22,845  [INFO] Login page is loaded
+
+2017-03-05 11:23:28,990  [INFO] [Test start]
+2017-03-05 11:23:29,227  [INFO] TC#0000: Check help link on Admin Accounts popup
+2017-03-05 11:23:37,367  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:23:41,048  [INFO] Expected header: Accounts == Actual header: Accounts
+2017-03-05 11:23:41,049  [INFO] TEST PASSED
+2017-03-05 11:23:47,099  [INFO] [Test end]
+
+2017-03-05 11:23:47,101  [INFO] [Test start]
+2017-03-05 11:23:47,260  [INFO] TC#0000: Check help link on Administration screen
+2017-03-05 11:23:52,464  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:23:57,016  [ERROR] TEST FAILED: Expected header: Administration !=  Actual header: Getting Started in CMS
+2017-03-05 11:23:58,125  [INFO] [Test end]
+
+2017-03-05 11:23:58,125  [INFO] [Test start]
+2017-03-05 11:23:58,226  [INFO] TC#0000: Check help link on Audit Log screen
+2017-03-05 11:24:04,611  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:24:09,201  [ERROR] TEST FAILED: Expected header: Audit Log !=  Actual header: CMS Quick Help Videos
+2017-03-05 11:24:10,332  [INFO] [Test end]
+
+2017-03-05 11:24:10,332  [INFO] [Test start]
+2017-03-05 11:24:10,473  [INFO] TC#0000: Check help link on Column Set Designer popup (Administration)
+2017-03-05 11:24:16,032  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:24:19,565  [INFO] Expected header: Create == Actual header: Create
+2017-03-05 11:24:19,565  [INFO] TEST PASSED
+2017-03-05 11:24:25,588  [INFO] [Test end]
+
+2017-03-05 11:24:25,588  [INFO] [Test start]
+2017-03-05 11:24:25,750  [INFO] TC#0000: Check help link on Column Sets screen
+2017-03-05 11:24:28,700  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:24:32,246  [INFO] Expected header: Column Sets == Actual header: Column Sets
+2017-03-05 11:24:32,246  [INFO] TEST PASSED
+2017-03-05 11:24:33,345  [INFO] [Test end]
+
+2017-03-05 11:24:33,345  [INFO] [Test start]
+2017-03-05 11:24:33,444  [INFO] TC#0000: Check help link on Configure Exclusions popup
+2017-03-05 11:24:38,267  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:24:41,858  [INFO] Expected header: Exclusions == Actual header: Exclusions
+2017-03-05 11:24:41,858  [INFO] TEST PASSED
+2017-03-05 11:24:46,894  [INFO] [Test end]
+
+2017-03-05 11:24:46,895  [INFO] [Test start]
+2017-03-05 11:24:47,042  [INFO] TC#0000: Check help link on Discover Devices popup (Administration)
+2017-03-05 11:24:51,272  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:24:54,872  [INFO] Expected header: Discovery == Actual header: Discovery
+2017-03-05 11:24:54,874  [INFO] TEST PASSED
+2017-03-05 11:25:00,928  [INFO] [Test end]
+
+2017-03-05 11:25:00,930  [INFO] [Test start]
+2017-03-05 11:25:01,084  [INFO] TC#0000: Check help link on Dynamically Managed screen
+2017-03-05 11:25:05,516  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:25:10,194  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
+2017-03-05 11:25:11,296  [INFO] [Test end]
+
+2017-03-05 11:25:11,298  [INFO] [Test start]
+2017-03-05 11:25:11,417  [INFO] TC#0000: Check help link on Edit User popup (Administration)
+2017-03-05 11:25:17,316  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:25:20,851  [INFO] Expected header: Create == Actual header: Create
+2017-03-05 11:25:20,851  [INFO] TEST PASSED
+2017-03-05 11:25:26,841  [INFO] [Test end]
+
+2017-03-05 11:25:26,842  [INFO] [Test start]
+2017-03-05 11:25:26,996  [INFO] TC#0000: Check help link on Endpoint Management screen
+2017-03-05 11:25:30,627  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:25:34,289  [INFO] Expected header: Endpoint Management == Actual header: Endpoint Management
+2017-03-05 11:25:34,289  [INFO] TEST PASSED
+2017-03-05 11:25:35,398  [INFO] [Test end]
+
+2017-03-05 11:25:35,400  [INFO] [Test start]
+2017-03-05 11:25:35,500  [INFO] TC#0000: Check help link on Exclude Device popup
+2017-03-05 11:25:41,325  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:25:45,841  [ERROR] TEST FAILED: Expected header: Exclude Device !=  Actual header: Computer Name
+2017-03-05 11:25:53,454  [INFO] [Test end]
+
+2017-03-05 11:25:53,456  [INFO] [Test start]
+2017-03-05 11:25:53,608  [INFO] TC#0000: Check help link on Exclude IP Address popup
+2017-03-05 11:25:59,552  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:26:04,167  [ERROR] TEST FAILED: Expected header: Exclude IP Address !=  Actual header: IP Address
+2017-03-05 11:26:12,062  [INFO] [Test end]
+
+2017-03-05 11:26:12,062  [INFO] [Test start]
+2017-03-05 11:26:12,213  [INFO] TC#0000: Check help link on Exclude Site popup
+2017-03-05 11:26:18,131  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:26:22,756  [ERROR] TEST FAILED: Expected header: Exclude Site !=  Actual header: Sites
+2017-03-05 11:26:30,424  [INFO] [Test end]
+
+2017-03-05 11:26:30,424  [INFO] [Test start]
+2017-03-05 11:26:30,555  [INFO] TC#0000: Check help link on Excluded Devices screen
+2017-03-05 11:26:35,214  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:26:39,959  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
+2017-03-05 11:26:41,058  [INFO] [Test end]
+
+2017-03-05 11:26:41,058  [INFO] [Test start]
+2017-03-05 11:26:41,178  [INFO] TC#0000: Check help link on Infrastructure screen
+2017-03-05 11:26:45,763  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:26:50,354  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
+2017-03-05 11:26:51,448  [INFO] [Test end]
+
+2017-03-05 11:26:51,448  [INFO] [Test start]
+2017-03-05 11:26:51,562  [INFO] TC#0000: Check help link on Inventory Configuration popup
+2017-03-05 11:26:57,763  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:27:02,362  [ERROR] TEST FAILED: Expected header: Inventory Scan Configuration !=  Actual header: Create
+2017-03-05 11:27:08,397  [INFO] [Test end]
+
+2017-03-05 11:27:08,397  [INFO] [Test start]
+2017-03-05 11:27:08,520  [INFO] TC#0000: Check help link on Inventory Configuration screen
+2017-03-05 11:27:11,500  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:27:15,088  [INFO] Expected header: Inventory Scan Configuration == Actual header: Inventory Scan Configuration
+2017-03-05 11:27:15,088  [INFO] TEST PASSED
+2017-03-05 11:27:16,194  [INFO] [Test end]
+
+2017-03-05 11:27:16,196  [INFO] [Test start]
+2017-03-05 11:27:16,292  [INFO] TC#0000: Check help link on Inventory Force Update popup
+2017-03-05 11:27:21,549  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:27:25,095  [INFO] Expected header: Force Update == Actual header: Force Update
+2017-03-05 11:27:25,095  [INFO] TEST PASSED
+2017-03-05 11:27:31,068  [INFO] [Test end]
+
+2017-03-05 11:27:31,068  [INFO] [Test start]
+2017-03-05 11:27:31,196  [INFO] TC#0000: Check help link on IP Address popup (Administration)
+2017-03-05 11:27:41,556  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:27:46,260  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
+2017-03-05 11:27:54,959  [INFO] [Test end]
+
+2017-03-05 11:27:54,959  [INFO] [Test start]
+2017-03-05 11:27:55,127  [INFO] TC#0000: Check help link on Maintenance Window popup
+2017-03-05 11:27:59,927  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:28:03,496  [INFO] Expected header: Create == Actual header: Create
+2017-03-05 11:28:03,496  [INFO] TEST PASSED
+2017-03-05 11:28:09,436  [INFO] [Test end]
+
+2017-03-05 11:28:09,437  [INFO] [Test start]
+2017-03-05 11:28:09,595  [INFO] TC#0000: Check help link on Maintenance Windows screen
+2017-03-05 11:28:12,549  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:28:16,058  [INFO] Expected header: Maintenance Windows == Actual header: Maintenance Windows
+2017-03-05 11:28:16,058  [INFO] TEST PASSED
+2017-03-05 11:28:17,151  [INFO] [Test end]
+
+2017-03-05 11:28:17,153  [INFO] [Test start]
+2017-03-05 11:28:17,253  [INFO] TC#0000: Check help link on Move Site popup (Administration)
+2017-03-05 11:28:26,614  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:28:30,167  [INFO] Expected header: Move a site or device == Actual header: Move a site or device
+2017-03-05 11:28:30,167  [INFO] TEST PASSED
+2017-03-05 11:28:38,822  [INFO] [Test end]
+
+2017-03-05 11:28:38,823  [INFO] [Test start]
+2017-03-05 11:28:38,974  [INFO] TC#0000: Check help link on Notifications screen
+2017-03-05 11:28:42,743  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:28:46,355  [INFO] Expected header: Notifications == Actual header: Notifications
+2017-03-05 11:28:46,355  [INFO] TEST PASSED
+2017-03-05 11:28:47,453  [INFO] [Test end]
+
+2017-03-05 11:28:47,453  [INFO] [Test start]
+2017-03-05 11:28:47,569  [INFO] TC#0000: Check help link on Site Config popup
+2017-03-05 11:28:52,305  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:28:55,785  [INFO] Expected header: Create == Actual header: Create
+2017-03-05 11:28:55,785  [INFO] TEST PASSED
+2017-03-05 11:29:01,760  [INFO] [Test end]
+
+2017-03-05 11:29:01,760  [INFO] [Test start]
+2017-03-05 11:29:01,914  [INFO] TC#0000: Check help link on Site Configuration screen
+2017-03-05 11:29:04,875  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:29:08,394  [INFO] Expected header: Site Management == Actual header: Site Management
+2017-03-05 11:29:08,395  [INFO] TEST PASSED
+2017-03-05 11:29:09,500  [INFO] [Test end]
+
+2017-03-05 11:29:09,500  [INFO] [Test start]
+2017-03-05 11:29:09,607  [INFO] TC#0000: Check help link on Event Logs screen
+2017-03-05 11:29:13,109  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:29:16,605  [INFO] Expected header: Logs == Actual header: Logs
+2017-03-05 11:29:16,605  [INFO] TEST PASSED
+2017-03-05 11:29:17,706  [INFO] [Test end]
+
+2017-03-05 11:29:17,706  [INFO] [Test start]
+2017-03-05 11:29:17,821  [INFO] TC#0000: Check help link on Site Name popup (Administration)
+2017-03-05 11:29:24,528  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:29:28,036  [INFO] Expected header: Create a site == Actual header: Create a site
+2017-03-05 11:29:28,036  [INFO] TEST PASSED
+2017-03-05 11:29:36,763  [INFO] [Test end]
+
+2017-03-05 11:29:36,766  [INFO] [Test start]
+2017-03-05 11:29:36,911  [INFO] TC#0000: Check help link on Unmanaged Devices screen
+2017-03-05 11:29:41,785  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:29:46,417  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
+2017-03-05 11:29:47,532  [INFO] [Test end]
+
+2017-03-05 11:29:47,532  [INFO] [Test start]
+2017-03-05 11:29:47,677  [INFO] TC#0000: Check help link on User Configuration popup
+2017-03-05 11:29:54,032  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:29:57,596  [INFO] Expected header: Create == Actual header: Create
+2017-03-05 11:29:57,596  [INFO] TEST PASSED
+2017-03-05 11:30:06,339  [INFO] [Test end]
+
+2017-03-05 11:30:06,341  [INFO] [Test start]
+2017-03-05 11:30:06,585  [INFO] TC#0000: Check help link on vReps screen
+2017-03-05 11:30:11,362  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:30:14,957  [INFO] Expected header: vReps == Actual header: vReps
+2017-03-05 11:30:14,957  [INFO] TEST PASSED
+2017-03-05 11:30:16,062  [INFO] [Test end]
+
+2017-03-05 11:30:16,062  [INFO] [Test start]
+2017-03-05 11:30:16,161  [INFO] TC#0000: Check help link on Condition Editor popup
+2017-03-05 11:30:26,062  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:30:29,709  [INFO] Expected header: Create a Query == Actual header: Create a Query
+2017-03-05 11:30:29,710  [INFO] TEST PASSED
+2017-03-05 11:30:38,339  [INFO] [Test end]
+
+2017-03-05 11:30:38,339  [INFO] [Test start]
+2017-03-05 11:30:38,476  [INFO] TC#0000: Check help link on Configuration popup
+2017-03-05 11:30:45,112  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:30:48,713  [INFO] Expected header: Configure a site == Actual header: Configure a site
+2017-03-05 11:30:48,713  [INFO] TEST PASSED
+2017-03-05 11:30:53,746  [INFO] [Test end]
+
+2017-03-05 11:30:53,746  [INFO] [Test start]
+2017-03-05 11:30:53,898  [INFO] TC#0000: Check help link on Devices screen
+2017-03-05 11:30:58,622  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:31:03,203  [ERROR] TEST FAILED: Expected header: Devices !=  Actual header: Getting Started in CMS
+2017-03-05 11:31:04,308  [INFO] [Test end]
+
+2017-03-05 11:31:04,308  [INFO] [Test start]
+2017-03-05 11:31:04,474  [INFO] TC#0000: Check help link on Edit Folder popup
+2017-03-05 11:31:13,486  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:31:18,000  [ERROR] TEST FAILED: Expected header: Edit a folder !=  Actual header: Create a site
+2017-03-05 11:31:24,062  [INFO] [Test end]
+
+2017-03-05 11:31:24,062  [INFO] [Test start]
+2017-03-05 11:31:24,227  [INFO] TC#0000: Check help link on Event Viewer popup
+2017-03-05 11:31:48,073  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:31:52,663  [ERROR] TEST FAILED: Expected header: Event Viewer !=  Actual header: Devices
+2017-03-05 11:31:58,694  [INFO] [Test end]
+
+2017-03-05 11:31:58,694  [INFO] [Test start]
+2017-03-05 11:32:01,063  [INFO] TC#0000: Check help link on File Explorer popup
+2017-03-05 11:32:10,888  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:32:15,474  [ERROR] TEST FAILED: Expected header: File Explorer !=  Actual header: Devices
+2017-03-05 11:32:20,490  [INFO] [Test end]
+
+2017-03-05 11:32:20,490  [INFO] [Test start]
+2017-03-05 11:32:22,908  [INFO] TC#0000: Check help link on Groups screen
+2017-03-05 11:32:27,023  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:32:31,630  [ERROR] TEST FAILED: Expected header: Groups !=  Actual header: Devices
+2017-03-05 11:32:32,740  [INFO] [Test end]
+
+2017-03-05 11:32:32,740  [INFO] [Test start]
+2017-03-05 11:32:32,908  [INFO] TC#0000: Check help link on Inventory View popup
+2017-03-05 11:32:42,865  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:32:46,388  [INFO] Expected header: Inventory == Actual header: Inventory
+2017-03-05 11:32:46,388  [INFO] TEST PASSED
+2017-03-05 11:32:51,414  [INFO] [Test end]
+
+2017-03-05 11:32:51,415  [INFO] [Test start]
+2017-03-05 11:32:53,766  [INFO] TC#0000: Check help link on IP Address popup
+2017-03-05 11:33:05,263  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:33:10,188  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
+2017-03-05 11:33:17,996  [INFO] [Test end]
+
+2017-03-05 11:33:17,996  [INFO] [Test start]
+2017-03-05 11:33:18,140  [INFO] TC#0000: Check help link on Move Device popup
+2017-03-05 11:33:25,464  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:33:29,065  [INFO] Expected header: Move a site or device == Actual header: Move a site or device
+2017-03-05 11:33:29,065  [INFO] TEST PASSED
+2017-03-05 11:33:35,000  [INFO] [Test end]
+
+2017-03-05 11:33:35,000  [INFO] [Test start]
+2017-03-05 11:33:37,332  [INFO] TC#0000: Check help link on Move Site popup
+2017-03-05 11:33:52,802  [ERROR] WAITING: Help window is NOT found after 10 seconds
+Traceback (most recent call last):
+  File "E:\python\vcms\vcms\page_object\_base\base_actions.py", line 79, in _click_icon_help
+    self.wait_webelement.until(lambda d: len(d.window_handles) == 2)
+  File "E:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+TimeoutException: Message: 
+
+2017-03-05 11:34:02,940  [ERROR] Help window is not opened
+2017-03-05 11:34:12,249  [INFO] [Test end]
+
+2017-03-05 11:34:12,250  [INFO] [Test start]
+2017-03-05 11:34:12,421  [INFO] TC#0000: Check help link on New Folder popup
+2017-03-05 11:34:18,871  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:34:23,440  [ERROR] TEST FAILED: Expected header: Create a Folder !=  Actual header: Create a site
+2017-03-05 11:34:29,323  [INFO] [Test end]
+
+2017-03-05 11:34:29,323  [INFO] [Test start]
+2017-03-05 11:34:29,476  [INFO] TC#0000: Check help link on New Group popup
+2017-03-05 11:34:34,776  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:34:39,430  [ERROR] TEST FAILED: Expected header: Create a Group !=  Actual header: Create a new Group
+2017-03-05 11:34:45,608  [INFO] [Test end]
+
+2017-03-05 11:34:45,608  [INFO] [Test start]
+2017-03-05 11:34:45,752  [INFO] TC#0000: Check help link on On Demand Inventory Scan popup
+2017-03-05 11:34:54,239  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:34:58,823  [ERROR] TEST FAILED: Expected header: On Demand Inventory Scan !=  Actual header: Devices
+2017-03-05 11:35:03,799  [INFO] [Test end]
+
+2017-03-05 11:35:03,799  [INFO] [Test start]
+2017-03-05 11:35:06,167  [INFO] TC#0000: Check help link on Patch Manager popup
+2017-03-05 11:35:14,884  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:35:18,494  [INFO] Expected header: Software Updates == Actual header: Software Updates
+2017-03-05 11:35:18,494  [INFO] TEST PASSED
+2017-03-05 11:35:23,552  [INFO] [Test end]
+
+2017-03-05 11:35:23,553  [INFO] [Test start]
+2017-03-05 11:35:25,944  [INFO] TC#0000: Check help link on Ping Result popup
+2017-03-05 11:35:37,081  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:35:41,676  [ERROR] TEST FAILED: Expected header: Ping Result !=  Actual header: Devices
+2017-03-05 11:35:46,657  [INFO] [Test end]
+
+2017-03-05 11:35:46,658  [INFO] [Test start]
+2017-03-05 11:35:48,993  [INFO] TC#0000: Check help link on IP Process Explorer popup
+2017-03-05 11:36:00,155  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:36:04,783  [ERROR] TEST FAILED: Expected header: Process Explorer !=  Actual header: Devices
+2017-03-05 11:36:10,953  [INFO] [Test end]
+
+2017-03-05 11:36:10,953  [INFO] [Test start]
+2017-03-05 11:36:13,243  [INFO] TC#0000: Check help link on Queries screen
+2017-03-05 11:36:17,280  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:36:21,903  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
+2017-03-05 11:36:23,000  [INFO] [Test end]
+
+2017-03-05 11:36:23,000  [INFO] [Test start]
+2017-03-05 11:36:23,098  [INFO] TC#0000: Check help link on Query Designer popup
+2017-03-05 11:36:27,673  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:36:31,161  [INFO] Expected header: Queries == Actual header: Queries
+2017-03-05 11:36:31,161  [INFO] TEST PASSED
+2017-03-05 11:36:37,124  [INFO] [Test end]
+
+2017-03-05 11:36:37,125  [INFO] [Test start]
+2017-03-05 11:36:37,285  [INFO] TC#0000: Check help link on Reports popup
+2017-03-05 11:36:46,131  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:36:49,733  [INFO] Expected header: Reports == Actual header: Reports
+2017-03-05 11:36:49,733  [INFO] TEST PASSED
+2017-03-05 11:36:55,710  [INFO] [Test end]
+
+2017-03-05 11:36:55,710  [INFO] [Test start]
+2017-03-05 11:36:58,086  [INFO] TC#0000: Check help link on Select Targets popup (Devices)
+2017-03-05 11:37:06,017  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:37:10,611  [ERROR] TEST FAILED: Expected header: Select Targets !=  Actual header: Devices
+2017-03-05 11:37:19,427  [INFO] [Test end]
+
+2017-03-05 11:37:19,427  [INFO] [Test start]
+2017-03-05 11:37:19,585  [INFO] TC#0000: Check help link on Site Name popup
+2017-03-05 11:37:24,947  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:37:28,484  [INFO] Expected header: Create a site == Actual header: Create a site
+2017-03-05 11:37:28,486  [INFO] TEST PASSED
+2017-03-05 11:37:34,476  [INFO] [Test end]
+
+2017-03-05 11:37:34,476  [INFO] [Test start]
+2017-03-05 11:37:34,608  [INFO] TC#0000: Check help link on Wake on LAN popup
+2017-03-05 11:37:40,371  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:37:43,944  [INFO] Expected header: Wake Up == Actual header: Wake Up
+2017-03-05 11:37:43,944  [INFO] TEST PASSED
+2017-03-05 11:37:48,894  [INFO] [Test end]
+
+2017-03-05 11:37:48,895  [INFO] [Test start]
+2017-03-05 11:37:51,220  [INFO] TC#0000: Check help link on WMI Explorer popup
+2017-03-05 11:38:00,973  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:38:05,588  [ERROR] TEST FAILED: Expected header: Process Explorer !=  Actual header: Devices
+2017-03-05 11:38:11,558  [INFO] [Test end]
+
+2017-03-05 11:38:11,558  [INFO] [Test start]
+2017-03-05 11:38:13,867  [INFO] TC#0000: Check help link on Home screen
+2017-03-05 11:38:20,578  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:38:24,181  [INFO] Expected header: Getting Started in CMS == Actual header: Getting Started in CMS
+2017-03-05 11:38:24,181  [INFO] TEST PASSED
+2017-03-05 11:38:25,295  [INFO] [Test end]
+
+2017-03-05 11:38:25,295  [INFO] [Test start]
+2017-03-05 11:38:25,434  [INFO] TC#0000: Check help link on Client Settings popup
+2017-03-05 11:38:28,750  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:38:33,286  [ERROR] TEST FAILED: Expected header: Client !=  Actual header: CMS Quick Help Videos
+2017-03-05 11:38:39,240  [INFO] [Test end]
+
+2017-03-05 11:38:39,240  [INFO] [Test start]
+2017-03-05 11:38:39,328  [INFO] TC#0000: Check help link on Client Settings popup - Client Proxy Settings tab
+2017-03-05 11:38:43,927  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:38:47,444  [INFO] Expected header: Client Proxy Settings == Actual header: Client Proxy Settings
+2017-03-05 11:38:47,444  [INFO] TEST PASSED
+2017-03-05 11:38:53,378  [INFO] [Test end]
+
+2017-03-05 11:38:53,378  [INFO] [Test start]
+2017-03-05 11:38:53,542  [INFO] TC#0000: Check help link on Client Settings popup - Client URLs tab
+2017-03-05 11:38:58,010  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:39:01,520  [INFO] Expected header: Client URLs == Actual header: Client URLs
+2017-03-05 11:39:01,520  [INFO] TEST PASSED
+2017-03-05 11:39:07,454  [INFO] [Test end]
+
+2017-03-05 11:39:07,456  [INFO] [Test start]
+2017-03-05 11:39:07,543  [INFO] TC#0000: Check help link on Client Settings popup - Features tab
+2017-03-05 11:39:11,966  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:39:15,460  [INFO] Expected header: Features == Actual header: Features
+2017-03-05 11:39:15,460  [INFO] TEST PASSED
+2017-03-05 11:39:21,362  [INFO] [Test end]
+
+2017-03-05 11:39:21,365  [INFO] [Test start]
+2017-03-05 11:39:21,489  [INFO] TC#0000: Check help link on Client Settings popup - Reboot UI Config tab
+2017-03-05 11:39:25,862  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:39:29,365  [INFO] Expected header: Reboot UI Config == Actual header: Reboot UI Config
+2017-03-05 11:39:29,365  [INFO] TEST PASSED
+2017-03-05 11:39:35,289  [INFO] [Test end]
+
+2017-03-05 11:39:35,289  [INFO] [Test start]
+2017-03-05 11:39:35,463  [INFO] TC#0000: Check help link on Client Settings popup - Timers tab
+2017-03-05 11:39:39,398  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:39:43,884  [ERROR] TEST FAILED: Expected header: Timers !=  Actual header: Settings
+2017-03-05 11:39:49,851  [INFO] [Test end]
+
+2017-03-05 11:39:49,851  [INFO] [Test start]
+2017-03-05 11:39:49,980  [INFO] TC#0000: Check help link on Column Sets popup
+2017-03-05 11:39:59,674  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:40:03,259  [INFO] Expected header: Column Sets == Actual header: Column Sets
+2017-03-05 11:40:03,259  [INFO] TEST PASSED
+2017-03-05 11:40:09,256  [INFO] [Test end]
+
+2017-03-05 11:40:09,256  [INFO] [Test start]
+2017-03-05 11:40:11,592  [INFO] TC#0000: Check help link on Currency popup
+2017-03-05 11:40:17,352  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:40:20,868  [INFO] Expected header: Currency == Actual header: Currency
+2017-03-05 11:40:20,868  [INFO] TEST PASSED
+2017-03-05 11:40:26,773  [INFO] [Test end]
+
+2017-03-05 11:40:26,775  [INFO] [Test start]
+2017-03-05 11:40:29,145  [INFO] TC#0000: Check help link on Initial Setup popup
+2017-03-05 11:40:37,253  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:40:41,970  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
+2017-03-05 11:40:50,934  [INFO] [Test end]
+
+2017-03-05 11:40:50,934  [INFO] [Test start]
+2017-03-05 11:40:51,065  [INFO] TC#0000: Check help link on Manufacturer Alias popup
+2017-03-05 11:40:56,947  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:41:00,438  [INFO] Expected header: Manufacturers == Actual header: Manufacturers
+2017-03-05 11:41:00,438  [INFO] TEST PASSED
+2017-03-05 11:41:05,444  [INFO] [Test end]
+
+2017-03-05 11:41:05,444  [INFO] [Test start]
+2017-03-05 11:41:07,778  [INFO] TC#0000: Check help link on Model Alias popup
+2017-03-05 11:41:13,548  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:41:17,112  [INFO] Expected header: Models == Actual header: Models
+2017-03-05 11:41:17,114  [INFO] TEST PASSED
+2017-03-05 11:41:22,221  [INFO] [Test end]
+
+2017-03-05 11:41:22,223  [INFO] [Test start]
+2017-03-05 11:41:24,578  [INFO] TC#0000: Check help link on Ribbon bar
+2017-03-05 11:41:26,786  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:41:30,311  [INFO] Expected header: CMS Quick Help Videos == Actual header: CMS Quick Help Videos
+2017-03-05 11:41:30,312  [INFO] TEST PASSED
+2017-03-05 11:41:31,397  [INFO] [Test end]
+
+2017-03-05 11:41:31,398  [INFO] [Test start]
+2017-03-05 11:41:31,500  [INFO] TC#0000: Check help link on Select Dashboard popup
+2017-03-05 11:41:36,194  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:41:40,750  [ERROR] TEST FAILED: Expected header: Select Dashboard !=  Actual header: Devices
+2017-03-05 11:41:46,750  [INFO] [Test end]
+
+2017-03-05 11:41:46,750  [INFO] [Test start]
+2017-03-05 11:41:46,914  [INFO] TC#0000: Check help link on Settings popup
+2017-03-05 11:41:50,336  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:41:54,976  [ERROR] TEST FAILED: Expected header: Settings !=  Actual header: CMS Quick Help Videos
+2017-03-05 11:42:00,986  [INFO] [Test end]
+
+2017-03-05 11:42:00,986  [INFO] [Test start]
+2017-03-05 11:42:01,085  [INFO] TC#0000: Check help link on Settings popup - Audit Log Settings tab
+2017-03-05 11:42:05,655  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:42:09,232  [INFO] Expected header: Audit Log Settings == Actual header: Audit Log Settings
+2017-03-05 11:42:09,232  [INFO] TEST PASSED
+2017-03-05 11:42:15,253  [INFO] [Test end]
+
+2017-03-05 11:42:15,253  [INFO] [Test start]
+2017-03-05 11:42:15,434  [INFO] TC#0000: Check help link on Settings popup - Content Services tab
+2017-03-05 11:42:19,539  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:42:23,124  [INFO] Expected header: Content Services == Actual header: Content Services
+2017-03-05 11:42:23,125  [INFO] TEST PASSED
+2017-03-05 11:42:29,118  [INFO] [Test end]
+
+2017-03-05 11:42:29,119  [INFO] [Test start]
+2017-03-05 11:42:29,276  [INFO] TC#0000: Check help link on Settings popup - Email Settings tab
+2017-03-05 11:42:33,927  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:42:37,427  [INFO] Expected header: Email Settings == Actual header: Email Settings
+2017-03-05 11:42:37,428  [INFO] TEST PASSED
+2017-03-05 11:42:43,403  [INFO] [Test end]
+
+2017-03-05 11:42:43,404  [INFO] [Test start]
+2017-03-05 11:42:43,506  [INFO] TC#0000: Check help link on Settings popup - Initial Setup tab
+2017-03-05 11:42:47,961  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:42:51,453  [INFO] Expected header: Initial Setup == Actual header: Initial Setup
+2017-03-05 11:42:51,453  [INFO] TEST PASSED
+2017-03-05 11:42:57,395  [INFO] [Test end]
+
+2017-03-05 11:42:57,398  [INFO] [Test start]
+2017-03-05 11:42:57,506  [INFO] TC#0000: Check help link on Settings popup - Locale Options tab
+2017-03-05 11:43:01,990  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:43:05,460  [INFO] Expected header: Locale Options == Actual header: Locale Options
+2017-03-05 11:43:05,460  [INFO] TEST PASSED
+2017-03-05 11:43:11,328  [INFO] [Test end]
+
+2017-03-05 11:43:11,329  [INFO] [Test start]
+2017-03-05 11:43:11,470  [INFO] TC#0000: Check help link on Settings popup - User Options tab
+2017-03-05 11:43:16,187  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:43:19,782  [INFO] Expected header: User Options == Actual header: User Options
+2017-03-05 11:43:19,782  [INFO] TEST PASSED
+2017-03-05 11:43:25,788  [INFO] [Test end]
+
+2017-03-05 11:43:25,789  [INFO] [Test start]
+2017-03-05 11:43:25,877  [INFO] TC#0000: Check help link on Subscription popup
+2017-03-05 11:43:31,000  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:43:34,512  [INFO] Expected header: Subscriptions == Actual header: Subscriptions
+2017-03-05 11:43:34,513  [INFO] TEST PASSED
+2017-03-05 11:43:39,569  [INFO] [Test end]
+
+2017-03-05 11:43:39,569  [INFO] [Test start]
+2017-03-05 11:43:39,674  [INFO] TC#0000: Check help link on User Settings popup
+2017-03-05 11:43:44,342  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:43:47,842  [INFO] Expected header: User Settings == Actual header: User Settings
+2017-03-05 11:43:47,842  [INFO] TEST PASSED
+2017-03-05 11:43:53,838  [INFO] [Test end]
+
+2017-03-05 11:43:53,839  [INFO] [Test start]
+2017-03-05 11:43:53,946  [INFO] TC#0000: Check help link on Weight Display popup
+2017-03-05 11:43:59,858  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:44:03,348  [INFO] Expected header: Imperial Metric == Actual header: Imperial Metric
+2017-03-05 11:44:03,348  [INFO] TEST PASSED
+2017-03-05 11:44:09,257  [INFO] [Test end]
+
+2017-03-05 11:44:09,259  [INFO] [Test start]
+2017-03-05 11:44:11,586  [INFO] TC#0000: Check help link on Reporting screen
+2017-03-05 11:44:19,756  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:44:24,357  [ERROR] TEST FAILED: Expected header: Reporting !=  Actual header: Getting Started in CMS
+2017-03-05 11:44:25,450  [INFO] [Test end]
+
+2017-03-05 11:44:25,450  [INFO] [Test start]
+2017-03-05 11:44:25,553  [INFO] TC#0000: Check help link on Advanced Editor popup
+2017-03-05 11:44:42,240  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:44:45,826  [INFO] Expected header: Advanced Editor == Actual header: Advanced Editor
+2017-03-05 11:44:45,826  [INFO] TEST PASSED
+2017-03-05 11:44:54,460  [INFO] [Test end]
+
+2017-03-05 11:44:54,461  [INFO] [Test start]
+2017-03-05 11:44:54,621  [INFO] TC#0000: Check help link on Applications screen
+2017-03-05 11:44:57,565  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:45:02,076  [ERROR] TEST FAILED: Expected header: Applications !=  Actual header: CMS Quick Help Videos
+2017-03-05 11:45:03,167  [INFO] [Test end]
+
+2017-03-05 11:45:03,167  [INFO] [Test start]
+2017-03-05 11:45:03,252  [INFO] TC#0000: Check help link on Create Application popup
+2017-03-05 11:45:08,381  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:45:11,894  [INFO] Expected header: Create == Actual header: Create
+2017-03-05 11:45:11,895  [INFO] TEST PASSED
+2017-03-05 11:45:17,869  [INFO] [Test end]
+
+2017-03-05 11:45:17,869  [INFO] [Test start]
+2017-03-05 11:45:18,003  [INFO] TC#0000: Check help link on Installers popup
+2017-03-05 11:45:23,934  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:45:28,528  [ERROR] TEST FAILED: Expected header: Installers !=  Actual header: Advanced Editor
+2017-03-05 11:45:37,276  [INFO] [Test end]
+
+2017-03-05 11:45:37,278  [INFO] [Test start]
+2017-03-05 11:45:37,433  [INFO] TC#0000: Check help link on Manage Install Media screen
+2017-03-05 11:45:42,601  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:45:46,084  [INFO] Expected header: Media Manager == Actual header: Media Manager
+2017-03-05 11:45:46,084  [INFO] TEST PASSED
+2017-03-05 11:45:47,180  [INFO] [Test end]
+
+2017-03-05 11:45:47,183  [INFO] [Test start]
+2017-03-05 11:45:47,305  [INFO] TC#0000: Check help link on Patch Manager screen
+2017-03-05 11:45:58,125  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:46:01,694  [INFO] Expected header: Patch Manager == Actual header: Patch Manager
+2017-03-05 11:46:01,694  [INFO] TEST PASSED
+2017-03-05 11:46:02,811  [INFO] [Test end]
+
+2017-03-05 11:46:02,812  [INFO] [Test start]
+2017-03-05 11:46:05,559  [INFO] TC#0000: Check help link on Reporting screen
+2017-03-05 11:46:11,088  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:46:15,627  [ERROR] TEST FAILED: Expected header: Software / Patch Manager !=  Actual header: Getting Started in CMS
+2017-03-05 11:46:16,717  [INFO] [Test end]
+
+2017-03-05 11:46:16,717  [INFO] [Test start]
+2017-03-05 11:46:16,808  [INFO] TC#0000: Check help link on Deploy Software Updates popup (Tasks)
+2017-03-05 11:46:25,263  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:46:29,901  [ERROR] TEST FAILED: Expected header: Deploy Software Updates !=  Actual header: CMS Quick Help Videos
+2017-03-05 11:46:35,877  [INFO] [Test end]
+
+2017-03-05 11:46:35,877  [INFO] [Test start]
+2017-03-05 11:46:36,065  [INFO] TC#0000: Check help link on Discover Devices popup (Tasks)
+2017-03-05 11:46:41,970  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:46:45,487  [INFO] Expected header: Discovery == Actual header: Discovery
+2017-03-05 11:46:45,487  [INFO] TEST PASSED
+2017-03-05 11:46:51,384  [INFO] [Test end]
+
+2017-03-05 11:46:51,384  [INFO] [Test start]
+2017-03-05 11:46:51,542  [INFO] TC#0000: Check help link on Discovery Tasks screen
+2017-03-05 11:46:55,427  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:46:58,914  [INFO] Expected header: Perform a Discovery to find all your devices == Actual header: Perform a Discovery to find all your devices
+2017-03-05 11:46:58,914  [INFO] TEST PASSED
+2017-03-05 11:46:59,986  [INFO] [Test end]
+
+2017-03-05 11:46:59,987  [INFO] [Test start]
+2017-03-05 11:47:00,092  [INFO] TC#0000: Check help link on Patch Manager Scanning popup (Tasks)
+2017-03-05 11:47:05,976  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:47:09,490  [INFO] Expected header: Software Update Scanning == Actual header: Software Update Scanning
+2017-03-05 11:47:09,490  [INFO] TEST PASSED
+2017-03-05 11:47:15,394  [INFO] [Test end]
+
+2017-03-05 11:47:15,394  [INFO] [Test start]
+2017-03-05 11:47:15,562  [INFO] TC#0000: Check help link on Patch Manager screen
+2017-03-05 11:47:19,586  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:47:23,075  [INFO] Expected header: Patch Deployment == Actual header: Patch Deployment
+2017-03-05 11:47:23,075  [INFO] TEST PASSED
+2017-03-05 11:47:24,165  [INFO] [Test end]
+
+2017-03-05 11:47:24,167  [INFO] [Test start]
+2017-03-05 11:47:24,269  [INFO] TC#0000: Check help link on Scheduled Tasks screen
+2017-03-05 11:47:27,293  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:47:30,822  [INFO] Expected header: Scheduled Tasks == Actual header: Scheduled Tasks
+2017-03-05 11:47:30,823  [INFO] TEST PASSED
+2017-03-05 11:47:31,908  [INFO] [Test end]
+
+2017-03-05 11:47:31,910  [INFO] [Test start]
+2017-03-05 11:47:32,032  [INFO] TC#0000: Check help link on Software Deployment popup (Tasks)
+2017-03-05 11:47:37,918  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:47:41,397  [INFO] Expected header: Software Deployment Wizard == Actual header: Software Deployment Wizard
+2017-03-05 11:47:41,397  [INFO] TEST PASSED
+2017-03-05 11:47:47,331  [INFO] [Test end]
+
+2017-03-05 11:47:47,332  [INFO] [Test start]
+2017-03-05 11:47:47,487  [INFO] TC#0000: Check help link on Software Deployments screen
+2017-03-05 11:47:51,506  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:47:55,000  [INFO] Expected header: Software Deployment == Actual header: Software Deployment
+2017-03-05 11:47:55,000  [INFO] TEST PASSED
+2017-03-05 11:47:56,072  [INFO] [Test end]
+
+2017-03-05 11:47:56,073  [INFO] [Test start]
+2017-03-05 11:47:56,183  [INFO] TC#0000: Check help link on Tasks screen
+2017-03-05 11:48:00,394  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-05 11:48:04,994  [ERROR] TEST FAILED: Expected header: Tasks !=  Actual header: Getting Started in CMS
+2017-03-05 11:48:06,092  [INFO] [Test end]
+
+2017-03-05 11:48:06,092  [INFO] End testing
+

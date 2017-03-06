@@ -5,8 +5,10 @@ class Variables(object):
     site_for_smoke_test     = "Smoke Test Site"
     # devices_for_smoke_test  = ["VKYV-DT-IK", "VKYV-VM-886IK","VKYV-VB-SRV2012IK", "VKYV-VM-VB1-W76"]
     # devices_for_smoke_test = ["VKYV-VM-816IK", "VKYV-VM-786IK"]
-    vrep                    = "VKYV-DT-IK"#work
+    # vrep                    = "VKYV-DT-IK"#work'
+    vrep                    = "WIN100213LAB1A"
     # vrep                  = "LT-HP-KIPROV"#home
+    software                = "7z920 IK"
     site_name               = "New site #9101"
     default_site_name       = "Default Site"
     fifty_symbols_name      = "51symbols51symbols51symbols51symbols51symbols!<ok>"

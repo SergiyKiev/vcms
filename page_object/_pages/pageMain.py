@@ -9,8 +9,8 @@ class MainPage(BaseActions):
     def check_main_page_loaded(self):
         cond = self._is_element_present(BaseElements.RIBBON_BAR)
         # cond2 = self._is_element_present(BaseElements.LEFT_MENU_HOME)
-        msg_true = "Main page is loaded"
-        msg_false = "Main page is NOT loaded"
+        msg_true = "Main page is loaded\n"
+        msg_false = "Main page is NOT loaded\n"
         self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
@@ -51,5 +51,23 @@ class MainPage(BaseActions):
         else:
             self.logger.info("Setup is finished successfully: " + str(upprove_vrep) + "\n")
             return False
+
+    def run_discovery_task(self):
+        pass
+
+    def run_software_deployment_task(self):
+        pass
+
+    def run_scan_updates_task(self):
+        pass
+
+    def create_and_config_site(self):
+        pass
+
+
+
+
+
+
 
 

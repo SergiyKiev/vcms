@@ -8,10 +8,13 @@ class BaseElements(Base):
     #BUTTONS
     BUTTON_EDIT = "/*//*[text()='Edit']/ancestor::div[contains(@class,'Button')]"
     BUTTON_NEW = "//span[text()='New']/ancestor::div[contains(@class,'Button')]"
-    BUTTON_OK_1 = "/*//span[text()='OK']/ancestor::div[contains(@class,'Button')]"
-    BUTTON_OK_2 = "/*//span[text()='Ok']/ancestor::div[contains(@class,'Button')]"
-    BUTTON_CANCEL_1 = "/*//span[text()='CANCEL']/ancestor::div[contains(@class,'Button')]"
-    BUTTON_CANCEL_2 = "/*//span[text()='Cancel']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_OK_UPPERCASE = "/*//span[text()='OK']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_OK_LOWERCASE = "/*//span[text()='Ok']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_CANCEL_UPPERCASE = "/*//span[text()='CANCEL']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_CANCEL_LOWERCASE = "/*//span[text()='Cancel']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_NEXT = "/*//img[@alt='NEXT']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_PREVIOUS = "//span[text()='PREVIOUS']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_FINISH = "//span[text()='FINISH']/ancestor::div[contains(@class,'Button')]"
     BUTTON_NO = "/*//span[text()='No']/ancestor::div[contains(@class,'Button')]"
     BUTTON_YES = "/*//span[text()='Yes']/ancestor::div[contains(@class,'Button')]"
     BUTTON_CLOSE = "/*//span[text()='Close']/ancestor::div[contains(@class,'Button')]"
@@ -24,7 +27,6 @@ class BaseElements(Base):
 
    #SYSTEM_BUTTONS
     SYSTEM_BUTTON_CLOSE = "/*//div[@title='Close'][@onclick]"
-    "[@class='Common-HandCursor Form-CloseButton']"
     SYSTEM_BUTTON_MAXIMIZE = "//div[@title='Maximize']"
     SYS_BUTTON_MINIMIZE = "//div[@title='Minimize']"
     SYS_BUTTON_RESTORE_DOWN = "//div[@title='Restore Down']"
@@ -42,6 +44,7 @@ class BaseElements(Base):
     DROP_DOWN_APPLIED_VALUE = "/*//div[contains(@class,'ComboBox-Container')]/*//span[@data-vwg_appliedvalue]"
     GREY_COLOR = "[contains(@style,'#E8E8E8')]"
     WHITE_COLOR = "[contains(@style,'White')]"
+    BLACK_COLOR = "[contains(@style,'Black')]"
 
     #GENERAL ELEMENTS
     POPUP = "//div[contains(@id,'WRP')][last()]"

@@ -23,7 +23,7 @@ class LoginPage(BaseActions):
             cond2 = self._is_element_present(SubscriptionHasExpiredPopup.BODY)
             if cond1:
                 self.logger.error("LOGIN IS FAILED. ERROR MESSAGE: ")
-                self._get_error_popups_messages()
+                self._get_popup_error_messages()
                 self.driver.quit()
             elif cond2:
                 subscription_has_expired_popup = SubscriptionHasExpiredPopup(self.driver)
@@ -64,7 +64,7 @@ class LoginPage(BaseActions):
             else:
                 return False
         except Exception as e:
-            self.logger.fatal("LOGIN PAGE IS NOT LOADED\n" + str(e))
+            self.logger.exception("LOGIN PAGE IS NOT LOADED\n" + str(e))
             self.driver.quit()
 
 

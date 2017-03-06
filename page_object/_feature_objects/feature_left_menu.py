@@ -3,7 +3,7 @@ from _base.base_elements import BaseElements
 from _feature_objects.feature_popup import AreYouSurePopup, NewFolderPopup, NewGroupPopup, \
     SiteNamePopup
 from _feature_objects.feature_ribbon_bar import RibbonBar
-from _feature_objects.feature_screen import AuditLogScreen
+from _feature_objects.feature_screen import AuditLogScreen, DynamicallyManagedScreen
 
 
 class BaseLeftMenu(BaseActions):
@@ -140,7 +140,7 @@ class BaseLeftMenu(BaseActions):
         self._open_left_menu(self.PASSWORD_RESET)
 
     def check_menu_home_is_opened(self):
-        cond = self._is_element_present(
+        cond = self._wait_for_element_present(
             "//span[text()='Home']/ancestor::div[@class='Label-Control']" + BaseElements.WHITE_COLOR)
         msg_true = "Left menu '" + self.HOME + "' is opened"
         msg_false = "Left menu '" + self.HOME + "' is NOT opened"
@@ -148,42 +148,42 @@ class BaseLeftMenu(BaseActions):
         return True if cond else False
 
     def check_menu_devices_is_opened(self):
-        cond = self._is_element_present(self.menu_devices())
+        cond = self._wait_for_element_present(self.menu_devices())
         msg_true = "Left menu '" + self.DEVICES + "' is opened"
         msg_false = "Left menu '" + self.DEVICES + "' is NOT opened"
         self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def check_menu_administration_is_opened(self):
-        cond = self._is_element_present(self.menu_administration())
+        cond = self._wait_for_element_present(self.menu_administration())
         msg_true = "Left menu '" + self.ADMINISTRATION + "' is opened"
         msg_false = "Left menu '" + self.ADMINISTRATION + "' is NOT opened"
         self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def check_menu_tasks_is_opened(self):
-        cond = self._is_element_present(self.menu_tasks())
+        cond = self._wait_for_element_present(self.menu_tasks())
         msg_true = "Left menu '" + self.TASKS + "' is opened"
         msg_false = "Left menu '" + self.TASKS + "' is NOT opened"
         self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def check_menu_reporting_is_opened(self):
-        cond = self._is_element_present(self.menu_reporting())
+        cond = self._wait_for_element_present(self.menu_reporting())
         msg_true = "Left menu '" + self.REPORTING + "' is opened"
         msg_false = "Left menu '" + self.REPORTING + "' is NOT opened"
         self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def check_menu_software_and_patch_manager_is_opened(self):
-        cond = self._is_element_present(self.menu_software_and_patch_manager())
+        cond = self._wait_for_element_present(self.menu_software_and_patch_manager())
         msg_true = "Left menu '" + self.SOFTWARE_AND_PATCH_MANAGER + "' is opened"
         msg_false = "Left menu '" + self.SOFTWARE_AND_PATCH_MANAGER + "' is NOT opened"
         self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def check_menu_password_reset_is_opened(self):
-        cond = self._is_element_present(self.menu_password_reset())
+        cond = self._wait_for_element_present(self.menu_password_reset())
         msg_true = "Left menu '" + self.PASSWORD_RESET + "' is opened"
         msg_false = "Left menu '" + self.PASSWORD_RESET + "' is NOT opened"
         self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
@@ -261,7 +261,7 @@ class BaseLeftMenu(BaseActions):
     #     self._set_left_menu_icon(self.PASSWORD_RESET)
     #
     # def open_menu_home(self):
-    #     precond = self._is_element_present(self.ICON_HOME + self.GREY_COLOR)
+    #     precond = self._wait_for_element_present(self.ICON_HOME + self.GREY_COLOR)
     #     if precond:
     #         self.click_icon_home()
     #     cond = self._is_element_not_present(self.ICON_HOME + self.GREY_COLOR)
@@ -312,6 +312,7 @@ class BaseLeftMenu(BaseActions):
 
 class LeftMenuDevices(BaseLeftMenu):
 
+    GLOBAL_SITE_VIEW = "Global Site View"
     BODY = "//span[text()='Devices']/ancestor::div[contains(@style,'transform')]"
     TREE_GLOBAL_SITE_VIEW = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[1]"
     TREE_ACTIVE_DIRECTORIES = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[2]"
@@ -329,7 +330,7 @@ class LeftMenuDevices(BaseLeftMenu):
                          + "/div/div/*//span[text()='Default Site']/ancestor::div[contains(@class,'RowContainer')]"
 
     def click_global_site_view_label(self):
-        self._click_label(self.LABEL_GLOBAL_SITE_VIEW)
+        self._click_label(self.LABEL_GLOBAL_SITE_VIEW, "Label " + self.GLOBAL_SITE_VIEW)
         self._wait_for_element_present(RibbonBar.BUTTONS_BOX_SITE_CONFIG)
         # self._wait_for_elements_present(RibbonBar.BUTTONS_BOX_SITE_CONFIG + "/*//div[contains(@class,'RibbonBarButton-Text')]")
 
@@ -452,15 +453,15 @@ class LeftMenuDevices(BaseLeftMenu):
         site_name = "//span[text()='" + sitename + "']/ancestor::div[contains(@class,'RowContainer')]"
         subsite_name = "//span[text()='" + subsitename + "']/ancestor::div[contains(@class,'RowContainer')]"
         element = LeftMenuDevices.LIST_GLOBAL_SITE_VIEW + site_name + "/parent::div/div[2]/*" + subsite_name
-        cond = self._is_element_present(element)
+        cond = self._wait_for_element_present(element)
         return True if cond else False
 
     def check_site_is_in_global_site_view_tree(self, sitename):
-        cond = self._is_element_present(LeftMenuDevices.LIST_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
+        cond = self._wait_for_element_present(LeftMenuDevices.LIST_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
         return True if cond else False
 
     def check_default_site_is_in_global_site_view_tree(self):
-        cond = self._is_element_present(LeftMenuDevices.LABEL_DEFAULT_SITE)
+        cond = self._wait_for_element_present(LeftMenuDevices.LABEL_DEFAULT_SITE)
         return True if cond else False
 
     def create_group_if_not_exists(self, name):
@@ -509,15 +510,15 @@ class LeftMenuDevices(BaseLeftMenu):
             pass
 
     def check_group_is_in_groups_tree(self, name):
-        cond = self._is_element_present(LeftMenuDevices.LIST_GROUPS + "/*//span[text()='" + name + "']")
+        cond = self._wait_for_element_present(LeftMenuDevices.LIST_GROUPS + "/*//span[text()='" + name + "']")
         return True if cond else False
 
     def check_folder_is_in_groups_tree(self, name):
-        cond = self._is_element_present(LeftMenuDevices.LIST_GROUPS + "/*//span[text()='" + name + "']")
+        cond = self._wait_for_element_present(LeftMenuDevices.LIST_GROUPS + "/*//span[text()='" + name + "']")
         return True if cond else False
 
     def check_folder_is_in_queries_tree(self, name):
-        cond = self._is_element_present(LeftMenuDevices.LIST_QUERIES + "/*//span[text()='" + name + "']")
+        cond = self._wait_for_element_present(LeftMenuDevices.LIST_QUERIES + "/*//span[text()='" + name + "']")
         return True if cond else False
 
     def click_group_in_groups_tree(self, name):
@@ -604,8 +605,6 @@ class LeftMenuAdministration(BaseLeftMenu):
 
     def click_audit_log_label(self):
         self._click_label(LeftMenuAdministration.LABEL_AUDIT_LOG)
-        audit_log_screen = AuditLogScreen(self.driver)
-        self._wait_for_element_present(audit_log_screen.screen_header())
 
     def click_dynamically_managed_label(self):
         self._click_label(LeftMenuAdministration.LABEL_DYNAMICALLY_MANAGED)
@@ -620,17 +619,186 @@ class LeftMenuAdministration(BaseLeftMenu):
         self._click_label(LeftMenuAdministration.LABEL_INFRASTRUCTURE)
 
     def check_dynamically_managed_label_is_present(self):
-        cond = self._is_element_present(LeftMenuAdministration.LABEL_DYNAMICALLY_MANAGED)
+        cond = self._wait_for_element_present(LeftMenuAdministration.LABEL_DYNAMICALLY_MANAGED)
         return True if cond else False
 
     def check_excluded_devices_label_is_present(self):
-        cond = self._is_element_present(LeftMenuAdministration.LABEL_EXCLUDED_DEVICES)
+        cond = self._wait_for_element_present(LeftMenuAdministration.LABEL_EXCLUDED_DEVICES)
         return True if cond else False
 
     def check_unmanaged_devices_label_is_present(self):
-        cond = self._is_element_present(LeftMenuAdministration.LABEL_UNMANAGED_DEVICES)
+        cond = self._wait_for_element_present(LeftMenuAdministration.LABEL_UNMANAGED_DEVICES)
         return True if cond else False
 
     def check_infrastructure_label_is_present(self):
-        cond = self._is_element_present(LeftMenuAdministration.LABEL_INFRASTRUCTURE)
+        cond = self._wait_for_element_present(LeftMenuAdministration.LABEL_INFRASTRUCTURE)
         return True if cond else False
+
+
+class LeftMenuTasks(BaseLeftMenu):
+
+    BODY = "//span[text()='Tasks']/ancestor::div[contains(@style,'transform')]"
+    TREE_SCHEDULED_TASKS = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[1]"
+    LIST_SCHEDULED_TASKS = TREE_SCHEDULED_TASKS + "/div[contains(@class,'SubNodesContainer')]"
+    LABEL_SCHEDULED_TASKS = TREE_SCHEDULED_TASKS + "/div[contains(@class,'RowContainer')]"
+    LABEL_DISCOVER = LIST_SCHEDULED_TASKS \
+                                + "/div/div/*//span[text()='Discover']/ancestor::div[contains(@class,'RowContainer')]"
+    LABEL_SOFTWARE_DEPLOYMENT = LIST_SCHEDULED_TASKS \
+                                + "/div/div/*//span[text()='Software Deployments']/ancestor::div[contains(@class,'RowContainer')]"
+    LABEL_PATCH_MANAGER = LIST_SCHEDULED_TASKS \
+                                + "/div/div/*//span[text()='Patch Manager']/ancestor::div[contains(@class,'RowContainer')]"
+
+    def click_scheduled_tasks_label(self):
+        self._click_label(self.LABEL_SCHEDULED_TASKS)
+
+    def expand_scheduled_tasks_tree(self):
+        arrow = self._is_element_present(self.LABEL_SCHEDULED_TASKS + BaseElements.ARROW_EXPAND)
+        if arrow:
+            self._expand_tree(self.LABEL_SCHEDULED_TASKS)
+
+    def collaps_scheduled_tasks_tree(self):
+        self._wait_for_element_present(self.LABEL_SCHEDULED_TASKS)
+        arrow = self._is_element_not_present(self.TREE_SCHEDULED_TASKS + "/div[2][contains(@style,'display: none')]")
+        if arrow:
+            self._collaps_tree(self.TREE_SCHEDULED_TASKS)
+
+    def click_discover_label(self):
+        self._click_label(self.LABEL_DISCOVER)
+
+    def click_software_deployment_label(self):
+        self._click_label(self.LABEL_SOFTWARE_DEPLOYMENT)
+
+    def click_patch_manager_label(self):
+        self._click_label(self.LABEL_PATCH_MANAGER)
+
+    def check_scheduled_tasks_label_is_present(self):
+        cond = self._wait_for_element_present(self.LABEL_SCHEDULED_TASKS)
+        return True if cond else False
+
+    def check_discover_label_is_present(self):
+        cond = self._wait_for_element_present(self.LABEL_DISCOVER)
+        return True if cond else False
+
+    def check_software_deployment_label_is_present(self):
+        cond = self._wait_for_element_present(self.LABEL_SOFTWARE_DEPLOYMENT)
+        return True if cond else False
+
+    def check_patch_manager_label_is_present(self):
+        cond = self._wait_for_element_present(self.LABEL_PATCH_MANAGER)
+        return True if cond else False
+
+
+class LeftMenuSoftwareAndPatchManager(BaseLeftMenu):
+
+    BODY = "//span[text()='Software / Patch Manager']/ancestor::div[contains(@style,'transform')]"
+    TREE_APPLICATIONS = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[1]"
+    TREE_PATCH_MANGER = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[2]"
+    TREE_MEDIA_MANAGEMENT = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[3]"
+    LABEL_APPLICATIONS = TREE_APPLICATIONS + "/div[contains(@class,'RowContainer')]"
+    LIST_PATCH_MANAGER = TREE_PATCH_MANGER + "/div[contains(@class,'SubNodesContainer')]"
+    LIST_MEDIA_MANAGEMENT = TREE_PATCH_MANGER + "/div[contains(@class,'SubNodesContainer')]"
+    LABEL_PATCH_MANAGER = TREE_PATCH_MANGER + "/div[contains(@class,'RowContainer')]"
+    LABEL_MEDIA_MANAGEMENT = TREE_MEDIA_MANAGEMENT + "/div[contains(@class,'RowContainer')]"
+    LABEL_BY_VENDOR = LIST_PATCH_MANAGER + \
+                          "/div/div/*//span[text()='By Vendor']/ancestor::div[contains(@class,'RowContainer')]"
+    LABEL_BY_GROUP = LIST_PATCH_MANAGER + \
+                          "/div/div/*//span[text()='By Group']/ancestor::div[contains(@class,'RowContainer')]"
+    LABEL_BY_SYSTEM_RULE = LIST_PATCH_MANAGER + \
+                          "/div/div/*//span[text()='By System Rule']/ancestor::div[contains(@class,'RowContainer')]"
+    LABEL_BY_QUERY_RULE = LIST_PATCH_MANAGER + \
+                          "/div/div/*//span[text()='By Query Rule']/ancestor::div[contains(@class,'RowContainer')]"
+    LABEL_MY_PATCHES = TREE_MEDIA_MANAGEMENT + \
+                          "/*//span[text()='My Patches']/ancestor::div[contains(@class,'RowContainer')]"
+
+    def click_applications_label(self):
+        self._click_label(self.LABEL_APPLICATIONS)
+
+    def click_discover_label(self):
+        self._click_label(self.LABEL_PATCH_MANAGER)
+
+    def click_by_vendor_label(self):
+        self._click_label(self.LABEL_BY_VENDOR)
+
+    def click_by_group_label(self):
+        self._click_label(self.LABEL_BY_GROUP)
+
+    def click_by_system_rule_label(self):
+        self._click_label(self.LABEL_BY_SYSTEM_RULE)
+
+    def click_by_query_rule_label(self):
+        self._click_label(self.LABEL_BY_QUERY_RULE)
+
+    def click_my_patches_label(self):
+        self._click_label(self.LABEL_MY_PATCHES)
+
+    def click_patch_manager_label(self):
+        self._click_label(self.LABEL_PATCH_MANAGER)
+
+    def expand_patch_manager_tree(self):
+        arrow = self._is_element_present(self.LABEL_PATCH_MANAGER + BaseElements.ARROW_EXPAND)
+        if arrow:
+            self._expand_tree(self.LABEL_PATCH_MANAGER)
+
+    def collaps_scheduled_tasks_tree(self):
+        self._wait_for_element_present(self.LABEL_PATCH_MANAGER)
+        arrow = self._is_element_not_present(self.TREE_PATCH_MANGER + "/div[2][contains(@style,'display: none')]")
+        if arrow:
+            self._collaps_tree(self.TREE_PATCH_MANGER)
+
+    def expand_by_vendor_tree(self):
+        arrow = self._is_element_present(self.LABEL_BY_VENDOR + BaseElements.ARROW_EXPAND)
+        if arrow:
+            self._expand_tree(self.LABEL_BY_VENDOR)
+
+    def expand_by_group_tree(self):
+        arrow = self._is_element_present(self.LABEL_BY_GROUP + BaseElements.ARROW_EXPAND)
+        if arrow:
+            self._expand_tree(self.LABEL_BY_GROUP)
+
+    def expand_by_system_rule_tree(self):
+        arrow = self._is_element_present(self.LABEL_BY_SYSTEM_RULE + BaseElements.ARROW_EXPAND)
+        if arrow:
+            self._expand_tree(self.LABEL_BY_SYSTEM_RULE)
+
+    def expand_by_query_rule_tree(self):
+        arrow = self._is_element_present(self.LABEL_BY_QUERY_RULE + BaseElements.ARROW_EXPAND)
+        if arrow:
+            self._expand_tree(self.LABEL_BY_QUERY_RULE)
+
+    def expand_media_management_tree(self):
+        arrow = self._is_element_present(self.LABEL_MEDIA_MANAGEMENT + BaseElements.ARROW_EXPAND)
+        if arrow:
+            self._expand_tree(self.LABEL_MEDIA_MANAGEMENT)
+
+    def check_applications_label_is_present(self):
+        cond = self._wait_for_element_present(self.LABEL_APPLICATIONS)
+        return True if cond else False
+
+    def check_by_vendor_label_is_present(self):
+        cond = self._wait_for_element_present(self.LABEL_BY_VENDOR)
+        return True if cond else False
+
+    def check_by_group_label_is_present(self):
+        cond = self._wait_for_element_present(self.LABEL_BY_GROUP)
+        return True if cond else False
+
+    def check_by_system_rule_label_is_present(self):
+        cond = self._wait_for_element_present(self.LABEL_BY_SYSTEM_RULE)
+        return True if cond else False
+
+    def check_by_query_rule_label_is_present(self):
+        cond = self._wait_for_element_present(self.LABEL_BY_QUERY_RULE)
+        return True if cond else False
+
+    def check_media_management_label_is_present(self):
+        cond = self._wait_for_element_present(self.LABEL_MEDIA_MANAGEMENT)
+        return True if cond else False
+
+    def check_my_patches_label_is_present(self):
+        cond = self._wait_for_element_present(self.LABEL_MY_PATCHES)
+        return True if cond else False
+
+    def check_patch_manager_label_is_present(self):
+        cond = self._wait_for_element_present(self.LABEL_PATCH_MANAGER)
+        return True if cond else False
+

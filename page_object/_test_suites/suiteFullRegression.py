@@ -29,12 +29,12 @@ class SiteCreation(unittest.TestCase):
         main_page._close_popups()
 
     def setUp(self):
-        self.logger.info("[Test start]")
         ribbon_bar = RibbonBar(self.driver)
         ribbon_bar.open_tab_home()
-        # left_menu_devices = LeftMenuDevices(self.driver)
-        # left_menu_devices.open_menu_devices()
-        # left_menu_devices.expand_global_site_view_tree()
+        left_menu_devices = LeftMenuDevices(self.driver)
+        left_menu_devices.open_menu_devices()
+        left_menu_devices.expand_global_site_view_tree()
+        self.logger.info("[Test start]")
 
     def test_open_left_menus(self):
         self.logger.info("TC#xxxx. Open left side menus")
@@ -53,21 +53,10 @@ class SiteCreation(unittest.TestCase):
         self.assertTrue(left_menu.check_menu_software_and_patch_manager_is_opened())
         # left_menu.open_menu_password_reset()
         # self.assertTrue(left_menu.check_menu_password_reset_is_opened())
-        self.logger.info("TEST PASSED!!!")
-
-    # def test_open_left_menus(self):
-    #     print ("\n" + "TC#xxxx. Open left side menus")
-    #     left_menu = BaseLeftMenu(self.driver)
-    #     left_menu.menu_devices()
-    #     left_menu.menu_administration()
-    #     left_menu.menu_password_reset()
-    #     left_menu.menu_reporting()
-    #     left_menu.menu_tasks()
-    #     # left_menu.open_menu_password_reset()
-    #     print ("TEST PASSED!!!" + "\n")
+        self.logger.info("TEST PASSED")
 
     def test_open_site_name_popup(self):
-        print ("\n" + "TC#9057. Open Site Name popup")
+        self.logger.info("TC#9057. Open Site Name popup")
         site_name_popup = SiteNamePopup(self.driver)
         ribbon_bar = RibbonBar(self.driver)
         left_menu_devices = LeftMenuDevices(self.driver)
@@ -75,10 +64,10 @@ class SiteCreation(unittest.TestCase):
         self.assertTrue(ribbon_bar.check_button_new_site_is_present())
         ribbon_bar.click_button_new_site()
         self.assertTrue(site_name_popup.check_popup_is_present())
-        print ("TEST PASSED!!!" + "\n")
+        self.logger.info("TEST PASSED")
 
     def test_create_new_site_with_acceptable_name(self):
-        print ("\n" + "TC#9101. Create new site with acceptable name")
+        self.logger.info("TC#9101. Create new site with acceptable name")
         sitename = "New site #9101"
         site_name_popup = SiteNamePopup(self.driver)
         left_menu_devices = LeftMenuDevices(self.driver)
@@ -94,10 +83,10 @@ class SiteCreation(unittest.TestCase):
         self.assertTrue(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
         left_menu_devices.delete_site_from_global_site_view_tree(sitename)
         self.assertFalse(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
-        print ("TEST PASSED!!!" + "\n")
+        self.logger.info("TEST PASSED")
 
     def test_cancel_creating_site(self):
-        print ("\n" + "TC#9058. Cancel creating new site with empty text field")
+        self.logger.info("TC#9058. Cancel creating new site with empty text field")
         left_menu_devices = LeftMenuDevices(self.driver)
         site_name_popup = SiteNamePopup(self.driver)
         ribbon_bar = RibbonBar(self.driver)
@@ -106,11 +95,11 @@ class SiteCreation(unittest.TestCase):
         ribbon_bar.click_button_new_site()
         self.assertTrue(site_name_popup.check_popup_is_present())
         site_name_popup.click_button_cancel()
-        self.assertFalse(site_name_popup.check_popup_is_present())
-        print ("TEST PASSED!!!" + "\n")
+        self.assertTrue(site_name_popup.check_popup_is_not_present())
+        self.logger.info("TEST PASSED")
 
     def test_create_site_with_duplicated_name(self):
-        print ("\n" + "TC#9107. Create new site with duplicated name")
+        self.logger.info("TC#9107. Create new site with duplicated name")
         sitename = "Default Site"
         left_menu_devices = LeftMenuDevices(self.driver)
         site_name_popup = SiteNamePopup(self.driver)
@@ -124,14 +113,14 @@ class SiteCreation(unittest.TestCase):
         site_name_popup.click_button_ok()
         self.assertTrue(error_popup.check_popup_is_present())
         error_popup.click_button_ok()
-        self.assertFalse(error_popup.check_popup_is_present())
+        self.assertTrue(error_popup.check_popup_is_not_present())
         self.assertTrue(site_name_popup.check_popup_is_present())
         site_name_popup.click_system_button_close()
-        self.assertFalse(site_name_popup.check_popup_is_present())
-        print ("TEST PASSED!!!" + "\n")
+        self.assertTrue(site_name_popup.check_popup_is_not_present())
+        self.logger.info("TEST PASSED")
 
     def test_create_site_with_fifty_one_symbols(self):
-        print ("\n" + "TC#9104. Create site with name more than 50 symbols")
+        self.logger.info("TC#9104. Create site with name more than 50 symbols")
         fifty_symbols_name = "51symbols51symbols51symbols51symbols51symbols!<ok>"
         fifty_one_symbols_name = fifty_symbols_name + "1"
         left_menu_devices = LeftMenuDevices(self.driver)
@@ -151,10 +140,10 @@ class SiteCreation(unittest.TestCase):
         self.assertTrue(left_menu_devices.check_site_is_in_global_site_view_tree(fifty_symbols_name))
         left_menu_devices.delete_site_from_global_site_view_tree(fifty_symbols_name)
         self.assertFalse(left_menu_devices.check_site_is_in_global_site_view_tree(fifty_symbols_name))
-        print ("TEST PASSED!!!" + "\n")
+        self.logger.info("TEST PASSED")
 
     def test_create_subsites_in_global_site_view_tree(self):
-        print ("\n" + "TC#9118. Create subsites in the Global Site View tree")
+        self.logger.info("TC#9118. Create subsites in the Global Site View tree")
         sitename = "Site #9118"
         subsitename_one = sitename + "-01"
         subsitename_two = sitename + "-02"
@@ -169,11 +158,10 @@ class SiteCreation(unittest.TestCase):
         self.assertTrue(left_menu_devices.check_subsite_is_in_parent_site(sitename, subsitename_two))
         left_menu_devices.delete_site_from_global_site_view_tree(sitename)
         self.assertFalse(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
-        print ("TEST PASSED!!!" + "\n")
+        self.logger.info("TEST PASSED")
 
     def tearDown(self):
         base_actions = BaseActions(self.driver)
-        base_actions._close_help_window()
         base_actions._close_popups()
         self.logger.info("[Test end]\n")
 
@@ -211,12 +199,11 @@ class SiteConfiguration((unittest.TestCase)):
         self.assertTrue(configuration_popup.check_popup_is_present())
         configuration_popup.click_system_button_close()
         self.assertFalse(configuration_popup.check_popup_is_present())
-        print ("TEST PASSED!!!" + "\n")
+        print ("TEST PASSED" + "\n")
 
     def test_open_configuration_popup_from_global_site_view(self):
         print ("\n" + "TC#9228. Devices screen. Open Configuration popup from the Global Site View")
         configuration_popup = ConfigurationPopup(self.driver)
-        site_tab = SiteTab(self.driver)
         left_menu_devices = LeftMenuDevices(self.driver)
         ribbon_bar = RibbonBar(self.driver)
         left_menu_devices.click_global_site_view_label()
@@ -224,33 +211,31 @@ class SiteConfiguration((unittest.TestCase)):
         ribbon_bar.click_button_config()
         self.assertTrue(configuration_popup.check_popup_is_present())
         self.assertFalse(configuration_popup.check_tabs_panel_is_present())
-        self.assertTrue(site_tab.check_name_text_field_disabled())
-        self.assertEqual("Global Site View", site_tab.get_name_text_field_value())
+        self.assertTrue(configuration_popup.check_name_text_field_disabled())
+        self.assertEqual("Global Site View", configuration_popup.get_name_text_field_value())
         configuration_popup.click_system_button_close()
         self.assertFalse(configuration_popup.check_popup_is_present())
-        print ("TEST PASSED!!!" + "\n")
+        print ("TEST PASSED" + "\n")
 
     def test_open_configuration_popup_from_default_site(self):
         print ("\n" + "TC#9230. Devices screen. Open Configuration popup from the Default Site main label")
         left_menu_devices = LeftMenuDevices(self.driver)
         configuration_popup = ConfigurationPopup(self.driver)
-        site_tab = SiteTab(self.driver)
         ribbon_bar = RibbonBar(self.driver)
         left_menu_devices.click_default_site_in_global_site_view()
         self.assertTrue(ribbon_bar.check_button_config_is_present())
         ribbon_bar.click_button_config()
         self.assertTrue(configuration_popup.check_popup_is_present())
-        self.assertTrue(site_tab.check_name_text_field_disabled())
-        self.assertEqual("Default Site", site_tab.get_name_text_field_value())
+        self.assertTrue(configuration_popup.check_name_text_field_disabled())
+        self.assertEqual("Default Site", configuration_popup.get_name_text_field_value())
         configuration_popup.click_system_button_close()
         self.assertFalse(configuration_popup.check_popup_is_present())
-        print ("TEST PASSED!!!" + "\n")
+        print ("TEST PASSED" + "\n")
 
     def test_open_configuration_popup_from_created_site(self):
         print ("\n" + "TC#9236. Devices screen. Open Configuration popup from the created site")
         sitename = "Site#9236"
         ribbon_bar = RibbonBar(self.driver)
-        site_tab = SiteTab(self.driver)
         configuration_popup = ConfigurationPopup(self.driver)
         left_menu_devices = LeftMenuDevices(self.driver)
         left_menu_devices.create_site_if_not_exists(sitename)
@@ -259,15 +244,14 @@ class SiteConfiguration((unittest.TestCase)):
         self.assertTrue(ribbon_bar.check_button_config_is_present())
         ribbon_bar.click_button_config()
         self.assertTrue(
-            configuration_popup._is_element_present(configuration_popup.TAB_SITE))  # add verification method to class
-        self.assertFalse(configuration_popup._is_element_disabled(
-            site_tab.FIELD_NAME))  # add verification method to class
-        self.assertEqual(sitename, site_tab.get_name_text_field_value())
+        configuration_popup._is_element_present(configuration_popup.TAB_SITE))  # add verification method to class
+        self.assertFalse(configuration_popup._is_element_disabled(configuration_popup.FIELD_NAME))  # add verification method to class
+        self.assertEqual(sitename, configuration_popup.get_name_text_field_value())
         configuration_popup.click_system_button_close()
         self.assertFalse(configuration_popup.check_popup_is_present())
         left_menu_devices.delete_site_from_global_site_view_tree(sitename)
         self.assertFalse(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
-        print ("TEST PASSED!!!" + "\n")
+        print ("TEST PASSED" + "\n")
 
     def tearDown(self):
         pass
@@ -301,7 +285,6 @@ class SiteConfigurationSiteTab((unittest.TestCase)):
         modifed = "_modifed"
         left_menu_devices = LeftMenuDevices(self.driver)
         ribbon_bar = RibbonBar(self.driver)
-        site_tab = SiteTab(self.driver)
         configuration_popup = ConfigurationPopup(self.driver)
         left_menu_devices.create_site_if_not_exists(sitename)
         self.assertTrue(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
@@ -310,42 +293,41 @@ class SiteConfigurationSiteTab((unittest.TestCase)):
         left_menu_devices.click_site_in_global_site_view_tree(sitename)
         self.assertTrue(ribbon_bar.check_button_config_is_present())
         ribbon_bar.click_button_config()
-        self.assertFalse(site_tab.check_name_text_field_disabled())
-        self.assertEqual(sitename, site_tab.get_name_text_field_value())
-        site_tab.enter_text_into_name_text_field(modifed)
+        self.assertFalse(configuration_popup.check_name_text_field_disabled())
+        self.assertEqual(sitename, configuration_popup.get_name_text_field_value())
+        configuration_popup.enter_text_into_name_text_field(modifed)
         configuration_popup.click_button_close()
         self.assertFalse(configuration_popup.check_popup_is_present())
         self.assertTrue(left_menu_devices.check_site_is_in_global_site_view_tree(sitename + modifed))
         left_menu_devices.click_site_in_global_site_view_tree(sitename + modifed)
         self.assertTrue(ribbon_bar.check_button_config_is_present())
         ribbon_bar.click_button_config()
-        self.assertEqual(sitename + modifed, site_tab.get_name_text_field_value())
+        self.assertEqual(sitename + modifed, configuration_popup.get_name_text_field_value())
         configuration_popup.click_system_button_close()
         self.assertFalse(configuration_popup.check_popup_is_present())
         left_menu_devices.delete_site_from_global_site_view_tree(sitename + modifed)
         self.assertFalse(left_menu_devices.check_site_is_in_global_site_view_tree(sitename + modifed))
         left_menu_devices.delete_site_if_exists(sitename)
         self.assertFalse(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
-        print ("TEST PASSED!!!" + "\n")
+        print ("TEST PASSED" + "\n")
 
     def test_configuration_popup_open_column_set_designer_popup(self):
         print ("\n" + "TC#9238. Devices screen. Configuration popup. Open Column Set Designer popup")
         configuration_popup = ConfigurationPopup(self.driver)
         column_set_designer = ColumnSetDesignerPopup(self.driver)
         ribbon_bar = RibbonBar(self.driver)
-        site_tab = SiteTab(self.driver)
         left_menu_devices = LeftMenuDevices(self.driver)
         left_menu_devices.click_default_site_in_global_site_view()
         self.assertTrue(ribbon_bar.check_button_config_is_present())
         ribbon_bar.click_button_config()
         self.assertTrue(configuration_popup.check_popup_is_present())
-        site_tab.click_button_new()
+        configuration_popup.click_button_new()
         self.assertTrue(configuration_popup.check_popup_is_present())
         column_set_designer.click_system_button_close()
         self.assertFalse(column_set_designer.check_popup_is_present())
         configuration_popup.click_system_button_close()
         self.assertFalse(configuration_popup.check_popup_is_present())
-        print ("TEST PASSED!!!" + "\n")
+        print ("TEST PASSED" + "\n")
 
     def test_configuration_popup_apply_column_set(self):
         print ("\n" + "TC#9239. Devices screen. Configuration popup. Apply Column set to the site")
@@ -355,7 +337,6 @@ class SiteConfigurationSiteTab((unittest.TestCase)):
         columns_list1 = ["Device Name", "OS Name", "Caption", "IP Address"]
         columns_list2 = ["Device Name", "Device ID", "Domain", "Site", "User Name"]
         left_menu_devices = LeftMenuDevices(self.driver)
-        site_tab = SiteTab(self.driver)
         column_sets_popup = ColumnSetsPopup(self.driver)
         configuration_popup = ConfigurationPopup(self.driver)
         ribbon_bar = RibbonBar(self.driver)
@@ -389,21 +370,21 @@ class SiteConfigurationSiteTab((unittest.TestCase)):
         left_menu_devices.click_site_in_global_site_view_tree(sitename)
         self.assertTrue(ribbon_bar.check_button_config_is_present())
         ribbon_bar.click_button_config()
-        site_tab.select_columnset_in_drop_down_list(columnset1)
-        self.assertTrue(site_tab.check_columnset_is_selected_from_drop_down_list(columnset1))
+        configuration_popup.select_columnset_in_drop_down_list(columnset1)
+        self.assertTrue(configuration_popup.check_columnset_is_selected_from_drop_down_list(columnset1))
         configuration_popup.click_button_close()
         self.assertFalse(configuration_popup.check_popup_is_present())
         self.assertTrue(devices_screen.check_columns_are_present(columns_list1))
         ribbon_bar.click_button_config()
         self.assertTrue(configuration_popup.check_popup_is_present())
-        site_tab.select_columnset_in_drop_down_list(columnset2)
-        self.assertTrue(site_tab.check_columnset_is_selected_from_drop_down_list(columnset2))
+        configuration_popup.select_columnset_in_drop_down_list(columnset2)
+        self.assertTrue(configuration_popup.check_columnset_is_selected_from_drop_down_list(columnset2))
         configuration_popup.click_button_close()
         self.assertFalse(configuration_popup.check_popup_is_present())
         self.assertTrue(devices_screen.check_columns_are_present(columns_list2))
         left_menu_devices.delete_site_from_global_site_view_tree(sitename)
         self.assertFalse(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
-        print ("TEST PASSED!!!" + "\n")
+        print ("TEST PASSED" + "\n")
 
     def test_configuration_popup_create_column_set(self):
         print ("\n" + "TC#9999. Devices screen. Configuration popup. Create column set")
@@ -412,7 +393,6 @@ class SiteConfigurationSiteTab((unittest.TestCase)):
         columns_list = ["Device Name", "Device ID", "Domain", "Site"]
         devices_screen = DevicesScreen(self.driver)
         left_menu_devices = LeftMenuDevices(self.driver)
-        site_tab = SiteTab(self.driver)
         column_set_designer_popup = ColumnSetDesignerPopup(self.driver)
         column_sets_popup = ColumnSetsPopup(self.driver)
         configuration_popup = ConfigurationPopup(self.driver)
@@ -433,17 +413,17 @@ class SiteConfigurationSiteTab((unittest.TestCase)):
         self.assertTrue(ribbon_bar.check_button_config_is_present())
         ribbon_bar.click_button_config()
         self.assertTrue(configuration_popup.check_popup_is_present())
-        site_tab.click_button_new()
+        configuration_popup.click_button_new()
         self.assertTrue(column_set_designer_popup.check_popup_is_present())
         column_set_designer_popup.create_columnset(columnsetname, columns_list)
         self.assertFalse(column_set_designer_popup.check_popup_is_present())
-        site_tab.select_columnset_in_drop_down_list(columnsetname)
-        self.assertTrue(site_tab.check_columnset_is_selected_from_drop_down_list(columnsetname))
+        configuration_popup.select_columnset_in_drop_down_list(columnsetname)
+        self.assertTrue(configuration_popup.check_columnset_is_selected_from_drop_down_list(columnsetname))
         configuration_popup.click_button_close()
         self.assertFalse(configuration_popup.check_popup_is_present())
         self.assertTrue(devices_screen.check_columns_are_present(columns_list))
         left_menu_devices.delete_site_from_global_site_view_tree(sitename)
-        print ("TEST PASSED!!!" + "\n")
+        print ("TEST PASSED" + "\n")
 
     def tearDown(self):
         pass
@@ -519,7 +499,7 @@ class SiteDeletion(unittest.TestCase):
         self.assertTrue(are_you_sure_popup.check_popup_is_present())
         are_you_sure_popup.click_button_ok()
         self.assertFalse(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_delete_default_site_from_global_site_view_tree(self):
         self.logger.info("TC#8888. Devices screen. Delete Default site from Global Site View tree")
@@ -532,7 +512,7 @@ class SiteDeletion(unittest.TestCase):
         self.assertTrue(unable_to_remove_popup.check_popup_is_present())
         unable_to_remove_popup.click_button_ok()
         self.assertTrue(left_menu_devices.check_default_site_is_in_global_site_view_tree())
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_delete_subsite_from_site_tree(self):
         self.logger.info("TC#3333. Devices screen. Delete subsite from Global Site View tree")
@@ -553,7 +533,7 @@ class SiteDeletion(unittest.TestCase):
         are_you_sure_popup.click_button_ok()
         self.assertFalse(left_menu_devices.check_subsite_is_in_parent_site(sitename, subsitename))
         left_menu_devices.delete_site_from_global_site_view_tree(sitename)
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_delete_site_with_subsite(self):
         self.logger.info("TC#0000. Devices screen. Delete site with subsite from Global Site View tree")
@@ -574,7 +554,7 @@ class SiteDeletion(unittest.TestCase):
         are_you_sure_popup.click_button_ok()
         self.assertFalse(left_menu_devices.check_subsite_is_in_parent_site(sitename, subsitename))
         self.assertFalse(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_cancel_site_deletion_from_global_site_view(self):
         self.logger.info("TC#1111. Devices screen. Cancel site deletion")
@@ -591,7 +571,7 @@ class SiteDeletion(unittest.TestCase):
         are_you_sure_popup.click_button_cancel()
         self.assertTrue(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
         left_menu_devices.delete_site_from_global_site_view_tree(sitename)
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_open_are_you_sure_popup(self):
         self.logger.info("TC#2222. Devices screen. Open Are you sure popup")
@@ -608,7 +588,7 @@ class SiteDeletion(unittest.TestCase):
         are_you_sure_popup.click_system_button_close()
         self.assertFalse(are_you_sure_popup.check_popup_is_present())
         left_menu_devices.delete_site_from_global_site_view_tree(sitename)
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def tearDown(self):
         base_actions = BaseActions(self.driver)
@@ -698,7 +678,7 @@ class LoginPageHelpLinks(unittest.TestCase):
         login_page.click_icon_help()
         actual_header = login_page._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, login_page._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_help_link_on_reset_password_popup(self):
         self.logger.info("TC#0000: Check help link on Password Reset popup")
@@ -710,7 +690,7 @@ class LoginPageHelpLinks(unittest.TestCase):
         reset_password_popup.click_icon_help()
         actual_header = reset_password_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, reset_password_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def tearDown(self):
         base_actions = BaseActions(self.driver)
@@ -728,6 +708,12 @@ class MainPageHelpLinks(unittest.TestCase):
     driver = None
     # logging.basicConfig(filename='D:\\python\\vcms\\vcms\\page_object\\_test_suites\\text_logs_help_links.log',
     #                     level=logging.INFO, format='%(asctime)s %(levelname)-8s %(message)s')
+
+    # def __init__(self, driver, base_url=Settings.baseUrl, log_name="test_logs_base"):
+    #     super(MainPageHelpLinks, self).__init__(self.log_name)
+    #     self.log_name = "help_link_test"
+    #     logger = logging.getLogger(self.log_name)
+
     logger = logging.getLogger(__name__)
     # console = logging.StreamHandler()
     # logger.addHandler(console)
@@ -750,67 +736,6 @@ class MainPageHelpLinks(unittest.TestCase):
         ribbon_bar = RibbonBar(self.driver)
         ribbon_bar.open_tab_home()
 
-    def test_H_help_link_on_home_screen(self):
-        self.logger.info("TC#0000: Check help link on Home screen")
-        expected_header = "Getting Started in CMS"
-        left_menu = BaseLeftMenu(self.driver)
-        home_screen = HomeScreen(self.driver)
-        left_menu.open_menu_home()
-        self.assertTrue(home_screen.check_screen_is_present())
-        home_screen.click_icon_help()
-        actual_header = home_screen._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, home_screen._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
-
-    def test_T_help_link_on_tasks_screen(self):
-        self.logger.info("TC#0000: Check help link on Tasks screen")
-        expected_header = "Tasks"
-        left_menu_tasks = BaseLeftMenu(self.driver)
-        tasks_screen = TasksScreen(self.driver)
-        left_menu_tasks.open_menu_tasks()
-        ribbon_bar = RibbonBar(self.driver)
-        ribbon_bar.open_tab_home()
-        ribbon_bar.click_button_home()
-        ribbon_bar.click_go_to_home_screen_menu_item()
-        self.assertTrue(tasks_screen.check_screen_is_present())
-        tasks_screen.click_icon_help()
-        actual_header = tasks_screen._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, tasks_screen._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
-
-    def test_R_help_link_on_reporting_screen(self):
-        self.logger.info("TC#0000: Check help link on Reporting screen")
-        expected_header = "Reporting"
-        left_menu = BaseLeftMenu(self.driver)
-        reporting_screen = ReportingScreen(self.driver)
-        left_menu.open_menu_reporting()
-        ribbon_bar = RibbonBar(self.driver)
-        ribbon_bar.open_tab_home()
-        ribbon_bar.click_button_home()
-        ribbon_bar.click_go_to_home_screen_menu_item()
-        self.assertTrue(reporting_screen.check_screen_is_present())
-        self.assertTrue(left_menu.check_menu_reporting_is_opened())
-        reporting_screen.click_icon_help()
-        actual_header = reporting_screen._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, reporting_screen._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
-
-    def test_P_help_link_on_software_and_patch_manager_screen(self):
-        self.logger.info("TC#0000: Check help link on Reporting screen")
-        expected_header = "Software / Patch Manager"
-        left_menu = BaseLeftMenu(self.driver)
-        software_and_patch_manager_screen = SoftwareAndPatchManagerScreen(self.driver)
-        left_menu.open_menu_software_and_patch_manager()
-        ribbon_bar = RibbonBar(self.driver)
-        ribbon_bar.open_tab_home()
-        ribbon_bar.click_button_home()
-        ribbon_bar.click_go_to_home_screen_menu_item()
-        self.assertTrue(software_and_patch_manager_screen.check_screen_is_present())
-        software_and_patch_manager_screen.click_icon_help()
-        actual_header = software_and_patch_manager_screen._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, software_and_patch_manager_screen._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
-
     def test_A_help_link_on_administration_screen(self):
         self.logger.info("TC#0000: Check help link on Administration screen")
         expected_header = "Administration"
@@ -822,7 +747,7 @@ class MainPageHelpLinks(unittest.TestCase):
         administration_screen.click_icon_help()
         actual_header = administration_screen._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, administration_screen._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_A_help_link_on_endpoint_management_screen(self):
         self.logger.info("TC#0000: Check help link on Endpoint Management screen")
@@ -836,7 +761,7 @@ class MainPageHelpLinks(unittest.TestCase):
         endpoint_management_screen.click_icon_help()
         actual_header = endpoint_management_screen._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, endpoint_management_screen._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_A_help_link_on_dynamically_managed_screen(self):
         self.logger.info("TC#0000: Check help link on Dynamically Managed screen")
@@ -852,7 +777,7 @@ class MainPageHelpLinks(unittest.TestCase):
         dynamically_managed_screen.click_icon_help()
         actual_header = dynamically_managed_screen._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, dynamically_managed_screen._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_A_help_link_on_excluded_devices_screen(self):
         self.logger.info("TC#0000: Check help link on Excluded Devices screen")
@@ -868,7 +793,7 @@ class MainPageHelpLinks(unittest.TestCase):
         excluded_devices_screen.click_icon_help()
         actual_header = excluded_devices_screen._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, excluded_devices_screen._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_A_help_link_on_unmanaged_devices_screen(self):
         self.logger.info("TC#0000: Check help link on Unmanaged Devices screen")
@@ -884,7 +809,7 @@ class MainPageHelpLinks(unittest.TestCase):
         unmanaged_devices_screen.click_icon_help()
         actual_header = unmanaged_devices_screen._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, unmanaged_devices_screen._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_A_help_link_on_infrastructure_screen(self):
         self.logger.info("TC#0000: Check help link on Infrastructure screen")
@@ -900,7 +825,7 @@ class MainPageHelpLinks(unittest.TestCase):
         infrastructure_screen.click_icon_help()
         actual_header = infrastructure_screen._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, infrastructure_screen._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_A_help_link_on_site_configuration_screen(self):
         self.logger.info("TC#0000: Check help link on Site Configuration screen")
@@ -914,7 +839,7 @@ class MainPageHelpLinks(unittest.TestCase):
         site_configuration_screen.click_icon_help()
         actual_header = site_configuration_screen._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, site_configuration_screen._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_A_help_link_on_site_event_logs_screen(self):
         self.logger.info("TC#0000: Check help link on Event Logs screen")
@@ -928,13 +853,13 @@ class MainPageHelpLinks(unittest.TestCase):
         event_logs_screen.click_icon_help()
         actual_header = event_logs_screen._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, event_logs_screen._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_A_help_link_on_column_sets_screen(self):
         self.logger.info("TC#0000: Check help link on Column Sets screen")
         expected_header = "Column Sets"
         left_menu_administration = LeftMenuAdministration(self.driver)
-        column_sets_screen =ColumnSetsScreen(self.driver)
+        column_sets_screen = ColumnSetsScreen(self.driver)
         left_menu_administration.open_menu_administration()
         self.assertTrue(left_menu_administration.check_menu_administration_is_opened())
         left_menu_administration.click_column_sets_label()
@@ -942,7 +867,7 @@ class MainPageHelpLinks(unittest.TestCase):
         column_sets_screen.click_icon_help()
         actual_header = column_sets_screen._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, column_sets_screen._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_A_help_link_on_inventory_configuration_screen(self):
         self.logger.info("TC#0000: Check help link on Inventory Configuration screen")
@@ -956,7 +881,7 @@ class MainPageHelpLinks(unittest.TestCase):
         inventory_configuration_screen.click_icon_help()
         actual_header = inventory_configuration_screen._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, inventory_configuration_screen._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_A_help_link_on_vreps_screen(self):
         self.logger.info("TC#0000: Check help link on vReps screen")
@@ -970,7 +895,7 @@ class MainPageHelpLinks(unittest.TestCase):
         vreps_screen.click_icon_help()
         actual_header = vreps_screen._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, vreps_screen._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_A_help_link_on_maintenance_windows_screen(self):
         self.logger.info("TC#0000: Check help link on Maintenance Windows screen")
@@ -984,7 +909,7 @@ class MainPageHelpLinks(unittest.TestCase):
         maintenance_screen.click_icon_help()
         actual_header = maintenance_screen._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, maintenance_screen._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_A_help_link_on_notifications_screen(self):
         self.logger.info("TC#0000: Check help link on Notifications screen")
@@ -998,7 +923,7 @@ class MainPageHelpLinks(unittest.TestCase):
         notification_screen.click_icon_help()
         actual_header = notification_screen._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, notification_screen._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_A_help_link_on_audit_log_screen(self):
         self.logger.info("TC#0000: Check help link on Audit Log screen")
@@ -1012,7 +937,7 @@ class MainPageHelpLinks(unittest.TestCase):
         audit_log_screen.click_icon_help()
         actual_header = audit_log_screen._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, audit_log_screen._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_A_help_link_on_admin_accounts_popup(self):
         self.logger.info("TC#0000: Check help link on Admin Accounts popup")
@@ -1029,7 +954,7 @@ class MainPageHelpLinks(unittest.TestCase):
         admin_accounts_popup.click_icon_help()
         actual_header = admin_accounts_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, admin_accounts_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_A_help_link_on_user_configuration_popup(self):
         self.logger.info("TC#0000: Check help link on User Configuration popup")
@@ -1049,7 +974,7 @@ class MainPageHelpLinks(unittest.TestCase):
         user_configuration_popup.click_icon_help()
         actual_header = user_configuration_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, user_configuration_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_A_help_link_on_configure_exclusions_popup(self):
         self.logger.info("TC#0000: Check help link on Configure Exclusions popup")
@@ -1066,7 +991,7 @@ class MainPageHelpLinks(unittest.TestCase):
         configure_exclusions_popup.click_icon_help()
         actual_header = configure_exclusions_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, configure_exclusions_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_A_help_link_on_exclude_site_popup(self):
         self.logger.info("TC#0000: Check help link on Exclude Site popup")
@@ -1088,7 +1013,7 @@ class MainPageHelpLinks(unittest.TestCase):
         exclude_site_popup.click_icon_help()
         actual_header = exclude_site_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, exclude_site_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_A_help_link_on_exclude_device_popup(self):
         self.logger.info("TC#0000: Check help link on Exclude Device popup")
@@ -1109,7 +1034,7 @@ class MainPageHelpLinks(unittest.TestCase):
         exclude_device_popup.click_icon_help()
         actual_header = exclude_device_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, exclude_device_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_A_help_link_on_exclude_ip_address_popup(self):
         self.logger.info("TC#0000: Check help link on Exclude IP Address popup")
@@ -1130,7 +1055,7 @@ class MainPageHelpLinks(unittest.TestCase):
         exclude_ip_address_popup.click_icon_help()
         actual_header = exclude_ip_address_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, exclude_ip_address_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_A_help_link_on_discover_devices_popup(self):
         self.logger.info("TC#0000: Check help link on Discover Devices popup (Administration)")
@@ -1147,7 +1072,7 @@ class MainPageHelpLinks(unittest.TestCase):
         discover_devices_popup.click_icon_help()
         actual_header = discover_devices_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, discover_devices_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_A_help_link_on_site_config_popup(self):
         self.logger.info("TC#0000: Check help link on Site Config popup")
@@ -1158,13 +1083,13 @@ class MainPageHelpLinks(unittest.TestCase):
         left_menu_administration.open_menu_administration()
         self.assertTrue(left_menu_administration.check_menu_administration_is_opened())
         left_menu_administration.click_site_management_label()
-        self.assertTrue(ribbon_bar.check_config_box_is_present())
+        self.assertTrue(ribbon_bar.check_box_config_is_present())
         ribbon_bar.click_button_add()
         self.assertTrue(site_config_popup.check_popup_is_present())
         site_config_popup.click_icon_help()
         actual_header = site_config_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, site_config_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_A_help_link_on_site_name_popup(self):
         self.logger.info("TC#0000: Check help link on Site Name popup (Administration)")
@@ -1176,7 +1101,7 @@ class MainPageHelpLinks(unittest.TestCase):
         left_menu_administration.open_menu_administration()
         self.assertTrue(left_menu_administration.check_menu_administration_is_opened())
         left_menu_administration.click_site_management_label()
-        self.assertTrue(ribbon_bar.check_config_box_is_present())
+        self.assertTrue(ribbon_bar.check_box_config_is_present())
         ribbon_bar.click_button_add()
         self.assertTrue(site_config_popup.check_popup_is_present())
         site_config_popup.click_global_site_view_label()
@@ -1185,7 +1110,7 @@ class MainPageHelpLinks(unittest.TestCase):
         site_name_popup.click_icon_help()
         actual_header = site_name_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, site_name_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_A_help_link_on_ip_address_popup(self):
         self.logger.info("TC#0000: Check help link on IP Address popup (Administration)")
@@ -1198,7 +1123,7 @@ class MainPageHelpLinks(unittest.TestCase):
         left_menu_administration.open_menu_administration()
         self.assertTrue(left_menu_administration.check_menu_administration_is_opened())
         left_menu_administration.click_site_management_label()
-        self.assertTrue(ribbon_bar.check_config_box_is_present())
+        self.assertTrue(ribbon_bar.check_box_config_is_present())
         ribbon_bar.click_button_add()
         self.assertTrue(site_config_popup.check_popup_is_present())
         site_config_popup.create_site_if_not_exists(sitename)
@@ -1209,7 +1134,7 @@ class MainPageHelpLinks(unittest.TestCase):
         ip_address_popup.click_icon_help()
         actual_header = ip_address_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, ip_address_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_A_help_link_on_move_site_popup(self):
         self.logger.info("TC#0000: Check help link on Move Site popup (Administration)")
@@ -1222,7 +1147,7 @@ class MainPageHelpLinks(unittest.TestCase):
         left_menu_administration.open_menu_administration()
         self.assertTrue(left_menu_administration.check_menu_administration_is_opened())
         left_menu_administration.click_site_management_label()
-        self.assertTrue(ribbon_bar.check_config_box_is_present())
+        self.assertTrue(ribbon_bar.check_box_config_is_present())
         ribbon_bar.click_button_add()
         self.assertTrue(site_config_popup.check_popup_is_present())
         site_config_popup.create_site_if_not_exists(sitename)
@@ -1232,340 +1157,96 @@ class MainPageHelpLinks(unittest.TestCase):
         move_site_popup.click_icon_help()
         actual_header = move_site_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, move_site_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
-    def test_RB_help_link_on_select_dashboard_popup(self):
-        self.logger.info("TC#0000: Check help link on Select Dashboard popup")
-        expected_header = "Select Dashboard"
+    def test_A_help_link_on_column_set_designer_popup(self):
+        self.logger.info("TC#0000: Check help link on Column Set Designer popup (Administration)")
+        expected_header = "Create" #IS NOT CORRECT
+        left_menu_administration = LeftMenuAdministration(self.driver)
         ribbon_bar = RibbonBar(self.driver)
-        select_dashboard_popup = SelectDashboardPopup(self.driver)
-        ribbon_bar.click_button_home()
-        self.assertTrue(ribbon_bar.check_drop_down_list_is_present())
-        ribbon_bar.click_change_home_screen_menu_item()
-        self.assertTrue(select_dashboard_popup.check_popup_is_present())
-        select_dashboard_popup.click_icon_help()
-        actual_header = select_dashboard_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, select_dashboard_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        column_set_designer_popup = ColumnSetDesignerPopup(self.driver)
+        left_menu_administration.open_menu_administration()
+        self.assertTrue(left_menu_administration.check_menu_administration_is_opened())
+        left_menu_administration.click_column_sets_label()
+        self.assertTrue(ribbon_bar.check_box_column_sets_is_present())
+        ribbon_bar.click_button_new()
+        self.assertTrue(column_set_designer_popup.check_popup_is_present())
+        column_set_designer_popup.click_icon_help()
+        actual_header = column_set_designer_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, column_set_designer_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
 
-    def test_RB_help_link_on_user_settings_popup(self):
-        self.logger.info("TC#0000: Check help link on User Settings popup")
-        expected_header = "User Settings"
+    def test_A_help_link_on_edit_user_popup(self):
+        self.logger.info("TC#0000: Check help link on Edit User popup (Administration)")
+        expected_header = "Create" #IS NOT CORRECT
+        left_menu_administration = LeftMenuAdministration(self.driver)
         ribbon_bar = RibbonBar(self.driver)
-        user_settings_popup = UserSettingsPopup(self.driver)
-        ribbon_bar.click_button_admin_user()
-        self.assertTrue(ribbon_bar.check_drop_down_list_is_present())
-        ribbon_bar.click_settings_menu_item()
-        self.assertTrue(user_settings_popup.check_popup_is_present())
-        user_settings_popup.click_icon_help()
-        actual_header = user_settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, user_settings_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        edit_user_popup = EditUserPopup(self.driver)
+        left_menu_administration.open_menu_administration()
+        self.assertTrue(left_menu_administration.check_menu_administration_is_opened())
+        left_menu_administration.click_user_management_label()
+        self.assertTrue(ribbon_bar.check_box_users_is_present())
+        ribbon_bar.click_button_add()
+        self.assertTrue(edit_user_popup.check_popup_is_present())
+        edit_user_popup.click_icon_help()
+        actual_header = edit_user_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, edit_user_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
 
-    def test_RB_help_link_on_ribbon_bar(self):
-        self.logger.info("TC#0000: Check help link on Ribbon bar")
-        expected_header = "CMS Quick Help Videos"
+    def test_A_help_link_on_inventory_configuration_popup(self):
+        self.logger.info("TC#0000: Check help link on Inventory Configuration popup")
+        expected_header = "Inventory Scan Configuration"
+        left_menu_administration = LeftMenuAdministration(self.driver)
         ribbon_bar = RibbonBar(self.driver)
-        ribbon_bar.click_button_console_guide()
-        actual_header = ribbon_bar._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, ribbon_bar._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        inventory_configuration_popup = InventoryConfigurationPopup(self.driver)
+        left_menu_administration.open_menu_administration()
+        self.assertTrue(left_menu_administration.check_menu_administration_is_opened())
+        left_menu_administration.click_inventory_scan_configuration_label()
+        self.assertTrue(ribbon_bar.check_box_inventory_is_present())
+        ribbon_bar.click_button_create()
+        self.assertTrue(inventory_configuration_popup.check_popup_is_present())
+        inventory_configuration_popup.click_icon_help()
+        actual_header = inventory_configuration_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, inventory_configuration_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
 
-    def test_RB_help_link_on_subscription_popup(self):
-        self.logger.info("TC#0000: Check help link on Subscription popup")
-        expected_header = "Subscriptions"
-        subscription_popup = SubscriptionsPopup(self.driver)
+    def test_A_help_link_on_inventory_force_update_popup(self):
+        self.logger.info("TC#0000: Check help link on Inventory Force Update popup")
+        expected_header = "Force Update"
+        left_menu_administration = LeftMenuAdministration(self.driver)
         ribbon_bar = RibbonBar(self.driver)
-        ribbon_bar.click_button_subscriptions()
-        self.assertIsNotNone(subscription_popup.check_popup_is_present()) #VERIFY THIS ASSERTION
-        subscription_popup.click_icon_help()
-        actual_header = subscription_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, subscription_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        inventory_configuration_screen = InventoryConfigurationScreen(self.driver)
+        inventory_force_update_popup = InventoryForceUpdatePopup(self.driver)
+        left_menu_administration.open_menu_administration()
+        self.assertTrue(left_menu_administration.check_menu_administration_is_opened())
+        left_menu_administration.click_inventory_scan_configuration_label()
+        self.assertTrue(ribbon_bar.check_box_inventory_is_present())
+        self.assertTrue(inventory_configuration_screen.check_inventory_is_present("Full Scan"))
+        inventory_configuration_screen.select_full_scan_inventory_in_table()
+        self.assertTrue(ribbon_bar.check_button_force_update_is_unabled())
+        ribbon_bar.click_button_force_update()
+        self.assertTrue(inventory_force_update_popup.check_popup_is_present())
+        inventory_force_update_popup.click_icon_help()
+        actual_header = inventory_force_update_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, inventory_force_update_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
 
-    def test_RB_help_link_on_settings_popup(self):
-        self.logger.info("TC#0000: Check help link on Settings popup")
-        expected_header = "Settings"
+    def test_A_help_link_on_maintenance_window_popup(self):
+        self.logger.info("TC#0000: Check help link on Maintenance Window popup")
+        expected_header = "Create"
+        left_menu_administration = LeftMenuAdministration(self.driver)
         ribbon_bar = RibbonBar(self.driver)
-        settings_popup = SettingsPopup(self.driver)
-        settings_popup = SettingsPopup(self.driver)
-        ribbon_bar.click_button_settings()
-        self.assertTrue(settings_popup.check_popup_is_present())
-        settings_popup.click_icon_help()
-        actual_header = settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, settings_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
-
-    def test_RB_help_link_on_settings_popup_content_services_tab(self):
-        self.logger.info("TC#0000: Check help link on Settings popup - Content Services tab")
-        expected_header = "Content Services"
-        ribbon_bar = RibbonBar(self.driver)
-        settings_popup = SettingsPopup(self.driver)
-        ribbon_bar.click_button_settings()
-        self.assertTrue(settings_popup.check_popup_is_present())
-        settings_popup.click_content_services_label()
-        self.assertTrue(settings_popup.check_content_services_tab_is_present())
-        settings_popup.click_icon_help()
-        actual_header = settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, settings_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
-
-    def test_RB_help_link_on_settings_popup_email_settings_tab(self):
-        self.logger.info("TC#0000: Check help link on Settings popup - Email Settings tab")
-        expected_header = "Email Settings"
-        ribbon_bar = RibbonBar(self.driver)
-        settings_popup = SettingsPopup(self.driver)
-        ribbon_bar.click_button_settings()
-        self.assertTrue(settings_popup.check_popup_is_present())
-        settings_popup.click_email_settings_label()
-        self.assertTrue(settings_popup.check_email_settings_tab_is_present())
-        settings_popup.click_icon_help()
-        actual_header = settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, settings_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
-
-    def test_RB_help_link_on_settings_popup_initial_setup_tab(self):
-        self.logger.info("TC#0000: Check help link on Settings popup - Initial Setup tab")
-        expected_header = "Initial Setup"
-        ribbon_bar = RibbonBar(self.driver)
-        settings_popup = SettingsPopup(self.driver)
-        ribbon_bar.click_button_settings()
-        self.assertTrue(settings_popup.check_popup_is_present())
-        settings_popup.click_initial_setup_label()
-        self.assertTrue(settings_popup.check_initial_setup_tab_is_present())
-        settings_popup.click_icon_help()
-        actual_header = settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, settings_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
-
-    def test_RB_help_link_on_settings_popup_locale_options_tab(self):
-        self.logger.info("TC#0000: Check help link on Settings popup - Locale Options tab")
-        expected_header = "Locale Options"
-        ribbon_bar = RibbonBar(self.driver)
-        settings_popup = SettingsPopup(self.driver)
-        ribbon_bar.click_button_settings()
-        self.assertTrue(settings_popup.check_popup_is_present())
-        settings_popup.click_locale_options_label()
-        self.assertTrue(settings_popup.check_locale_options_tab_is_present())
-        settings_popup.click_icon_help()
-        actual_header = settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, settings_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
-
-    @unittest.skip("Skip test_RB_help_link_on_settings_popup_inventory_tab. Inventory tab is opened too long\n")
-    def test_RB_help_link_on_settings_popup_inventory_tab(self):
-        self.logger.info("TC#0000: Check help link on Settings popup - Inventory tab")
-        expected_header = "Inventory"
-        ribbon_bar = RibbonBar(self.driver)
-        settings_popup = SettingsPopup(self.driver)
-        ribbon_bar.click_button_settings()
-        self.assertTrue(settings_popup.check_popup_is_present())
-        settings_popup.click_inventory_label()
-        self.assertTrue(settings_popup.check_inventory_tab_is_present())
-        settings_popup.click_icon_help()
-        actual_header = settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, settings_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
-
-    def test_RB_help_link_on_settings_popup_user_options_tab(self):
-        self.logger.info("TC#0000: Check help link on Settings popup - User Options tab")
-        expected_header = "User Options"
-        ribbon_bar = RibbonBar(self.driver)
-        settings_popup = SettingsPopup(self.driver)
-        ribbon_bar.click_button_settings()
-        self.assertTrue(settings_popup.check_popup_is_present())
-        settings_popup.click_user_options_label()
-        self.assertTrue(settings_popup.check_user_options_tab_is_present())
-        settings_popup.click_icon_help()
-        actual_header = settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, settings_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
-
-    def test_RB_help_link_on_settings_popup_audit_log_settings_tab(self):
-        self.logger.info("TC#0000: Check help link on Settings popup - Audit Log Settings tab")
-        expected_header = "Audit Log Settings"
-        ribbon_bar = RibbonBar(self.driver)
-        settings_popup = SettingsPopup(self.driver)
-        ribbon_bar.click_button_settings()
-        self.assertTrue(settings_popup.check_popup_is_present())
-        settings_popup.click_audit_log_settings_label()
-        self.assertTrue(settings_popup.check_audit_log_settings_tab_is_present())
-        settings_popup.click_icon_help()
-        actual_header = settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, settings_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
-
-    def test_RB_help_link_on_client_settings_popup(self):
-        self.logger.info("TC#0000: Check help link on Client Settings popup")
-        expected_header = "Client"
-        ribbon_bar = RibbonBar(self.driver)
-        client_settings_popup = ClientSettingsPopup(self.driver)
-        ribbon_bar.click_button_client()
-        self.assertTrue(client_settings_popup.check_popup_is_present())
-        client_settings_popup.click_icon_help()
-        actual_header = client_settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, client_settings_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
-
-    def test_RB_help_link_on_client_settings_popup_timers_tab(self):
-        self.logger.info("TC#0000: Check help link on Client Settings popup - Timers tab")
-        expected_header = "Timers"
-        ribbon_bar = RibbonBar(self.driver)
-        client_settings_popup = ClientSettingsPopup(self.driver)
-        ribbon_bar.click_button_client()
-        self.assertTrue(client_settings_popup.check_popup_is_present())
-        client_settings_popup.click_timers_tab()
-        self.assertTrue(client_settings_popup.check_timers_tab_is_present())
-        client_settings_popup.click_icon_help()
-        actual_header = client_settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, client_settings_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
-
-    def test_RB_help_link_on_client_settings_popup_features_tab(self):
-        self.logger.info("TC#0000: Check help link on Client Settings popup - Features tab")
-        expected_header = "Features"
-        ribbon_bar = RibbonBar(self.driver)
-        client_settings_popup = ClientSettingsPopup(self.driver)
-        ribbon_bar.click_button_client()
-        self.assertTrue(client_settings_popup.check_popup_is_present())
-        client_settings_popup.click_features_label()
-        self.assertTrue(client_settings_popup.check_features_tab_is_present())
-        client_settings_popup.click_icon_help()
-        actual_header = client_settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, client_settings_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
-
-    def test_RB_help_link_on_client_settings_popup_client_urls_tab(self):
-        self.logger.info("TC#0000: Check help link on Client Settings popup - Client URLs tab")
-        expected_header = "Client URLs"
-        ribbon_bar = RibbonBar(self.driver)
-        client_settings_popup = ClientSettingsPopup(self.driver)
-        ribbon_bar.click_button_client()
-        self.assertTrue(client_settings_popup.check_popup_is_present())
-        client_settings_popup.click_client_urls_label()
-        self.assertTrue(client_settings_popup.check_client_urls_tab_is_present())
-        client_settings_popup.click_icon_help()
-        actual_header = client_settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, client_settings_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
-
-    def test_RB_help_link_on_client_settings_popup_reboot_ui_config_tab(self):
-        self.logger.info("TC#0000: Check help link on Client Settings popup - Reboot UI Config tab")
-        expected_header = "Reboot UI Config"
-        ribbon_bar = RibbonBar(self.driver)
-        client_settings_popup = ClientSettingsPopup(self.driver)
-        ribbon_bar.click_button_client()
-        self.assertTrue(client_settings_popup.check_popup_is_present())
-        client_settings_popup.click_reboot_ui_config_tab()
-        self.assertTrue(client_settings_popup.check_reboot_ui_config_tab_is_present())
-        client_settings_popup.click_icon_help()
-        actual_header = client_settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, client_settings_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
-
-    def test_RB_help_link_on_client_settings_popup_client_proxy_settings_tab(self):
-        self.logger.info("TC#0000: Check help link on Client Settings popup - Client Proxy Settings tab")
-        expected_header = "Client Proxy Settings"
-        ribbon_bar = RibbonBar(self.driver)
-        client_settings_popup = ClientSettingsPopup(self.driver)
-        ribbon_bar.click_button_client()
-        self.assertTrue(client_settings_popup.check_popup_is_present())
-        client_settings_popup.click_client_proxy_settings_tab()
-        self.assertTrue(client_settings_popup.check_client_proxy_settings_tab_is_present())
-        client_settings_popup.click_icon_help()
-        actual_header = client_settings_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, client_settings_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
-
-    def test_RB_help_link_on_currency_popup(self):
-        self.logger.info("TC#0000: Check help link on Currency popup")
-        expected_header = "Currency"
-        ribbon_bar = RibbonBar(self.driver)
-        currency_popup = CurrencyPopup(self.driver)
-        ribbon_bar.open_tab_view()
-        self.assertTrue(ribbon_bar.check_tab_view_is_present())
-        ribbon_bar.click_button_currency()
-        self.assertTrue(currency_popup.check_popup_is_present())
-        currency_popup.click_icon_help()
-        actual_header = currency_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, currency_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
-
-    def test_RB_help_link_on_weight_display_popup(self):
-        self.logger.info("TC#0000: Check help link on Weight Display popup")
-        expected_header = "Imperial Metric"
-        ribbon_bar = RibbonBar(self.driver)
-        weight_display_popup = WeightDisplayPopup(self.driver)
-        ribbon_bar.open_tab_view()
-        self.assertTrue(ribbon_bar.check_tab_view_is_present())
-        ribbon_bar.click_button_imperial_and_metric()
-        self.assertTrue(weight_display_popup.check_popup_is_present())
-        weight_display_popup.click_icon_help()
-        actual_header = weight_display_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, weight_display_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
-
-    def test_RB_help_link_on_manufacturer_alias_popup(self):
-        self.logger.info("TC#0000: Check help link on Manufacturer Alias popup")
-        expected_header = "Manufacturers"
-        ribbon_bar = RibbonBar(self.driver)
-        manufacturer_alias_popup = ManufacturerAliasPopup(self.driver)
-        ribbon_bar.open_tab_view()
-        self.assertTrue(ribbon_bar.check_tab_view_is_present())
-        ribbon_bar.click_button_makes()
-        self.assertTrue(manufacturer_alias_popup.check_popup_is_present())
-        manufacturer_alias_popup.click_icon_help()
-        actual_header = manufacturer_alias_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, manufacturer_alias_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
-
-    def test_RB_help_link_on_model_alias_popup(self):
-        self.logger.info("TC#0000: Check help link on Model Alias popup")
-        expected_header = "Models"
-        ribbon_bar = RibbonBar(self.driver)
-        model_alias_popup = ModelAliasPopup(self.driver)
-        ribbon_bar.open_tab_view()
-        self.assertTrue(ribbon_bar.check_tab_view_is_present())
-        ribbon_bar.click_button_models()
-        self.assertTrue(model_alias_popup.check_popup_is_present())
-        model_alias_popup.click_icon_help()
-        actual_header = model_alias_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, model_alias_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
-
-    def test_RB_help_link_on_column_sets_popup(self):
-        self.logger.info("TC#0000: Check help link on Column Set popup")
-        expected_header = "Column Sets"
-        ribbon_bar = RibbonBar(self.driver)
-        column_sets_popup = ColumnSetsPopup(self.driver)
-        left_menu_devices = LeftMenuDevices(self.driver)
-        left_menu_devices.open_menu_devices()
-        left_menu_devices.click_global_site_view_label()
-        ribbon_bar.open_tab_view()
-        self.assertTrue(ribbon_bar.check_tab_view_is_present())
-        ribbon_bar.click_button_edit_or_create()
-        self.assertTrue(column_sets_popup.check_popup_is_present())
-        column_sets_popup.click_icon_help()
-        actual_header = column_sets_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, column_sets_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
-
-    def test_RB_help_link_on_initial_setup_popup(self):
-        self.logger.info("TC#0000: Check help link on Initial Setup popup")
-        expected_header = "Initial Setup"
-        ribbon_bar = RibbonBar(self.driver)
-        settings_popup = SettingsPopup(self.driver)
-        initial_setup_popup = InitialSetupPopup(self.driver)
-        ribbon_bar.click_button_settings()
-        self.assertTrue(settings_popup.check_popup_is_present())
-        settings_popup.click_initial_setup_label()
-        self.assertTrue(settings_popup.check_initial_setup_tab_is_present())
-        settings_popup.click_button_run_initial_setup()
-        self.assertTrue(initial_setup_popup.check_popup_is_present())
-        initial_setup_popup.click_icon_help()
-        actual_header = initial_setup_popup._get_help_frame_header()
-        self.assertEqual(expected_header, actual_header, initial_setup_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        maintenance_window_popup = MaintenanceWindowPopup(self.driver)
+        left_menu_administration.open_menu_administration()
+        self.assertTrue(left_menu_administration.check_menu_administration_is_opened())
+        left_menu_administration.click_maintenance_windows_label()
+        self.assertTrue(ribbon_bar.check_maintenance_windows_box_is_present())
+        ribbon_bar.click_button_add()
+        self.assertTrue(maintenance_window_popup.check_popup_is_present())
+        maintenance_window_popup.click_icon_help()
+        actual_header = maintenance_window_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, maintenance_window_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
 
     def test_D_help_link_on_devices_screen(self):
         self.logger.info("TC#0000: Check help link on Devices screen")
@@ -1580,7 +1261,7 @@ class MainPageHelpLinks(unittest.TestCase):
         devices_screen.click_icon_help()
         actual_header = devices_screen._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, devices_screen._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_D_help_link_on_queries_screen(self):
         self.logger.info("TC#0000: Check help link on Queries screen")
@@ -1592,7 +1273,7 @@ class MainPageHelpLinks(unittest.TestCase):
         queries_screen.click_icon_help()
         actual_header = queries_screen._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, queries_screen._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_D_help_link_on_groups_screen(self):
         self.logger.info("TC#0000: Check help link on Groups screen")
@@ -1604,7 +1285,7 @@ class MainPageHelpLinks(unittest.TestCase):
         groups_screen.click_icon_help()
         actual_header = groups_screen._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, groups_screen._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_D_help_link_on_site_name_popup(self):
         self.logger.info("TC#0000: Check help link on Site Name popup")
@@ -1622,7 +1303,7 @@ class MainPageHelpLinks(unittest.TestCase):
         site_name_popup.click_icon_help()
         actual_header = site_name_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, site_name_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_D_help_link_on_configuration_popup(self):
         self.logger.info("TC#0000: Check help link on Configuration popup")
@@ -1640,7 +1321,7 @@ class MainPageHelpLinks(unittest.TestCase):
         configuration_popup.click_icon_help()
         actual_header = configuration_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, configuration_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_D_help_link_on_ip_address_popup(self):
         self.logger.info("TC#0000: Check help link on IP Address popup")
@@ -1666,7 +1347,7 @@ class MainPageHelpLinks(unittest.TestCase):
         ip_address_popup.click_icon_help()
         actual_header = ip_address_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, ip_address_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_D_help_link_on_move_site_popup(self):
         self.logger.info("TC#0000: Check help link on Move Site popup")
@@ -1686,7 +1367,7 @@ class MainPageHelpLinks(unittest.TestCase):
         move_site_popup.click_icon_help()
         actual_header = move_site_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, move_site_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_D_help_link_on_query_designer_popup(self):
         self.logger.info("TC#0000: Check help link on Query Designer popup")
@@ -1703,7 +1384,7 @@ class MainPageHelpLinks(unittest.TestCase):
         query_designer_popup.click_icon_help()
         actual_header = query_designer_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, query_designer_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_D_help_link_on_condition_editor_popup(self):
         self.logger.info("TC#0000: Check help link on Condition Editor popup")
@@ -1723,7 +1404,7 @@ class MainPageHelpLinks(unittest.TestCase):
         condition_editor_popup.click_icon_help()
         actual_header = condition_editor_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, condition_editor_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_D_help_link_on_new_group_popup(self):
         self.logger.info("TC#0000: Check help link on New Group popup")
@@ -1741,10 +1422,10 @@ class MainPageHelpLinks(unittest.TestCase):
         new_group_popup.click_icon_help()
         actual_header = new_group_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, new_group_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_D_help_link_on_select_targets_popup(self):
-        self.logger.info("TC#0000: Check help link on Select Targets popup")
+        self.logger.info("TC#0000: Check help link on Select Targets popup (Devices)")
         expected_header = "Select Targets"
         ribbon_bar = RibbonBar(self.driver)
         left_menu_devices = LeftMenuDevices(self.driver)
@@ -1762,7 +1443,7 @@ class MainPageHelpLinks(unittest.TestCase):
         select_targets_popup.click_icon_help()
         actual_header = select_targets_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, select_targets_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_D_help_link_on_new_folder_popup(self):
         self.logger.info("TC#0000: Check help link on New Folder popup")
@@ -1780,7 +1461,7 @@ class MainPageHelpLinks(unittest.TestCase):
         new_folder_popup.click_icon_help()
         actual_header = new_folder_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, new_folder_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_D_help_link_on_edit_folder_popup(self):
         self.logger.info("TC#0000: Check help link on Edit Folder popup")
@@ -1802,7 +1483,7 @@ class MainPageHelpLinks(unittest.TestCase):
         edit_folder_popup.click_icon_help()
         actual_header = edit_folder_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, edit_folder_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_D_help_link_on_inventory_view_popup(self):
         self.logger.info("TC#0000: Check help link on Inventory View popup")
@@ -1817,14 +1498,14 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(devices_screen.check_device_is_present(device))
         devices_screen.select_device_in_table(device)
         ribbon_bar.open_tab_devices()
-        self.assertTrue(ribbon_bar.check_inventory_box_is_present())
+        self.assertTrue(ribbon_bar.check_box_inventory_is_present())
         ribbon_bar.click_button_inventory()
         ribbon_bar.click_view_menu_item()
         self.assertTrue(inventory_view_popup.check_popup_is_present(device))
         inventory_view_popup.click_icon_help()
         actual_header = inventory_view_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, inventory_view_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_D_help_link_on_on_demand_inventory_scan_popup(self):
         self.logger.info("TC#0000: Check help link on On Demand Inventory Scan popup")
@@ -1839,14 +1520,14 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(devices_screen.check_device_is_present(device))
         devices_screen.select_device_in_table(device)
         ribbon_bar.open_tab_devices()
-        self.assertTrue(ribbon_bar.check_inventory_box_is_present())
+        self.assertTrue(ribbon_bar.check_box_inventory_is_present())
         ribbon_bar.click_button_inventory()
         ribbon_bar.click_on_demand_menu_item()
         self.assertTrue(on_demand_inventory_scan_popup.check_popup_is_present())
         on_demand_inventory_scan_popup.click_icon_help()
         actual_header = on_demand_inventory_scan_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, on_demand_inventory_scan_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_D_help_link_on_wake_up_popup(self):
         self.logger.info("TC#0000: Check help link on Wake on LAN popup")
@@ -1867,7 +1548,7 @@ class MainPageHelpLinks(unittest.TestCase):
         wake_on_lan_popup.click_icon_help()
         actual_header = wake_on_lan_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, wake_on_lan_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_D_help_link_on_move_device_popup(self):
         self.logger.info("TC#0000: Check help link on Move Device popup")
@@ -1882,13 +1563,13 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(devices_screen.check_device_is_present(device))
         devices_screen.select_device_in_table(device)
         ribbon_bar.open_tab_devices()
-        self.assertTrue(ribbon_bar.check_site_management_box_is_present())
+        self.assertTrue(ribbon_bar.check_box_site_management_is_present())
         ribbon_bar.click_button_move_device()
         self.assertTrue(move_device_popup.check_popup_is_present())
         move_device_popup.click_icon_help()
         actual_header = move_device_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, move_device_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_D_help_link_on_patch_manager_popup(self):
         self.logger.info("TC#0000: Check help link on Patch Manager popup")
@@ -1909,7 +1590,7 @@ class MainPageHelpLinks(unittest.TestCase):
         patch_manager_popup.click_icon_help()
         actual_header = patch_manager_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, patch_manager_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_D_help_link_on_reports_popup(self):
         self.logger.info("TC#0000: Check help link on Reports popup")
@@ -1924,13 +1605,13 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(devices_screen.check_device_is_present(device))
         devices_screen.select_device_in_table(device)
         ribbon_bar.open_tab_devices()
-        self.assertTrue(ribbon_bar.check_site_management_box_is_present())
+        self.assertTrue(ribbon_bar.check_box_site_management_is_present())
         ribbon_bar.click_button_reports()
         self.assertTrue(reports_popup.check_popup_is_present())
         reports_popup.click_icon_help()
         actual_header = reports_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, reports_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_D_help_link_on_file_explorer_popup(self):
         self.logger.info("TC#0000: Check help link on File Explorer popup")
@@ -1945,13 +1626,13 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(devices_screen.check_device_is_present(device))
         devices_screen.select_device_in_table(device)
         ribbon_bar.open_tab_tools()
-        self.assertTrue(ribbon_bar.check_computer_tools_box_is_present())
+        self.assertTrue(ribbon_bar.check_box_computer_tools_is_present())
         ribbon_bar.click_button_file_browser()
         self.assertTrue(file_explorer_popup.check_popup_is_present())
         file_explorer_popup.click_icon_help()
         actual_header = file_explorer_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, file_explorer_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_D_help_link_on_ping_result_popup(self):
         self.logger.info("TC#0000: Check help link on Ping Result popup")
@@ -1966,13 +1647,13 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(devices_screen.check_device_is_present(device))
         devices_screen.select_device_in_table(device)
         ribbon_bar.open_tab_tools()
-        self.assertTrue(ribbon_bar.check_computer_tools_box_is_present())
+        self.assertTrue(ribbon_bar.check_box_computer_tools_is_present())
         ribbon_bar.click_button_ping()
         self.assertTrue(ping_result_popup.check_popup_is_present())
         ping_result_popup.click_icon_help()
         actual_header = ping_result_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, ping_result_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_D_help_link_on_process_explorer_popup(self):
         self.logger.info("TC#0000: Check help link on IP Process Explorer popup")
@@ -1987,13 +1668,13 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(devices_screen.check_device_is_present(device))
         devices_screen.select_device_in_table(device)
         ribbon_bar.open_tab_tools()
-        self.assertTrue(ribbon_bar.check_computer_tools_box_is_present())
+        self.assertTrue(ribbon_bar.check_box_computer_tools_is_present())
         ribbon_bar.click_button_process_viewer()
         self.assertTrue(process_explorer_popup.check_popup_is_present())
         process_explorer_popup.click_icon_help()
         actual_header = process_explorer_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, process_explorer_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_D_help_link_on_event_viewer_popup(self):
         self.logger.info("TC#0000: Check help link on Event Viewer popup")
@@ -2008,13 +1689,13 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(devices_screen.check_device_is_present(device))
         devices_screen.select_device_in_table(device)
         ribbon_bar.open_tab_tools()
-        self.assertTrue(ribbon_bar.check_computer_tools_box_is_present())
+        self.assertTrue(ribbon_bar.check_box_computer_tools_is_present())
         ribbon_bar.click_button_event_viewer()
         self.assertTrue(event_viewer_popup.check_popup_is_present())
         event_viewer_popup.click_icon_help()
         actual_header = event_viewer_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, event_viewer_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
 
     def test_D_help_link_on_wmi_explorer_popup(self):
         self.logger.info("TC#0000: Check help link on WMI Explorer popup")
@@ -2029,13 +1710,660 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertTrue(devices_screen.check_device_is_present(device))
         devices_screen.select_device_in_table(device)
         ribbon_bar.open_tab_tools()
-        self.assertTrue(ribbon_bar.check_computer_tools_box_is_present())
+        self.assertTrue(ribbon_bar.check_box_computer_tools_is_present())
         ribbon_bar.click_button_wmi_explorer()
         self.assertTrue(wmi_explorer_popup.check_popup_is_present())
         wmi_explorer_popup.click_icon_help()
         actual_header = wmi_explorer_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, wmi_explorer_popup._get_log_for_help_link(expected_header))
-        self.logger.info("TEST PASSED!!!")
+        self.logger.info("TEST PASSED")
+
+    def test_H_help_link_on_home_screen(self):
+        self.logger.info("TC#0000: Check help link on Home screen")
+        expected_header = "Getting Started in CMS"
+        left_menu = BaseLeftMenu(self.driver)
+        home_screen = HomeScreen(self.driver)
+        left_menu.open_menu_home()
+        self.assertTrue(home_screen.check_screen_is_present())
+        home_screen.click_icon_help()
+        actual_header = home_screen._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, home_screen._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_R_help_link_on_reporting_screen(self):
+        self.logger.info("TC#0000: Check help link on Reporting screen")
+        expected_header = "Reporting"
+        left_menu = BaseLeftMenu(self.driver)
+        reporting_screen = ReportingScreen(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        left_menu.open_menu_reporting()
+        self.assertTrue(left_menu.check_menu_reporting_is_opened())
+        ribbon_bar.open_tab_home()
+        self.assertTrue(ribbon_bar.check_tab_home_is_present())
+        ribbon_bar.click_button_home()
+        self.assertTrue(ribbon_bar.check_drop_down_list_is_present())
+        ribbon_bar.click_go_to_home_screen_menu_item()
+        self.assertTrue(reporting_screen.check_screen_is_present())
+        reporting_screen.click_icon_help()
+        actual_header = reporting_screen._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, reporting_screen._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_SPM_help_link_on_software_and_patch_manager_screen(self):
+        self.logger.info("TC#0000: Check help link on Reporting screen")
+        expected_header = "Software / Patch Manager"
+        left_menu = BaseLeftMenu(self.driver)
+        software_and_patch_manager_screen = SoftwareAndPatchManagerScreen(self.driver)
+        left_menu.open_menu_software_and_patch_manager()
+        ribbon_bar = RibbonBar(self.driver)
+        ribbon_bar.open_tab_home()
+        ribbon_bar.click_button_home()
+        ribbon_bar.click_go_to_home_screen_menu_item()
+        self.assertTrue(software_and_patch_manager_screen.check_screen_is_present())
+        software_and_patch_manager_screen.click_icon_help()
+        actual_header = software_and_patch_manager_screen._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header,
+                         software_and_patch_manager_screen._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_SPM_help_link_on_applications_screen(self):
+        self.logger.info("TC#0000: Check help link on Applications screen")
+        expected_header = "Applications"
+        left_menu_software_and_patch_manager = LeftMenuSoftwareAndPatchManager(self.driver)
+        applications_screen = ApplicationsScreen(self.driver)
+        left_menu_software_and_patch_manager.open_menu_software_and_patch_manager()
+        self.assertTrue(left_menu_software_and_patch_manager.check_applications_label_is_present())
+        left_menu_software_and_patch_manager.click_applications_label()
+        self.assertTrue(applications_screen.check_screen_is_present())
+        applications_screen.click_icon_help()
+        actual_header = applications_screen._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, applications_screen._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_SPM_help_link_on_patch_manager_screen(self):
+        self.logger.info("TC#0000: Check help link on Patch Manager screen")
+        expected_header = "Patch Manager"
+        left_menu_software_and_patch_manager = LeftMenuSoftwareAndPatchManager(self.driver)
+        patch_manager_screen = PatchMangerScreen(self.driver)
+        left_menu_software_and_patch_manager.open_menu_software_and_patch_manager()
+        self.assertTrue(left_menu_software_and_patch_manager.check_patch_manager_label_is_present())
+        left_menu_software_and_patch_manager.click_patch_manager_label()
+        self.assertTrue(patch_manager_screen.check_screen_is_present())
+        patch_manager_screen.click_icon_help()
+        actual_header = patch_manager_screen._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, patch_manager_screen._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_SPM_help_link_on_manage_install_media_screen(self):
+        self.logger.info("TC#0000: Check help link on Manage Install Media screen")
+        expected_header = "Media Manager"
+        left_menu_software_and_patch_manager = LeftMenuSoftwareAndPatchManager(self.driver)
+        manage_install_media_screen = ManageInstallMediaScreen(self.driver)
+        left_menu_software_and_patch_manager.open_menu_software_and_patch_manager()
+        self.assertTrue(left_menu_software_and_patch_manager.check_patch_manager_label_is_present())
+        left_menu_software_and_patch_manager.expand_media_management_tree()
+        self.assertTrue(left_menu_software_and_patch_manager.check_my_patches_label_is_present())
+        left_menu_software_and_patch_manager.click_my_patches_label()
+        self.assertTrue(manage_install_media_screen.check_screen_is_present())
+        manage_install_media_screen.click_icon_help()
+        actual_header = manage_install_media_screen._get_help_frame_header()
+        self.assertEqual(
+            expected_header, actual_header, manage_install_media_screen._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_SPM_help_link_on_create_application_popup(self):
+        self.logger.info("TC#0000: Check help link on Create Application popup")
+        expected_header = "Create"
+        left_menu_software_and_patch_manager = LeftMenuSoftwareAndPatchManager(self.driver)
+        create_application_wizard_popup = CreateApplicationWizardPopup(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        left_menu_software_and_patch_manager.open_menu_software_and_patch_manager()
+        self.assertTrue(left_menu_software_and_patch_manager.check_applications_label_is_present())
+        left_menu_software_and_patch_manager.click_applications_label()
+        self.assertTrue(ribbon_bar.check_box_applications_is_present())
+        ribbon_bar.click_button_create()
+        self.assertTrue(create_application_wizard_popup.check_popup_is_present())
+        create_application_wizard_popup.click_icon_help()
+        actual_header = create_application_wizard_popup._get_help_frame_header()
+        self.assertEqual(
+            expected_header, actual_header, create_application_wizard_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_SPM_help_link_on_installers_popup(self):
+        self.logger.info("TC#0000: Check help link on Installers popup")
+        expected_header = "Installers"
+        left_menu_software_and_patch_manager = LeftMenuSoftwareAndPatchManager(self.driver)
+        create_application_wizard_popup = CreateApplicationWizardPopup(self.driver)
+        installers_popup = InstallersPopup(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        left_menu_software_and_patch_manager.open_menu_software_and_patch_manager()
+        self.assertTrue(left_menu_software_and_patch_manager.check_applications_label_is_present())
+        left_menu_software_and_patch_manager.click_applications_label()
+        self.assertTrue(ribbon_bar.check_box_applications_is_present())
+        ribbon_bar.click_button_create()
+        self.assertTrue(create_application_wizard_popup.check_popup_is_present())
+        create_application_wizard_popup.click_button_choose_installer_on_sever()
+        self.assertTrue(installers_popup.check_popup_is_present())
+        installers_popup.click_icon_help()
+        actual_header = installers_popup._get_help_frame_header()
+        self.assertEqual(
+            expected_header, actual_header, create_application_wizard_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_SPM_help_link_on_advanced_editor_popup(self):
+        self.logger.info("TC#0000: Check help link on Advanced Editor popup")
+        expected_header = "Advanced Editor"
+        software = Variables.software
+        left_menu_software_and_patch_manager = LeftMenuSoftwareAndPatchManager(self.driver)
+        create_application_wizard_popup = CreateApplicationWizardPopup(self.driver)
+        applications_screen = ApplicationsScreen(self.driver)
+        advanced_editor_popup = AdvancedEditorPopup(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        left_menu_software_and_patch_manager.open_menu_software_and_patch_manager()
+        self.assertTrue(left_menu_software_and_patch_manager.check_applications_label_is_present())
+        left_menu_software_and_patch_manager.click_applications_label()
+        self.assertTrue(applications_screen.check_screen_is_present())
+        applications_screen.select_application_in_table(software)
+        self.assertTrue(applications_screen.check_application_is_present(software))
+        ribbon_bar.click_button_edit()
+        self.assertTrue(create_application_wizard_popup.check_popup_is_present())
+        create_application_wizard_popup.click_button_next()
+        self.assertTrue(create_application_wizard_popup.check_import_information_tab_is_present())
+        create_application_wizard_popup.click_button_next()
+        self.assertTrue(create_application_wizard_popup.check_advanced_tab_is_present())
+        create_application_wizard_popup.click_button_configure_advanced_options()
+        self.assertTrue(advanced_editor_popup.check_popup_is_present())
+        advanced_editor_popup.click_icon_help()
+        actual_header = advanced_editor_popup._get_help_frame_header()
+        self.assertEqual(
+            expected_header, actual_header, advanced_editor_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_T_help_link_on_tasks_screen(self):
+        self.logger.info("TC#0000: Check help link on Tasks screen")
+        expected_header = "Tasks"
+        left_menu_tasks = BaseLeftMenu(self.driver)
+        tasks_screen = TasksScreen(self.driver)
+        left_menu_tasks.open_menu_tasks()
+        ribbon_bar = RibbonBar(self.driver)
+        ribbon_bar.open_tab_home()
+        ribbon_bar.click_button_home()
+        ribbon_bar.click_go_to_home_screen_menu_item()
+        self.assertTrue(tasks_screen.check_screen_is_present())
+        tasks_screen.click_icon_help()
+        actual_header = tasks_screen._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, tasks_screen._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_T_help_link_on_scheduled_tasks_screen(self):
+        self.logger.info("TC#0000: Check help link on Scheduled Tasks screen")
+        expected_header = "Scheduled Tasks"
+        left_menu_tasks = LeftMenuTasks(self.driver)
+        tasks_screen = TasksScreen(self.driver)
+        left_menu_tasks.open_menu_tasks()
+        self.assertTrue(left_menu_tasks.check_menu_tasks_is_opened())
+        left_menu_tasks.click_scheduled_tasks_label()
+        self.assertTrue(tasks_screen.check_screen_is_present())
+        tasks_screen.click_icon_help()
+        actual_header = tasks_screen._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, tasks_screen._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_T_help_link_on_discovery_tasks_screen(self):
+        self.logger.info("TC#0000: Check help link on Discovery Tasks screen")
+        expected_header = "Perform a Discovery to find all your devices"
+        left_menu_tasks = LeftMenuTasks(self.driver)
+        tasks_screen = TasksScreen(self.driver)
+        left_menu_tasks.open_menu_tasks()
+        self.assertTrue(left_menu_tasks.check_menu_tasks_is_opened())
+        left_menu_tasks.expand_scheduled_tasks_tree()
+        self.assertTrue(left_menu_tasks.check_discover_label_is_present())
+        left_menu_tasks.click_discover_label()
+        self.assertTrue(tasks_screen.check_screen_is_present())
+        tasks_screen.click_icon_help()
+        actual_header = tasks_screen._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, tasks_screen._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_T_help_link_on_software_deployments_screen(self):
+        self.logger.info("TC#0000: Check help link on Software Deployments screen")
+        expected_header = "Software Deployment"
+        left_menu_tasks = LeftMenuTasks(self.driver)
+        tasks_screen = TasksScreen(self.driver)
+        left_menu_tasks.open_menu_tasks()
+        self.assertTrue(left_menu_tasks.check_menu_tasks_is_opened())
+        left_menu_tasks.expand_scheduled_tasks_tree()
+        self.assertTrue(left_menu_tasks.check_software_deployment_label_is_present())
+        left_menu_tasks.click_software_deployment_label()
+        self.assertTrue(tasks_screen.check_screen_is_present())
+        tasks_screen.click_icon_help()
+        actual_header = tasks_screen._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, tasks_screen._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_T_help_link_on_patch_manager_screen(self):
+        self.logger.info("TC#0000: Check help link on Patch Manager screen")
+        expected_header = "Patch Deployment"
+        left_menu_tasks = LeftMenuTasks(self.driver)
+        tasks_screen = TasksScreen(self.driver)
+        left_menu_tasks.open_menu_tasks()
+        self.assertTrue(left_menu_tasks.check_menu_tasks_is_opened())
+        left_menu_tasks.expand_scheduled_tasks_tree()
+        self.assertTrue(left_menu_tasks.check_patch_manager_label_is_present())
+        left_menu_tasks.click_patch_manager_label()
+        self.assertTrue(tasks_screen.check_screen_is_present())
+        tasks_screen.click_icon_help()
+        actual_header = tasks_screen._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, tasks_screen._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_T_help_link_on_discover_devices_popup(self):
+        self.logger.info("TC#0000: Check help link on Discover Devices popup (Tasks)")
+        expected_header = "Discovery"
+        left_menu_tasks = LeftMenuTasks(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        discover_devices_popup = DiscoverDevicesPopup(self.driver)
+        left_menu_tasks.open_menu_tasks()
+        self.assertTrue(left_menu_tasks.check_menu_tasks_is_opened())
+        left_menu_tasks.expand_scheduled_tasks_tree()
+        self.assertTrue(left_menu_tasks.check_discover_label_is_present())
+        left_menu_tasks.click_discover_label()
+        self.assertTrue(ribbon_bar.check_box_discovery_task_is_present())
+        ribbon_bar.click_button_create()
+        self.assertTrue(discover_devices_popup.check_popup_is_present())
+        discover_devices_popup.click_icon_help()
+        actual_header = discover_devices_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, discover_devices_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_T_help_link_on_software_deployment_popup(self):
+        self.logger.info("TC#0000: Check help link on Software Deployment popup (Tasks)")
+        expected_header = "Software Deployment Wizard"
+        left_menu_tasks = LeftMenuTasks(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        software_deployment_popup = SoftwareDeploymentPopup(self.driver)
+        left_menu_tasks.open_menu_tasks()
+        self.assertTrue(left_menu_tasks.check_menu_tasks_is_opened())
+        left_menu_tasks.expand_scheduled_tasks_tree()
+        self.assertTrue(left_menu_tasks.check_software_deployment_label_is_present())
+        left_menu_tasks.click_software_deployment_label()
+        self.assertTrue(ribbon_bar.check_box_software_deployment_is_present())
+        ribbon_bar.click_button_create()
+        self.assertTrue(software_deployment_popup.check_popup_is_present())
+        software_deployment_popup.click_icon_help()
+        actual_header = software_deployment_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, software_deployment_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_T_help_link_on_patch_manager_scanning_popup(self):
+        self.logger.info("TC#0000: Check help link on Patch Manager Scanning popup (Tasks)")
+        expected_header = "Software Update Scanning"
+        left_menu_tasks = LeftMenuTasks(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        patch_manager_scanning_popup = PatchManagerScanningPopup(self.driver)
+        left_menu_tasks.open_menu_tasks()
+        self.assertTrue(left_menu_tasks.check_menu_tasks_is_opened())
+        left_menu_tasks.expand_scheduled_tasks_tree()
+        self.assertTrue(left_menu_tasks.check_patch_manager_label_is_present())
+        left_menu_tasks.click_patch_manager_label()
+        self.assertTrue(ribbon_bar.check_box_patch_manager_is_present())
+        ribbon_bar.click_button_scan()
+        self.assertTrue(patch_manager_scanning_popup.check_popup_is_present())
+        patch_manager_scanning_popup.click_icon_help()
+        actual_header = patch_manager_scanning_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, patch_manager_scanning_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_T_help_link_on_deploy_software_updates_popup(self):
+        self.logger.info("TC#0000: Check help link on Deploy Software Updates popup (Tasks)")
+        expected_header = "Deploy Software Updates"
+        left_menu_tasks = LeftMenuTasks(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        deploy_software_updates_popup = DeploySoftwareUpdatesPopup(self.driver)
+        left_menu_tasks.open_menu_tasks()
+        self.assertTrue(left_menu_tasks.check_menu_tasks_is_opened())
+        left_menu_tasks.expand_scheduled_tasks_tree()
+        self.assertTrue(left_menu_tasks.check_patch_manager_label_is_present())
+        left_menu_tasks.click_patch_manager_label()
+        self.assertTrue(ribbon_bar.check_box_patch_manager_is_present())
+        ribbon_bar.click_button_scan_and_deploy()
+        self.assertTrue(deploy_software_updates_popup.check_popup_is_present())
+        deploy_software_updates_popup.click_icon_help()
+        actual_header = deploy_software_updates_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, deploy_software_updates_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_RB_help_link_on_select_dashboard_popup(self):
+        self.logger.info("TC#0000: Check help link on Select Dashboard popup")
+        expected_header = "Select Dashboard"
+        ribbon_bar = RibbonBar(self.driver)
+        select_dashboard_popup = SelectDashboardPopup(self.driver)
+        ribbon_bar.click_button_home()
+        self.assertTrue(ribbon_bar.check_drop_down_list_is_present())
+        ribbon_bar.click_change_home_screen_menu_item()
+        self.assertTrue(select_dashboard_popup.check_popup_is_present())
+        select_dashboard_popup.click_icon_help()
+        actual_header = select_dashboard_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, select_dashboard_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_RB_help_link_on_user_settings_popup(self):
+        self.logger.info("TC#0000: Check help link on User Settings popup")
+        expected_header = "User Settings"
+        ribbon_bar = RibbonBar(self.driver)
+        user_settings_popup = UserSettingsPopup(self.driver)
+        ribbon_bar.click_button_admin_user()
+        self.assertTrue(ribbon_bar.check_drop_down_list_is_present())
+        ribbon_bar.click_settings_menu_item()
+        self.assertTrue(user_settings_popup.check_popup_is_present())
+        user_settings_popup.click_icon_help()
+        actual_header = user_settings_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, user_settings_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_RB_help_link_on_ribbon_bar(self):
+        self.logger.info("TC#0000: Check help link on Ribbon bar")
+        expected_header = "CMS Quick Help Videos"
+        ribbon_bar = RibbonBar(self.driver)
+        ribbon_bar.click_button_console_guide()
+        actual_header = ribbon_bar._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, ribbon_bar._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_RB_help_link_on_subscription_popup(self):
+        self.logger.info("TC#0000: Check help link on Subscription popup")
+        expected_header = "Subscriptions"
+        subscription_popup = SubscriptionsPopup(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        ribbon_bar.click_button_subscriptions()
+        self.assertIsNotNone(subscription_popup.check_popup_is_present()) #VERIFY THIS ASSERTION
+        subscription_popup.click_icon_help()
+        actual_header = subscription_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, subscription_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_RB_help_link_on_settings_popup(self):
+        self.logger.info("TC#0000: Check help link on Settings popup")
+        expected_header = "Settings"
+        ribbon_bar = RibbonBar(self.driver)
+        settings_popup = SettingsPopup(self.driver)
+        ribbon_bar.click_button_settings()
+        self.assertTrue(settings_popup.check_popup_is_present())
+        settings_popup.click_icon_help()
+        actual_header = settings_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, settings_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_RB_help_link_on_settings_popup_content_services_tab(self):
+        self.logger.info("TC#0000: Check help link on Settings popup - Content Services tab")
+        expected_header = "Content Services"
+        ribbon_bar = RibbonBar(self.driver)
+        settings_popup = SettingsPopup(self.driver)
+        ribbon_bar.click_button_settings()
+        self.assertTrue(settings_popup.check_popup_is_present())
+        settings_popup.click_content_services_label()
+        self.assertTrue(settings_popup.check_content_services_tab_is_present())
+        settings_popup.click_icon_help()
+        actual_header = settings_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, settings_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_RB_help_link_on_settings_popup_email_settings_tab(self):
+        self.logger.info("TC#0000: Check help link on Settings popup - Email Settings tab")
+        expected_header = "Email Settings"
+        ribbon_bar = RibbonBar(self.driver)
+        settings_popup = SettingsPopup(self.driver)
+        ribbon_bar.click_button_settings()
+        self.assertTrue(settings_popup.check_popup_is_present())
+        settings_popup.click_email_settings_label()
+        self.assertTrue(settings_popup.check_email_settings_tab_is_present())
+        settings_popup.click_icon_help()
+        actual_header = settings_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, settings_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_RB_help_link_on_settings_popup_initial_setup_tab(self):
+        self.logger.info("TC#0000: Check help link on Settings popup - Initial Setup tab")
+        expected_header = "Initial Setup"
+        ribbon_bar = RibbonBar(self.driver)
+        settings_popup = SettingsPopup(self.driver)
+        ribbon_bar.click_button_settings()
+        self.assertTrue(settings_popup.check_popup_is_present())
+        settings_popup.click_initial_setup_label()
+        self.assertTrue(settings_popup.check_initial_setup_tab_is_present())
+        settings_popup.click_icon_help()
+        actual_header = settings_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, settings_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_RB_help_link_on_settings_popup_locale_options_tab(self):
+        self.logger.info("TC#0000: Check help link on Settings popup - Locale Options tab")
+        expected_header = "Locale Options"
+        ribbon_bar = RibbonBar(self.driver)
+        settings_popup = SettingsPopup(self.driver)
+        ribbon_bar.click_button_settings()
+        self.assertTrue(settings_popup.check_popup_is_present())
+        settings_popup.click_locale_options_label()
+        self.assertTrue(settings_popup.check_locale_options_tab_is_present())
+        settings_popup.click_icon_help()
+        actual_header = settings_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, settings_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    @unittest.skip("Skip test_RB_help_link_on_settings_popup_inventory_tab. Inventory tab is opened too long\n")
+    def test_RB_help_link_on_settings_popup_inventory_tab(self):
+        self.logger.info("TC#0000: Check help link on Settings popup - Inventory tab")
+        expected_header = "Inventory"
+        ribbon_bar = RibbonBar(self.driver)
+        settings_popup = SettingsPopup(self.driver)
+        ribbon_bar.click_button_settings()
+        self.assertTrue(settings_popup.check_popup_is_present())
+        settings_popup.click_inventory_label()
+        self.assertTrue(settings_popup.check_inventory_tab_is_present())
+        settings_popup.click_icon_help()
+        actual_header = settings_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, settings_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_RB_help_link_on_settings_popup_user_options_tab(self):
+        self.logger.info("TC#0000: Check help link on Settings popup - User Options tab")
+        expected_header = "User Options"
+        ribbon_bar = RibbonBar(self.driver)
+        settings_popup = SettingsPopup(self.driver)
+        ribbon_bar.click_button_settings()
+        self.assertTrue(settings_popup.check_popup_is_present())
+        settings_popup.click_user_options_label()
+        self.assertTrue(settings_popup.check_user_options_tab_is_present())
+        settings_popup.click_icon_help()
+        actual_header = settings_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, settings_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_RB_help_link_on_settings_popup_audit_log_settings_tab(self):
+        self.logger.info("TC#0000: Check help link on Settings popup - Audit Log Settings tab")
+        expected_header = "Audit Log Settings"
+        ribbon_bar = RibbonBar(self.driver)
+        settings_popup = SettingsPopup(self.driver)
+        ribbon_bar.click_button_settings()
+        self.assertTrue(settings_popup.check_popup_is_present())
+        settings_popup.click_audit_log_settings_label()
+        self.assertTrue(settings_popup.check_audit_log_settings_tab_is_present())
+        settings_popup.click_icon_help()
+        actual_header = settings_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, settings_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_RB_help_link_on_client_settings_popup(self):
+        self.logger.info("TC#0000: Check help link on Client Settings popup")
+        expected_header = "Client"
+        ribbon_bar = RibbonBar(self.driver)
+        client_settings_popup = ClientSettingsPopup(self.driver)
+        ribbon_bar.click_button_client()
+        self.assertTrue(client_settings_popup.check_popup_is_present())
+        client_settings_popup.click_icon_help()
+        actual_header = client_settings_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, client_settings_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_RB_help_link_on_client_settings_popup_timers_tab(self):
+        self.logger.info("TC#0000: Check help link on Client Settings popup - Timers tab")
+        expected_header = "Timers"
+        ribbon_bar = RibbonBar(self.driver)
+        client_settings_popup = ClientSettingsPopup(self.driver)
+        ribbon_bar.click_button_client()
+        self.assertTrue(client_settings_popup.check_popup_is_present())
+        client_settings_popup.click_timers_tab()
+        self.assertTrue(client_settings_popup.check_timers_tab_is_present())
+        client_settings_popup.click_icon_help()
+        actual_header = client_settings_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, client_settings_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_RB_help_link_on_client_settings_popup_features_tab(self):
+        self.logger.info("TC#0000: Check help link on Client Settings popup - Features tab")
+        expected_header = "Features"
+        ribbon_bar = RibbonBar(self.driver)
+        client_settings_popup = ClientSettingsPopup(self.driver)
+        ribbon_bar.click_button_client()
+        self.assertTrue(client_settings_popup.check_popup_is_present())
+        client_settings_popup.click_features_label()
+        self.assertTrue(client_settings_popup.check_features_tab_is_present())
+        client_settings_popup.click_icon_help()
+        actual_header = client_settings_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, client_settings_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_RB_help_link_on_client_settings_popup_client_urls_tab(self):
+        self.logger.info("TC#0000: Check help link on Client Settings popup - Client URLs tab")
+        expected_header = "Client URLs"
+        ribbon_bar = RibbonBar(self.driver)
+        client_settings_popup = ClientSettingsPopup(self.driver)
+        ribbon_bar.click_button_client()
+        self.assertTrue(client_settings_popup.check_popup_is_present())
+        client_settings_popup.click_client_urls_label()
+        self.assertTrue(client_settings_popup.check_client_urls_tab_is_present())
+        client_settings_popup.click_icon_help()
+        actual_header = client_settings_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, client_settings_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_RB_help_link_on_client_settings_popup_reboot_ui_config_tab(self):
+        self.logger.info("TC#0000: Check help link on Client Settings popup - Reboot UI Config tab")
+        expected_header = "Reboot UI Config"
+        ribbon_bar = RibbonBar(self.driver)
+        client_settings_popup = ClientSettingsPopup(self.driver)
+        ribbon_bar.click_button_client()
+        self.assertTrue(client_settings_popup.check_popup_is_present())
+        client_settings_popup.click_reboot_ui_config_tab()
+        self.assertTrue(client_settings_popup.check_reboot_ui_config_tab_is_present())
+        client_settings_popup.click_icon_help()
+        actual_header = client_settings_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, client_settings_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_RB_help_link_on_client_settings_popup_client_proxy_settings_tab(self):
+        self.logger.info("TC#0000: Check help link on Client Settings popup - Client Proxy Settings tab")
+        expected_header = "Client Proxy Settings"
+        ribbon_bar = RibbonBar(self.driver)
+        client_settings_popup = ClientSettingsPopup(self.driver)
+        ribbon_bar.click_button_client()
+        self.assertTrue(client_settings_popup.check_popup_is_present())
+        client_settings_popup.click_client_proxy_settings_tab()
+        self.assertTrue(client_settings_popup.check_client_proxy_settings_tab_is_present())
+        client_settings_popup.click_icon_help()
+        actual_header = client_settings_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, client_settings_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_RB_help_link_on_currency_popup(self):
+        self.logger.info("TC#0000: Check help link on Currency popup")
+        expected_header = "Currency"
+        ribbon_bar = RibbonBar(self.driver)
+        currency_popup = CurrencyPopup(self.driver)
+        ribbon_bar.open_tab_view()
+        self.assertTrue(ribbon_bar.check_tab_view_is_present())
+        ribbon_bar.click_button_currency()
+        self.assertTrue(currency_popup.check_popup_is_present())
+        currency_popup.click_icon_help()
+        actual_header = currency_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, currency_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_RB_help_link_on_weight_display_popup(self):
+        self.logger.info("TC#0000: Check help link on Weight Display popup")
+        expected_header = "Imperial Metric"
+        ribbon_bar = RibbonBar(self.driver)
+        weight_display_popup = WeightDisplayPopup(self.driver)
+        ribbon_bar.open_tab_view()
+        self.assertTrue(ribbon_bar.check_tab_view_is_present())
+        ribbon_bar.click_button_imperial_and_metric()
+        self.assertTrue(weight_display_popup.check_popup_is_present())
+        weight_display_popup.click_icon_help()
+        actual_header = weight_display_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, weight_display_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_RB_help_link_on_manufacturer_alias_popup(self):
+        self.logger.info("TC#0000: Check help link on Manufacturer Alias popup")
+        expected_header = "Manufacturers"
+        ribbon_bar = RibbonBar(self.driver)
+        manufacturer_alias_popup = ManufacturerAliasPopup(self.driver)
+        ribbon_bar.open_tab_view()
+        self.assertTrue(ribbon_bar.check_tab_view_is_present())
+        ribbon_bar.click_button_makes()
+        self.assertTrue(manufacturer_alias_popup.check_popup_is_present())
+        manufacturer_alias_popup.click_icon_help()
+        actual_header = manufacturer_alias_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, manufacturer_alias_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_RB_help_link_on_model_alias_popup(self):
+        self.logger.info("TC#0000: Check help link on Model Alias popup")
+        expected_header = "Models"
+        ribbon_bar = RibbonBar(self.driver)
+        model_alias_popup = ModelAliasPopup(self.driver)
+        ribbon_bar.open_tab_view()
+        self.assertTrue(ribbon_bar.check_tab_view_is_present())
+        ribbon_bar.click_button_models()
+        self.assertTrue(model_alias_popup.check_popup_is_present())
+        model_alias_popup.click_icon_help()
+        actual_header = model_alias_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, model_alias_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_RB_help_link_on_column_sets_popup(self):
+        self.logger.info("TC#0000: Check help link on Column Sets popup")
+        expected_header = "Column Sets"
+        ribbon_bar = RibbonBar(self.driver)
+        column_sets_popup = ColumnSetsPopup(self.driver)
+        left_menu_devices = LeftMenuDevices(self.driver)
+        left_menu_devices.open_menu_devices()
+        left_menu_devices.click_global_site_view_label()
+        ribbon_bar.open_tab_view()
+        self.assertTrue(ribbon_bar.check_tab_view_is_present())
+        ribbon_bar.click_button_edit_or_create()
+        self.assertTrue(column_sets_popup.check_popup_is_present())
+        column_sets_popup.click_icon_help()
+        actual_header = column_sets_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, column_sets_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_RB_help_link_on_initial_setup_popup(self):
+        self.logger.info("TC#0000: Check help link on Initial Setup popup")
+        expected_header = "Initial Setup"
+        ribbon_bar = RibbonBar(self.driver)
+        settings_popup = SettingsPopup(self.driver)
+        initial_setup_popup = InitialSetupPopup(self.driver)
+        ribbon_bar.click_button_settings()
+        self.assertTrue(settings_popup.check_popup_is_present())
+        settings_popup.click_initial_setup_label()
+        self.assertTrue(settings_popup.check_initial_setup_tab_is_present())
+        settings_popup.click_button_run_initial_setup()
+        self.assertTrue(initial_setup_popup.check_popup_is_present())
+        initial_setup_popup.click_icon_help()
+        actual_header = initial_setup_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, initial_setup_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
 
     def tearDown(self):
         base_actions = BaseActions(self.driver)

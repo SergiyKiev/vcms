@@ -8,34 +8,34 @@
 2017-02-19 18:47:04,048  INFO   TC#0000: Check help link on Administration page
 2017-02-19 18:47:10,286  INFO   Left menu 'Administration' is opened
 2017-02-19 18:47:14,884  INFO   Help window is opened. Title is: ConsoleOperationGuide
-2017-02-19 18:47:22,494  ERROR  Test failed: Expected header: Administration !=  Actual header: Getting Started in CMS
+2017-02-19 18:47:22,494  ERROR  TEST FAILED: Expected header: Administration !=  Actual header: Getting Started in CMS
 2017-02-19 18:47:24,651  INFO   [Test end]
 
 2017-02-19 18:47:24,651  INFO   [Test start]
 2017-02-19 18:47:24,651  INFO   TC#0000: Check help link on Client Settings popup
 2017-02-19 18:47:34,878  INFO   Help window is opened. Title is: ConsoleOperationGuide
-2017-02-19 18:47:41,733  ERROR  Test failed: Expected header: Client !=  Actual header: CMS Quick Help Videos
+2017-02-19 18:47:41,733  ERROR  TEST FAILED: Expected header: Client !=  Actual header: CMS Quick Help Videos
 2017-02-19 18:47:53,823  INFO   [Test end]
 
 2017-02-19 18:47:53,823  INFO   [Test start]
 2017-02-19 18:47:53,825  INFO   TC#0000: Check help link on Client Settings popup - Client Proxy Settings tab
 2017-02-19 18:48:00,367  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 18:48:05,167  INFO   Expected header: Client Proxy Settings == Actual header: Client Proxy Settings
-2017-02-19 18:48:05,168  INFO   TEST PASSED!!!
+2017-02-19 18:48:05,168  INFO   TEST PASSED
 2017-02-19 18:48:17,209  INFO   [Test end]
 
 2017-02-19 18:48:17,210  INFO   [Test start]
 2017-02-19 18:48:17,210  INFO   TC#0000: Check help link on Client Settings popup - Client URLs tab
 2017-02-19 18:48:23,742  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 18:48:28,482  INFO   Expected header: Client URLs == Actual header: Client URLs
-2017-02-19 18:48:28,482  INFO   TEST PASSED!!!
+2017-02-19 18:48:28,482  INFO   TEST PASSED
 2017-02-19 18:48:40,434  INFO   [Test end]
 
 2017-02-19 18:48:40,434  INFO   [Test start]
 2017-02-19 18:48:40,434  INFO   TC#0000: Check help link on Client Settings popup - Features tab
 2017-02-19 18:48:46,584  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 18:48:51,365  INFO   Expected header: Features == Actual header: Features
-2017-02-19 18:48:51,367  INFO   TEST PASSED!!!
+2017-02-19 18:48:51,367  INFO   TEST PASSED
 2017-02-19 18:48:58,243  ERROR  The element //div[contains(@id,'WRP')][last()]/*//div[@title='Close'][@onclick] is not clickable.
 Message: stale element reference: element is not attached to the page document
   (Session info: chrome=56.0.2924.87)
@@ -47,13 +47,13 @@ Message: stale element reference: element is not attached to the page document
 2017-02-19 18:49:10,157  INFO   TC#0000: Check help link on Client Settings popup - Reboot UI Config tab
 2017-02-19 18:49:16,881  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 18:49:21,910  INFO   Expected header: Reboot UI Config == Actual header: Reboot UI Config
-2017-02-19 18:49:21,910  INFO   TEST PASSED!!!
+2017-02-19 18:49:21,910  INFO   TEST PASSED
 2017-02-19 18:49:33,967  INFO   [Test end]
 
 2017-02-19 18:49:33,967  INFO   [Test start]
 2017-02-19 18:49:33,969  INFO   TC#0000: Check help link on Client Settings popup - Timers tab
 2017-02-19 18:49:40,348  INFO   Help window is opened. Title is: ConsoleOperationGuide
-2017-02-19 18:49:47,224  ERROR  Test failed: Expected header: Timers !=  Actual header: Settings
+2017-02-19 18:49:47,224  ERROR  TEST FAILED: Expected header: Timers !=  Actual header: Settings
 2017-02-19 18:49:59,381  INFO   [Test end]
 
 2017-02-19 18:49:59,381  INFO   [Test start]
@@ -61,7 +61,7 @@ Message: stale element reference: element is not attached to the page document
 2017-02-19 18:50:05,930  INFO   Left menu 'Devices' is opened
 2017-02-19 18:50:21,105  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 18:50:25,897  INFO   Expected header: Column Sets == Actual header: Column Sets
-2017-02-19 18:50:25,897  INFO   TEST PASSED!!!
+2017-02-19 18:50:25,897  INFO   TEST PASSED
 2017-02-19 18:50:38,444  INFO   [Test end]
 
 2017-02-19 18:50:38,444  INFO   [Test start]
@@ -69,7 +69,7 @@ Message: stale element reference: element is not attached to the page document
 2017-02-19 18:50:42,318  INFO   Left menu 'Devices' is opened
 2017-02-19 18:50:53,160  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 18:50:57,904  INFO   Expected header: Create a Query == Actual header: Create a Query
-2017-02-19 18:50:57,904  INFO   TEST PASSED!!!
+2017-02-19 18:50:57,904  INFO   TEST PASSED
 2017-02-19 18:51:17,107  INFO   [Test end]
 
 2017-02-19 18:51:17,108  INFO   [Test start]
@@ -77,35 +77,35 @@ Message: stale element reference: element is not attached to the page document
 2017-02-19 18:51:17,473  INFO   Left menu 'Devices' is opened
 2017-02-19 18:51:24,717  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 18:51:29,502  INFO   Expected header: Configure a site == Actual header: Configure a site
-2017-02-19 18:51:29,502  INFO   TEST PASSED!!!
+2017-02-19 18:51:29,502  INFO   TEST PASSED
 2017-02-19 18:51:39,463  INFO   [Test end]
 
 2017-02-19 18:51:39,463  INFO   [Test start]
 2017-02-19 18:51:39,463  INFO   TC#0000: Check help link on Currency popup
 2017-02-19 18:51:48,594  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 18:51:53,401  INFO   Expected header: Currency == Actual header: Currency
-2017-02-19 18:51:53,401  INFO   TEST PASSED!!!
+2017-02-19 18:51:53,401  INFO   TEST PASSED
 2017-02-19 18:52:05,405  INFO   [Test end]
 
 2017-02-19 18:52:05,407  INFO   [Test start]
 2017-02-19 18:52:05,407  INFO   TC#0000: Check help link on Devices page
 2017-02-19 18:52:05,553  INFO   Left menu 'Devices' is opened
 2017-02-19 18:52:16,049  INFO   Help window is opened. Title is: ConsoleOperationGuide
-2017-02-19 18:52:22,918  ERROR  Test failed: Expected header: Devices !=  Actual header: Getting Started in CMS
+2017-02-19 18:52:22,918  ERROR  TEST FAILED: Expected header: Devices !=  Actual header: Getting Started in CMS
 2017-02-19 18:52:25,088  INFO   [Test end]
 
 2017-02-19 18:52:25,089  INFO   [Test start]
 2017-02-19 18:52:25,089  INFO   TC#0000: Check help link on Dynamically Managed page
 2017-02-19 18:52:31,296  INFO   Left menu 'Administration' is opened
 2017-02-19 18:52:41,454  INFO   Help window is opened. Title is: ConsoleOperationGuide
-2017-02-19 18:52:48,553  ERROR  Test failed. Server Error. Error text: 404 - File or directory not found.The resource you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+2017-02-19 18:52:48,553  ERROR  TEST FAILED. Server Error. Error text: 404 - File or directory not found.The resource you are looking for might have been removed, had its name changed, or is temporarily unavailable.
 2017-02-19 18:52:50,740  INFO   [Test end]
 
 2017-02-19 18:52:50,742  INFO   [Test start]
 2017-02-19 18:52:50,742  INFO   TC#0000: Check help link on Edit Folder popup
 2017-02-19 18:52:57,753  INFO   Left menu 'Devices' is opened
 2017-02-19 18:53:08,934  INFO   Help window is opened. Title is: ConsoleOperationGuide
-2017-02-19 18:53:15,743  ERROR  Test failed: Expected header: Edit a folder !=  Actual header: Create a site
+2017-02-19 18:53:15,743  ERROR  TEST FAILED: Expected header: Edit a folder !=  Actual header: Create a site
 2017-02-19 18:53:27,733  INFO   [Test end]
 
 2017-02-19 18:53:27,734  INFO   [Test start]
@@ -113,7 +113,7 @@ Message: stale element reference: element is not attached to the page document
 2017-02-19 18:53:34,786  INFO   Left menu 'Administration' is opened
 2017-02-19 18:53:39,483  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 18:53:44,224  INFO   Expected header: Endpoint Management == Actual header: Endpoint Management
-2017-02-19 18:53:44,226  INFO   TEST PASSED!!!
+2017-02-19 18:53:44,226  INFO   TEST PASSED
 2017-02-19 18:53:46,388  INFO   [Test end]
 
 2017-02-19 18:53:46,388  INFO   [Test start]
@@ -126,7 +126,7 @@ Message: stale element reference: element is not attached to the page document
 2017-02-19 18:54:39,617  INFO   TC#0000: Check help link on Excluded Devices page
 2017-02-19 18:54:46,173  INFO   Left menu 'Administration' is opened
 2017-02-19 18:54:54,953  INFO   Help window is opened. Title is: ConsoleOperationGuide
-2017-02-19 18:55:02,019  ERROR  Test failed. Server Error. Error text: 404 - File or directory not found.The resource you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+2017-02-19 18:55:02,019  ERROR  TEST FAILED. Server Error. Error text: 404 - File or directory not found.The resource you are looking for might have been removed, had its name changed, or is temporarily unavailable.
 2017-02-19 18:55:04,211  INFO   [Test end]
 
 2017-02-19 18:55:04,211  INFO   [Test start]
@@ -139,27 +139,27 @@ Message: stale element reference: element is not attached to the page document
 2017-02-19 18:55:46,250  INFO   TC#0000: Check help link on Groups page
 2017-02-19 18:55:46,374  INFO   Left menu 'Devices' is opened
 2017-02-19 18:55:51,953  INFO   Help window is opened. Title is: ConsoleOperationGuide
-2017-02-19 18:55:58,802  ERROR  Test failed: Expected header: Groups !=  Actual header: Devices
+2017-02-19 18:55:58,802  ERROR  TEST FAILED: Expected header: Groups !=  Actual header: Devices
 2017-02-19 18:56:00,964  INFO   [Test end]
 
 2017-02-19 18:56:00,966  INFO   [Test start]
 2017-02-19 18:56:00,966  INFO   TC#0000: Check help link on Home page
 2017-02-19 18:56:06,009  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 18:56:10,693  INFO   Expected header: Getting Started in CMS == Actual header: Getting Started in CMS
-2017-02-19 18:56:10,694  INFO   TEST PASSED!!!
+2017-02-19 18:56:10,694  INFO   TEST PASSED
 2017-02-19 18:56:12,798  INFO   [Test end]
 
 2017-02-19 18:56:12,799  INFO   [Test start]
 2017-02-19 18:56:12,799  INFO   TC#0000: Check help link on Infrastructure page
 2017-02-19 18:56:19,036  INFO   Left menu 'Administration' is opened
 2017-02-19 18:56:28,404  INFO   Help window is opened. Title is: ConsoleOperationGuide
-2017-02-19 18:56:35,826  ERROR  Test failed. Server Error. Error text: 404 - File or directory not found.The resource you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+2017-02-19 18:56:35,826  ERROR  TEST FAILED. Server Error. Error text: 404 - File or directory not found.The resource you are looking for might have been removed, had its name changed, or is temporarily unavailable.
 2017-02-19 18:56:38,211  INFO   [Test end]
 
 2017-02-19 18:56:38,211  INFO   [Test start]
 2017-02-19 18:56:38,211  INFO   TC#0000: Check help link on Initial Setup popup
 2017-02-19 18:56:55,404  INFO   Help window is opened. Title is: ConsoleOperationGuide
-2017-02-19 18:57:02,463  ERROR  Test failed. Server Error. Error text: 404 - File or directory not found.The resource you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+2017-02-19 18:57:02,463  ERROR  TEST FAILED. Server Error. Error text: 404 - File or directory not found.The resource you are looking for might have been removed, had its name changed, or is temporarily unavailable.
 2017-02-19 18:57:23,559  INFO   [Test end]
 
 2017-02-19 18:57:23,561  INFO   [Test start]
@@ -167,28 +167,28 @@ Message: stale element reference: element is not attached to the page document
 2017-02-19 18:57:29,769  INFO   Left menu 'Devices' is opened
 2017-02-19 18:57:47,763  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 18:57:52,486  INFO   Expected header: Inventory == Actual header: Inventory
-2017-02-19 18:57:52,486  INFO   TEST PASSED!!!
+2017-02-19 18:57:52,486  INFO   TEST PASSED
 2017-02-19 18:58:02,447  INFO   [Test end]
 
 2017-02-19 18:58:02,447  INFO   [Test start]
 2017-02-19 18:58:02,447  INFO   TC#0000: Check help link on IP Address popup
 2017-02-19 18:58:06,661  INFO   Left menu 'Devices' is opened
 2017-02-19 18:58:18,687  INFO   Help window is opened. Title is: ConsoleOperationGuide
-2017-02-19 18:58:25,757  ERROR  Test failed. Server Error. Error text: 404 - File or directory not found.The resource you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+2017-02-19 18:58:25,757  ERROR  TEST FAILED. Server Error. Error text: 404 - File or directory not found.The resource you are looking for might have been removed, had its name changed, or is temporarily unavailable.
 2017-02-19 18:58:42,418  INFO   [Test end]
 
 2017-02-19 18:58:42,420  INFO   [Test start]
 2017-02-19 18:58:42,420  INFO   TC#0000: Check help link on Manufacturer Alias popup
 2017-02-19 18:58:51,035  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 18:58:55,759  INFO   Expected header: Manufacturers == Actual header: Manufacturers
-2017-02-19 18:58:55,759  INFO   TEST PASSED!!!
+2017-02-19 18:58:55,759  INFO   TEST PASSED
 2017-02-19 18:59:05,786  INFO   [Test end]
 
 2017-02-19 18:59:05,788  INFO   [Test start]
 2017-02-19 18:59:05,789  INFO   TC#0000: Check help link on Model Alias popup
 2017-02-19 18:59:10,388  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 18:59:15,197  INFO   Expected header: Models == Actual header: Models
-2017-02-19 18:59:15,197  INFO   TEST PASSED!!!
+2017-02-19 18:59:15,197  INFO   TEST PASSED
 2017-02-19 18:59:25,246  INFO   [Test end]
 
 2017-02-19 18:59:25,247  INFO   [Test start]
@@ -196,7 +196,7 @@ Message: stale element reference: element is not attached to the page document
 2017-02-19 18:59:25,395  INFO   Left menu 'Devices' is opened
 2017-02-19 18:59:36,819  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 18:59:41,581  INFO   Expected header: Move a site or device == Actual header: Move a site or device
-2017-02-19 18:59:41,581  INFO   TEST PASSED!!!
+2017-02-19 18:59:41,581  INFO   TEST PASSED
 2017-02-19 18:59:53,684  INFO   [Test end]
 
 2017-02-19 18:59:53,686  INFO   [Test start]
@@ -204,28 +204,28 @@ Message: stale element reference: element is not attached to the page document
 2017-02-19 18:59:57,586  INFO   Left menu 'Devices' is opened
 2017-02-19 19:00:06,180  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 19:00:10,950  INFO   Expected header: Move a site or device == Actual header: Move a site or device
-2017-02-19 19:00:10,950  INFO   TEST PASSED!!!
+2017-02-19 19:00:10,950  INFO   TEST PASSED
 2017-02-19 19:00:22,881  INFO   [Test end]
 
 2017-02-19 19:00:22,882  INFO   [Test start]
 2017-02-19 19:00:22,882  INFO   TC#0000: Check help link on New Folder popup
 2017-02-19 19:00:23,223  INFO   Left menu 'Devices' is opened
 2017-02-19 19:00:31,311  INFO   Help window is opened. Title is: ConsoleOperationGuide
-2017-02-19 19:00:38,288  ERROR  Test failed: Expected header: Create a Folder !=  Actual header: Create a site
+2017-02-19 19:00:38,288  ERROR  TEST FAILED: Expected header: Create a Folder !=  Actual header: Create a site
 2017-02-19 19:00:50,726  INFO   [Test end]
 
 2017-02-19 19:00:50,726  INFO   [Test start]
 2017-02-19 19:00:50,726  INFO   TC#0000: Check help link on New Group popup
 2017-02-19 19:00:51,084  INFO   Left menu 'Devices' is opened
 2017-02-19 19:00:58,282  INFO   Help window is opened. Title is: ConsoleOperationGuide
-2017-02-19 19:01:05,053  ERROR  Test failed: Expected header: Create a Group !=  Actual header: Create a new Group
+2017-02-19 19:01:05,053  ERROR  TEST FAILED: Expected header: Create a Group !=  Actual header: Create a new Group
 2017-02-19 19:01:17,743  INFO   [Test end]
 
 2017-02-19 19:01:17,744  INFO   [Test start]
 2017-02-19 19:01:17,744  INFO   TC#0000: Check help link on On Demand Inventory Scan popup
 2017-02-19 19:01:17,901  INFO   Left menu 'Devices' is opened
 2017-02-19 19:01:29,187  INFO   Help window is opened. Title is: ConsoleOperationGuide
-2017-02-19 19:01:36,003  ERROR  Test failed: Expected header: On Demand Inventory Scan !=  Actual header: Devices
+2017-02-19 19:01:36,003  ERROR  TEST FAILED: Expected header: On Demand Inventory Scan !=  Actual header: Devices
 2017-02-19 19:01:46,394  INFO   [Test end]
 
 2017-02-19 19:01:46,394  INFO   [Test start]
@@ -233,14 +233,14 @@ Message: stale element reference: element is not attached to the page document
 2017-02-19 19:01:46,552  INFO   Left menu 'Devices' is opened
 2017-02-19 19:01:59,039  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 19:02:03,744  INFO   Expected header: Software Updates == Actual header: Software Updates
-2017-02-19 19:02:03,744  INFO   TEST PASSED!!!
+2017-02-19 19:02:03,744  INFO   TEST PASSED
 2017-02-19 19:02:13,835  INFO   [Test end]
 
 2017-02-19 19:02:13,836  INFO   [Test start]
 2017-02-19 19:02:13,836  INFO   TC#0000: Check help link on Ping Result popup
 2017-02-19 19:02:13,971  INFO   Left menu 'Devices' is opened
 2017-02-19 19:02:39,582  INFO   Help window is opened. Title is: ConsoleOperationGuide
-2017-02-19 19:02:46,357  ERROR  Test failed: Expected header: Ping Result !=  Actual header: Devices
+2017-02-19 19:02:46,357  ERROR  TEST FAILED: Expected header: Ping Result !=  Actual header: Devices
 2017-02-19 19:02:56,460  INFO   [Test end]
 
 2017-02-19 19:02:56,460  INFO   [Test start]
@@ -253,7 +253,7 @@ Message: stale element reference: element is not attached to the page document
 2017-02-19 19:03:36,489  INFO   TC#0000: Check help link on Queries page
 2017-02-19 19:03:36,690  INFO   Left menu 'Devices' is opened
 2017-02-19 19:03:44,220  INFO   Help window is opened. Title is: ConsoleOperationGuide
-2017-02-19 19:03:51,257  ERROR  Test failed. Server Error. Error text: 404 - File or directory not found.The resource you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+2017-02-19 19:03:51,257  ERROR  TEST FAILED. Server Error. Error text: 404 - File or directory not found.The resource you are looking for might have been removed, had its name changed, or is temporarily unavailable.
 2017-02-19 19:03:53,378  INFO   [Test end]
 
 2017-02-19 19:03:53,378  INFO   [Test start]
@@ -261,14 +261,14 @@ Message: stale element reference: element is not attached to the page document
 2017-02-19 19:03:53,743  INFO   Left menu 'Devices' is opened
 2017-02-19 19:04:02,539  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 19:04:07,230  INFO   Expected header: Queries == Actual header: Queries
-2017-02-19 19:04:07,230  INFO   TEST PASSED!!!
+2017-02-19 19:04:07,230  INFO   TEST PASSED
 2017-02-19 19:04:19,766  INFO   [Test end]
 
 2017-02-19 19:04:19,767  INFO   [Test start]
 2017-02-19 19:04:19,769  INFO   TC#0000: Check help link on Reporting page
 2017-02-19 19:04:26,450  INFO   Left menu 'Reporting' is opened
 2017-02-19 19:04:32,565  INFO   Help window is opened. Title is: ConsoleOperationGuide
-2017-02-19 19:04:39,371  ERROR  Test failed: Expected header: Reporting !=  Actual header: Getting Started in CMS
+2017-02-19 19:04:39,371  ERROR  TEST FAILED: Expected header: Reporting !=  Actual header: Getting Started in CMS
 2017-02-19 19:04:41,516  INFO   [Test end]
 
 2017-02-19 19:04:41,516  INFO   [Test start]
@@ -286,68 +286,68 @@ Message: unknown error: Element <img src="Icons.Metro.About.png.wgx" style="widt
 2017-02-19 19:05:27,742  INFO   TC#0000: Check help link on Ribbon bar
 2017-02-19 19:05:35,586  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 19:05:40,437  INFO   Expected header: CMS Quick Help Videos == Actual header: CMS Quick Help Videos
-2017-02-19 19:05:40,437  INFO   TEST PASSED!!!
+2017-02-19 19:05:40,437  INFO   TEST PASSED
 2017-02-19 19:05:42,575  INFO   [Test end]
 
 2017-02-19 19:05:42,576  INFO   [Test start]
 2017-02-19 19:05:42,578  INFO   TC#0000: Check help link on Select Dashboard popup
 2017-02-19 19:05:49,128  INFO   Help window is opened. Title is: ConsoleOperationGuide
-2017-02-19 19:05:55,823  ERROR  Test failed: Expected header: Select Dashboard !=  Actual header: Devices
+2017-02-19 19:05:55,823  ERROR  TEST FAILED: Expected header: Select Dashboard !=  Actual header: Devices
 2017-02-19 19:06:08,098  INFO   [Test end]
 
 2017-02-19 19:06:08,098  INFO   [Test start]
 2017-02-19 19:06:08,098  INFO   TC#0000: Check help link on Select Targets popup
 2017-02-19 19:06:08,463  INFO   Left menu 'Devices' is opened
 2017-02-19 19:06:19,467  INFO   Help window is opened. Title is: ConsoleOperationGuide
-2017-02-19 19:06:26,206  ERROR  Test failed: Expected header: Select Targets !=  Actual header: Devices
+2017-02-19 19:06:26,206  ERROR  TEST FAILED: Expected header: Select Targets !=  Actual header: Devices
 2017-02-19 19:06:46,466  INFO   [Test end]
 
 2017-02-19 19:06:46,467  INFO   [Test start]
 2017-02-19 19:06:46,467  INFO   TC#0000: Check help link on Settings popup
 2017-02-19 19:06:51,323  INFO   Help window is opened. Title is: ConsoleOperationGuide
-2017-02-19 19:06:58,194  ERROR  Test failed: Expected header: Settings !=  Actual header: CMS Quick Help Videos
+2017-02-19 19:06:58,194  ERROR  TEST FAILED: Expected header: Settings !=  Actual header: CMS Quick Help Videos
 2017-02-19 19:07:10,236  INFO   [Test end]
 
 2017-02-19 19:07:10,236  INFO   [Test start]
 2017-02-19 19:07:10,236  INFO   TC#0000: Check help link on Settings popup - Audit Log Settings tab
 2017-02-19 19:07:18,030  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 19:07:22,786  INFO   Expected header: Audit Log Settings == Actual header: Audit Log Settings
-2017-02-19 19:07:22,786  INFO   TEST PASSED!!!
+2017-02-19 19:07:22,786  INFO   TEST PASSED
 2017-02-19 19:07:34,829  INFO   [Test end]
 
 2017-02-19 19:07:34,831  INFO   [Test start]
 2017-02-19 19:07:34,831  INFO   TC#0000: Check help link on Settings popup - Content Services tab
 2017-02-19 19:07:41,845  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 19:07:46,624  INFO   Expected header: Content Services == Actual header: Content Services
-2017-02-19 19:07:46,624  INFO   TEST PASSED!!!
+2017-02-19 19:07:46,624  INFO   TEST PASSED
 2017-02-19 19:07:58,581  INFO   [Test end]
 
 2017-02-19 19:07:58,582  INFO   [Test start]
 2017-02-19 19:07:58,582  INFO   TC#0000: Check help link on Settings popup - Email Settings tab
 2017-02-19 19:08:05,608  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 19:08:10,477  INFO   Expected header: Email Settings == Actual header: Email Settings
-2017-02-19 19:08:10,477  INFO   TEST PASSED!!!
+2017-02-19 19:08:10,477  INFO   TEST PASSED
 2017-02-19 19:08:22,463  INFO   [Test end]
 
 2017-02-19 19:08:22,464  INFO   [Test start]
 2017-02-19 19:08:22,464  INFO   TC#0000: Check help link on Settings popup - Initial Setup tab
 2017-02-19 19:08:28,503  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 19:08:33,246  INFO   Expected header: Initial Setup == Actual header: Initial Setup
-2017-02-19 19:08:33,246  INFO   TEST PASSED!!!
+2017-02-19 19:08:33,246  INFO   TEST PASSED
 2017-02-19 19:08:45,223  INFO   [Test end]
 
 2017-02-19 19:08:45,226  INFO   [Test start]
 2017-02-19 19:08:45,226  INFO   TC#0000: Check help link on Settings popup - Locale Options tab
 2017-02-19 19:08:52,348  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 19:08:57,210  INFO   Expected header: Locale Options == Actual header: Locale Options
-2017-02-19 19:08:57,210  INFO   TEST PASSED!!!
+2017-02-19 19:08:57,210  INFO   TEST PASSED
 2017-02-19 19:09:09,832  INFO   [Test end]
 
 2017-02-19 19:09:09,834  INFO   [Test start]
 2017-02-19 19:09:09,835  INFO   TC#0000: Check help link on Settings popup - User Options tab
 2017-02-19 19:09:16,296  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 19:09:21,025  INFO   Expected header: User Options == Actual header: User Options
-2017-02-19 19:09:21,025  INFO   TEST PASSED!!!
+2017-02-19 19:09:21,025  INFO   TEST PASSED
 2017-02-19 19:09:32,898  INFO   [Test end]
 
 2017-02-19 19:09:32,898  INFO   [Test start]
@@ -355,42 +355,42 @@ Message: unknown error: Element <img src="Icons.Metro.About.png.wgx" style="widt
 2017-02-19 19:09:33,256  INFO   Left menu 'Devices' is opened
 2017-02-19 19:09:52,115  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 19:09:56,818  INFO   Expected header: Create a site == Actual header: Create a site
-2017-02-19 19:09:56,818  INFO   TEST PASSED!!!
+2017-02-19 19:09:56,818  INFO   TEST PASSED
 2017-02-19 19:10:08,831  INFO   [Test end]
 
 2017-02-19 19:10:08,831  INFO   [Test start]
 2017-02-19 19:10:08,832  INFO   TC#0000: Check help link on Reporting page
 2017-02-19 19:10:15,687  INFO   Left menu 'Software / Patch Manager' is opened
 2017-02-19 19:10:21,957  INFO   Help window is opened. Title is: ConsoleOperationGuide
-2017-02-19 19:10:28,841  ERROR  Test failed: Expected header: Software / Patch Manager !=  Actual header: Getting Started in CMS
+2017-02-19 19:10:28,841  ERROR  TEST FAILED: Expected header: Software / Patch Manager !=  Actual header: Getting Started in CMS
 2017-02-19 19:10:30,994  INFO   [Test end]
 
 2017-02-19 19:10:30,996  INFO   [Test start]
 2017-02-19 19:10:30,996  INFO   TC#0000: Check help link on Subscription popup
 2017-02-19 19:10:42,831  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 19:10:47,529  INFO   Expected header: Subscriptions == Actual header: Subscriptions
-2017-02-19 19:10:47,529  INFO   TEST PASSED!!!
+2017-02-19 19:10:47,529  INFO   TEST PASSED
 2017-02-19 19:10:57,463  INFO   [Test end]
 
 2017-02-19 19:10:57,463  INFO   [Test start]
 2017-02-19 19:10:57,464  INFO   TC#0000: Check help link on Tasks page
 2017-02-19 19:11:03,673  INFO   Left menu 'Tasks' is opened
 2017-02-19 19:11:10,724  INFO   Help window is opened. Title is: ConsoleOperationGuide
-2017-02-19 19:11:17,549  ERROR  Test failed: Expected header: Tasks !=  Actual header: Getting Started in CMS
+2017-02-19 19:11:17,549  ERROR  TEST FAILED: Expected header: Tasks !=  Actual header: Getting Started in CMS
 2017-02-19 19:11:19,696  INFO   [Test end]
 
 2017-02-19 19:11:19,696  INFO   [Test start]
 2017-02-19 19:11:19,696  INFO   TC#0000: Check help link on Unmanaged Devices page
 2017-02-19 19:11:26,433  INFO   Left menu 'Administration' is opened
 2017-02-19 19:11:36,673  INFO   Help window is opened. Title is: ConsoleOperationGuide
-2017-02-19 19:11:43,677  ERROR  Test failed. Server Error. Error text: 404 - File or directory not found.The resource you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+2017-02-19 19:11:43,677  ERROR  TEST FAILED. Server Error. Error text: 404 - File or directory not found.The resource you are looking for might have been removed, had its name changed, or is temporarily unavailable.
 2017-02-19 19:11:45,871  INFO   [Test end]
 
 2017-02-19 19:11:45,871  INFO   [Test start]
 2017-02-19 19:11:45,871  INFO   TC#0000: Check help link on User Settings popup
 2017-02-19 19:11:52,306  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 19:11:56,884  INFO   Expected header: User Settings == Actual header: User Settings
-2017-02-19 19:11:56,884  INFO   TEST PASSED!!!
+2017-02-19 19:11:56,884  INFO   TEST PASSED
 2017-02-19 19:12:08,898  INFO   [Test end]
 
 2017-02-19 19:12:08,900  INFO   [Test start]
@@ -398,14 +398,14 @@ Message: unknown error: Element <img src="Icons.Metro.About.png.wgx" style="widt
 2017-02-19 19:12:16,964  INFO   Left menu 'Devices' is opened
 2017-02-19 19:12:25,908  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 19:12:30,711  INFO   Expected header: Wake Up == Actual header: Wake Up
-2017-02-19 19:12:30,711  INFO   TEST PASSED!!!
+2017-02-19 19:12:30,711  INFO   TEST PASSED
 2017-02-19 19:12:40,770  INFO   [Test end]
 
 2017-02-19 19:12:40,772  INFO   [Test start]
 2017-02-19 19:12:40,773  INFO   TC#0000: Check help link on Weight Display popup
 2017-02-19 19:12:49,841  INFO   Help window is opened. Title is: ConsoleOperationGuide
 2017-02-19 19:12:54,588  INFO   Expected header: Imperial Metric == Actual header: Imperial Metric
-2017-02-19 19:12:54,588  INFO   TEST PASSED!!!
+2017-02-19 19:12:54,588  INFO   TEST PASSED
 2017-02-19 19:13:06,743  INFO   [Test end]
 
 2017-02-19 19:13:06,743  INFO   [Test start]
