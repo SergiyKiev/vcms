@@ -43,3 +43,41 @@
 2017-03-06 17:55:54,539 [INFO] TC#0000: Check help link on Existing Software Update Detection popup
 2017-03-06 17:56:09,778 [INFO] Help window is opened. Title is: ConsoleOperationGuide
 2017-03-06 17:56:13,645 [ERROR] TEST FAILED: Expected header: Existing Software Update Detection !=  Actual header: Filters
+2017-03-06 17:56:29,128 [INFO] [Test end]
+
+2017-03-06 17:56:29,128 [INFO] [Test start]
+2017-03-06 17:56:31,252 [INFO] TC#0000: Check help link on Filters popup
+2017-03-06 17:57:01,496 [INFO] [Test end]
+
+2017-03-06 17:57:01,496 [INFO] [Test start]
+2017-03-06 17:57:03,881 [INFO] TC#0000: Check help link on Install Commands popup
+2017-03-06 17:57:40,017 [INFO] [Test end]
+
+2017-03-06 17:57:40,017 [INFO] [Test start]
+2017-03-06 17:57:42,207 [INFO] TC#0000: Check help link on Installers popup
+2017-03-06 17:57:49,124 [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-06 17:57:53,026 [ERROR] TEST FAILED: Expected header: Installers !=  Actual header: Advanced Editor
+2017-03-06 17:58:02,190 [INFO] [Test end]
+
+2017-03-06 17:58:02,190 [INFO] [Test start]
+2017-03-06 17:58:02,285 [INFO] TC#0000: Check help link on Manage Install Media screen
+2017-03-06 17:58:07,819 [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-06 17:58:10,645 [INFO] Expected header: Media Manager == Actual header: Media Manager
+2017-03-06 17:58:10,645 [INFO] TEST PASSED
+2017-03-06 17:58:11,698 [INFO] [Test end]
+
+2017-03-06 17:58:11,698 [INFO] [Test start]
+2017-03-06 17:58:11,776 [INFO] TC#0000: Check help link on Patch Manager screen
+2017-03-06 17:58:17,706 [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-06 17:58:20,549 [INFO] Expected header: Patch Manager == Actual header: Patch Manager
+2017-03-06 17:58:20,549 [INFO] TEST PASSED
+2017-03-06 17:58:21,664 [INFO] [Test end]
+
+2017-03-06 17:58:21,664 [INFO] [Test start]
+2017-03-06 17:58:23,786 [INFO] TC#0000: Check help link on Pre-Requisites popup
+2017-03-06 17:58:37,928 [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-06 17:58:40,697 [INFO] Expected header: Pre-requisites == Actual header: Pre-requisites
+2017-03-06 17:58:40,697 [INFO] TEST PASSED
+2017-03-06 17:58:53,278 [INFO] [Test end]
+
+2017-03-06 17:58:53,278 [INFO] [Test start]

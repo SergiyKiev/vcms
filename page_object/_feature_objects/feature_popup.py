@@ -7,8 +7,7 @@ class BasePopup(BaseActions):
 
     def _set_popup(self, name):
         locator = "//span[text()='" + str(name) + "'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
-        cond = self._wait_for_element_present(locator)
-        return str(locator) if cond else None
+        return str(locator)
 
     def _set_popup_header(self, set_popup_method):
         locator = str(set_popup_method) + "/div[@class='Panel-Control']"
@@ -2592,7 +2591,8 @@ class FiltersPopup(BasePopup):
 
     def popup_body(self):
         locator = self._set_popup(self.FILTERS)
-        return str(locator)
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else False
 
     def check_popup_is_present(self):
         cond = self.popup_body()
@@ -2722,7 +2722,8 @@ class InstallCommandsPopup(BasePopup):
 
     def popup_body(self):
         locator = self._set_popup(self.INSTALL_COMMANDS)
-        return str(locator)
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else False
 
     def check_popup_is_present(self):
         cond = self.popup_body()
