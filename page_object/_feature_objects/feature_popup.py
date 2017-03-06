@@ -7,11 +7,23 @@ class BasePopup(BaseActions):
 
     def _set_popup(self, name):
         locator = "//span[text()='" + str(name) + "'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
-        return str(locator)
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else None
 
-    def _set_popup_header(self, screen_xpath):
-        locator = str(screen_xpath) + "/div"
-        return str(locator)
+    def _set_popup_header(self, set_popup_method):
+        locator = str(set_popup_method) + "/div[@class='Panel-Control']"
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else None
+
+    def _set_popup_table_header(self, set_screen_method): #INPUT SCREEN METHOD FOR CURRENT SCREEN
+        locator = str(set_screen_method) + BaseElements.TABLE_HEADER
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else None
+
+    def _set_popup_table_body(self, set_screen_method):
+        locator = str(set_screen_method) + BaseElements.TABLE_BODY
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else None
 
 
 class AdminAccountsPopup(BaseActions):
@@ -2187,8 +2199,7 @@ class InventoryForceUpdatePopup(BasePopup):
 
     def popup_body(self):
         locator = self._set_popup(self.INVENTORY_FORCE_UPDATE)
-        cond = self._wait_for_element_present(locator)
-        return str(locator) if cond else None
+        return str(locator)
 
     def check_popup_is_present(self):
         cond = self.popup_body()
@@ -2217,8 +2228,7 @@ class CreatePatchGroupPopup(BasePopup):
 
     def popup_body(self):
         locator = self._set_popup(self.CREATE_PATCH_GROUP)
-        cond = self._wait_for_element_present(locator)
-        return str(locator) if cond else None
+        return str(locator)
 
     def check_popup_is_present(self):
         cond = self.popup_body()
@@ -2249,8 +2259,7 @@ class SelectPatchesPopup(BasePopup):
 
     def popup_body(self):
         locator = self._set_popup(self.SELECT_PATCHES)
-        cond = self._wait_for_element_present(locator)
-        return str(locator) if cond else None
+        return str(locator)
 
     def check_popup_is_present(self):
         cond = self.popup_body()
@@ -2347,15 +2356,14 @@ class InstallersPopup(BasePopup):
 
     def popup_body(self):
         locator = self._set_popup(self.INSTALLERS)
-        cond = self._wait_for_element_present(locator)
-        return str(locator) if cond else None
+        return str(locator)
 
     def check_popup_is_present(self):
         cond = self.popup_body()
         msg_true = "Popup '" + self.INSTALLERS + "' is present"
         msg_false = "Popup '" + self.INSTALLERS + "' is NOT present"
         self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
-        return True if cond is not None else False
+        return True if cond else False
 
     def click_icon_help(self):
         self._click_icon_help(self.popup_body())
@@ -2373,18 +2381,442 @@ class InstallersPopup(BasePopup):
 class AdvancedEditorPopup(BasePopup):
 
     ADVANCED_EDITOR = "Advanced Editor"
+    PRE_REQUISITES = "Pre-Requisites"
+    LABEL_PRE_REQUISITES = "/*//span[contains(text(),'Pre-Requisites')][contains(@class,'ListItemLabel')]" + BaseElements.LABEL
+    LABEL_INFORMATION = "/*//span[contains(text(),'Information')][contains(@class,'ListItemLabel')]" + BaseElements.LABEL
+    LABEL_COMPONENTS = "/*//span[contains(text(),'Components')][contains(@class,'ListItemLabel')]" + BaseElements.LABEL
+    TAB_PRE_REQUISITES = "/*//span[contains(text(),'Pre-Requisites')][@dir='LTR']" + BaseElements.TAB
+    TAB_INFORMATION = "/*//span[contains(text(),'Information')][@dir='LTR']" + BaseElements.TAB
+    TAB_COMPONENTS = "/*//span[contains(text(),'Components')][@dir='LTR']" + BaseElements.TAB
 
     def popup_body(self):
         locator = self._set_popup(self.ADVANCED_EDITOR)
-        cond = self._wait_for_element_present(locator)
-        return str(locator) if cond else None
+        return str(locator)
+
+    def click_icon_help(self):
+        self._click_icon_help(self.popup_body())
+
+    def click_button_ok(self):
+        self._click_button_ok(self.popup_body())
+
+    def click_button_cancel(self):
+        self._click_button_cancel(self.popup_body())
+
+    def click_system_button_close(self):
+        self._click_system_button_close(self.popup_body())
+
+    def click_button_add(self):
+        self._click_button_add(self.popup_body())
+
+    def click_button_edit(self):
+        self._click_button_edit(self.popup_body())
+
+    def click_button_delete(self):
+        self._click_button_delete(self.popup_body())
+
+    def click_infromation_label(self):
+        self._click_element(self.LABEL_INFORMATION)
+
+    def click_pre_requisites_label(self):
+        self._click_element(self.LABEL_PRE_REQUISITES)
+
+    def click_components_label(self):
+        self._click_element(self.LABEL_COMPONENTS)
+
+    def click_first_row_in_table(self):
+        table_row = self._set_popup_table_body(self.popup_body()) + "/*//tr[1]"
+        self._click_element(table_row)
+
+    def select_first_row_in_table(self):
+        table_row = self._set_popup_table_body(self.popup_body()) + "/*//tr[1]"
+        cond = self._wait_for_element_present(table_row)
+        if cond:
+            self.click_first_row_in_table()
+            return True
+        else:
+            self.logger.info("NO rows in the tab table")
+            return False
+
+    def select_patch_in_table(self, name):
+        table_row = self._set_popup_table_body(self.popup_body()) + "/*//tr/*//span[text()='" + name + "']/ancestor::tr"
+        self._click_element(table_row)
+        self._wait_for_element_selected(table_row)
 
     def check_popup_is_present(self):
         cond = self.popup_body()
         msg_true = "Popup '" + self.ADVANCED_EDITOR + "' is present"
         msg_false = "Popup '" + self.ADVANCED_EDITOR + "' is NOT present"
         self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
-        return True if cond is not None else False
+        return True if cond else False
+
+    def check_tab_pre_requisites_is_present(self):
+        cond = self._wait_for_element_selected(self.LABEL_PRE_REQUISITES)
+        msg_true = "Tab '" + self.PRE_REQUISITES + "' is present"
+        msg_false = "Tab '" + self.PRE_REQUISITES + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+    def check_tab_information_is_present(self):
+        cond = self._wait_for_element_selected(self.LABEL_INFORMATION)
+        msg_true = "Tab '" + self.PRE_REQUISITES + "' is present"
+        msg_false = "Tab '" + self.PRE_REQUISITES + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+    def check_tab_components_is_present(self):
+        cond = self._wait_for_element_selected(self.LABEL_COMPONENTS)
+        msg_true = "Tab '" + self.PRE_REQUISITES + "' is present"
+        msg_false = "Tab '" + self.PRE_REQUISITES + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+    def check_first_row_is_selected(self):
+        table_row = self._set_popup_table_body(self.popup_body()) + "/*//tr[1]"
+        cond = self._wait_for_element_selected(table_row)
+        return True if cond else False
+
+    def check_patch_is_present(self, name):
+        table_row = self._set_popup_table_body(self.popup_body()) + "/*//tr/*//span[text()='" + name + "']/ancestor::tr"
+        cond = self._wait_for_element_present(table_row)
+        return True if cond else False
+
+    def check_patch_is_selected(self, name):
+        table_row = self._set_popup_table_body(self.popup_body()) + "/*//tr/*//span[text()='" + name + "']/ancestor::tr"
+        cond = self._wait_for_element_selected(table_row)
+        return True if cond else False
+
+
+class SelectInstallMediaPopup(BasePopup):
+
+    SELECT_INSTALL_MEDIA = "Select Install Media"
+
+    def popup_body(self):
+        locator = self._set_popup(self.SELECT_INSTALL_MEDIA)
+        return str(locator)
+
+    def check_popup_is_present(self):
+        cond = self.popup_body()
+        msg_true = "Popup '" + self.SELECT_INSTALL_MEDIA + "' is present"
+        msg_false = "Popup '" + self.SELECT_INSTALL_MEDIA + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+    def click_icon_help(self):
+        self._click_icon_help(self.popup_body())
+
+    def click_button_ok(self):
+        self._click_button_ok(self.popup_body())
+
+    def click_button_cancel(self):
+        self._click_button_cancel(self.popup_body())
+
+    def click_system_button_close(self):
+        self._click_system_button_close(self.popup_body())
+
+
+class SelectPreRequisitesPopup(BasePopup):
+
+    SELECT_PRE_REQUISITES = "Select Pre-Requisites"
+
+    def popup_body(self):
+        locator = self._set_popup(self.SELECT_PRE_REQUISITES)
+        return str(locator)
+
+    def check_popup_is_present(self):
+        cond = self.popup_body()
+        msg_true = "Popup '" + self.SELECT_PRE_REQUISITES + "' is present"
+        msg_false = "Popup '" + self.SELECT_PRE_REQUISITES+ "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+    def click_icon_help(self):
+        self._click_icon_help(self.popup_body())
+
+    def click_button_ok(self):
+        self._click_button_ok(self.popup_body())
+
+    def click_button_cancel(self):
+        self._click_button_cancel(self.popup_body())
+
+    def click_system_button_close(self):
+        self._click_system_button_close(self.popup_body())
+
+
+class ComponentPopup(BasePopup):
+
+    COMPONENT = "Component"
+    BUTTON_EDIT_FILTERS = "/*//span[text()='Edit Filters']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_EDIT_DETECTORS = "/*//span[text()='Edit Detectors']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_EDIT_DEPLOYMENTS = "/*//span[text()='Edit Deployments']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_VIEW_DETAILS = "/*//span[text()='View Details']/ancestor::div[contains(@class,'Button')]"
+
+    def popup_body(self):
+        locator = self._set_popup(self.COMPONENT)
+        return str(locator)
+
+    def check_popup_is_present(self):
+        cond = self.popup_body()
+        msg_true = "Popup '" + self.COMPONENT + "' is present"
+        msg_false = "Popup '" + self.COMPONENT + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+    def click_icon_help(self):
+        self._click_icon_help(self.popup_body())
+
+    def click_button_ok(self):
+        self._click_button_ok(self.popup_body())
+
+    def click_button_cancel(self):
+        self._click_button_cancel(self.popup_body())
+
+    def click_system_button_close(self):
+        self._click_system_button_close(self.popup_body())
+
+    def click_system_button_edit_filters(self):
+        self._click_element(self.popup_body() + self.BUTTON_EDIT_FILTERS)
+
+    def click_system_button_edit_detectors(self):
+        self._click_element(self.popup_body() + self.BUTTON_EDIT_DETECTORS)
+
+    def click_system_button_edit_deployments(self):
+        self._click_element(self.popup_body() + self.BUTTON_EDIT_DEPLOYMENTS)
+
+    def click_system_button_view_details(self):
+        self._click_element(self.popup_body() + self.BUTTON_VIEW_DETAILS)
+
+
+class FiltersPopup(BasePopup):
+
+    FILTERS = "Filters"
+
+    def popup_body(self):
+        locator = self._set_popup(self.FILTERS)
+        return str(locator)
+
+    def check_popup_is_present(self):
+        cond = self.popup_body()
+        msg_true = "Popup '" + self.FILTERS + "' is present"
+        msg_false = "Popup '" + self.FILTERS + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+    def click_icon_help(self):
+        self._click_icon_help(self.popup_body())
+
+    def click_button_ok(self):
+        self._click_button_ok(self.popup_body())
+
+    def click_button_cancel(self):
+        self._click_button_cancel(self.popup_body())
+
+    def click_system_button_close(self):
+        self._click_system_button_close(self.popup_body())
+
+
+class ExistingSoftwareUpdateDetectionPopup(BasePopup):
+
+    EXISTING_SOFTWARE_UPDATE_DETECTION = "Existing Software Update Detection"
+
+    def popup_body(self):
+        locator = self._set_popup(self.EXISTING_SOFTWARE_UPDATE_DETECTION)
+        return str(locator)
+
+    def check_popup_is_present(self):
+        cond = self.popup_body()
+        msg_true = "Popup '" + self.EXISTING_SOFTWARE_UPDATE_DETECTION + "' is present"
+        msg_false = "Popup '" + self.EXISTING_SOFTWARE_UPDATE_DETECTION + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+    def click_icon_help(self):
+        self._click_icon_help(self.popup_body())
+
+    def click_button_ok(self):
+        self._click_button_ok(self.popup_body())
+
+    def click_button_cancel(self):
+        self._click_button_cancel(self.popup_body())
+
+    def click_system_button_close(self):
+        self._click_system_button_close(self.popup_body())
+
+
+class DeploymentsPopup(BasePopup):
+
+    DEPLOYMENTS = "Deployments"
+    INSTALLER_FILES = "Installer Files"
+    INSTALL_COMMANDS = "Install Commands"
+    UNINSTALL_COMMANDS = "Uninstall Commands"
+    BUTTON_EDIT_COMMANDS = "/*//span[text()='Edit Commands']/ancestor::div[contains(@class,'Button')]"
+    LABEL_INSTALLER_FILES = "/*//span[contains(text(),'Installer Files')][contains(@class,'ListItemLabel')]" \
+                            + BaseElements.LABEL
+    LABEL_INSTALL_COMMANDS = "/*//span[contains(text(),'Install Commands')][contains(@class,'ListItemLabel')]" \
+                             + BaseElements.LABEL
+    LABEL_UNINSTALL_COMMANDS = "/*//span[contains(text(),'Uninstall Commands')][contains(@class,'ListItemLabel')]" \
+                               + BaseElements.LABEL
+    TAB_INSTALLER_FILES = "/*//span[contains(text(),'Installer Files')][@dir='LTR']" + BaseElements.TAB
+    TAB_INSTALL_COMMANDS = "/*//span[contains(text(),'Install Commands')][@dir='LTR']" + BaseElements.TAB
+    TAB_UNINSTALL_COMMANDS = "/*//span[contains(text(),'Uninstall Commands')][@dir='LTR']" + BaseElements.TAB
+
+    def popup_body(self):
+        locator = self._set_popup(self.DEPLOYMENTS)
+        return str(locator)
+
+    def check_popup_is_present(self):
+        cond = self.popup_body()
+        msg_true = "Popup '" + self.DEPLOYMENTS + "' is present"
+        msg_false = "Popup '" + self.DEPLOYMENTS + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+    def click_icon_help(self):
+        self._click_icon_help(self.popup_body())
+
+    def click_button_ok(self):
+        self._click_button_ok(self.popup_body())
+
+    def click_button_cancel(self):
+        self._click_button_cancel(self.popup_body())
+
+    def click_system_button_close(self):
+        self._click_system_button_close(self.popup_body())
+
+    def click_button_edit_commands(self):
+        self._click_element(self.popup_body() + self.BUTTON_EDIT_COMMANDS)
+
+    def click_installer_files_label(self):
+        self._click_element(self.LABEL_INSTALLER_FILES)
+
+    def click_install_commands_label(self):
+        self._click_element(self.LABEL_INSTALL_COMMANDS)
+
+    def click_uninstall_commands_label(self):
+        self._click_element(self.LABEL_UNINSTALL_COMMANDS)
+
+    def check_tab_installer_files_is_present(self):
+        cond = self._wait_for_element_selected(self.LABEL_INSTALLER_FILES)
+        msg_true = "Tab '" + self.INSTALLER_FILES + "' is present"
+        msg_false = "Tab '" + self.INSTALLER_FILES + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+    def check_tab_install_commands_is_present(self):
+        cond = self._wait_for_element_selected(self.LABEL_INSTALL_COMMANDS)
+        msg_true = "Tab '" + self.INSTALL_COMMANDS + "' is present"
+        msg_false = "Tab '" + self.INSTALL_COMMANDS + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+    def check_tab_uninstall_commands_is_present(self):
+        cond = self._wait_for_element_selected(self.LABEL_UNINSTALL_COMMANDS)
+        msg_true = "Tab '" + self.UNINSTALL_COMMANDS + "' is present"
+        msg_false = "Tab '" + self.UNINSTALL_COMMANDS + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+
+class InstallCommandsPopup(BasePopup):
+
+    INSTALL_COMMANDS = "Install Commands"
+
+    def popup_body(self):
+        locator = self._set_popup(self.INSTALL_COMMANDS)
+        return str(locator)
+
+    def check_popup_is_present(self):
+        cond = self.popup_body()
+        msg_true = "Popup '" + self.INSTALL_COMMANDS + "' is present"
+        msg_false = "Popup '" + self.INSTALL_COMMANDS + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+    def click_icon_help(self):
+        self._click_icon_help(self.popup_body())
+
+    def click_button_ok(self):
+        self._click_button_ok(self.popup_body())
+
+    def click_button_cancel(self):
+        self._click_button_cancel(self.popup_body())
+
+    def click_system_button_close(self):
+        self._click_system_button_close(self.popup_body())
+
+
+class UninstallCommandsPopup(BasePopup):
+
+    UNINSTALL_COMMANDS = "Uninstall Commands"
+
+    def popup_body(self):
+        locator = self._set_popup(self.UNINSTALL_COMMANDS)
+        return str(locator)
+
+    def check_popup_is_present(self):
+        cond = self.popup_body()
+        msg_true = "Popup '" + self.UNINSTALL_COMMANDS + "' is present"
+        msg_false = "Popup '" + self.UNINSTALL_COMMANDS + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+    def click_icon_help(self):
+        self._click_icon_help(self.popup_body())
+
+    def click_button_ok(self):
+        self._click_button_ok(self.popup_body())
+
+    def click_button_cancel(self):
+        self._click_button_cancel(self.popup_body())
+
+    def click_system_button_close(self):
+        self._click_system_button_close(self.popup_body())
+
+
+class SupersedingPatchesPopup(BasePopup):
+
+    SUPERSEDING_PATCHES = "Superseding Patches"
+
+    def popup_body(self):
+        locator = self._set_popup(self.SUPERSEDING_PATCHES)
+        return str(locator)
+
+    def check_popup_is_present(self):
+        cond = self.popup_body()
+        msg_true = "Popup '" + self.SUPERSEDING_PATCHES + "' is present"
+        msg_false = "Popup '" + self.SUPERSEDING_PATCHES + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+    def click_icon_help(self):
+        self._click_icon_help(self.popup_body())
+
+    def click_button_ok(self):
+        self._click_button_ok(self.popup_body())
+
+    def click_button_cancel(self):
+        self._click_button_cancel(self.popup_body())
+
+    def click_system_button_close(self):
+        self._click_system_button_close(self.popup_body())
+
+    def click_button_edit(self):
+        self._click_button_edit(self.popup_body())
+
+
+class SelectSupersedingPatchesPopup(BasePopup):
+
+    SELECT_SUPERSEDING_PATCHES = "Select Superseding Patches"
+
+    def popup_body(self):
+        locator = self._set_popup(self.SELECT_SUPERSEDING_PATCHES)
+        return str(locator)
+
+    def check_popup_is_present(self):
+        cond = self.popup_body()
+        msg_true = "Popup '" + self.SELECT_SUPERSEDING_PATCHES + "' is present"
+        msg_false = "Popup '" + self.SELECT_SUPERSEDING_PATCHES + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
 
     def click_icon_help(self):
         self._click_icon_help(self.popup_body())

@@ -24,7 +24,7 @@ class LoginPage(BaseActions):
             if cond1:
                 self.logger.error("LOGIN IS FAILED. ERROR MESSAGE: ")
                 self._get_popup_error_messages()
-                self.driver.quit()
+                return Exception
             elif cond2:
                 subscription_has_expired_popup = SubscriptionHasExpiredPopup(self.driver)
                 subscription_has_expired_popup.click_system_button_close()
@@ -32,9 +32,8 @@ class LoginPage(BaseActions):
             self._wait_for_element_present(BaseElements.LEFT_MENU_HOME)
             self._wait_for_element_not_present(BaseElements.LOADING_SCREEN_VISIBLE)
             return MainPage(self.driver)
-        except Exception as e:
-            self.logger.fatal("LOGIN ERROR: ")
-            print e
+        except Exception:
+            self.driver.quit()
 
     def enter_username(self, username = Settings.username):
         self._find_element(LoginPage.FIELD_USERNAME).send_keys(username)
@@ -59,13 +58,12 @@ class LoginPage(BaseActions):
                     self.logger.error(str(error_text) + "\n")
                     self.driver.quit()
             elif cond1 and cond2 and cond3:
-                self.logger.info("Login page is loaded\n")
+                self.logger.info("Login page is present\n")
                 return LoginPage(self.driver)
             else:
                 return False
         except Exception as e:
             self.logger.exception("LOGIN PAGE IS NOT LOADED\n" + str(e))
-            self.driver.quit()
 
 
     def click_icon_help(self):

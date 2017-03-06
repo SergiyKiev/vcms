@@ -19,6 +19,7 @@ class RibbonBar(BaseRibbonBar):
     COLUMN_SETS = "Column Sets"
     USERS = "Users"
     HOME = "Home"
+    UPDATES = "Updates"
     FORCE_UPDATE = "Force Update"
     DISCOVERY_TASK = "Discovery Task"
     DROP_DOWN_LIST = "//div[@class='Menu-PopupWindow']"
@@ -131,6 +132,10 @@ class RibbonBar(BaseRibbonBar):
         self._click_element(RibbonBar.TAB_TOOLS)
         self._wait_for_element_selected(RibbonBar.TAB_TOOLS)
 
+    def click_tab_advanced(self):
+        self._click_element(RibbonBar.TAB_ADVANCED)
+        self._wait_for_element_selected(RibbonBar.TAB_ADVANCED)
+
     def open_tab_home(self):
         self._wait_for_element_present(RibbonBar.TAB_HOME)
         cond = self._is_element_selected(RibbonBar.TAB_HOME)
@@ -160,6 +165,14 @@ class RibbonBar(BaseRibbonBar):
             pass
         else:
             self.click_tab_tools()
+
+    def open_tab_advanced(self):
+        self._wait_for_element_present(RibbonBar.TAB_ADVANCED)
+        cond = self._is_element_selected(RibbonBar.TAB_ADVANCED)
+        if cond:
+            pass
+        else:
+            self.click_tab_advanced()
 
     def check_tab_home_is_present(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_ACTIONS)
@@ -384,6 +397,13 @@ class RibbonBar(BaseRibbonBar):
 
     def click_button_scan(self):
         self._click_element(RibbonBar.BUTTON_SCAN)
+
+    def check_box_updates_is_present(self):
+        cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_UPDATES)
+        msg_true = "Buttons box '" + self.UPDATES + "' is present"
+        msg_false = "Buttons box '" + self.UPDATES + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
 
     def check_maintenance_windows_box_is_present(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_MAINTENANCE_WINDOWS)

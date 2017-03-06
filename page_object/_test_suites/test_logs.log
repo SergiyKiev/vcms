@@ -1,0 +1,45 @@
+2017-03-06 17:53:27,072 [INFO] Start testing
+
+2017-03-06 17:53:27,072 [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
+
+2017-03-06 17:53:38,631 [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
+
+2017-03-06 17:53:39,819 [INFO] Login page is present
+
+2017-03-06 17:53:48,523 [INFO] [Test start]
+2017-03-06 17:53:48,617 [INFO] TC#0000: Check help link on Advanced Editor popup
+2017-03-06 17:54:07,490 [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-06 17:54:11,187 [INFO] Expected header: Advanced Editor == Actual header: Advanced Editor
+2017-03-06 17:54:11,187 [INFO] TEST PASSED
+2017-03-06 17:54:20,615 [INFO] [Test end]
+
+2017-03-06 17:54:20,615 [INFO] [Test start]
+2017-03-06 17:54:22,762 [INFO] TC#0000: Check help link on Applications screen
+2017-03-06 17:54:26,660 [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-06 17:54:30,601 [ERROR] TEST FAILED: Expected header: Applications !=  Actual header: CMS Quick Help Videos
+2017-03-06 17:54:31,697 [INFO] [Test end]
+
+2017-03-06 17:54:31,697 [INFO] [Test start]
+2017-03-06 17:54:31,776 [INFO] TC#0000: Check help link on Component popup
+2017-03-06 17:54:46,362 [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-06 17:54:49,207 [INFO] Expected header: Component == Actual header: Component
+2017-03-06 17:54:49,207 [INFO] TEST PASSED
+2017-03-06 17:55:01,532 [INFO] [Test end]
+
+2017-03-06 17:55:01,532 [INFO] [Test start]
+2017-03-06 17:55:03,619 [INFO] TC#0000: Check help link on Create Application popup
+2017-03-06 17:55:08,217 [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-06 17:55:11,117 [INFO] Expected header: Create == Actual header: Create
+2017-03-06 17:55:11,117 [INFO] TEST PASSED
+2017-03-06 17:55:17,075 [INFO] [Test end]
+
+2017-03-06 17:55:17,075 [INFO] [Test start]
+2017-03-06 17:55:17,167 [INFO] TC#0000: Check help link on Deployments popup
+2017-03-06 17:55:32,904 [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-06 17:55:36,811 [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
+2017-03-06 17:55:52,357 [INFO] [Test end]
+
+2017-03-06 17:55:52,357 [INFO] [Test start]
+2017-03-06 17:55:54,539 [INFO] TC#0000: Check help link on Existing Software Update Detection popup
+2017-03-06 17:56:09,778 [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-06 17:56:13,645 [ERROR] TEST FAILED: Expected header: Existing Software Update Detection !=  Actual header: Filters

@@ -111,11 +111,13 @@ class BaseActions(Base):
             i = 0
             while i < 10:
                 i += 1
+                # self.wait_for_screen_is_unlocked()
                 self._get_popup_error_messages()
                 system_button_close = self._is_element_present(BaseElements.POPUP + BaseElements.SYSTEM_BUTTON_CLOSE)
                 button_close = self._is_element_present(BaseElements.POPUP + BaseElements.BUTTON_CLOSE)
                 if system_button_close:
                     self._click_element(BaseElements.POPUP + BaseElements.SYSTEM_BUTTON_CLOSE)
+                    # time.sleep(1)
                     self.logger.debug("Popup #" + str(i) +  " is closed.")
                 elif button_close:
                     self._click_element(BaseElements.POPUP + BaseElements.BUTTON_CLOSE)
@@ -147,7 +149,7 @@ class BaseActions(Base):
             # self._wait_for_element_present(BaseElements.HELP_FRAME_MAIN)
             # self._wait_for_element_present(BaseElements.HELP_FRAME_TOC)
             self.driver.switch_to_frame(self._find_element(BaseElements.HELP_FRAME_MAIN))
-            time.sleep(1)
+            time.sleep(0.5)
             cond = self._is_element_present(BaseElements.HELP_FRAME_HEADER)
             error = self._is_element_present(BaseElements.HELP_FRAME_HEADER_ERROR)
             if cond:
@@ -159,13 +161,13 @@ class BaseActions(Base):
         except NoSuchElementException:
             massage1 = self._find_element("//*[@id='main-message']/h1").text
             massage2 = self._find_element("//*[@id='main-message']/div[2]").text
-            self.logger.error("HELP LINK IS UNAVAILABLE. Massage: " + massage1 + massage2)
+            return self.logger.error("HELP LINK IS UNAVAILABLE. Massage: " + massage1 + massage2)
         except TimeoutException:
-            self.logger.error("Help window is not opened")
+            return self.logger.error("Help window is not opened")
         except IndexError:
-            self.logger.error("Help window is not found")
+            return self.logger.error("Help window is not found")
         except Exception as e:
-            self.logger.exception("Help window is not found" + str(e))
+            return  self.logger.exception("Help window is not found" + str(e))
 
     def _close_help_window(self):
         handles = self.driver.window_handles

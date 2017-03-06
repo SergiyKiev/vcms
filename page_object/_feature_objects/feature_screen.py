@@ -21,30 +21,36 @@ class BaseScreen(BaseActions):
                                                 # "/*//div[contains(@style,'opacity')]/parent::div/parent::div"
         locator = "//span[contains(text(),'" + str(name) + "')][@dir='LTR'][contains(@style,'White')]" \
                    "/ancestor::div[@class='Label-Control']/parent::div/parent::div/parent::div/parent::div/parent::div"
-        return str(locator)
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else None
 
     def _set_screen_header(self, set_screen_method):
         locator = str(set_screen_method) + "/div[@class='Panel-Control']"
-        return str(locator)
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else None
 
     def _set_screen_table_header(self, set_screen_method): #INPUT SCREEN METHOD FOR CURRENT SCREEN
         locator = str(set_screen_method) + BaseElements.TABLE_HEADER
-        return str(locator)
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else None
 
     def _set_screen_table_body(self, set_screen_method):
         locator = str(set_screen_method) + BaseElements.TABLE_BODY
-        return str(locator)
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else None
 
     def _set_screen_table_row(self, set_screen_table_body_method):
         locator = str(set_screen_table_body_method) + "/*//tr"
-        return str(locator)
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else None
 
     def _set_row_sel(self, set_table_row):
         pass
 
     def _set_screen_search_field(self, set_screen_header):
         locator = str(set_screen_header) + "/*//input[contains(@class,'TextBox-Input')][@type='text']"
-        return str(locator)
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else None
 
     def _type_into_screen_header_search_field(self, set_screen_search_field, text=None):
         self._find_element(set_screen_search_field).send_keys(text)
@@ -1328,7 +1334,6 @@ class AuditLogScreen(BaseScreen):
 class ApplicationsScreen(BaseScreen):
 
     APPLICATIONS = "Applications"
-    TABLE_ROW = "/*//tr"
     SEARCH_FIELD = "/*//input[contains(@class,'TextBox-Input')][@type='text']"
 
     def screen_body(self):
@@ -1360,18 +1365,18 @@ class ApplicationsScreen(BaseScreen):
         # self._find_element(self.screen_body() + ApplicationsScreen.SEARCH_FIELD).send_keys(text)
 
     def check_application_is_present(self, name):
-        row = ApplicationsScreen.TABLE_ROW + "/*//span[text()='" + name + "']/ancestor::tr"
+        row = self.screen_body() + "/*//tr/*//span[text()='" + name + "']/ancestor::tr"
         cond = self._wait_for_element_present(row)
         return True if cond else False
 
     def click_application_in_table(self, name):
-        table_row = AuditLogScreen.TABLE_ROW + "/*//span[text()='" + name + "']/ancestor::tr"
+        table_row = self.screen_body() + "/*//tr/*//span[text()='" + name + "']/ancestor::tr"
         self._click_element(table_row)
         self._wait_for_element_selected(table_row)
 
     def select_application_in_table(self, *name):
         # self._wait_for_element_present(ApplicationsScreen.TABLE_ROW)
-        table_row = AuditLogScreen.TABLE_ROW + "/*//span[text()='" + str(*name) + "']/ancestor::tr"
+        table_row = self.screen_body() + "/*//tr/*//span[text()='" + str(*name) + "']/ancestor::tr"
         self.enter_text_into_search_text_field(*name)
         # self.click_icon_search()
         cond = self._wait_for_element_present(table_row)
@@ -1390,7 +1395,6 @@ class ApplicationsScreen(BaseScreen):
 class PatchMangerScreen(BaseScreen):
 
     PATCH_MANAGER = "Patch Manager"
-    TABLE_ROW = "/*//tr"
     SEARCH_FIELD = "/*//input[contains(@class,'TextBox-Input')][@type='text']"
 
     def screen_body(self):
@@ -1420,21 +1424,39 @@ class PatchMangerScreen(BaseScreen):
     def enter_text_into_search_text_field(self, text = None):
         self._find_element(PatchMangerScreen.SEARCH_FIELD).send_keys(text)
 
+    def click_first_row_in_table(self):
+        table_row = self.screen_body() + "/*//tr[1]"
+        self._click_element(table_row)
+
+    def select_first_row_in_table(self):
+        table_row = self.screen_body() + "/*//tr[1]"
+        cond = self._wait_for_element_present(table_row)
+        if cond:
+            self.click_first_row_in_table()
+            return True
+        else:
+            self.logger.info("NO rows in the " + self.PATCH_MANAGER + " table")
+            return False
+
+    def check_first_row_is_selected(self):
+        table_row = self.screen_body() + "/*//tr[1]"
+        cond = self._wait_for_element_selected(table_row)
+        return True if cond else False
+
     def check_patch_is_present(self, name):
-        row = PatchMangerScreen.TABLE_ROW + "/*//span[text()='" + name + "']/ancestor::tr"
-        cond = self._wait_for_element_present(row)
+        table_row = self.screen_body() + "/*//tr/*//span[text()='" + name + "']/ancestor::tr"
+        cond = self._wait_for_element_present(table_row)
         return True if cond else False
 
     def select_patch_in_table(self, name):
-        row = PatchMangerScreen.TABLE_ROW + "/*//span[text()='" + name + "']/ancestor::tr"
-        self._click_element(row)
-        self._wait_for_element_selected(row)
+        table_row = self.screen_body() + "/*//tr/*//span[text()='" + name + "']/ancestor::tr"
+        self._click_element(table_row)
+        self._wait_for_element_selected(table_row)
 
 
 class ManageInstallMediaScreen(BaseScreen):
 
     MANAGE_INSTALL_MEDIA = "Manage Install Media"
-    TABLE_ROW = "/*//tr"
 
     def screen_body(self):
         screen = self._set_screen(self.MANAGE_INSTALL_MEDIA)
@@ -1461,11 +1483,11 @@ class ManageInstallMediaScreen(BaseScreen):
         self._click_icon_search(self.screen_header())
 
     def check_patch_or_software_is_present(self, name):
-        row = ManageInstallMediaScreen.TABLE_ROW + "/*//span[text()='" + name + "']/ancestor::tr"
-        cond = self._wait_for_element_present(row)
+        table_row = self.screen_body() + "/*//tr/*//span[text()='" + name + "']/ancestor::tr"
+        cond = self._wait_for_element_present(table_row)
         return True if cond else False
 
     def select_patch_or_software_in_table(self, name):
-        row = ManageInstallMediaScreen.TABLE_ROW + "/*//span[text()='" + name + "']/ancestor::tr"
-        self._click_element(row)
-        self._wait_for_element_selected(row)
+        table_row = self.screen_body() + "/*//tr/*//span[text()='" + name + "']/ancestor::tr"
+        self._click_element(table_row)
+        self._wait_for_element_selected(table_row)

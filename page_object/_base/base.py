@@ -45,66 +45,72 @@ class Base(object):
         #                     level=logging.INFO, format='%(asctime)-24s [%(levelname)-3s] %(message)s')  # KIPROV HOME
 
     '''LOGS'''
-    # logging.basicConfig(filename='D:\\python\\vcms\\vcms\\page_object\\_test_suites\\test_logs.log',
-    #                     level=logging.INFO, format='%(asctime)s [%(levelname)-3s] %(message)s') # KIPROV WORK
-    logging.basicConfig(filename='E:\\python\\vcms\\vcms\\page_object\\_test_logs\\test_logs.log',
-                        level=logging.INFO, format='%(asctime)-24s [%(levelname)-3s] %(message)s')  # KIPROV HOME
+    logging.basicConfig(filename='D:\\python\\vcms\\vcms\\page_object\\_test_suites\\test_logs.log',
+                        level=logging.INFO, format='%(asctime)s [%(levelname)-3s] %(message)s') # KIPROV WORK
+    # logging.basicConfig(filename='E:\\python\\vcms\\vcms\\page_object\\_test_logs\\test_logs.log',
+    #                     level=logging.INFO, format='%(asctime)-24s [%(levelname)-3s] %(message)s')  # KIPROV HOME
     logger = logging.getLogger(__name__)
     console = logging.StreamHandler()
     logger.addHandler(console)
 
     '''Wait for action ACTUAL'''
     def wait_for_screen_is_unlocked(self):
-        i = 0
-        imax = self.timeout_loading
-        while i <= imax:
-            i += 1
-            time.sleep(0.3)
-            self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOCKED_SCREEN)))
-            self.wait_loading.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOCKED_SCREEN)))
-            # time.sleep(0.3)
-            # event = self.driver.execute_script("return jQuery.active == 0")
-            # if event:
-            cond = self._is_element_not_present(Base.LOADING_SCREEN_VISIBLE)
-            if cond:
-                break
-            elif i > imax:
-                self.logger.error("Timeout exception for wait for screen is unlocked")
-            else:
-                time.sleep(0.5)
-                print "waiting for screen is unlocked..." + str(i) + " times"
+        try:
+            i = 0
+            imax = self.timeout_loading
+            while i <= imax:
+                i += 1
+                time.sleep(0.25)
+                self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOCKED_SCREEN)))
+                self.wait_loading.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOCKED_SCREEN)))
+                # time.sleep(0.3)
+                # event = self.driver.execute_script("return jQuery.active == 0")
+                # if event:
+                cond = self._is_element_not_present(Base.LOADING_SCREEN_VISIBLE)
+                if cond:
+                    break
+                elif i > imax:
+                    return TimeoutException
+                else:
+                    # time.sleep(0.5)
+                    print "waiting for screen is unlocked..." + str(i) + " times"
+        except TimeoutException:
+            self.logger.exception("Timeout exception for wait for screen is unlocked")
 
     def wait_for_loading_is_finished(self):
-        time.sleep(2)
-        i = 0
-        imax = self.timeout_condition
-        while i <= imax:
-            self.wait_loading.until_not(EC.presence_of_element_located((By.XPATH, Base.ANIMATED_LOADER)))
-            x = self.driver.execute_script("return jQuery.active == 0")
-            if x:
-                break
-            elif i > imax:
-                self.logger.exception("Timeout exception for wait for loading is finished")
-            else:
-                i += 1
-                time.sleep(1)
+        try:
+            time.sleep(1)
+            i = 0
+            imax = self.timeout_condition
+            while i <= imax:
+                self.wait_loading.until_not(EC.presence_of_element_located((By.XPATH, Base.ANIMATED_LOADER)))
+                cond = self.driver.execute_script("return jQuery.active == 0")
+                if cond:
+                    break
+                elif i > imax:
+                    return TimeoutException
+                else:
+                    i += 1
+                    time.sleep(1)
+        except TimeoutException:
+            self.logger.exception("Timeout exception for wait for loading is finished")
 
     def open_page(self):
         try:
             self.driver.maximize_window()
             self.driver.get(Settings.baseUrl)
-            self.logger.info("Instance is: " + str(Settings.baseUrl) + "\n")
+            # self.logger.info("Instance is: " + str(Settings.baseUrl) + "\n")
             self.wait_loading.until(EC.presence_of_element_located((By.XPATH, Base.LOGIN_PAGE_LOGO)))
-            cond = self._find_element(Base.LOGIN_PAGE_LOGO)
+            cond = self._is_element_present(Base.LOGIN_PAGE_LOGO)
             if cond:
-                return True
+                self.logger.info("OPEN. Instance " + str(Settings.baseUrl) + " is loaded\n")
             else:
                 title = self.get_title()
                 self.logger.critical(str(title))
-                self.driver.quit()
         except TimeoutException:
-            self.logger.exception("Page is not loaded: " + str(Settings.baseUrl))
-            return None
+            message1 = self._get_text('//*[@id="main-message"]/h1')
+            message2 = self._get_text('//*[@class="error-code"]')
+            self.logger.exception("Page: " + str(Settings.baseUrl) + " is NOT loaded\n" + message1 + "\n" + message2)
         except Exception as e:
             self.logger.exception("Service error: ", str(e))
 
@@ -139,28 +145,25 @@ class Base(object):
     def _click_element(self, locator):
         try:
             self.wait_for_screen_is_unlocked()
-            # cond = self._is_element_present(Base.LOADING_ANIMATION_VISIBLE)
-            # if cond:
-            #     self.wait_for_screen_is_unlocked()
-            #     print "SCREEN IS UNLOCKED..."
             element = self._find_element(locator)
-            element.click()
+            if element is not None:
+                element.click()
             self.logger.debug("CLICK: " + str(locator))
             # print "CLICK: " + str(locator)
-            # self.wait_for_screen_is_unlocked()
+            self.wait_for_screen_is_unlocked()
         except WebDriverException as e:
             if 'Other element would receive the click' in e.msg:
                 print "SCREEN IS LOCKED..."
-                time.sleep(0.5)
+                time.sleep(1)
                 self.wait_for_screen_is_unlocked()
                 element = self._find_element(locator)
                 element.click()
-                # self.wait_for_screen_is_unlocked()
-                # self.driver.execute_script('$("{sel}").click()'.format(sel=locator))
+                self.wait_for_screen_is_unlocked()
             else:
-                self.logger.exception("CLICK: Element is NOT CLICKABLE.\n")
-                print e.message
-                raise
+                return Exception
+        except Exception as e:
+            self.logger.exception("CLICK: Element is NOT CLICKABLE.\n")
+            print e.message
             # i = 0
             # imax = 20
             # while i <= imax:
@@ -180,9 +183,6 @@ class Base(object):
             #     else:
             #         self.logger.exception("CLICK: Element is NOT CLICKABLE.\n")
             #         print e.message
-        # except Exception as e:
-        #     self.logger.exception("CLICK: Element is NOT CLICKABLE.\n")
-        #     print e.message
 
     def _hover_and_click_element(self, locator):
         try:
@@ -208,7 +208,7 @@ class Base(object):
             self.logger.debug("WAITING. Element " + locator + " is present.")
             return True
         except (NoSuchElementException, TimeoutException):
-            self.logger.error(
+            self.logger.exception(
                 "WAITING. Element " + locator + " is NOT found after " + str(self.timeout_webelement) + " seconds")
             return False
         # except Exception as e:
@@ -216,8 +216,8 @@ class Base(object):
 
     def _wait_for_elements_present(self, locator):
         try:
-            self.wait_webelement.until(EC.presence_of_all_elements_located((By.XPATH, locator)))
-            self.wait_webelement.until(EC.visibility_of_any_elements_located((By.XPATH, locator)))
+            self.wait_webelement.until(EC.presence_of_all_elements_located((By.XPATH, locator)), "Element is NOT present")
+            self.wait_webelement.until(EC.visibility_of_any_elements_located((By.XPATH, locator)), "Element is NOT visible")
             self.logger.debug("WAITING. Elements " + locator + " are present.")
             return True
         except (NoSuchElementException, TimeoutException):
@@ -317,13 +317,13 @@ class Base(object):
             self.wait_condition.until(EC.visibility_of_element_located((By.XPATH, locator)))
             self.logger.debug("CHECK. Element " + locator + " is present.")
             return True
-        except NoSuchElementException:
-            self.logger.exception("CHECK. Element " + locator + " is NOT found.")
-            return None
-        except TimeoutException:
-            self.logger.debug(
-                "CHECK. Element " + locator + "' is NOT present after " + str(self.timeout_condition) + " seconds")
+        except (NoSuchElementException, TimeoutException):
+            self.logger.debug("CHECK. Element " + locator + " is NOT found.")
             return False
+        # except TimeoutException:
+        #     self.logger.debug(
+        #         "CHECK. Element " + locator + "' is NOT present after " + str(self.timeout_condition) + " seconds")
+        #     return False
 
     def _is_element_not_present(self, locator):
         try:
@@ -331,13 +331,13 @@ class Base(object):
             self.wait_condition.until_not(EC.visibility_of_element_located((By.XPATH, locator)))
             self.logger.debug("CHECK. Element " + locator + "' is NOT present.")
             return True
-        except NoSuchElementException:
-            self.logger.exception("CHECK. Element " + locator + " is NOT found.")
-            return None
-        except TimeoutException:
-            self.logger.debug(
-                "CHECK. Element " + locator + " is present after " + str(self.timeout_condition) + " seconds")
-            return False
+        except (NoSuchElementException, TimeoutException):
+            self.logger.debug("CHECK. Element " + locator + " is NOT found.")
+            return True
+        # except TimeoutException:
+        #     self.logger.exception(
+        #         "CHECK. Element " + locator + " is present after " + str(self.timeout_condition) + " seconds")
+        #     return False
 
     def _is_element_selected(self, locator):
         try:

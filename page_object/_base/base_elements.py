@@ -57,6 +57,8 @@ class BaseElements(Base):
     DROP_DOWN_WINDOW = "//div[@class='ComboBox-PopupWindow']"
     TAB_PANEL = "//div[contains(@id,'VWGTCHD_')]"
     TREE_VIEW = "/*//div[@class='Common-Unselectable TreeView-Container']"
+    LABEL = "/ancestor::div[contains(@class,'ListItem')]"
+    TAB = "/ancestor::div[contains(@class,'TabControl')]"
 
     #HELP WINDOW
     HELP_WINDOW_BODY = "//title[text()='ConsoleOperationGuide']"
