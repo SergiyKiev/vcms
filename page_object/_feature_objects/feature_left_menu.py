@@ -416,10 +416,11 @@ class LeftMenuDevices(BaseLeftMenu):
         self.check_site_is_in_global_site_view_tree(sitename)
 
     def create_site_if_not_exists(self, sitename):
+        self.expand_global_site_view_tree()
         self.scroll_to_element(LeftMenuDevices.LIST_GLOBAL_SITE_VIEW)
-        cond = self._is_element_not_present(
-            LeftMenuDevices.LIST_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
-        if cond:
+        element = LeftMenuDevices.LIST_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']"
+        cond = self._wait_for_element_present(element)
+        if cond is not True:
             ribbon_bar = RibbonBar(self.driver)
             site_name_popup = SiteNamePopup(self.driver)
             left_menu_devices = LeftMenuDevices(self.driver)
@@ -427,6 +428,8 @@ class LeftMenuDevices(BaseLeftMenu):
             ribbon_bar.click_button_new_site()
             site_name_popup.enter_text_into_name_text_field(sitename)
             site_name_popup.click_button_ok()
+        site = self.check_site_is_in_global_site_view_tree(sitename)
+        return True if site else False
 
     def create_new_subsite(self, sitename, subsitename):
         self.click_site_in_global_site_view_tree(sitename)
@@ -442,8 +445,8 @@ class LeftMenuDevices(BaseLeftMenu):
         self.click_site_in_global_site_view_tree(sitename)
         self._expand_tree(site)
         self.scroll_to_element(site)
-        cond = self._is_element_not_present(element)
-        if cond:
+        cond = self._wait_for_element_present(element)
+        if cond is not True:
             self.create_new_subsite(sitename, subsitename)
             print "SUBSITE WAS CREATED"
         else:
@@ -482,8 +485,8 @@ class LeftMenuDevices(BaseLeftMenu):
         self.expand_groups_tree()
         self.scroll_to_element(LeftMenuDevices.LIST_GROUPS)
         element = LeftMenuDevices.LIST_GROUPS + "/*//span[text()='" + name + "']"
-        cond = self._is_element_not_present(element)
-        if cond:
+        cond = self._wait_for_element_present(element)
+        if cond is not True:
             ribbon_bar = RibbonBar(self.driver)
             new_folder_popup = NewFolderPopup(self.driver)
             left_menu_devices = LeftMenuDevices(self.driver)

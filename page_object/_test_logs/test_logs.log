@@ -1,0 +1,108 @@
+2017-03-07 07:44:59,117  [INFO ] Start testing
+
+2017-03-07 07:44:59,118  [INFO ] TEST SUITE: HELP LINKS ON MAIN PAGE
+
+2017-03-07 07:45:12,056  [INFO ] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
+
+2017-03-07 07:45:13,506  [INFO ] Login page is present
+
+2017-03-07 07:45:19,757  [INFO ] [Test start]
+2017-03-07 07:45:20,095  [INFO ] TC#0000: Check help link on Admin Accounts popup
+2017-03-07 07:45:26,838  [INFO ] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-07 07:45:30,375  [INFO ] Expected header: Accounts == Actual header: Accounts
+2017-03-07 07:45:30,377  [INFO ] TEST PASSED
+2017-03-07 07:45:36,111  [INFO ] [Test end]
+
+2017-03-07 07:45:36,112  [INFO ] [Test start]
+2017-03-07 07:45:36,257  [INFO ] TC#0000: Check help link on Administration screen
+2017-03-07 07:45:40,118  [INFO ] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-07 07:45:44,130  [ERROR] TEST FAILED: Expected header: Administration !=  Actual header: Getting Started in CMS
+2017-03-07 07:45:45,233  [INFO ] [Test end]
+
+2017-03-07 07:45:45,233  [INFO ] [Test start]
+2017-03-07 07:45:45,336  [INFO ] TC#0000: Check help link on Audit Log screen
+2017-03-07 07:45:50,982  [INFO ] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-07 07:45:55,052  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
+2017-03-07 07:45:56,157  [INFO ] [Test end]
+
+2017-03-07 07:45:56,157  [INFO ] [Test start]
+2017-03-07 07:45:56,276  [INFO ] TC#0000: Check help link on Column Set Designer popup (Administration)
+2017-03-07 07:46:01,184  [INFO ] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-07 07:46:04,253  [INFO ] Expected header: Create == Actual header: Create
+2017-03-07 07:46:04,255  [INFO ] TEST PASSED
+2017-03-07 07:46:09,927  [INFO ] [Test end]
+
+2017-03-07 07:46:09,927  [INFO ] [Test start]
+2017-03-07 07:46:10,059  [INFO ] TC#0000: Check help link on Column Sets screen
+2017-03-07 07:46:12,365  [INFO ] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-07 07:46:15,407  [INFO ] Expected header: Column Sets == Actual header: Column Sets
+2017-03-07 07:46:15,408  [INFO ] TEST PASSED
+2017-03-07 07:46:16,499  [INFO ] [Test end]
+
+2017-03-07 07:46:16,499  [INFO ] [Test start]
+2017-03-07 07:46:16,588  [INFO ] TC#0000: Check help link on Configure Exclusions popup
+2017-03-07 07:46:20,408  [INFO ] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-07 07:46:23,519  [INFO ] Expected header: Exclusions == Actual header: Exclusions
+2017-03-07 07:46:23,520  [INFO ] TEST PASSED
+2017-03-07 07:46:28,240  [INFO ] [Test end]
+
+2017-03-07 07:46:28,243  [INFO ] [Test start]
+2017-03-07 07:46:28,456  [INFO ] TC#0000: Check help link on Discover Devices popup (Administration)
+2017-03-07 07:46:31,483  [INFO ] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-07 07:46:34,513  [INFO ] Expected header: Discovery == Actual header: Discovery
+2017-03-07 07:46:34,513  [INFO ] TEST PASSED
+2017-03-07 07:46:40,138  [INFO ] [Test end]
+
+2017-03-07 07:46:40,138  [INFO ] [Test start]
+2017-03-07 07:46:40,262  [INFO ] TC#0000: Check help link on Dynamically Managed screen
+2017-03-07 07:46:43,944  [INFO ] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-07 07:46:48,032  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
+2017-03-07 07:46:49,137  [INFO ] [Test end]
+
+2017-03-07 07:46:49,137  [INFO ] [Test start]
+2017-03-07 07:46:49,242  [INFO ] TC#0000: Check help link on Edit User popup (Administration)
+2017-03-07 07:46:54,181  [INFO ] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-07 07:46:57,154  [INFO ] Expected header: Create == Actual header: Create
+2017-03-07 07:46:57,154  [INFO ] TEST PASSED
+2017-03-07 07:47:02,948  [INFO ] [Test end]
+
+2017-03-07 07:47:02,950  [INFO ] [Test start]
+2017-03-07 07:47:03,131  [INFO ] TC#0000: Check help link on Endpoint Management screen
+2017-03-07 07:47:06,161  [INFO ] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-07 07:47:09,247  [INFO ] Expected header: Endpoint Management == Actual header: Endpoint Management
+2017-03-07 07:47:09,247  [INFO ] TEST PASSED
+2017-03-07 07:47:10,371  [INFO ] [Test end]
+
+2017-03-07 07:47:10,371  [INFO ] [Test start]
+2017-03-07 07:47:10,480  [INFO ] TC#0000: Check help link on Exclude Device popup
+2017-03-07 07:47:15,499  [INFO ] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-07 07:47:19,446  [ERROR] TEST FAILED: Expected header: Exclude Device !=  Actual header: Computer Name
+2017-03-07 07:47:26,427  [INFO ] [Test end]
+
+2017-03-07 07:47:26,427  [INFO ] [Test start]
+2017-03-07 07:47:26,573  [INFO ] TC#0000: Check help link on Exclude IP Address popup
+2017-03-07 07:47:31,446  [INFO ] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-07 07:47:35,539  [ERROR] TEST FAILED: Expected header: Exclude IP Address !=  Actual header: IP Address
+2017-03-07 07:47:42,653  [INFO ] [Test end]
+
+2017-03-07 07:47:42,653  [INFO ] [Test start]
+2017-03-07 07:47:42,802  [INFO ] TC#0000: Check help link on Exclude Site popup
+2017-03-07 07:47:47,762  [INFO ] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-07 07:47:51,841  [ERROR] TEST FAILED: Expected header: Exclude Site !=  Actual header: Sites
+2017-03-07 07:47:58,790  [INFO ] [Test end]
+
+2017-03-07 07:47:58,790  [INFO ] [Test start]
+2017-03-07 07:47:58,933  [INFO ] TC#0000: Check help link on Excluded Devices screen
+2017-03-07 07:48:03,016  [INFO ] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-07 07:48:07,154  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
+2017-03-07 07:48:08,243  [INFO ] [Test end]
+
+2017-03-07 07:48:08,243  [INFO ] [Test start]
+2017-03-07 07:48:08,345  [INFO ] TC#0000: Check help link on Infrastructure screen
+2017-03-07 07:48:12,365  [INFO ] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-07 07:48:16,492  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
+2017-03-07 07:48:17,601  [INFO ] [Test end]
+
+2017-03-07 07:48:17,601  [INFO ] [Test start]
+2017-03-07 07:48:17,703  [INFO ] TC#0000: Check help link on Inventory Configuration popup
+2017-03-07 07:48:23,125  [INFO ] Help window is opened. Title is: ConsoleOperationGuide

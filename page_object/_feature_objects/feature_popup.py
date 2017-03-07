@@ -6,7 +6,9 @@ from _base.base_elements import BaseElements
 class BasePopup(BaseActions):
 
     def _set_popup(self, name):
-        locator = "//span[text()='" + str(name) + "'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
+        locator = "//span[text()='" + str(name) + "']" \
+                                    "[@dir='LTR'][contains(@style,'White')]/ancestor::div[contains(@id,'WRP')][last()]"
+        # locator = "//span[text()='" + str(name) + "'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]"
         return str(locator)
 
     def _set_popup_header(self, set_popup_method):
@@ -23,6 +25,7 @@ class BasePopup(BaseActions):
         locator = str(set_screen_method) + BaseElements.TABLE_BODY
         cond = self._wait_for_element_present(locator)
         return str(locator) if cond else None
+
 
 
 class AdminAccountsPopup(BaseActions):
@@ -2198,7 +2201,8 @@ class InventoryForceUpdatePopup(BasePopup):
 
     def popup_body(self):
         locator = self._set_popup(self.INVENTORY_FORCE_UPDATE)
-        return str(locator)
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else False
 
     def check_popup_is_present(self):
         cond = self.popup_body()
@@ -2227,7 +2231,8 @@ class CreatePatchGroupPopup(BasePopup):
 
     def popup_body(self):
         locator = self._set_popup(self.CREATE_PATCH_GROUP)
-        return str(locator)
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else False
 
     def check_popup_is_present(self):
         cond = self.popup_body()
@@ -2258,7 +2263,8 @@ class SelectPatchesPopup(BasePopup):
 
     def popup_body(self):
         locator = self._set_popup(self.SELECT_PATCHES)
-        return str(locator)
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else False
 
     def check_popup_is_present(self):
         cond = self.popup_body()
@@ -2280,8 +2286,9 @@ class SelectPatchesPopup(BasePopup):
         self._click_system_button_close(self.popup_body())
 
 
-class CreateApplicationWizardPopup(BasePopup):
+class CreateApplicationPopup(BasePopup):
 
+    CREATE_APPLICATION = "Create Application"
     SELECT_FILE = "SELECT FILE"
     IMPORT_INFORMATION = "IMPORT INFORMATION"
     ADVANCED = "ADVANCED"
@@ -2293,8 +2300,9 @@ class CreateApplicationWizardPopup(BasePopup):
     LABEL_ADVANCED = "/*//span[text()='ADVANCED']"
 
     def popup_body(self):
-        locator = self._set_popup(self.SELECT_FILE)
-        return str(locator)
+        locator = BaseElements.POPUP
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else None
 
     def click_icon_help(self):
         self._click_icon_help(self.popup_body())
@@ -2322,8 +2330,10 @@ class CreateApplicationWizardPopup(BasePopup):
 
     def check_popup_is_present(self):
         cond = self._wait_for_element_present(self.popup_body())
-        msg_true = "Popup '" + self.SELECT_FILE + "' is present"
-        msg_false = "Popup '" + self.SELECT_FILE + "' is NOT present"
+        self.logger.critical(
+            "Popup HAS NO title name. Add titile '" + self.CREATE_APPLICATION + "'!!!")
+        msg_true = "Popup '" + self.CREATE_APPLICATION + "' is present"
+        msg_false = "Popup '" + self.CREATE_APPLICATION + "' is NOT present"
         self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
@@ -2355,7 +2365,8 @@ class InstallersPopup(BasePopup):
 
     def popup_body(self):
         locator = self._set_popup(self.INSTALLERS)
-        return str(locator)
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else False
 
     def check_popup_is_present(self):
         cond = self.popup_body()
@@ -2390,7 +2401,8 @@ class AdvancedEditorPopup(BasePopup):
 
     def popup_body(self):
         locator = self._set_popup(self.ADVANCED_EDITOR)
-        return str(locator)
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else False
 
     def click_icon_help(self):
         self._click_icon_help(self.popup_body())
@@ -2491,7 +2503,8 @@ class SelectInstallMediaPopup(BasePopup):
 
     def popup_body(self):
         locator = self._set_popup(self.SELECT_INSTALL_MEDIA)
-        return str(locator)
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else False
 
     def check_popup_is_present(self):
         cond = self.popup_body()
@@ -2519,7 +2532,8 @@ class SelectPreRequisitesPopup(BasePopup):
 
     def popup_body(self):
         locator = self._set_popup(self.SELECT_PRE_REQUISITES)
-        return str(locator)
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else False
 
     def check_popup_is_present(self):
         cond = self.popup_body()
@@ -2551,7 +2565,8 @@ class ComponentPopup(BasePopup):
 
     def popup_body(self):
         locator = self._set_popup(self.COMPONENT)
-        return str(locator)
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else False
 
     def check_popup_is_present(self):
         cond = self.popup_body()
@@ -2620,7 +2635,8 @@ class ExistingSoftwareUpdateDetectionPopup(BasePopup):
 
     def popup_body(self):
         locator = self._set_popup(self.EXISTING_SOFTWARE_UPDATE_DETECTION)
-        return str(locator)
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else False
 
     def check_popup_is_present(self):
         cond = self.popup_body()
@@ -2661,7 +2677,8 @@ class DeploymentsPopup(BasePopup):
 
     def popup_body(self):
         locator = self._set_popup(self.DEPLOYMENTS)
-        return str(locator)
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else False
 
     def check_popup_is_present(self):
         cond = self.popup_body()
@@ -2751,7 +2768,8 @@ class UninstallCommandsPopup(BasePopup):
 
     def popup_body(self):
         locator = self._set_popup(self.UNINSTALL_COMMANDS)
-        return str(locator)
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else False
 
     def check_popup_is_present(self):
         cond = self.popup_body()
@@ -2779,7 +2797,8 @@ class SupersedingPatchesPopup(BasePopup):
 
     def popup_body(self):
         locator = self._set_popup(self.SUPERSEDING_PATCHES)
-        return str(locator)
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else False
 
     def check_popup_is_present(self):
         cond = self.popup_body()
@@ -2810,7 +2829,8 @@ class SelectSupersedingPatchesPopup(BasePopup):
 
     def popup_body(self):
         locator = self._set_popup(self.SELECT_SUPERSEDING_PATCHES)
-        return str(locator)
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else False
 
     def check_popup_is_present(self):
         cond = self.popup_body()

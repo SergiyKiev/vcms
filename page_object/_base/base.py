@@ -45,10 +45,10 @@ class Base(object):
         #                     level=logging.INFO, format='%(asctime)-24s [%(levelname)-3s] %(message)s')  # KIPROV HOME
 
     '''LOGS'''
-    logging.basicConfig(filename='D:\\python\\vcms\\vcms\\page_object\\_test_suites\\test_logs.log',
-                        level=logging.INFO, format='%(asctime)s [%(levelname)-3s] %(message)s') # KIPROV WORK
-    # logging.basicConfig(filename='E:\\python\\vcms\\vcms\\page_object\\_test_logs\\test_logs.log',
+    # logging.basicConfig(filename='D:\\python\\vcms\\vcms\\page_object\\_test_logs\\test_logs.log',
     #                     level=logging.INFO, format='%(asctime)-24s [%(levelname)-3s] %(message)s')  # KIPROV HOME
+    logging.basicConfig(filename='E:\\python\\vcms\\vcms\\page_object\\_test_logs\\test_logs.log',
+                        level=logging.INFO, format='%(asctime)-24s [%(levelname)-5s] %(message)s')  # KIPROV HOME
     logger = logging.getLogger(__name__)
     console = logging.StreamHandler()
     logger.addHandler(console)
@@ -60,20 +60,20 @@ class Base(object):
             imax = self.timeout_loading
             while i <= imax:
                 i += 1
-                time.sleep(0.25)
                 self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOCKED_SCREEN)))
                 self.wait_loading.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOCKED_SCREEN)))
-                # time.sleep(0.3)
-                # event = self.driver.execute_script("return jQuery.active == 0")
-                # if event:
-                cond = self._is_element_not_present(Base.LOADING_SCREEN_VISIBLE)
-                if cond:
+                event = self.driver.execute_script("return jQuery.active == 0")
+                if event:
                     break
+                # cond = self._is_element_not_present(Base.LOADING_SCREEN_VISIBLE)
+                # if cond:
+                #     break
                 elif i > imax:
                     return TimeoutException
                 else:
-                    # time.sleep(0.5)
-                    print "waiting for screen is unlocked..." + str(i) + " times"
+                    time.sleep(0.5)
+                    print "screen is locked..." + str(i) + " sec"
+            return True
         except TimeoutException:
             self.logger.exception("Timeout exception for wait for screen is unlocked")
 
@@ -95,12 +95,71 @@ class Base(object):
         except TimeoutException:
             self.logger.exception("Timeout exception for wait for loading is finished")
 
+    def _click_element(self, locator):
+        try:
+            self.wait_for_screen_is_unlocked()
+            self._find_element(locator).click()
+            # self.wait_for_screen_is_unlocked()
+            # self.logger.debug("CLICK: " + str(locator))
+            # print "CLICK: " + str(locator)
+        except WebDriverException as e:
+            if 'Other element would receive the click' in e.msg:
+                print "CLICK ON LOCKED SCREEN..."
+                cond = self._is_element_present(Base.LOADING_SCREEN_VISIBLE)
+                if cond:
+                    time.sleep(1)
+                    self.wait_for_screen_is_unlocked()
+                    self._find_element(locator).click()
+                    print "CLICK SECOND TIME IS SUCCESSFUL"
+                    # self.wait_for_screen_is_unlocked()
+                else:
+                    self.logger.exception("INCORRECT XPATH. VERIFY LOCATOR: " + str(locator) + "\n")
+                    return False
+            else:
+                self.logger.exception("CLICK: Element is NOT CLICKABLE.\n")
+                raise
+            # i = 0
+            # while i <= self.timeout_webelement:
+            #     i += 1
+            #     message = "is not clickable at point" in e.msg
+            #     # message = 'Other element would receive the click' in e.msg
+            #     if message:
+            #         print "SCREEN IS LOCKED..." + str(i)
+            #         # time.sleep(0.5)
+            #         # self.wait_for_screen_is_unlocked()
+            #         self._find_element(locator).click()
+            #         self.wait_for_screen_is_unlocked()
+            #     elif i > self.timeout_webelement:
+            #         return Exception
+            #     else:
+            #         break
+            # i = 0
+            # imax = 20
+            # while i <= imax:
+            #     i += 1
+            #     if i > imax:
+            #         self.logger.exception(
+            #             "CLICK: Element " + locator + " is NOT CLICKABLE after " + str(i) + " attempts.\n")
+            #     elif 'Other element would receive the click' in e.msg:
+            #         print "SCREEN IS LOCKED..." + str(i)
+            #         self.wait_for_screen_is_unlocked()
+            #         element = self._find_element(locator)
+            #         element.click()
+            #     # elif 'Element is not clickable at point' in e.msg:
+            #     #     print "SCREEN IS LOCKED...."
+            #     #     self.wait_for_screen_is_unlocked()
+            #     #     self.driver.execute_script('$("{sel}").click()'.format(sel=locator))
+            #     else:
+            #         self.logger.exception("CLICK: Element is NOT CLICKABLE.\n")
+            #         print e.message
+
     def open_page(self):
         try:
             self.driver.maximize_window()
             self.driver.get(Settings.baseUrl)
             # self.logger.info("Instance is: " + str(Settings.baseUrl) + "\n")
             self.wait_loading.until(EC.presence_of_element_located((By.XPATH, Base.LOGIN_PAGE_LOGO)))
+            self.wait_for_screen_is_unlocked()
             cond = self._is_element_present(Base.LOGIN_PAGE_LOGO)
             if cond:
                 self.logger.info("OPEN. Instance " + str(Settings.baseUrl) + " is loaded\n")
@@ -141,48 +200,6 @@ class Base(object):
             return None
         except Exception as e:
             self.logger.exception("FIND ELEMENT. The element " + locator + " is NOT found\n. Message: " + str(e))
-
-    def _click_element(self, locator):
-        try:
-            self.wait_for_screen_is_unlocked()
-            element = self._find_element(locator)
-            if element is not None:
-                element.click()
-            self.logger.debug("CLICK: " + str(locator))
-            # print "CLICK: " + str(locator)
-            self.wait_for_screen_is_unlocked()
-        except WebDriverException as e:
-            if 'Other element would receive the click' in e.msg:
-                print "SCREEN IS LOCKED..."
-                time.sleep(1)
-                self.wait_for_screen_is_unlocked()
-                element = self._find_element(locator)
-                element.click()
-                self.wait_for_screen_is_unlocked()
-            else:
-                return Exception
-        except Exception as e:
-            self.logger.exception("CLICK: Element is NOT CLICKABLE.\n")
-            print e.message
-            # i = 0
-            # imax = 20
-            # while i <= imax:
-            #     i += 1
-            #     if i > imax:
-            #         self.logger.exception(
-            #             "CLICK: Element " + locator + " is NOT CLICKABLE after " + str(i) + " attempts.\n")
-            #     elif 'Other element would receive the click' in e.msg:
-            #         print "SCREEN IS LOCKED..." + str(i)
-            #         self.wait_for_screen_is_unlocked()
-            #         element = self._find_element(locator)
-            #         element.click()
-            #     # elif 'Element is not clickable at point' in e.msg:
-            #     #     print "SCREEN IS LOCKED...."
-            #     #     self.wait_for_screen_is_unlocked()
-            #     #     self.driver.execute_script('$("{sel}").click()'.format(sel=locator))
-            #     else:
-            #         self.logger.exception("CLICK: Element is NOT CLICKABLE.\n")
-            #         print e.message
 
     def _hover_and_click_element(self, locator):
         try:

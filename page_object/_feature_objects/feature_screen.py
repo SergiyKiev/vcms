@@ -21,36 +21,30 @@ class BaseScreen(BaseActions):
                                                 # "/*//div[contains(@style,'opacity')]/parent::div/parent::div"
         locator = "//span[contains(text(),'" + str(name) + "')][@dir='LTR'][contains(@style,'White')]" \
                    "/ancestor::div[@class='Label-Control']/parent::div/parent::div/parent::div/parent::div/parent::div"
-        cond = self._wait_for_element_present(locator)
-        return str(locator) if cond else None
+        return str(locator)
 
     def _set_screen_header(self, set_screen_method):
         locator = str(set_screen_method) + "/div[@class='Panel-Control']"
-        cond = self._wait_for_element_present(locator)
-        return str(locator) if cond else None
+        return str(locator)
 
     def _set_screen_table_header(self, set_screen_method): #INPUT SCREEN METHOD FOR CURRENT SCREEN
         locator = str(set_screen_method) + BaseElements.TABLE_HEADER
-        cond = self._wait_for_element_present(locator)
-        return str(locator) if cond else None
+        return str(locator)
 
     def _set_screen_table_body(self, set_screen_method):
         locator = str(set_screen_method) + BaseElements.TABLE_BODY
-        cond = self._wait_for_element_present(locator)
-        return str(locator) if cond else None
+        return str(locator)
 
     def _set_screen_table_row(self, set_screen_table_body_method):
         locator = str(set_screen_table_body_method) + "/*//tr"
-        cond = self._wait_for_element_present(locator)
-        return str(locator) if cond else None
+        return str(locator)
 
     def _set_row_sel(self, set_table_row):
         pass
 
     def _set_screen_search_field(self, set_screen_header):
         locator = str(set_screen_header) + "/*//input[contains(@class,'TextBox-Input')][@type='text']"
-        cond = self._wait_for_element_present(locator)
-        return str(locator) if cond else None
+        return str(locator)
 
     def _type_into_screen_header_search_field(self, set_screen_search_field, text=None):
         self._find_element(set_screen_search_field).send_keys(text)
@@ -67,6 +61,13 @@ class BaseScreen(BaseActions):
             index += 2
         print header_names
         return header_names
+
+    # def handler_home_screen(self, screen_name):
+    #     cond = self._is_element_present(self._set_screen(screen_name))
+    #     print "Handle Home screen ", cond
+    #     if cond:
+    #         left_menu = BaseLeftMenu(self.driver)
+    #         left_menu.open_menu_home()
 
 
 class HomeScreen(BaseScreen):

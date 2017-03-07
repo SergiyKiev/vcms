@@ -6,6 +6,26 @@ from selenium.common.exceptions import NoSuchElementException, TimeoutException
 
 class BaseActions(Base):
 
+    def _close_popups(self):
+        cond = self._is_element_present(BaseElements.POPUP)
+        if cond:
+            i = 0
+            while i < 10:
+                i += 1
+                # self.wait_for_screen_is_unlocked()
+                self._get_popup_error_messages()
+                system_button_close = self._is_element_present(BaseElements.POPUP + BaseElements.SYSTEM_BUTTON_CLOSE)
+                button_close = self._is_element_present(BaseElements.POPUP + BaseElements.BUTTON_CLOSE)
+                if system_button_close:
+                    self._click_system_button_close(BaseElements.POPUP)
+                    # time.sleep(1)
+                    self.logger.debug("Popup #" + str(i) +  " is closed.")
+                elif button_close:
+                    self._click_button_close(BaseElements.POPUP)
+                    self.logger.debug("PopupBase without system button close is closed. PLEASE, ADD SYSTEM BUTTON CLOSE")
+                else:
+                    break
+
     def _click_label(self, locator, name=None):
         self._click_element(locator)
         self._wait_for_element_selected(locator)
@@ -61,7 +81,7 @@ class BaseActions(Base):
 
     def _click_button_close(self, locator):
         self._click_element(locator + BaseElements.BUTTON_CLOSE)
-        self._wait_for_element_not_present(locator)
+        # self._wait_for_element_not_present(locator)
 
     def _click_button_add(self, locator):
         self._click_element(locator + BaseElements.BUTTON_ADD)
@@ -74,7 +94,6 @@ class BaseActions(Base):
 
     def _click_icon_help(self, locator):
         try:
-            self._wait_for_element_present(locator + BaseElements.ICON_HELP)
             self._click_element(locator + BaseElements.ICON_HELP)
             self.wait_webelement.until(lambda d: len(d.window_handles) == 2)
         except TimeoutException:
@@ -94,7 +113,7 @@ class BaseActions(Base):
 
     def _click_system_button_close(self, locator):
         self._click_element(locator + BaseElements.SYSTEM_BUTTON_CLOSE)
-        self._wait_for_element_not_present(locator)
+        # self._wait_for_element_not_present(locator)
 
     def _click_system_button_maximize(self, locator):
         self._click_element(locator + BaseElements.SYSTEM_BUTTON_MAXIMIZE)
@@ -104,26 +123,6 @@ class BaseActions(Base):
     def _click_system_button_drop_down(self, locator):
         self.hover(locator + BaseElements.SYSTEM_BUTTON_DROP_DOWN)
         self._click_element(locator + BaseElements.SYSTEM_BUTTON_DROP_DOWN)
-
-    def _close_popups(self):
-        cond = self._is_element_present(BaseElements.POPUP)
-        if cond:
-            i = 0
-            while i < 10:
-                i += 1
-                # self.wait_for_screen_is_unlocked()
-                self._get_popup_error_messages()
-                system_button_close = self._is_element_present(BaseElements.POPUP + BaseElements.SYSTEM_BUTTON_CLOSE)
-                button_close = self._is_element_present(BaseElements.POPUP + BaseElements.BUTTON_CLOSE)
-                if system_button_close:
-                    self._click_element(BaseElements.POPUP + BaseElements.SYSTEM_BUTTON_CLOSE)
-                    # time.sleep(1)
-                    self.logger.debug("Popup #" + str(i) +  " is closed.")
-                elif button_close:
-                    self._click_element(BaseElements.POPUP + BaseElements.BUTTON_CLOSE)
-                    self.logger.debug("PopupBase without system button close is closed. PLEASE, ADD SYSTEM BUTTON CLOSE")
-                else:
-                    break
 
     def _check_help_frame_header(self, expected_header_name):
         cond = self._is_element_present(BaseElements.HELP_FRAME_HEADER + "[text()='" + expected_header_name + "']")
