@@ -2256,6 +2256,42 @@ class CreatePatchGroupPopup(BasePopup):
     def click_system_button_close(self):
         self._click_system_button_close(self.popup_body())
 
+    def enter_text_into_group_name_text_field(self, name):
+        self._find_element(self.popup_body() + "/*//input").send_keys(name)
+
+
+class EditPatchGroupPopup(BasePopup):
+
+    EDIT_PATCH_GROUP = "Edit Patch Group"
+    BUTTON_EDIT_MEMBERS = "/*//span[text()='Edit Members']/ancestor::div[contains(@class,'Button')]"
+
+    def popup_body(self):
+        locator = self._set_popup(self.EDIT_PATCH_GROUP)
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else False
+
+    def check_popup_is_present(self):
+        cond = self.popup_body()
+        msg_true = "Popup '" + self.EDIT_PATCH_GROUP + "' is present"
+        msg_false = "Popup '" + self.EDIT_PATCH_GROUP + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond is not None else False
+
+    def click_icon_help(self):
+        self._click_icon_help(self.popup_body())
+
+    def click_button_ok(self):
+        self._click_button_ok(self.popup_body())
+
+    def click_button_cancel(self):
+        self._click_button_cancel(self.popup_body())
+
+    def click_button_edit_members(self):
+        self._click_element(self.popup_body() + self.BUTTON_EDIT_MEMBERS)
+
+    def click_system_button_close(self):
+        self._click_system_button_close(self.popup_body())
+
 
 class SelectPatchesPopup(BasePopup):
 
@@ -2286,9 +2322,9 @@ class SelectPatchesPopup(BasePopup):
         self._click_system_button_close(self.popup_body())
 
 
-class CreateApplicationPopup(BasePopup):
+class CreateApplicationWizardPopup(BasePopup):
 
-    CREATE_APPLICATION = "Create Application"
+    CREATE_APPLICATION_WIZARD = "Create Application Wizard"
     SELECT_FILE = "SELECT FILE"
     IMPORT_INFORMATION = "IMPORT INFORMATION"
     ADVANCED = "ADVANCED"
@@ -2331,9 +2367,82 @@ class CreateApplicationPopup(BasePopup):
     def check_popup_is_present(self):
         cond = self._wait_for_element_present(self.popup_body())
         self.logger.critical(
-            "Popup HAS NO title name. Add titile '" + self.CREATE_APPLICATION + "'!!!")
-        msg_true = "Popup '" + self.CREATE_APPLICATION + "' is present"
-        msg_false = "Popup '" + self.CREATE_APPLICATION + "' is NOT present"
+            "Popup HAS NO title name. Add titile '" + self.CREATE_APPLICATION_WIZARD + "'!!!")
+        msg_true = "Popup '" + self.CREATE_APPLICATION_WIZARD + "' is present"
+        msg_false = "Popup '" + self.CREATE_APPLICATION_WIZARD + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+    def check_select_file_tab_is_present(self):
+        cond = self._wait_for_element_present(self.popup_body() + self.LABEL_SELECT_FILE + BaseElements.BLACK_COLOR)
+        msg_true = "Tab '" + self.SELECT_FILE + "' is present"
+        msg_false = "Tab '" + self.SELECT_FILE + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+    def check_import_information_tab_is_present(self):
+        cond = self._wait_for_element_present(self.popup_body() + self.LABEL_IMPORT_INFORMATION + BaseElements.BLACK_COLOR)
+        msg_true = "Tab '" + self.IMPORT_INFORMATION + "' is present"
+        msg_false = "Tab '" + self.IMPORT_INFORMATION + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+    def check_advanced_tab_is_present(self):
+        cond = self._wait_for_element_present(self.popup_body() + self.LABEL_ADVANCED + BaseElements.BLACK_COLOR)
+        msg_true = "Tab '" + self.ADVANCED + "' is present"
+        msg_false = "Tab '" + self.ADVANCED + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+
+class CreateUpdateWizardPopup(BasePopup):
+
+    CREATE_UPDATE_WIZARD = "Create Update Wizard"
+    SELECT_FILE = "SELECT FILE"
+    IMPORT_INFORMATION = "IMPORT INFORMATION"
+    ADVANCED = "ADVANCED"
+    BUTTON_CHOOSE_FROM_SERVER = "/*//span[contains(text(),'Verismic server')]/ancestor::div[contains(@class,'Button')]"
+    BUTTON_CHOOSE_FROM_DEVICE = "/*//span[contains(text(),'your device')]/ancestor::div[contains(@class,'Button')]"
+    BUTTON_CONFIGURE_ADVANCED_OPTIONS = "/*//span[contains(text(),'Options')]/ancestor::div[contains(@class,'Button')]"
+    LABEL_SELECT_FILE = "/*//span[text()='SELECT FILE']"
+    LABEL_IMPORT_INFORMATION = "/*//span[text()='IMPORT INFORMATION']"
+    LABEL_ADVANCED = "/*//span[text()='ADVANCED']"
+
+    def popup_body(self):
+        locator = self._set_popup(self.CREATE_UPDATE_WIZARD)
+        cond = self._wait_for_element_present(locator)
+        return str(locator) if cond else None
+
+    def click_icon_help(self):
+        self._click_icon_help(self.popup_body())
+
+    def click_system_button_close(self):
+        self._click_system_button_close(self.popup_body())
+
+    def click_button_cancel(self):
+        self._click_button_cancel(self.popup_body())
+
+    def click_button_next(self):
+        self._click_button_next(self.popup_body())
+
+    def click_button_previous(self):
+        self._click_button_previous(self.popup_body())
+
+    def click_button_finish(self):
+        self._click_button_finish(self.popup_body())
+
+    def click_button_choose_installer_on_sever(self):
+        self._click_element(self.BUTTON_CHOOSE_FROM_SERVER)
+
+    def click_button_configure_advanced_options(self):
+        self._click_element(self.BUTTON_CONFIGURE_ADVANCED_OPTIONS)
+
+    def check_popup_is_present(self):
+        cond = self._wait_for_element_present(self.popup_body())
+        self.logger.critical(
+            "Popup HAS NO title name. Add titile '" + self.CREATE_UPDATE_WIZARD + "'!!!")
+        msg_true = "Popup '" + self.CREATE_UPDATE_WIZARD + "' is present"
+        msg_false = "Popup '" + self.CREATE_UPDATE_WIZARD + "' is NOT present"
         self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
@@ -2587,16 +2696,16 @@ class ComponentPopup(BasePopup):
     def click_system_button_close(self):
         self._click_system_button_close(self.popup_body())
 
-    def click_system_button_edit_filters(self):
+    def click_button_edit_filters(self):
         self._click_element(self.popup_body() + self.BUTTON_EDIT_FILTERS)
 
-    def click_system_button_edit_detectors(self):
+    def click_button_edit_detectors(self):
         self._click_element(self.popup_body() + self.BUTTON_EDIT_DETECTORS)
 
-    def click_system_button_edit_deployments(self):
+    def click_button_edit_deployments(self):
         self._click_element(self.popup_body() + self.BUTTON_EDIT_DEPLOYMENTS)
 
-    def click_system_button_view_details(self):
+    def click_button_view_details(self):
         self._click_element(self.popup_body() + self.BUTTON_VIEW_DETAILS)
 
 
@@ -2850,3 +2959,114 @@ class SelectSupersedingPatchesPopup(BasePopup):
 
     def click_system_button_close(self):
         self._click_system_button_close(self.popup_body())
+
+
+class PatchManagerSettingsPopup(BasePopup):
+
+    PATCH_MANAGER_SETTINGS = "Patch Manager Settings"
+
+    def popup_body(self):
+        locator = self._set_popup(self.PATCH_MANAGER_SETTINGS)
+        return str(locator)
+
+    def check_popup_is_present(self):
+        cond = self._wait_for_element_present(self.popup_body())
+        msg_true = "Popup '" + self.PATCH_MANAGER_SETTINGS + "' is present"
+        msg_false = "Popup '" + self.PATCH_MANAGER_SETTINGS + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+    def click_icon_help(self):
+        self._click_icon_help(self.popup_body())
+
+    def click_system_button_close(self):
+        self._click_system_button_close(self.popup_body())
+
+    def click_button_cancel(self):
+        self._click_button_cancel(self.popup_body())
+
+
+class ManagementTreePopup(BasePopup):
+
+    MANAGEMENT_TREE = "Management Tree"
+
+    def popup_body(self):
+        locator = self._set_popup(self.MANAGEMENT_TREE)
+        return str(locator)
+
+    def check_popup_is_present(self):
+        cond = self._wait_for_element_present(self.popup_body())
+        msg_true = "Popup '" + self.MANAGEMENT_TREE + "' is present"
+        msg_false = "Popup '" + self.MANAGEMENT_TREE + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+    def click_icon_help(self):
+        self._click_icon_help(self.popup_body())
+
+    def click_system_button_close(self):
+        self._click_system_button_close(self.popup_body())
+
+    def click_button_cancel(self):
+        self._click_button_cancel(self.popup_body())
+
+    def expand_all_trees(self):
+        self._expand_all_trees(self.popup_body() + "/*//div")
+
+
+class ScanSchedulePopup(BasePopup):
+
+    SCAN_SCHEDULE = "Scan Schedule"
+    BUTTON_SCAN_NOW = "/*//span[text()='Scan Now']/ancestor::div[contains(@class,'Button')]"
+
+    def popup_body(self):
+        locator = self._set_popup(self.SCAN_SCHEDULE)
+        return str(locator)
+
+    def check_popup_is_present(self):
+        cond = self._wait_for_element_present(self.popup_body())
+        msg_true = "Popup '" + self.SCAN_SCHEDULE + "' is present"
+        msg_false = "Popup '" + self.SCAN_SCHEDULE + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+    def click_icon_help(self):
+        self._click_icon_help(self.popup_body())
+
+    def click_system_button_close(self):
+        self._click_system_button_close(self.popup_body())
+
+    def click_button_cancel(self):
+        self._click_button_cancel(self.popup_body())
+
+    def click_button_scan_now(self):
+        self._click_element(self.popup_body() + self.BUTTON_SCAN_NOW)
+
+
+class ImportSoftwareUpdateDefinitionsPopup(BasePopup):
+
+    IMPORT_SOFTWARE_UPDATE_DEFINITION = "Import Software Update Definitions"
+    BUTTON_UPLOAD = "/*//span[text()='Upload']/ancestor::div[contains(@class,'Button')]"
+
+    def popup_body(self):
+        locator = self._set_popup(self.IMPORT_SOFTWARE_UPDATE_DEFINITION)
+        return str(locator)
+
+    def check_popup_is_present(self):
+        cond = self._wait_for_element_present(self.popup_body())
+        msg_true = "Popup '" + self.IMPORT_SOFTWARE_UPDATE_DEFINITION + "' is present"
+        msg_false = "Popup '" + self.IMPORT_SOFTWARE_UPDATE_DEFINITION + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+    def click_icon_help(self):
+        self._click_icon_help(self.popup_body())
+
+    def click_system_button_close(self):
+        self._click_system_button_close(self.popup_body())
+
+    def click_button_cancel(self):
+        self._click_button_cancel(self.popup_body())
+
+    def click_button_upload(self):
+        self._click_element(self.popup_body() + self.BUTTON_UPLOAD)

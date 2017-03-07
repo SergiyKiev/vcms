@@ -233,6 +233,7 @@ class GroupsScreen(BaseScreen):
     TABLE_ROW = TABLE_BODY + "/*//tr"
     SEARCH_FIELD = SCREEN_HEADER + "/*//input[contains(@class,'TextBox-Input')][@type='text']"
 
+
     GROUPS = "Groups"
 
     def screen_body(self):
@@ -1397,6 +1398,7 @@ class PatchMangerScreen(BaseScreen):
 
     PATCH_MANAGER = "Patch Manager"
     SEARCH_FIELD = "/*//input[contains(@class,'TextBox-Input')][@type='text']"
+    FILTER_FIELD = "/*//input[contains(@class,'TextBox-Input')][@readonly]"
 
     def screen_body(self):
         screen = self._set_screen(self.PATCH_MANAGER)
@@ -1415,6 +1417,9 @@ class PatchMangerScreen(BaseScreen):
 
     def click_icon_help(self):
         self._click_icon_help(self.screen_header())
+
+    def click_at_filter_field(self):
+        self._click_element(self.screen_header() + self.FILTER_FIELD)
 
     def click_icon_refresh(self):
         self._click_icon_refresh(self.screen_header())

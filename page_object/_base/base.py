@@ -45,10 +45,10 @@ class Base(object):
         #                     level=logging.INFO, format='%(asctime)-24s [%(levelname)-3s] %(message)s')  # KIPROV HOME
 
     '''LOGS'''
-    # logging.basicConfig(filename='D:\\python\\vcms\\vcms\\page_object\\_test_logs\\test_logs.log',
-    #                     level=logging.INFO, format='%(asctime)-24s [%(levelname)-3s] %(message)s')  # KIPROV HOME
-    logging.basicConfig(filename='E:\\python\\vcms\\vcms\\page_object\\_test_logs\\test_logs.log',
-                        level=logging.INFO, format='%(asctime)-24s [%(levelname)-5s] %(message)s')  # KIPROV HOME
+    logging.basicConfig(filename='D:\\python\\vcms\\vcms\\page_object\\_test_logs\\test_logs.log',
+                        level=logging.INFO, format='%(asctime)-24s [%(levelname)-3s] %(message)s')  # KIPROV HOME
+    # logging.basicConfig(filename='E:\\python\\vcms\\vcms\\page_object\\_test_logs\\test_logs.log',
+    #                     level=logging.INFO, format='%(asctime)-24s [%(levelname)-5s] %(message)s')  # KIPROV HOME
     logger = logging.getLogger(__name__)
     console = logging.StreamHandler()
     logger.addHandler(console)
@@ -60,6 +60,7 @@ class Base(object):
             imax = self.timeout_loading
             while i <= imax:
                 i += 1
+                time.sleep(0.2)
                 self.wait_loading.until_not(EC.visibility_of_any_elements_located((By.XPATH, Base.LOCKED_SCREEN)))
                 self.wait_loading.until_not(EC.presence_of_all_elements_located((By.XPATH, Base.LOCKED_SCREEN)))
                 event = self.driver.execute_script("return jQuery.active == 0")
@@ -71,8 +72,8 @@ class Base(object):
                 elif i > imax:
                     return TimeoutException
                 else:
-                    time.sleep(0.5)
-                    print "screen is locked..." + str(i) + " sec"
+                    time.sleep(0.8)
+                    # print "screen is locked..." + str(i) + " sec"
             return True
         except TimeoutException:
             self.logger.exception("Timeout exception for wait for screen is unlocked")
@@ -98,20 +99,26 @@ class Base(object):
     def _click_element(self, locator):
         try:
             self.wait_for_screen_is_unlocked()
+            # cond = self._is_element_present(locator + "/*//*[text()]")
+            # if cond:
+            #     element = self._get_attribute_value(locator, "class")
+            #     text = self._get_text(locator)
+            #     print "CLICK: " + str(text) + " - " + str(element)
+            # else:
+            #     print "CLICK: " + str(locator)
             self._find_element(locator).click()
-            # self.wait_for_screen_is_unlocked()
+            self.wait_for_screen_is_unlocked()
             # self.logger.debug("CLICK: " + str(locator))
-            # print "CLICK: " + str(locator)
         except WebDriverException as e:
             if 'Other element would receive the click' in e.msg:
                 print "CLICK ON LOCKED SCREEN..."
                 cond = self._is_element_present(Base.LOADING_SCREEN_VISIBLE)
                 if cond:
-                    time.sleep(1)
+                    time.sleep(0.5)
                     self.wait_for_screen_is_unlocked()
                     self._find_element(locator).click()
                     print "CLICK SECOND TIME IS SUCCESSFUL"
-                    # self.wait_for_screen_is_unlocked()
+                    self.wait_for_screen_is_unlocked()
                 else:
                     self.logger.exception("INCORRECT XPATH. VERIFY LOCATOR: " + str(locator) + "\n")
                     return False

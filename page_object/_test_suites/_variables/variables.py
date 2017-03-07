@@ -10,6 +10,7 @@ class Variables(object):
     # vrep                  = "LT-HP-KIPROV"#home
     software                = "7z920 IK"
     patch                   = "MS12-011"
+    help_test               = "HelpTest"
     site_name               = "New site #9101"
     default_site_name       = "Default Site"
     fifty_symbols_name      = "51symbols51symbols51symbols51symbols51symbols!<ok>"

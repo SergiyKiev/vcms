@@ -33,6 +33,7 @@ class RibbonBar(BaseRibbonBar):
     TAB_TOOLS = "//span[text()='Tools']/ancestor::div[contains(@id,'TAB')]"
     TAB_DEVICES = "//span[text()='Devices']/ancestor::div[contains(@id,'TAB')]"
     TAB_ADVANCED = "//span[text()='Advanced']/ancestor::div[contains(@id,'TAB')]"
+    BUTTONS_BOX_IMPORT = "//div[text()='Import'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
     BUTTONS_BOX_APPLICATIONS = "//div[text()='Applications'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
     BUTTONS_BOX_SITE_CONFIG = "//div[text()='Site Config'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
     BUTTONS_BOX_UPDATES = "//div[text()='Updates'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
@@ -53,6 +54,8 @@ class RibbonBar(BaseRibbonBar):
     BUTTONS_BOX_DISCOVERY_TASK = "//div[text()='Discovery Task'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
     BUTTONS_BOX_SOFTWARE_DEPLOYMENT = "//div[text()='Software Deployment'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
     BUTTONS_BOX_PATCH_MANAGER = "//div[text()='Patch Manager'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
+    BUTTONS_BOX_PATCH_QUERY_RULES = "//div[text()='Patch Query Rules'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
+    BUTTONS_BOX_MOVE_TO = "//div[text()='Move to'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
     BUTTON_EXIT = "//img[@alt='Exit']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_HOME = "//img[@alt='Home']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_NEW = "//img[@alt='New']/ancestor::div[contains(@class,'RibbonBarButton')]"
@@ -102,6 +105,9 @@ class RibbonBar(BaseRibbonBar):
     BUTTON_CREATE_GROUP = "//img[@alt='Create Group']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_EDIT_GROUP = "//img[@alt='Edit Group']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_CREATE_QUERY = "//img[@alt='Create Query']/ancestor::div[contains(@class,'RibbonBarButton')]"
+    BUTTON_EDIT_QUERY = "//img[@alt='Edit Query']/ancestor::div[contains(@class,'RibbonBarButton')]"
+    BUTTON_TO_BE_CHECKED = "//img[@alt='To Be Checked']/ancestor::div[contains(@class,'RibbonBarButton')]"
+    BUTTON_IMPORT = "//img[@alt='Import']/ancestor::div[contains(@class,'RibbonBarButton')]"
     MENU_ITEM_SETTINGS = DROP_DOWN_LIST + "/*//span[text()='Settings']" + MENU_ITEM
     MENU_ITEM_LOG_OUT = DROP_DOWN_LIST + "/*//span[contains(text(),'Log Out')]" + MENU_ITEM
     MENU_ITEM_GO_TO_HOME_SCREEN = DROP_DOWN_LIST + "/*//span[contains(text(),'Go To')]" + MENU_ITEM
@@ -173,18 +179,6 @@ class RibbonBar(BaseRibbonBar):
             pass
         else:
             self.click_tab_advanced()
-
-    def check_tab_home_is_present(self):
-        cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_ACTIONS)
-        return True if cond else False
-
-    def check_tab_view_is_present(self):
-        cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_DISPLAY)
-        return True if cond else False
-
-    def check_devices_tab_is_present(self):
-        cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_INVENTORY)
-        return True if cond else False
 
     def click_button_edit_or_create(self):
         self._click_element(RibbonBar.BUTTON_EDIT_OR_CREATE)
@@ -398,6 +392,43 @@ class RibbonBar(BaseRibbonBar):
     def click_button_scan(self):
         self._click_element(RibbonBar.BUTTON_SCAN)
 
+    def click_button_create_group(self):
+        self._click_element(RibbonBar.BUTTON_CREATE_GROUP)
+
+    def click_button_edit_group(self):
+        self._click_element(RibbonBar.BUTTON_EDIT_GROUP)
+
+    def click_button_create_query(self):
+        self._click_element(RibbonBar.BUTTON_CREATE_QUERY)
+
+    def click_button_edit_query(self):
+        self._click_element(RibbonBar.BUTTON_EDIT_QUERY)
+
+    def click_button_scan_and_deploy(self):
+        self._click_element(RibbonBar.BUTTON_SCAN_AND_DEPLOY)
+
+    def click_button_to_be_checked(self):
+        self._click_element(RibbonBar.BUTTON_TO_BE_CHECKED)
+
+    def click_button_import(self):
+        self._click_element(RibbonBar.BUTTON_IMPORT)
+
+    def check_tab_home_is_present(self):
+        cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_ACTIONS)
+        return True if cond else False
+
+    def check_tab_view_is_present(self):
+        cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_DISPLAY)
+        return True if cond else False
+
+    def check_devices_tab_is_present(self):
+        cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_INVENTORY)
+        return True if cond else False
+
+    def check_tab_advanced_is_present(self):
+        cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_UPDATES)
+        return True if cond else False
+
     def check_box_updates_is_present(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_UPDATES)
         msg_true = "Buttons box '" + self.UPDATES + "' is present"
@@ -468,9 +499,14 @@ class RibbonBar(BaseRibbonBar):
 
     def check_box_applications_is_present(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_APPLICATIONS)
-        msg_true = "Buttons box '" + self.USERS + "' is present"
-        msg_false = "Buttons box '" + self.USERS + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+    def check_box_move_to_is_present(self):
+        cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_MOVE_TO)
+        return True if cond else False
+
+    def check_box_import_is_present(self):
+        cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_IMPORT)
         return True if cond else False
 
     def check_button_edit_is_present(self):
@@ -484,9 +520,6 @@ class RibbonBar(BaseRibbonBar):
     def check_button_patch_manager_is_present(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTON_PATCH_MANAGER)
         return True if cond else False
-
-    def click_button_scan_and_deploy(self):
-        self._click_element(RibbonBar.BUTTON_SCAN_AND_DEPLOY)
 
     def check_button_discover_is_present(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTON_DISCOVER)
@@ -530,3 +563,10 @@ class RibbonBar(BaseRibbonBar):
         cond = self._wait_for_element_present(RibbonBar.BUTTON_REPORTS)
         return True if cond else False
 
+    def check_box_patch_groups_is_present(self):
+        cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_PATCH_GROUPS)
+        return True if cond else False
+
+    def check_box_patch_query_rules_is_present(self):
+        cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_PATCH_QUERY_RULES)
+        return True if cond else False

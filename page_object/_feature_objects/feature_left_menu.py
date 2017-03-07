@@ -1,7 +1,7 @@
 from _base.base_actions import BaseActions
 from _base.base_elements import BaseElements
 from _feature_objects.feature_popup import AreYouSurePopup, NewFolderPopup, NewGroupPopup, \
-    SiteNamePopup
+    SiteNamePopup, CreatePatchGroupPopup
 from _feature_objects.feature_ribbon_bar import RibbonBar
 from _feature_objects.feature_screen import AuditLogScreen, DynamicallyManagedScreen
 
@@ -389,7 +389,7 @@ class LeftMenuDevices(BaseLeftMenu):
         self._wait_for_element_present(RibbonBar.BUTTONS_BOX_GROUPS)
 
     def delete_site_if_exists(self, sitename):
-        element = LeftMenuDevices.LIST_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']"
+        element = self.LIST_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']"
         cond = self._is_element_present(element)
         if cond:
             left_menu_devices = LeftMenuDevices(self.driver)
@@ -417,8 +417,8 @@ class LeftMenuDevices(BaseLeftMenu):
 
     def create_site_if_not_exists(self, sitename):
         self.expand_global_site_view_tree()
-        self.scroll_to_element(LeftMenuDevices.LIST_GLOBAL_SITE_VIEW)
-        element = LeftMenuDevices.LIST_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']"
+        self.scroll_to_element(self.LIST_GLOBAL_SITE_VIEW)
+        element = self.LIST_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']"
         cond = self._wait_for_element_present(element)
         if cond is not True:
             ribbon_bar = RibbonBar(self.driver)
@@ -469,13 +469,11 @@ class LeftMenuDevices(BaseLeftMenu):
 
     def create_group_if_not_exists(self, name):
         self.expand_groups_tree()
-        cond = self._is_element_not_present(
-            LeftMenuDevices.LIST_GROUPS + "/*//span[text()='" + name + "']")
+        cond = self._is_element_not_present(self.LIST_GROUPS + "/*//span[text()='" + name + "']")
         if cond:
             ribbon_bar = RibbonBar(self.driver)
             new_group_popup = NewGroupPopup(self.driver)
-            left_menu_devices = LeftMenuDevices(self.driver)
-            left_menu_devices.click_groups_label()
+            self.click_groups_label()
             ribbon_bar.click_button_new()
             ribbon_bar.click_new_group_menu_item()
             new_group_popup.enter_text_into_group_name_text_field(name)
@@ -483,27 +481,24 @@ class LeftMenuDevices(BaseLeftMenu):
 
     def create_group_folder_if_not_exists(self, name):
         self.expand_groups_tree()
-        self.scroll_to_element(LeftMenuDevices.LIST_GROUPS)
-        element = LeftMenuDevices.LIST_GROUPS + "/*//span[text()='" + name + "']"
+        self.scroll_to_element(self.LIST_GROUPS)
+        element = self.LIST_GROUPS + "/*//span[text()='" + name + "']"
         cond = self._wait_for_element_present(element)
         if cond is not True:
             ribbon_bar = RibbonBar(self.driver)
             new_folder_popup = NewFolderPopup(self.driver)
-            left_menu_devices = LeftMenuDevices(self.driver)
-            left_menu_devices.click_groups_label()
+            self.click_groups_label()
             ribbon_bar.click_button_new()
             ribbon_bar.click_new_folder_menu_item()
             new_folder_popup.enter_text_into_new_folder_text_field(name)
             new_folder_popup.click_button_ok()
 
     def create_queries_folder_if_not_exists(self, name):
-        cond = self._is_element_not_present(
-            LeftMenuDevices.LIST_QUERIES + "/*//span[text()='" + name + "']")
+        cond = self._is_element_not_present(self.LIST_QUERIES + "/*//span[text()='" + name + "']")
         if cond:
             ribbon_bar = RibbonBar(self.driver)
             new_folder_popup = NewFolderPopup(self.driver)
-            left_menu_devices = LeftMenuDevices(self.driver)
-            left_menu_devices.click_queries_label()
+            self.click_queries_label()
             ribbon_bar.click_button_new()
             ribbon_bar.click_new_folder_menu_item()
             new_folder_popup.enter_text_into_new_folder_text_field(name)
@@ -712,6 +707,8 @@ class LeftMenuSoftwareAndPatchManager(BaseLeftMenu):
                           "/div/div/*//span[text()='By Query Rule']/ancestor::div[contains(@class,'RowContainer')]"
     LABEL_MY_PATCHES = TREE_MEDIA_MANAGEMENT + \
                           "/*//span[text()='My Patches']/ancestor::div[contains(@class,'RowContainer')]"
+    LIST_BY_GROUP = LABEL_BY_GROUP + "/parent::div/div[2]"
+    LIST_BY_QUERY_RULE = LABEL_BY_QUERY_RULE + "/parent::div/div[2]"
 
     def click_applications_label(self):
         self._click_label(self.LABEL_APPLICATIONS)
@@ -725,6 +722,9 @@ class LeftMenuSoftwareAndPatchManager(BaseLeftMenu):
     def click_by_group_label(self):
         self._click_label(self.LABEL_BY_GROUP)
 
+    def click_to_be_checked_label(self):
+        self._click_label(self.LABEL_TO_BE_CHECKED)
+
     def click_by_system_rule_label(self):
         self._click_label(self.LABEL_BY_SYSTEM_RULE)
 
@@ -736,6 +736,12 @@ class LeftMenuSoftwareAndPatchManager(BaseLeftMenu):
 
     def click_patch_manager_label(self):
         self._click_label(self.LABEL_PATCH_MANAGER)
+
+    def click_group_in_by_group_tree(self, name):
+        element = self.LIST_BY_GROUP + "/*//span[text()='" + name + "']/ancestor::div[contains(@class,'RowContainer')]"
+        self._click_element(element)
+        self._wait_for_element_selected(element)
+        # self._wait_for_element_present(RibbonBar.BUTTONS_BOX_PATCH_GROUPS)
 
     def expand_patch_manager_tree(self):
         arrow = self._is_element_present(self.LABEL_PATCH_MANAGER + BaseElements.ARROW_EXPAND)
@@ -804,4 +810,25 @@ class LeftMenuSoftwareAndPatchManager(BaseLeftMenu):
     def check_patch_manager_label_is_present(self):
         cond = self._wait_for_element_present(self.LABEL_PATCH_MANAGER)
         return True if cond else False
+
+    def create_patch_group_if_not_exists(self, name):
+        self.expand_patch_manager_tree()
+        self.click_by_group_label()
+        self.scroll_to_element(self.LABEL_BY_GROUP)
+        self.expand_by_group_tree()
+        cond = self._is_element_not_present(self.LIST_BY_GROUP + "/*//span[text()='" + name + "']")
+        if cond:
+            ribbon_bar = RibbonBar(self.driver)
+            create_patch_group_popup = CreatePatchGroupPopup(self.driver)
+            ribbon_bar.click_button_create_group()
+            create_patch_group_popup.check_popup_is_present()
+            create_patch_group_popup.enter_text_into_group_name_text_field(name)
+            create_patch_group_popup.click_button_ok()
+            self.check_group_is_in_by_group_tree(name)
+
+    def check_group_is_in_by_group_tree(self, name):
+        cond = self._wait_for_element_present(self.LIST_BY_GROUP + "/*//span[text()='" + name + "']")
+        return True if cond else False
+
+
 
