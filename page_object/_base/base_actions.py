@@ -79,6 +79,9 @@ class BaseActions(Base):
     def _click_button_finish(self, locator):
         self._click_element(locator + BaseElements.BUTTON_FINISH)
 
+    def _click_button_open(self, locator):
+        self._click_element(locator + BaseElements.BUTTON_OPEN)
+
     def _click_button_close(self, locator):
         self._click_element(locator + BaseElements.BUTTON_CLOSE)
         # self._wait_for_element_not_present(locator)
@@ -131,7 +134,7 @@ class BaseActions(Base):
     def _get_popup_error_messages(self):
         cond = self._is_element_present(BaseElements.POPUP_ERROR)
         if cond:
-            elements = self._find_elements(BaseElements.POPUP_ERROR)
+            elements = self._find_all_elements(BaseElements.POPUP_ERROR)
             for element in elements:
                 message = element.text
                 self.logger.error("TEST FAILED. Error popup message: " + str(message))
@@ -145,12 +148,13 @@ class BaseActions(Base):
             self.wait_webelement.until(lambda d: d.title != "")
             title = self.driver.title
             self.logger.info("Help window is opened. Title is: " + str(title))
-            # self._wait_for_element_present(BaseElements.HELP_FRAME_MAIN)
-            # self._wait_for_element_present(BaseElements.HELP_FRAME_TOC)
+            self._wait_for_element_present(BaseElements.HELP_FRAME_MAIN)
+            self._wait_for_element_present(BaseElements.HELP_FRAME_TOC)
             self.driver.switch_to_frame(self._find_element(BaseElements.HELP_FRAME_MAIN))
-            time.sleep(0.5)
+            time.sleep(1)
             cond = self._is_element_present(BaseElements.HELP_FRAME_HEADER)
             error = self._is_element_present(BaseElements.HELP_FRAME_HEADER_ERROR)
+            print "Header " + str(cond) + ". Error " + str(error)
             if cond:
                 header = self._get_text(BaseElements.HELP_FRAME_HEADER)
                 return str(header)
@@ -180,7 +184,7 @@ class BaseActions(Base):
             self.driver.close()
         self.driver.switch_to_window(main_window)
 
-    def _expand_tree(self, locator):
+    def _expand_list(self, locator):
         try:
             element = self._find_element(locator + BaseElements.ARROW_EXPAND)
             self.driver.execute_script("arguments[0].click();", element)
@@ -192,14 +196,14 @@ class BaseActions(Base):
         except Exception as e:
             print "Massage: ", e
 
-    def _expand_all_trees(self, locator):
+    def _expand_all_lists(self, locator):
         self._wait_for_element_present(locator)
-        elements = self._find_elements(locator + BaseElements.ARROW_EXPAND)
+        elements = self._find_all_elements(locator + BaseElements.ARROW_EXPAND)
         for element in elements:
             self.driver.execute_script("arguments[0].click();", element)
             # self._wait_for_element_not_present(locator + BaseElements.ARROW_EXPAND)
 
-    def _collaps_tree(self, locator):
+    def _collaps_list(self, locator):
         try:
             element = self._find_element(locator + BaseElements.ARROW_COLLAPSE)
             self.driver.execute_script("arguments[0].click();", element)
@@ -207,14 +211,14 @@ class BaseActions(Base):
         except Exception as e:
             print "Massage: ", e
 
-    def _collaps_all_trees(self, locator):
+    def _collaps_all_lists(self, locator):
         self._wait_for_element_present(locator)
-        elements = self._find_elements(locator + BaseElements.ARROW_COLLAPSE)
+        elements = self._find_all_elements(locator + BaseElements.ARROW_COLLAPSE)
         for element in elements:
             self.driver.execute_script("arguments[0].click();", element)
             # self._wait_for_element_not_present(locator + BaseElements.ARROW_COLLAPSE)
 
-    def _get_tree_view(self, locator):
+    def _get_list_view(self, locator):
         tree_view = locator + BaseElements.TREE_VIEW
         cond = self._is_element_present(tree_view)
         return tree_view if cond else None

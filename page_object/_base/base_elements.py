@@ -15,6 +15,7 @@ class BaseElements(Base):
     BUTTON_NEXT = "/*//img[@alt='NEXT']/ancestor::div[contains(@class,'Button')]"
     BUTTON_PREVIOUS = "//span[text()='PREVIOUS']/ancestor::div[contains(@class,'Button')]"
     BUTTON_FINISH = "//span[text()='FINISH']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_OPEN = "//span[text()='...']/ancestor::div[contains(@class,'Button')]"
     BUTTON_NO = "/*//span[text()='No']/ancestor::div[contains(@class,'Button')]"
     BUTTON_YES = "/*//span[text()='Yes']/ancestor::div[contains(@class,'Button')]"
     BUTTON_CLOSE = "/*//span[text()='Close']/ancestor::div[contains(@class,'Button')]"

@@ -52,7 +52,7 @@ class BaseScreen(BaseActions):
     def _get_all_table_header_names(self, set_screen_table_header):
         header_names = {}
         index = 1
-        elements = self._find_elements(str(set_screen_table_header) + "/*//tbody/tr/td/*//span")
+        elements = self._find_all_elements(str(set_screen_table_header) + "/*//tbody/tr/td/*//span")
         for element in elements:
             name = element.text
             print index
@@ -305,12 +305,10 @@ class GroupsScreen(BaseScreen):
 
 class QueriesScreen(BaseScreen):
 
-    SCREEN_HEADER = "//span[text()='Queries']/ancestor::div[@class='Panel-Control'][contains(@style,'85px')]"
-    BODY = SCREEN_HEADER + "/parent::div"
-    TABLE_HEADER = BODY + "/*//div[contains(@id,'HEADER')]"
-    TABLE_BODY = BODY + "/*//div[contains(@id,'VWGLVBODY')]"
+    TABLE_HEADER = "/*//div[contains(@id,'HEADER')]"
+    TABLE_BODY = "/*//div[contains(@id,'VWGLVBODY')]"
     TABLE_ROW = TABLE_BODY + "/*//tr"
-    SEARCH_FIELD = SCREEN_HEADER + "/*//input[contains(@class,'TextBox-Input')][@type='text']"
+    SEARCH_FIELD = "/*//input[contains(@class,'TextBox-Input')][@type='text']"
 
     QUERIES = "Queries"
 
@@ -337,16 +335,17 @@ class QueriesScreen(BaseScreen):
         return True if cond else False
 
     def click_icon_refresh(self):
-        self._click_icon_refresh(QueriesScreen.SCREEN_HEADER)
+        self._click_icon_refresh(self.screen_header())
 
     def click_icon_search(self):
-        self._click_icon_search(QueriesScreen.SCREEN_HEADER)
+        self._click_icon_search(self.screen_header())
 
     def enter_text_into_search_text_field(self, text = None):
         self._find_element(self.SEARCH_FIELD).send_keys(text)
 
     def check_query_is_present(self, name):
-        cond = self._wait_for_element_present(QueriesScreen.TABLE_ROW + "/*//span[text()='" + str(name) + "']/ancestor::tr")
+        cond = self._wait_for_element_present(QueriesScreen.TABLE_ROW +
+                                              "/*//span[text()='" + str(name) + "']/ancestor::tr")
         return True if cond else False
 
     def delete_queries_in_queries_page_table(self, *names):
@@ -379,8 +378,8 @@ class QueriesScreen(BaseScreen):
             print "No query was found:", name
 
     def select_query_in_table(self, *name):
-        self._wait_for_element_present(QueriesScreen.TABLE_ROW)
-        row = QueriesScreen.TABLE_ROW + "/*//span[text()='" + str(*name) + "']/ancestor::tr"
+        self._wait_for_element_present(self.screen_body() +  self.TABLE_ROW)
+        row = self.screen_body() + self.TABLE_ROW + "/*//span[text()='" + str(*name) + "']/ancestor::tr"
         self._click_element(row)
         self._wait_for_element_selected(row)
 
@@ -413,7 +412,7 @@ class AdministrationScreen(BaseScreen):
             ribbon_bar = RibbonBar(self.driver)
             ribbon_bar.open_tab_home()
             ribbon_bar.click_button_home()
-            ribbon_bar.click_go_to_home_screen_menu_item()
+            ribbon_bar.click_menu_item_go_to_home_screen()
             self._wait_for_element_present(self.screen_header())
             # self.check_screen_is_present()
             # print "Administration home screen is present ", result
@@ -1497,3 +1496,78 @@ class ManageInstallMediaScreen(BaseScreen):
         table_row = self.screen_body() + "/*//tr/*//span[text()='" + name + "']/ancestor::tr"
         self._click_element(table_row)
         self._wait_for_element_selected(table_row)
+
+
+class MyDashboardsScreen(BaseScreen):
+
+    MY_DASHBOARDS = "My Dashboards"
+
+    def screen_body(self):
+        screen = self._set_screen(self.MY_DASHBOARDS)
+        return str(screen)
+
+    def screen_header(self):
+        table_header = self._set_screen_header(self.screen_body())
+        return str(table_header)
+
+    def check_screen_is_present(self):
+        cond = self._wait_for_element_present(self.screen_header())
+        msg_true = "Screen '" + self.MY_DASHBOARDS + "' is present"
+        msg_false = "Screen '" + self.MY_DASHBOARDS + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+    def click_icon_help(self):
+        self._click_icon_help(self.screen_header())
+
+
+class MyReportsScreen(BaseScreen):
+
+    MY_REPORTS = "My Reports"
+
+    def screen_body(self):
+        screen = self._set_screen(self.MY_REPORTS)
+        return str(screen)
+
+    def screen_header(self):
+        table_header = self._set_screen_header(self.screen_body())
+        return str(table_header)
+
+    def check_screen_is_present(self):
+        cond = self._wait_for_element_present(self.screen_header())
+        msg_true = "Screen '" + self.MY_REPORTS + "' is present"
+        msg_false = "Screen '" + self.MY_REPORTS + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+    def click_icon_help(self):
+        self._click_icon_help(self.screen_header())
+
+
+class SharedReportsScreen(BaseScreen):
+
+    SHARED_REPORTS = "Shared Reports"
+
+    def screen_body(self):
+        screen = self._set_screen(self.SHARED_REPORTS)
+        return str(screen)
+
+    def screen_header(self):
+        table_header = self._set_screen_header(self.screen_body())
+        return str(table_header)
+
+    def check_screen_is_present(self):
+        cond = self._wait_for_element_present(self.screen_header())
+        msg_true = "Screen '" + self.SHARED_REPORTS + "' is present"
+        msg_false = "Screen '" + self.SHARED_REPORTS + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+    def click_icon_help(self):
+        self._click_icon_help(self.screen_header())
+
+    def select_single_report(self, name='Archive and Delete History'):
+        element = self.screen_body() \
+                  + "/*//div[@class='TabPage-Control_bj'][1]/*//span[contains(text(),'" + name + "')]"
+        self._click_element(element)
+        self._wait_for_element_selected(element + "/ancestor::tr")

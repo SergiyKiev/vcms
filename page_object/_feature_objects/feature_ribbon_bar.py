@@ -1,5 +1,6 @@
 
-from _feature_objects.feature_popup import *
+import time
+from _base.base_actions import BaseActions
 
 
 class BaseRibbonBar(BaseActions):
@@ -108,6 +109,8 @@ class RibbonBar(BaseRibbonBar):
     BUTTON_EDIT_QUERY = "//img[@alt='Edit Query']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_TO_BE_CHECKED = "//img[@alt='To Be Checked']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_IMPORT = "//img[@alt='Import']/ancestor::div[contains(@class,'RibbonBarButton')]"
+    BUTTON_ADD_GADGET = "//img[@alt='Add gadget']/ancestor::div[contains(@class,'RibbonBarButton')]"
+    BUTTON_CREATE_SCHEDULE = "//img[@alt='Create Schedule']/ancestor::div[contains(@class,'RibbonBarButton')]"
     MENU_ITEM_SETTINGS = DROP_DOWN_LIST + "/*//span[text()='Settings']" + MENU_ITEM
     MENU_ITEM_LOG_OUT = DROP_DOWN_LIST + "/*//span[contains(text(),'Log Out')]" + MENU_ITEM
     MENU_ITEM_GO_TO_HOME_SCREEN = DROP_DOWN_LIST + "/*//span[contains(text(),'Go To')]" + MENU_ITEM
@@ -116,6 +119,7 @@ class RibbonBar(BaseRibbonBar):
     MENU_ITEM_NEW_FOLDER = DROP_DOWN_LIST + "/*//span[contains(text(),'New Folder')]" + MENU_ITEM
     MENU_ITEM_VIEW = DROP_DOWN_LIST + "/*//span[contains(text(),'View')]" + MENU_ITEM
     MENU_ITEM_ON_DEMAND = DROP_DOWN_LIST + "/*//span[contains(text(),'On Demand')]" + MENU_ITEM
+    MENU_ITEM_CREATE_QUERY_REPORT = DROP_DOWN_LIST + "/*//span[text()='Create Query Report']" + MENU_ITEM
 
     def buttons_box_discovery(self):
         locator = self._set_ribbon_bar_buttons_box(self.DISCOVERY_TASK)
@@ -224,7 +228,7 @@ class RibbonBar(BaseRibbonBar):
 
     def click_button_admin_user(self):
         self._click_element(RibbonBar.BUTTON_ADMIN_USER)
-        self._wait_for_element_present(RibbonBar.DROP_DOWN_LIST)
+        self._wait_for_element_present(self.DROP_DOWN_LIST)
 
     def click_button_settings(self):
         self._click_element(RibbonBar.BUTTON_SETTINGS)
@@ -236,7 +240,7 @@ class RibbonBar(BaseRibbonBar):
 
     def click_button_subscriptions(self):
         self._click_element(RibbonBar.BUTTON_SUBSCRIPTIONS)
-        self._wait_for_element_present(SubscriptionsPopup.BODY)
+        # self._wait_for_element_present(SubscriptionsPopup.BODY)
 
     def click_button_console_guide(self):
         self._click_element(RibbonBar.BUTTON_CONSOLE_GUIDE)
@@ -244,7 +248,9 @@ class RibbonBar(BaseRibbonBar):
 
     def click_button_home(self):
         self._click_element(RibbonBar.BUTTON_HOME)
-        # self._wait_for_element_present(RibbonBar.DROP_DOWN_LIST)
+        cond = self._is_element_present(RibbonBar.BUTTON_HOME + RibbonBar.DROP_DOWN_ARROW)
+        if cond:
+            self._wait_for_element_present(self.DROP_DOWN_LIST)
 
     def click_button_view_logs(self):
         self._click_element(RibbonBar.BUTTON_VIEW_LOGS)
@@ -275,13 +281,6 @@ class RibbonBar(BaseRibbonBar):
         self.wait_for_loading_is_finished()
         # self._wait_for_element_present(WMIExplorerPopup.BODY)
 
-    def check_drop_down_list_is_present(self):
-        cond = self._wait_for_element_present(RibbonBar.DROP_DOWN_LIST)
-        msg_true = "Drop Down list '" + self.HOME + "' is present"
-        msg_false = "Drop Down list '" + self.HOME + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
-        return True if cond else False
-
     def click_button_currency(self):
         self._click_element(RibbonBar.BUTTON_CURRENCY)
         # self._wait_for_element_present(CurrencyPopup.BODY)
@@ -310,7 +309,7 @@ class RibbonBar(BaseRibbonBar):
         self._click_element(RibbonBar.BUTTON_INVENTORY)
         cond = self._is_element_present(RibbonBar.BUTTON_INVENTORY + RibbonBar.DROP_DOWN_ARROW)
         if cond:
-            self._wait_for_element_present(RibbonBar.DROP_DOWN_LIST)
+            self._wait_for_element_present(self.DROP_DOWN_LIST)
 
     def click_button_reports(self):
         self._click_element(RibbonBar.BUTTON_REPORTS)
@@ -320,45 +319,49 @@ class RibbonBar(BaseRibbonBar):
         self._click_element(RibbonBar.BUTTON_NEW)
         cond = self._is_element_present(RibbonBar.BUTTON_NEW + RibbonBar.DROP_DOWN_ARROW)
         if cond:
-            self._wait_for_element_present(RibbonBar.DROP_DOWN_LIST)
+            self._wait_for_element_present(self.DROP_DOWN_LIST)
 
     def click_button_edit_folder(self):
         self._click_element(RibbonBar.BUTTON_EDIT_FOLDER)
-        self._wait_for_element_present(EditFolderPopup.BODY)
+        # self._wait_for_element_present(EditFolderPopup.BODY)
 
-    def click_new_folder_menu_item(self):
+    def click_menu_item_new_folder(self):
         self._click_element(RibbonBar.MENU_ITEM_NEW_FOLDER)
-        self._wait_for_element_not_present(RibbonBar.DROP_DOWN_LIST)
+        self._wait_for_element_not_present(self.DROP_DOWN_LIST)
         # self._wait_for_element_present(NewFolderPopup.BODY)
 
-    def click_new_group_menu_item(self):
+    def click_menu_item_new_group(self):
         self._click_element(RibbonBar.MENU_ITEM_NEW_GROUP)
-        self._wait_for_element_not_present(RibbonBar.DROP_DOWN_LIST)
+        self._wait_for_element_not_present(self.DROP_DOWN_LIST)
         # self._wait_for_element_present(NewGroupPopup.BODY)
 
-    def click_view_menu_item(self):
+    def click_menu_item_view(self):
         self._click_element(RibbonBar.MENU_ITEM_VIEW)
-        self._wait_for_element_not_present(RibbonBar.DROP_DOWN_LIST)
+        self._wait_for_element_not_present(self.DROP_DOWN_LIST)
         # self._wait_for_element_present(InventoryViewPopup.BODY)
 
-    def click_on_demand_menu_item(self):
+    def click_menu_item_on_demand(self):
         self._click_element(RibbonBar.MENU_ITEM_ON_DEMAND)
-        self._wait_for_element_not_present(RibbonBar.DROP_DOWN_LIST)
+        self._wait_for_element_not_present(self.DROP_DOWN_LIST)
         # self._wait_for_element_present(OnDemandInventoryScanPopup.BODY)
 
-    def click_settings_menu_item(self):
+    def click_menu_item_create_query_report(self):
+        self._click_element(RibbonBar.MENU_ITEM_CREATE_QUERY_REPORT)
+        self._wait_for_element_not_present(self.DROP_DOWN_LIST)
+
+    def click_menu_item_settings(self):
         self._click_element(RibbonBar.MENU_ITEM_SETTINGS)
-        self._wait_for_element_not_present(RibbonBar.DROP_DOWN_LIST)
+        self._wait_for_element_not_present(self.DROP_DOWN_LIST)
         # self._wait_for_element_present(UserSettingsPopup.BODY)
 
-    def click_change_home_screen_menu_item(self):
+    def click_menu_item_change_home_screen(self):
         self._click_element(RibbonBar.MENU_ITEM_CHANGE_HOME_SCREEN)
-        self._wait_for_element_not_present(RibbonBar.DROP_DOWN_LIST)
+        self._wait_for_element_not_present(self.DROP_DOWN_LIST)
         # self._wait_for_element_present(SelectDashboardPopup.BODY)
 
-    def click_go_to_home_screen_menu_item(self):
+    def click_menu_item_go_to_home_screen(self):
         self._click_element(RibbonBar.MENU_ITEM_GO_TO_HOME_SCREEN)
-        # self._wait_for_element_not_present(RibbonBar.DROP_DOWN_LIST)
+        # self._wait_for_element_not_present(self.DROP_DOWN_LIST)
 
     def click_button_patch_manager(self):
         self._click_element(RibbonBar.BUTTON_PATCH_MANAGER)
@@ -374,7 +377,7 @@ class RibbonBar(BaseRibbonBar):
 
     def click_button_discover(self):
         self._click_element(RibbonBar.BUTTON_DISCOVER)
-        discover_devices_popup = DiscoverDevicesPopup(self.driver)
+        # discover_devices_popup = DiscoverDevicesPopup(self.driver)
         # self._wait_for_element_present(discover_devices_popup.popup_body())
 
     def click_button_add(self):
@@ -382,6 +385,9 @@ class RibbonBar(BaseRibbonBar):
 
     def click_button_create(self):
         self._click_element(RibbonBar.BUTTON_CREATE)
+        cond = self._is_element_present(RibbonBar.BUTTON_CREATE + RibbonBar.DROP_DOWN_ARROW)
+        if cond:
+            self._wait_for_element_present(self.DROP_DOWN_LIST)
 
     def click_button_edit(self):
         self._click_element(RibbonBar.BUTTON_EDIT)
@@ -569,4 +575,11 @@ class RibbonBar(BaseRibbonBar):
 
     def check_box_patch_query_rules_is_present(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_PATCH_QUERY_RULES)
+        return True if cond else False
+
+    def check_drop_down_list_is_present(self):
+        cond = self._wait_for_element_present(self.DROP_DOWN_LIST)
+        msg_true = "Drop Down list '" + self.HOME + "' is present"
+        msg_false = "Drop Down list '" + self.HOME + "' is NOT present"
+        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False

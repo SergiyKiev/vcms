@@ -30,9 +30,9 @@ class SmokeTest(unittest.TestCase):
         left_menu_devices = LeftMenuDevices(self.driver)
         devices_page = DevicesScreen(self.driver)
         left_menu.open_menu_devices()
-        left_menu_devices.expand_global_site_view_tree()
+        left_menu_devices.expand_global_site_view_list()
         left_menu_devices.click_global_site_view_label()
-        # left_menu.click_site_in_global_site_view_tree(sitename)
+        # left_menu.click_site_in_global_site_view_list(sitename)
         devices_page.delete_devices_in_devices_page_table(devices)
 
     # @unittest.skip
@@ -64,7 +64,7 @@ class SmokeTest(unittest.TestCase):
         ribbon_bar.click_button_new_site()
         site_name_popup.enter_text_into_name_text_field(sitename)
         site_name_popup.click_button_ok()
-        self.assertTrue(left_menu_devices.check_site_is_in_global_site_view_tree(sitename))
+        self.assertTrue(left_menu_devices.check_site_is_in_global_site_view_list(sitename))
         print ("TEST PASSED" + "\n")
 
     '''D0 NOT DELETE!!!'''

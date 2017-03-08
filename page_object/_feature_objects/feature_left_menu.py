@@ -1,9 +1,9 @@
+
 from _base.base_actions import BaseActions
 from _base.base_elements import BaseElements
 from _feature_objects.feature_popup import AreYouSurePopup, NewFolderPopup, NewGroupPopup, \
     SiteNamePopup, CreatePatchGroupPopup
 from _feature_objects.feature_ribbon_bar import RibbonBar
-from _feature_objects.feature_screen import AuditLogScreen, DynamicallyManagedScreen
 
 
 class BaseLeftMenu(BaseActions):
@@ -332,44 +332,44 @@ class LeftMenuDevices(BaseLeftMenu):
     def click_global_site_view_label(self):
         self._click_label(self.LABEL_GLOBAL_SITE_VIEW, "Label " + self.GLOBAL_SITE_VIEW)
         self._wait_for_element_present(RibbonBar.BUTTONS_BOX_SITE_CONFIG)
-        # self._wait_for_elements_present(RibbonBar.BUTTONS_BOX_SITE_CONFIG + "/*//div[contains(@class,'RibbonBarButton-Text')]")
+        # self._wait_for_all_elements_present(RibbonBar.BUTTONS_BOX_SITE_CONFIG + "/*//div[contains(@class,'RibbonBarButton-Text')]")
 
-    def click_subsite_in_site_tree(self, sitename, subsitename):
+    def click_subsite_in_site_list(self, sitename, subsitename):
         site_name = "//span[text()='" + sitename + "']/ancestor::div[contains(@class,'RowContainer')]"
         subsite_name = "//span[text()='" + subsitename + "']/ancestor::div[contains(@class,'RowContainer')]"
         element = LeftMenuDevices.LIST_GLOBAL_SITE_VIEW + site_name + "/parent::div/div[2]/*" + subsite_name
         self._click_element(element)
         self._wait_for_element_selected(element)
 
-    def expand_global_site_view_tree(self):
+    def expand_global_site_view_list(self):
         arrow = self._is_element_present(LeftMenuDevices.LABEL_GLOBAL_SITE_VIEW + BaseElements.ARROW_EXPAND)
         if arrow:
-            self._expand_tree(LeftMenuDevices.LABEL_GLOBAL_SITE_VIEW)
+            self._expand_list(LeftMenuDevices.LABEL_GLOBAL_SITE_VIEW)
 
-    def expand_queries_tree(self):
+    def expand_queries_list(self):
         arrow = self._is_element_present(LeftMenuDevices.LABEL_QUERIES + BaseElements.ARROW_EXPAND)
         if arrow:
-            self._expand_tree(LeftMenuDevices.LABEL_QUERIES)
+            self._expand_list(LeftMenuDevices.LABEL_QUERIES)
 
-    def expand_groups_tree(self):
+    def expand_groups_list(self):
         arrow = self._is_element_present(LeftMenuDevices.LABEL_GROUPS + BaseElements.ARROW_EXPAND)
         if arrow:
-            self._expand_tree(LeftMenuDevices.LABEL_GROUPS)
+            self._expand_list(LeftMenuDevices.LABEL_GROUPS)
 
-    def collaps_global_site_view_tree(self):
+    def collaps_global_site_view_list(self):
         # self._wait_for_element_present(LeftMenuDevices.LABEL_GLOBAL_SITE_VIEW)
         arrow = self._is_element_present(LeftMenuDevices.LABEL_GLOBAL_SITE_VIEW + BaseElements.ARROW_COLLAPSE)
         if arrow:
-            self._collaps_tree(LeftMenuDevices.LABEL_GLOBAL_SITE_VIEW)
+            self._collaps_list(LeftMenuDevices.LABEL_GLOBAL_SITE_VIEW)
 
     def click_default_site_in_global_site_view(self):
         self._click_element(LeftMenuDevices.LABEL_DEFAULT_SITE)
         self._wait_for_element_selected(LeftMenuDevices.LABEL_DEFAULT_SITE)
         self._wait_for_element_present(RibbonBar.BUTTONS_BOX_SITE_CONFIG)
 
-    def click_site_in_global_site_view_tree(self, sitename):
-        element = LeftMenuDevices.LIST_GLOBAL_SITE_VIEW \
-                  + "/*//span[text()='" + sitename + "']/ancestor::div[contains(@class,'RowContainer')]"
+    def click_site_in_global_site_view_list(self, sitename):
+        element = self.LIST_GLOBAL_SITE_VIEW + \
+                  "/*//span[text()='" + sitename + "']/ancestor::div[contains(@class,'RowContainer')]"
         self._click_element(element)
         self._wait_for_element_selected(element)
         self._wait_for_element_present(RibbonBar.BUTTON_DELETE)
@@ -389,20 +389,22 @@ class LeftMenuDevices(BaseLeftMenu):
         self._wait_for_element_present(RibbonBar.BUTTONS_BOX_GROUPS)
 
     def delete_site_if_exists(self, sitename):
+        self.expand_global_site_view_list()
+        self.scroll_to_element(self.LIST_GLOBAL_SITE_VIEW)
         element = self.LIST_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']"
         cond = self._is_element_present(element)
         if cond:
             left_menu_devices = LeftMenuDevices(self.driver)
             ribbon_bar = RibbonBar(self.driver)
             are_you_sure_popup = AreYouSurePopup(self.driver)
-            left_menu_devices.click_site_in_global_site_view_tree(sitename)
+            left_menu_devices.click_site_in_global_site_view_list(sitename)
             ribbon_bar.click_button_delete()
             are_you_sure_popup.click_button_ok()
 
-    def delete_site_from_global_site_view_tree(self, sitename):
+    def delete_site_from_global_site_view_list(self, sitename):
         ribbon_bar = RibbonBar(self.driver)
         are_you_sure_popup = AreYouSurePopup(self.driver)
-        self.click_site_in_global_site_view_tree(sitename)
+        self.click_site_in_global_site_view_list(sitename)
         ribbon_bar.click_button_delete()
         are_you_sure_popup.click_button_ok()
 
@@ -413,26 +415,25 @@ class LeftMenuDevices(BaseLeftMenu):
         ribbon_bar.click_button_new_site()
         site_name_popup.enter_text_into_name_text_field(sitename)
         site_name_popup.click_button_ok()
-        self.check_site_is_in_global_site_view_tree(sitename)
+        self.check_site_is_in_global_site_view_list(sitename)
 
     def create_site_if_not_exists(self, sitename):
-        self.expand_global_site_view_tree()
+        self.expand_global_site_view_list()
         self.scroll_to_element(self.LIST_GLOBAL_SITE_VIEW)
         element = self.LIST_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']"
-        cond = self._wait_for_element_present(element)
+        cond = self._is_element_present(element)
         if cond is not True:
             ribbon_bar = RibbonBar(self.driver)
             site_name_popup = SiteNamePopup(self.driver)
-            left_menu_devices = LeftMenuDevices(self.driver)
-            left_menu_devices.click_global_site_view_label()
+            self.click_global_site_view_label()
             ribbon_bar.click_button_new_site()
             site_name_popup.enter_text_into_name_text_field(sitename)
             site_name_popup.click_button_ok()
-        site = self.check_site_is_in_global_site_view_tree(sitename)
+        site = self.check_site_is_in_global_site_view_list(sitename)
         return True if site else False
 
     def create_new_subsite(self, sitename, subsitename):
-        self.click_site_in_global_site_view_tree(sitename)
+        self.click_site_in_global_site_view_list(sitename)
         ribbon_bar = RibbonBar(self.driver)
         site_name_popup = SiteNamePopup(self.driver)
         ribbon_bar.click_button_new_site()
@@ -442,10 +443,12 @@ class LeftMenuDevices(BaseLeftMenu):
     def create_subsite_if_not_exists(self, sitename, subsitename):
         site = "//span[text()='" + sitename + "']/ancestor::div[contains(@class,'RowContainer')]/parent::div"
         element = "//span[text()='" + sitename + "']/following::span[text() = '" + subsitename + "']/ancestor::div[contains(@class,'RowContainer')]"
-        self.click_site_in_global_site_view_tree(sitename)
-        self._expand_tree(site)
+        self.expand_global_site_view_list()
+        self.scroll_to_element(self.LIST_GLOBAL_SITE_VIEW)
+        self.click_global_site_view_label()
+        self._expand_list(site)
         self.scroll_to_element(site)
-        cond = self._wait_for_element_present(element)
+        cond = self._is_element_present(element)
         if cond is not True:
             self.create_new_subsite(sitename, subsitename)
             print "SUBSITE WAS CREATED"
@@ -455,79 +458,84 @@ class LeftMenuDevices(BaseLeftMenu):
     def check_subsite_is_in_parent_site(self, sitename, subsitename):
         site_name = "//span[text()='" + sitename + "']/ancestor::div[contains(@class,'RowContainer')]"
         subsite_name = "//span[text()='" + subsitename + "']/ancestor::div[contains(@class,'RowContainer')]"
-        element = LeftMenuDevices.LIST_GLOBAL_SITE_VIEW + site_name + "/parent::div/div[2]/*" + subsite_name
+        element = self.LIST_GLOBAL_SITE_VIEW + site_name + "/parent::div/div[2]/*" + subsite_name
         cond = self._wait_for_element_present(element)
         return True if cond else False
 
-    def check_site_is_in_global_site_view_tree(self, sitename):
+    def check_site_is_in_global_site_view_list(self, sitename):
         cond = self._wait_for_element_present(LeftMenuDevices.LIST_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']")
         return True if cond else False
 
-    def check_default_site_is_in_global_site_view_tree(self):
+    def check_default_site_is_in_global_site_view_list(self):
         cond = self._wait_for_element_present(LeftMenuDevices.LABEL_DEFAULT_SITE)
         return True if cond else False
 
     def create_group_if_not_exists(self, name):
-        self.expand_groups_tree()
+        self.expand_groups_list()
         cond = self._is_element_not_present(self.LIST_GROUPS + "/*//span[text()='" + name + "']")
         if cond:
             ribbon_bar = RibbonBar(self.driver)
             new_group_popup = NewGroupPopup(self.driver)
             self.click_groups_label()
             ribbon_bar.click_button_new()
-            ribbon_bar.click_new_group_menu_item()
+            ribbon_bar.click_menu_item_new_group()
             new_group_popup.enter_text_into_group_name_text_field(name)
             new_group_popup.click_button_ok()
 
     def create_group_folder_if_not_exists(self, name):
-        self.expand_groups_tree()
+        self.expand_groups_list()
         self.scroll_to_element(self.LIST_GROUPS)
+        self.click_groups_label()
         element = self.LIST_GROUPS + "/*//span[text()='" + name + "']"
-        cond = self._wait_for_element_present(element)
+        cond = self._is_element_present(element)
         if cond is not True:
             ribbon_bar = RibbonBar(self.driver)
             new_folder_popup = NewFolderPopup(self.driver)
             self.click_groups_label()
             ribbon_bar.click_button_new()
-            ribbon_bar.click_new_folder_menu_item()
+            ribbon_bar.click_menu_item_new_folder()
             new_folder_popup.enter_text_into_new_folder_text_field(name)
             new_folder_popup.click_button_ok()
 
     def create_queries_folder_if_not_exists(self, name):
-        cond = self._is_element_not_present(self.LIST_QUERIES + "/*//span[text()='" + name + "']")
-        if cond:
+        self.expand_queries_list()
+        self.click_queries_label()
+        cond = self._is_element_present(self.LIST_QUERIES + "/*//span[text()='" + name + "']")
+        if cond is not True:
             ribbon_bar = RibbonBar(self.driver)
             new_folder_popup = NewFolderPopup(self.driver)
             self.click_queries_label()
             ribbon_bar.click_button_new()
-            ribbon_bar.click_new_folder_menu_item()
+            ribbon_bar.click_menu_item_new_folder()
             new_folder_popup.enter_text_into_new_folder_text_field(name)
             new_folder_popup.click_button_ok()
-            self.check_folder_is_in_queries_tree(name)
+            self.check_folder_is_in_queries_list(name)
         else:
             pass
 
-    def check_group_is_in_groups_tree(self, name):
+    def check_group_is_in_groups_list(self, name):
         cond = self._wait_for_element_present(LeftMenuDevices.LIST_GROUPS + "/*//span[text()='" + name + "']")
         return True if cond else False
 
-    def check_folder_is_in_groups_tree(self, name):
+    def check_folder_is_in_groups_list(self, name):
         cond = self._wait_for_element_present(LeftMenuDevices.LIST_GROUPS + "/*//span[text()='" + name + "']")
         return True if cond else False
 
-    def check_folder_is_in_queries_tree(self, name):
+    def check_folder_is_in_queries_list(self, name):
         cond = self._wait_for_element_present(LeftMenuDevices.LIST_QUERIES + "/*//span[text()='" + name + "']")
         return True if cond else False
 
-    def click_group_in_groups_tree(self, name):
+    def click_group_in_groups_list(self, name):
+        self.expand_groups_list()
+        self.scroll_to_element(self.LIST_GLOBAL_SITE_VIEW)
         element = LeftMenuDevices.LIST_GROUPS + "/*//span[text()='" + name + "']/ancestor::div[contains(@class,'RowContainer')]"
         self._click_element(element)
         self._wait_for_element_selected(element)
         self._wait_for_element_present(RibbonBar.BUTTONS_BOX_GROUPS)
 
-    def open_global_site_view_tree(self):
+    def open_global_site_view_list(self):
         self.click_global_site_view_label()
-        self.expand_global_site_view_tree()
+        self.expand_global_site_view_list()
 
 
 class LeftMenuAdministration(BaseLeftMenu):
@@ -566,16 +574,17 @@ class LeftMenuAdministration(BaseLeftMenu):
     def click_endpoint_management_label(self):
         self._click_label(LeftMenuAdministration.LABEL_ENDPOINT_MANAGEMENT)
 
-    def expand_endpoint_management_tree(self):
+    def expand_endpoint_management_list(self):
         arrow = self._is_element_present(self.LABEL_ENDPOINT_MANAGEMENT + BaseElements.ARROW_EXPAND)
         if arrow:
-            self._expand_tree(self.LABEL_ENDPOINT_MANAGEMENT)
+            self._expand_list(self.LABEL_ENDPOINT_MANAGEMENT)
 
-    def collaps_endpoint_management_tree(self):
+    def collaps_endpoint_management_list(self):
         self._wait_for_element_present(LeftMenuAdministration.LABEL_ENDPOINT_MANAGEMENT)
-        arrow = self._is_element_not_present(LeftMenuAdministration.TREE_ENDPOINT_MANAGEMENT + "/div[2][contains(@style,'display: none')]")
+        arrow = self._is_element_not_present(LeftMenuAdministration.TREE_ENDPOINT_MANAGEMENT +
+                                             "/div[2][contains(@style,'display: none')]")
         if arrow:
-            self._collaps_tree(LeftMenuAdministration.TREE_ENDPOINT_MANAGEMENT)
+            self._collaps_list(LeftMenuAdministration.TREE_ENDPOINT_MANAGEMENT)
 
     def click_site_management_label(self):
         self._click_label(LeftMenuAdministration.LABEL_SITE_MANAGEMENT)
@@ -649,16 +658,16 @@ class LeftMenuTasks(BaseLeftMenu):
     def click_scheduled_tasks_label(self):
         self._click_label(self.LABEL_SCHEDULED_TASKS)
 
-    def expand_scheduled_tasks_tree(self):
+    def expand_scheduled_tasks_list(self):
         arrow = self._is_element_present(self.LABEL_SCHEDULED_TASKS + BaseElements.ARROW_EXPAND)
         if arrow:
-            self._expand_tree(self.LABEL_SCHEDULED_TASKS)
+            self._expand_list(self.LABEL_SCHEDULED_TASKS)
 
-    def collaps_scheduled_tasks_tree(self):
+    def collaps_scheduled_tasks_list(self):
         self._wait_for_element_present(self.LABEL_SCHEDULED_TASKS)
         arrow = self._is_element_not_present(self.TREE_SCHEDULED_TASKS + "/div[2][contains(@style,'display: none')]")
         if arrow:
-            self._collaps_tree(self.TREE_SCHEDULED_TASKS)
+            self._collaps_list(self.TREE_SCHEDULED_TASKS)
 
     def click_discover_label(self):
         self._click_label(self.LABEL_DISCOVER)
@@ -686,6 +695,98 @@ class LeftMenuTasks(BaseLeftMenu):
         return True if cond else False
 
 
+class LeftMenuReporting(BaseLeftMenu):
+
+    BODY = "//span[text()='Reporting']/ancestor::div[contains(@style,'transform')]"
+    TREE_MY_DASHBOARDS = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[1]"
+    TREE_SHARED_DASHBOARDS = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[2]"
+    TREE_MY_REPORTS = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[3]"
+    TREE_SHARED_REPORTS = BODY + "/*//div[contains(@class,'PaddingContainer')]/div[4]"
+    LABEL_MY_DASHBOARDS = TREE_MY_DASHBOARDS \
+                          + "/div/div/*//span[text()='My Dashboards']/ancestor::div[contains(@class,'RowContainer')]"
+    LABEL_SHARED_DASHBOARDS = TREE_SHARED_DASHBOARDS \
+                              + "/div/div/*//span[text()='Shared Dashboards']/ancestor::div[contains(@class,'RowContainer')]"
+    LABEL_MY_REPORTS = TREE_MY_REPORTS \
+                       + "/*//span[text()='My Reports']/ancestor::div[contains(@class,'RowContainer')]"
+    LABEL_SHARED_REPORTS = TREE_SHARED_REPORTS \
+                           + "/*//span[text()='Shared Reports']/ancestor::div[contains(@class,'RowContainer')]"
+    LIST_MY_DASHBOARDS = TREE_MY_DASHBOARDS + "/div[contains(@class,'SubNodesContainer')]"
+    LIST_SHARED_DASHBOARD = TREE_SHARED_DASHBOARDS + "/div[contains(@class,'SubNodesContainer')]"
+
+    def click_label_my_dashboards(self):
+        self._click_label(self.LABEL_MY_DASHBOARDS)
+
+    def expand_list_my_dashboards(self):
+        arrow = self._is_element_present(self.LABEL_MY_DASHBOARDS + BaseElements.ARROW_EXPAND)
+        if arrow:
+            self._expand_list(self.LABEL_MY_DASHBOARDS)
+
+    def collaps_list_my_dashboards(self):
+        self._wait_for_element_present(self.LABEL_MY_DASHBOARDS)
+        arrow = self._is_element_not_present(self.TREE_MY_DASHBOARDS + "/div[2][contains(@style,'display: none')]")
+        if arrow:
+            self._collaps_list(self.TREE_MY_DASHBOARDS)
+
+    def click_label_shared_dashboards(self):
+        self._click_label(self.LABEL_SHARED_DASHBOARDS)
+
+    def click_label_my_reports(self):
+        self._click_label(self.LABEL_MY_REPORTS)
+
+    def click_patch_manager_label(self):
+        self._click_label(self.LABEL_SHARED_REPORTS)
+
+    def click_dashboard_in_my_dashboards_list(self, name):
+        element = self.LIST_MY_DASHBOARDS \
+                  + "/*//span[text()='" + name + "']/ancestor::div[contains(@class,'RowContainer')]"
+        self._click_element(element)
+        self._wait_for_element_selected(element)
+
+    def check_label_my_dashboard_is_present(self):
+        cond = self._wait_for_element_present(self.LABEL_MY_DASHBOARDS)
+        return True if cond else False
+
+    def check_label_shared_dashboards_is_present(self):
+        cond = self._wait_for_element_present(self.LABEL_SHARED_DASHBOARDS)
+        return True if cond else False
+
+    def check_label_my_reports_is_present(self):
+        cond = self._wait_for_element_present(self.LABEL_MY_REPORTS)
+        return True if cond else False
+
+    def check_label_shared_reports_is_present(self):
+        cond = self._wait_for_element_present(self.LABEL_SHARED_REPORTS)
+        return True if cond else False
+
+    def expand_my_dashboards_list(self):
+        arrow = self._is_element_present(self.LABEL_MY_DASHBOARDS + BaseElements.ARROW_EXPAND)
+        if arrow:
+            self._expand_list(self.LABEL_MY_DASHBOARDS)
+
+    def create_dashboard_if_not_exists(self, name):
+        self.expand_my_dashboards_list()
+        self.scroll_to_element(self.LABEL_MY_DASHBOARDS)
+        self.click_label_my_dashboards()
+        element = self.LIST_MY_DASHBOARDS + "/*//span[text()='" + name + "']"
+        cond = self._is_element_present(element)
+        if cond is not True:
+            ribbon_bar = RibbonBar(self.driver)
+            create_patch_group_popup = CreatePatchGroupPopup(self.driver)
+            ribbon_bar.click_button_create_group()
+            create_patch_group_popup.check_popup_is_present()
+            create_patch_group_popup.enter_text_into_group_name_text_field(name)
+            create_patch_group_popup.click_button_ok()
+            self.check_dashboard_is_in_my_dashboards_list(name)
+        else:
+            pass
+        site = self.check_dashboard_is_in_my_dashboards_list(name)
+        return True if site else False
+
+    def check_dashboard_is_in_my_dashboards_list(self, name):
+        cond = self._wait_for_element_present(self.LIST_MY_DASHBOARDS + "/*//span[text()='" + name + "']")
+        return True if cond else False
+
+
 class LeftMenuSoftwareAndPatchManager(BaseLeftMenu):
 
     BODY = "//span[text()='Software / Patch Manager']/ancestor::div[contains(@style,'transform')]"
@@ -709,6 +810,8 @@ class LeftMenuSoftwareAndPatchManager(BaseLeftMenu):
                           "/*//span[text()='My Patches']/ancestor::div[contains(@class,'RowContainer')]"
     LIST_BY_GROUP = LABEL_BY_GROUP + "/parent::div/div[2]"
     LIST_BY_QUERY_RULE = LABEL_BY_QUERY_RULE + "/parent::div/div[2]"
+    LABEL_TO_BE_CHECKED = LIST_PATCH_MANAGER + \
+                          "/*//span[text()='To Be Checked']/ancestor::div[contains(@class,'RowContainer')]"
 
     def click_applications_label(self):
         self._click_label(self.LABEL_APPLICATIONS)
@@ -737,47 +840,47 @@ class LeftMenuSoftwareAndPatchManager(BaseLeftMenu):
     def click_patch_manager_label(self):
         self._click_label(self.LABEL_PATCH_MANAGER)
 
-    def click_group_in_by_group_tree(self, name):
+    def click_group_in_by_group_list(self, name):
         element = self.LIST_BY_GROUP + "/*//span[text()='" + name + "']/ancestor::div[contains(@class,'RowContainer')]"
         self._click_element(element)
         self._wait_for_element_selected(element)
         # self._wait_for_element_present(RibbonBar.BUTTONS_BOX_PATCH_GROUPS)
 
-    def expand_patch_manager_tree(self):
+    def expand_patch_manager_list(self):
         arrow = self._is_element_present(self.LABEL_PATCH_MANAGER + BaseElements.ARROW_EXPAND)
         if arrow:
-            self._expand_tree(self.LABEL_PATCH_MANAGER)
+            self._expand_list(self.LABEL_PATCH_MANAGER)
 
-    def collaps_scheduled_tasks_tree(self):
+    def collaps_scheduled_tasks_list(self):
         self._wait_for_element_present(self.LABEL_PATCH_MANAGER)
         arrow = self._is_element_not_present(self.TREE_PATCH_MANGER + "/div[2][contains(@style,'display: none')]")
         if arrow:
-            self._collaps_tree(self.TREE_PATCH_MANGER)
+            self._collaps_list(self.TREE_PATCH_MANGER)
 
-    def expand_by_vendor_tree(self):
+    def expand_by_vendor_list(self):
         arrow = self._is_element_present(self.LABEL_BY_VENDOR + BaseElements.ARROW_EXPAND)
         if arrow:
-            self._expand_tree(self.LABEL_BY_VENDOR)
+            self._expand_list(self.LABEL_BY_VENDOR)
 
-    def expand_by_group_tree(self):
+    def expand_by_group_list(self):
         arrow = self._is_element_present(self.LABEL_BY_GROUP + BaseElements.ARROW_EXPAND)
         if arrow:
-            self._expand_tree(self.LABEL_BY_GROUP)
+            self._expand_list(self.LABEL_BY_GROUP)
 
-    def expand_by_system_rule_tree(self):
+    def expand_by_system_rule_list(self):
         arrow = self._is_element_present(self.LABEL_BY_SYSTEM_RULE + BaseElements.ARROW_EXPAND)
         if arrow:
-            self._expand_tree(self.LABEL_BY_SYSTEM_RULE)
+            self._expand_list(self.LABEL_BY_SYSTEM_RULE)
 
-    def expand_by_query_rule_tree(self):
+    def expand_by_query_rule_list(self):
         arrow = self._is_element_present(self.LABEL_BY_QUERY_RULE + BaseElements.ARROW_EXPAND)
         if arrow:
-            self._expand_tree(self.LABEL_BY_QUERY_RULE)
+            self._expand_list(self.LABEL_BY_QUERY_RULE)
 
-    def expand_media_management_tree(self):
+    def expand_media_management_list(self):
         arrow = self._is_element_present(self.LABEL_MEDIA_MANAGEMENT + BaseElements.ARROW_EXPAND)
         if arrow:
-            self._expand_tree(self.LABEL_MEDIA_MANAGEMENT)
+            self._expand_list(self.LABEL_MEDIA_MANAGEMENT)
 
     def check_applications_label_is_present(self):
         cond = self._wait_for_element_present(self.LABEL_APPLICATIONS)
@@ -812,21 +915,26 @@ class LeftMenuSoftwareAndPatchManager(BaseLeftMenu):
         return True if cond else False
 
     def create_patch_group_if_not_exists(self, name):
-        self.expand_patch_manager_tree()
-        self.click_by_group_label()
+        self.expand_patch_manager_list()
+        self.expand_by_group_list()
         self.scroll_to_element(self.LABEL_BY_GROUP)
-        self.expand_by_group_tree()
-        cond = self._is_element_not_present(self.LIST_BY_GROUP + "/*//span[text()='" + name + "']")
-        if cond:
+        self.click_by_group_label()
+        element = self.LIST_BY_GROUP + "/*//span[text()='" + name + "']"
+        cond = self._is_element_present(element)
+        if cond is not True:
             ribbon_bar = RibbonBar(self.driver)
             create_patch_group_popup = CreatePatchGroupPopup(self.driver)
             ribbon_bar.click_button_create_group()
             create_patch_group_popup.check_popup_is_present()
             create_patch_group_popup.enter_text_into_group_name_text_field(name)
             create_patch_group_popup.click_button_ok()
-            self.check_group_is_in_by_group_tree(name)
+            self.check_patch_group_is_in_by_group_list(name)
+        else:
+            pass
+        site = self.check_patch_group_is_in_by_group_list(name)
+        return True if site else False
 
-    def check_group_is_in_by_group_tree(self, name):
+    def check_patch_group_is_in_by_group_list(self, name):
         cond = self._wait_for_element_present(self.LIST_BY_GROUP + "/*//span[text()='" + name + "']")
         return True if cond else False
 

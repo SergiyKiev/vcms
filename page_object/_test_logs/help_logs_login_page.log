@@ -1,0 +1,22 @@
+2017-03-08 16:47:33,563  [INFO] Start testing
+
+2017-03-08 16:47:33,563  [INFO] TEST SUITE: HELP LINKS ON LOGIN PAGE
+
+2017-03-08 16:47:45,538  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
+
+2017-03-08 16:47:46,714  [INFO] Login page is present
+
+2017-03-08 16:47:47,753  [INFO] [Test start]
+2017-03-08 16:47:47,753  [INFO] TC#0000: Check help link on Login page
+2017-03-08 16:47:49,351  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-08 16:47:52,729  [INFO] Expected header: Sign In == Actual header: Sign In
+2017-03-08 16:47:52,729  [INFO] TEST PASSED
+2017-03-08 16:47:53,793  [INFO] [Test end]
+
+2017-03-08 16:47:53,796  [INFO] [Test start]
+2017-03-08 16:47:53,796  [INFO] TC#0000: Check help link on Password Reset popup
+2017-03-08 16:47:56,078  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-08 16:47:59,446  [INFO] Expected header: Reset Password == Actual header: Reset Password
+2017-03-08 16:47:59,446  [INFO] TEST PASSED
+2017-03-08 16:48:04,243  [INFO] [Test end]
+

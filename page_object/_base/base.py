@@ -28,7 +28,7 @@ class Base(object):
     ARROW_COLLAPSE = "/div[contains(@style,'LTR0.gif')]"
     ARROW_EMPTY = "/div[contains(@style,'TreeViewEmpty')]"
 
-    def __init__(self, driver, base_url=Settings.baseUrl, log_name="test_logs_base"):
+    def __init__(self, driver, base_url=Settings.baseUrl):
         self.driver = driver
         self.base_url = base_url
         # self.log_name = log_name
@@ -45,8 +45,8 @@ class Base(object):
         #                     level=logging.INFO, format='%(asctime)-24s [%(levelname)-3s] %(message)s')  # KIPROV HOME
 
     '''LOGS'''
-    logging.basicConfig(filename='D:\\python\\vcms\\vcms\\page_object\\_test_logs\\test_logs.log',
-                        level=logging.INFO, format='%(asctime)-24s [%(levelname)-3s] %(message)s')  # KIPROV HOME
+    # logging.basicConfig(filename='D:\\python\\vcms\\vcms\\page_object\\_test_logs\\test_logs.log',
+    #                     level=logging.INFO, format='%(asctime)-24s [%(levelname)-5s] %(message)s')  # KIPROV WORK
     # logging.basicConfig(filename='E:\\python\\vcms\\vcms\\page_object\\_test_logs\\test_logs.log',
     #                     level=logging.INFO, format='%(asctime)-24s [%(levelname)-5s] %(message)s')  # KIPROV HOME
     logger = logging.getLogger(__name__)
@@ -197,7 +197,7 @@ class Base(object):
             self.logger.exception("FIND ELEMENT. The element " + locator + " is NOT found\n. Message: " + str(e))
             return None
 
-    def _find_elements(self, locator):
+    def _find_all_elements(self, locator):
         try:
             self.wait_webelement.until(EC.presence_of_all_elements_located((By.XPATH, locator)))
             self.wait_webelement.until(EC.visibility_of_any_elements_located((By.XPATH, locator)))
@@ -238,7 +238,7 @@ class Base(object):
         # except Exception as e:
         #     self.logger.exception("METHOD 'Wait for element present' is failed\n" + str(e))
 
-    def _wait_for_elements_present(self, locator):
+    def _wait_for_all_elements_present(self, locator):
         try:
             self.wait_webelement.until(EC.presence_of_all_elements_located((By.XPATH, locator)), "Element is NOT present")
             self.wait_webelement.until(EC.visibility_of_any_elements_located((By.XPATH, locator)), "Element is NOT visible")
@@ -341,13 +341,13 @@ class Base(object):
             self.wait_condition.until(EC.visibility_of_element_located((By.XPATH, locator)))
             self.logger.debug("CHECK. Element " + locator + " is present.")
             return True
-        except (NoSuchElementException, TimeoutException):
+        except NoSuchElementException:
             self.logger.debug("CHECK. Element " + locator + " is NOT found.")
             return False
-        # except TimeoutException:
-        #     self.logger.debug(
-        #         "CHECK. Element " + locator + "' is NOT present after " + str(self.timeout_condition) + " seconds")
-        #     return False
+        except TimeoutException:
+            self.logger.debug(
+                "CHECK. Element " + locator + "' is NOT present after " + str(self.timeout_condition) + " seconds")
+            return False
 
     def _is_element_not_present(self, locator):
         try:
@@ -355,13 +355,13 @@ class Base(object):
             self.wait_condition.until_not(EC.visibility_of_element_located((By.XPATH, locator)))
             self.logger.debug("CHECK. Element " + locator + "' is NOT present.")
             return True
-        except (NoSuchElementException, TimeoutException):
+        except NoSuchElementException:
             self.logger.debug("CHECK. Element " + locator + " is NOT found.")
             return True
-        # except TimeoutException:
-        #     self.logger.exception(
-        #         "CHECK. Element " + locator + " is present after " + str(self.timeout_condition) + " seconds")
-        #     return False
+        except TimeoutException:
+            self.logger.debug(
+                "CHECK. Element " + locator + " is present after " + str(self.timeout_condition) + " seconds")
+            return False
 
     def _is_element_selected(self, locator):
         try:
@@ -403,7 +403,7 @@ class Base(object):
             self.logger.debug("CHECK. Element " + locator + " is NOT disabled.")
             return False
 
-    def _is_tree_arrow_present(self, locator):
+    def _is_list_arrow_present(self, locator):
         try:
             self.wait_condition.until(EC.presence_of_element_located((By.XPATH, locator + Base.ARROW_EMPTY)))
             self.wait_condition.until(EC.visibility_of_element_located((By.XPATH, locator + Base.ARROW_EMPTY)))

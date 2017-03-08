@@ -51,7 +51,7 @@ class LoginPage(BaseActions):
             cond2 = self._is_element_present(LoginPage.FIELD_USERNAME)
             cond3 = self._is_element_present(LoginPage.FIELD_PASSWORD)
             if cond:
-                elements = self._find_elements(BaseElements.POPUP + "/*//span[contains(@class,'Label-FontData')]")
+                elements = self._find_all_elements(BaseElements.POPUP + "/*//span[contains(@class,'Label-FontData')]")
                 self.logger.error("LOGIN IS FAILED. Error massage: ")
                 for element in elements:
                     error_text = element.text
