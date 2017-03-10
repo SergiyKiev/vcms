@@ -57,6 +57,7 @@ class RibbonBar(BaseRibbonBar):
     BUTTONS_BOX_PATCH_MANAGER = "//div[text()='Patch Manager'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
     BUTTONS_BOX_PATCH_QUERY_RULES = "//div[text()='Patch Query Rules'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
     BUTTONS_BOX_MOVE_TO = "//div[text()='Move to'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
+    BUTTONS_BOX_DASHBOARDS = "//div[text()='Dashboards'][contains(@class,'GroupBox-Text')]" + BUTTONS_GROUP_BOX
     BUTTON_EXIT = "//img[@alt='Exit']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_HOME = "//img[@alt='Home']/ancestor::div[contains(@class,'RibbonBarButton')]"
     BUTTON_NEW = "//img[@alt='New']/ancestor::div[contains(@class,'RibbonBarButton')]"
@@ -416,170 +417,188 @@ class RibbonBar(BaseRibbonBar):
     def click_button_to_be_checked(self):
         self._click_element(RibbonBar.BUTTON_TO_BE_CHECKED)
 
+    def check_button_create_is_presented(self):
+        cond = self._wait_for_element_present(RibbonBar.BUTTON_CREATE)
+        return True if cond else False
+
+    def click_button_create_schedule(self):
+        self._click_element(self.BUTTON_CREATE_SCHEDULE)
+
+    def click_button_add_gadget(self):
+        self._click_element(self.BUTTON_ADD_GADGET)
+
     def click_button_import(self):
         self._click_element(RibbonBar.BUTTON_IMPORT)
 
-    def check_tab_home_is_present(self):
+    def check_tab_home_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_ACTIONS)
         return True if cond else False
 
-    def check_tab_view_is_present(self):
+    def check_tab_view_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_DISPLAY)
         return True if cond else False
 
-    def check_devices_tab_is_present(self):
+    def check_devices_tab_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_INVENTORY)
         return True if cond else False
 
-    def check_tab_advanced_is_present(self):
+    def check_tab_advanced_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_UPDATES)
         return True if cond else False
 
-    def check_box_updates_is_present(self):
+    def check_box_updates_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_UPDATES)
         msg_true = "Buttons box '" + self.UPDATES + "' is present"
         msg_false = "Buttons box '" + self.UPDATES + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
-    def check_maintenance_windows_box_is_present(self):
+    def check_maintenance_windows_box_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_MAINTENANCE_WINDOWS)
         msg_true = "Buttons box '" + self.USERS + "' is present"
         msg_false = "Buttons box '" + self.USERS + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
-    def check_queries_box_is_present(self):
+    def check_queries_box_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_QUERIES)
         return True if cond else False
 
-    def check_groups_box_is_present(self):
+    def check_groups_box_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_GROUPS)
         return True if cond else False
 
-    def check_configuration_box_is_present(self):
+    def check_configuration_box_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_CONFIGURATION)
         return True if cond else False
 
-    def check_box_config_is_present(self):
+    def check_box_config_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_CONFIG)
         return True if cond else False
 
-    def check_box_inventory_is_present(self):
+    def check_box_inventory_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_INVENTORY)
         return True if cond else False
 
-    def check_box_discovery_task_is_present(self):
+    def check_box_discovery_task_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_DISCOVERY_TASK)
         return True if cond else False
 
-    def check_box_software_deployment_is_present(self):
+    def check_box_software_deployment_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_SOFTWARE_DEPLOYMENT)
         return True if cond else False
 
-    def check_box_patch_manager_is_present(self):
+    def check_box_patch_manager_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_PATCH_MANAGER)
         return True if cond else False
 
-    def check_box_computer_tools_is_present(self):
+    def check_box_computer_tools_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_COMPUTER_TOOLS)
         return True if cond else False
 
-    def check_box_site_management_is_present(self):
+    def check_box_site_management_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_SITE_MANAGEMENT)
         return True if cond else False
 
-    def check_box_column_sets_is_present(self):
+    def check_box_column_sets_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_COLUMN_SETS)
         msg_true = "Buttons box '" + self.COLUMN_SETS + "' is present"
         msg_false = "Buttons box '" + self.COLUMN_SETS + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
-    def check_box_users_is_present(self):
+    def check_box_users_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_USERS)
         msg_true = "Buttons box '" + self.USERS + "' is present"
         msg_false = "Buttons box '" + self.USERS + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
-    def check_box_applications_is_present(self):
+    def check_box_applications_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_APPLICATIONS)
         return True if cond else False
 
-    def check_box_move_to_is_present(self):
+    def check_box_move_to_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_MOVE_TO)
         return True if cond else False
 
-    def check_box_import_is_present(self):
+    def check_box_import_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_IMPORT)
         return True if cond else False
 
-    def check_button_edit_is_present(self):
+    def check_box_dashboards_is_enabled(self):
+        cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_DASHBOARDS)
+        return True if cond else False
+
+    def check_button_edit_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTON_EDIT)
         return True if cond else False
 
-    def check_button_edit_folder_is_present(self):
+    def check_button_edit_folder_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTON_EDIT_FOLDER)
         return True if cond else False
 
-    def check_button_patch_manager_is_present(self):
+    def check_button_patch_manager_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTON_PATCH_MANAGER)
         return True if cond else False
 
-    def check_button_discover_is_present(self):
+    def check_button_discover_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTON_DISCOVER)
         return True if cond else False
 
-    def check_button_force_update_is_unabled(self):
-        cond = self._wait_for_element_unabled(RibbonBar.BUTTON_FORCE_UPDATE)
-        msg_true = "Button '" + self.FORCE_UPDATE + "' is unabled"
-        msg_false = "Button '" + self.FORCE_UPDATE + "' is NOT unabled"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+    def check_button_force_update_is_enabled(self):
+        cond = self._wait_for_element_enabled(RibbonBar.BUTTON_FORCE_UPDATE)
+        msg_true = "Button '" + self.FORCE_UPDATE + "' is enabled"
+        msg_false = "Button '" + self.FORCE_UPDATE + "' is NOT enabled"
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
-    def check_button_new_site_is_present(self):
+    def check_button_new_site_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTON_NEW_SITE)
         msg_true = "Button 'New Site' is present"
         msg_false = "Button 'New Site' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
-    def check_button_config_is_present(self):
+    def check_button_config_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTON_CONFIG)
         return True if cond else False
 
-    def check_button_exit_is_present(self):
+    def check_button_exit_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTON_EXIT)
         return True if cond else False
 
-    def check_button_edit_or_create_is_present(self):
+    def check_button_edit_or_create_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTON_EDIT_OR_CREATE)
         return True if cond else False
 
-    def check_button_delete_is_present(self):
+    def check_button_delete_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTON_DELETE)
         return True if cond else False
 
-    def check_button_wake_up_is_present(self):
+    def check_button_wake_up_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTON_WAKE_UP)
         return True if cond else False
 
-    def check_button_reports_is_present(self):
+    def check_button_reports_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTON_REPORTS)
         return True if cond else False
 
-    def check_box_patch_groups_is_present(self):
+    def check_box_patch_groups_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_PATCH_GROUPS)
         return True if cond else False
 
-    def check_box_patch_query_rules_is_present(self):
+    def check_box_patch_query_rules_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_PATCH_QUERY_RULES)
         return True if cond else False
 
-    def check_drop_down_list_is_present(self):
+    def check_create_schedule_button_is_enabled(self):
+        cond = self._wait_for_element_enabled(self.BUTTON_CREATE_SCHEDULE)
+        return True if cond else False
+
+    def check_drop_down_list_is_presented(self):
         cond = self._wait_for_element_present(self.DROP_DOWN_LIST)
         msg_true = "Drop Down list '" + self.HOME + "' is present"
         msg_false = "Drop Down list '" + self.HOME + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False

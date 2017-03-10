@@ -78,7 +78,7 @@ class SmokeTest(unittest.TestCase):
     #     x.download_agent()
     #     x.install_agent()
     #     devices_page.click_icon_refresh()
-    #     devices_page.check_device_is_present(name)
+    #     devices_page.check_device_is_presented(name)
 
     # @unittest.skip
     # def test_apply_vrep_to_site(self):

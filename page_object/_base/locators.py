@@ -39,7 +39,7 @@ class Locators:
   EL_POPUP                          = "div[contains(@id,'WRP')][last()]"
   EL_TABEL_HEADER                   = "div[contains(@id,'HEADER')]"
   EL_TABLE_BODY                     = "div[contains(@id,'VWGLVBODY')]"
-  EL_TAB_BTN                        = "div[contains(@id,'TAB')]"
+  EL_TAB_BUTTON                        = "div[contains(@id,'TAB')]"
   EL_CHECKBOX                       = "div[contains(@class,'CheckBox')]"
   EL_TREE_ARROW                     = "div[@data-vwgtype='joint']"
   # EL_TREE_BOX                 = "div[@class='TreeView-Container']"
@@ -294,160 +294,160 @@ class Locators:
   FIELD_USERNAME                     = "//input[@type='text']"
   FIELD_PASSWORD                     = "//input[@type='password']"
 
-  '''BUTTONS (BTN) XPATH'''
+  '''BUTTONS (BUTTON) XPATH'''
   EL_BUTTON                    = "div[contains(@class,'Button')]"
-  _BTN                         = "//div[contains(@class,'Button')]"
-  BTN_SIGN_IN                  = "//span[text()='Sign In']/ancestor::div[contains(@class,'Button')]"
-  BTN_EXIT                     = "//img[@alt='Exit']"
+  _BUTTON                         = "//div[contains(@class,'Button')]"
+  BUTTON_SIGN_IN                  = "//span[text()='Sign In']/ancestor::div[contains(@class,'Button')]"
+  BUTTON_EXIT                     = "//img[@alt='Exit']"
   ICON_HOME                    = "//td[contains(@style,'Home')]"
   ICON_DEVICES                 = "//div[@title='Devices']"
   ICON_ADMINISTRATION          = "//div[@title='Administration']"
-  BTN_ICON_TASKS               = "//div[@title='Tasks']"
-  BTN_ICON_REPORTING           = "//div[@title='Reporting']"
-  BTN_ICON_SFT_AND_PTH_MANAGER = "//div[@title='Software / Patch Manager']"
-  BTN_ICON_PASSWORD_RESET      = "//div[@title='Password Reset']"
-  BTN_NEW_SITE                 = "//img[@alt='New Site']"
-  BTN_NEW_SITE_by_text         = TEXT_NEW_SITE + anc + EL_BUTTON
-  # BTN_OK                       = TEXT_OK + anc + EL_BUTTON
-  BTN_OK                       = TEXT_OK
-  BTN_Ok                       = TEXT_Ok + anc + EL_BUTTON
-  BTN_CANCEL                   = "//span[text()='Cancel']"
-  BTN_I_AGREE                  = "//span[text()='I Agree']"
-  BTN_I_DO_NOT_AGREE           = "//span[text()='I Do Not Agree']"
-  BTN_ICON_ADMIN_USER          = "//td[contains(@style,'icons-gray.111-user')]"
-  BTN_LOG_OUT                  = "//span[text()='Log Out']"
-  BTN_SETTINGS_UPPER_CORNER    = "//span[text()='Settings']"
-  BTN_CONFIG                   = "//img[@alt='Config']"
-  BTN_CONFIG_by_text           = "//span[text()='Config']"
-  BTN_DELETE                   = "//img[@alt='Delete']"
-  BTN_DELETE_by_text           = "//span[text()='Delete']"
-  BTN_DELETE_GROUP             = "//img[@alt='Delete Group']"
-  BTN_DELETE_FOLDER            = "//img[@alt='Delete Folder']"
-  BTN_MOVE                     = "//img[@alt='Move']"
-  BTN_MOVE_by_text             = "//span[text()='Move']"
-  BTN_MOVE_SITE                = "//span[text()='Move Site']"
-  BTN_SETTINGS                 = "//img[@alt='Settings']"
-  BTN_CLIENT                   = "//img[@alt='Client']"
-  BTN_SUBSCRIPTIONS            = "//img[@alt='Subscriptions']"
-  BTN_ABOUT                    = "//img[@alt='About']"
-  BTN_NEW                      = "//img[@alt='New']"
-  BTN_NEW_by_text              = "//span[text()='New']"
-  BTN_NEW_DROP_DOWN            = BTN_NEW + fol + EL_DROP_DOWN_ARROW
-  BTN_EDIT                     = "//img[@alt='Edit']"
-  BTN_EDIT_by_text             = "//span[text()='Edit']"
-  BTN_EDIT_GROUP               = "//img[@alt='Edit Group']"
-  BTN_EDIT_FOLDER              = "//img[@alt='Edit Folder']"
-  BTN_ADD_MEMBERS              = "//span[text()='Add Members']"
-  BTN_ADD_right                = TEXT_ADD_right + anc + EL_BUTTON
-  BTN_DELETE_MEMBERS           = TEXT_DELETE_MEMBERS + anc + EL_BUTTON
-  BTN_HOME                     = "//img[@alt='Home']"
-  BTN_ARROW_UP                 = "//td[contains(@style,'arrow_up')]/ancestor::div[contains(@class,'Button')]"
-  BTN_ARROW_DOWN               = "//td[contains(@style,'arrow_down')]/ancestor::div[contains(@class,'Button')]"
-  BTN_HOME_DROP_DOWN_ARROW     = BTN_HOME + fol + EL_DROP_DOWN_ARROW
-  BTN_INVENTORY                = "//img[@alt='Inventory']"
-  BTN_INVENTORY_DROP_DOWN      = BTN_INVENTORY + fol + EL_DROP_DOWN_ARROW
-  BTN_REFRESH                  = "//span[text()='Refresh']"
-  BTN_INVENTORY_SCAN           = "//span[text()='Inventory Scan']"
-  BTN_USER_INTERFACE_OPTIONS   = "//span[text()='User Interface Options']"
-  BTN_FINISH                   = "//span[text()='FINISH']"
-  BTN_CLOSE                    = "//span[text()='Close']"
-  BTN_NO                       = "//span[text()='No']"
-  BTN_YES                      = "//span[text()='Yes']"
-  BTN_SELECT_ALL               = "//span[text()='Select All']"
-  BTN_SELECT_NONE              = "//span[text()='Select None']"
-  BTN_SCAN_SELECTED            = "//span[text()='Scan Selected']"
-  BTN_INSTALL_SELECTED         = "//span[text()='Install Selected']"
-  BTN_ICON_SEARCH              = "//img[contains(@src,'06-magnify.2xw')]"
+  BUTTON_ICON_TASKS               = "//div[@title='Tasks']"
+  BUTTON_ICON_REPORTING           = "//div[@title='Reporting']"
+  BUTTON_ICON_SFT_AND_PTH_MANAGER = "//div[@title='Software / Patch Manager']"
+  BUTTON_ICON_PASSWORD_RESET      = "//div[@title='Password Reset']"
+  BUTTON_NEW_SITE                 = "//img[@alt='New Site']"
+  BUTTON_NEW_SITE_by_text         = TEXT_NEW_SITE + anc + EL_BUTTON
+  # BUTTON_OK                       = TEXT_OK + anc + EL_BUTTON
+  BUTTON_OK                       = TEXT_OK
+  BUTTON_Ok                       = TEXT_Ok + anc + EL_BUTTON
+  BUTTON_CANCEL                   = "//span[text()='Cancel']"
+  BUTTON_I_AGREE                  = "//span[text()='I Agree']"
+  BUTTON_I_DO_NOT_AGREE           = "//span[text()='I Do Not Agree']"
+  BUTTON_ICON_ADMIN_USER          = "//td[contains(@style,'icons-gray.111-user')]"
+  BUTTON_LOG_OUT                  = "//span[text()='Log Out']"
+  BUTTON_SETTINGS_UPPER_CORNER    = "//span[text()='Settings']"
+  BUTTON_CONFIG                   = "//img[@alt='Config']"
+  BUTTON_CONFIG_by_text           = "//span[text()='Config']"
+  BUTTON_DELETE                   = "//img[@alt='Delete']"
+  BUTTON_DELETE_by_text           = "//span[text()='Delete']"
+  BUTTON_DELETE_GROUP             = "//img[@alt='Delete Group']"
+  BUTTON_DELETE_FOLDER            = "//img[@alt='Delete Folder']"
+  BUTTON_MOVE                     = "//img[@alt='Move']"
+  BUTTON_MOVE_by_text             = "//span[text()='Move']"
+  BUTTON_MOVE_SITE                = "//span[text()='Move Site']"
+  BUTTON_SETTINGS                 = "//img[@alt='Settings']"
+  BUTTON_CLIENT                   = "//img[@alt='Client']"
+  BUTTON_SUBSCRIPTIONS            = "//img[@alt='Subscriptions']"
+  BUTTON_ABOUT                    = "//img[@alt='About']"
+  BUTTON_NEW                      = "//img[@alt='New']"
+  BUTTON_NEW_by_text              = "//span[text()='New']"
+  BUTTON_NEW_DROP_DOWN            = BUTTON_NEW + fol + EL_DROP_DOWN_ARROW
+  BUTTON_EDIT                     = "//img[@alt='Edit']"
+  BUTTON_EDIT_by_text             = "//span[text()='Edit']"
+  BUTTON_EDIT_GROUP               = "//img[@alt='Edit Group']"
+  BUTTON_EDIT_FOLDER              = "//img[@alt='Edit Folder']"
+  BUTTON_ADD_MEMBERS              = "//span[text()='Add Members']"
+  BUTTON_ADD_right                = TEXT_ADD_right + anc + EL_BUTTON
+  BUTTON_DELETE_MEMBERS           = TEXT_DELETE_MEMBERS + anc + EL_BUTTON
+  BUTTON_HOME                     = "//img[@alt='Home']"
+  BUTTON_ARROW_UP                 = "//td[contains(@style,'arrow_up')]/ancestor::div[contains(@class,'Button')]"
+  BUTTON_ARROW_DOWN               = "//td[contains(@style,'arrow_down')]/ancestor::div[contains(@class,'Button')]"
+  BUTTON_HOME_DROP_DOWN_ARROW     = BUTTON_HOME + fol + EL_DROP_DOWN_ARROW
+  BUTTON_INVENTORY                = "//img[@alt='Inventory']"
+  BUTTON_INVENTORY_DROP_DOWN      = BUTTON_INVENTORY + fol + EL_DROP_DOWN_ARROW
+  BUTTON_REFRESH                  = "//span[text()='Refresh']"
+  BUTTON_INVENTORY_SCAN           = "//span[text()='Inventory Scan']"
+  BUTTON_USER_INTERFACE_OPTIONS   = "//span[text()='User Interface Options']"
+  BUTTON_FINISH                   = "//span[text()='FINISH']"
+  BUTTON_CLOSE                    = "//span[text()='Close']"
+  BUTTON_NO                       = "//span[text()='No']"
+  BUTTON_YES                      = "//span[text()='Yes']"
+  BUTTON_SELECT_ALL               = "//span[text()='Select All']"
+  BUTTON_SELECT_NONE              = "//span[text()='Select None']"
+  BUTTON_SCAN_SELECTED            = "//span[text()='Scan Selected']"
+  BUTTON_INSTALL_SELECTED         = "//span[text()='Install Selected']"
+  BUTTON_ICON_SEARCH              = "//img[contains(@src,'06-magnify.2xw')]"
   ICON_HELP                    = "//img[contains(@src,'About')]"
   ICON_EXPORT                  = "//img[contains(@src,'212-action2')]"
   ICON_REFRESH                 = "//img[contains(@src,'02-redo.2x')]"
   ICON_RESTORE                 = "//td[contains(@style,'298-circlex')]"
-  BTN_RESET_TO_DEFAULT         = "//span[text()='Reset to default']"
-  BTN_CONFIRM                  = "//span[text()='Confirm']"
-  BTN_TOP                      = "//span[text()='Top']"
-  BTN_UP                       = "//span[text()='Up']"
-  BTN_DOWN                     = "//span[text()='Down']"
-  BTN_BOTTOM                   = "//span[text()='Bottom']"
-  BTN_GROUP                    = "//span[text()='Group']"
-  BTN_UNGROUP                  = "//span[text()='Ungroup']"
-  BTN_SELECT_COLUMNS           = "//span[text()='Select Columns']"
-  BTN_CREATE_                  = "//img[@alt='Create']"
-  BTN_CREATE_by_text           = "//span[text()='Create']"
-  BTN_STOP                     = "//img[@alt='Stop']"
-  BTN_STOP_by_text             = "//span[text()='Stop']"
-  BTN_RESTART                  = "//img[@alt='Restart']"
-  BTN_RESTART_by_text          = "//span[text()='Restart']"
-  BTN_CMS_UNIVERSITY           = "//img[@alt='CMS University']"
-  BTN_NEXT                     = "//img[@alt='NEXT']"
-  BTN_PREVIOUS                 = "//span[text()='PREVIOUS']"
-  BTN_CREATE_NEW               = "//span[text()='Create New']"
-  BTN_ADD_SITE                 = "//span[text()='Add Site']"
-  BTN_IP_RANGE                 = "//span[text()='Add IP Range']"
-  BTN_ADD                      = "//span[text()='Add']"
-  BTN_APPLY_CHANGES            = "//span[text()='Apply Changes']"
-  BTN_SAVE_CURRENT             = "//img[@alt='Save Current Columns']"
-  BTN_DEFAULT_FOR_SITE         = "//img[@alt='Default For Site']"
-  BTN_VIEW_LOGS_1              = "//img[@alt='View Logs']"
-  BTN_VIEW_LOGS_2              = "//span[text()='View Logs']"
-  BTN_FILE_BROWSER_1           = "//img[@alt='File Browser']"
-  BTN_FILE_BROWSER_2           = "//span[text()='File Browser']"
-  BTN_PING_1                   = "//img[@alt='Ping']"
-  BTN_PING_2                   = "//span[text()='Ping']"
-  BTN_PROCESS_VIEWER_1         = "//img[@alt='Process Viewer']"
-  BTN_PROCESS_VIEWER_2         = "//span[text()='Process Viewer']"
-  BTN_WMI_EXPLORER_1           = "//img[@alt='WMI Explorer']"
-  BTN_WMI_EXPLORER_2           = "//span[text()='WMI Explorer']"
-  BTN_REGISTRY_VIEWER_1        = "//img[@alt='Registry Viewer']"
-  BTN_REGISTRY_VIEWER_2        = "//span[text()='Registry Viewer']"
-  BTN_EVENT_VEIWER             = "//img[@alt='Event Viewer']"
-  BTN_EVENT_VEIWER_by_text     = "//span[text()='Event Viewer']"
-  BTN_REMOTE_CONTROL           = "//img[@alt='Remote Control']"
-  BTN_REMOTE_CONTROL_by_text   = "//span[text()='Remote Control']"
-  BTN_PATCH_MANAGER_1          = "//img[@alt='Patch Manager']"
-  BTN_PATCH_MANAGER_2          = "//span[text()='Patch Manager']"
-  BTN_MOVE_DEVICE_1            = "//img[@alt='Move Device']"
-  BTN_MOVE_DEVICE_2            = "//span[text()='Move Device']"
-  BTN_REPORTS_1                = "//img[@alt='Reports']"
-  BTN_REPORTS_2                = "//span[text()='Reports']"
-  BTN_WAKE_UP_1                = "//img[@alt='Wake Up']"
-  BTN_WAKE_UP_2                = "//span[text()='Wake Up']"
-  BTN_END_USER_ACCESS_1        = "//img[@alt='End User Access']"
-  BTN_END_USER_ACCESS_2        = "//span[text()='End User Access']"
-  BTN_NEW_QUERY                = "//span[text()='New Query']"
-  BTN_NEW_GROUP                = "//span[text()='New Group']"
-  BTN_NEW_FOLDER               = "//span[text()='New Folder']"
-  BTN_RUN_REPORT               = "//span[text()='Run Report']"
-  BTN_SEARCH                   = "//span[text()='Search']"
-  BTN_SET_AS_DEFAULT           = "//img[@alt='Set As Default']"
-  BTN_COPY                     = "//img[@alt='Copy']"
-  BTN_APPLY                    = "//span[text()='Apply']"
-  BTN_UPDATE                   = "//span[text()='Update']"
-  BTN_TEST_SETTINGS            = "//span[text()='Test Settings']"
-  BTN_RUN_ININTIAL_SETUP       = "//span[text()='Run Initial Setup']"
-  BTN_PURGE_OLDER_RECORDS      = "//span[text()='Purge Older Records']"
-  BTN_DELETE_ALL_ARCHIVE_DATA  = "//span[text()='Delete ALL Archive Data']"
-  BTN_PURGE_OLDER_ENTRIES_NOW  = "//span[text()='Purge older entries now']"
-  BTN_DELETE_ALL_AUDIT_LOGS    = "//span[text()='Delete all audit logs']"
-  BTN_REMOVE                   = "//span[text()='Remove']"
-  BTN_REMOVE_left              = TEXT_REMOVE_left + anc + EL_BUTTON
-  BTN_ICON_NEXT                = "//img[contains(@src,'right-double')]"
-  BTN_ICON_PREVIOUS            = "//img[contains(@src,'left-double')]"
-  BTN_EDIT_OR_CREATE           = "//img[@alt='Edit/ Create']"
+  BUTTON_RESET_TO_DEFAULT         = "//span[text()='Reset to default']"
+  BUTTON_CONFIRM                  = "//span[text()='Confirm']"
+  BUTTON_TOP                      = "//span[text()='Top']"
+  BUTTON_UP                       = "//span[text()='Up']"
+  BUTTON_DOWN                     = "//span[text()='Down']"
+  BUTTON_BOTTOM                   = "//span[text()='Bottom']"
+  BUTTON_GROUP                    = "//span[text()='Group']"
+  BUTTON_UNGROUP                  = "//span[text()='Ungroup']"
+  BUTTON_SELECT_COLUMNS           = "//span[text()='Select Columns']"
+  BUTTON_CREATE_                  = "//img[@alt='Create']"
+  BUTTON_CREATE_by_text           = "//span[text()='Create']"
+  BUTTON_STOP                     = "//img[@alt='Stop']"
+  BUTTON_STOP_by_text             = "//span[text()='Stop']"
+  BUTTON_RESTART                  = "//img[@alt='Restart']"
+  BUTTON_RESTART_by_text          = "//span[text()='Restart']"
+  BUTTON_CMS_UNIVERSITY           = "//img[@alt='CMS University']"
+  BUTTON_NEXT                     = "//img[@alt='NEXT']"
+  BUTTON_PREVIOUS                 = "//span[text()='PREVIOUS']"
+  BUTTON_CREATE_NEW               = "//span[text()='Create New']"
+  BUTTON_ADD_SITE                 = "//span[text()='Add Site']"
+  BUTTON_IP_RANGE                 = "//span[text()='Add IP Range']"
+  BUTTON_ADD                      = "//span[text()='Add']"
+  BUTTON_APPLY_CHANGES            = "//span[text()='Apply Changes']"
+  BUTTON_SAVE_CURRENT             = "//img[@alt='Save Current Columns']"
+  BUTTON_DEFAULT_FOR_SITE         = "//img[@alt='Default For Site']"
+  BUTTON_VIEW_LOGS_1              = "//img[@alt='View Logs']"
+  BUTTON_VIEW_LOGS_2              = "//span[text()='View Logs']"
+  BUTTON_FILE_BROWSER_1           = "//img[@alt='File Browser']"
+  BUTTON_FILE_BROWSER_2           = "//span[text()='File Browser']"
+  BUTTON_PING_1                   = "//img[@alt='Ping']"
+  BUTTON_PING_2                   = "//span[text()='Ping']"
+  BUTTON_PROCESS_VIEWER_1         = "//img[@alt='Process Viewer']"
+  BUTTON_PROCESS_VIEWER_2         = "//span[text()='Process Viewer']"
+  BUTTON_WMI_EXPLORER_1           = "//img[@alt='WMI Explorer']"
+  BUTTON_WMI_EXPLORER_2           = "//span[text()='WMI Explorer']"
+  BUTTON_REGISTRY_VIEWER_1        = "//img[@alt='Registry Viewer']"
+  BUTTON_REGISTRY_VIEWER_2        = "//span[text()='Registry Viewer']"
+  BUTTON_EVENT_VEIWER             = "//img[@alt='Event Viewer']"
+  BUTTON_EVENT_VEIWER_by_text     = "//span[text()='Event Viewer']"
+  BUTTON_REMOTE_CONTROL           = "//img[@alt='Remote Control']"
+  BUTTON_REMOTE_CONTROL_by_text   = "//span[text()='Remote Control']"
+  BUTTON_PATCH_MANAGER_1          = "//img[@alt='Patch Manager']"
+  BUTTON_PATCH_MANAGER_2          = "//span[text()='Patch Manager']"
+  BUTTON_MOVE_DEVICE_1            = "//img[@alt='Move Device']"
+  BUTTON_MOVE_DEVICE_2            = "//span[text()='Move Device']"
+  BUTTON_REPORTS_1                = "//img[@alt='Reports']"
+  BUTTON_REPORTS_2                = "//span[text()='Reports']"
+  BUTTON_WAKE_UP_1                = "//img[@alt='Wake Up']"
+  BUTTON_WAKE_UP_2                = "//span[text()='Wake Up']"
+  BUTTON_END_USER_ACCESS_1        = "//img[@alt='End User Access']"
+  BUTTON_END_USER_ACCESS_2        = "//span[text()='End User Access']"
+  BUTTON_NEW_QUERY                = "//span[text()='New Query']"
+  BUTTON_NEW_GROUP                = "//span[text()='New Group']"
+  BUTTON_NEW_FOLDER               = "//span[text()='New Folder']"
+  BUTTON_RUN_REPORT               = "//span[text()='Run Report']"
+  BUTTON_SEARCH                   = "//span[text()='Search']"
+  BUTTON_SET_AS_DEFAULT           = "//img[@alt='Set As Default']"
+  BUTTON_COPY                     = "//img[@alt='Copy']"
+  BUTTON_APPLY                    = "//span[text()='Apply']"
+  BUTTON_UPDATE                   = "//span[text()='Update']"
+  BUTTON_TEST_SETTINGS            = "//span[text()='Test Settings']"
+  BUTTON_RUN_ININTIAL_SETUP       = "//span[text()='Run Initial Setup']"
+  BUTTON_PURGE_OLDER_RECORDS      = "//span[text()='Purge Older Records']"
+  BUTTON_DELETE_ALL_ARCHIVE_DATA  = "//span[text()='Delete ALL Archive Data']"
+  BUTTON_PURGE_OLDER_ENTRIES_NOW  = "//span[text()='Purge older entries now']"
+  BUTTON_DELETE_ALL_AUDIT_LOGS    = "//span[text()='Delete all audit logs']"
+  BUTTON_REMOVE                   = "//span[text()='Remove']"
+  BUTTON_REMOVE_left              = TEXT_REMOVE_left + anc + EL_BUTTON
+  BUTTON_ICON_NEXT                = "//img[contains(@src,'right-double')]"
+  BUTTON_ICON_PREVIOUS            = "//img[contains(@src,'left-double')]"
+  BUTTON_EDIT_OR_CREATE           = "//img[@alt='Edit/ Create']"
 
   '''SYSTEM (SYS) ELEMENTS XPATH'''
-  SYS_BTN                      = "//div[contains(@class,'Button')][contains(@id,'VWGE_')]"
+  SYS_BUTTON                      = "//div[contains(@class,'Button')][contains(@id,'VWGE_')]"
   SYS_TREE_ARROW               = "//div[@data-vwgtype='joint']"
-  SYS_BTN_CLOSE                = "//div[@title='Close']"
-  SYS_BTN_NEXT                 = "//div[contains(@class,'NextButton')]"
-  SYS_BTN_LAST                 = "//div[contains(@class,'LastButton')]"
-  SYS_BTN_PREVIOUS             = "//div[contains(@class,'PrevButton')]"
-  SYS_BTN_FIRST                = "//div[contains(@class,'FirstButton')]"
-  SYS_BTN_NUMERIC_UP           = "//div[@class=' NumericUpDown-UpCell']"
-  SYS_BTN_NUMERIC_DOWN         = "//div[@class='NumericUpDown-DownCell']"
-  SYS_BTN_DROP_DOWN            = "//div[@class='ComboBox-Button']"
-  SYS_BTN_MAXIMIZE             = "//div[@title='Maximize']"
-  SYS_BTN_MINIMIZE             = "//div[@title='Minimize']"
-  SYS_BTN_RESTORE_DOWN         = "//div[@title='Restore Down']"
+  SYS_BUTTON_CLOSE                = "//div[@title='Close']"
+  SYS_BUTTON_NEXT                 = "//div[contains(@class,'NextButton')]"
+  SYS_BUTTON_LAST                 = "//div[contains(@class,'LastButton')]"
+  SYS_BUTTON_PREVIOUS             = "//div[contains(@class,'PrevButton')]"
+  SYS_BUTTON_FIRST                = "//div[contains(@class,'FirstButton')]"
+  SYS_BUTTON_NUMERIC_UP           = "//div[@class=' NumericUpDown-UpCell']"
+  SYS_BUTTON_NUMERIC_DOWN         = "//div[@class='NumericUpDown-DownCell']"
+  SYS_BUTTON_DROP_DOWN            = "//div[@class='ComboBox-Button']"
+  SYS_BUTTON_MAXIMIZE             = "//div[@title='Maximize']"
+  SYS_BUTTON_MINIMIZE             = "//div[@title='Minimize']"
+  SYS_BUTTON_RESTORE_DOWN         = "//div[@title='Restore Down']"
 
 
   '''POPUP XPATH'''
@@ -501,17 +501,17 @@ class Locators:
   '''TABS XPATH'''
   TAB_                            = "//span"
   TAB_PANEL                       = "//div[contains(@id,'VWGTCHD_')]"
-  TAB_HOME                        = TEXT_HOME + TAB + anc + EL_TAB_BTN
-  TAB_VIEW                        = TEXT_VIEW + TAB + anc + EL_TAB_BTN
-  TAB_DEVICES                     = TEXT_DEVICES + TAB + anc + EL_TAB_BTN
-  TAB_TOOLS                       = TEXT_TOOLS + TAB + anc + EL_TAB_BTN
-  TAB_OPTIONS                     = TEXT_OPTIONS + TAB + anc + EL_TAB_BTN
-  TAB_LOG                         = TEXT_LOG + TAB + anc + EL_TAB_BTN
-  TAB_SMTP                        = TEXT_SMTP + TAB + anc + EL_TAB_BTN
-  TAB_IMAP                        = TEXT_IMAP + TAB + anc + EL_TAB_BTN
-  TAB_SITE                        = TEXT_SITE + TAB + anc + EL_TAB_BTN
-  TAB_IP_ADDRESS_RANGES           = TEXT_IP_ADDRESS_RANGES + TAB + anc + EL_TAB_BTN
-  TAB_VREPS                       = TEXT_VREPS + TAB + anc + EL_TAB_BTN
+  TAB_HOME                        = TEXT_HOME + TAB + anc + EL_TAB_BUTTON
+  TAB_VIEW                        = TEXT_VIEW + TAB + anc + EL_TAB_BUTTON
+  TAB_DEVICES                     = TEXT_DEVICES + TAB + anc + EL_TAB_BUTTON
+  TAB_TOOLS                       = TEXT_TOOLS + TAB + anc + EL_TAB_BUTTON
+  TAB_OPTIONS                     = TEXT_OPTIONS + TAB + anc + EL_TAB_BUTTON
+  TAB_LOG                         = TEXT_LOG + TAB + anc + EL_TAB_BUTTON
+  TAB_SMTP                        = TEXT_SMTP + TAB + anc + EL_TAB_BUTTON
+  TAB_IMAP                        = TEXT_IMAP + TAB + anc + EL_TAB_BUTTON
+  TAB_SITE                        = TEXT_SITE + TAB + anc + EL_TAB_BUTTON
+  TAB_IP_ADDRESS_RANGES           = TEXT_IP_ADDRESS_RANGES + TAB + anc + EL_TAB_BUTTON
+  TAB_VREPS                       = TEXT_VREPS + TAB + anc + EL_TAB_BUTTON
   TAB_IP_ADDRESS_RANGES_LIST_VIEW = TAB_IP_ADDRESS_RANGES + SELECTED + fol + EL_TAB_BODY + "/div[1]/*//" + EL_LIST_VIEW
   TAB_IP_ADDRESS_RANGES_TOOL_BAR  = TAB_IP_ADDRESS_RANGES + SELECTED + fol + EL_TAB_BODY + "/div[1]/*//" + EL_TOOL_BAR
 
@@ -597,7 +597,7 @@ class Locators:
     # if h == Variables.columns_list1:
     #   print "GOOD"
     # else: print "NOT GOOD"
-    # print BTN_SIGN_IN
+    # print BUTTON_SIGN_IN
     # print POPUP_CONFIGURATION
     # print LEFT_SIDE_MENU_TASKS
     # print LEFT_SIDE_MENU_REPORTING
@@ -607,5 +607,5 @@ class Locators:
     print TAB_IP_ADDRESS_RANGES
     print TAB_SITE
     print TAB_VREPS
-    print BTN_HOME_DROP_DOWN_ARROW
-    print BTN_HOME
+    print BUTTON_HOME_DROP_DOWN_ARROW
+    print BUTTON_HOME

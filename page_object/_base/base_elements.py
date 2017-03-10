@@ -23,6 +23,8 @@ class BaseElements(Base):
     BUTTON_ARROW_DOWN = "/*//td[contains(@style,'arrow_down')]/ancestor::div[contains(@class,'Button')]"
     BUTTON_ADD = "/*//span[text()='Add']/ancestor::div[contains(@class,'Button')]"
     BUTTON_DELETE = "/*//span[text()='Delete']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_SELECT_ALL = "/*//*[text()='Select All']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_SELECT_NONE = "/*//*[text()='Select None']/ancestor::div[contains(@class,'Button')]"
     TABLE_HEADER = "//*[@class='Common-Unselectable ListView-Control']/*[contains(@id,'HEADER')]"
     TABLE_BODY = "//*[@class='Common-Unselectable ListView-Control']/div/*[contains(@id,'VWGLVBODY')]"
 

@@ -32,9 +32,9 @@ class Base(object):
         self.driver = driver
         self.base_url = base_url
         # self.log_name = log_name
-        self.timeout_loading = 100
-        self.timeout_condition = 1
-        self.timeout_webelement = 10
+        self.timeout_loading = 120
+        self.timeout_condition = 1.2
+        self.timeout_webelement = 12
         self.wait_webelement = WebDriverWait(self.driver, self.timeout_webelement)
         self.wait_condition = WebDriverWait(self.driver, self.timeout_condition)
         self.wait_loading = WebDriverWait(self.driver, self.timeout_loading)
@@ -197,7 +197,7 @@ class Base(object):
             self.logger.exception("FIND ELEMENT. The element " + locator + " is NOT found\n. Message: " + str(e))
             return None
 
-    def _find_all_elements(self, locator):
+    def _find_elements(self, locator):
         try:
             self.wait_webelement.until(EC.presence_of_all_elements_located((By.XPATH, locator)))
             self.wait_webelement.until(EC.visibility_of_any_elements_located((By.XPATH, locator)))
@@ -228,20 +228,21 @@ class Base(object):
     def _wait_for_element_present(self, locator):
         try:
             self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-            self.wait_webelement.until(EC.visibility_of_element_located((By.XPATH, locator)))
+            # self.wait_webelement.until(EC.visibility_of_element_located((By.XPATH, locator)))
             self.logger.debug("WAITING. Element " + locator + " is present.")
             return True
         except (NoSuchElementException, TimeoutException):
             self.logger.exception(
                 "WAITING. Element " + locator + " is NOT found after " + str(self.timeout_webelement) + " seconds")
             return False
-        # except Exception as e:
-        #     self.logger.exception("METHOD 'Wait for element present' is failed\n" + str(e))
+        except Exception as e:
+            self.logger.exception("METHOD 'Wait for element present' is failed\n" + str(e))
+            return False
 
     def _wait_for_all_elements_present(self, locator):
         try:
             self.wait_webelement.until(EC.presence_of_all_elements_located((By.XPATH, locator)), "Element is NOT present")
-            self.wait_webelement.until(EC.visibility_of_any_elements_located((By.XPATH, locator)), "Element is NOT visible")
+            # self.wait_webelement.until(EC.visibility_of_any_elements_located((By.XPATH, locator)), "Element is NOT visible")
             self.logger.debug("WAITING. Elements " + locator + " are present.")
             return True
         except (NoSuchElementException, TimeoutException):
@@ -321,18 +322,18 @@ class Base(object):
                 "WAITING. Element " + locator + " is NOT disabled after " + str(self.timeout_webelement) + " seconds")
             return False
 
-    def _wait_for_element_unabled(self, locator):
+    def _wait_for_element_enabled(self, locator):
         try:
             self.wait_webelement.until_not(EC.presence_of_element_located((By.XPATH, locator + Base.DISABLED)))
             self.wait_webelement.until_not(EC.visibility_of_element_located((By.XPATH, locator + Base.DISABLED)))
-            self.logger.debug("WAITING. Element " + locator + " is unabled.")
+            self.logger.debug("WAITING. Element " + locator + " is enabled.")
             return True
         except NoSuchElementException:
             self.logger.exception("WAITING. Element " + locator + " is NOT found.")
             return False
         except TimeoutException:
             self.logger.error(
-                "WAITING. Element " + locator + " is NOT unabled after " + str(self.timeout_webelement) + " seconds")
+                "WAITING. Element " + locator + " is NOT enabled after " + str(self.timeout_webelement) + " seconds")
             return False
 
     def _is_element_present(self, locator):

@@ -6,6 +6,7 @@ from _base.base_elements import BaseElements
 from _feature_objects.feature_popup import AreYouSurePopup
 from _feature_objects.feature_popup import RemoveDevicesPopup
 from _feature_objects.feature_ribbon_bar import RibbonBar
+from _test_suites._variables.variables import Variables
 
 
 class BaseScreen(BaseActions):
@@ -14,7 +15,7 @@ class BaseScreen(BaseActions):
     #     super(BaseScreen, self).__init__(driver, base_url=Settings.baseUrl)
     #     self._set_screen_table_row = None
 
-    def _set_screen(self, name):
+    def _set_screen_body(self, name):
         # locator = "//span[contains(text(),'" + str(name) + "')][@dir='LTR'][contains(@style,'White')]/ancestor::div[@class='Label-Control']" \
         #                 "[contains(@style,'White')]/parent::div/parent::div/parent::div/parent::div/parent::div"
         # locator = "//span[contains(text(),'" + str(name) + "')][@dir='LTR']/ancestor::div[@class='Panel-Control']" \
@@ -39,6 +40,10 @@ class BaseScreen(BaseActions):
         locator = str(set_screen_table_body_method) + "/*//tr"
         return str(locator)
 
+    def _set_screen_bottom_body(self, set_screen):
+        locator = str(set_screen) + "/*//div[@data-vwgdocking='F']"
+        return str(locator)
+
     def _set_row_sel(self, set_table_row):
         pass
 
@@ -52,7 +57,7 @@ class BaseScreen(BaseActions):
     def _get_all_table_header_names(self, set_screen_table_header):
         header_names = {}
         index = 1
-        elements = self._find_all_elements(str(set_screen_table_header) + "/*//tbody/tr/td/*//span")
+        elements = self._find_elements(str(set_screen_table_header) + "/*//tbody/tr/td/*//span")
         for element in elements:
             name = element.text
             print index
@@ -63,7 +68,7 @@ class BaseScreen(BaseActions):
         return header_names
 
     # def handler_home_screen(self, screen_name):
-    #     cond = self._is_element_present(self._set_screen(screen_name))
+    #     cond = self._is_element_present(self._set_screen_body(screen_name))
     #     print "Handle Home screen ", cond
     #     if cond:
     #         left_menu = BaseLeftMenu(self.driver)
@@ -79,18 +84,18 @@ class HomeScreen(BaseScreen):
     # BODY = SCREEN_HEADER + "/parent::div"
 
     def screen_body(self):
-        locator = self._set_screen(self.WELCOME_TO_CLOUD_MANAGEMENT_SUITE)
+        locator = self._set_screen_body(self.WELCOME_TO_CLOUD_MANAGEMENT_SUITE)
         return str(locator)
 
     def screen_header(self):
         table_header = self._set_screen_header(self.screen_body())
         return str(table_header)
 
-    def check_screen_is_present(self):
+    def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
         msg_true = "Left menu '" + self.HOME + "' is opened"
         msg_false = "Left menu '" + self.HOME + "' is NOT opened"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def click_icon_help(self):
@@ -102,7 +107,7 @@ class DevicesScreen(BaseScreen):
     DEVICES = "Devices"
 
     def screen_body(self):
-        screen = self._set_screen(self.DEVICES)
+        screen = self._set_screen_body(self.DEVICES)
         return str(screen)
 
     def screen_header(self):
@@ -121,11 +126,11 @@ class DevicesScreen(BaseScreen):
         table_row = self._set_screen_table_row(self.screen_table_body())
         return str(table_row)
 
-    def check_screen_is_present(self):
+    def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
         msg_true = "Screen '" + self.DEVICES + "' is present"
         msg_false = "Screen '" + self.DEVICES + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def click_icon_help(self):
@@ -149,11 +154,11 @@ class DevicesScreen(BaseScreen):
         self._wait_for_element_present(RibbonBar.TAB_DEVICES)
         self._wait_for_element_present(RibbonBar.TAB_TOOLS)
 
-    def check_device_is_present(self, name):
+    def check_device_is_presented(self, name=Variables.vrep):
         cond = self._wait_for_element_present(self.screen_table_row() + "/*//span[text()='" + str(name) + "']/ancestor::tr")
         msg_true = "Device '" + name + "' is present"
         msg_false = "Device '" + name + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def check_columns_are_present(self, columns_list):
@@ -181,7 +186,7 @@ class DevicesScreen(BaseScreen):
             for name in list(*names):
                 self.enter_text_into_search_text_field(name)
                 self.click_icon_search()
-                cond = self.check_device_is_present(name)
+                cond = self.check_device_is_presented(name)
                 if cond:
                     self.select_device_in_table(name)
                     ribbon_bar = RibbonBar(self.driver)
@@ -204,7 +209,7 @@ class DevicesScreen(BaseScreen):
         try:
             self.enter_text_into_search_text_field(name)
             self.click_icon_search()
-            cond = self.check_device_is_present(name)
+            cond = self.check_device_is_presented(name)
             if cond:
                 self.select_device_in_table(name)
                 ribbon_bar = RibbonBar(self.driver)
@@ -237,18 +242,18 @@ class GroupsScreen(BaseScreen):
     GROUPS = "Groups"
 
     def screen_body(self):
-        screen = self._set_screen(self.GROUPS)
+        screen = self._set_screen_body(self.GROUPS)
         return str(screen)
 
     def screen_header(self):
         table_header = self._set_screen_header(self.screen_body())
         return str(table_header)
 
-    def check_screen_is_present(self):
+    def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
         msg_true = "Screen '" + self.GROUPS + "' is present"
         msg_false = "Screen '" + self.GROUPS + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def click_icon_help(self):
@@ -263,7 +268,7 @@ class GroupsScreen(BaseScreen):
     def enter_text_into_search_text_field(self, text = None):
         self._find_element(self.SEARCH_FIELD).send_keys(text)
 
-    def check_group_is_present(self, name):
+    def check_group_is_presented(self, name):
         cond = self._wait_for_element_present(GroupsScreen.TABLE_ROW + "/*//span[text()='" + str(name) + "']/ancestor::tr")
         return True if cond else False
 
@@ -271,7 +276,7 @@ class GroupsScreen(BaseScreen):
         for name in list(*names):
             self.enter_text_into_search_text_field(name)
             self.click_icon_search()
-            cond = self.check_group_is_present(name)
+            cond = self.check_group_is_presented(name)
             if cond:
                 self.select_group_in_table(name)
                 ribbon_bar = RibbonBar(self.driver)
@@ -285,7 +290,7 @@ class GroupsScreen(BaseScreen):
     def delete_single_group_in_groups_page_table(self, name):
         self.enter_text_into_search_text_field(name)
         self.click_icon_search()
-        cond = self.check_group_is_present(name)
+        cond = self.check_group_is_presented(name)
         if cond:
             self.select_group_in_table(name)
             ribbon_bar = RibbonBar(self.driver)
@@ -313,18 +318,18 @@ class QueriesScreen(BaseScreen):
     QUERIES = "Queries"
 
     def screen_body(self):
-        screen = self._set_screen(self.QUERIES)
+        screen = self._set_screen_body(self.QUERIES)
         return str(screen)
 
     def screen_header(self):
         table_header = self._set_screen_header(self.screen_body())
         return str(table_header)
 
-    def check_screen_is_present(self):
+    def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
         msg_true = "Screen '" + self.QUERIES + "' is present"
         msg_false = "Screen '" + self.QUERIES + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def click_icon_help(self):
@@ -343,7 +348,7 @@ class QueriesScreen(BaseScreen):
     def enter_text_into_search_text_field(self, text = None):
         self._find_element(self.SEARCH_FIELD).send_keys(text)
 
-    def check_query_is_present(self, name):
+    def check_query_is_presented(self, name):
         cond = self._wait_for_element_present(QueriesScreen.TABLE_ROW +
                                               "/*//span[text()='" + str(name) + "']/ancestor::tr")
         return True if cond else False
@@ -352,7 +357,7 @@ class QueriesScreen(BaseScreen):
         for name in list(*names):
             self.enter_text_into_search_text_field(name)
             self.click_icon_search()
-            cond = self.check_query_is_present(name)
+            cond = self.check_query_is_presented(name)
             if cond:
                 self.select_query_in_table(name)
                 ribbon_bar = RibbonBar(self.driver)
@@ -366,7 +371,7 @@ class QueriesScreen(BaseScreen):
     def delete_single_query_in_queries_page_table(self, name):
         self.enter_text_into_search_text_field(name)
         self.click_icon_search()
-        cond = self.check_query_is_present(name)
+        cond = self.check_query_is_presented(name)
         if cond:
             self.select_query_in_table(name)
             ribbon_bar = RibbonBar(self.driver)
@@ -389,18 +394,18 @@ class AdministrationScreen(BaseScreen):
     ADMINISTRATION = "Administration"
 
     def screen_body(self):
-        screen = self._set_screen(self.ADMINISTRATION)
+        screen = self._set_screen_body(self.ADMINISTRATION)
         return str(screen)
 
     def screen_header(self):
         table_header = self._set_screen_header(self.screen_body())
         return str(table_header)
 
-    def check_screen_is_present(self):
+    def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
         msg_true = "Screen '" + self.ADMINISTRATION + "' is present"
         msg_false = "Screen '" + self.ADMINISTRATION + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def click_icon_help(self):
@@ -414,7 +419,7 @@ class AdministrationScreen(BaseScreen):
             ribbon_bar.click_button_home()
             ribbon_bar.click_menu_item_go_to_home_screen()
             self._wait_for_element_present(self.screen_header())
-            # self.check_screen_is_present()
+            # self.check_screen_is_presented()
             # print "Administration home screen is present ", result
 
 
@@ -423,18 +428,18 @@ class EndpointManagementScreen(BaseScreen):
     ENDPOINT_MANAGEMENT = "Endpoint Management Summary"
 
     def screen_body(self):
-        screen = self._set_screen(self.ENDPOINT_MANAGEMENT)
+        screen = self._set_screen_body(self.ENDPOINT_MANAGEMENT)
         return str(screen)
 
     def screen_header(self):
         table_header = self._set_screen_header(self.screen_body())
         return str(table_header)
 
-    def check_screen_is_present(self):
+    def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
         msg_true = "Screen '" + self.ENDPOINT_MANAGEMENT + "' is present"
         msg_false = "Screen '" + self.ENDPOINT_MANAGEMENT + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def click_icon_help(self):
@@ -465,18 +470,18 @@ class DynamicallyManagedScreen(BaseScreen):
     DYNAMICALLY_MANAGED = "Dynamically Managed"
 
     def screen_body(self):
-        screen = self._set_screen(self.DYNAMICALLY_MANAGED)
+        screen = self._set_screen_body(self.DYNAMICALLY_MANAGED)
         return str(screen)
 
     def screen_header(self):
         table_header = self._set_screen_header(self.screen_body())
         return str(table_header)
 
-    def check_screen_is_present(self):
+    def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
         msg_true = "Screen '" + self.DYNAMICALLY_MANAGED + "' is present"
         msg_false = "Screen '" + self.DYNAMICALLY_MANAGED + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def click_icon_help(self):
@@ -491,7 +496,7 @@ class DynamicallyManagedScreen(BaseScreen):
     def enter_text_into_search_text_field(self, text = None):
         self._find_element(DynamicallyManagedScreen.SEARCH_FIELD).send_keys(text)
 
-    def check_device_is_present(self, name):
+    def check_device_is_presented(self, name):
         row = DynamicallyManagedScreen.TABLE_ROW + "/*//span[text()='" + name + "']/ancestor::tr"
         cond = self._wait_for_element_present(row)
         return True if cond else False
@@ -530,18 +535,18 @@ class UnmanagedDevicesScreen(BaseScreen):
     UNMANAGED_DEVICES = "Unmanaged Devices"
 
     def screen_body(self):
-        screen = self._set_screen(self.UNMANAGED_DEVICES)
+        screen = self._set_screen_body(self.UNMANAGED_DEVICES)
         return str(screen)
 
     def screen_header(self):
         table_header = self._set_screen_header(self.screen_body())
         return str(table_header)
 
-    def check_screen_is_present(self):
+    def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
         msg_true = "Screen '" + self.UNMANAGED_DEVICES + "' is present"
         msg_false = "Screen '" + self.UNMANAGED_DEVICES + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def click_icon_help(self):
@@ -556,7 +561,7 @@ class UnmanagedDevicesScreen(BaseScreen):
     def enter_text_into_search_text_field(self, text=None):
         self._find_element(UnmanagedDevicesScreen.SEARCH_FIELD).send_keys(text)
 
-    def check_device_is_present(self, name):
+    def check_device_is_presented(self, name):
         row = UnmanagedDevicesScreen.TABLE_ROW + "/*//span[text()='" + name + "']/ancestor::tr"
         cond = self._wait_for_element_present(row)
         return True if cond else False
@@ -595,18 +600,18 @@ class ExcludedDevicesScreen(BaseScreen):
     EXCLUDED_DEVICES = "Excluded Devices"
 
     def screen_body(self):
-        screen = self._set_screen(self.EXCLUDED_DEVICES)
+        screen = self._set_screen_body(self.EXCLUDED_DEVICES)
         return str(screen)
 
     def screen_header(self):
         table_header = self._set_screen_header(self.screen_body())
         return str(table_header)
 
-    def check_screen_is_present(self):
+    def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
         msg_true = "Screen '" + self.EXCLUDED_DEVICES + "' is present"
         msg_false = "Screen '" + self.EXCLUDED_DEVICES + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def click_icon_help(self):
@@ -621,7 +626,7 @@ class ExcludedDevicesScreen(BaseScreen):
     def enter_text_into_search_text_field(self, text = None):
         self._find_element(ExcludedDevicesScreen.SEARCH_FIELD).send_keys(text)
 
-    def check_device_is_present(self, name):
+    def check_device_is_presented(self, name):
         row = ExcludedDevicesScreen.TABLE_ROW + "/*//span[text()='" + name + "']/ancestor::tr"
         cond = self._wait_for_element_present(row)
         return True if cond else False
@@ -660,18 +665,18 @@ class InfrastructureScreen(BaseScreen):
     INFRASTRUCTURE = "Infrastructure"
 
     def screen_body(self):
-        screen = self._set_screen(self.INFRASTRUCTURE)
+        screen = self._set_screen_body(self.INFRASTRUCTURE)
         return str(screen)
 
     def screen_header(self):
         table_header = self._set_screen_header(self.screen_body())
         return str(table_header)
 
-    def check_screen_is_present(self):
+    def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
         msg_true = "Screen '" + self.INFRASTRUCTURE + "' is present"
         msg_false = "Screen '" + self.INFRASTRUCTURE + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def click_icon_help(self):
@@ -686,7 +691,7 @@ class InfrastructureScreen(BaseScreen):
     def enter_text_into_search_text_field(self, text = None):
         self._find_element(InfrastructureScreen.SEARCH_FIELD).send_keys(text)
 
-    def check_device_is_present(self, name):
+    def check_device_is_presented(self, name):
         row = InfrastructureScreen.TABLE_ROW + "/*//span[text()='" + name + "']/ancestor::tr"
         cond = self._wait_for_element_present(row)
         return True if cond else False
@@ -720,18 +725,18 @@ class SiteConfigurationScreen(BaseScreen):
     SITE_CONFIGURATION = "Site Configuration"
 
     def screen_body(self):
-        screen = self._set_screen(self.SITE_CONFIGURATION)
+        screen = self._set_screen_body(self.SITE_CONFIGURATION)
         return str(screen)
 
     def screen_header(self):
         table_header = self._set_screen_header(self.screen_body())
         return str(table_header)
 
-    def check_screen_is_present(self):
+    def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
         msg_true = "Screen '" + self.SITE_CONFIGURATION + "' is present"
         msg_false = "Screen '" + self.SITE_CONFIGURATION + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def click_icon_help(self):
@@ -740,7 +745,7 @@ class SiteConfigurationScreen(BaseScreen):
     def click_icon_refresh(self):
         self._click_icon_refresh(SiteConfigurationScreen.SCREEN_HEADER)
 
-    def check_site_is_present(self, name):
+    def check_site_is_presented(self, name):
         row = SiteConfigurationScreen.TABLE_ROW + "/*//span[text()='" + name + "']/ancestor::tr"
         cond = self._wait_for_element_present(row)
         return True if cond else False
@@ -775,24 +780,24 @@ class EventLogsScreen(BaseScreen):
     EVENT_LOGS = "Event Logs"
 
     def screen_body(self):
-        screen = self._set_screen(self.EVENT_LOGS)
+        screen = self._set_screen_body(self.EVENT_LOGS)
         return str(screen)
 
     def screen_header(self):
         table_header = self._set_screen_header(self.screen_body())
         return str(table_header)
 
-    def check_screen_is_present(self):
+    def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
         msg_true = "Screen '" + self.EVENT_LOGS + "' is present"
         msg_false = "Screen '" + self.EVENT_LOGS + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def click_icon_help(self):
         self._click_icon_help(self.screen_header())
 
-    def check_event_log_is_present(self, name):
+    def check_event_log_is_presented(self, name):
         row = EventLogsScreen.TABLE_ROW + "/*//span[text()='" + name + "']/ancestor::tr"
         cond = self._wait_for_element_present(row)
         return True if cond else False
@@ -826,24 +831,24 @@ class ColumnSetsScreen(BaseScreen):
     COLUMN_SETS = "Column Sets"
 
     def screen_body(self):
-        screen = self._set_screen(self.COLUMN_SETS)
+        screen = self._set_screen_body(self.COLUMN_SETS)
         return str(screen)
 
     def screen_header(self):
         table_header = self._set_screen_header(self.screen_body())
         return str(table_header)
 
-    def check_screen_is_present(self):
+    def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
         msg_true = "Screen '" + self.COLUMN_SETS + "' is present"
         msg_false = "Screen '" + self.COLUMN_SETS + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def click_icon_help(self):
         self._click_icon_help(self.screen_header())
 
-    def check_column_set_is_present(self, name):
+    def check_column_set_is_presented(self, name):
         row = ColumnSetsScreen.TABLE_ROW + "/*//span[text()='" + name + "']/ancestor::tr"
         cond = self._wait_for_element_present(row)
         return True if cond else False
@@ -878,18 +883,18 @@ class UsersScreen(BaseScreen):
     USERS = "Users"
 
     def screen_body(self):
-        screen = self._set_screen(self.USERS)
+        screen = self._set_screen_body(self.USERS)
         return str(screen)
 
     def screen_header(self):
         table_header = self._set_screen_header(self.screen_body())
         return str(table_header)
 
-    def check_screen_is_present(self):
+    def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
         msg_true = "Screen '" + self.USERS + "' is present"
         msg_false = "Screen '" + self.USERS + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def click_icon_help(self):
@@ -904,7 +909,7 @@ class UsersScreen(BaseScreen):
     def enter_text_into_search_text_field(self, text = None):
         self._find_element(UsersScreen.SEARCH_FIELD).send_keys(text)
 
-    def check_user_is_present(self, name):
+    def check_user_is_presented(self, name):
         row = UsersScreen.TABLE_ROW + "/*//span[text()='" + name + "']/ancestor::tr"
         cond = self._wait_for_element_present(row)
         return True if cond else False
@@ -935,7 +940,7 @@ class InventoryConfigurationScreen(BaseScreen):
     INVENTORY_CONFIGURATION = "Inventory Configuration"
 
     def screen_body(self):
-        screen = self._set_screen(self.INVENTORY_CONFIGURATION)
+        screen = self._set_screen_body(self.INVENTORY_CONFIGURATION)
         return str(screen)
 
     def screen_header(self):
@@ -946,11 +951,11 @@ class InventoryConfigurationScreen(BaseScreen):
         table_body = self._set_screen_table_body(self.screen_body())
         return str(table_body)
 
-    def check_screen_is_present(self):
+    def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
         msg_true = "Screen '" + self.INVENTORY_CONFIGURATION + "' is present"
         msg_false = "Screen '" + self.INVENTORY_CONFIGURATION + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def click_icon_help(self):
@@ -962,7 +967,7 @@ class InventoryConfigurationScreen(BaseScreen):
     def enter_text_into_search_text_field(self, text = None):
         self._find_element(InventoryConfigurationScreen.SEARCH_FIELD).send_keys(text)
 
-    def check_inventory_is_present(self, name):
+    def check_inventory_is_presented(self, name):
         row = self.screen_table_body() + "/*//span[text()='" + name + "']/ancestor::tr"
         cond = self._wait_for_element_present(row)
         return True if cond else False
@@ -1004,7 +1009,7 @@ class VRepsScreen(BaseScreen):
     VREPS = "vReps"
 
     def screen_body(self):
-        screen = self._set_screen(self.VREPS)
+        screen = self._set_screen_body(self.VREPS)
         return str(screen)
 
     def screen_header(self):
@@ -1019,11 +1024,11 @@ class VRepsScreen(BaseScreen):
         table_body = self._set_screen_table_body(self.screen_body())
         return str(table_body)
 
-    def check_screen_is_present(self):
+    def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
         msg_true = "Screen '" + self.VREPS + "' is present"
         msg_false = "Screen '" + self.VREPS + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def click_icon_refresh(self):
@@ -1037,7 +1042,7 @@ class VRepsScreen(BaseScreen):
     def enter_text_into_search_text_field(self, text = None):
         self._find_element(VRepsScreen.SEARCH_FIELD).send_keys(text)
 
-    def check_vrep_is_present(self, name):
+    def check_vrep_is_presented(self, name):
         row = VRepsScreen.TABLE_ROW + "/*//span[text()='" + name + "']/ancestor::tr"
         cond = self._wait_for_element_present(row)
         return True if cond else False
@@ -1054,7 +1059,7 @@ class VRepsScreen(BaseScreen):
             row = VRepsScreen.TABLE_ROW + "/*//span[text()='" + name + "']/ancestor::tr"
             self.enter_text_into_search_text_field(name)
             self.click_icon_search()
-            cond = self.check_vrep_is_present(name)
+            cond = self.check_vrep_is_presented(name)
             if cond:
                 self.select_vrep_in_table(name)
                 checked = self._is_element_checked(row + self.ROW_CHECK_BOX)
@@ -1084,7 +1089,7 @@ class VRepsScreen(BaseScreen):
             self.enter_text_into_search_text_field(name)
             self.click_icon_search()
             self._wait_for_element_present(row)
-            cond = self.check_vrep_is_present(name)
+            cond = self.check_vrep_is_presented(name)
             if cond:
                 self.select_vrep_in_table(name)
                 self.click_icon_refresh()
@@ -1148,7 +1153,7 @@ class MaintenanceWindowsScreen(BaseScreen):
     MAINTENANCE_WINDOWS = "Maintenance Windows"
 
     def screen_body(self):
-        screen = self._set_screen(self.MAINTENANCE_WINDOWS)
+        screen = self._set_screen_body(self.MAINTENANCE_WINDOWS)
         return str(screen)
 
     def screen_header(self):
@@ -1179,19 +1184,19 @@ class MaintenanceWindowsScreen(BaseScreen):
         self._click_element(row)
         self._wait_for_element_selected(row)
 
-    def check_screen_is_present(self):
+    def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
         msg_true = "Screen '" + self.MAINTENANCE_WINDOWS + "' is present"
         msg_false = "Screen '" + self.MAINTENANCE_WINDOWS + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
-    def check_maintenance_window_is_present(self, name):
+    def check_maintenance_window_is_presented(self, name):
         row = self.screen_table_body() + "/*//span[text()='" + name + "']/ancestor::tr"
         cond = self._wait_for_element_present(row)
         msg_true = "Maintenance window " + str(name) + "' is present"
         msg_false = "Maintenance window " + str(name) + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
 
@@ -1200,18 +1205,18 @@ class NotificationsScreen(BaseScreen):
     NOTIFICATIONS = "Notifications"
 
     def screen_body(self):
-        screen = self._set_screen(self.NOTIFICATIONS)
+        screen = self._set_screen_body(self.NOTIFICATIONS)
         return str(screen)
 
     def screen_header(self):
         table_header = self._set_screen_header(self.screen_body())
         return str(table_header)
 
-    def check_screen_is_present(self):
+    def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
         msg_true = "Screen '" + self.NOTIFICATIONS + "' is present"
         msg_false = "Screen '" + self.NOTIFICATIONS + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def click_icon_help(self):
@@ -1223,18 +1228,18 @@ class SoftwareAndPatchManagerScreen(BaseScreen):
     SOFTWARE_AND_PATCH_MANAGER = "Software / Patch Manager"
 
     def screen_body(self):
-        screen = self._set_screen(self.SOFTWARE_AND_PATCH_MANAGER)
+        screen = self._set_screen_body(self.SOFTWARE_AND_PATCH_MANAGER)
         return str(screen)
 
     def screen_header(self):
         table_header = self._set_screen_header(self.screen_body())
         return str(table_header)
 
-    def check_screen_is_present(self):
+    def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
         msg_true = "Screen '" + self.SOFTWARE_AND_PATCH_MANAGER + "' is present"
         msg_false = "Screen '" + self.SOFTWARE_AND_PATCH_MANAGER + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def click_icon_help(self):
@@ -1244,24 +1249,122 @@ class SoftwareAndPatchManagerScreen(BaseScreen):
 class TasksScreen(BaseScreen):
 
     TASKS = "Tasks"
+    TO_SCAN = "to scan"
+    DISCOVERED = "discovered"
+    UNKNOWN = "Unknown"
+    SUCCESSFULLY = "Successfully"
+    TO_BE_DONE = "To Be Done"
+    FAILED_TO = "Failed To"
+    PARTIALLY_PATCHED = "Partially Patched"
 
     def screen_body(self):
-        screen = self._set_screen(self.TASKS)
-        return str(screen)
+        locator = self._set_screen_body(self.TASKS)
+        return str(locator)
 
     def screen_header(self):
-        table_header = self._set_screen_header(self.screen_body())
-        return str(table_header)
+        locator = self._set_screen_header(self.screen_body())
+        return str(locator)
+    
+    def screen_table_body(self):
+        locator = self._set_screen_table_body(self.screen_body())
+        return str(locator)
 
-    def check_screen_is_present(self):
-        cond = self._wait_for_element_present(self.screen_header())
-        msg_true = "Screen '" + self.TASKS + "' is present"
-        msg_false = "Screen '" + self.TASKS + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
-        return True if cond else False
+    def screen_bottom_body(self):
+        locator = self._set_screen_bottom_body(self.screen_body())
+        return str(locator)
 
     def click_icon_help(self):
         self._click_icon_help(self.screen_header())
+
+    def enter_text_into_search_field(self, text):
+        self._send_keys_and_enter(self.screen_header() + BaseElements.FIELD, text)
+
+    def clear_text_search_text_field(self):
+        self._find_element(self.screen_header() + BaseElements.FIELD).clear()
+
+    def search_task(self, name):
+        element = self.screen_table_body() + "/*//span[text()='" + name + "']"
+        self.clear_text_search_text_field()
+        self.enter_text_into_search_field(name)
+        cond = self._is_element_present(element)
+        return True if cond else False
+
+    def clickable_label(self, name):
+        locator = self.screen_bottom_body() + "/*//span[contains(text(),'" + name + "')]"
+        return str(locator)
+
+    def click_label_addresses_to_scan(self):
+        self._click_element(self.clickable_label(self.TO_SCAN))
+
+    def click_label_devices_discovered(self):
+        self._click_element(self.clickable_label(self.DISCOVERED))
+
+    def click_label_unknown_devices(self):
+        self._click_element(self.clickable_label(self.UNKNOWN))
+
+    def click_label_devices_successfully_scannned(self):
+        self._click_element(self.clickable_label(self.SUCCESSFULLY))
+
+    def click_label_devices_successfully_updated(self):
+        self._click_element(self.clickable_label(self.SUCCESSFULLY))
+
+    def click_label_devices_still_to_be_done(self):
+        self._click_element(self.clickable_label(self.TO_BE_DONE))
+
+    def click_label_devices_failed_to_patch(self):
+        self._click_element(self.clickable_label(self.FAILED_TO))
+
+    def click_label_devices_partially_patched(self):
+        self._click_element(self.clickable_label(self.PARTIALLY_PATCHED))
+
+    def click_task_in_table(self, name):
+        element = self.screen_table_body() + "/*//span[text()='" + name + "']"
+        self._click_element(element)
+        self._wait_for_element_selected(element + "/ancestor::tr")
+
+    def check_screen_is_presented(self):
+        cond = self._wait_for_element_present(self.screen_header())
+        msg_true = "Screen '" + self.TASKS + "' is present"
+        msg_false = "Screen '" + self.TASKS + "' is NOT present"
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+    def check_task_is_presented(self, name):
+        element = self.screen_table_body() + "/*//span[text()='" + name + "']"
+        cond = self._wait_for_element_present(element)
+        return True if cond else False
+
+    def check_label_addresses_to_scan_is_presented(self):
+        cond = self._wait_for_element_present(self.clickable_label(self.TO_SCAN))
+        return True if cond else False
+
+    def check_label_devices_discovered_is_presented(self):
+        cond = self._wait_for_element_present(self.clickable_label(self.DISCOVERED))
+        return True if cond else False
+
+    def check_label_unknown_devices_is_presented(self):
+        cond = self._wait_for_element_present(self.clickable_label(self.UNKNOWN))
+        return True if cond else False
+
+    def check_label_devices_successfully_scanned_is_presented(self):
+        self.scroll_to_element(self.clickable_label(self.SUCCESSFULLY))
+        cond = self._wait_for_element_present(self.clickable_label(self.SUCCESSFULLY))
+        return True if cond else False
+
+    def check_label_devices_still_to_be_done_is_presented(self):
+        self.scroll_to_element(self.clickable_label(self.TO_BE_DONE))
+        cond = self._wait_for_element_present(self.clickable_label(self.TO_BE_DONE))
+        return True if cond else False
+
+    def check_label_devices_failed_to_patch_is_presented(self):
+        self.scroll_to_element(self.clickable_label(self.FAILED_TO))
+        cond = self._wait_for_element_present(self.clickable_label(self.FAILED_TO))
+        return True if cond else False
+
+    def check_label_devices_partially_patched_is_presented(self):
+        self.scroll_to_element(self.clickable_label(self.PARTIALLY_PATCHED))
+        cond = self._wait_for_element_present(self.clickable_label(self.PARTIALLY_PATCHED))
+        return True if cond else False
 
 
 class ReportingScreen(BaseScreen):
@@ -1269,18 +1372,18 @@ class ReportingScreen(BaseScreen):
     REPORTING = "Reporting"
 
     def screen_body(self):
-        screen = self._set_screen(self.REPORTING)
+        screen = self._set_screen_body(self.REPORTING)
         return str(screen)
 
     def screen_header(self):
         table_header = self._set_screen_header(self.screen_body())
         return str(table_header)
 
-    def check_screen_is_present(self):
+    def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_body())
         msg_true = "Screen '" + self.REPORTING + "' is present"
         msg_false = "Screen '" + self.REPORTING + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def click_icon_help(self):
@@ -1294,19 +1397,19 @@ class AuditLogScreen(BaseScreen):
     SEARCH_FIELD = "/*//input[contains(@class,'TextBox-Input')][@type='text']"
 
     def screen_body(self):
-        screen = self._set_screen(self.AUDIT_LOG)
+        screen = self._set_screen_body(self.AUDIT_LOG)
         return str(screen)
 
     def screen_header(self):
         table_header = self._set_screen_header(self.screen_body())
         return str(table_header)
 
-    def check_screen_is_present(self):
+    def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
         # print str(self.screen_header()) + " - " + str(cond)
         msg_true = "Screen '" + self.AUDIT_LOG + "' is present"
         msg_false = "Screen '" + self.AUDIT_LOG + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def click_icon_help(self):
@@ -1321,7 +1424,7 @@ class AuditLogScreen(BaseScreen):
     def enter_text_into_search_text_field(self, text = None):
         self._find_element(AuditLogScreen.SEARCH_FIELD).send_keys(text)
 
-    def check_audit_log_is_present(self, name):
+    def check_audit_log_is_presented(self, name):
         row = AuditLogScreen.TABLE_ROW + "/*//span[text()='" + name + "']/ancestor::tr"
         cond = self._wait_for_element_present(row)
         return True if cond else False
@@ -1338,18 +1441,18 @@ class ApplicationsScreen(BaseScreen):
     SEARCH_FIELD = "/*//input[contains(@class,'TextBox-Input')][@type='text']"
 
     def screen_body(self):
-        screen = self._set_screen(self.APPLICATIONS)
+        screen = self._set_screen_body(self.APPLICATIONS)
         return str(screen)
 
     def screen_header(self):
         table_header = self._set_screen_header(self.screen_body())
         return str(table_header)
 
-    def check_screen_is_present(self):
+    def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
         msg_true = "Screen '" + self.APPLICATIONS + "' is present"
         msg_false = "Screen '" + self.APPLICATIONS + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def click_icon_help(self):
@@ -1365,7 +1468,7 @@ class ApplicationsScreen(BaseScreen):
         self._send_keys_and_enter(self.screen_body() + ApplicationsScreen.SEARCH_FIELD, text)
         # self._find_element(self.screen_body() + ApplicationsScreen.SEARCH_FIELD).send_keys(text)
 
-    def check_application_is_present(self, name):
+    def check_application_is_presented(self, name):
         row = self.screen_body() + "/*//tr/*//span[text()='" + name + "']/ancestor::tr"
         cond = self._wait_for_element_present(row)
         return True if cond else False
@@ -1385,8 +1488,8 @@ class ApplicationsScreen(BaseScreen):
             self._click_element(table_row)
             self._wait_for_element_selected(table_row)
             self.scroll_to_element(table_row + "/td[1]")
-            self._wait_for_element_unabled(RibbonBar.BUTTON_EDIT)
-            self._wait_for_element_unabled(RibbonBar.BUTTON_DELETE)
+            self._wait_for_element_enabled(RibbonBar.BUTTON_EDIT)
+            self._wait_for_element_enabled(RibbonBar.BUTTON_DELETE)
             return True
         else:
             self.logger.error("Applilcation " + str(*name) + " is not found")
@@ -1400,18 +1503,18 @@ class PatchMangerScreen(BaseScreen):
     FILTER_FIELD = "/*//input[contains(@class,'TextBox-Input')][@readonly]"
 
     def screen_body(self):
-        screen = self._set_screen(self.PATCH_MANAGER)
+        screen = self._set_screen_body(self.PATCH_MANAGER)
         return str(screen)
 
     def screen_header(self):
         table_header = self._set_screen_header(self.screen_body())
         return str(table_header)
 
-    def check_screen_is_present(self):
+    def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
         msg_true = "Screen '" + self.PATCH_MANAGER + "' is present"
         msg_false = "Screen '" + self.PATCH_MANAGER + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def click_icon_help(self):
@@ -1448,7 +1551,7 @@ class PatchMangerScreen(BaseScreen):
         cond = self._wait_for_element_selected(table_row)
         return True if cond else False
 
-    def check_patch_is_present(self, name):
+    def check_patch_is_presented(self, name):
         table_row = self.screen_body() + "/*//tr/*//span[text()='" + name + "']/ancestor::tr"
         cond = self._wait_for_element_present(table_row)
         return True if cond else False
@@ -1464,18 +1567,18 @@ class ManageInstallMediaScreen(BaseScreen):
     MANAGE_INSTALL_MEDIA = "Manage Install Media"
 
     def screen_body(self):
-        screen = self._set_screen(self.MANAGE_INSTALL_MEDIA)
+        screen = self._set_screen_body(self.MANAGE_INSTALL_MEDIA)
         return str(screen)
 
     def screen_header(self):
         table_header = self._set_screen_header(self.screen_body())
         return str(table_header)
 
-    def check_screen_is_present(self):
+    def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
         msg_true = "Screen '" + self.MANAGE_INSTALL_MEDIA + "' is present"
         msg_false = "Screen '" + self.MANAGE_INSTALL_MEDIA + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def click_icon_help(self):
@@ -1487,7 +1590,7 @@ class ManageInstallMediaScreen(BaseScreen):
     def click_icon_search(self):
         self._click_icon_search(self.screen_header())
 
-    def check_patch_or_software_is_present(self, name):
+    def check_patch_or_software_is_presented(self, name):
         table_row = self.screen_body() + "/*//tr/*//span[text()='" + name + "']/ancestor::tr"
         cond = self._wait_for_element_present(table_row)
         return True if cond else False
@@ -1503,18 +1606,18 @@ class MyDashboardsScreen(BaseScreen):
     MY_DASHBOARDS = "My Dashboards"
 
     def screen_body(self):
-        screen = self._set_screen(self.MY_DASHBOARDS)
+        screen = self._set_screen_body(self.MY_DASHBOARDS)
         return str(screen)
 
     def screen_header(self):
         table_header = self._set_screen_header(self.screen_body())
         return str(table_header)
 
-    def check_screen_is_present(self):
+    def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
         msg_true = "Screen '" + self.MY_DASHBOARDS + "' is present"
         msg_false = "Screen '" + self.MY_DASHBOARDS + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def click_icon_help(self):
@@ -1526,18 +1629,18 @@ class MyReportsScreen(BaseScreen):
     MY_REPORTS = "My Reports"
 
     def screen_body(self):
-        screen = self._set_screen(self.MY_REPORTS)
+        screen = self._set_screen_body(self.MY_REPORTS)
         return str(screen)
 
     def screen_header(self):
         table_header = self._set_screen_header(self.screen_body())
         return str(table_header)
 
-    def check_screen_is_present(self):
+    def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
         msg_true = "Screen '" + self.MY_REPORTS + "' is present"
         msg_false = "Screen '" + self.MY_REPORTS + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def click_icon_help(self):
@@ -1549,18 +1652,18 @@ class SharedReportsScreen(BaseScreen):
     SHARED_REPORTS = "Shared Reports"
 
     def screen_body(self):
-        screen = self._set_screen(self.SHARED_REPORTS)
+        screen = self._set_screen_body(self.SHARED_REPORTS)
         return str(screen)
 
     def screen_header(self):
         table_header = self._set_screen_header(self.screen_body())
         return str(table_header)
 
-    def check_screen_is_present(self):
+    def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
         msg_true = "Screen '" + self.SHARED_REPORTS + "' is present"
         msg_false = "Screen '" + self.SHARED_REPORTS + "' is NOT present"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def click_icon_help(self):
@@ -1570,4 +1673,9 @@ class SharedReportsScreen(BaseScreen):
         element = self.screen_body() \
                   + "/*//div[@class='TabPage-Control_bj'][1]/*//span[contains(text(),'" + name + "')]"
         self._click_element(element)
-        self._wait_for_element_selected(element + "/ancestor::tr")
+
+    def check_report_is_presented(self, name='Archive and Delete History'):
+        element = self.screen_body() \
+                  + "/*//div[@class='TabPage-Control_bj'][1]/*//span[contains(text(),'" + name + "')]"
+        cond = self._wait_for_element_present(element)
+        return True if cond else False

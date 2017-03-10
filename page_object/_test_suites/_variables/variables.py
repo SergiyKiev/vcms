@@ -2,10 +2,13 @@
 
 class Variables(object):
 
-    site_for_smoke_test     = "Smoke Test Site"
+    help_test_discovery_task = "DiscoveryHelpTest"
+    help_test_scan_task      = "ScanHelpTest"
+    site_for_smoke_test      = "Smoke Test Site"
     # devices_for_smoke_test  = ["VKYV-DT-IK", "VKYV-VM-886IK","VKYV-VB-SRV2012IK", "VKYV-VM-VB1-W76"]
     # devices_for_smoke_test = ["VKYV-VM-816IK", "VKYV-VM-786IK"]
     vrep                    = "VKYV-DT-IK"#work'
+    ip_address              = "010.006.002.067"
     # vrep                    = "WIN100213LAB1A"
     # vrep                  = "LT-HP-KIPROV"#home
     software                = "7z920 IK"

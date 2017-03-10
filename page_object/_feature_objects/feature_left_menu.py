@@ -2,9 +2,9 @@
 from _base.base_actions import BaseActions
 from _base.base_elements import BaseElements
 from _feature_objects.feature_popup import AreYouSurePopup, NewFolderPopup, NewGroupPopup, \
-    SiteNamePopup, CreatePatchGroupPopup
+    SiteNamePopup, CreatePatchGroupPopup, CreateNewDashboardPopup
 from _feature_objects.feature_ribbon_bar import RibbonBar
-
+from _test_suites._variables.variables import Variables
 
 class BaseLeftMenu(BaseActions):
 
@@ -144,49 +144,49 @@ class BaseLeftMenu(BaseActions):
             "//span[text()='Home']/ancestor::div[@class='Label-Control']" + BaseElements.WHITE_COLOR)
         msg_true = "Left menu '" + self.HOME + "' is opened"
         msg_false = "Left menu '" + self.HOME + "' is NOT opened"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def check_menu_devices_is_opened(self):
         cond = self._wait_for_element_present(self.menu_devices())
         msg_true = "Left menu '" + self.DEVICES + "' is opened"
         msg_false = "Left menu '" + self.DEVICES + "' is NOT opened"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def check_menu_administration_is_opened(self):
         cond = self._wait_for_element_present(self.menu_administration())
         msg_true = "Left menu '" + self.ADMINISTRATION + "' is opened"
         msg_false = "Left menu '" + self.ADMINISTRATION + "' is NOT opened"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def check_menu_tasks_is_opened(self):
         cond = self._wait_for_element_present(self.menu_tasks())
         msg_true = "Left menu '" + self.TASKS + "' is opened"
         msg_false = "Left menu '" + self.TASKS + "' is NOT opened"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def check_menu_reporting_is_opened(self):
         cond = self._wait_for_element_present(self.menu_reporting())
         msg_true = "Left menu '" + self.REPORTING + "' is opened"
         msg_false = "Left menu '" + self.REPORTING + "' is NOT opened"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def check_menu_software_and_patch_manager_is_opened(self):
         cond = self._wait_for_element_present(self.menu_software_and_patch_manager())
         msg_true = "Left menu '" + self.SOFTWARE_AND_PATCH_MANAGER + "' is opened"
         msg_false = "Left menu '" + self.SOFTWARE_AND_PATCH_MANAGER + "' is NOT opened"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def check_menu_password_reset_is_opened(self):
         cond = self._wait_for_element_present(self.menu_password_reset())
         msg_true = "Left menu '" + self.PASSWORD_RESET + "' is opened"
         msg_false = "Left menu '" + self.PASSWORD_RESET + "' is NOT opened"
-        self._set_log_msg_for_true_or_false(cond, msg_true, msg_false)
+        self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     '''OLD'''
@@ -367,7 +367,7 @@ class LeftMenuDevices(BaseLeftMenu):
         self._wait_for_element_selected(LeftMenuDevices.LABEL_DEFAULT_SITE)
         self._wait_for_element_present(RibbonBar.BUTTONS_BOX_SITE_CONFIG)
 
-    def click_site_in_global_site_view_list(self, sitename):
+    def click_site_in_global_site_view_list(self, sitename=Variables.help_test):
         element = self.LIST_GLOBAL_SITE_VIEW + \
                   "/*//span[text()='" + sitename + "']/ancestor::div[contains(@class,'RowContainer')]"
         self._click_element(element)
@@ -417,7 +417,7 @@ class LeftMenuDevices(BaseLeftMenu):
         site_name_popup.click_button_ok()
         self.check_site_is_in_global_site_view_list(sitename)
 
-    def create_site_if_not_exists(self, sitename):
+    def create_site_if_not_exists(self, sitename=Variables.help_test):
         self.expand_global_site_view_list()
         self.scroll_to_element(self.LIST_GLOBAL_SITE_VIEW)
         element = self.LIST_GLOBAL_SITE_VIEW + "/*//span[text()='" + sitename + "']"
@@ -625,19 +625,19 @@ class LeftMenuAdministration(BaseLeftMenu):
     def click_infrastructure_label(self):
         self._click_label(LeftMenuAdministration.LABEL_INFRASTRUCTURE)
 
-    def check_dynamically_managed_label_is_present(self):
+    def check_dynamically_managed_label_is_presented(self):
         cond = self._wait_for_element_present(LeftMenuAdministration.LABEL_DYNAMICALLY_MANAGED)
         return True if cond else False
 
-    def check_excluded_devices_label_is_present(self):
+    def check_excluded_devices_label_is_presented(self):
         cond = self._wait_for_element_present(LeftMenuAdministration.LABEL_EXCLUDED_DEVICES)
         return True if cond else False
 
-    def check_unmanaged_devices_label_is_present(self):
+    def check_unmanaged_devices_label_is_presented(self):
         cond = self._wait_for_element_present(LeftMenuAdministration.LABEL_UNMANAGED_DEVICES)
         return True if cond else False
 
-    def check_infrastructure_label_is_present(self):
+    def check_infrastructure_label_is_presented(self):
         cond = self._wait_for_element_present(LeftMenuAdministration.LABEL_INFRASTRUCTURE)
         return True if cond else False
 
@@ -678,19 +678,19 @@ class LeftMenuTasks(BaseLeftMenu):
     def click_patch_manager_label(self):
         self._click_label(self.LABEL_PATCH_MANAGER)
 
-    def check_scheduled_tasks_label_is_present(self):
+    def check_scheduled_tasks_label_is_presented(self):
         cond = self._wait_for_element_present(self.LABEL_SCHEDULED_TASKS)
         return True if cond else False
 
-    def check_discover_label_is_present(self):
+    def check_discover_label_is_presented(self):
         cond = self._wait_for_element_present(self.LABEL_DISCOVER)
         return True if cond else False
 
-    def check_software_deployment_label_is_present(self):
+    def check_software_deployment_label_is_presented(self):
         cond = self._wait_for_element_present(self.LABEL_SOFTWARE_DEPLOYMENT)
         return True if cond else False
 
-    def check_patch_manager_label_is_present(self):
+    def check_patch_manager_label_is_presented(self):
         cond = self._wait_for_element_present(self.LABEL_PATCH_MANAGER)
         return True if cond else False
 
@@ -733,28 +733,28 @@ class LeftMenuReporting(BaseLeftMenu):
     def click_label_my_reports(self):
         self._click_label(self.LABEL_MY_REPORTS)
 
-    def click_patch_manager_label(self):
+    def click_label_shared_reports(self):
         self._click_label(self.LABEL_SHARED_REPORTS)
 
-    def click_dashboard_in_my_dashboards_list(self, name):
+    def click_dashboard_in_my_dashboards_list(self, name=Variables.help_test):
         element = self.LIST_MY_DASHBOARDS \
                   + "/*//span[text()='" + name + "']/ancestor::div[contains(@class,'RowContainer')]"
         self._click_element(element)
         self._wait_for_element_selected(element)
 
-    def check_label_my_dashboard_is_present(self):
+    def check_label_my_dashboard_is_presented(self):
         cond = self._wait_for_element_present(self.LABEL_MY_DASHBOARDS)
         return True if cond else False
 
-    def check_label_shared_dashboards_is_present(self):
+    def check_label_shared_dashboards_is_presented(self):
         cond = self._wait_for_element_present(self.LABEL_SHARED_DASHBOARDS)
         return True if cond else False
 
-    def check_label_my_reports_is_present(self):
+    def check_label_my_reports_is_presented(self):
         cond = self._wait_for_element_present(self.LABEL_MY_REPORTS)
         return True if cond else False
 
-    def check_label_shared_reports_is_present(self):
+    def check_label_shared_reports_is_presented(self):
         cond = self._wait_for_element_present(self.LABEL_SHARED_REPORTS)
         return True if cond else False
 
@@ -763,7 +763,7 @@ class LeftMenuReporting(BaseLeftMenu):
         if arrow:
             self._expand_list(self.LABEL_MY_DASHBOARDS)
 
-    def create_dashboard_if_not_exists(self, name):
+    def create_dashboard_if_not_exists(self, name=Variables.help_test):
         self.expand_my_dashboards_list()
         self.scroll_to_element(self.LABEL_MY_DASHBOARDS)
         self.click_label_my_dashboards()
@@ -771,18 +771,20 @@ class LeftMenuReporting(BaseLeftMenu):
         cond = self._is_element_present(element)
         if cond is not True:
             ribbon_bar = RibbonBar(self.driver)
-            create_patch_group_popup = CreatePatchGroupPopup(self.driver)
-            ribbon_bar.click_button_create_group()
-            create_patch_group_popup.check_popup_is_present()
-            create_patch_group_popup.enter_text_into_group_name_text_field(name)
-            create_patch_group_popup.click_button_ok()
-            self.check_dashboard_is_in_my_dashboards_list(name)
+            create_new_dashboard_popup = CreateNewDashboardPopup(self.driver)
+            ribbon_bar.click_button_new()
+            create_new_dashboard_popup.check_popup_is_presented()
+            create_new_dashboard_popup.clear_text_name_text_field()
+            create_new_dashboard_popup.enter_text_into_name_text_field(name)
+            create_new_dashboard_popup.click_button_next()
+            create_new_dashboard_popup.click_button_finish()
+            self.expand_list_my_dashboards()
         else:
             pass
         site = self.check_dashboard_is_in_my_dashboards_list(name)
         return True if site else False
 
-    def check_dashboard_is_in_my_dashboards_list(self, name):
+    def check_dashboard_is_in_my_dashboards_list(self, name=Variables.help_test):
         cond = self._wait_for_element_present(self.LIST_MY_DASHBOARDS + "/*//span[text()='" + name + "']")
         return True if cond else False
 
@@ -882,35 +884,35 @@ class LeftMenuSoftwareAndPatchManager(BaseLeftMenu):
         if arrow:
             self._expand_list(self.LABEL_MEDIA_MANAGEMENT)
 
-    def check_applications_label_is_present(self):
+    def check_applications_label_is_presented(self):
         cond = self._wait_for_element_present(self.LABEL_APPLICATIONS)
         return True if cond else False
 
-    def check_by_vendor_label_is_present(self):
+    def check_by_vendor_label_is_presented(self):
         cond = self._wait_for_element_present(self.LABEL_BY_VENDOR)
         return True if cond else False
 
-    def check_by_group_label_is_present(self):
+    def check_by_group_label_is_presented(self):
         cond = self._wait_for_element_present(self.LABEL_BY_GROUP)
         return True if cond else False
 
-    def check_by_system_rule_label_is_present(self):
+    def check_by_system_rule_label_is_presented(self):
         cond = self._wait_for_element_present(self.LABEL_BY_SYSTEM_RULE)
         return True if cond else False
 
-    def check_by_query_rule_label_is_present(self):
+    def check_by_query_rule_label_is_presented(self):
         cond = self._wait_for_element_present(self.LABEL_BY_QUERY_RULE)
         return True if cond else False
 
-    def check_media_management_label_is_present(self):
+    def check_media_management_label_is_presented(self):
         cond = self._wait_for_element_present(self.LABEL_MEDIA_MANAGEMENT)
         return True if cond else False
 
-    def check_my_patches_label_is_present(self):
+    def check_my_patches_label_is_presented(self):
         cond = self._wait_for_element_present(self.LABEL_MY_PATCHES)
         return True if cond else False
 
-    def check_patch_manager_label_is_present(self):
+    def check_patch_manager_label_is_presented(self):
         cond = self._wait_for_element_present(self.LABEL_PATCH_MANAGER)
         return True if cond else False
 
@@ -925,7 +927,7 @@ class LeftMenuSoftwareAndPatchManager(BaseLeftMenu):
             ribbon_bar = RibbonBar(self.driver)
             create_patch_group_popup = CreatePatchGroupPopup(self.driver)
             ribbon_bar.click_button_create_group()
-            create_patch_group_popup.check_popup_is_present()
+            create_patch_group_popup.check_popup_is_presented()
             create_patch_group_popup.enter_text_into_group_name_text_field(name)
             create_patch_group_popup.click_button_ok()
             self.check_patch_group_is_in_by_group_list(name)

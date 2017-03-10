@@ -22,7 +22,7 @@ class BaseActions(Base):
                     self.logger.debug("Popup #" + str(i) +  " is closed.")
                 elif button_close:
                     self._click_button_close(BaseElements.POPUP)
-                    self.logger.debug("PopupBase without system button close is closed. PLEASE, ADD SYSTEM BUTTON CLOSE")
+                    # self.logger.debug("PopupBase without system button close is closed. PLEASE, ADD SYSTEM BUTTON CLOSE")
                 else:
                     break
 
@@ -89,6 +89,12 @@ class BaseActions(Base):
     def _click_button_add(self, locator):
         self._click_element(locator + BaseElements.BUTTON_ADD)
 
+    def _click_button_select_all(self, locator):
+        self._click_element(locator + BaseElements.BUTTON_SELECT_ALL)
+
+    def _click_button_select_none(self, locator):
+        self._click_element(locator + BaseElements.BUTTON_SELECT_NONE)
+
     def _click_button_new(self, locator):
         self._click_element(locator + BaseElements.BUTTON_NEW)
 
@@ -134,55 +140,10 @@ class BaseActions(Base):
     def _get_popup_error_messages(self):
         cond = self._is_element_present(BaseElements.POPUP_ERROR)
         if cond:
-            elements = self._find_all_elements(BaseElements.POPUP_ERROR)
+            elements = self._find_elements(BaseElements.POPUP_ERROR)
             for element in elements:
                 message = element.text
                 self.logger.error("TEST FAILED. Error popup message: " + str(message))
-
-    def _get_help_frame_header(self):
-        try:
-            handles = self.driver.window_handles
-            self.wait_webelement.until(lambda d: len(d.window_handles) == 2)
-            help_window = handles[1]
-            self.driver.switch_to_window(help_window)
-            self.wait_webelement.until(lambda d: d.title != "")
-            title = self.driver.title
-            self.logger.info("Help window is opened. Title is: " + str(title))
-            self._wait_for_element_present(BaseElements.HELP_FRAME_MAIN)
-            self._wait_for_element_present(BaseElements.HELP_FRAME_TOC)
-            self.driver.switch_to_frame(self._find_element(BaseElements.HELP_FRAME_MAIN))
-            time.sleep(1)
-            cond = self._is_element_present(BaseElements.HELP_FRAME_HEADER)
-            error = self._is_element_present(BaseElements.HELP_FRAME_HEADER_ERROR)
-            print "Header " + str(cond) + ". Error " + str(error)
-            if cond:
-                header = self._get_text(BaseElements.HELP_FRAME_HEADER)
-                return str(header)
-            elif error:
-                error_header = self._get_text(BaseElements.HELP_FRAME_HEADER_ERROR)
-                return str(error_header)
-        except NoSuchElementException:
-            massage1 = self._find_element("//*[@id='main-message']/h1").text
-            massage2 = self._find_element("//*[@id='main-message']/div[2]").text
-            return self.logger.error("HELP LINK IS UNAVAILABLE. Massage: " + massage1 + massage2)
-        except TimeoutException:
-            return self.logger.error("Help window is not opened")
-        except IndexError:
-            return self.logger.error("Help window is not found")
-        except Exception as e:
-            return  self.logger.exception("Help window is not found" + str(e))
-
-    def _close_help_window(self):
-        handles = self.driver.window_handles
-        main_window = handles[0]
-        try:
-            help_window = handles[1]
-        except IndexError:
-            help_window = 'null'
-        if help_window != 'null':
-            self.driver.switch_to_window(help_window)
-            self.driver.close()
-        self.driver.switch_to_window(main_window)
 
     def _expand_list(self, locator):
         try:
@@ -198,7 +159,7 @@ class BaseActions(Base):
 
     def _expand_all_lists(self, locator):
         self._wait_for_element_present(locator)
-        elements = self._find_all_elements(locator + BaseElements.ARROW_EXPAND)
+        elements = self._find_elements(locator + BaseElements.ARROW_EXPAND)
         for element in elements:
             self.driver.execute_script("arguments[0].click();", element)
             # self._wait_for_element_not_present(locator + BaseElements.ARROW_EXPAND)
@@ -213,7 +174,7 @@ class BaseActions(Base):
 
     def _collaps_all_lists(self, locator):
         self._wait_for_element_present(locator)
-        elements = self._find_all_elements(locator + BaseElements.ARROW_COLLAPSE)
+        elements = self._find_elements(locator + BaseElements.ARROW_COLLAPSE)
         for element in elements:
             self.driver.execute_script("arguments[0].click();", element)
             # self._wait_for_element_not_present(locator + BaseElements.ARROW_COLLAPSE)
@@ -227,13 +188,60 @@ class BaseActions(Base):
         cond = self._is_element_present(locator)
         return True if cond else False
 
-    def _set_log_msg_for_true_or_false(self, cond=True, true_msg=None, false_msg=None):
+    def _set_log_for_true_or_false(self, cond=True, true_msg=None, false_msg=None):
         if cond:
             self.logger.debug(true_msg)
             return True
         else:
             self.logger.error("TEST FAILED. " + false_msg)
             return False
+
+    def _close_help_window(self):
+        handles = self.driver.window_handles
+        main_window = handles[0]
+        try:
+            help_window = handles[1]
+        except IndexError:
+            help_window = 'null'
+        if help_window != 'null':
+            self.driver.switch_to_window(help_window)
+            self.driver.close()
+        self.driver.switch_to_window(main_window)
+
+    def _get_help_frame_header(self):
+        try:
+            handles = self.driver.window_handles
+            self.wait_webelement.until(lambda d: len(d.window_handles) == 2)
+            help_window = handles[1]
+            self.driver.switch_to_window(help_window)
+            self.wait_webelement.until(lambda d: d.title != "")
+            title = self.driver.title
+            self.logger.info("Help window is opened. Title is: " + str(title))
+            self._wait_for_element_present(BaseElements.HELP_FRAME_MAIN)
+            self._wait_for_element_present(BaseElements.HELP_FRAME_TOC)
+            self.driver.switch_to_frame(self._find_element(BaseElements.HELP_FRAME_MAIN))
+            time.sleep(2)
+            cond = self._is_element_present(BaseElements.HELP_FRAME_HEADER)
+            error = self._is_element_present(BaseElements.HELP_FRAME_HEADER_ERROR)
+            if cond:
+                print "Header: " + str(cond)
+                header = self._get_text(BaseElements.HELP_FRAME_HEADER)
+                return str(header)
+            elif error:
+                print "Error: " + str(error)
+                error_header = self._get_text(BaseElements.HELP_FRAME_HEADER_ERROR)
+                return str(error_header)
+        except NoSuchElementException:
+            massage1 = self._find_element("//*[@id='main-message']/h1").text
+            massage2 = self._find_element("//*[@id='main-message']/div[2]").text
+            return self.logger.error("HELP LINK IS UNAVAILABLE. Massage: " + massage1 + massage2)
+        except TimeoutException:
+            return self.logger.error("Help window is not opened")
+        except IndexError:
+            return self.logger.error("Help window is not found")
+        except Exception as e:
+            return  self.logger.exception("Help window is not found" + str(e))
+
 
     def _get_log_for_help_link(self, expected_header_name):
         try:
