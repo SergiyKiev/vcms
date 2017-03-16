@@ -1,2392 +1,412 @@
-2017-03-09 14:31:20,158  [INFO] Start testing
-
-2017-03-09 14:31:20,158  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 14:31:34,165  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 14:31:35,349  [INFO] Login page is present
-
-2017-03-09 14:31:44,809  [INFO] [Test start]
-2017-03-09 14:31:44,948  [INFO] TC#0000: Check help link on Admin Accounts popup
-2017-03-09 14:31:51,440  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:31:55,903  [INFO] Expected header: Accounts == Actual header: Accounts
-2017-03-09 14:31:55,903  [INFO] TEST PASSED
-2017-03-09 14:32:01,878  [INFO] [Test end]
-
-2017-03-09 14:32:01,878  [INFO] [Test start]
-2017-03-09 14:32:01,989  [INFO] TC#0000: Check help link on Audit Log screen
-2017-03-09 14:32:06,487  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:32:12,099  [ERROR] TEST FAILED: Expected header: Audit Log !=  Actual header: Getting Started in CMS
-2017-03-09 14:32:13,197  [INFO] [Test end]
-
-2017-03-09 14:32:13,197  [INFO] [Test start]
-2017-03-09 14:32:13,292  [INFO] TC#0000: Check help link on Column Set Designer popup (Administration)
-2017-03-09 14:32:19,130  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:32:23,594  [INFO] Expected header: Create == Actual header: Create
-2017-03-09 14:32:23,594  [INFO] TEST PASSED
-2017-03-09 14:32:29,507  [INFO] [Test end]
-
-2017-03-09 14:32:29,507  [INFO] [Test start]
-2017-03-09 14:32:29,632  [INFO] TC#0000: Check help link on Column Sets screen
-2017-03-09 14:32:32,013  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:32:36,535  [INFO] Expected header: Column Sets == Actual header: Column Sets
-2017-03-09 14:32:36,535  [INFO] TEST PASSED
-2017-03-09 14:32:37,605  [INFO] [Test end]
-
-2017-03-09 14:32:37,605  [INFO] [Test start]
-2017-03-09 14:32:37,651  [INFO] TC#0000: Check help link on Configure Exclusions popup
-2017-03-09 14:32:41,842  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:32:46,280  [INFO] Expected header: Exclusions == Actual header: Exclusions
-2017-03-09 14:32:46,280  [INFO] TEST PASSED
-2017-03-09 14:32:51,207  [INFO] [Test end]
-
-2017-03-09 14:32:51,207  [INFO] [Test start]
-2017-03-09 14:32:51,315  [INFO] TC#0000: Check help link on Discover Devices popup (Administration)
-2017-03-09 14:32:55,493  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:32:59,976  [INFO] Expected header: Discovery == Actual header: Discovery
-2017-03-09 14:32:59,976  [INFO] TEST PASSED
-2017-03-09 14:33:05,924  [INFO] [Test end]
-
-2017-03-09 14:33:05,924  [INFO] [Test start]
-2017-03-09 14:33:06,017  [INFO] TC#0000: Check help link on Dynamically Managed screen
-2017-03-09 14:33:09,632  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:33:15,183  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
-2017-03-09 14:33:16,262  [INFO] [Test end]
-
-2017-03-09 14:33:16,262  [INFO] [Test start]
-2017-03-09 14:33:16,355  [INFO] TC#0000: Check help link on Edit User popup (Administration)
-2017-03-09 14:33:25,558  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:33:29,980  [INFO] Expected header: Create == Actual header: Create
-2017-03-09 14:33:29,980  [INFO] TEST PASSED
-2017-03-09 14:33:36,457  [INFO] [Test end]
-
-2017-03-09 14:33:36,457  [INFO] [Test start]
-2017-03-09 14:33:36,582  [INFO] TC#0000: Check help link on Endpoint Management screen
-2017-03-09 14:33:39,558  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:33:44,063  [INFO] Expected header: Endpoint Management == Actual header: Endpoint Management
-2017-03-09 14:33:44,063  [INFO] TEST PASSED
-2017-03-09 14:33:45,167  [INFO] [Test end]
-
-2017-03-09 14:33:45,167  [INFO] [Test start]
-2017-03-09 14:33:45,260  [INFO] TC#0000: Check help link on Exclude Device popup
-2017-03-09 14:33:50,703  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:33:56,138  [ERROR] TEST FAILED: Expected header: Exclude Device !=  Actual header: Computer Name
-2017-03-09 14:34:03,895  [INFO] [Test end]
-
-2017-03-09 14:34:03,895  [INFO] [Test start]
-2017-03-09 14:34:03,973  [INFO] TC#0000: Check help link on Exclude IP Address popup
-2017-03-09 14:34:08,891  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:34:14,414  [ERROR] TEST FAILED: Expected header: Exclude IP Address !=  Actual header: IP Address
-2017-03-09 14:34:22,091  [INFO] [Test end]
-
-2017-03-09 14:34:22,091  [INFO] [Test start]
-2017-03-09 14:34:22,168  [INFO] TC#0000: Check help link on Exclude Site popup
-2017-03-09 14:34:27,219  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:34:32,703  [ERROR] TEST FAILED: Expected header: Exclude Site !=  Actual header: Sites
-2017-03-09 14:34:40,911  [INFO] [Test end]
-
-2017-03-09 14:34:40,911  [INFO] [Test start]
-2017-03-09 14:34:41,019  [INFO] TC#0000: Check help link on Excluded Devices screen
-2017-03-09 14:34:45,150  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:34:50,663  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
-2017-03-09 14:34:51,732  [INFO] [Test end]
-
-2017-03-09 14:34:51,732  [INFO] [Test start]
-2017-03-09 14:34:51,825  [INFO] TC#0000: Check help link on Infrastructure screen
-2017-03-09 14:34:56,005  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:35:01,486  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
-2017-03-09 14:35:02,563  [INFO] [Test end]
-
-2017-03-09 14:35:02,563  [INFO] [Test start]
-2017-03-09 14:35:02,674  [INFO] TC#0000: Check help link on Inventory Configuration popup
-2017-03-09 14:35:08,941  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:35:14,471  [ERROR] TEST FAILED: Expected header: Inventory Scan Configuration !=  Actual header: Create
-2017-03-09 14:35:20,305  [INFO] [Test end]
-
-2017-03-09 14:35:20,305  [INFO] [Test start]
-2017-03-09 14:35:20,415  [INFO] TC#0000: Check help link on Inventory Configuration screen
-2017-03-09 14:35:22,854  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:35:27,318  [INFO] Expected header: Inventory Scan Configuration == Actual header: Inventory Scan Configuration
-2017-03-09 14:35:27,318  [INFO] TEST PASSED
-2017-03-09 14:35:28,391  [INFO] [Test end]
-
-2017-03-09 14:35:28,391  [INFO] [Test start]
-2017-03-09 14:35:28,438  [INFO] TC#0000: Check help link on Inventory Force Update popup
-2017-03-09 14:35:33,328  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:35:37,750  [INFO] Expected header: Force Update == Actual header: Force Update
-2017-03-09 14:35:37,750  [INFO] TEST PASSED
-2017-03-09 14:35:43,713  [INFO] [Test end]
-
-2017-03-09 14:35:43,713  [INFO] [Test start]
-2017-03-09 14:35:43,822  [INFO] TC#0000: Check help link on IP Address popup (Administration)
-2017-03-09 14:35:52,141  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:35:57,687  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
-2017-03-09 14:36:06,392  [INFO] [Test end]
-
-2017-03-09 14:36:06,392  [INFO] [Test start]
-2017-03-09 14:36:06,502  [INFO] TC#0000: Check help link on Maintenance Window popup
-2017-03-09 14:36:11,187  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:36:16,753  [ERROR] TEST FAILED: Expected header: Create !=  Actual header: Create a Maintenance Window
-2017-03-09 14:36:22,759  [INFO] [Test end]
-
-2017-03-09 14:36:22,759  [INFO] [Test start]
-2017-03-09 14:36:22,852  [INFO] TC#0000: Check help link on Maintenance Windows screen
-2017-03-09 14:36:25,298  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:36:29,747  [INFO] Expected header: Maintenance Windows == Actual header: Maintenance Windows
-2017-03-09 14:36:29,747  [INFO] TEST PASSED
-2017-03-09 14:36:30,832  [INFO] [Test end]
-
-2017-03-09 14:36:30,832  [INFO] [Test start]
-2017-03-09 14:36:30,910  [INFO] TC#0000: Check help link on Move Site popup (Administration)
-2017-03-09 14:36:38,444  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:36:42,918  [INFO] Expected header: Move a site or device == Actual header: Move a site or device
-2017-03-09 14:36:42,918  [INFO] TEST PASSED
-2017-03-09 14:36:52,109  [INFO] [Test end]
-
-2017-03-09 14:36:52,109  [INFO] [Test start]
-2017-03-09 14:36:52,250  [INFO] TC#0000: Check help link on Notifications screen
-2017-03-09 14:36:55,200  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:36:59,655  [INFO] Expected header: Notifications == Actual header: Notifications
-2017-03-09 14:36:59,655  [INFO] TEST PASSED
-2017-03-09 14:37:00,730  [INFO] [Test end]
-
-2017-03-09 14:37:00,730  [INFO] [Test start]
-2017-03-09 14:37:00,839  [INFO] TC#0000: Check help link on Site Config popup
-2017-03-09 14:37:05,127  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:37:09,528  [INFO] Expected header: Create == Actual header: Create
-2017-03-09 14:37:09,528  [INFO] TEST PASSED
-2017-03-09 14:37:15,496  [INFO] [Test end]
-
-2017-03-09 14:37:15,496  [INFO] [Test start]
-2017-03-09 14:37:15,605  [INFO] TC#0000: Check help link on Site Configuration screen
-2017-03-09 14:37:18,107  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:37:22,589  [INFO] Expected header: Site Management == Actual header: Site Management
-2017-03-09 14:37:22,589  [INFO] TEST PASSED
-2017-03-09 14:37:23,661  [INFO] [Test end]
-
-2017-03-09 14:37:23,661  [INFO] [Test start]
-2017-03-09 14:37:23,723  [INFO] TC#0000: Check help link on Event Logs screen
-2017-03-09 14:37:26,720  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:37:31,122  [INFO] Expected header: Logs == Actual header: Logs
-2017-03-09 14:37:31,122  [INFO] TEST PASSED
-2017-03-09 14:37:32,203  [INFO] [Test end]
-
-2017-03-09 14:37:32,203  [INFO] [Test start]
-2017-03-09 14:37:32,296  [INFO] TC#0000: Check help link on Site Name popup (Administration)
-2017-03-09 14:37:37,558  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:37:41,971  [INFO] Expected header: Create a site == Actual header: Create a site
-2017-03-09 14:37:41,971  [INFO] TEST PASSED
-2017-03-09 14:37:50,476  [INFO] [Test end]
-
-2017-03-09 14:37:50,476  [INFO] [Test start]
-2017-03-09 14:37:50,585  [INFO] TC#0000: Check help link on Unmanaged Devices screen
-2017-03-09 14:37:54,710  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:38:00,197  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
-2017-03-09 14:38:01,288  [INFO] [Test end]
-
-2017-03-09 14:38:01,288  [INFO] [Test start]
-2017-03-09 14:38:01,351  [INFO] TC#0000: Check help link on User Configuration popup
-2017-03-09 14:38:05,733  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:38:10,121  [INFO] Expected header: Create == Actual header: Create
-2017-03-09 14:38:10,121  [INFO] TEST PASSED
-2017-03-09 14:38:18,786  [INFO] [Test end]
-
-2017-03-09 14:38:18,786  [INFO] [Test start]
-2017-03-09 14:38:18,865  [INFO] TC#0000: Check help link on vReps screen
-2017-03-09 14:38:22,354  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:38:26,849  [INFO] Expected header: vReps == Actual header: vReps
-2017-03-09 14:38:26,849  [INFO] TEST PASSED
-2017-03-09 14:38:27,943  [INFO] [Test end]
-
-2017-03-09 14:38:27,943  [INFO] [Test start]
-2017-03-09 14:38:28,005  [INFO] TC#0000: Check help link on Condition Editor popup
-2017-03-09 14:38:38,874  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:38:43,322  [INFO] Expected header: Create a Query == Actual header: Create a Query
-2017-03-09 14:38:43,322  [INFO] TEST PASSED
-2017-03-09 14:38:52,540  [INFO] [Test end]
-
-2017-03-09 14:38:52,540  [INFO] [Test start]
-2017-03-09 14:38:52,650  [INFO] TC#0000: Check help link on Configuration popup
-2017-03-09 14:38:58,973  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:39:03,528  [INFO] Expected header: Configure a site == Actual header: Configure a site
-2017-03-09 14:39:03,528  [INFO] TEST PASSED
-2017-03-09 14:39:08,459  [INFO] [Test end]
-
-2017-03-09 14:39:08,459  [INFO] [Test start]
-2017-03-09 14:39:08,584  [INFO] TC#0000: Check help link on Edit Folder popup
-2017-03-09 14:39:16,267  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:39:21,798  [ERROR] TEST FAILED: Expected header: Edit a folder !=  Actual header: Create a site
-2017-03-09 14:39:27,772  [INFO] [Test end]
-
-2017-03-09 14:39:27,772  [INFO] [Test start]
-2017-03-09 14:39:27,881  [INFO] TC#0000: Check help link on Event Viewer popup
-2017-03-09 14:39:51,453  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:39:56,924  [ERROR] TEST FAILED: Expected header: Event Viewer !=  Actual header: Devices
-2017-03-09 14:40:02,842  [INFO] [Test end]
-
-2017-03-09 14:40:02,842  [INFO] [Test start]
-2017-03-09 14:40:04,701  [INFO] TC#0000: Check help link on File Explorer popup
-2017-03-09 14:40:14,328  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:40:19,808  [ERROR] TEST FAILED: Expected header: File Explorer !=  Actual header: Devices
-2017-03-09 14:40:24,772  [INFO] [Test end]
-
-2017-03-09 14:40:24,772  [INFO] [Test start]
-2017-03-09 14:40:26,596  [INFO] TC#0000: Check help link on Groups screen
-2017-03-09 14:40:29,778  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:40:35,253  [ERROR] TEST FAILED: Expected header: Groups !=  Actual header: Devices
-2017-03-09 14:40:36,341  [INFO] [Test end]
-
-2017-03-09 14:40:36,341  [INFO] [Test start]
-2017-03-09 14:40:36,434  [INFO] TC#0000: Check help link on Inventory View popup
-2017-03-09 14:40:46,911  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:40:51,388  [INFO] Expected header: Inventory == Actual header: Inventory
-2017-03-09 14:40:51,388  [INFO] TEST PASSED
-2017-03-09 14:40:56,275  [INFO] [Test end]
-
-2017-03-09 14:40:56,275  [INFO] [Test start]
-2017-03-09 14:40:58,127  [INFO] TC#0000: Check help link on IP Address popup
-2017-03-09 14:41:08,845  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:41:14,375  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
-2017-03-09 14:41:22,711  [INFO] [Test end]
-
-2017-03-09 14:41:22,711  [INFO] [Test start]
-2017-03-09 14:41:22,789  [INFO] TC#0000: Check help link on Move Device popup
-2017-03-09 14:41:29,446  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:41:33,885  [INFO] Expected header: Move a site or device == Actual header: Move a site or device
-2017-03-09 14:41:33,885  [INFO] TEST PASSED
-2017-03-09 14:41:39,822  [INFO] [Test end]
-
-2017-03-09 14:41:39,822  [INFO] [Test start]
-2017-03-09 14:41:41,645  [INFO] TC#0000: Check help link on Move Site popup
-2017-03-09 14:41:46,980  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:41:51,500  [INFO] Expected header: Move a site or device == Actual header: Move a site or device
-2017-03-09 14:41:51,500  [INFO] TEST PASSED
-2017-03-09 14:41:57,460  [INFO] [Test end]
-
-2017-03-09 14:41:57,460  [INFO] [Test start]
-2017-03-09 14:41:57,539  [INFO] TC#0000: Check help link on New Folder popup
-2017-03-09 14:42:02,786  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:42:08,289  [ERROR] TEST FAILED: Expected header: Create a Folder !=  Actual header: Create a site
-2017-03-09 14:42:14,154  [INFO] [Test end]
-
-2017-03-09 14:42:14,154  [INFO] [Test start]
-2017-03-09 14:42:14,232  [INFO] TC#0000: Check help link on New Group popup
-2017-03-09 14:42:18,171  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:42:23,703  [ERROR] TEST FAILED: Expected header: Create a Group !=  Actual header: Groups
-2017-03-09 14:42:30,259  [INFO] [Test end]
-
-2017-03-09 14:42:30,259  [INFO] [Test start]
-2017-03-09 14:42:30,417  [INFO] TC#0000: Check help link on On Demand Inventory Scan popup
-2017-03-09 14:42:37,365  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:42:42,869  [ERROR] TEST FAILED: Expected header: On Demand Inventory Scan !=  Actual header: Devices
-2017-03-09 14:42:47,770  [INFO] [Test end]
-
-2017-03-09 14:42:47,770  [INFO] [Test start]
-2017-03-09 14:42:49,562  [INFO] TC#0000: Check help link on Patch Manager popup
-2017-03-09 14:42:56,431  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:43:00,857  [INFO] Expected header: Software Updates == Actual header: Software Updates
-2017-03-09 14:43:00,857  [INFO] TEST PASSED
-2017-03-09 14:43:05,825  [INFO] [Test end]
-
-2017-03-09 14:43:05,825  [INFO] [Test start]
-2017-03-09 14:43:07,608  [INFO] TC#0000: Check help link on Ping Result popup
-2017-03-09 14:43:15,776  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:43:21,302  [ERROR] TEST FAILED: Expected header: Ping Result !=  Actual header: Devices
-2017-03-09 14:43:26,168  [INFO] [Test end]
-
-2017-03-09 14:43:26,168  [INFO] [Test start]
-2017-03-09 14:43:27,997  [INFO] TC#0000: Check help link on IP Process Explorer popup
-2017-03-09 14:43:38,750  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:43:44,227  [ERROR] TEST FAILED: Expected header: Process Explorer !=  Actual header: Devices
-2017-03-09 14:43:50,161  [INFO] [Test end]
-
-2017-03-09 14:43:50,161  [INFO] [Test start]
-2017-03-09 14:43:52,013  [INFO] TC#0000: Check help link on Queries screen
-2017-03-09 14:43:55,046  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:44:00,581  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
-2017-03-09 14:44:01,648  [INFO] [Test end]
-
-2017-03-09 14:44:01,648  [INFO] [Test start]
-2017-03-09 14:44:01,742  [INFO] TC#0000: Check help link on Query Designer popup
-2017-03-09 14:44:06,529  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:44:10,918  [INFO] Expected header: Queries == Actual header: Queries
-2017-03-09 14:44:10,918  [INFO] TEST PASSED
-2017-03-09 14:44:17,378  [INFO] [Test end]
-
-2017-03-09 14:44:17,378  [INFO] [Test start]
-2017-03-09 14:44:17,471  [INFO] TC#0000: Check help link on Reports popup
-2017-03-09 14:44:26,648  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:44:31,038  [INFO] Expected header: Reports == Actual header: Reports
-2017-03-09 14:44:31,038  [INFO] TEST PASSED
-2017-03-09 14:44:36,989  [INFO] [Test end]
-
-2017-03-09 14:44:36,989  [INFO] [Test start]
-2017-03-09 14:44:38,894  [INFO] TC#0000: Check help link on Select Targets popup (Devices)
-2017-03-09 14:44:44,792  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:44:50,283  [ERROR] TEST FAILED: Expected header: Select Targets !=  Actual header: Devices
-2017-03-09 14:44:59,473  [INFO] [Test end]
-
-2017-03-09 14:44:59,473  [INFO] [Test start]
-2017-03-09 14:44:59,614  [INFO] TC#0000: Check help link on Site Name popup
-2017-03-09 14:45:03,612  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:45:08,127  [INFO] Expected header: Create a site == Actual header: Create a site
-2017-03-09 14:45:08,142  [INFO] TEST PASSED
-2017-03-09 14:45:14,002  [INFO] [Test end]
-
-2017-03-09 14:45:14,002  [INFO] [Test start]
-2017-03-09 14:45:14,111  [INFO] TC#0000: Check help link on Wake on LAN popup
-2017-03-09 14:45:19,246  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:45:23,709  [INFO] Expected header: Wake Up == Actual header: Wake Up
-2017-03-09 14:45:23,709  [INFO] TEST PASSED
-2017-03-09 14:45:28,717  [INFO] [Test end]
-
-2017-03-09 14:45:28,717  [INFO] [Test start]
-2017-03-09 14:45:30,572  [INFO] TC#0000: Check help link on WMI Explorer popup
-2017-03-09 14:45:38,798  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:45:44,270  [ERROR] TEST FAILED: Expected header: Process Explorer !=  Actual header: Devices
-2017-03-09 14:45:50,282  [INFO] [Test end]
-
-2017-03-09 14:45:50,282  [INFO] [Test start]
-2017-03-09 14:45:52,160  [INFO] TC#0000: Check help link on Administration home screen
-2017-03-09 14:45:58,822  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:46:04,252  [ERROR] TEST FAILED: Expected header: Administration !=  Actual header: Getting Started in CMS
-2017-03-09 14:46:05,325  [INFO] [Test end]
-
-2017-03-09 14:46:05,325  [INFO] [Test start]
-2017-03-09 14:46:05,388  [INFO] TC#0000: Check help link on Devices home screen
-2017-03-09 14:46:14,762  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:46:20,234  [ERROR] TEST FAILED: Expected header: Devices !=  Actual header: Getting Started in CMS
-2017-03-09 14:46:21,299  [INFO] [Test end]
-
-2017-03-09 14:46:21,299  [INFO] [Test start]
-2017-03-09 14:46:21,394  [INFO] TC#0000: Check help link on Home screen
-2017-03-09 14:46:27,838  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:46:32,335  [INFO] Expected header: Getting Started in CMS == Actual header: Getting Started in CMS
-2017-03-09 14:46:32,335  [INFO] TEST PASSED
-2017-03-09 14:46:33,411  [INFO] [Test end]
-
-2017-03-09 14:46:33,411  [INFO] [Test start]
-2017-03-09 14:46:33,520  [INFO] TC#0000: Check help link on Reporting home screen
-2017-03-09 14:46:39,812  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:46:45,328  [ERROR] TEST FAILED: Expected header: Reporting !=  Actual header: Getting Started in CMS
-2017-03-09 14:46:46,413  [INFO] [Test end]
-
-2017-03-09 14:46:46,413  [INFO] [Test start]
-2017-03-09 14:46:46,506  [INFO] TC#0000: Check help link on Software and Patch Manager home screen
-2017-03-09 14:46:55,035  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:47:00,523  [ERROR] TEST FAILED: Expected header: Software / Patch Manager !=  Actual header: Getting Started in CMS
-2017-03-09 14:47:01,607  [INFO] [Test end]
-
-2017-03-09 14:47:01,607  [INFO] [Test start]
-2017-03-09 14:47:01,700  [INFO] TC#0000: Check help link on Tasks home screen
-2017-03-09 14:47:10,187  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:47:15,700  [ERROR] TEST FAILED: Expected header: Tasks !=  Actual header: Getting Started in CMS
-2017-03-09 14:47:16,788  [INFO] [Test end]
-
-2017-03-09 14:47:16,788  [INFO] [Test start]
-2017-03-09 14:47:16,913  [INFO] TC#0000: Check help link on Client Settings popup
-2017-03-09 14:47:19,970  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:47:25,426  [ERROR] TEST FAILED: Expected header: Client !=  Actual header: Getting Started in CMS
-2017-03-09 14:47:31,372  [INFO] [Test end]
-
-2017-03-09 14:47:31,372  [INFO] [Test start]
-2017-03-09 14:47:31,497  [INFO] TC#0000: Check help link on Client Settings popup - Client Proxy Settings tab
-2017-03-09 14:47:35,176  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:47:39,625  [INFO] Expected header: Client Proxy Settings == Actual header: Client Proxy Settings
-2017-03-09 14:47:39,625  [INFO] TEST PASSED
-2017-03-09 14:47:45,492  [INFO] [Test end]
-
-2017-03-09 14:47:45,492  [INFO] [Test start]
-2017-03-09 14:47:45,585  [INFO] TC#0000: Check help link on Client Settings popup - Client URLs tab
-2017-03-09 14:47:49,196  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:47:53,618  [INFO] Expected header: Client URLs == Actual header: Client URLs
-2017-03-09 14:47:53,618  [INFO] TEST PASSED
-2017-03-09 14:47:59,539  [INFO] [Test end]
-
-2017-03-09 14:47:59,539  [INFO] [Test start]
-2017-03-09 14:47:59,664  [INFO] TC#0000: Check help link on Client Settings popup - Features tab
-2017-03-09 14:48:03,266  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:48:07,746  [INFO] Expected header: Features == Actual header: Features
-2017-03-09 14:48:07,746  [INFO] TEST PASSED
-2017-03-09 14:48:13,727  [INFO] [Test end]
-
-2017-03-09 14:48:13,727  [INFO] [Test start]
-2017-03-09 14:48:13,852  [INFO] TC#0000: Check help link on Client Settings popup - Reboot UI Config tab
-2017-03-09 14:48:17,719  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:48:22,141  [INFO] Expected header: Reboot UI Config == Actual header: Reboot UI Config
-2017-03-09 14:48:22,141  [INFO] TEST PASSED
-2017-03-09 14:48:28,117  [INFO] [Test end]
-
-2017-03-09 14:48:28,117  [INFO] [Test start]
-2017-03-09 14:48:28,257  [INFO] TC#0000: Check help link on Client Settings popup - Timers tab
-2017-03-09 14:48:31,763  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:48:37,236  [ERROR] TEST FAILED: Expected header: Timers !=  Actual header: Settings
-2017-03-09 14:48:43,157  [INFO] [Test end]
-
-2017-03-09 14:48:43,157  [INFO] [Test start]
-2017-03-09 14:48:43,236  [INFO] TC#0000: Check help link on Column Sets popup
-2017-03-09 14:48:52,476  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:48:56,950  [INFO] Expected header: Column Sets == Actual header: Column Sets
-2017-03-09 14:48:56,950  [INFO] TEST PASSED
-2017-03-09 14:49:03,454  [INFO] [Test end]
-
-2017-03-09 14:49:03,454  [INFO] [Test start]
-2017-03-09 14:49:05,299  [INFO] TC#0000: Check help link on Currency popup
-2017-03-09 14:49:09,618  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:49:14,098  [INFO] Expected header: Currency == Actual header: Currency
-2017-03-09 14:49:14,098  [INFO] TEST PASSED
-2017-03-09 14:49:20,045  [INFO] [Test end]
-
-2017-03-09 14:49:20,045  [INFO] [Test start]
-2017-03-09 14:49:21,861  [INFO] TC#0000: Check help link on Initial Setup popup
-2017-03-09 14:49:28,890  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:49:34,385  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
-2017-03-09 14:49:43,786  [INFO] [Test end]
-
-2017-03-09 14:49:43,786  [INFO] [Test start]
-2017-03-09 14:49:43,895  [INFO] TC#0000: Check help link on Manufacturer Alias popup
-2017-03-09 14:49:48,796  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:49:53,272  [INFO] Expected header: Manufacturers == Actual header: Manufacturers
-2017-03-09 14:49:53,272  [INFO] TEST PASSED
-2017-03-09 14:49:58,256  [INFO] [Test end]
-
-2017-03-09 14:49:58,256  [INFO] [Test start]
-2017-03-09 14:50:00,059  [INFO] TC#0000: Check help link on Model Alias popup
-2017-03-09 14:50:04,812  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:50:09,299  [INFO] Expected header: Models == Actual header: Models
-2017-03-09 14:50:09,299  [INFO] TEST PASSED
-2017-03-09 14:50:14,292  [INFO] [Test end]
-
-2017-03-09 14:50:14,292  [INFO] [Test start]
-2017-03-09 14:50:16,098  [INFO] TC#0000: Check help link on Ribbon bar
-2017-03-09 14:50:18,588  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:50:24,040  [ERROR] TEST FAILED: Expected header: CMS Quick Help Videos !=  Actual header: Getting Started in CMS
-2017-03-09 14:50:25,114  [INFO] [Test end]
-
-2017-03-09 14:50:25,114  [INFO] [Test start]
-2017-03-09 14:50:25,191  [INFO] TC#0000: Check help link on Select Dashboard popup
-2017-03-09 14:50:29,265  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:50:34,737  [ERROR] TEST FAILED: Expected header: Select Dashboard !=  Actual header: Devices
-2017-03-09 14:50:40,700  [INFO] [Test end]
-
-2017-03-09 14:50:40,700  [INFO] [Test start]
-2017-03-09 14:50:40,793  [INFO] TC#0000: Check help link on Settings popup
-2017-03-09 14:50:43,466  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:50:48,967  [ERROR] TEST FAILED: Expected header: Settings !=  Actual header: Getting Started in CMS
-2017-03-09 14:50:54,834  [INFO] [Test end]
-
-2017-03-09 14:50:54,834  [INFO] [Test start]
-2017-03-09 14:50:54,943  [INFO] TC#0000: Check help link on Settings popup - Audit Log Settings tab
-2017-03-09 14:50:58,237  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:51:02,714  [INFO] Expected header: Audit Log Settings == Actual header: Audit Log Settings
-2017-03-09 14:51:02,714  [INFO] TEST PASSED
-2017-03-09 14:51:08,663  [INFO] [Test end]
-
-2017-03-09 14:51:08,663  [INFO] [Test start]
-2017-03-09 14:51:08,788  [INFO] TC#0000: Check help link on Settings popup - Content Services tab
-2017-03-09 14:51:11,881  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:51:16,312  [INFO] Expected header: Content Services == Actual header: Content Services
-2017-03-09 14:51:16,312  [INFO] TEST PASSED
-2017-03-09 14:51:22,197  [INFO] [Test end]
-
-2017-03-09 14:51:22,197  [INFO] [Test start]
-2017-03-09 14:51:22,306  [INFO] TC#0000: Check help link on Settings popup - Email Settings tab
-2017-03-09 14:51:25,622  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:51:30,101  [INFO] Expected header: Email Settings == Actual header: Email Settings
-2017-03-09 14:51:30,101  [INFO] TEST PASSED
-2017-03-09 14:51:36,039  [INFO] [Test end]
-
-2017-03-09 14:51:36,039  [INFO] [Test start]
-2017-03-09 14:51:36,180  [INFO] TC#0000: Check help link on Settings popup - Initial Setup tab
-2017-03-09 14:51:39,256  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:51:43,763  [INFO] Expected header: Initial Setup == Actual header: Initial Setup
-2017-03-09 14:51:43,763  [INFO] TEST PASSED
-2017-03-09 14:51:49,650  [INFO] [Test end]
-
-2017-03-09 14:51:49,650  [INFO] [Test start]
-2017-03-09 14:51:49,743  [INFO] TC#0000: Check help link on Settings popup - Locale Options tab
-2017-03-09 14:51:53,497  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:51:57,875  [INFO] Expected header: Locale Options == Actual header: Locale Options
-2017-03-09 14:51:57,875  [INFO] TEST PASSED
-2017-03-09 14:52:03,701  [INFO] [Test end]
-
-2017-03-09 14:52:03,701  [INFO] [Test start]
-2017-03-09 14:52:03,826  [INFO] TC#0000: Check help link on Settings popup - User Options tab
-2017-03-09 14:52:07,599  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:52:12,094  [INFO] Expected header: User Options == Actual header: User Options
-2017-03-09 14:52:12,094  [INFO] TEST PASSED
-2017-03-09 14:52:18,062  [INFO] [Test end]
-
-2017-03-09 14:52:18,062  [INFO] [Test start]
-2017-03-09 14:52:18,187  [INFO] TC#0000: Check help link on Subscription popup
-2017-03-09 14:52:23,434  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:52:27,927  [INFO] Expected header: Subscriptions == Actual header: Subscriptions
-2017-03-09 14:52:27,927  [INFO] TEST PASSED
-2017-03-09 14:52:32,858  [INFO] [Test end]
-
-2017-03-09 14:52:32,858  [INFO] [Test start]
-2017-03-09 14:52:32,954  [INFO] TC#0000: Check help link on User Settings popup
-2017-03-09 14:52:36,753  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:52:41,256  [INFO] Expected header: User Settings == Actual header: User Settings
-2017-03-09 14:52:41,256  [INFO] TEST PASSED
-2017-03-09 14:52:47,118  [INFO] [Test end]
-
-2017-03-09 14:52:47,118  [INFO] [Test start]
-2017-03-09 14:52:47,259  [INFO] TC#0000: Check help link on Weight Display popup
-2017-03-09 14:52:52,016  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:52:56,486  [INFO] Expected header: Imperial Metric == Actual header: Imperial Metric
-2017-03-09 14:52:56,486  [INFO] TEST PASSED
-2017-03-09 14:53:02,460  [INFO] [Test end]
-
-2017-03-09 14:53:02,460  [INFO] [Test start]
-2017-03-09 14:53:04,244  [INFO] TC#0000: Check help link on Baseline popup
-2017-03-09 14:53:15,904  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:53:21,430  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
-2017-03-09 14:53:33,085  [INFO] [Test end]
-
-2017-03-09 14:53:33,085  [INFO] [Test start]
-2017-03-09 14:53:33,177  [INFO] TC#0000: Check help link on Dashboard Config popup
-2017-03-09 14:53:39,342  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:53:44,844  [ERROR] TEST FAILED: Expected header: Dashboard Config !=  Actual header: Devices
-2017-03-09 14:53:51,328  [INFO] [Test end]
-
-2017-03-09 14:53:51,328  [INFO] [Test start]
-2017-03-09 14:53:51,405  [INFO] TC#0000: Check help link on Gadgets Directory popup
-2017-03-09 14:53:58,937  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:54:04,371  [ERROR] TEST FAILED: Expected header: Gadgets Directory !=  Actual header: Gadgets Selection by Type
-2017-03-09 14:54:09,296  [INFO] [Test end]
-
-2017-03-09 14:54:09,296  [INFO] [Test start]
-2017-03-09 14:54:09,404  [INFO] TC#0000: Check help link on My Dashboards screen
-2017-03-09 14:54:12,569  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:54:17,971  [ERROR] TEST FAILED: Expected header: My Dashboards !=  Actual header: Getting Started in CMS
-2017-03-09 14:54:19,045  [INFO] [Test end]
-
-2017-03-09 14:54:19,045  [INFO] [Test start]
-2017-03-09 14:54:19,154  [INFO] TC#0000: Check help link on My Reports screen
-2017-03-09 14:54:24,693  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:54:30,200  [ERROR] TEST FAILED: Expected header: My Reports !=  Actual header: Reports
-2017-03-09 14:54:31,276  [INFO] [Test end]
-
-2017-03-09 14:54:31,276  [INFO] [Test start]
-2017-03-09 14:54:31,417  [INFO] TC#0000: Check help link on Shared Reports screen
-2017-03-09 14:54:36,881  [INFO] [Test end]
-
-2017-03-09 14:54:36,881  [INFO] [Test start]
-2017-03-09 14:54:36,990  [INFO] TC#0000: Check help link on Report Scheduler popup
-2017-03-09 14:54:41,627  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:54:46,150  [INFO] Expected header: Report Scheduler == Actual header: Report Scheduler
-2017-03-09 14:54:46,150  [INFO] TEST PASSED
-2017-03-09 14:54:52,125  [INFO] [Test end]
-
-2017-03-09 14:54:52,125  [INFO] [Test start]
-2017-03-09 14:54:52,203  [INFO] TC#0000: Check help link on Saved Date Ranges popup
-2017-03-09 14:54:57,265  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:55:02,655  [ERROR] TEST FAILED: Expected header: Saved Date Ranges !=  Actual header: Devices
-2017-03-09 14:55:11,480  [INFO] [Test end]
-
-2017-03-09 14:55:11,480  [INFO] [Test start]
-2017-03-09 14:55:11,589  [INFO] TC#0000: Check help link on Shared Reports screen
-2017-03-09 14:55:14,394  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:55:19,898  [ERROR] TEST FAILED: Expected header: Shared Reports !=  Actual header: Reports
-2017-03-09 14:55:20,996  [INFO] [Test end]
-
-2017-03-09 14:55:20,996  [INFO] [Test start]
-2017-03-09 14:55:21,075  [INFO] TC#0000: Check help link on Advanced Editor popup
-2017-03-09 14:55:40,505  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:55:44,980  [INFO] Expected header: Advanced Editor == Actual header: Advanced Editor
-2017-03-09 14:55:44,980  [INFO] TEST PASSED
-2017-03-09 14:55:54,428  [INFO] [Test end]
-
-2017-03-09 14:55:54,428  [INFO] [Test start]
-2017-03-09 14:55:56,562  [INFO] TC#0000: Check help link on Applications screen
-2017-03-09 14:56:02,086  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:56:07,573  [ERROR] TEST FAILED: Expected header: Applications !=  Actual header: Getting Started in CMS
-2017-03-09 14:56:08,671  [INFO] [Test end]
-
-2017-03-09 14:56:08,671  [INFO] [Test start]
-2017-03-09 14:56:08,766  [INFO] TC#0000: Check help link on Component popup
-2017-03-09 14:56:23,191  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:56:27,655  [INFO] Expected header: Component == Actual header: Component
-2017-03-09 14:56:27,655  [INFO] TEST PASSED
-2017-03-09 14:56:40,315  [INFO] [Test end]
-
-2017-03-09 14:56:40,315  [INFO] [Test start]
-2017-03-09 14:56:42,450  [INFO] TC#0000: Check help link on Create Application Wizard popup
-2017-03-09 14:56:47,404  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:56:51,808  [INFO] Expected header: Create == Actual header: Create
-2017-03-09 14:56:51,808  [INFO] TEST PASSED
-2017-03-09 14:56:57,713  [INFO] [Test end]
-
-2017-03-09 14:56:57,713  [INFO] [Test start]
-2017-03-09 14:56:57,790  [INFO] TC#0000: Check help link on Create Patch Group popup
-2017-03-09 14:57:02,644  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:57:07,045  [INFO] Expected header: By Group == Actual header: By Group
-2017-03-09 14:57:07,045  [INFO] TEST PASSED
-2017-03-09 14:57:12,967  [INFO] [Test end]
-
-2017-03-09 14:57:12,967  [INFO] [Test start]
-2017-03-09 14:57:14,736  [INFO] TC#0000: Check help link on Create Update Wizard popup
-2017-03-09 14:57:20,792  [CRITICAL] Popup HAS NO title name. Add titile 'Create Update Wizard'!!!
-2017-03-09 14:57:23,154  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:57:27,674  [INFO] Expected header: Create == Actual header: Create
-2017-03-09 14:57:27,674  [INFO] TEST PASSED
-2017-03-09 14:57:33,913  [INFO] [Test end]
-
-2017-03-09 14:57:33,913  [INFO] [Test start]
-2017-03-09 14:57:36,025  [INFO] TC#0000: Check help link on Deployments popup
-2017-03-09 14:57:50,956  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:57:56,509  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
-2017-03-09 14:58:12,457  [INFO] [Test end]
-
-2017-03-09 14:58:12,457  [INFO] [Test start]
-2017-03-09 14:58:14,506  [INFO] TC#0000: Check help link on Edit Patch Group popup
-2017-03-09 14:58:22,897  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:58:27,355  [INFO] Expected header: By Group == Actual header: By Group
-2017-03-09 14:58:27,355  [INFO] TEST PASSED
-2017-03-09 14:58:33,289  [INFO] [Test end]
-
-2017-03-09 14:58:33,289  [INFO] [Test start]
-2017-03-09 14:58:35,115  [INFO] TC#0000: Check help link on Existing Software Update Detection popup
-2017-03-09 14:58:51,092  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:58:56,575  [ERROR] TEST FAILED: Expected header: Existing Software Update Detection !=  Actual header: Filters
-2017-03-09 14:59:12,319  [INFO] [Test end]
-
-2017-03-09 14:59:12,319  [INFO] [Test start]
-2017-03-09 14:59:14,417  [INFO] TC#0000: Check help link on Filters popup
-2017-03-09 14:59:29,072  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 14:59:33,552  [INFO] Expected header: Filters == Actual header: Filters
-2017-03-09 14:59:33,552  [INFO] TEST PASSED
-2017-03-09 14:59:49,266  [INFO] [Test end]
-
-2017-03-09 14:59:49,266  [INFO] [Test start]
-2017-03-09 14:59:51,378  [INFO] TC#0000: Check help link on Import Software Update Definitions popup
-2017-03-09 14:59:58,148  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 15:00:02,565  [INFO] Expected header: Import Definition == Actual header: Import Definition
-2017-03-09 15:00:02,565  [INFO] TEST PASSED
-2017-03-09 15:00:08,762  [INFO] [Test end]
-
-2017-03-09 15:00:08,762  [INFO] [Test start]
-2017-03-09 15:00:10,812  [INFO] TC#0000: Check help link on Install Commands popup
-2017-03-09 15:00:27,144  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 15:00:32,642  [ERROR] TEST FAILED: Expected header: Install Commands !=  Actual header: Filters
-2017-03-09 15:00:51,312  [INFO] [Test end]
-
-2017-03-09 15:00:51,312  [INFO] [Test start]
-2017-03-09 15:00:53,459  [INFO] TC#0000: Check help link on Installers popup
-2017-03-09 15:01:00,184  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 15:01:05,634  [ERROR] TEST FAILED: Expected header: Installers !=  Actual header: Advanced Editor
-2017-03-09 15:01:14,256  [INFO] [Test end]
-
-2017-03-09 15:01:14,256  [INFO] [Test start]
-2017-03-09 15:01:14,365  [INFO] TC#0000: Check help link on Manage Install Media screen
-2017-03-09 15:01:19,165  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 15:01:23,619  [INFO] Expected header: Media Manager == Actual header: Media Manager
-2017-03-09 15:01:23,619  [INFO] TEST PASSED
-2017-03-09 15:01:24,690  [INFO] [Test end]
-
-2017-03-09 15:01:24,690  [INFO] [Test start]
-2017-03-09 15:01:24,753  [INFO] TC#0000: Check help link on Management Tree popup
-2017-03-09 15:01:32,098  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 15:01:37,578  [ERROR] TEST FAILED: Expected header: Management Tree !=  Actual header: Devices
-2017-03-09 15:01:43,986  [INFO] [Test end]
-
-2017-03-09 15:01:43,986  [INFO] [Test start]
-2017-03-09 15:01:46,092  [INFO] TC#0000: Check help link on Patch Manager screen
-2017-03-09 15:01:49,285  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 15:01:53,697  [INFO] Expected header: Patch Manager == Actual header: Patch Manager
-2017-03-09 15:01:53,697  [INFO] TEST PASSED
-2017-03-09 15:01:54,803  [INFO] [Test end]
-
-2017-03-09 15:01:54,803  [INFO] [Test start]
-2017-03-09 15:01:54,898  [INFO] TC#0000: Check help link on Patch Manager Settings popup
-2017-03-09 15:02:01,585  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 15:02:07,062  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
-2017-03-09 15:02:13,236  [INFO] [Test end]
-
-2017-03-09 15:02:13,236  [INFO] [Test start]
-2017-03-09 15:02:15,375  [INFO] TC#0000: Check help link on Pre-Requisites popup
-2017-03-09 15:02:29,099  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 15:02:33,596  [INFO] Expected header: Pre-requisites == Actual header: Pre-requisites
-2017-03-09 15:02:33,596  [INFO] TEST PASSED
-2017-03-09 15:02:46,496  [INFO] [Test end]
-
-2017-03-09 15:02:46,496  [INFO] [Test start]
-2017-03-09 15:02:48,592  [INFO] TC#0000: Check help link on Query Designer popup (Software/Patch Manger
-2017-03-09 15:02:54,230  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 15:02:58,721  [INFO] Expected header: Queries == Actual header: Queries
-2017-03-09 15:02:58,721  [INFO] TEST PASSED
-2017-03-09 15:03:05,270  [INFO] [Test end]
-
-2017-03-09 15:03:05,270  [INFO] [Test start]
-2017-03-09 15:03:07,085  [INFO] TC#0000: Check help link on Scan Schedule popup
-2017-03-09 15:03:14,565  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 15:03:20,038  [ERROR] TEST FAILED: Expected header: Scan Schedule !=  Actual header: Devices
-2017-03-09 15:03:28,711  [INFO] [Test end]
-
-2017-03-09 15:03:28,711  [INFO] [Test start]
-2017-03-09 15:03:30,835  [INFO] TC#0000: Check help link on Select Install Media popup
-2017-03-09 15:03:43,088  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 15:03:47,612  [INFO] Expected header: Download Update == Actual header: Download Update
-2017-03-09 15:03:47,612  [INFO] TEST PASSED
-2017-03-09 15:03:59,993  [INFO] [Test end]
-
-2017-03-09 15:03:59,993  [INFO] [Test start]
-2017-03-09 15:04:02,062  [INFO] TC#0000: Check help link on Select Patches popup
-2017-03-09 15:04:08,628  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 15:04:14,112  [ERROR] TEST FAILED: Expected header: By Group !=  Actual header: Devices
-2017-03-09 15:04:22,878  [INFO] [Test end]
-
-2017-03-09 15:04:22,878  [INFO] [Test start]
-2017-03-09 15:04:25,283  [INFO] TC#0000: Check help link on Select Superseding Patches popup
-2017-03-09 15:04:42,677  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 15:04:48,216  [ERROR] TEST FAILED: Expected header: Select Superseding Patches !=  Actual header: Devices
-2017-03-09 15:05:07,148  [INFO] [Test end]
-
-2017-03-09 15:05:07,148  [INFO] [Test start]
-2017-03-09 15:05:09,262  [INFO] TC#0000: Check help link on Superseding Patches popup
-2017-03-09 15:05:23,865  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 15:05:29,305  [ERROR] TEST FAILED: Expected header: Superseding Patches !=  Actual header: Component
-2017-03-09 15:05:45,164  [INFO] [Test end]
-
-2017-03-09 15:05:45,164  [INFO] [Test start]
-2017-03-09 15:05:47,292  [INFO] TC#0000: Check help link on Uninstall Commands popup
-2017-03-09 15:06:04,065  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 15:06:09,581  [ERROR] TEST FAILED: Expected header: Uninstall Commands !=  Actual header: Filters
-2017-03-09 15:06:28,392  [INFO] [Test end]
-
-2017-03-09 15:06:28,392  [INFO] [Test start]
-2017-03-09 15:06:30,512  [INFO] TC#0000: Check help link on Deploy Software Updates popup (Tasks)
-2017-03-09 15:06:41,601  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 15:06:47,099  [ERROR] TEST FAILED: Expected header: Deploy Software Updates !=  Actual header: Getting Started in CMS
-2017-03-09 15:06:52,973  [INFO] [Test end]
-
-2017-03-09 15:06:52,973  [INFO] [Test start]
-2017-03-09 15:06:53,082  [INFO] TC#0000: Check help link on Discover Devices popup (Tasks)
-2017-03-09 15:06:59,191  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 15:07:03,638  [INFO] Expected header: Discovery == Actual header: Discovery
-2017-03-09 15:07:03,638  [INFO] TEST PASSED
-2017-03-09 15:07:09,578  [INFO] [Test end]
-
-2017-03-09 15:07:09,578  [INFO] [Test start]
-2017-03-09 15:07:09,717  [INFO] TC#0000: Check help link on Discovery Tasks screen
-2017-03-09 15:07:13,257  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 15:07:18,690  [ERROR] TEST FAILED: Expected header: Perform a Discovery to find all your devices !=  Actual header: Discovery Tasks
-2017-03-09 15:07:19,770  [INFO] [Test end]
-
-2017-03-09 15:07:19,770  [INFO] [Test start]
-2017-03-09 15:07:19,865  [INFO] TC#0000: Check help link on Patch Manager Scanning popup (Tasks)
-2017-03-09 15:07:24,634  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 15:07:29,134  [INFO] Expected header: Software Update Scanning == Actual header: Software Update Scanning
-2017-03-09 15:07:29,134  [INFO] TEST PASSED
-2017-03-09 15:07:35,145  [INFO] [Test end]
-
-2017-03-09 15:07:35,145  [INFO] [Test start]
-2017-03-09 15:07:35,270  [INFO] TC#0000: Check help link on Patch Manager screen
-2017-03-09 15:07:38,881  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 15:07:44,338  [ERROR] TEST FAILED: Expected header: Patch Deployment !=  Actual header: Patch Scan and Deploy
-2017-03-09 15:07:45,394  [INFO] [Test end]
-
-2017-03-09 15:07:45,394  [INFO] [Test start]
-2017-03-09 15:07:45,486  [INFO] TC#0000: Check help link on Scheduled Tasks screen
-2017-03-09 15:07:48,526  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 15:07:54,028  [ERROR] TEST FAILED: Expected header: Scheduled Tasks !=  Actual header: Task Types
-2017-03-09 15:07:55,108  [INFO] [Test end]
-
-2017-03-09 15:07:55,108  [INFO] [Test start]
-2017-03-09 15:07:55,217  [INFO] TC#0000: Check help link on Software Deployment popup (Tasks)
-2017-03-09 15:08:01,267  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 15:08:05,697  [INFO] Expected header: Software Deployment Wizard == Actual header: Software Deployment Wizard
-2017-03-09 15:08:05,697  [INFO] TEST PASSED
-2017-03-09 15:08:11,601  [INFO] [Test end]
-
-2017-03-09 15:08:11,601  [INFO] [Test start]
-2017-03-09 15:08:11,710  [INFO] TC#0000: Check help link on Software Deployments screen
-2017-03-09 15:08:15,230  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 15:08:19,704  [INFO] Expected header: Software Deployment == Actual header: Software Deployment
-2017-03-09 15:08:19,704  [INFO] TEST PASSED
-2017-03-09 15:08:20,773  [INFO] [Test end]
-
-2017-03-09 15:08:20,773  [INFO] End testing
-
-2017-03-09 15:25:29,700  [INFO] Start testing
-
-2017-03-09 15:25:29,700  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 15:25:40,953  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 15:25:42,148  [INFO] Login page is present
-
-2017-03-09 15:25:51,528  [INFO] [Test start]
-2017-03-09 15:25:51,621  [INFO] TC#0000: Check help link on Shared Reports screen
-2017-03-09 15:26:00,849  [INFO] [Test end]
-
-2017-03-09 15:26:00,849  [INFO] End testing
-
-2017-03-09 15:26:47,601  [INFO] Start testing
-
-2017-03-09 15:26:47,601  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 15:26:59,292  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 15:27:00,446  [INFO] Login page is present
-
-2017-03-09 15:27:09,599  [INFO] [Test start]
-2017-03-09 15:27:09,697  [INFO] TC#0000: Check help link on Shared Reports screen
-2017-03-09 15:27:23,246  [INFO] [Test end]
-
-2017-03-09 15:27:23,246  [INFO] End testing
-
-2017-03-09 15:30:36,243  [INFO] Start testing
-
-2017-03-09 15:30:36,243  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 15:30:52,374  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 15:30:53,563  [INFO] Login page is present
-
-2017-03-09 15:31:03,451  [INFO] [Test start]
-2017-03-09 15:31:03,536  [INFO] TC#0000: Check help link on Shared Reports screen
-2017-03-09 15:31:18,042  [INFO] [Test end]
-
-2017-03-09 15:31:18,042  [INFO] End testing
-
-2017-03-09 15:32:00,270  [INFO] Start testing
-
-2017-03-09 15:32:00,270  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 15:32:12,305  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 15:32:13,507  [INFO] Login page is present
-
-2017-03-09 15:32:23,000  [INFO] [Test start]
-2017-03-09 15:32:23,141  [INFO] TC#0000: Check help link on Shared Reports screen
-2017-03-09 15:32:37,121  [INFO] [Test end]
-
-2017-03-09 15:32:37,121  [INFO] End testing
-
-2017-03-09 15:33:20,776  [INFO] Start testing
-
-2017-03-09 15:33:20,776  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 15:33:31,992  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 15:33:33,193  [INFO] Login page is present
-
-2017-03-09 15:33:42,683  [INFO] [Test start]
-2017-03-09 15:33:42,792  [INFO] TC#0000: Check help link on Shared Reports screen
-2017-03-09 15:33:57,102  [INFO] [Test end]
-
-2017-03-09 15:33:57,102  [INFO] End testing
-
-2017-03-09 15:40:10,769  [INFO] Start testing
-
-2017-03-09 15:40:10,769  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 15:40:27,698  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 15:40:28,910  [INFO] Login page is present
-
-2017-03-09 15:40:38,515  [INFO] [Test start]
-2017-03-09 15:40:38,687  [INFO] TC#0000: Check help link on Shared Reports screen
-2017-03-09 15:40:56,546  [ERROR] WAITING. Element //div[@class='Menu-PopupWindow'] is NOT found after 10 seconds
+2017-03-16 16:41:26,184  [INFO] Start testing
+
+2017-03-16 16:41:26,184  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
+
+2017-03-16 16:42:08,217  [INFO] OPEN. Page https://testteamtest.cloudmanagementsuite.com/ is loaded
+
+2017-03-16 16:42:09,895  [INFO] Login page is present
+
+2017-03-16 16:43:21,339  [INFO] [Test start]
+2017-03-16 16:43:21,397  [INFO] TC#0000: Check help link on Admin Accounts popup
+2017-03-16 16:43:44,865  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:43:50,430  [INFO] Expected header: Accounts == Actual header: Accounts
+2017-03-16 16:43:50,430  [INFO] TEST PASSED
+2017-03-16 16:43:58,875  [INFO] [Test end]
+
+2017-03-16 16:43:58,875  [INFO] [Test start]
+2017-03-16 16:43:58,954  [INFO] TC#0000: Check help link on Audit Log screen
+2017-03-16 16:44:52,338  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:44:59,244  [ERROR] TEST FAILED: Expected header: Audit Log !=  Actual header: Getting Started in CMS
+2017-03-16 16:45:01,171  [INFO] [Test end]
+
+2017-03-16 16:45:01,171  [INFO] [Test start]
+2017-03-16 16:45:01,289  [INFO] TC#0000: Check help link on Column Set Designer popup (Administration)
+2017-03-16 16:45:20,280  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:45:25,641  [INFO] Expected header: Create == Actual header: Create
+2017-03-16 16:45:25,641  [INFO] TEST PASSED
+2017-03-16 16:45:35,619  [INFO] [Test end]
+
+2017-03-16 16:45:35,621  [INFO] [Test start]
+2017-03-16 16:45:35,723  [INFO] TC#0000: Check help link on Column Sets screen
+2017-03-16 16:45:39,611  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:45:44,917  [INFO] Expected header: Column Sets == Actual header: Column Sets
+2017-03-16 16:45:44,917  [INFO] TEST PASSED
+2017-03-16 16:45:46,500  [INFO] [Test end]
+
+2017-03-16 16:45:46,500  [INFO] [Test start]
+2017-03-16 16:45:46,538  [INFO] TC#0000: Check help link on Configure Exclusions popup
+2017-03-16 16:46:10,142  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:46:15,493  [INFO] Expected header: Exclusions == Actual header: Exclusions
+2017-03-16 16:46:15,493  [INFO] TEST PASSED
+2017-03-16 16:46:22,395  [INFO] [Test end]
+
+2017-03-16 16:46:22,395  [INFO] [Test start]
+2017-03-16 16:46:22,456  [INFO] TC#0000: Check help link on Discover Devices popup (Administration)
+2017-03-16 16:46:30,907  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:46:36,336  [INFO] Expected header: Discovery == Actual header: Discovery
+2017-03-16 16:46:36,336  [INFO] TEST PASSED
+2017-03-16 16:46:44,885  [INFO] [Test end]
+
+2017-03-16 16:46:44,887  [INFO] [Test start]
+2017-03-16 16:46:45,000  [INFO] TC#0000: Check help link on Dynamically Managed screen
+2017-03-16 16:46:54,141  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:47:01,048  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
+2017-03-16 16:47:02,641  [INFO] [Test end]
+
+2017-03-16 16:47:02,641  [INFO] [Test start]
+2017-03-16 16:47:02,749  [INFO] TC#0000: Check help link on Create User popup (Administration tab)
+2017-03-16 16:48:23,096  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:48:30,105  [ERROR] TEST FAILED: Expected header: Edit User !=  Actual header: Create
+2017-03-16 16:48:40,167  [INFO] [Test end]
+
+2017-03-16 16:48:40,167  [INFO] [Test start]
+2017-03-16 16:48:40,244  [INFO] TC#0000: Check help link on Endpoint Management screen
+2017-03-16 16:48:44,760  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:48:50,104  [INFO] Expected header: Endpoint Management == Actual header: Endpoint Management
+2017-03-16 16:48:50,104  [INFO] TEST PASSED
+2017-03-16 16:48:51,701  [INFO] [Test end]
+
+2017-03-16 16:48:51,703  [INFO] [Test start]
+2017-03-16 16:48:51,832  [INFO] TC#0000: Check help link on Exclude Device popup
+2017-03-16 16:49:05,016  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:49:11,855  [ERROR] TEST FAILED: Expected header: Exclude Device !=  Actual header: Computer Name
+2017-03-16 16:49:23,914  [INFO] [Test end]
+
+2017-03-16 16:49:23,914  [INFO] [Test start]
+2017-03-16 16:49:24,013  [INFO] TC#0000: Check help link on Exclude IP Address popup
+2017-03-16 16:49:40,141  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:49:47,019  [ERROR] TEST FAILED: Expected header: Exclude IP Address !=  Actual header: IP Address
+2017-03-16 16:50:08,405  [INFO] [Test end]
+
+2017-03-16 16:50:08,405  [INFO] [Test start]
+2017-03-16 16:50:08,469  [INFO] TC#0000: Check help link on Exclude Site popup
+2017-03-16 16:50:35,338  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:50:42,285  [ERROR] TEST FAILED: Expected header: Exclude Site !=  Actual header: Sites
+2017-03-16 16:50:54,078  [INFO] [Test end]
+
+2017-03-16 16:50:54,078  [INFO] [Test start]
+2017-03-16 16:50:54,144  [INFO] TC#0000: Check help link on Excluded Devices screen
+2017-03-16 16:51:02,194  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:51:09,065  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
+2017-03-16 16:51:10,625  [INFO] [Test end]
+
+2017-03-16 16:51:10,625  [INFO] [Test start]
+2017-03-16 16:51:10,736  [INFO] TC#0000: Check help link on Infrastructure screen
+2017-03-16 16:51:15,760  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:51:22,709  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
+2017-03-16 16:51:24,292  [INFO] [Test end]
+
+2017-03-16 16:51:24,292  [INFO] [Test start]
+2017-03-16 16:51:24,385  [INFO] TC#0000: Check help link on Inventory Configuration popup
+2017-03-16 16:51:53,677  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:52:00,553  [ERROR] TEST FAILED: Expected header: Inventory Scan Configuration !=  Actual header: Create
+2017-03-16 16:52:14,417  [INFO] [Test end]
+
+2017-03-16 16:52:14,417  [INFO] [Test start]
+2017-03-16 16:52:14,533  [INFO] TC#0000: Check help link on Inventory Configuration screen
+2017-03-16 16:52:17,743  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:52:23,115  [INFO] Expected header: Inventory Scan Configuration == Actual header: Inventory Scan Configuration
+2017-03-16 16:52:23,115  [INFO] TEST PASSED
+2017-03-16 16:52:24,690  [INFO] [Test end]
+
+2017-03-16 16:52:24,690  [INFO] [Test start]
+2017-03-16 16:52:24,720  [INFO] TC#0000: Check help link on Inventory Force Update popup
+2017-03-16 16:52:32,051  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:52:37,407  [INFO] Expected header: Force Update == Actual header: Force Update
+2017-03-16 16:52:37,407  [INFO] TEST PASSED
+2017-03-16 16:52:45,934  [INFO] [Test end]
+
+2017-03-16 16:52:45,936  [INFO] [Test start]
+2017-03-16 16:52:46,035  [INFO] TC#0000: Check help link on IP Address popup (Administration)
+2017-03-16 16:53:03,460  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:53:10,329  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
+2017-03-16 16:53:25,095  [INFO] [Test end]
+
+2017-03-16 16:53:25,095  [INFO] [Test start]
+2017-03-16 16:53:25,153  [INFO] TC#0000: Check help link on Maintenance Window popup
+2017-03-16 16:54:06,289  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:54:13,084  [ERROR] TEST FAILED: Expected header: Create !=  Actual header: Create a Maintenance Window
+2017-03-16 16:54:30,588  [INFO] [Test end]
+
+2017-03-16 16:54:30,588  [INFO] [Test start]
+2017-03-16 16:54:30,657  [INFO] TC#0000: Check help link on Maintenance Windows screen
+2017-03-16 16:54:33,503  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:54:38,918  [INFO] Expected header: Maintenance Windows == Actual header: Maintenance Windows
+2017-03-16 16:54:38,918  [INFO] TEST PASSED
+2017-03-16 16:54:40,505  [INFO] [Test end]
+
+2017-03-16 16:54:40,506  [INFO] [Test start]
+2017-03-16 16:54:40,589  [INFO] TC#0000: Check help link on Move Site popup (Administration)
+2017-03-16 16:54:56,628  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:55:02,007  [INFO] Expected header: Move a site or device == Actual header: Move a site or device
+2017-03-16 16:55:02,007  [INFO] TEST PASSED
+2017-03-16 16:55:38,255  [INFO] [Test end]
+
+2017-03-16 16:55:38,255  [INFO] [Test start]
+2017-03-16 16:55:38,354  [INFO] TC#0000: Check help link on Notifications screen
+2017-03-16 16:55:44,335  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:55:49,703  [INFO] Expected header: Notifications == Actual header: Notifications
+2017-03-16 16:55:49,703  [INFO] TEST PASSED
+2017-03-16 16:55:51,296  [INFO] [Test end]
+
+2017-03-16 16:55:51,298  [INFO] [Test start]
+2017-03-16 16:55:51,388  [INFO] TC#0000: Check help link on Site Config popup
+2017-03-16 16:55:59,575  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:56:04,957  [INFO] Expected header: Create == Actual header: Create
+2017-03-16 16:56:04,957  [INFO] TEST PASSED
+2017-03-16 16:56:15,115  [INFO] [Test end]
+
+2017-03-16 16:56:15,115  [INFO] [Test start]
+2017-03-16 16:56:15,214  [INFO] TC#0000: Check help link on Site Configuration screen
+2017-03-16 16:56:18,601  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:56:24,069  [INFO] Expected header: Site Management == Actual header: Site Management
+2017-03-16 16:56:24,069  [INFO] TEST PASSED
+2017-03-16 16:56:25,671  [INFO] [Test end]
+
+2017-03-16 16:56:25,671  [INFO] [Test start]
+2017-03-16 16:56:25,753  [INFO] TC#0000: Check help link on Event Logs screen
+2017-03-16 16:56:37,247  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:56:42,644  [INFO] Expected header: Logs == Actual header: Logs
+2017-03-16 16:56:42,644  [INFO] TEST PASSED
+2017-03-16 16:56:44,234  [INFO] [Test end]
+
+2017-03-16 16:56:44,234  [INFO] [Test start]
+2017-03-16 16:56:44,313  [INFO] TC#0000: Check help link on Site Name popup (Administration)
+2017-03-16 16:56:53,203  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:56:58,565  [INFO] Expected header: Create a site == Actual header: Create a site
+2017-03-16 16:56:58,565  [INFO] TEST PASSED
+2017-03-16 16:57:13,617  [INFO] [Test end]
+
+2017-03-16 16:57:13,617  [INFO] [Test start]
+2017-03-16 16:57:13,704  [INFO] TC#0000: Check help link on Unmanaged Devices screen
+2017-03-16 16:57:21,651  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:57:28,532  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
+2017-03-16 16:57:30,108  [INFO] [Test end]
+
+2017-03-16 16:57:30,109  [INFO] [Test start]
+2017-03-16 16:57:30,209  [INFO] TC#0000: Check help link on User Configuration popup
+2017-03-16 16:57:47,217  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:57:52,607  [INFO] Expected header: Create == Actual header: Create
+2017-03-16 16:57:52,607  [INFO] TEST PASSED
+2017-03-16 16:58:08,125  [INFO] [Test end]
+
+2017-03-16 16:58:08,125  [INFO] [Test start]
+2017-03-16 16:58:08,203  [INFO] TC#0000: Check help link on vReps screen
+2017-03-16 16:59:40,854  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 16:59:46,142  [INFO] Expected header: vReps == Actual header: vReps
+2017-03-16 16:59:46,142  [INFO] TEST PASSED
+2017-03-16 16:59:47,707  [INFO] [Test end]
+
+2017-03-16 16:59:47,707  [INFO] [Test start]
+2017-03-16 16:59:47,769  [INFO] TC#0000: Check help link on Condition Editor popup
+2017-03-16 17:00:19,382  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:00:24,703  [INFO] Expected header: Create a Query == Actual header: Create a Query
+2017-03-16 17:00:24,703  [INFO] TEST PASSED
+2017-03-16 17:00:44,414  [INFO] [Test end]
+
+2017-03-16 17:00:44,414  [INFO] [Test start]
+2017-03-16 17:00:44,516  [INFO] TC#0000: Check help link on Configuration popup
+2017-03-16 17:01:00,454  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:01:05,796  [INFO] Expected header: Configure a site == Actual header: Configure a site
+2017-03-16 17:01:05,796  [INFO] TEST PASSED
+2017-03-16 17:01:17,066  [INFO] [Test end]
+
+2017-03-16 17:01:17,066  [INFO] [Test start]
+2017-03-16 17:01:17,131  [INFO] TC#0000: Check help link on Edit Folder popup
+2017-03-16 17:01:34,190  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:01:41,130  [ERROR] TEST FAILED: Expected header: Edit a folder !=  Actual header: Create a site
+2017-03-16 17:01:50,596  [INFO] [Test end]
+
+2017-03-16 17:01:50,596  [INFO] [Test start]
+2017-03-16 17:01:50,680  [INFO] TC#0000: Check help link on End User Access popup
+2017-03-16 17:02:19,338  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:02:26,331  [ERROR] TEST FAILED: Expected header: End User Access !=  Actual header: Devices
+2017-03-16 17:02:33,349  [INFO] [Test end]
+
+2017-03-16 17:02:33,349  [INFO] [Test start]
+2017-03-16 17:02:36,635  [INFO] TC#0000: Check help link on Event Viewer popup
+2017-03-16 17:04:52,348  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:04:59,213  [ERROR] TEST FAILED: Expected header: Event Viewer !=  Actual header: Troubleshooting Devices
+2017-03-16 17:05:09,903  [INFO] [Test end]
+
+2017-03-16 17:05:09,903  [INFO] [Test start]
+2017-03-16 17:05:21,908  [INFO] TC#0000: Check help link on File Explorer popup
+2017-03-16 17:06:23,535  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:06:30,466  [ERROR] TEST FAILED: Expected header: File Explorer !=  Actual header: Troubleshooting Devices
+2017-03-16 17:06:40,775  [INFO] [Test end]
+
+2017-03-16 17:06:40,775  [INFO] [Test start]
+2017-03-16 17:06:43,187  [INFO] TC#0000: Check help link on Groups screen
+2017-03-16 17:06:55,786  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:07:01,201  [INFO] Expected header: Groups == Actual header: Groups
+2017-03-16 17:07:01,203  [INFO] TEST PASSED
+2017-03-16 17:07:02,802  [INFO] [Test end]
+
+2017-03-16 17:07:02,802  [INFO] [Test start]
+2017-03-16 17:07:02,898  [INFO] TC#0000: Check help link on Inventory View popup
+2017-03-16 17:07:48,187  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:07:53,582  [INFO] Expected header: Inventory == Actual header: Inventory
+2017-03-16 17:07:53,582  [INFO] TEST PASSED
+2017-03-16 17:08:02,767  [INFO] [Test end]
+
+2017-03-16 17:08:02,769  [INFO] [Test start]
+2017-03-16 17:08:06,697  [INFO] TC#0000: Check help link on IP Address popup
+2017-03-16 17:08:24,453  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:08:31,397  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
+2017-03-16 17:08:45,526  [INFO] [Test end]
+
+2017-03-16 17:08:45,526  [INFO] [Test start]
+2017-03-16 17:08:45,618  [INFO] TC#0000: Check help link on Move Device popup
+2017-03-16 17:09:04,127  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:09:09,456  [INFO] Expected header: Move a site or device == Actual header: Move a site or device
+2017-03-16 17:09:09,457  [INFO] TEST PASSED
+2017-03-16 17:09:18,950  [INFO] [Test end]
+
+2017-03-16 17:09:18,951  [INFO] [Test start]
+2017-03-16 17:09:22,992  [INFO] TC#0000: Check help link on Move Site popup
+2017-03-16 17:09:31,865  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:09:37,210  [INFO] Expected header: Move a site or device == Actual header: Move a site or device
+2017-03-16 17:09:37,210  [INFO] TEST PASSED
+2017-03-16 17:09:46,767  [INFO] [Test end]
+
+2017-03-16 17:09:46,767  [INFO] [Test start]
+2017-03-16 17:09:46,858  [INFO] TC#0000: Check help link on New Folder popup
+2017-03-16 17:09:54,657  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:10:01,605  [ERROR] TEST FAILED: Expected header: Create a Folder !=  Actual header: Create a site
+2017-03-16 17:10:12,247  [INFO] [Test end]
+
+2017-03-16 17:10:12,247  [INFO] [Test start]
+2017-03-16 17:10:12,336  [INFO] TC#0000: Check help link on New Group popup
+2017-03-16 17:10:17,480  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:10:24,414  [ERROR] TEST FAILED: Expected header: Create a Group !=  Actual header: Groups
+2017-03-16 17:10:36,184  [INFO] [Test end]
+
+2017-03-16 17:10:36,184  [INFO] [Test start]
+2017-03-16 17:10:36,309  [INFO] TC#0000: Check help link on On Demand Inventory Scan popup
+2017-03-16 17:10:49,401  [ERROR] WAITING. Element //div[text()='Site Config'][contains(@class,'GroupBox-Text')]/ancestor::div[@class='RibbonBarGroupBox-Control'] is NOT found after 12 seconds
 Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
+  File "D:\python\vcms\vcms\page_object\_base\base.py", line 211, in _wait_for_element_present
     self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
   File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
     raise TimeoutException(message, screen, stacktrace)
 TimeoutException: Message: 
 
-2017-03-09 15:41:07,039  [ERROR] WAITING. Element //div[@class='Menu-PopupWindow'] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-09 15:41:07,039  [ERROR] TEST FAILED. Drop Down list 'Home' is NOT present
-2017-03-09 15:41:08,115  [INFO] [Test end]
-
-2017-03-09 15:41:08,115  [INFO] End testing
-
-2017-03-09 15:43:03,354  [INFO] Start testing
-
-2017-03-09 15:43:03,354  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 15:43:22,400  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 15:43:23,566  [INFO] Login page is present
-
-2017-03-09 15:43:33,915  [INFO] [Test start]
-2017-03-09 15:43:34,040  [INFO] TC#0000: Check help link on Shared Reports screen
-2017-03-09 15:43:47,375  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-09 15:43:52,944  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
-2017-03-09 15:43:57,888  [INFO] [Test end]
-
-2017-03-09 15:43:57,888  [INFO] End testing
-
-2017-03-09 17:55:23,875  [INFO] Start testing
-
-2017-03-09 17:55:23,875  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 17:55:37,078  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 17:55:38,257  [INFO] Login page is present
-
-2017-03-09 17:55:47,513  [INFO] [Test start]
-2017-03-09 17:55:47,579  [INFO] TC#0000: Create and config Site
-2017-03-09 17:56:15,900  [ERROR] WAITING. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='vReps'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//span[text()='VKYV-DT-IK']/ancestor::tr/*//img[contains(@src,'CheckBox')] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-09 17:56:15,908  [ERROR] FIND ELEMENT. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='vReps'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//span[text()='VKYV-DT-IK']/ancestor::tr/*//img[contains(@src,'CheckBox')] is NOT found
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 186, in _find_element
-    element = self.driver.find_element(By.XPATH, locator)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 752, in find_element
-    'value': value})['value']
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 236, in execute
-    self.error_handler.check_response(response)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 192, in check_response
-    raise exception_class(message, screen, stacktrace)
-NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='vReps'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//span[text()='VKYV-DT-IK']/ancestor::tr/*//img[contains(@src,'CheckBox')]"}
-  (Session info: chrome=56.0.2924.87)
-  (Driver info: chromedriver=2.26.436362 (5476ec6bf7ccbada1734a0cdec7d570bb042aa30),platform=Windows NT 10.0.10240 x86_64)
-
-2017-03-09 17:56:21,305  [INFO] [Test end]
-
-2017-03-09 17:56:21,305  [INFO] End testing
-
-2017-03-09 18:01:29,615  [INFO] Start testing
-
-2017-03-09 18:01:29,615  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 18:01:46,052  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 18:01:47,246  [INFO] Login page is present
-
-2017-03-09 18:01:56,891  [INFO] [Test start]
-2017-03-09 18:01:56,990  [INFO] TC#0000: Create and config Site
-2017-03-09 18:02:20,418  [ERROR] WAITING. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='vReps'][contains(@class,'Tab')]/*//span[text()='VKYV-DT-IK']/ancestor::tr/*//img[contains(@src,'CheckBox')] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-09 18:02:20,430  [ERROR] FIND ELEMENT. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='vReps'][contains(@class,'Tab')]/*//span[text()='VKYV-DT-IK']/ancestor::tr/*//img[contains(@src,'CheckBox')] is NOT found
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 186, in _find_element
-    element = self.driver.find_element(By.XPATH, locator)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 752, in find_element
-    'value': value})['value']
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 236, in execute
-    self.error_handler.check_response(response)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 192, in check_response
-    raise exception_class(message, screen, stacktrace)
-NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='vReps'][contains(@class,'Tab')]/*//span[text()='VKYV-DT-IK']/ancestor::tr/*//img[contains(@src,'CheckBox')]"}
-  (Session info: chrome=56.0.2924.87)
-  (Driver info: chromedriver=2.26.436362 (5476ec6bf7ccbada1734a0cdec7d570bb042aa30),platform=Windows NT 10.0.10240 x86_64)
-
-2017-03-09 18:02:25,743  [INFO] [Test end]
-
-2017-03-09 18:02:25,743  [INFO] End testing
-
-2017-03-09 18:04:32,354  [INFO] Start testing
-
-2017-03-09 18:04:32,354  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 18:04:47,388  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 18:04:48,592  [INFO] Login page is present
-
-2017-03-09 18:04:58,707  [INFO] [Test start]
-2017-03-09 18:04:58,816  [INFO] TC#0000: Create and config Site
-2017-03-09 18:05:51,036  [INFO] Start testing
-
-2017-03-09 18:05:51,036  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 18:06:07,188  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 18:06:08,397  [INFO] Login page is present
-
-2017-03-09 18:06:17,523  [INFO] [Test start]
-2017-03-09 18:06:17,634  [INFO] TC#0000: Create and config Site
-2017-03-09 18:06:39,868  [ERROR] WAITING. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='IP Address Ranges'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//span[text()='Add']/ancestor::div[contains(@class,'Button')] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-09 18:06:39,882  [ERROR] FIND ELEMENT. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='IP Address Ranges'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//span[text()='Add']/ancestor::div[contains(@class,'Button')] is NOT found
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 186, in _find_element
-    element = self.driver.find_element(By.XPATH, locator)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 752, in find_element
-    'value': value})['value']
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 236, in execute
-    self.error_handler.check_response(response)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 192, in check_response
-    raise exception_class(message, screen, stacktrace)
-NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='IP Address Ranges'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//span[text()='Add']/ancestor::div[contains(@class,'Button')]"}
-  (Session info: chrome=56.0.2924.87)
-  (Driver info: chromedriver=2.26.436362 (5476ec6bf7ccbada1734a0cdec7d570bb042aa30),platform=Windows NT 10.0.10240 x86_64)
-
-2017-03-09 18:08:12,937  [INFO] Start testing
-
-2017-03-09 18:08:12,937  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 18:08:24,171  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 18:08:25,424  [INFO] Login page is present
-
-2017-03-09 18:08:34,928  [INFO] [Test start]
-2017-03-09 18:08:35,101  [INFO] TC#0000: Create and config Site
-2017-03-09 18:09:01,217  [ERROR] WAITING. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='IP Address Ranges'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//td[1]/*//span[text()='//span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='IP Address Ranges'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//td[1]/*//span[text()='010.006.002.067']'] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-09 18:09:11,647  [ERROR] WAITING. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='IP Address Ranges'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//td[3]/*//span[text()='//span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='IP Address Ranges'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//td[3]/*//span[text()='010.006.002.067']'] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-09 18:09:22,292  [ERROR] WAITING. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//div[1][@class='TabPage-Control_bj']/*//span[text()='Apply Changes']/*//span[text()='Delete']/ancestor::div[contains(@class,'Button')] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-09 18:09:22,309  [ERROR] FIND ELEMENT. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//div[1][@class='TabPage-Control_bj']/*//span[text()='Apply Changes']/*//span[text()='Delete']/ancestor::div[contains(@class,'Button')] is NOT found
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 186, in _find_element
-    element = self.driver.find_element(By.XPATH, locator)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 752, in find_element
-    'value': value})['value']
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 236, in execute
-    self.error_handler.check_response(response)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 192, in check_response
-    raise exception_class(message, screen, stacktrace)
-NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//div[1][@class='TabPage-Control_bj']/*//span[text()='Apply Changes']/*//span[text()='Delete']/ancestor::div[contains(@class,'Button')]"}
-  (Session info: chrome=56.0.2924.87)
-  (Driver info: chromedriver=2.26.436362 (5476ec6bf7ccbada1734a0cdec7d570bb042aa30),platform=Windows NT 10.0.10240 x86_64)
-
-2017-03-09 18:09:27,750  [INFO] [Test end]
-
-2017-03-09 18:09:27,750  [INFO] End testing
-
-2017-03-09 18:10:50,441  [INFO] Start testing
-
-2017-03-09 18:10:50,441  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 18:11:01,743  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 18:11:02,936  [INFO] Login page is present
-
-2017-03-09 18:11:12,795  [INFO] [Test start]
-2017-03-09 18:11:12,950  [INFO] TC#0000: Create and config Site
-2017-03-09 18:11:38,828  [ERROR] WAITING. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='IP Address Ranges'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//td[1]/*//span[text()='//span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='IP Address Ranges'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//td[1]/*//span[text()='010.006.002.067']'] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-09 18:11:49,141  [ERROR] WAITING. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='IP Address Ranges'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//td[3]/*//span[text()='//span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='IP Address Ranges'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//td[3]/*//span[text()='010.006.002.067']'] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-09 18:12:05,158  [ERROR] Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='VKYV-DT-IK']/ancestor::tr/*//img[contains(@src,'CheckBox')] is NOT checked after 10 seconds
-2017-03-09 18:12:06,342  [INFO] TEST PASSED
-2017-03-09 18:12:07,382  [INFO] [Test end]
-
-2017-03-09 18:12:07,382  [INFO] End testing
-
-2017-03-09 18:17:02,707  [INFO] Start testing
-
-2017-03-09 18:17:02,707  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 18:17:18,242  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 18:17:19,457  [INFO] Login page is present
-
-2017-03-09 18:17:30,253  [INFO] [Test start]
-2017-03-09 18:17:30,361  [INFO] TC#0000: Create and config Site
-2017-03-09 18:17:53,023  [INFO] [Test end]
-
-2017-03-09 18:17:53,023  [INFO] End testing
-
-2017-03-09 18:19:20,875  [INFO] Start testing
-
-2017-03-09 18:19:20,875  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 18:19:33,500  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 18:19:34,651  [INFO] Login page is present
-
-2017-03-09 18:19:44,661  [INFO] [Test start]
-2017-03-09 18:19:44,802  [INFO] TC#0000: Create and config Site
-2017-03-09 18:20:11,253  [ERROR] WAITING. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='IP Address Ranges'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//td[1]/*//span[text()='//span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//div[1][@class='TabPage-Control_bj']/*//td[1]/*//span[text()='010.006.002.067']'] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-09 18:20:21,665  [ERROR] WAITING. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='IP Address Ranges'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//td[3]/*//span[text()='//span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//div[1][@class='TabPage-Control_bj']/*//td[3]/*//span[text()='010.006.002.067']'] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-09 18:20:36,841  [ERROR] WAITING. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='IP Address Ranges'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//span[text()='VKYV-DT-IK']/ancestor::tr/*//img[contains(@src,'CheckBox')] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-09 18:20:36,841  [ERROR] FIND ELEMENT. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='IP Address Ranges'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//span[text()='VKYV-DT-IK']/ancestor::tr/*//img[contains(@src,'CheckBox')] is NOT found
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 186, in _find_element
-    element = self.driver.find_element(By.XPATH, locator)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 752, in find_element
-    'value': value})['value']
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 236, in execute
-    self.error_handler.check_response(response)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 192, in check_response
-    raise exception_class(message, screen, stacktrace)
-NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='IP Address Ranges'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//span[text()='VKYV-DT-IK']/ancestor::tr/*//img[contains(@src,'CheckBox')]"}
-  (Session info: chrome=56.0.2924.87)
-  (Driver info: chromedriver=2.26.436362 (5476ec6bf7ccbada1734a0cdec7d570bb042aa30),platform=Windows NT 10.0.10240 x86_64)
-
-2017-03-09 18:20:42,387  [INFO] [Test end]
-
-2017-03-09 18:20:42,387  [INFO] End testing
-
-2017-03-09 18:22:04,062  [INFO] Start testing
-
-2017-03-09 18:22:04,062  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 18:22:15,502  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 18:22:16,680  [INFO] Login page is present
-
-2017-03-09 18:22:27,220  [INFO] [Test start]
-2017-03-09 18:22:27,329  [INFO] TC#0000: Create and config Site
-2017-03-09 18:22:53,242  [ERROR] WAITING. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='IP Address Ranges'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//td[1]/*//span[text()='//span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//div[1][@class='TabPage-Control_bj']/*//td[1]/*//span[text()='010.006.002.067']'] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-09 18:23:03,694  [ERROR] WAITING. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='IP Address Ranges'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//td[3]/*//span[text()='//span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//div[1][@class='TabPage-Control_bj']/*//td[3]/*//span[text()='010.006.002.067']'] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-09 18:23:18,989  [ERROR] WAITING. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='IP Address Ranges'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//span[text()='VKYV-DT-IK']/ancestor::tr/*//img[contains(@src,'CheckBox')] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-09 18:23:19,003  [ERROR] FIND ELEMENT. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='IP Address Ranges'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//span[text()='VKYV-DT-IK']/ancestor::tr/*//img[contains(@src,'CheckBox')] is NOT found
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 186, in _find_element
-    element = self.driver.find_element(By.XPATH, locator)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 752, in find_element
-    'value': value})['value']
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 236, in execute
-    self.error_handler.check_response(response)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 192, in check_response
-    raise exception_class(message, screen, stacktrace)
-NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='IP Address Ranges'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//span[text()='VKYV-DT-IK']/ancestor::tr/*//img[contains(@src,'CheckBox')]"}
-  (Session info: chrome=56.0.2924.87)
-  (Driver info: chromedriver=2.26.436362 (5476ec6bf7ccbada1734a0cdec7d570bb042aa30),platform=Windows NT 10.0.10240 x86_64)
-
-2017-03-09 18:23:24,638  [INFO] [Test end]
-
-2017-03-09 18:23:24,638  [INFO] End testing
-
-2017-03-09 18:24:10,259  [INFO] Start testing
-
-2017-03-09 18:24:10,259  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 18:24:25,743  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 18:24:26,901  [INFO] Login page is present
-
-2017-03-09 18:24:36,911  [INFO] [Test start]
-2017-03-09 18:24:37,051  [INFO] TC#0000: Create and config Site
-2017-03-09 18:25:03,006  [ERROR] WAITING. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//div[1][@class='TabPage-Control_bj']/*//span[text()='Apply Changes']following::td[1]/*//span[text()='//span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//div[1][@class='TabPage-Control_bj']/*//td[1]/*//span[text()='010.006.002.067']'] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-09 18:25:13,446  [ERROR] WAITING. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//div[1][@class='TabPage-Control_bj']/*//span[text()='Apply Changes']following::td[3]/*//span[text()='//span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//div[1][@class='TabPage-Control_bj']/*//td[3]/*//span[text()='010.006.002.067']'] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-09 18:25:28,973  [ERROR] WAITING. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='IP Address Ranges'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//span[text()='VKYV-DT-IK']/ancestor::tr/*//img[contains(@src,'CheckBox')] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-09 18:25:28,990  [ERROR] FIND ELEMENT. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='IP Address Ranges'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//span[text()='VKYV-DT-IK']/ancestor::tr/*//img[contains(@src,'CheckBox')] is NOT found
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 186, in _find_element
-    element = self.driver.find_element(By.XPATH, locator)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 752, in find_element
-    'value': value})['value']
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 236, in execute
-    self.error_handler.check_response(response)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 192, in check_response
-    raise exception_class(message, screen, stacktrace)
-NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='IP Address Ranges'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//span[text()='VKYV-DT-IK']/ancestor::tr/*//img[contains(@src,'CheckBox')]"}
-  (Session info: chrome=56.0.2924.87)
-  (Driver info: chromedriver=2.26.436362 (5476ec6bf7ccbada1734a0cdec7d570bb042aa30),platform=Windows NT 10.0.10240 x86_64)
-
-2017-03-09 18:25:34,434  [INFO] [Test end]
-
-2017-03-09 18:25:34,434  [INFO] End testing
-
-2017-03-09 18:26:25,539  [INFO] Start testing
-
-2017-03-09 18:26:25,539  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 18:26:41,654  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 18:26:42,825  [INFO] Login page is present
-
-2017-03-09 18:26:52,538  [INFO] [Test start]
-2017-03-09 18:26:52,631  [INFO] TC#0000: Create and config Site
-2017-03-09 18:27:18,569  [ERROR] WAITING. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//div[1][@class='TabPage-Control_bj']/*//span[text()='Apply Changes']following::td[1]/*//span[text()='//span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//div[1][@class='TabPage-Control_bj']/*//td[1]/*//span[text()='010.006.002.067']'] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-09 18:27:28,970  [ERROR] WAITING. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//div[1][@class='TabPage-Control_bj']/*//span[text()='Apply Changes']following::td[3]/*//span[text()='//span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//div[1][@class='TabPage-Control_bj']/*//td[3]/*//span[text()='010.006.002.067']'] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-09 18:27:44,148  [ERROR] WAITING. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='vReps'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//span[text()='VKYV-DT-IK']/ancestor::tr/*//img[contains(@src,'CheckBox')] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-09 18:27:44,164  [ERROR] FIND ELEMENT. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='vReps'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//span[text()='VKYV-DT-IK']/ancestor::tr/*//img[contains(@src,'CheckBox')] is NOT found
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 186, in _find_element
-    element = self.driver.find_element(By.XPATH, locator)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 752, in find_element
-    'value': value})['value']
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 236, in execute
-    self.error_handler.check_response(response)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 192, in check_response
-    raise exception_class(message, screen, stacktrace)
-NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='vReps'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//span[text()='VKYV-DT-IK']/ancestor::tr/*//img[contains(@src,'CheckBox')]"}
-  (Session info: chrome=56.0.2924.87)
-  (Driver info: chromedriver=2.26.436362 (5476ec6bf7ccbada1734a0cdec7d570bb042aa30),platform=Windows NT 10.0.10240 x86_64)
-
-2017-03-09 18:27:49,700  [INFO] [Test end]
-
-2017-03-09 18:27:49,700  [INFO] End testing
-
-2017-03-09 18:31:34,578  [INFO] Start testing
-
-2017-03-09 18:31:34,578  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 18:31:45,749  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 18:31:46,904  [INFO] Login page is present
-
-2017-03-09 18:31:56,948  [INFO] [Test start]
-2017-03-09 18:31:57,073  [INFO] TC#0000: Create and config Site
-2017-03-09 18:32:16,549  [INFO] [Test end]
-
-2017-03-09 18:32:16,549  [INFO] End testing
-
-2017-03-09 18:32:55,734  [INFO] Start testing
-
-2017-03-09 18:32:55,734  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 18:33:11,332  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 18:33:12,536  [INFO] Login page is present
-
-2017-03-09 18:33:21,122  [INFO] [Test start]
-2017-03-09 18:33:21,233  [INFO] TC#0000: Create and config Site
-2017-03-09 18:33:52,532  [ERROR] WAITING. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//div[contains(@id,'VWGLVBODY')]/*//td[1]/*//span[text()='//span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//div[contains(@id,'VWGLVBODY')]/*//td[1]/*//span[text()='010.006.002.067']'] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-09 18:34:02,881  [ERROR] WAITING. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//div[contains(@id,'VWGLVBODY')]/*//td[3]/*//span[text()='//span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//div[contains(@id,'VWGLVBODY')]/*//td[3]/*//span[text()='010.006.002.067']'] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-09 18:34:18,039  [ERROR] WAITING. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='vReps'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//span[text()='VKYV-DT-IK']/ancestor::tr/*//img[contains(@src,'CheckBox')] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-09 18:34:18,055  [ERROR] FIND ELEMENT. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='vReps'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//span[text()='VKYV-DT-IK']/ancestor::tr/*//img[contains(@src,'CheckBox')] is NOT found
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 186, in _find_element
-    element = self.driver.find_element(By.XPATH, locator)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 752, in find_element
-    'value': value})['value']
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 236, in execute
-    self.error_handler.check_response(response)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 192, in check_response
-    raise exception_class(message, screen, stacktrace)
-NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//span[text()='vReps'][contains(@class,'Tab')]/ancestor::div[contains(@id,'TAB')]/*//span[text()='VKYV-DT-IK']/ancestor::tr/*//img[contains(@src,'CheckBox')]"}
-  (Session info: chrome=56.0.2924.87)
-  (Driver info: chromedriver=2.26.436362 (5476ec6bf7ccbada1734a0cdec7d570bb042aa30),platform=Windows NT 10.0.10240 x86_64)
-
-2017-03-09 18:34:23,562  [INFO] [Test end]
-
-2017-03-09 18:34:23,562  [INFO] End testing
-
-2017-03-09 18:37:01,374  [INFO] Start testing
-
-2017-03-09 18:37:01,374  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 18:37:17,269  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 18:37:18,417  [INFO] Login page is present
-
-2017-03-09 18:37:27,825  [INFO] [Test start]
-2017-03-09 18:37:27,982  [INFO] TC#0000: Create and config Site
-2017-03-09 18:37:45,838  [INFO] [Test end]
-
-2017-03-09 18:37:45,838  [INFO] End testing
-
-2017-03-09 18:38:35,526  [INFO] Start testing
-
-2017-03-09 18:38:35,526  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 18:38:50,829  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 18:38:52,065  [INFO] Login page is present
-
-2017-03-09 18:39:01,469  [INFO] [Test start]
-2017-03-09 18:39:01,578  [INFO] TC#0000: Create and config Site
-2017-03-09 18:39:19,367  [INFO] [Test end]
-
-2017-03-09 18:39:19,367  [INFO] End testing
-
-2017-03-09 18:42:12,000  [INFO] Start testing
-
-2017-03-09 18:42:12,000  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 18:42:50,503  [INFO] Start testing
-
-2017-03-09 18:42:50,503  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 18:43:05,519  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 18:43:06,684  [INFO] Login page is present
-
-2017-03-09 18:43:16,345  [INFO] [Test start]
-2017-03-09 18:43:16,438  [INFO] TC#0000: Create and config Site
-2017-03-09 18:43:54,042  [ERROR] Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//div[contains(@id,'VWGLVBODY')]/*//td[1]/*//span[text()='010.006.002.067']/ancestor::tr/*//img[contains(@src,'CheckBox')] is NOT unchecked after 10 seconds
-2017-03-09 18:44:01,180  [INFO] TEST PASSED
-2017-03-09 18:44:02,210  [INFO] [Test end]
-
-2017-03-09 18:44:02,210  [INFO] End testing
-
-2017-03-09 18:49:31,697  [INFO] Start testing
-
-2017-03-09 18:49:31,697  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 18:49:42,815  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 18:49:43,993  [INFO] Login page is present
-
-2017-03-09 18:49:53,697  [INFO] [Test start]
-2017-03-09 18:49:53,822  [INFO] TC#0000: Create and config Site
-2017-03-09 18:51:57,404  [INFO] Start testing
-
-2017-03-09 18:51:57,404  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 18:52:12,996  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 18:52:14,244  [INFO] Login page is present
-
-2017-03-09 18:52:23,805  [INFO] [Test start]
-2017-03-09 18:52:23,914  [INFO] TC#0000: Create and config Site
-2017-03-09 18:52:40,210  [INFO] [Test end]
-
-2017-03-09 18:52:40,210  [INFO] End testing
-
-2017-03-09 18:52:53,489  [INFO] Start testing
-
-2017-03-09 18:52:53,489  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 18:53:05,628  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 18:53:06,806  [INFO] Login page is present
-
-2017-03-09 18:53:16,160  [INFO] [Test start]
-2017-03-09 18:53:16,246  [INFO] TC#0000: Create and config Site
-2017-03-09 18:53:51,072  [INFO] TEST PASSED
-2017-03-09 18:53:52,134  [INFO] [Test end]
-
-2017-03-09 18:53:52,134  [INFO] End testing
-
-2017-03-09 18:57:51,786  [INFO] Start testing
-
-2017-03-09 18:57:51,786  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 18:58:03,726  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 18:58:04,948  [INFO] Login page is present
-
-2017-03-09 18:58:15,061  [INFO] [Test start]
-2017-03-09 18:58:15,138  [INFO] TC#0000: Create and config Site
-2017-03-09 19:00:53,878  [INFO] Start testing
-
-2017-03-09 19:00:53,878  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 19:01:09,595  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 19:01:10,838  [INFO] Login page is present
-
-2017-03-09 19:01:20,030  [INFO] [Test start]
-2017-03-09 19:01:20,187  [INFO] TC#0000: Create and config Site
-2017-03-09 19:06:41,361  [INFO] Start testing
-
-2017-03-09 19:06:41,361  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 19:06:57,575  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 19:06:58,785  [INFO] Login page is present
-
-2017-03-09 19:07:08,890  [INFO] [Test start]
-2017-03-09 19:07:08,999  [INFO] TC#0000: Create and config Site
-2017-03-09 19:07:36,413  [INFO] TEST PASSED
-2017-03-09 19:07:37,464  [INFO] [Test end]
-
-2017-03-09 19:07:37,464  [INFO] End testing
-
-2017-03-09 19:08:41,430  [INFO] Start testing
-
-2017-03-09 19:08:41,430  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 19:08:56,959  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 19:08:58,167  [INFO] Login page is present
-
-2017-03-09 19:09:08,200  [INFO] [Test start]
-2017-03-09 19:09:08,342  [INFO] TC#0000: Create and config Site
-2017-03-09 19:12:00,842  [INFO] Start testing
-
-2017-03-09 19:12:00,842  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 19:12:16,332  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 19:12:17,575  [INFO] Login page is present
-
-2017-03-09 19:12:27,568  [INFO] [Test start]
-2017-03-09 19:12:27,661  [INFO] TC#0000: Create and config Site
-2017-03-09 19:16:52,187  [INFO] Start testing
-
-2017-03-09 19:16:52,187  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-09 19:17:08,513  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-09 19:17:09,747  [INFO] Login page is present
-
-2017-03-09 19:17:19,917  [INFO] [Test start]
-2017-03-09 19:17:20,026  [INFO] TC#0000: Create and config Site
-2017-03-09 19:17:38,706  [INFO] [Test end]
-
-2017-03-09 19:17:38,706  [INFO] End testing
-
-2017-03-10 09:43:14,299  [INFO] Start testing
-
-2017-03-10 09:43:14,299  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 09:43:30,459  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 09:43:31,637  [INFO] Login page is present
-
-2017-03-10 09:43:41,207  [INFO] [Test start]
-2017-03-10 09:43:41,286  [INFO] TC#0000: Create and config Site
-2017-03-10 09:43:59,549  [INFO] [Test end]
-
-2017-03-10 09:43:59,549  [INFO] End testing
-
-2017-03-10 09:48:17,236  [INFO] Start testing
-
-2017-03-10 09:48:17,237  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 09:48:28,415  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 09:48:29,578  [INFO] Login page is present
-
-2017-03-10 09:48:39,121  [INFO] [Test start]
-2017-03-10 09:48:39,210  [INFO] TC#0000: Create and config Site
-2017-03-10 09:48:57,214  [INFO] [Test end]
-
-2017-03-10 09:48:57,214  [INFO] End testing
-
-2017-03-10 09:49:24,959  [INFO] Start testing
-
-2017-03-10 09:49:24,959  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 09:49:36,641  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 09:49:37,815  [INFO] Login page is present
-
-2017-03-10 09:49:47,772  [INFO] [Test start]
-2017-03-10 09:49:47,880  [INFO] TC#0000: Create and config Site
-2017-03-10 09:50:09,286  [INFO] TEST PASSED
-2017-03-10 09:50:10,332  [INFO] [Test end]
-
-2017-03-10 09:50:10,334  [INFO] End testing
-
-2017-03-10 09:53:48,085  [INFO] Start testing
-
-2017-03-10 09:53:48,085  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 09:53:59,213  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 09:54:00,380  [INFO] Login page is present
-
-2017-03-10 09:54:09,690  [INFO] [Test start]
-2017-03-10 09:54:09,818  [INFO] TC#0000: Create and config Site
-2017-03-10 09:54:28,457  [INFO] [Test end]
-
-2017-03-10 09:54:28,457  [INFO] End testing
-
-2017-03-10 09:58:17,236  [INFO] Start testing
-
-2017-03-10 09:58:17,236  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 09:58:32,568  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 09:58:33,769  [INFO] Login page is present
-
-2017-03-10 09:58:43,203  [INFO] [Test start]
-2017-03-10 09:58:43,357  [INFO] TC#0000: Create and config Site
-2017-03-10 09:59:06,154  [INFO] TEST PASSED
-2017-03-10 09:59:07,207  [INFO] [Test end]
-
-2017-03-10 09:59:07,207  [INFO] End testing
-
-2017-03-10 10:11:05,062  [INFO] Start testing
-
-2017-03-10 10:11:05,062  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 10:11:18,515  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 10:11:19,667  [INFO] Login page is present
-
-2017-03-10 10:11:29,233  [INFO] [Test start]
-2017-03-10 10:11:29,371  [INFO] TC#0000: Create and config Site
-2017-03-10 10:11:45,753  [INFO] [Test end]
-
-2017-03-10 10:11:45,755  [INFO] End testing
-
-2017-03-10 10:45:38,223  [INFO] Start testing
-
-2017-03-10 10:45:38,223  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 10:55:50,849  [INFO] Start testing
-
-2017-03-10 10:55:50,849  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 10:56:05,983  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 10:56:07,130  [INFO] Login page is present
-
-2017-03-10 10:56:17,138  [INFO] [Test start]
-2017-03-10 10:56:17,246  [INFO] TC#0000: Create and config Site
-2017-03-10 10:56:43,019  [INFO] TEST PASSED
-2017-03-10 10:56:44,045  [INFO] [Test end]
-
-2017-03-10 10:56:44,045  [INFO] End testing
-
-2017-03-10 10:59:17,979  [INFO] Start testing
-
-2017-03-10 10:59:17,979  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 10:59:30,490  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 10:59:31,680  [INFO] Login page is present
-
-2017-03-10 10:59:40,973  [INFO] [Test start]
-2017-03-10 10:59:41,040  [INFO] TC#0000: Create and config Site
-2017-03-10 11:00:07,540  [INFO] TEST PASSED
-2017-03-10 11:00:08,581  [INFO] [Test end]
-
-2017-03-10 11:00:08,581  [INFO] End testing
-
-2017-03-10 11:03:51,888  [INFO] Start testing
-
-2017-03-10 11:03:51,888  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 11:04:03,280  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 11:04:04,450  [INFO] Login page is present
-
-2017-03-10 11:04:13,869  [INFO] [Test start]
-2017-03-10 11:04:13,974  [INFO] TC#0000: Create and config Site
-2017-03-10 11:04:31,687  [INFO] [Test end]
-
-2017-03-10 11:04:31,687  [INFO] End testing
-
-2017-03-10 11:05:04,724  [INFO] Start testing
-
-2017-03-10 11:05:04,724  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 11:05:19,658  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 11:05:20,832  [INFO] Login page is present
-
-2017-03-10 11:05:30,703  [INFO] [Test start]
-2017-03-10 11:05:30,801  [INFO] TC#0000: Create and config Site
-2017-03-10 11:05:59,604  [INFO] TEST PASSED
-2017-03-10 11:06:00,651  [INFO] [Test end]
-
-2017-03-10 11:06:00,651  [INFO] End testing
-
-2017-03-10 11:16:18,763  [INFO] Start testing
-
-2017-03-10 11:16:18,763  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 11:16:30,967  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 11:16:32,150  [INFO] Login page is present
-
-2017-03-10 11:16:42,690  [INFO] [Test start]
-2017-03-10 11:16:42,795  [INFO] TC#0000: Create and config Site
-2017-03-10 11:17:01,029  [INFO] [Test end]
-
-2017-03-10 11:17:01,029  [INFO] End testing
-
-2017-03-10 11:21:27,999  [INFO] Start testing
-
-2017-03-10 11:21:27,999  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 11:21:44,098  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 11:21:45,243  [INFO] Login page is present
-
-2017-03-10 11:21:54,681  [INFO] [Test start]
-2017-03-10 11:21:54,775  [INFO] TC#0000: Create and config Site
-2017-03-10 11:22:18,746  [INFO] TEST PASSED
-2017-03-10 11:22:19,783  [INFO] [Test end]
-
-2017-03-10 11:22:19,783  [INFO] End testing
-
-2017-03-10 12:34:21,553  [INFO] Start testing
-
-2017-03-10 12:34:21,553  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 12:34:34,025  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 12:34:35,194  [INFO] Login page is present
-
-2017-03-10 12:34:45,142  [INFO] [Test start]
-2017-03-10 12:34:45,236  [INFO] TC#0000: Create and config Site
-2017-03-10 12:35:06,890  [INFO] TEST PASSED
-2017-03-10 12:35:07,921  [INFO] [Test end]
-
-2017-03-10 12:35:07,921  [INFO] End testing
-
-2017-03-10 12:35:24,121  [INFO] Start testing
-
-2017-03-10 12:35:24,121  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 12:35:39,971  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 12:35:41,173  [INFO] Login page is present
-
-2017-03-10 12:35:50,631  [INFO] [Test start]
-2017-03-10 12:35:50,756  [INFO] TC#0000: Create and config Site
-2017-03-10 12:36:18,157  [INFO] TEST PASSED
-2017-03-10 12:36:19,188  [INFO] [Test end]
-
-2017-03-10 12:36:19,188  [INFO] End testing
-
-2017-03-10 12:41:26,359  [INFO] Start testing
-
-2017-03-10 12:41:26,359  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 12:41:39,530  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 12:41:40,730  [INFO] Login page is present
-
-2017-03-10 12:41:50,819  [INFO] [Test start]
-2017-03-10 12:41:50,913  [INFO] TC#0000: Create and config Site
-2017-03-10 12:42:12,953  [INFO] TEST PASSED
-2017-03-10 12:42:13,983  [INFO] [Test end]
-
-2017-03-10 12:42:13,983  [INFO] End testing
-
-2017-03-10 12:45:36,565  [INFO] Start testing
-
-2017-03-10 12:45:36,565  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 12:45:48,461  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 12:45:49,644  [INFO] Login page is present
-
-2017-03-10 12:45:59,664  [INFO] [Test start]
-2017-03-10 12:45:59,756  [INFO] TC#0000: Create and config Site
-2017-03-10 12:46:28,483  [INFO] TEST PASSED
-2017-03-10 12:46:29,516  [INFO] [Test end]
-
-2017-03-10 12:46:29,516  [INFO] End testing
-
-2017-03-10 12:48:04,664  [INFO] Start testing
-
-2017-03-10 12:48:04,664  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 12:48:16,845  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 12:48:18,052  [INFO] Login page is present
-
-2017-03-10 12:48:28,085  [INFO] [Test start]
-2017-03-10 12:48:28,178  [INFO] TC#0000: Create and config Site
-2017-03-10 12:48:55,045  [ERROR] WAITING. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//div[contains(@id,'VWGLVBODY')]/*//table[contains(@style,'CheckBox')]/ancestor::tr[last()]/td[1] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-10 12:48:55,061  [ERROR] FIND ELEMENT. Element //span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//div[contains(@id,'VWGLVBODY')]/*//table[contains(@style,'CheckBox')]/ancestor::tr[last()]/td[1] is NOT found
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 186, in _find_element
-    element = self.driver.find_element(By.XPATH, locator)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 752, in find_element
-    'value': value})['value']
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 236, in execute
-    self.error_handler.check_response(response)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 192, in check_response
-    raise exception_class(message, screen, stacktrace)
-NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//span[text()='Configuration'][@dir='LTR']/ancestor::div[contains(@id,'WRP')]/*//div[contains(@id,'VWGLVBODY')]/*//table[contains(@style,'CheckBox')]/ancestor::tr[last()]/td[1]"}
-  (Session info: chrome=56.0.2924.87)
-  (Driver info: chromedriver=2.26.436362 (5476ec6bf7ccbada1734a0cdec7d570bb042aa30),platform=Windows NT 10.0.10240 x86_64)
-
-2017-03-10 12:49:00,490  [INFO] [Test end]
-
-2017-03-10 12:49:00,490  [INFO] End testing
-
-2017-03-10 12:49:06,509  [INFO] Start testing
-
-2017-03-10 12:49:06,509  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 12:49:18,282  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 12:49:19,413  [INFO] Login page is present
-
-2017-03-10 12:49:29,987  [INFO] [Test start]
-2017-03-10 12:49:30,049  [INFO] TC#0000: Create and config Site
-2017-03-10 12:49:50,851  [INFO] TEST PASSED
-2017-03-10 12:49:51,888  [INFO] [Test end]
-
-2017-03-10 12:49:51,888  [INFO] End testing
-
-2017-03-10 14:40:09,739  [INFO] Start testing
-
-2017-03-10 14:40:09,739  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 14:40:24,571  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 14:40:25,765  [INFO] Login page is present
-
-2017-03-10 14:40:35,901  [INFO] [Test start]
-2017-03-10 14:40:36,010  [INFO] TC#0000: Run a discovery task
-2017-03-10 14:40:51,140  [ERROR] WAITING. Element //span[contains(text(),'Tasks')][@dir='LTR'][contains(@style,'White')]/ancestor::div[@class='Label-Control']/parent::div/parent::div/parent::div/parent::div/parent::div//*[@class='Common-Unselectable ListView-Control']/div/*[contains(@id,'VWGLVBODY')]/*//span[text()='DiscoveryHelpTest'] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-10 14:41:01,586  [ERROR] WAITING. Element //span[contains(text(),'Tasks')][@dir='LTR'][contains(@style,'White')]/ancestor::div[@class='Label-Control']/parent::div/parent::div/parent::div/parent::div/parent::div//*[@class='Common-Unselectable ListView-Control']/div/*[contains(@id,'VWGLVBODY')]/*//span[text()='DiscoveryHelpTest'] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-10 14:41:02,664  [INFO] [Test end]
-
-2017-03-10 14:41:02,664  [INFO] End testing
-
-2017-03-10 14:43:34,700  [INFO] Start testing
-
-2017-03-10 14:43:34,700  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 14:43:51,500  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 14:44:12,805  [INFO] Start testing
-
-2017-03-10 14:44:12,805  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 14:44:25,206  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 14:44:26,369  [INFO] Login page is present
-
-2017-03-10 14:44:35,951  [INFO] [Test start]
-2017-03-10 14:44:36,046  [INFO] TC#0000: Run a discovery task
-2017-03-10 14:44:44,006  [INFO] [Test end]
-
-2017-03-10 14:44:44,006  [INFO] End testing
-
-2017-03-10 14:46:08,063  [INFO] Start testing
-
-2017-03-10 14:46:08,063  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 14:46:22,108  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 14:46:23,270  [INFO] Login page is present
-
-2017-03-10 14:46:32,855  [INFO] [Test start]
-2017-03-10 14:46:32,934  [INFO] TC#0000: Run a discovery task
-2017-03-10 14:46:42,065  [INFO] [Test end]
-
-2017-03-10 14:46:42,065  [INFO] End testing
-
-2017-03-10 14:47:33,621  [INFO] Start testing
-
-2017-03-10 14:47:33,621  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 14:47:44,901  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 14:47:46,105  [INFO] Login page is present
-
-2017-03-10 14:47:55,516  [INFO] [Test start]
-2017-03-10 14:47:55,605  [INFO] TC#0000: Run a discovery task
-2017-03-10 14:48:12,618  [INFO] [Test end]
-
-2017-03-10 14:48:12,618  [INFO] End testing
-
-2017-03-10 14:49:12,812  [INFO] Start testing
-
-2017-03-10 14:49:12,812  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 14:49:25,033  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 14:49:26,191  [INFO] Login page is present
-
-2017-03-10 14:49:35,628  [INFO] [Test start]
-2017-03-10 14:49:35,737  [INFO] TC#0000: Run a discovery task
-2017-03-10 14:50:07,114  [ERROR] WAITING. Element //span[text()='Discover Devices'][@dir='LTR'][contains(@style,'White')]/ancestor::div[contains(@id,'WRP')][last()]/*//span[text()='None']/ancestor::tr/td[contains(@style,'Radio1')] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-10 14:50:19,253  [ERROR] WAITING. Element //span[text()='Discover Devices'][@dir='LTR'][contains(@style,'White')]/ancestor::div[contains(@id,'WRP')][last()]/*//span[text()='Start Now']/ancestor::tr/td[contains(@style,'Radio1')] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-10 14:50:32,483  [ERROR] WAITING. Element //span[text()='Discover Devices'][@dir='LTR'][contains(@style,'White')]/ancestor::div[contains(@id,'WRP')][last()]/*//img[@alt='NEXT']/ancestor::div[contains(@class,'Button')] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-10 14:50:32,499  [ERROR] FIND ELEMENT. Element //span[text()='Discover Devices'][@dir='LTR'][contains(@style,'White')]/ancestor::div[contains(@id,'WRP')][last()]/*//img[@alt='NEXT']/ancestor::div[contains(@class,'Button')] is NOT found
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 186, in _find_element
-    element = self.driver.find_element(By.XPATH, locator)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 752, in find_element
-    'value': value})['value']
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 236, in execute
-    self.error_handler.check_response(response)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 192, in check_response
-    raise exception_class(message, screen, stacktrace)
-NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//span[text()='Discover Devices'][@dir='LTR'][contains(@style,'White')]/ancestor::div[contains(@id,'WRP')][last()]/*//img[@alt='NEXT']/ancestor::div[contains(@class,'Button')]"}
-  (Session info: chrome=56.0.2924.87)
-  (Driver info: chromedriver=2.26.436362 (5476ec6bf7ccbada1734a0cdec7d570bb042aa30),platform=Windows NT 10.0.10240 x86_64)
-
-2017-03-10 14:52:37,500  [INFO] Start testing
-
-2017-03-10 14:52:37,500  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 14:52:52,736  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 14:52:53,910  [INFO] Login page is present
-
-2017-03-10 14:53:03,926  [INFO] [Test start]
-2017-03-10 14:53:04,019  [INFO] TC#0000: Run a discovery task
-2017-03-10 14:53:35,818  [INFO] [Test end]
-
-2017-03-10 14:53:35,818  [INFO] End testing
-
-2017-03-10 14:54:15,720  [INFO] Start testing
-
-2017-03-10 14:54:15,720  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 14:54:28,282  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 14:54:29,486  [INFO] Login page is present
-
-2017-03-10 14:54:38,957  [INFO] [Test start]
-2017-03-10 14:54:39,066  [INFO] TC#0000: Run a discovery task
-2017-03-10 14:55:08,706  [INFO] TEST PASSED
-2017-03-10 14:55:09,756  [INFO] [Test end]
-
-2017-03-10 14:55:09,756  [INFO] End testing
-
-2017-03-10 15:10:01,953  [INFO] Start testing
-
-2017-03-10 15:10:01,953  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 15:10:17,813  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 15:10:18,982  [INFO] Login page is present
-
-2017-03-10 15:10:29,038  [INFO] [Test start]
-2017-03-10 15:10:29,131  [INFO] TC#0000: Run a discovery task
-2017-03-10 15:10:43,109  [INFO] TEST PASSED
-2017-03-10 15:10:44,151  [INFO] [Test end]
-
-2017-03-10 15:10:44,153  [INFO] End testing
-
-2017-03-10 15:12:06,092  [INFO] Start testing
-
-2017-03-10 15:12:06,092  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 15:12:23,095  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 15:12:24,266  [INFO] Login page is present
-
-2017-03-10 15:12:34,049  [INFO] [Test start]
-2017-03-10 15:12:34,158  [INFO] TC#0000: Run a discovery task
-2017-03-10 15:12:47,125  [INFO] TEST PASSED
-2017-03-10 15:12:48,160  [INFO] [Test end]
-
-2017-03-10 15:12:48,160  [INFO] End testing
-
-2017-03-10 17:23:39,405  [INFO] Start testing
-
-2017-03-10 17:23:39,405  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 17:23:50,993  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 17:23:52,193  [INFO] Login page is present
-
-2017-03-10 17:24:04,309  [INFO] [Test start]
-2017-03-10 17:24:04,387  [INFO] TC#0000: Check help link on Scanned Addresses popup
-2017-03-10 17:24:27,161  [ERROR] WAITING. Element //span[contains(text(),'Tasks')][@dir='LTR'][contains(@style,'White')]/ancestor::div[@class='Label-Control']/parent::div/parent::div/parent::div/parent::div/parent::div/*//div[@data-vwgdocking='F']/*//span[contains(text(),'to scan ')] is NOT found after 10 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-10 17:24:28,223  [INFO] [Test end]
-
-2017-03-10 17:24:28,223  [INFO] End testing
-
-2017-03-10 17:26:03,141  [INFO] Start testing
-
-2017-03-10 17:26:03,141  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 17:26:15,000  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 17:26:16,259  [INFO] Login page is present
-
-2017-03-10 17:26:26,290  [INFO] [Test start]
-2017-03-10 17:26:26,384  [INFO] TC#0000: Check help link on Scanned Addresses popup
-2017-03-10 17:26:41,423  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-10 17:26:46,911  [ERROR] TEST FAILED: Expected header: Scanned Addresses !=  Actual header: Devices
-2017-03-10 17:26:51,845  [INFO] [Test end]
-
-2017-03-10 17:26:51,845  [INFO] End testing
-
-2017-03-10 17:29:14,252  [INFO] Start testing
-
-2017-03-10 17:29:14,252  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 17:29:27,372  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 17:29:37,999  [INFO] Start testing
-
-2017-03-10 17:29:37,999  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 17:29:53,292  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 17:29:55,069  [INFO] Login page is present
-
-2017-03-10 17:30:07,914  [INFO] [Test start]
-2017-03-10 17:30:07,976  [INFO] TC#0000: Check help link on Discovered Devices popup
-2017-03-10 17:30:30,653  [ERROR] WAITING. Element //span[text()='Discover Devices'][@dir='LTR'][contains(@style,'White')]/ancestor::div[contains(@id,'WRP')][last()] is NOT found after 12 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-10 17:30:30,653  [ERROR] TEST FAILED. Popup 'Discover Devices' is NOT present
-2017-03-10 17:30:37,193  [INFO] [Test end]
-
-2017-03-10 17:30:37,193  [INFO] End testing
-
-2017-03-10 17:31:01,447  [INFO] Start testing
-
-2017-03-10 17:31:01,447  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 17:31:18,183  [INFO] Start testing
-
-2017-03-10 17:31:18,183  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 17:31:33,762  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 17:31:35,418  [INFO] Login page is present
-
-2017-03-10 17:31:47,417  [INFO] [Test start]
-2017-03-10 17:31:47,526  [INFO] TC#0000: Check help link on Discovered Devices popup
-2017-03-10 17:32:03,790  [INFO] Start testing
-
-2017-03-10 17:32:03,792  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 17:32:15,953  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 17:32:17,684  [INFO] Login page is present
-
-2017-03-10 17:32:29,697  [INFO] [Test start]
-2017-03-10 17:32:29,765  [INFO] TC#0000: Check help link on Discovered Devices popup
-2017-03-10 17:32:39,822  [INFO] Start testing
-
-2017-03-10 17:32:39,822  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 17:32:41,598  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-10 17:32:48,648  [ERROR] TEST FAILED: Expected header: Discovered Devices !=  Actual header: Devices
-2017-03-10 17:32:51,647  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 17:32:53,308  [INFO] Login page is present
-
-2017-03-10 17:32:55,571  [INFO] [Test end]
-
-2017-03-10 17:32:55,571  [INFO] End testing
-
-2017-03-10 17:33:06,325  [INFO] [Test start]
-2017-03-10 17:33:06,398  [INFO] TC#0000: Check help link on Unknown Devices popup
-2017-03-10 17:33:18,233  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-10 17:33:25,197  [ERROR] TEST FAILED: Expected header: Unknown Devices !=  Actual header: Devices
-2017-03-10 17:33:32,157  [INFO] [Test end]
-
-2017-03-10 17:33:32,157  [INFO] End testing
-
-2017-03-10 17:45:16,880  [INFO] Start testing
-
-2017-03-10 17:45:16,880  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 17:45:29,029  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 17:45:30,756  [INFO] Login page is present
-
-2017-03-10 17:46:21,493  [INFO] Start testing
-
-2017-03-10 17:46:21,493  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 17:46:33,161  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 17:46:34,897  [INFO] Login page is present
-
-2017-03-10 17:46:48,651  [INFO] [Test start]
-2017-03-10 17:46:48,808  [INFO] TC#0000: Check help link on Successful Devices popup
-2017-03-10 17:47:12,263  [ERROR] WAITING. Element //span[contains(text(),'Tasks')][@dir='LTR'][contains(@style,'White')]/ancestor::div[@class='Label-Control']/parent::div/parent::div/parent::div/parent::div/parent::div/*//div[@data-vwgdocking='F']/*//span[contains(text(),'Successfully')] is NOT found after 12 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 231, in _wait_for_element_present
-    self.wait_webelement.until(EC.visibility_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-10 17:47:13,857  [INFO] [Test end]
-
-2017-03-10 17:47:13,857  [INFO] End testing
-
-2017-03-10 17:48:25,351  [INFO] Start testing
-
-2017-03-10 17:48:25,351  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 17:48:37,210  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 17:48:38,884  [INFO] Login page is present
-
-2017-03-10 17:48:50,779  [INFO] [Test start]
-2017-03-10 17:48:50,871  [INFO] TC#0000: Check help link on Successful Devices popup
-2017-03-10 17:49:13,148  [ERROR] WAITING. Element //span[contains(text(),'Tasks')][@dir='LTR'][contains(@style,'White')]/ancestor::div[@class='Label-Control']/parent::div/parent::div/parent::div/parent::div/parent::div/*//div[@data-vwgdocking='F']/*//span[contains(text(),'Successfully')] is NOT found after 12 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 231, in _wait_for_element_present
-    self.wait_webelement.until(EC.visibility_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-10 17:49:14,743  [INFO] [Test end]
-
-2017-03-10 17:49:14,743  [INFO] End testing
-
-2017-03-10 17:50:10,315  [INFO] Start testing
-
-2017-03-10 17:50:10,315  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 17:50:22,598  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 17:50:24,301  [INFO] Login page is present
-
-2017-03-10 17:50:36,950  [INFO] [Test start]
-2017-03-10 17:50:37,045  [INFO] TC#0000: Check help link on Successful Devices popup
-2017-03-10 17:50:59,052  [ERROR] WAITING. Element //span[contains(text(),'Tasks')][@dir='LTR'][contains(@style,'White')]/ancestor::div[@class='Label-Control']/parent::div/parent::div/parent::div/parent::div/parent::div/*//div[@data-vwgdocking='F']/*//span[contains(text(),'Successfully')] is NOT found after 12 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 231, in _wait_for_element_present
-    self.wait_webelement.until(EC.visibility_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-10 17:51:01,986  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-10 17:51:09,059  [ERROR] TEST FAILED: Expected header: Successful Devices !=  Actual header: Devices
-2017-03-10 17:51:16,141  [INFO] [Test end]
-
-2017-03-10 17:51:16,141  [INFO] End testing
-
-2017-03-10 17:51:52,878  [INFO] Start testing
-
-2017-03-10 17:51:52,878  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 17:52:04,388  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 17:52:06,068  [INFO] Login page is present
-
-2017-03-10 17:52:18,822  [INFO] [Test start]
-2017-03-10 17:52:18,915  [INFO] TC#0000: Check help link on Successful Devices popup
-2017-03-10 17:52:40,569  [ERROR] WAITING. Element //span[contains(text(),'Tasks')][@dir='LTR'][contains(@style,'White')]/ancestor::div[@class='Label-Control']/parent::div/parent::div/parent::div/parent::div/parent::div/*//div[@data-vwgdocking='F']/*//span[contains(text(),'Successfully')] is NOT found after 12 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 231, in _wait_for_element_present
-    self.wait_webelement.until(EC.visibility_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-10 17:52:51,127  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-10 17:52:58,295  [ERROR] TEST FAILED: Expected header: Successful Devices !=  Actual header: Devices
-2017-03-10 17:53:05,319  [INFO] [Test end]
-
-2017-03-10 17:53:05,319  [INFO] End testing
-
-2017-03-10 17:53:48,101  [INFO] Start testing
-
-2017-03-10 17:53:48,101  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 17:54:04,520  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 17:54:06,219  [INFO] Login page is present
-
-2017-03-10 17:54:18,575  [INFO] [Test start]
-2017-03-10 17:54:18,653  [INFO] TC#0000: Check help link on Successful Devices popup
-2017-03-10 17:54:30,907  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-10 17:54:37,861  [ERROR] TEST FAILED: Expected header: Successful Devices !=  Actual header: Devices
-2017-03-10 17:54:48,960  [INFO] [Test end]
-
-2017-03-10 17:54:48,960  [INFO] End testing
-
-2017-03-10 17:56:04,865  [INFO] Start testing
-
-2017-03-10 17:56:04,865  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 17:56:21,012  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 17:56:22,690  [INFO] Login page is present
-
-2017-03-10 17:56:34,484  [INFO] [Test start]
-2017-03-10 17:56:34,578  [INFO] TC#0000: Check help link on Devices In Progress popup
-2017-03-10 17:56:43,410  [ERROR] CLICK: Element is NOT CLICKABLE.
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 109, in _click_element
-    self._find_element(locator).click()
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webelement.py", line 77, in click
-    self._execute(Command.CLICK_ELEMENT)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webelement.py", line 494, in _execute
-    return self._parent.execute(command, params)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 236, in execute
-    self.error_handler.check_response(response)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 192, in check_response
-    raise exception_class(message, screen, stacktrace)
-ElementNotVisibleException: Message: element not visible
-  (Session info: chrome=56.0.2924.87)
-  (Driver info: chromedriver=2.26.436362 (5476ec6bf7ccbada1734a0cdec7d570bb042aa30),platform=Windows NT 10.0.10240 x86_64)
-
-2017-03-10 17:56:44,957  [INFO] [Test end]
-
-2017-03-10 17:56:44,957  [INFO] End testing
-
-2017-03-10 18:02:24,924  [INFO] Start testing
-
-2017-03-10 18:02:24,924  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 18:02:37,207  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 18:02:38,881  [INFO] Login page is present
-
-2017-03-10 18:02:51,657  [INFO] [Test start]
-2017-03-10 18:02:51,736  [INFO] TC#0000: Check help link on Devices In Progress popup
-2017-03-10 18:03:13,385  [ERROR] WAITING. Element //span[contains(text(),'Tasks')][@dir='LTR'][contains(@style,'White')]/ancestor::div[@class='Label-Control']/parent::div/parent::div/parent::div/parent::div/parent::div/*//div[@data-vwgdocking='F']/*//span[contains(text(),'To Be Done')] is NOT found after 12 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 231, in _wait_for_element_present
-    self.wait_webelement.until(EC.visibility_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-10 18:03:16,220  [INFO] Help window is opened. Title is: ConsoleOperationGuide
-2017-03-10 18:03:23,214  [ERROR] TEST FAILED: Expected header: Devices In Progress !=  Actual header: Devices
-2017-03-10 18:03:30,181  [INFO] [Test end]
-
-2017-03-10 18:03:30,181  [INFO] End testing
-
-2017-03-10 18:03:55,155  [INFO] Start testing
-
-2017-03-10 18:03:55,155  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 18:04:12,477  [INFO] Start testing
-
-2017-03-10 18:04:12,477  [INFO] TEST SUITE: HELP LINKS ON MAIN PAGE
-
-2017-03-10 18:04:25,548  [INFO] OPEN. Instance https://testteamtest.cloudmanagementsuite.com/ is loaded
-
-2017-03-10 18:04:27,242  [INFO] Login page is present
-
-2017-03-10 18:04:39,022  [INFO] [Test start]
-2017-03-10 18:04:39,086  [INFO] TC#0000: Check help link on Devices with Partial Success popup
-2017-03-10 18:04:59,852  [ERROR] WAITING. Element //span[contains(text(),'Tasks')][@dir='LTR'][contains(@style,'White')]/ancestor::div[@class='Label-Control']/parent::div/parent::div/parent::div/parent::div/parent::div/*//div[@data-vwgdocking='F']/*//span[contains(text(),'Partially Patched')] is NOT found after 12 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-10 18:04:59,861  [ERROR] FIND ELEMENT. Element //span[contains(text(),'Tasks')][@dir='LTR'][contains(@style,'White')]/ancestor::div[@class='Label-Control']/parent::div/parent::div/parent::div/parent::div/parent::div/*//div[@data-vwgdocking='F']/*//span[contains(text(),'Partially Patched')] is NOT found
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 186, in _find_element
-    element = self.driver.find_element(By.XPATH, locator)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 752, in find_element
-    'value': value})['value']
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 236, in execute
-    self.error_handler.check_response(response)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 192, in check_response
-    raise exception_class(message, screen, stacktrace)
-NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//span[contains(text(),'Tasks')][@dir='LTR'][contains(@style,'White')]/ancestor::div[@class='Label-Control']/parent::div/parent::div/parent::div/parent::div/parent::div/*//div[@data-vwgdocking='F']/*//span[contains(text(),'Partially Patched')]"}
-  (Session info: chrome=56.0.2924.87)
-  (Driver info: chromedriver=2.26.436362 (5476ec6bf7ccbada1734a0cdec7d570bb042aa30),platform=Windows NT 10.0.10240 x86_64)
-
-2017-03-10 18:04:59,871  [ERROR] SCROLL. Error on scroll to element method.
- Message Message: unknown error: Cannot read property 'scrollIntoView' of null
-  (Session info: chrome=56.0.2924.87)
-  (Driver info: chromedriver=2.26.436362 (5476ec6bf7ccbada1734a0cdec7d570bb042aa30),platform=Windows NT 10.0.10240 x86_64)
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 472, in scroll_to_element
-    self.driver.execute_script("return arguments[0].scrollIntoView();", element)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 465, in execute_script
-    'args': converted_args})['value']
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 236, in execute
-    self.error_handler.check_response(response)
-  File "D:\python\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 192, in check_response
-    raise exception_class(message, screen, stacktrace)
-WebDriverException: Message: unknown error: Cannot read property 'scrollIntoView' of null
-  (Session info: chrome=56.0.2924.87)
-  (Driver info: chromedriver=2.26.436362 (5476ec6bf7ccbada1734a0cdec7d570bb042aa30),platform=Windows NT 10.0.10240 x86_64)
-
-2017-03-10 18:05:12,167  [ERROR] WAITING. Element //span[contains(text(),'Tasks')][@dir='LTR'][contains(@style,'White')]/ancestor::div[@class='Label-Control']/parent::div/parent::div/parent::div/parent::div/parent::div/*//div[@data-vwgdocking='F']/*//span[contains(text(),'Partially Patched')] is NOT found after 12 seconds
-Traceback (most recent call last):
-  File "D:\python\vcms\vcms\page_object\_base\base.py", line 230, in _wait_for_element_present
-    self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-  File "D:\python\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
-    raise TimeoutException(message, screen, stacktrace)
-TimeoutException: Message: 
-
-2017-03-10 18:05:13,709  [INFO] [Test end]
-
-2017-03-10 18:05:13,709  [INFO] End testing
-
+2017-03-16 17:11:15,197  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:11:22,121  [ERROR] TEST FAILED: Expected header: On Demand Inventory Scan !=  Actual header: Devices
+2017-03-16 17:11:34,644  [INFO] [Test end]
+
+2017-03-16 17:11:34,644  [INFO] [Test start]
+2017-03-16 17:11:37,381  [INFO] TC#0000: Check help link on Patch Component Details popup
+2017-03-16 17:12:17,036  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:12:24,009  [ERROR] TEST FAILED: Expected header: Patch Component Details !=  Actual header: Component Details
+2017-03-16 17:12:33,486  [INFO] [Test end]
+
+2017-03-16 17:12:33,486  [INFO] [Test start]
+2017-03-16 17:12:39,079  [INFO] TC#0000: Check help link on Patch Manager popup
+2017-03-16 17:12:58,306  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:13:03,690  [INFO] Expected header: Software Updates == Actual header: Software Updates
+2017-03-16 17:13:03,690  [INFO] TEST PASSED
+2017-03-16 17:13:10,779  [INFO] [Test end]
+
+2017-03-16 17:13:10,780  [INFO] [Test start]
+2017-03-16 17:13:17,403  [INFO] TC#0000: Check help link on Ping Result popup
+2017-03-16 17:14:04,118  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:14:11,013  [ERROR] TEST FAILED: Expected header: Ping Result !=  Actual header: Troubleshooting Devices
+2017-03-16 17:14:18,581  [INFO] [Test end]
+
+2017-03-16 17:14:18,581  [INFO] [Test start]
+2017-03-16 17:14:23,572  [INFO] TC#0000: Check help link on IP Process Explorer popup
+2017-03-16 17:16:08,990  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:16:15,920  [ERROR] TEST FAILED: Expected header: Process Explorer !=  Actual header: Troubleshooting Devices
+2017-03-16 17:16:25,670  [INFO] [Test end]
+
+2017-03-16 17:16:25,670  [INFO] [Test start]
+2017-03-16 17:16:31,190  [INFO] TC#0000: Check help link on Queries screen
+2017-03-16 17:16:37,144  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:16:44,142  [ERROR] TEST FAILED. Header: Server Error. Message: 404 - File or directory not found.
+2017-03-16 17:16:45,703  [INFO] [Test end]
+
+2017-03-16 17:16:45,703  [INFO] [Test start]
+2017-03-16 17:16:45,798  [INFO] TC#0000: Check help link on Query Designer popup
+2017-03-16 17:16:52,186  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:16:57,542  [INFO] Expected header: Queries == Actual header: Queries
+2017-03-16 17:16:57,542  [INFO] TEST PASSED
+2017-03-16 17:17:07,173  [INFO] [Test end]
+
+2017-03-16 17:17:07,174  [INFO] [Test start]
+2017-03-16 17:17:07,305  [INFO] TC#0000: Check help link on Reports popup
+2017-03-16 17:17:41,555  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:17:46,957  [INFO] Expected header: Reports == Actual header: Reports
+2017-03-16 17:17:46,957  [INFO] TEST PASSED
+2017-03-16 17:17:55,553  [INFO] [Test end]
+
+2017-03-16 17:17:55,553  [INFO] [Test start]
+2017-03-16 17:18:01,164  [INFO] TC#0000: Check help link on Select Targets popup (Devices)
+2017-03-16 17:18:11,183  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:18:18,040  [ERROR] TEST FAILED: Expected header: Select Targets !=  Actual header: Devices
+2017-03-16 17:18:37,328  [INFO] [Test end]
+
+2017-03-16 17:18:37,328  [INFO] [Test start]
+2017-03-16 17:18:37,387  [INFO] TC#0000: Check help link on Site Name popup
+2017-03-16 17:18:44,157  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:18:49,509  [INFO] Expected header: Create a site == Actual header: Create a site
+2017-03-16 17:18:49,510  [INFO] TEST PASSED
+2017-03-16 17:18:59,545  [INFO] [Test end]
+
+2017-03-16 17:18:59,545  [INFO] [Test start]
+2017-03-16 17:18:59,670  [INFO] TC#0000: Check help link on Wake on LAN popup
+2017-03-16 17:19:18,548  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:19:23,891  [INFO] Expected header: Wake Up == Actual header: Wake Up
+2017-03-16 17:19:23,891  [INFO] TEST PASSED
+2017-03-16 17:19:30,934  [INFO] [Test end]
+
+2017-03-16 17:19:30,934  [INFO] [Test start]
+2017-03-16 17:19:33,743  [INFO] TC#0000: Check help link on WMI Explorer popup
+2017-03-16 17:20:03,107  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:20:10,078  [ERROR] TEST FAILED: Expected header: Process Explorer !=  Actual header: Troubleshooting Devices
+2017-03-16 17:20:18,707  [INFO] [Test end]
+
+2017-03-16 17:20:18,707  [INFO] [Test start]
+2017-03-16 17:20:23,138  [INFO] TC#0000: Check help link on End User Access login page
+2017-03-16 17:20:30,894  [INFO] OPEN. Page https://testteamtest.cloudmanagementsuite.com/EndUserAccess.wgx is loaded
+
+2017-03-16 17:20:32,573  [INFO] End User Access Login page is presented
+
+2017-03-16 17:20:35,255  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:20:40,602  [INFO] Expected header: End User Access Page == Actual header: End User Access Page
+2017-03-16 17:20:40,746  [INFO] TEST PASSED
+2017-03-16 17:20:42,301  [INFO] [Test end]
+
+2017-03-16 17:20:42,301  [INFO] [Test start]
+2017-03-16 17:20:43,615  [INFO] TC#0000: Check help link on Administration home screen
+2017-03-16 17:20:55,828  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:21:02,759  [ERROR] TEST FAILED: Expected header: Administration !=  Actual header: Getting Started in CMS
+2017-03-16 17:21:04,348  [INFO] [Test end]
+
+2017-03-16 17:21:04,348  [INFO] [Test start]
+2017-03-16 17:21:04,447  [INFO] TC#0000: Check help link on Devices home screen
+2017-03-16 17:21:28,181  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:21:35,134  [ERROR] TEST FAILED: Expected header: Devices !=  Actual header: Getting Started in CMS
+2017-03-16 17:21:36,711  [INFO] [Test end]
+
+2017-03-16 17:21:36,711  [INFO] [Test start]
+2017-03-16 17:21:36,793  [INFO] TC#0000: Check help link on Home screen
+2017-03-16 17:22:10,625  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:22:15,946  [INFO] Expected header: Getting Started in CMS == Actual header: Getting Started in CMS
+2017-03-16 17:22:15,946  [INFO] TEST PASSED
+2017-03-16 17:22:17,523  [INFO] [Test end]
+
+2017-03-16 17:22:17,523  [INFO] [Test start]
+2017-03-16 17:22:17,627  [INFO] TC#0000: Check help link on Reporting home screen
+2017-03-16 17:22:37,140  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:22:44,069  [ERROR] TEST FAILED: Expected header: Reporting !=  Actual header: Getting Started in CMS
+2017-03-16 17:22:45,645  [INFO] [Test end]
+
+2017-03-16 17:22:45,645  [INFO] [Test start]
+2017-03-16 17:22:45,759  [INFO] TC#0000: Check help link on Software and Patch Manager home screen
+2017-03-16 17:23:22,299  [INFO] Help window is opened. Title is: ConsoleOperationGuide
+2017-03-16 17:23:29,178  [ERROR] TEST FAILED: Expected header: Software / Patch Manager !=  Actual header: Getting Started in CMS
+2017-03-16 17:23:30,769  [INFO] [Test end]
+
+2017-03-16 17:23:30,769  [INFO] [Test start]
+2017-03-16 17:23:30,872  [INFO] TC#0000: Check help link on Tasks home screen

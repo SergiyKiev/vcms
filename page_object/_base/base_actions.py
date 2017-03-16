@@ -2,6 +2,7 @@ import time
 
 from _base.base_elements import *
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from selenium.webdriver import ActionChains
 
 
 class BaseActions(Base):
@@ -100,6 +101,9 @@ class BaseActions(Base):
 
     def _click_button_delete(self, locator):
         self._click_element(locator + BaseElements.BUTTON_DELETE)
+
+    def _click_button_component_details(self, locator):
+        self._click_element(locator + BaseElements.BUTTON_COMPONENT_DETAILS)
 
     def _click_icon_help(self, locator):
         try:
@@ -240,8 +244,7 @@ class BaseActions(Base):
         except IndexError:
             return self.logger.error("Help window is not found")
         except Exception as e:
-            return  self.logger.exception("Help window is not found" + str(e))
-
+            return self.logger.exception("Help window is not found" + str(e))
 
     def _get_log_for_help_link(self, expected_header_name):
         try:
@@ -274,4 +277,18 @@ class BaseActions(Base):
         except IndexError:
             help_window = 'null'
             self.logger.exception("Help window is NOT found " + str(help_window))
+
+    # def _resize_element(self, x_offset=0, y_offset=100):
+    #     # element = self._find_element(BaseElements.VERTICAL_RESIZE)
+    #     # self.driver.execute_script("arguments[0].setAttribute('style', 'top: [1]px')", element, y_offset)
+    #     time.sleep(2)
+    #     action = ActionChains(self.driver)
+    #     self.wait_for_screen_is_unlocked()
+    #     element = self._find_element(BaseElements.VERTICAL_RESIZE)
+    #     e = element.location
+    #     print e
+    #     action.click_and_hold(element).move_by_offset(0, 100).release(element).perform()
+    #     cond = action.drag_and_drop_by_offset(element, x_offset, y_offset)
+    #     if cond is not None:
+    #         print "Page is resized"
 

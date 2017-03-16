@@ -121,6 +121,7 @@ class RibbonBar(BaseRibbonBar):
     MENU_ITEM_VIEW = DROP_DOWN_LIST + "/*//span[contains(text(),'View')]" + MENU_ITEM
     MENU_ITEM_ON_DEMAND = DROP_DOWN_LIST + "/*//span[contains(text(),'On Demand')]" + MENU_ITEM
     MENU_ITEM_CREATE_QUERY_REPORT = DROP_DOWN_LIST + "/*//span[text()='Create Query Report']" + MENU_ITEM
+    MENU_ITEM_NEW_QUERY = DROP_DOWN_LIST + "/*//span[text()='New Query']" + MENU_ITEM
 
     def buttons_box_discovery(self):
         locator = self._set_ribbon_bar_buttons_box(self.DISCOVERY_TASK)
@@ -336,6 +337,10 @@ class RibbonBar(BaseRibbonBar):
         self._wait_for_element_not_present(self.DROP_DOWN_LIST)
         # self._wait_for_element_present(NewGroupPopup.BODY)
 
+    def click_menu_item_new_query(self):
+        self._click_element(RibbonBar.MENU_ITEM_NEW_QUERY)
+        self._wait_for_element_not_present(self.DROP_DOWN_LIST)
+
     def click_menu_item_view(self):
         self._click_element(RibbonBar.MENU_ITEM_VIEW)
         self._wait_for_element_not_present(self.DROP_DOWN_LIST)
@@ -448,14 +453,14 @@ class RibbonBar(BaseRibbonBar):
 
     def check_box_updates_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_UPDATES)
-        msg_true = "Buttons box '" + self.UPDATES + "' is present"
+        msg_true = "Buttons box '" + self.UPDATES + "' is presented"
         msg_false = "Buttons box '" + self.UPDATES + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def check_maintenance_windows_box_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_MAINTENANCE_WINDOWS)
-        msg_true = "Buttons box '" + self.USERS + "' is present"
+        msg_true = "Buttons box '" + self.USERS + "' is presented"
         msg_false = "Buttons box '" + self.USERS + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -502,14 +507,14 @@ class RibbonBar(BaseRibbonBar):
 
     def check_box_column_sets_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_COLUMN_SETS)
-        msg_true = "Buttons box '" + self.COLUMN_SETS + "' is present"
+        msg_true = "Buttons box '" + self.COLUMN_SETS + "' is presented"
         msg_false = "Buttons box '" + self.COLUMN_SETS + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
 
     def check_box_users_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTONS_BOX_USERS)
-        msg_true = "Buttons box '" + self.USERS + "' is present"
+        msg_true = "Buttons box '" + self.USERS + "' is presented"
         msg_false = "Buttons box '" + self.USERS + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -555,7 +560,7 @@ class RibbonBar(BaseRibbonBar):
 
     def check_button_new_site_is_presented(self):
         cond = self._wait_for_element_present(RibbonBar.BUTTON_NEW_SITE)
-        msg_true = "Button 'New Site' is present"
+        msg_true = "Button 'New Site' is presented"
         msg_false = "Button 'New Site' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -598,7 +603,11 @@ class RibbonBar(BaseRibbonBar):
 
     def check_drop_down_list_is_presented(self):
         cond = self._wait_for_element_present(self.DROP_DOWN_LIST)
-        msg_true = "Drop Down list '" + self.HOME + "' is present"
+        msg_true = "Drop Down list '" + self.HOME + "' is presented"
         msg_false = "Drop Down list '" + self.HOME + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
+        return True if cond else False
+
+    def check_button_end_user_access_is_presented(self):
+        cond = self._wait_for_element_present(self.BUTTON_END_USER_ACCESS)
         return True if cond else False

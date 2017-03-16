@@ -521,8 +521,7 @@ class Locators:
 
 
   '''RADIO BUTTON XPATH'''
-  RB_CHECKED                      = "//td[contains(@style,'Radio1')]"
-  RB_UNCHECKED                    = "//td[contains(@style,'Radio0')]"
+
   RB_ALL_DEVICES                  = "//span[text()='All Devices']/ancestor::div[contains(@class,'RadioButton')]"
   RB_SPECIFIC_DEVICES             = "//span[text()='Specific devices (select below)']/" \
                                                     "ancestor::div[contains(@class,'RadioButton')]"

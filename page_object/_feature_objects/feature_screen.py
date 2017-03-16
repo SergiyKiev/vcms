@@ -128,7 +128,7 @@ class DevicesScreen(BaseScreen):
 
     def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
-        msg_true = "Screen '" + self.DEVICES + "' is present"
+        msg_true = "Screen '" + self.DEVICES + "' is presented"
         msg_false = "Screen '" + self.DEVICES + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -156,7 +156,7 @@ class DevicesScreen(BaseScreen):
 
     def check_device_is_presented(self, name=Variables.vrep):
         cond = self._wait_for_element_present(self.screen_table_row() + "/*//span[text()='" + str(name) + "']/ancestor::tr")
-        msg_true = "Device '" + name + "' is present"
+        msg_true = "Device '" + name + "' is presented"
         msg_false = "Device '" + name + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -251,7 +251,7 @@ class GroupsScreen(BaseScreen):
 
     def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
-        msg_true = "Screen '" + self.GROUPS + "' is present"
+        msg_true = "Screen '" + self.GROUPS + "' is presented"
         msg_false = "Screen '" + self.GROUPS + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -327,7 +327,7 @@ class QueriesScreen(BaseScreen):
 
     def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
-        msg_true = "Screen '" + self.QUERIES + "' is present"
+        msg_true = "Screen '" + self.QUERIES + "' is presented"
         msg_false = "Screen '" + self.QUERIES + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -403,7 +403,7 @@ class AdministrationScreen(BaseScreen):
 
     def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
-        msg_true = "Screen '" + self.ADMINISTRATION + "' is present"
+        msg_true = "Screen '" + self.ADMINISTRATION + "' is presented"
         msg_false = "Screen '" + self.ADMINISTRATION + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -437,7 +437,7 @@ class EndpointManagementScreen(BaseScreen):
 
     def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
-        msg_true = "Screen '" + self.ENDPOINT_MANAGEMENT + "' is present"
+        msg_true = "Screen '" + self.ENDPOINT_MANAGEMENT + "' is presented"
         msg_false = "Screen '" + self.ENDPOINT_MANAGEMENT + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -479,7 +479,7 @@ class DynamicallyManagedScreen(BaseScreen):
 
     def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
-        msg_true = "Screen '" + self.DYNAMICALLY_MANAGED + "' is present"
+        msg_true = "Screen '" + self.DYNAMICALLY_MANAGED + "' is presented"
         msg_false = "Screen '" + self.DYNAMICALLY_MANAGED + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -544,7 +544,7 @@ class UnmanagedDevicesScreen(BaseScreen):
 
     def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
-        msg_true = "Screen '" + self.UNMANAGED_DEVICES + "' is present"
+        msg_true = "Screen '" + self.UNMANAGED_DEVICES + "' is presented"
         msg_false = "Screen '" + self.UNMANAGED_DEVICES + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -609,7 +609,7 @@ class ExcludedDevicesScreen(BaseScreen):
 
     def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
-        msg_true = "Screen '" + self.EXCLUDED_DEVICES + "' is present"
+        msg_true = "Screen '" + self.EXCLUDED_DEVICES + "' is presented"
         msg_false = "Screen '" + self.EXCLUDED_DEVICES + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -674,7 +674,7 @@ class InfrastructureScreen(BaseScreen):
 
     def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
-        msg_true = "Screen '" + self.INFRASTRUCTURE + "' is present"
+        msg_true = "Screen '" + self.INFRASTRUCTURE + "' is presented"
         msg_false = "Screen '" + self.INFRASTRUCTURE + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -734,7 +734,7 @@ class SiteConfigurationScreen(BaseScreen):
 
     def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
-        msg_true = "Screen '" + self.SITE_CONFIGURATION + "' is present"
+        msg_true = "Screen '" + self.SITE_CONFIGURATION + "' is presented"
         msg_false = "Screen '" + self.SITE_CONFIGURATION + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -789,7 +789,7 @@ class EventLogsScreen(BaseScreen):
 
     def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
-        msg_true = "Screen '" + self.EVENT_LOGS + "' is present"
+        msg_true = "Screen '" + self.EVENT_LOGS + "' is presented"
         msg_false = "Screen '" + self.EVENT_LOGS + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -840,7 +840,7 @@ class ColumnSetsScreen(BaseScreen):
 
     def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
-        msg_true = "Screen '" + self.COLUMN_SETS + "' is present"
+        msg_true = "Screen '" + self.COLUMN_SETS + "' is presented"
         msg_false = "Screen '" + self.COLUMN_SETS + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -892,7 +892,7 @@ class UsersScreen(BaseScreen):
 
     def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
-        msg_true = "Screen '" + self.USERS + "' is present"
+        msg_true = "Screen '" + self.USERS + "' is presented"
         msg_false = "Screen '" + self.USERS + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -953,7 +953,7 @@ class InventoryConfigurationScreen(BaseScreen):
 
     def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
-        msg_true = "Screen '" + self.INVENTORY_CONFIGURATION + "' is present"
+        msg_true = "Screen '" + self.INVENTORY_CONFIGURATION + "' is presented"
         msg_false = "Screen '" + self.INVENTORY_CONFIGURATION + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -1026,7 +1026,7 @@ class VRepsScreen(BaseScreen):
 
     def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
-        msg_true = "Screen '" + self.VREPS + "' is present"
+        msg_true = "Screen '" + self.VREPS + "' is presented"
         msg_false = "Screen '" + self.VREPS + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -1186,7 +1186,7 @@ class MaintenanceWindowsScreen(BaseScreen):
 
     def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
-        msg_true = "Screen '" + self.MAINTENANCE_WINDOWS + "' is present"
+        msg_true = "Screen '" + self.MAINTENANCE_WINDOWS + "' is presented"
         msg_false = "Screen '" + self.MAINTENANCE_WINDOWS + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -1194,7 +1194,7 @@ class MaintenanceWindowsScreen(BaseScreen):
     def check_maintenance_window_is_presented(self, name):
         row = self.screen_table_body() + "/*//span[text()='" + name + "']/ancestor::tr"
         cond = self._wait_for_element_present(row)
-        msg_true = "Maintenance window " + str(name) + "' is present"
+        msg_true = "Maintenance window " + str(name) + "' is presented"
         msg_false = "Maintenance window " + str(name) + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -1214,7 +1214,7 @@ class NotificationsScreen(BaseScreen):
 
     def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
-        msg_true = "Screen '" + self.NOTIFICATIONS + "' is present"
+        msg_true = "Screen '" + self.NOTIFICATIONS + "' is presented"
         msg_false = "Screen '" + self.NOTIFICATIONS + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -1237,7 +1237,7 @@ class SoftwareAndPatchManagerScreen(BaseScreen):
 
     def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
-        msg_true = "Screen '" + self.SOFTWARE_AND_PATCH_MANAGER + "' is present"
+        msg_true = "Screen '" + self.SOFTWARE_AND_PATCH_MANAGER + "' is presented"
         msg_false = "Screen '" + self.SOFTWARE_AND_PATCH_MANAGER + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -1256,6 +1256,8 @@ class TasksScreen(BaseScreen):
     TO_BE_DONE = "To Be Done"
     FAILED_TO = "Failed To"
     PARTIALLY_PATCHED = "Partially Patched"
+    DEVICES = "Devices"
+    VIEW_SOFTWARE_UPDATE_DETAILS = "View Software Update Details"
 
     def screen_body(self):
         locator = self._set_screen_body(self.TASKS)
@@ -1297,6 +1299,7 @@ class TasksScreen(BaseScreen):
         self._click_element(self.clickable_label(self.TO_SCAN))
 
     def click_label_devices_discovered(self):
+        self.scroll_to_element(self.clickable_label(self.DISCOVERED))
         self._click_element(self.clickable_label(self.DISCOVERED))
 
     def click_label_unknown_devices(self):
@@ -1322,9 +1325,24 @@ class TasksScreen(BaseScreen):
         self._click_element(element)
         self._wait_for_element_selected(element + "/ancestor::tr")
 
+    def click_tab_devices(self):
+        element = self.screen_body() + "/*//span[text()='" + self.DEVICES + "']/ancestor::div[contains(@id,'TAB')]"
+        self._click_element(element)
+        self._wait_for_element_selected(element)
+
+    def click_device_in_table(self, device):
+        element = self.screen_body() + "/*//div[contains(@id,'BODY')]/*//span[text()='" + device + "']"
+        self._click_element(element)
+        self._wait_for_element_selected(element + "/ancestor::tr")
+
+    def click_button_view_software_update_details(self):
+        element = self.screen_body() + "/*//span[contains(text(),'" \
+                  + self.VIEW_SOFTWARE_UPDATE_DETAILS + "')]/ancestor::div[contains(@class,'Button')]"
+        self._click_element(element)
+
     def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
-        msg_true = "Screen '" + self.TASKS + "' is present"
+        msg_true = "Screen '" + self.TASKS + "' is presented"
         msg_false = "Screen '" + self.TASKS + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -1347,23 +1365,43 @@ class TasksScreen(BaseScreen):
         return True if cond else False
 
     def check_label_devices_successfully_scanned_is_presented(self):
-        self.scroll_to_element(self.clickable_label(self.SUCCESSFULLY))
+        # self._resize_element()
+        # self.scroll_to_element(self.clickable_label(self.SUCCESSFULLY))
         cond = self._wait_for_element_present(self.clickable_label(self.SUCCESSFULLY))
         return True if cond else False
 
     def check_label_devices_still_to_be_done_is_presented(self):
-        self.scroll_to_element(self.clickable_label(self.TO_BE_DONE))
+        # self._resize_element()
+        # self.scroll_to_element(self.clickable_label(self.TO_BE_DONE))
         cond = self._wait_for_element_present(self.clickable_label(self.TO_BE_DONE))
         return True if cond else False
 
     def check_label_devices_failed_to_patch_is_presented(self):
-        self.scroll_to_element(self.clickable_label(self.FAILED_TO))
+        # self._resize_element()
+        # self.scroll_to_element(self.clickable_label(self.FAILED_TO))
         cond = self._wait_for_element_present(self.clickable_label(self.FAILED_TO))
         return True if cond else False
 
     def check_label_devices_partially_patched_is_presented(self):
-        self.scroll_to_element(self.clickable_label(self.PARTIALLY_PATCHED))
+        # self._resize_element()
+        # self.scroll_to_element(self.clickable_label(self.PARTIALLY_PATCHED))
         cond = self._wait_for_element_present(self.clickable_label(self.PARTIALLY_PATCHED))
+        return True if cond else False
+
+    def check_device_is_present_in_table(self, device):
+        element= self.screen_body() + "/*//div[contains(@id,'BODY')]/*//span[text()='" + device + "']"
+        cond = self._wait_for_element_present(element)
+        return True if cond else False
+
+    def check_button_view_software_update_is_presented(self):
+        element = self.screen_body() + "/*//span[contains(text(),'" \
+                  + self.VIEW_SOFTWARE_UPDATE_DETAILS + "')]/ancestor::div[contains(@class,'Button')]"
+        cond = self._wait_for_element_present(element)
+        return True if cond else False
+
+    def check_tab_devices_is_presented(self):
+        element = self.screen_body() + "/*//span[text()='" + self.DEVICES + "']/ancestor::div[contains(@id,'TAB')]"
+        cond = self._wait_for_element_present(element)
         return True if cond else False
 
 
@@ -1381,7 +1419,7 @@ class ReportingScreen(BaseScreen):
 
     def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_body())
-        msg_true = "Screen '" + self.REPORTING + "' is present"
+        msg_true = "Screen '" + self.REPORTING + "' is presented"
         msg_false = "Screen '" + self.REPORTING + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -1407,7 +1445,7 @@ class AuditLogScreen(BaseScreen):
     def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
         # print str(self.screen_header()) + " - " + str(cond)
-        msg_true = "Screen '" + self.AUDIT_LOG + "' is present"
+        msg_true = "Screen '" + self.AUDIT_LOG + "' is presented"
         msg_false = "Screen '" + self.AUDIT_LOG + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -1450,7 +1488,7 @@ class ApplicationsScreen(BaseScreen):
 
     def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
-        msg_true = "Screen '" + self.APPLICATIONS + "' is present"
+        msg_true = "Screen '" + self.APPLICATIONS + "' is presented"
         msg_false = "Screen '" + self.APPLICATIONS + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -1512,7 +1550,7 @@ class PatchMangerScreen(BaseScreen):
 
     def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
-        msg_true = "Screen '" + self.PATCH_MANAGER + "' is present"
+        msg_true = "Screen '" + self.PATCH_MANAGER + "' is presented"
         msg_false = "Screen '" + self.PATCH_MANAGER + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -1576,7 +1614,7 @@ class ManageInstallMediaScreen(BaseScreen):
 
     def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
-        msg_true = "Screen '" + self.MANAGE_INSTALL_MEDIA + "' is present"
+        msg_true = "Screen '" + self.MANAGE_INSTALL_MEDIA + "' is presented"
         msg_false = "Screen '" + self.MANAGE_INSTALL_MEDIA + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -1615,7 +1653,7 @@ class MyDashboardsScreen(BaseScreen):
 
     def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
-        msg_true = "Screen '" + self.MY_DASHBOARDS + "' is present"
+        msg_true = "Screen '" + self.MY_DASHBOARDS + "' is presented"
         msg_false = "Screen '" + self.MY_DASHBOARDS + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -1638,7 +1676,7 @@ class MyReportsScreen(BaseScreen):
 
     def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
-        msg_true = "Screen '" + self.MY_REPORTS + "' is present"
+        msg_true = "Screen '" + self.MY_REPORTS + "' is presented"
         msg_false = "Screen '" + self.MY_REPORTS + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False
@@ -1661,7 +1699,7 @@ class SharedReportsScreen(BaseScreen):
 
     def check_screen_is_presented(self):
         cond = self._wait_for_element_present(self.screen_header())
-        msg_true = "Screen '" + self.SHARED_REPORTS + "' is present"
+        msg_true = "Screen '" + self.SHARED_REPORTS + "' is presented"
         msg_false = "Screen '" + self.SHARED_REPORTS + "' is NOT present"
         self._set_log_for_true_or_false(cond, msg_true, msg_false)
         return True if cond else False

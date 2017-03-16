@@ -25,6 +25,7 @@ class BaseElements(Base):
     BUTTON_DELETE = "/*//span[text()='Delete']/ancestor::div[contains(@class,'Button')]"
     BUTTON_SELECT_ALL = "/*//*[text()='Select All']/ancestor::div[contains(@class,'Button')]"
     BUTTON_SELECT_NONE = "/*//*[text()='Select None']/ancestor::div[contains(@class,'Button')]"
+    BUTTON_COMPONENT_DETAILS = "/*//*[text()='Component Details']/ancestor::div[contains(@class,'Button')]"
     TABLE_HEADER = "//*[@class='Common-Unselectable ListView-Control']/*[contains(@id,'HEADER')]"
     TABLE_BODY = "//*[@class='Common-Unselectable ListView-Control']/div/*[contains(@id,'VWGLVBODY')]"
 
@@ -71,6 +72,8 @@ class BaseElements(Base):
     HELP_FRAME_TOC = "//frame[@name='FrameTOC']"
     HELP_FRAME_HEADER_SERVER_ERROR = "//h1[text()='Server Error']"
     HELP_FRAME_HEADER_GETTING_STARTED = "//h1[text()='Getting Started in CMS']"
+
+    VERTICAL_RESIZE = "//div[@class='Common-Unselectable Splitter-Control Common-VerticalResize']"
 
 
 

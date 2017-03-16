@@ -7,6 +7,7 @@ from _feature_objects.feature_left_menu import *
 from _feature_objects.feature_popup import *
 from _feature_objects.feature_ribbon_bar import *
 from _feature_objects.feature_screen import *
+from _pages.pageEndUserAccessLogin import EndUserAccessLoginPage
 from _pages.pageLogin import LoginPage
 from _pages.pageMain import MainPage
 from _test_suites._variables.variables import Variables
@@ -1359,6 +1360,7 @@ class MainPageHelpLinks(unittest.TestCase):
         left_menu.click_queries_label()
         self.assertTrue(ribbon_bar.check_queries_box_is_presented())
         ribbon_bar.click_button_new()
+        ribbon_bar.click_menu_item_new_query()
         self.assertTrue(query_designer_popup.check_popup_is_presented())
         query_designer_popup.click_icon_help()
         actual_header = query_designer_popup._get_help_frame_header()
@@ -1377,6 +1379,7 @@ class MainPageHelpLinks(unittest.TestCase):
         left_menu.click_queries_label()
         self.assertTrue(ribbon_bar.check_queries_box_is_presented())
         ribbon_bar.click_button_new()
+        ribbon_bar.click_menu_item_new_query()
         self.assertTrue(query_designer_popup.check_popup_is_presented())
         query_designer_popup.click_button_add()
         self.assertTrue(condition_editor_popup.check_popup_is_presented())
@@ -1571,6 +1574,39 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertEqual(expected_header, actual_header, patch_manager_popup._get_log_for_help_link(expected_header))
         self.logger.info("TEST PASSED")
 
+    def test_D_help_link_on_patch_component_details_popup(self):
+        self.logger.info("TC#0000: Check help link on Patch Component Details popup")
+        expected_header = "Patch Component Details"
+        device = Variables.vrep
+        patch = "KB3141501"
+        patch_manager_popup = PatchManagerPopup(self.driver)
+        patch_component_details_popup = PatchComponentDetailsPopup(self.driver)
+        ribbon_bar = RibbonBar(self.driver)
+        left_menu = LeftMenuDevices(self.driver)
+        devices_screen = DevicesScreen(self.driver)
+        left_menu.open_menu_devices()
+        left_menu.click_global_site_view_label()
+        self.assertTrue(devices_screen.check_device_is_presented(device))
+        devices_screen.select_device_in_table(device)
+        ribbon_bar.open_tab_devices()
+        self.assertTrue(ribbon_bar.check_button_patch_manager_is_presented())
+        ribbon_bar.click_button_patch_manager()
+        self.assertTrue(patch_manager_popup.check_popup_is_presented())
+        patch_manager_popup.click_label_history()
+        patch_manager_popup.enter_text_into_search_text_field_and_click_enter(patch)
+        self.assertTrue(patch_manager_popup.check_patch_is_presented(patch))
+        patch_manager_popup.click_patch_in_table(patch)
+        self.assertTrue(patch_manager_popup.check_patch_components_table_is_presented())
+        patch_manager_popup.click_first_component_in_table()
+        self.assertTrue(patch_manager_popup.check_button_component_details_is_presented())
+        patch_manager_popup.click_button_component_details()
+        self.assertTrue(patch_component_details_popup.check_popup_is_presented())
+        patch_component_details_popup.click_icon_help()
+        actual_header = patch_component_details_popup._get_help_frame_header()
+        self.assertEqual(
+            expected_header, actual_header, patch_component_details_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
     def test_D_help_link_on_reports_popup(self):
         self.logger.info("TC#0000: Check help link on Reports popup")
         expected_header = "Reports"
@@ -1590,6 +1626,43 @@ class MainPageHelpLinks(unittest.TestCase):
         reports_popup.click_icon_help()
         actual_header = reports_popup._get_help_frame_header()
         self.assertEqual(expected_header, actual_header, reports_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    def test_D_help_link_on_end_user_access_popup(self):
+        self.logger.info("TC#0000: Check help link on End User Access popup")
+        expected_header = "End User Access"
+        device = Variables.vrep
+        ribbon_bar = RibbonBar(self.driver)
+        left_menu = LeftMenuDevices(self.driver)
+        devices_screen = DevicesScreen(self.driver)
+        end_user_access_popup = EndUserAccessPopup(self.driver)
+        left_menu.open_menu_devices()
+        left_menu.click_global_site_view_label()
+        self.assertTrue(devices_screen.check_device_is_presented(device))
+        devices_screen.select_device_in_table(device)
+        ribbon_bar.open_tab_devices()
+        self.assertTrue(ribbon_bar.check_button_end_user_access_is_presented())
+        ribbon_bar.click_button_end_user_access()
+        self.assertTrue(end_user_access_popup.check_popup_is_presented())
+        end_user_access_popup.click_icon_help()
+        actual_header = end_user_access_popup._get_help_frame_header()
+        self.assertEqual(expected_header, actual_header, end_user_access_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
+    # @unittest.skip("test_EUA_help_link_on_end_user_access_login_page\n")
+    def test_EUA_help_link_on_end_user_access_login_page(self):
+        self.logger.info("TC#0000: Check help link on End User Access login page")
+        expected_header = "End User Access Page"
+        end_user_access_login_page = EndUserAccessLoginPage(self.driver)
+        end_user_access_login_page.open_page(url=Settings.endUserAccess)
+        self.assertTrue(end_user_access_login_page.check_page_is_loaded())
+        end_user_access_login_page.click_icon_help()
+        actual_header = end_user_access_login_page._get_help_frame_header()
+        self.assertEqual(
+            expected_header, actual_header, end_user_access_login_page._get_log_for_help_link(expected_header))
+        base_actions = BaseActions(self.driver)
+        base_actions._close_help_window()
+        self.driver.back()
         self.logger.info("TEST PASSED")
 
     def test_D_help_link_on_file_explorer_popup(self):
@@ -3122,6 +3195,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertEqual(expected_header, actual_header, unknown_devices_popup._get_log_for_help_link(expected_header))
         self.logger.info("TEST PASSED")
 
+    @unittest.skip("Skip test_T_help_link_on_successful_devices_popup.\n")
     def test_T_help_link_on_successful_devices_popup(self):
         self.logger.info("TC#0000: Check help link on Successful Devices popup")
         expected_header = "Successful Devices"
@@ -3146,6 +3220,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertEqual(expected_header, actual_header, successful_devices_popup._get_log_for_help_link(expected_header))
         self.logger.info("TEST PASSED")
 
+    @unittest.skip("Skip test_T_help_link_on_devices_in_progress_popup.\n")
     def test_T_help_link_on_devices_in_progress_popup(self):
         self.logger.info("TC#0000: Check help link on Devices In Progress popup")
         expected_header = "Devices In Progress"
@@ -3170,6 +3245,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertEqual(expected_header, actual_header, devices_in_progress_popup._get_log_for_help_link(expected_header))
         self.logger.info("TEST PASSED")
 
+    @unittest.skip("Skip test_T_help_link_on_failed_devices_popup.\n")
     def test_T_help_link_on_failed_devices_popup(self):
         self.logger.info("TC#0000: Check help link on Failed Devices popup")
         expected_header = "Failed Devices"
@@ -3194,6 +3270,7 @@ class MainPageHelpLinks(unittest.TestCase):
         self.assertEqual(expected_header, actual_header, failed_devices_popup._get_log_for_help_link(expected_header))
         self.logger.info("TEST PASSED")
 
+    @unittest.skip("Skip test_T_help_link_on_devices_with_partial_success_popup.\n")
     def test_T_help_link_on_devices_with_partial_success_popup(self):
         self.logger.info("TC#0000: Check help link on Devices with Partial Success popup")
         expected_header = "Devices with Partial Success"
@@ -3221,6 +3298,36 @@ class MainPageHelpLinks(unittest.TestCase):
 
         "Devices with Partial Success"
 
+    def test_T_help_link_on_patch_manager_popup(self):
+        self.logger.info("TC#0000: Check help link on Patch Manager popup (Tasks)")
+        expected_header = "Patch Manager"
+        task_name = Variables.help_test_scan_task
+        device = Variables.vrep
+        left_menu = LeftMenuTasks(self.driver)
+        screen_tasks = TasksScreen(self.driver)
+        patch_manager_popup = PatchManagerPopup(self.driver)
+        left_menu.open_menu_tasks()
+        self.assertTrue(left_menu.check_menu_tasks_is_opened())
+        left_menu.expand_scheduled_tasks_list()
+        self.assertTrue(left_menu.check_discover_label_is_presented())
+        left_menu.click_patch_manager_label()
+        self.assertTrue(screen_tasks.check_screen_is_presented())
+        screen_tasks.search_task(task_name)
+        self.assertTrue(screen_tasks.check_task_is_presented(task_name))
+        screen_tasks.click_task_in_table(task_name)
+        self.assertTrue(screen_tasks.check_tab_devices_is_presented())
+        screen_tasks.click_tab_devices()
+        self.assertTrue(screen_tasks.check_device_is_present_in_table(device))
+        screen_tasks.click_device_in_table(device)
+        self.assertTrue(screen_tasks.check_button_view_software_update_is_presented())
+        screen_tasks.click_button_view_software_update_details()
+        self.assertTrue(patch_manager_popup.check_popup_is_presented())
+        patch_manager_popup.click_icon_help()
+        actual_header = patch_manager_popup._get_help_frame_header()
+        self.assertEqual(
+            expected_header, actual_header, patch_manager_popup._get_log_for_help_link(expected_header))
+        self.logger.info("TEST PASSED")
+
     # def test_create_and_config_site(self):
     #     self.logger.info("TC#0000: Create and config Site")
     #     main_page = MainPage(self.driver)
@@ -3229,12 +3336,22 @@ class MainPageHelpLinks(unittest.TestCase):
     #     self.logger.info("TEST PASSED")
     #
     # def test_run_discovery_task(self):
-    #     self.logger.info("TC#0000: Run a discovery task")
+    #     self.logger.info("TC#0000: Run a Discovery task")
     #     main_page = MainPage(self.driver)
     #     cond = main_page.run_discovery_task_if_not_exists(Variables.help_test_discovery_task)
     #     self.assertTrue(cond)
     #     self.logger.info("TEST PASSED")
 
+    # def test_run_scan_task(self):
+    #     self.logger.info("TC#0000: Run a Patch Scan task")
+    #     task_name = Variables.help_test_discovery_task
+    #     device = Variables.vrep
+    #     site_name = Variables.help_test
+    #     main_page = MainPage(self.driver)
+    #     cond = main_page.run_patch_scan_task_on_single_device_if_not_exists(task_name=task_name, site_name=site_name,
+    #                                                                         device_name=device)
+    #     self.assertTrue(cond)
+    #     self.logger.info("TEST PASSED")
 
     def tearDown(self):
         base_actions = BaseActions(self.driver)

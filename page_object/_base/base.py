@@ -2,6 +2,7 @@ import time
 import logging
 
 from _settings.settings import Settings
+from pip._vendor.colorama.win32 import handles
 from selenium.common.exceptions import NoSuchElementException, WebDriverException, StaleElementReferenceException
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.action_chains import ActionChains
@@ -22,6 +23,8 @@ class Base(object):
     DISABLED = "[contains(@class,'Disabled')]"
     SELECTED = "[contains(@class,'Selected')]"
     CHECKED = "[contains(@style,'CheckBox1')]"
+    RB_CHECKED = "[contains(@style,'Radio1')]"
+    RB_UNCHECKED = "[contains(@style,'Radio0')]"
     UNCHECKED = "[contains(@style,'CheckBox0')]"
     LOGIN_PAGE_LOGO = "//img[contains(@src,'Images.CMS-Login')]"
     ARROW_EXPAND = "/div[contains(@style,'LTR1.gif')]"
@@ -72,7 +75,7 @@ class Base(object):
                 elif i > imax:
                     return TimeoutException
                 else:
-                    time.sleep(0.8)
+                    time.sleep(0.3)
                     # print "screen is locked..." + str(i) + " sec"
             return True
         except TimeoutException:
@@ -99,22 +102,15 @@ class Base(object):
     def _click_element(self, locator):
         try:
             self.wait_for_screen_is_unlocked()
-            # cond = self._is_element_present(locator + "/*//*[text()]")
-            # if cond:
-            #     element = self._get_attribute_value(locator, "class")
-            #     text = self._get_text(locator)
-            #     print "CLICK: " + str(text) + " - " + str(element)
-            # else:
-            #     print "CLICK: " + str(locator)
             self._find_element(locator).click()
             self.wait_for_screen_is_unlocked()
-            # self.logger.debug("CLICK: " + str(locator))
+            self.logger.debug("CLICK: " + str(locator))
         except WebDriverException as e:
             if 'Other element would receive the click' in e.msg:
                 print "CLICK ON LOCKED SCREEN..."
                 cond = self._is_element_present(Base.LOADING_SCREEN_VISIBLE)
                 if cond:
-                    time.sleep(0.5)
+                    # time.sleep(0.5)
                     self.wait_for_screen_is_unlocked()
                     self._find_element(locator).click()
                     print "CLICK SECOND TIME IS SUCCESSFUL"
@@ -160,25 +156,26 @@ class Base(object):
             #         self.logger.exception("CLICK: Element is NOT CLICKABLE.\n")
             #         print e.message
 
-    def open_page(self):
+    def open_page(self, url=Settings.baseUrl):
         try:
             self.driver.maximize_window()
-            self.driver.get(Settings.baseUrl)
+            self.driver.get(url)
             # self.logger.info("Instance is: " + str(Settings.baseUrl) + "\n")
             self.wait_loading.until(EC.presence_of_element_located((By.XPATH, Base.LOGIN_PAGE_LOGO)))
             self.wait_for_screen_is_unlocked()
             cond = self._is_element_present(Base.LOGIN_PAGE_LOGO)
             if cond:
-                self.logger.info("OPEN. Instance " + str(Settings.baseUrl) + " is loaded\n")
+                self.logger.info("OPEN. Page " + url + " is loaded\n")
             else:
                 title = self.get_title()
                 self.logger.critical(str(title))
         except TimeoutException:
             message1 = self._get_text('//*[@id="main-message"]/h1')
             message2 = self._get_text('//*[@class="error-code"]')
-            self.logger.exception("Page: " + str(Settings.baseUrl) + " is NOT loaded\n" + message1 + "\n" + message2)
+            self.logger.exception("Page: " + url + " is NOT loaded\n" + message1 + "\n" + message2)
         except Exception as e:
-            self.logger.exception("Service error: ", str(e))
+            self.logger.exception("Service error: ")
+            print e
 
     def _find_element(self, locator):
         try:
@@ -194,7 +191,8 @@ class Base(object):
                 self.driver.quit()
             return None
         except Exception as e:
-            self.logger.exception("FIND ELEMENT. The element " + locator + " is NOT found\n. Message: " + str(e))
+            self.logger.exception("FIND ELEMENT. The element " + locator + " is NOT found\n. Message: ")
+            print e
             return None
 
     def _find_elements(self, locator):
@@ -207,23 +205,6 @@ class Base(object):
             return None
         except Exception as e:
             self.logger.exception("FIND ELEMENT. The element " + locator + " is NOT found\n. Message: " + str(e))
-
-    def _hover_and_click_element(self, locator):
-        try:
-            self.wait_webelement.until(EC.presence_of_element_located((By.XPATH, locator)))
-            element = self._find_element(locator)
-            if element is not None:
-                # time.sleep(15)
-                event = 'click'  # or 'hover' or any other
-                script = "$(arguments[0]).trigger('" + event + "')"
-                self.driver.execute_script(script, element)
-                self.driver.execute_script("arguments[0].click();", element)
-                print "script is executed"
-                self.wait_for_screen_is_unlocked()
-                return True
-        except NoSuchElementException:
-            print locator + " is NOT clickable"
-            return False
 
     def _wait_for_element_present(self, locator):
         try:
@@ -242,7 +223,7 @@ class Base(object):
     def _wait_for_all_elements_present(self, locator):
         try:
             self.wait_webelement.until(EC.presence_of_all_elements_located((By.XPATH, locator)), "Element is NOT present")
-            # self.wait_webelement.until(EC.visibility_of_any_elements_located((By.XPATH, locator)), "Element is NOT visible")
+            self.wait_webelement.until(EC.visibility_of_any_elements_located((By.XPATH, locator)), "Element is NOT visible")
             self.logger.debug("WAITING. Elements " + locator + " are present.")
             return True
         except (NoSuchElementException, TimeoutException):
@@ -456,14 +437,16 @@ class Base(object):
             self.driver.execute_script("arguments[0].scrollTop = 0", element)
             self._wait_for_element_present("//table[contains(@id,'VWGVL_')]/*//tr[1][@data-vwgindex='0']")
         except Exception as e:
-            self.logger.exception("SCROLL. Error on scroll to top method.\n Message " + str(e))
+            self.logger.exception("SCROLL. Error on scroll to top method.\n")
+            print e
 
     def scroll_list_down(self, step):
         try:
             element = self._find_element("//div[contains(@id,'VWGVLSC_')]")
             self.driver.execute_script("arguments[0].scrollTop = arguments[1]", element, step)
         except Exception as e:
-            self.logger.exception("SCROLL. Error on scroll list down method.\n Message " + str(e))
+            self.logger.exception("SCROLL. Error on scroll list down method.\n")
+            print e
 
     def scroll_to_element(self, locator):
         try:
@@ -471,4 +454,5 @@ class Base(object):
             element = self._find_element(locator)
             self.driver.execute_script("return arguments[0].scrollIntoView();", element)
         except Exception as e:
-            self.logger.exception("SCROLL. Error on scroll to element method.\n Message " + str(e))
+            self.logger.exception("SCROLL. Error on scroll to element method.\n")
+            print e

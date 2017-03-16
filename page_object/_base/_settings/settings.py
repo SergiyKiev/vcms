@@ -9,6 +9,7 @@ class Settings:
     set = openpyxl.load_workbook('settings.xlsx')
     sheet = set.get_sheet_by_name('Sheet1')
     baseUrl = "https://testteamtest.cloudmanagementsuite.com/"
+    endUserAccess = "https://testteamtest.cloudmanagementsuite.com/EndUserAccess.wgx"
     # baseUrl = "https://testteamdev.cloudmanagementsuite.com/"
     # baseUrl = str(sheet['B2'].value)
     username = str(sheet['B3'].value)

@@ -89,42 +89,32 @@ class MainPage(BaseActions):
         postcond = tasks_screen.search_task(name)
         return True if postcond else False
 
-    # def run_single_patch_scan_task_on_single_device_if_not_exists(self, name):
-    #     ribbon_bar = RibbonBar(self.driver)
-    #     tasks_screen = TasksScreen(self.driver)
-    #     left_menu_tasks = LeftMenuTasks(self.driver)
-    #     patch_manager_scanning_popup = PatchManagerScanningPopup(self.driver)
-    #     left_menu_tasks.open_menu_tasks()
-    #     left_menu_tasks.expand_scheduled_tasks_list()
-    #     left_menu_tasks.click_patch_manager_label()
-    #     cond = tasks_screen.search_task(name)
-    #     if cond is not True:
-    #         ribbon_bar.click_button_create()
-    #         patch_manager_scanning_popup.click_button_select_none()
-    #         patch_manager_scanning_popup.select_site_in_list()
-    #         patch_manager_scanning_popup.click_button_next()
-    #         patch_manager_scanning_popup.click_button_next()
-    #         cond = patch_manager_scanning_popup.check_none_patches_selected()
-    #         if cond is not True:
-    #             print "None patches is NOT selected"
-    #         patch_manager_scanning_popup.click_button_next()
-    #         cond = patch_manager_scanning_popup.check_start_now_selected()
-    #         if cond is not True:
-    #             print "Start Now is NOT selected"
-    #         patch_manager_scanning_popup.click_button_next()
-    #         patch_manager_scanning_popup.click_button_next()
-    #         patch_manager_scanning_popup.clear_text_name_text_field()
-    #         patch_manager_scanning_popup.enter_text_into_task_name_field(name)
-    #         patch_manager_scanning_popup.click_button_finish()
-    #         return True
-    #     else:
-    #         print "Task is presented"
-    #     postcond = tasks_screen.search_task(name)
-    #     return True if postcond else False
-
-
-
-
+    def run_patch_scan_task_on_single_device_if_not_exists(self, task_name, device_name, site_name):
+        ribbon_bar = RibbonBar(self.driver)
+        tasks_screen = TasksScreen(self.driver)
+        left_menu_tasks = LeftMenuTasks(self.driver)
+        select_targets_popup = SelectTargetsPopup(self.driver)
+        patch_manager_scanning_popup = PatchManagerScanningPopup(self.driver)
+        left_menu_tasks.open_menu_tasks()
+        left_menu_tasks.expand_scheduled_tasks_list()
+        left_menu_tasks.click_patch_manager_label()
+        cond = tasks_screen.search_task(task_name)
+        if cond is not True:
+            ribbon_bar.click_button_scan()
+            patch_manager_scanning_popup.open_select_targets_popup()
+            select_targets_popup.select_site_in_list(site_name)
+            select_targets_popup.select_device_in_list(device_name)
+            select_targets_popup.click_button_ok()
+            patch_manager_scanning_popup.click_button_next()
+            patch_manager_scanning_popup.select_radio_button_all()
+            patch_manager_scanning_popup.click_button_next()
+            patch_manager_scanning_popup.select_radio_button_start_now()
+            patch_manager_scanning_popup.click_button_next()
+            patch_manager_scanning_popup.clear_text_name_text_field()
+            patch_manager_scanning_popup.enter_text_into_task_name_field(task_name)
+            patch_manager_scanning_popup.click_button_finish()
+        postcond = tasks_screen.search_task(task_name)
+        return True if postcond else False
 
     def run_software_deployment_task(self):
         pass

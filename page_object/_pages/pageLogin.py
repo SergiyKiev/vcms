@@ -63,7 +63,8 @@ class LoginPage(BaseActions):
             else:
                 return False
         except Exception as e:
-            self.logger.exception("LOGIN PAGE IS NOT LOADED\n" + str(e))
+            self.logger.exception("LOGIN PAGE IS NOT LOADED\n")
+            print e
 
 
     def click_icon_help(self):
